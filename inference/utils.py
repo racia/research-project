@@ -378,7 +378,7 @@ def is_nan(value: Any) -> bool:
     return False
 
 
-def majority_vote(values: list) -> Any:
+def majority_vote(values: list) -> list[str] | None:
     """
     Return the majority value from a list of values.
 
@@ -390,5 +390,6 @@ def majority_vote(values: list) -> Any:
     if not values:
         return None
     value_counts = Counter(values)
-    majority_value, _ = value_counts.most_common(1)[0]
-    return majority_value
+    highest_freq = value_counts.most_common(1)[0][0]
+    majority_values = [v for v, count in value_counts.items() if count == highest_freq]
+    return majority_values

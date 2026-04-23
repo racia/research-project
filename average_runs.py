@@ -79,13 +79,18 @@ def aggregate(rows: list[dict]) -> dict:
     ]
     data_attrs = ["golden_answer", "task", "answer_lies_in_self"]
 
+    assert all(
+        set(r.keys()) == set(rows[0].keys()) for r in rows
+    ), "All rows must have the same keys for aggregation."
+
     averaged_row = {}
-    for attr in rows[0].keys(): # All rows should have the same keys, so we can just take the keys from the first row to iterate over.
+    for attr in rows[0].keys():
         values = [r.get(attr, "") for r in rows]
         if attr in irrelevant_columns:
             continue
         if attr in [*data_attrs, *id_columns]:
-            averaged_row[attr] = rows[0][attr] # Store the first value for these columns, as they should be the same across duplicates
+            # Store the first value for these columns, as they should be the same across duplicates
+            averaged_row[attr] = rows[0][attr]
             continue
         if all(is_number(v) for v in values):
             numeric_values = [safe_float(v) if is_number(v) else 0 for v in values]
@@ -99,10 +104,10 @@ def aggregate(rows: list[dict]) -> dict:
                 averaged_row["split_vote"] = True
                 averaged_row[attr] = "\n".join(answer)
             else:
-                averaged_row[attr] = answer
+                averaged_row[attr] = answer[0] if answer else ""
         else:
             warnings.warn(
-                f"Unexpected non-numeric attribute in aggregation: '{attr}' with value '''{rows[0][attr]}'''"
+                f"Unexpected non-numeric attribute in aggregation: '{attr}' with value:\n'{rows[0][attr]}'"
             )
 
     return averaged_row
@@ -129,17 +134,25 @@ def run(
 
     duplicated_results = []
     for path in results_paths:
-        loaded = loader.load_results(
+        data, _ = loader.load_results(
             results_path=path,
             data_path="../tasks_1-20_v1-2/en-valid/",
             split=data_split,
             as_parts=False,
             list_output=True,
         )
-        if not loaded or not isinstance(loaded, tuple) or not loaded[0] or not isinstance(loaded[0], list) or not loaded[0][0] or not isinstance(loaded[0][0], dict):
-            raise ValueError(f"Unexpected format in loaded results from {path}. Expected a list of lists of dicts. Got: {type(loaded)} with content: {loaded[0][0]}")
-        
-        duplicated_results.append(loaded[0]) # Assuming the structure is ( [ {result dict}, ... ] ) and we want the inner list of dicts for each path
+        if not data:
+            raise ValueError(
+                f"No data loaded from {path}. Please check the file and path."
+            )
+        if not isinstance(data, list) or not isinstance(data[0], dict):
+            raise ValueError(
+                f"Unexpected format in loaded results from {path}. "
+                f"Expected a list[dict] per entry. "
+                f"Got: {type(data)}[{type(data[0])}] of content: {data[0]}"
+            )
+
+        duplicated_results.append(data)
 
     all_ids = set()
     for i, result in enumerate(duplicated_results):
@@ -175,17 +188,6 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--save_path", required=True, help="Output base directory.")
     parser.add_argument("--samples_per_task", type=int, default=1)
-    parser.add_argument( # This argument is currently not used in the code, but it can be implemented in the future to handle reasoning texts according to the specified mode.
-        "--reasoning_mode",
-        choices=["remove", "join", "majority"],
-        default="remove",
-        help="How to handle duplicate reasonings.",
-    )
-    parser.add_argument(
-        "--no_warn_on_split",
-        action="store_true",
-        help="Disable warnings for tied majority votes.",
-    )
     return parser.parse_args()
 
 
@@ -193,19 +195,25 @@ if __name__ == "__main__":
     # This script doesn't calculate metrics!
     # It should therefore be run after the initial evaluation of the duplicating runs to record them correctly.
     # python average_runs.py --results_paths run1.csv run2.csv run3.csv run4.csv --save_path /your/output/dir --samples_per_task 1
-    # args = parse_args()
-    results_paths = [
-        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
-        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
-        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
-        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
-        "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
-    ]
-    save_path = "outputs/test-average/" #"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/test-average/"
-    samples_per_task = 3
+    args = parse_args()
     output_path = run(
-        results_paths=results_paths,
-        save_path=save_path,
-        samples_per_task=samples_per_task,
+        results_paths=args.results_paths,
+        save_path=args.save_path,
+        samples_per_task=args.samples_per_task,
     )
+    # TODO: Uncomment for testing
+    # results_paths = [
+    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
+    # ]
+    # save_path = "outputs/test-average/" #"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/test-average/"
+    # samples_per_task = 3
+    # output_path = run(
+    #     results_paths=results_paths,
+    #     save_path=save_path,
+    #     samples_per_task=samples_per_task,
+    # )
     print(f"Saved aggregated results to: {output_path}")
