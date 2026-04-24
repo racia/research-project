@@ -24,8 +24,8 @@ from interpretability.utils import InterpretabilityResult
 from plots.utils import (
     Identifiers,
     determine_colour_scheme,
-    plot_task_map_grid,
     prepare_for_display_pie,
+    plot_task_map_grid,
 )
 
 
@@ -109,6 +109,8 @@ class Plotter:
         self.plot_counter_task: int = 0
         self.plot_counter_prompt: int = 0
 
+        self.warning_counter = 0
+
     def _save_plot(
         self,
         y_label: str = None,
@@ -143,8 +145,8 @@ class Plotter:
         self.plot_counter_prompt += 1
         plt.close()
 
-    @staticmethod
     def _plot_general_details(
+        self,
         x_label: str,
         y_label: str,
         max_x_len: int,
@@ -183,7 +185,9 @@ class Plotter:
             elif step < 0:  # negative step
                 raise ValueError(f"Step size must be non-negative, got <step={step}>")
         except TypeError:
-            warnings.warn(f"No step size provided, defaulting to automatic ticks.")
+            if not self.warning_counter:
+                warnings.warn(f"No step size provided, defaulting to automatic ticks.")
+            self.warning_counter += 1
 
         plt.xlabel(x_label)
 
@@ -240,6 +244,7 @@ class Plotter:
         file_name: str = None,
         id: int = 1,
         split_name: str = None,
+        path_add: str = "",
     ) -> None:
         """
         Draw a heat map with the given data.
@@ -268,8 +273,8 @@ class Plotter:
         )
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
 
-        Path.mkdir(self.results_path / version, exist_ok=True, parents=True)
-        plt.savefig(self.results_path / version / file_name)
+        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        plt.savefig(self.results_path / path_add / file_name)
         plt.close()
 
     def draw_heat(
@@ -295,26 +300,31 @@ class Plotter:
         :param title: title of the plot
         :return: None
         """
-        x = interpretability_result.x_tokens
-        y = interpretability_result.y_tokens
+        x_labels = interpretability_result.x_tokens
+        y_labels = interpretability_result.y_tokens
         scores = interpretability_result.attn_scores
 
         plt.figure(figsize=(12, 8))
         # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
         max_score = max(np.max(scores[1:]), 0.25)
-        axis = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
+        ax = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
 
-        y = y[1:]
-        x_ticks = [i + 0.5 for i in range(len(x))]
-        y_ticks = [i + 0.5 for i in range(len(y))]
+        # x_labels = x
+        # y_labels = y[1:]
+        x_tick_values = [i + 0.5 for i in range(len(x_labels))]
+        y_tick_values = [i + 0.5 for i in range(len(y_labels))]
 
         plt.xlabel(x_label, fontdict={"size": 10})
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
-        plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=60, ha="right")
-        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+        # plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=60, ha="right")
+        # plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+        ax.set_xticks(x_tick_values)
+        ax.set_xticklabels(x_labels, fontsize=5, rotation=60, ha="right")
+        ax.set_yticks(y_tick_values[1:])
+        ax.set_yticklabels(y_labels[1:], fontsize=5, rotation=0)
 
-        cbar = axis.collections[0].colorbar
+        cbar = ax.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
 
         if title:
@@ -485,7 +495,7 @@ class Plotter:
         y_label: str = "Y",
         file_name=None,
         plot_name_add: list[str] = None,
-        path_add: str = None,
+        path_add: str = "",
         level: str = None,
         include_soft: bool = True,
         label_add: list[str] = [],
@@ -612,12 +622,20 @@ class Plotter:
         """
         # === Setup ===
         use_reasoning_scores = reasoning_scores is not None
+        if not reasoning_scores:
+            warnings.warn(
+                "No reasoning scores provided, plotting answer types without scores. "
+                "To include reasoning scores, "
+                "pass a dict of {(task, sample, part): score} to the 'reasoning_scores' argument."
+            )
+            use_reasoning_scores = False
 
         # Determine which answer categories to use
+        min_score, max_score = 0.0, 1.0
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-            max_score = max(reasoning_scores.values()) if reasoning_scores else 1.0
-            min_score = min(reasoning_scores.values()) if reasoning_scores else 0.0
+            max_score = max(reasoning_scores.values())
+            min_score = min(reasoning_scores.values())
         else:
             # exclude simple answer/reasoning types
             answer_types = [
@@ -665,6 +683,7 @@ class Plotter:
                 continue
 
             # Build either an integer heatmap or an RGBA image depending on mode
+            rgba_img, heatmap = None, None
             if use_reasoning_scores:
                 rgba_img = np.ones(
                     (len(samples), len(parts), 4), dtype=float
@@ -674,6 +693,7 @@ class Plotter:
                 heatmap = np.zeros((len(samples), len(parts)), dtype=int)
                 mask = np.zeros_like(heatmap, dtype=bool)
 
+            missing_scores = set()
             for s_idx, s in enumerate(samples):
                 for p_idx, p in enumerate(parts):
                     idx = (task, s, p)
@@ -709,9 +729,19 @@ class Plotter:
                                 sample = min_sample + norm_score * (1.0 - min_sample)
                                 rgba = cmap_obj(sample)
                             rgba_img[s_idx, p_idx] = rgba
-                        else:
+                        if use_reasoning_scores and idx not in reasoning_scores:
+                            missing_scores.add(idx)
+                            rgba_img[s_idx, p_idx] = (0, 0, 0, 0)
+                        elif not use_reasoning_scores:
                             # store integer index for categorical mapping
                             heatmap[s_idx, p_idx] = answer_types.index(case)
+
+            if missing_scores:
+                warnings.warn(
+                    f"When plotting for {specification['score']}, reasoning score missing "
+                    f"the following indices in reasoning_scores dict: "
+                    f"{missing_scores}"
+                )
 
             # Display appropriately
             if use_reasoning_scores:
@@ -1157,8 +1187,7 @@ class Plotter:
             step=step_size,
         )
 
-        if path_add:
-            (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
         self._save_plot(
             y_label=y_label,
             x_label=x_label,
@@ -1176,7 +1205,7 @@ class Plotter:
         version: str = False,
         file_name: str = None,
         plot_name_add: list[str] = None,
-        path_add: str = None,
+        path_add: str = "",
         level: str = None,
     ) -> None:
         """
@@ -1232,6 +1261,7 @@ class Plotter:
             return "-".join(feat_str) if feat_str else None
 
         # Combine parts features to single column
+        label_order = None
         if "parts_features" in y_data:
             label_order = [
                 " ".join('"-"'.join(comb).split("_")).title().join('""')
@@ -1263,13 +1293,39 @@ class Plotter:
         )
         df[x_label] = df[x_label].round()
 
-        ax = sns.boxplot(
-            data=df,
-            x=x_label,
-            y=df.columns[1],
-            hue=f"{label_column}_" if len(df.columns) > 2 else None,
-            hue_order=label_order if len(df.columns) > 2 else None,
-        )
+        # this sns.boxplot returns an error:
+        # UnboundLocalError: cannot access local variable 'boxprops' where it is not associated with a value
+        # when the input is all-NaN/empty after filtering
+        # ax = sns.boxplot(
+        #     data=df,
+        #     x=x_label,
+        #     y=df.columns[1],
+        #     hue=f"{label_column}_" if len(df.columns) > 2 else None,
+        #     hue_order=label_order if len(df.columns) > 2 else None,
+        # )
+        hue_col = f"{label_column}_"
+        use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) > 1
+
+        try:
+            ax = sns.boxplot(
+                data=df,
+                x=x_label,
+                y=df.columns[1],
+                hue=hue_col if use_hue else None,
+                hue_order=label_order if use_hue else None,
+            )
+        except UnboundLocalError:
+            # If error occurs (e.g. due to all-NaN data), plot without hue as fallback
+            warnings.warn(
+                "Boxplot with hue failed (possibly due to all-NaN data), plotting without hue as fallback."
+            )
+            print("Data for boxplot:\n", df)
+            ax = sns.boxplot(
+                data=df,
+                x=x_label,
+                y=df.columns[1],
+                hue=None,
+            )
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
         ax.xaxis.grid(True, which="minor", color="black", lw=1, ls=":")

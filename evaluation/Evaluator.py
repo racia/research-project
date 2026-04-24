@@ -399,12 +399,47 @@ class AnswerEvaluator(MetricEvaluator):
             )
         return self.max_supp_attn.get_mean(), self.attn_on_target.get_mean()
 
-    def calculate_bleu(self) -> float:
+    def problems_with_reasoning(
+        self, silver: list[str], pred: list[str], score: str
+    ) -> bool:
+        """
+        Check if there are problems with the reasonings that would prevent calculating the BLEU score.
+        Namely, if there are no reasonings or if the lengths of the reasonings and references do not match.
+
+        :param silver: the silver reasoning
+        :param pred: the predicted reasoning
+        :param score: the name of the score being calculated, e.g. "BLEU", "ROUGE" or "METEOR"
+        :return: True if the predicted reasoning matches the silver reasoning, False otherwise
+        """
+        if not self.silver_reasonings:
+            warnings.warn(
+                f"No silver reasonings available for level {self.level} when calculating {score} score. Returning None."
+            )
+            return True
+        if not self.pred_reasonings:
+            warnings.warn(
+                f"No predicted reasonings available for level {self.level} when calculating {score} score. Returning None."
+            )
+            return True
+        if len(pred) != len(silver):
+            warnings.warn(
+                f"List length of predicted reasoning ({len(pred)}) and silver reasoning ({len(silver)}) must be equal for reasoning check. "
+                f"The entries from the longer reasoning list exceeding the shorted one will be disregarded for the check."
+                f"Pred:\n{pred}\nSilver:\n{silver}"
+            )
+        return False
+
+    def calculate_bleu(self) -> float | None:
         """
         Calculate the BLEU score for the sample part.
 
         :return: the BLEU score
         """
+        if self.problems_with_reasoning(
+            self.silver_reasonings, self.pred_reasonings, "BLEU"
+        ):
+            return None
+
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
             if not all((silver, pred)):
                 self.bleu.add(0.0)
@@ -424,13 +459,18 @@ class AnswerEvaluator(MetricEvaluator):
             self.bleu.add(bleu_score["bleu"])
         return self.bleu.get_mean()
 
-    def calculate_rouge(self) -> float:
+    def calculate_rouge(self) -> float | None:
         """
         Calculate the ROUGE-L score for the sample part.
         It looks for the longest common subsequence between the reference and the prediction.
 
         :return: the ROUGE-L score
         """
+        if self.problems_with_reasoning(
+            self.silver_reasonings, self.pred_reasonings, "ROUGE"
+        ):
+            return None
+
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
             if not all((silver, pred)):
                 self.rouge.add(0.0)
@@ -450,12 +490,17 @@ class AnswerEvaluator(MetricEvaluator):
             self.rouge.add(float(rouge_score["rougeL"]))
         return self.rouge.get_mean()
 
-    def calculate_meteor(self):
+    def calculate_meteor(self) -> float | None:
         """
         Calculate the Meteor score for the sample part.
 
         :return: the Meteor score
         """
+        if self.problems_with_reasoning(
+            self.silver_reasonings, self.pred_reasonings, "METEOR"
+        ):
+            return None
+
         for silver, pred in zip(self.silver_reasonings, self.pred_reasonings):
             if not all((silver, pred)):
                 self.meteor.add(0.0)
