@@ -177,7 +177,7 @@ def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
         )
 
 
-def extract_split(path) -> str:
+def extract_split(path) -> str | None:
     """
     Extract the split from the data path. If the split is not found, return "split".
 
@@ -187,4 +187,4 @@ def extract_split(path) -> str:
     for split in ["valid", "test", "train"]:
         if split in path:
             return split
-    return "split"
+    return None

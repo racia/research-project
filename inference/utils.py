@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import textwrap
+from collections import Counter
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any
@@ -385,8 +386,6 @@ def majority_vote(values: list) -> list[str] | None:
     :param values: list of values to vote on
     :return: majority value
     """
-    from collections import Counter
-
     if not values:
         return None
     value_counts = Counter(values)
