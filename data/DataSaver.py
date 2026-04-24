@@ -20,12 +20,13 @@ class DataSaver:
     This class handles everything related to saving data.
     """
 
-    def __init__(self, save_to: str, loaded_baseline_results: bool) -> None:
+    def __init__(self, save_to: str, loaded_baseline_results: bool = False) -> None:
         """
         Initialize the DataSaver.
         The datasaver handles everything related to saving data.
 
         :param save_to: the path to save the data
+        :param loaded_baseline_results: whether the baseline results were loaded (if so, they won't be saved again)
         """
         self.old_stdout: TextIO = sys.stdout
         # self.results_path is updated in create_result_paths
@@ -112,6 +113,8 @@ class DataSaver:
                 raise ValueError("The file should be saved in a .csv format.")
         else:
             file_name = Path(file_name)
+
+        Path.mkdir(file_name.parent, parents=True, exist_ok=True)
 
         with open(file_name, flag, encoding="UTF-8") as file:
             writer = csv.DictWriter(file, fieldnames=headers, delimiter="\t")

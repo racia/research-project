@@ -57,7 +57,7 @@ def run(data_path: str) -> None:
         "results": [  # for both before and after
             "model_answer",
             "model_reasoning",
-            "model_output",  # TODO: make sure it's not 'model_result'
+            "model_output",
             "correct",
         ],
     }

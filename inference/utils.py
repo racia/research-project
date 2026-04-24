@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import textwrap
+from collections import Counter
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any
@@ -12,7 +13,7 @@ from prettytable import PrettyTable
 from spacy.tokens.span import Span
 from transformers import PreTrainedTokenizerFast
 
-from evaluation.Evaluator import MetricEvaluator
+from evaluation.Evaluator import MetricEvaluator, AnswerEvaluator
 from settings.config import Enumerate
 
 nlp = en_core_web_sm.load()
@@ -263,7 +264,7 @@ def wrap_text(text, width=40):
 
 
 def print_metrics_table(
-    evaluators: list[MetricEvaluator],
+    evaluators: list[MetricEvaluator | AnswerEvaluator],
     id_: Any = None,
 ) -> None:
     """
@@ -376,3 +377,18 @@ def is_nan(value: Any) -> bool:
     elif isinstance(value, str):
         return value.lower() == "nan"
     return False
+
+
+def majority_vote(values: list) -> list[str] | None:
+    """
+    Return the majority value from a list of values.
+
+    :param values: list of values to vote on
+    :return: majority value
+    """
+    if not values:
+        return None
+    value_counts = Counter(values)
+    highest_freq = value_counts.most_common(1)[0][0]
+    majority_values = [v for v, count in value_counts.items() if count == highest_freq]
+    return majority_values
