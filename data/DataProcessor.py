@@ -93,6 +93,13 @@ class DataProcessor:
 
                 for line in sample:
                     cleaned = line.strip()
+                    # regex: group 1: line number: \d+\s+
+                    # no group: space: \s+
+                    # group 2: question: .+?
+                    # no group: space: \s+
+                    # group 3: answer: \w+(?:,\w+)?     # there might be two answers (see task 8)
+                    # no group: space: \s+
+                    # group 4: supporting fact: ((?:\d+\s*)+)
                     question_line_pattern = (
                         r"^(\d+)\s+(.+?)\s+(\w+(?:,\w+)?)\s+((?:\d+\s*)+)$"
                     )
@@ -110,6 +117,7 @@ class DataProcessor:
                             int(x) for x in question_match.group(4).split(" ")
                         ]
                         raw_part["supporting_facts"].extend(supporting_list)
+                        # there might be two answers (see task 8)
                         answers = question_match.group(3).lower().split(",")
 
                         reasoning = silver_reasoning.get(

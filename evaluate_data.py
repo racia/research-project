@@ -738,7 +738,10 @@ def add_completeness_column(path: str, da: bool = False, before: bool = False) -
 
 
 if __name__ == "__main__":
+    # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
+    # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
     args = parse_args()
+    # python3.12 evaluate_data.py --results_path /pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv --save_path outputs/test-eval/SD --samples_per_task 2 --create_heatmaps --verbose
     run(
         results_path=args.results_path,
         save_path=args.save_path,
