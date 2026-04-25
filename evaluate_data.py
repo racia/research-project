@@ -1,3 +1,16 @@
+# Description: This script is used to evaluate the results of the model.
+# 1) The script loads the data from the specified path.
+# 2) It removes unnecessary columns from the data.
+# 3) It extracts the split from the data path.
+# 4) It iterates over the data and creates the data levels.
+# 5) It loads the silver reasoning and interpretability results.
+# 5) It calculates the metrics for the split and the tasks.
+# 6) It plots the metrics and interpretability heat.
+# 7) It saves the results to the specified path.
+# 8) It prints the metrics table.
+# 9) It categorizes the results into different cases.
+# 10) It saves the categorized results to the specified path.
+
 from __future__ import annotations
 
 import argparse
@@ -6,15 +19,14 @@ from collections import defaultdict
 from pathlib import Path
 
 import pandas as pd
-from evaluation.distractor_attention import (
-    DistractorAttentionStats,
-    collect_distractor_attention_record,
-    compute_distractor_attention_from_csvs,
-)
 
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
+from evaluation.DistractorAttention import (
+    DistractorAttentionStats,
+    collect_distractor_attention_record,
+)
 from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
