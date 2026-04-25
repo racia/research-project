@@ -16,6 +16,7 @@ from matplotlib import cm
 from matplotlib.colors import ListedColormap
 from matplotlib.ticker import MultipleLocator, PercentFormatter
 
+from evaluation.DistractorAttention import DistractorAttentionStats
 from evaluation.Metrics import Accuracy, Metric
 from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS, FLOAT_2_STR
 from inference.DataLevels import Features
@@ -24,8 +25,8 @@ from interpretability.utils import InterpretabilityResult
 from plots.utils import (
     Identifiers,
     determine_colour_scheme,
-    prepare_for_display_pie,
     plot_task_map_grid,
+    prepare_for_display_pie,
 )
 
 
@@ -1348,3 +1349,226 @@ class Plotter:
             file_name=f"{path_add}/{file_name.lower()}",
         )
         plt.close()
+
+    def plot_distractor_attn_boxplot(
+        self,
+        stats: DistractorAttentionStats,
+        version: str,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+    ) -> None:
+        """
+        Plot a four-box comparison of mean attention on distractor versus neutral
+        context sentences, split by answer correctness.
+
+        The two correctness conditions (correct, incorrect) are shown side by side,
+        each with a box for distractor sentences and a box for neutral sentences.
+        A larger gap between the distractor and neutral boxes for incorrect answers
+        than for correct answers suggests the model is misled by distractors.
+
+        :param stats: accumulated distractor attention records for this version
+        :param version: "before" or "after", used in the output file name
+        :param plot_name_add: additional strings appended to the plot title
+        :param path_add: sub-path appended to the plotter's base results path
+        """
+        grouped = stats.as_grouped()
+
+        role_color = {"distractor": "#d7604a", "neutral": "#4a90d7"}
+        label_correct = {True: "Correct", False: "Incorrect"}
+        ordering = [
+            (True, "distractor"),
+            (True, "neutral"),
+            (False, "distractor"),
+            (False, "neutral"),
+        ]
+
+        box_data, tick_labels, colors = [], [], []
+        for correct, role in ordering:
+            vals = grouped[correct].get(role, [])
+            if vals:
+                box_data.append(vals)
+                tick_labels.append(f"{label_correct[correct]}\n({role})")
+                colors.append(role_color[role])
+
+        if not box_data:
+            print(
+                f"[plot_distractor_attn_boxplot] No data to plot for version='{version}'."
+            )
+            return
+
+        fig, ax = plt.subplots(figsize=(8, 5))
+        bp = ax.boxplot(box_data, patch_artist=True, notch=False, widths=0.5)
+
+        for patch, color in zip(bp["boxes"], colors):
+            patch.set_facecolor(color)
+            patch.set_alpha(0.72)
+        for element in ("whiskers", "caps", "fliers", "medians"):
+            plt.setp(bp[element], color="#333333", linewidth=1.2)
+
+        ax.set_xticks(range(1, len(tick_labels) + 1))
+        ax.set_xticklabels(tick_labels, fontsize=10)
+        ax.set_ylabel("Mean Attention on Sentence Role", fontsize=11)
+
+        title = "Distractor vs Neutral Attention by Answer Correctness"
+        if plot_name_add:
+            title += f"  [{', '.join(plot_name_add)}]"
+        ax.set_title(title, fontsize=11, pad=10)
+        ax.grid(axis="y", linestyle="--", alpha=0.45)
+        fig.tight_layout()
+
+        self._save_plot(
+            fig,
+            file_name=f"distractor_attn_boxplot_{version}.pdf",
+            path_add=path_add,
+        )
+        plt.close(fig)
+        self.plot_counter_prompt += 1
+
+    def plot_distractor_attn_per_task(
+        self,
+        stats: DistractorAttentionStats,
+        version: str,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+    ) -> None:
+        """
+        Plot a grouped bar chart of mean distractor and neutral attention per task,
+        with correct and incorrect conditions shown side by side.
+
+        Task and correctness combinations that have no data are left blank rather
+        than drawn as zero, to avoid misleading comparisons.
+
+        :param stats: accumulated distractor attention records for this version
+        :param version: "before" or "after", used in the output file name
+        :param plot_name_add: additional strings appended to the plot title
+        :param path_add: sub-path appended to the plotter's base results path
+        """
+        per_task = stats.as_per_task()
+        task_ids = sorted(per_task.keys())
+        if not task_ids:
+            print(
+                f"[plot_distractor_attn_per_task] No data to plot for version='{version}'."
+            )
+            return
+
+        x = np.arange(len(task_ids))
+        width = 0.18
+
+        bar_spec = [
+            (True, "distractor", -1.5, "#c0392b", "Correct / Distractor"),
+            (True, "neutral", -0.5, "#2980b9", "Correct / Neutral"),
+            (False, "distractor", 0.5, "#e67e22", "Incorrect / Distractor"),
+            (False, "neutral", 1.5, "#7f8c8d", "Incorrect / Neutral"),
+        ]
+
+        fig, ax = plt.subplots(figsize=(max(8, len(task_ids) * 1.1), 5))
+
+        for correct, role, offset_mult, color, label in bar_spec:
+            means = [per_task[tid].get(correct, {}).get(role, None) for tid in task_ids]
+            xs = [
+                x[i] + offset_mult * width for i, m in enumerate(means) if m is not None
+            ]
+            heights = [m for m in means if m is not None]
+            if xs:
+                ax.bar(xs, heights, width, label=label, color=color, alpha=0.82)
+
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"T{tid}" for tid in task_ids], fontsize=9)
+        ax.set_ylabel("Mean Attention", fontsize=11)
+
+        title = "Per-Task Distractor vs Neutral Attention"
+        if plot_name_add:
+            title += f"  [{', '.join(plot_name_add)}]"
+        ax.set_title(title, fontsize=11, pad=10)
+        ax.legend(fontsize=9, ncol=2, loc="upper right")
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        fig.tight_layout()
+
+        self._save_plot(
+            fig,
+            file_name=f"distractor_attn_per_task_{version}.pdf",
+            path_add=path_add,
+        )
+        plt.close(fig)
+        self.plot_counter_prompt += 1
+
+    def plot_distractor_attn_scatter(
+        self,
+        stats: DistractorAttentionStats,
+        version: str,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+    ) -> None:
+        """
+        Plot a scatter of mean attention on neutral context versus mean attention
+        on distractor sentences per part, coloured by answer correctness.
+
+        A diagonal reference line (y = x) is included; points above it indicate
+        that the model allocated more attention to distractors than to neutral
+        context for that part. Clustering of incorrect answers above the diagonal
+        supports the hypothesis that distractor attention correlates with errors.
+
+        Only parts that have both attn_distractor and attn_neutral are plotted.
+
+        :param stats: accumulated distractor attention records for this version
+        :param version: "before" or "after", used in the output file name
+        :param plot_name_add: additional strings appended to the plot title
+        :param path_add: sub-path appended to the plotter's base results path
+        """
+        scatter_data = stats.as_scatter_data()
+
+        fig, ax = plt.subplots(figsize=(6, 6))
+
+        plot_spec = [
+            (True, "#2ecc71", "Correct", "o"),
+            (False, "#e74c3c", "Incorrect", "^"),
+        ]
+        all_vals: list[float] = []
+
+        for correct, color, label, marker in plot_spec:
+            xvals = scatter_data[correct]["neutral"]
+            yvals = scatter_data[correct]["distractor"]
+            if xvals:
+                ax.scatter(
+                    xvals,
+                    yvals,
+                    alpha=0.55,
+                    s=35,
+                    color=color,
+                    marker=marker,
+                    label=f"{label} (n={len(xvals)})",
+                    edgecolors="none",
+                )
+                all_vals.extend(xvals)
+                all_vals.extend(yvals)
+
+        if not all_vals:
+            print(
+                f"[plot_distractor_attn_scatter] No data to plot for version='{version}'."
+            )
+            plt.close(fig)
+            return
+
+        lo, hi = min(all_vals), max(all_vals)
+        margin = (hi - lo) * 0.05
+        ref = [lo - margin, hi + margin]
+        ax.plot(ref, ref, "k--", linewidth=0.9, alpha=0.45, label="y = x")
+
+        ax.set_xlabel("Mean Attention on Neutral Context", fontsize=11)
+        ax.set_ylabel("Mean Attention on Distractor Sentences", fontsize=11)
+
+        title = "Distractor vs Neutral Attention per Part"
+        if plot_name_add:
+            title += f"  [{', '.join(plot_name_add)}]"
+        ax.set_title(title, fontsize=11, pad=10)
+        ax.legend(fontsize=9)
+        ax.grid(linestyle="--", alpha=0.35)
+        fig.tight_layout()
+
+        self._save_plot(
+            fig,
+            file_name=f"distractor_attn_scatter_{version}.pdf",
+            path_add=path_add,
+        )
+        plt.close(fig)
+        self.plot_counter_prompt += 1
