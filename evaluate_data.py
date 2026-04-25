@@ -210,12 +210,16 @@ def run(
         samples_per_task=samples_per_task,
         filtering_conditions=filtering_conditions,
     )
+
+    # loaded results in parts with original data, tokens-ids, and interpretability results
     results_data, multi_system = loader.load_results(
         results_path=results_path,
         data_path="../tasks_1-20_v1-2/en-valid/",
         split=extract_split(results_path),
         as_parts=True,
     )
+
+    # maybe loaded_baseline_results is not needed for evaluation
     saver = DataSaver(
         save_to=str(Path(save_path) / "eval"),
         loaded_baseline_results=True if multi_system else False,
@@ -248,8 +252,10 @@ def run(
                 multi_system=multi_system,
             )
 
+            # Used to store the correct answers for each sample for later evaluation
             for part in parts:
                 for version, result in zip(part.versions, part.results):
+                    # TODO: add reasoning judgment to part results for it to be saved in the results table
                     if create_heatmaps and not result.interpretability.empty():
                         plotter.draw_heat(
                             result.interpretability,
@@ -264,6 +270,8 @@ def run(
 
                 sample.add_part(part)
                 result = part.get_result()
+                # necessary only if we want to addition more columns to our original results
+                # otherwise we can just create separate tables or files
 
                 for version in part.versions:
                     answer_correct = result.get(f"answer_correct_{version}")
@@ -306,6 +314,7 @@ def run(
         for version, evaluator, corr_matrix in zip(
             task.versions, task.evaluators, task_corr_matrices.values()
         ):
+            # Plot Attention vs Seen Context Lengths for the Task
             plotter.plot_correlation(
                 x_data={"seen_context_lengths": task.seen_context_lengths},
                 y_data=evaluator.parts_attn_on_target.all,
@@ -316,6 +325,8 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
             )
+
+            # Attn on Target for Accuracy
             plotter.plot_correlation(
                 x_data=evaluator.get_accuracies(as_lists=True),
                 y_data=evaluator.attn_on_target.all,
@@ -328,6 +339,8 @@ def run(
                 include_soft=False,
                 label_add=[f"s{sample.sample_id}" for sample in task.samples],
             )
+
+            # Attn on Target for Target Distances by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_target_distances": task.parts_target_distances.all},
                 y_data={
@@ -343,6 +356,8 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
+
+            # Attn on Target for Answer Correct by Parts Features
             plotter.plot_corr_boxplot(
                 x_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -359,6 +374,8 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
+
+            # Attn on target for Anwer in Self by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_answer_in_self": task.parts_answer_in_self},
                 y_data={
@@ -373,6 +390,8 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
+
+            # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths},
                 y_data={
@@ -387,6 +406,8 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
+
+            # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths},
                 y_data={
@@ -408,6 +429,7 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 id=task_id,
             )
+
             saver.save_json(
                 data=corr_matrix,
                 file_path=f"corr_matrix_task_{task_id}.json",
@@ -441,6 +463,7 @@ def run(
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
     ):
+        # SAVING
         saver.save_json(
             data=corr_matrix,
             file_path=f"corr_matrix_split_{split.name}.json",
@@ -451,6 +474,8 @@ def run(
             metrics_file_name="eval_script_features.csv",
             version=version,
         )
+
+        # PLOTTING
         plotter.correlation_map(
             data=corr_matrix,
             level=evaluator.level,
@@ -458,6 +483,8 @@ def run(
             split_name=split.name,
             file_name=f"corr_matrix_split_{split.name}.pdf",
         )
+
+        # Plot Accuracy vs Attn on Target for the Split
         plotter.plot_correlation(
             x_data=evaluator.get_accuracies(as_lists=True),
             y_data=evaluator.attn_on_target.all,
@@ -470,6 +497,8 @@ def run(
             include_soft=False,
             label_add=[f"t{task.task_id}" for task in split.tasks],
         )
+
+        # Attn on Target for Seen Context Lengths by Answer Correct
         plotter.plot_corr_boxplot(
             x_data={"seen_context_lengths": split.seen_context_lengths},
             y_data={
@@ -485,6 +514,8 @@ def run(
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
         )
+
+        # Attn on Target for Target Distances by Answer Correct
         plotter.plot_corr_boxplot(
             x_data={"parts_target_distances": split.parts_target_distances},
             y_data={
@@ -500,6 +531,8 @@ def run(
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
         )
+
+        # Answer Correct for Seen Context Lengths by Answer In Self
         plotter.plot_corr_hist(
             x_data={"parts_seen_context_lengths": split.seen_context_lengths},
             y_data={
