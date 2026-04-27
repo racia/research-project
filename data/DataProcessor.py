@@ -2,9 +2,8 @@ from __future__ import annotations
 
 import re
 
-from data.Scenery import Scenery, SentenceScenery
-
 from data.utils import expand_cardinal_points
+from evaluation.Scenery import Scenery, SentenceScenery
 from inference.DataLevels import SamplePart
 from settings.config import Enumerate, Wrapper
 
