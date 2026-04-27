@@ -16,15 +16,7 @@
 
 # Email notifications
 #SBATCH --mail-user=""              # TODO: Add your email address
-<<<<<<< HEAD
-<<<<<<< HEAD
 #SBATCH --mail-type=BEGIN,END,FAIL  # Send email when the job ends or fails
-=======
-#SBATCH --mail-type=START,END,FAIL  # Send email when the job ends or fails
->>>>>>> 8dabacb35 (Correct Skyline script)
-=======
-#SBATCH --mail-type=BEGIN,END,FAIL  # Send email when the job ends or fails
->>>>>>> 9d8e92cdb (Minor corrections)
 
 ### JOB STEPS START HERE ###
 # fix working directory

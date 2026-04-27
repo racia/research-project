@@ -309,8 +309,10 @@ class Plotter:
         plt.ylabel("Model Output Tokens", fontdict={"size": 10})
 
         plt.xticks(ticks=x_ticks, labels=x, fontsize=5, rotation=60, ha="right")
-        plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
-
+        try:
+            plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
+        except TypeError as e:
+            print(str(e))
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
 
