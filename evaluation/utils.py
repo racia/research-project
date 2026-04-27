@@ -175,3 +175,16 @@ def normalize_numbers(number_s: int | str | list[int | str]) -> str | list[str]:
         raise TypeError(
             f"Expected int, str or list of int or str, got {type(number_s)}"
         )
+
+
+def extract_split(path) -> str | None:
+    """
+    Extract the split from the data path. If the split is not found, return "split".
+
+    :param path: The path to the data.
+    :return: The split.
+    """
+    for split in ["valid", "test", "train"]:
+        if split in path:
+            return split
+    return None

@@ -118,7 +118,7 @@ def parse_output(output: str) -> tuple:
             sep="\n",
             end="\n\n",
         )
-        if "not mention" in reasoning:
+        if not_mentioned_detected(reasoning):
             answer = "not mentioned"
             print(
                 "DEBUG: Extracted 'not mentioned' from the reasoning:",

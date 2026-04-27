@@ -294,7 +294,6 @@ def run_setting(cfg: DictConfig) -> None:
                     start_from_sample = cfg.data.get("start_from_sample", 0)
                 elif task_id == loader.tasks[0]:
                     start_from_sample = cfg.data.get("start_from_sample", 0)
-
                 print(
                     f"start_from_sample: {start_from_sample}, task_id: {cfg.data.get('tasks', [None])[0]}"
                 )

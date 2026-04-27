@@ -28,6 +28,8 @@ from evaluation.DistractorAttention import (
     collect_distractor_attention_record,
 )
 from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
+from evaluation.utils import extract_split
+from inference.DataLevels import Results, Sample, Split, Task, SamplePart, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 
@@ -308,9 +310,10 @@ def run(
             f"Added task {task_id} with {len(sample.parts)} parts to split {data_split}."
         )
 
+        task_corr_matrices = task.calculate_metrics()
         if verbose:
             print_metrics(task)
-        task_corr_matrices = task.calculate_metrics()
+
         for version, evaluator, corr_matrix in zip(
             task.versions, task.evaluators, task_corr_matrices.values()
         ):
