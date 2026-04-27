@@ -2,8 +2,6 @@ from dataclasses import dataclass
 
 import en_core_web_sm
 
-from data.DataLoader import DataLoader
-
 nlp = en_core_web_sm.load()
 
 
@@ -307,6 +305,7 @@ class Scenery:
 
 
 if __name__ == "__main__":
+    from data.DataLoader import DataLoader
 
     loader = DataLoader()
     scenery = Scenery(loader.load_scenery(("base_phrasal_verbs",)))
