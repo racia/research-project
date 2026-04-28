@@ -12,10 +12,15 @@ mode="da"
 setting=$1
 samples_per_task=$2
 create_heatmaps=$3
+if [ "$mode" = "reasoning" ]; then
+    full_mode="reasoning"
+else
+    full_mode="direct_answer"
+fi
 
-results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${mode}/v1/all_tasks_joined/joined_reasoning_results.csv"
+results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${mode}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
 
-save_path="results/${setting}/${task}"
+save_path="results/${setting}/${mode}"
 
 ### JOB STEPS START HERE ###
 # fix working directory
