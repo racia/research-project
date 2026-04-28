@@ -277,17 +277,29 @@ def run(
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
 
-                for version in part.versions:
-                    answer_correct = result.get(f"answer_correct_{version}")
-                    if answer_correct is not None:
-                        record = collect_distractor_attention_record(
-                            part=part,
-                            answer_correct=answer_correct,
-                            version=version,
-                        )
-                        if record is not None:
-                            distractor_stats[version].add(record)
-                            distractor_stats_per_task[task_id][version].add(record)
+                assert len(part.versions) == len(part.results)
+
+                for version, version_result in zip(part.versions, part.results):
+
+                    if version_result.interpretability.empty():
+                        continue
+
+                    result_dict = version_result.get_result()
+
+                    answer_correct = result_dict.get(f"answer_correct_{version}")
+
+                    if answer_correct is None or pd.isna(answer_correct):
+                        continue
+
+                    record = collect_distractor_attention_record(
+                        part=part,
+                        answer_correct=answer_correct,
+                        version=version,
+                    )
+
+                    if record is not None:
+                        distractor_stats[version].add(record)
+                        distractor_stats_per_task[task_id][version].add(record)
 
                 saver.save_output(
                     data=[result],
