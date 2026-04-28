@@ -1562,7 +1562,7 @@ class Plotter:
         ax.grid(linestyle="--", alpha=0.35)
         fig.tight_layout()
 
-        self._save_plot(file_name=f"distractor_attn_scatter_{version}_.pdf")
+        self._save_plot(file_name=f"distractor_attn_scatter_{version}.pdf")
         plt.close(fig)
         self.plot_counter_prompt += 1
 
@@ -1572,6 +1572,7 @@ class Plotter:
         x_label: str = "answer_correct",
         y_label: str = "supporting_attention",
         plot_name_add: list[str] | None = None,
+        version: str = "before",
     ):
         """
         Mean supporting attention for correct vs incorrect answers.
@@ -1595,6 +1596,7 @@ class Plotter:
         self._save_plot(
             x_label=x_label,
             y_label=y_label,
+            file_name=f"supporting_attention_{version}.pdf",
             plot_name_add=plot_name_add,
         )
 
@@ -1605,6 +1607,7 @@ class Plotter:
         y_label: str = "distractor_supporting_ratio",
         plot_name_add: list[str] | None = None,
         eps: float = 1e-8,
+        version: str = "before",
     ):
         """
         Distractor / Supporting attention ratio per sample.
@@ -1637,6 +1640,7 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
+            file_name=f"distractor_supporting_ratio_{version}.pdf",
         )
 
     def plot_attention_triplet(
@@ -1645,6 +1649,7 @@ class Plotter:
         x_label: str = "attention_role",
         y_label: str = "attention",
         plot_name_add: list[str] | None = None,
+        version: str = "before",
     ):
         """
         Compare supporting vs distractor vs neutral attention.
@@ -1678,4 +1683,5 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
+            file_name=f"attention_triplet_{version}.pdf",
         )

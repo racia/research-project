@@ -653,10 +653,20 @@ def run(
                 path_add=Path(version),
             )
             plotter.plot_supporting_attention(
-                d_stats, title=f"Supporting Attention (Split {split.name}, {version})"
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
             )
-            plotter.plot_distractor_supporting_ratio(d_stats)
-            plotter.plot_attention_triplet(d_stats)
+            plotter.plot_distractor_supporting_ratio(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+            )
+            plotter.plot_attention_triplet(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+            )
 
             saver.save_output(
                 data=d_stats.as_csv_records(),
