@@ -340,7 +340,7 @@ class Plotter:
         verbosity = "aggr" if "sentence" in x_label.lower() else "ver"
         plt.savefig(
             plot_subdirectory
-            / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.pdf"
+            / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.png"
         )
 
         plt.close()
@@ -1418,7 +1418,7 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            file_name=f"distractor_attn_boxplot_{version}.pdf",
+            file_name=f"distractor_attn_boxplot_{version}.png",
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1484,7 +1484,7 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            file_name=f"distractor_attn_per_task_{version}.pdf",
+            file_name=f"distractor_attn_per_task_{version}.png",
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1562,7 +1562,7 @@ class Plotter:
         ax.grid(linestyle="--", alpha=0.35)
         fig.tight_layout()
 
-        self._save_plot(file_name=f"distractor_attn_scatter_{version}.pdf")
+        self._save_plot(file_name=f"distractor_attn_scatter_{version}.png")
         plt.close(fig)
         self.plot_counter_prompt += 1
 
@@ -1596,7 +1596,7 @@ class Plotter:
         self._save_plot(
             x_label=x_label,
             y_label=y_label,
-            file_name=f"supporting_attention_{version}.pdf",
+            file_name=f"supporting_attention_{version}.png",
             plot_name_add=plot_name_add,
         )
 
@@ -1640,7 +1640,7 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
-            file_name=f"distractor_supporting_ratio_{version}.pdf",
+            file_name=f"distractor_supporting_ratio_{version}.png",
         )
 
     def plot_attention_triplet(
@@ -1683,5 +1683,5 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
-            file_name=f"attention_triplet_{version}.pdf",
+            file_name=f"attention_triplet_{version}.png",
         )
