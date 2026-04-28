@@ -238,6 +238,9 @@ def run(
     distractor_stats: dict[str, DistractorAttentionStats] = defaultdict(
         DistractorAttentionStats
     )
+    distractor_stats_per_task: dict[int, dict[str, DistractorAttentionStats]] = (
+        defaultdict(lambda: defaultdict(DistractorAttentionStats))
+    )
 
     data_split = extract_split(results_path)
     sample, task, split = None, None, Split(name=data_split, multi_system=multi_system)
@@ -284,6 +287,7 @@ def run(
                         )
                         if record is not None:
                             distractor_stats[version].add(record)
+                            distractor_stats_per_task[task_id][version].add(record)
 
                 saver.save_output(
                     data=[result],
@@ -451,6 +455,42 @@ def run(
                     headers=list(metric.keys()),
                     file_name=f"eval_script_metrics_{version}.csv",
                     path_add=Path(version),
+                )
+
+            print(
+                f"\nPlotting distractor attention analysis for task {task_id} '{version}'...",
+                end="\n\n",
+            )
+            d_stats_task = distractor_stats_per_task[task_id][version]
+            if not d_stats_task.is_empty():
+                plotter.plot_distractor_attn_boxplot(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                plotter.plot_distractor_attn_per_task(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                plotter.plot_distractor_attn_scatter(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                saver.save_output(
+                    data=d_stats_task.as_csv_records(),
+                    headers=d_stats_task.csv_headers,
+                    file_name=f"distractor_attention_{version}.csv",
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+            else:
+                print(
+                    f"No distractor attention records collected for task {task_id} version='{version}'. "
+                    "Check that parts have interpretability data and distractors set."
                 )
 
     if verbose:
