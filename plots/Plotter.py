@@ -1417,7 +1417,7 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            file_name=f"{path_add}/distractor_attn_boxplot_{version}.pdf",
+            file_name=f"distractor_attn_boxplot_{version}.pdf",
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1483,7 +1483,7 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            file_name=f"{path_add}/distractor_attn_per_task_{version}.pdf",
+            file_name=f"distractor_attn_per_task_{version}.pdf",
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1561,8 +1561,6 @@ class Plotter:
         ax.grid(linestyle="--", alpha=0.35)
         fig.tight_layout()
 
-        self._save_plot(
-            file_name=f"{path_add}/distractor_attn_scatter_{version}_.pdf",
-        )
+        self._save_plot(file_name=f"distractor_attn_scatter_{version}_.pdf")
         plt.close(fig)
         self.plot_counter_prompt += 1
