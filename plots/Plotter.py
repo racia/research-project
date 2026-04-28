@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import itertools
+import warnings
 from collections import defaultdict
 from itertools import zip_longest
 from pathlib import Path
 from typing import Sized
-import warnings
 
 import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
@@ -1417,9 +1417,7 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            fig,
-            file_name=f"distractor_attn_boxplot_{version}.pdf",
-            path_add=path_add,
+            file_name=f"distractor_attn_boxplot_{version}_{path_add}.pdf",
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1485,9 +1483,7 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            fig,
-            file_name=f"distractor_attn_per_task_{version}.pdf",
-            path_add=path_add,
+            file_name=f"distractor_attn_per_task_{version}_{path_add}.pdf",
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1566,9 +1562,7 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            fig,
-            file_name=f"distractor_attn_scatter_{version}.pdf",
-            path_add=path_add,
+            file_name=f"distractor_attn_scatter_{version}_{path_add}.pdf",
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
