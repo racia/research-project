@@ -206,10 +206,11 @@ def _sentence_attn_from_interpretability(interpretability) -> dict[int, float] |
     start: int = 0
 
     for i, tok in enumerate(x_tokens):
-        if tok.strip().isdigit():
+        first = tok.split()[0] if tok.strip() else ""
+        if first.isdigit():
             if current_sent is not None:
                 sentence_spans.append((current_sent, start, i))
-            current_sent = int(tok.strip())
+            current_sent = int(first)
             start = i + 1
 
     if current_sent is not None:
