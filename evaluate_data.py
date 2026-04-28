@@ -277,7 +277,14 @@ def run(
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
 
-                assert len(part.versions) == len(part.results)
+                if len(part.versions) != len(part.results):
+                    print(
+                        f"[WARNING] Skipping malformed part | "
+                        f"task={part.task_id} sample={part.sample_id} part={part.part_id}\n"
+                        f"versions={part.versions}\n"
+                        f"n_results={len(part.results)}"
+                    )
+                    continue
 
                 for version, version_result in zip(part.versions, part.results):
 
