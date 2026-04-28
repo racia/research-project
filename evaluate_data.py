@@ -785,7 +785,7 @@ if __name__ == "__main__":
         results_path=args.results_path,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
-        setting="SD",
+        setting="basic-baseline",
         experiment="reasoning_answer",
         filtering_conditions={},
         create_heatmaps=args.create_heatmaps,
