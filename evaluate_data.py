@@ -278,6 +278,24 @@ def run(
                 # otherwise we can just create separate tables or files
 
                 for version in part.versions:
+                    for res in part.results:
+                        if res.version == version:
+                            interp = res.interpretability
+                            print(
+                                f"[DEBUG] task={part.task_id} sample={part.sample_id} part={part.part_id} version={version}"
+                            )
+                            print(f"  interpretability empty: {interp.empty()}")
+                            if not interp.empty():
+                                print(
+                                    f"  attn_scores shape: {interp.attn_scores.shape}"
+                                )
+                                print(f"  x_tokens[:10]: {interp.x_tokens[:10]}")
+                            print(
+                                f"  distractors: {getattr(part, 'distractors', 'ATTRIBUTE MISSING')}"
+                            )
+                            print(f"  supporting_sent_inx: {part.supporting_sent_inx}")
+                            print(f"  context keys: {list(part.raw['context'].keys())}")
+
                     answer_correct = result.get(f"answer_correct_{version}")
                     if answer_correct is not None:
                         record = collect_distractor_attention_record(
