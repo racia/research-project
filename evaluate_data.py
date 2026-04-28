@@ -482,11 +482,20 @@ def run(
                     path_add=Path(version, f"Task-{task_id}"),
                 )
                 plotter.plot_supporting_attention(
-                    d_stats_task,
-                    title=f"Supporting Attention (Task {task_id}, {version})",
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
                 )
-                plotter.plot_distractor_supporting_ratio(d_stats_task)
-                plotter.plot_attention_triplet(d_stats_task)
+                plotter.plot_distractor_supporting_ratio(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                )
+                plotter.plot_attention_triplet(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                )
 
                 saver.save_output(
                     data=d_stats_task.as_csv_records(),
