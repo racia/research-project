@@ -43,6 +43,9 @@ class DistractorAttentionRecord:
             "attn_distractor": (
                 "" if self.attn_distractor is None else self.attn_distractor
             ),
+            "attn_supporting": (
+                "" if self.attn_supporting is None else self.attn_supporting
+            ),
             "attn_neutral": "" if self.attn_neutral is None else self.attn_neutral,
             "n_distractors": self.n_distractors,
             "n_neutral": self.n_neutral,
@@ -81,12 +84,9 @@ class DistractorAttentionStats:
         """
         Return attention values grouped by answer correctness and sentence role.
 
-        Records whose attn_distractor or attn_neutral is None are omitted from
-        the corresponding list but do not affect the other role.
-
         :return: nested dict of the form
-                 {True: {"distractor": [...], "neutral": [...]},
-                  False: {"distractor": [...], "neutral": [...]}}
+                 {True: {"distractor": [...], "supporting": [...], "neutral": [...]},
+                  False: {"distractor": [...], "supporting": [...], "neutral": [...]}}
         """
         groups: dict[bool, dict[str, list[float]]] = {
             True: defaultdict(list),
@@ -95,6 +95,8 @@ class DistractorAttentionStats:
         for r in self.records:
             if r.attn_distractor is not None:
                 groups[r.answer_correct]["distractor"].append(r.attn_distractor)
+            if r.attn_supporting is not None:
+                groups[r.answer_correct]["supporting"].append(r.attn_supporting)
             if r.attn_neutral is not None:
                 groups[r.answer_correct]["neutral"].append(r.attn_neutral)
         return groups
@@ -104,7 +106,7 @@ class DistractorAttentionStats:
         Return per-task mean attention values grouped by correctness and sentence role.
 
         :return: nested dict of the form
-                 {task_id: {True: {"distractor": mean, "neutral": mean}, False: {...}}}
+                 {task_id: {True: {"distractor": mean, "supporting": mean, "neutral": mean}, ...}}
         """
         per_task: dict[int, dict[bool, dict[str, list[float]]]] = defaultdict(
             lambda: {True: defaultdict(list), False: defaultdict(list)}
@@ -114,8 +116,13 @@ class DistractorAttentionStats:
                 per_task[r.task_id][r.answer_correct]["distractor"].append(
                     r.attn_distractor
                 )
+            if r.attn_supporting is not None:
+                per_task[r.task_id][r.answer_correct]["supporting"].append(
+                    r.attn_supporting
+                )
             if r.attn_neutral is not None:
                 per_task[r.task_id][r.answer_correct]["neutral"].append(r.attn_neutral)
+
         return {
             tid: {
                 correct: {role: float(np.mean(vals)) for role, vals in roles.items()}
@@ -126,8 +133,7 @@ class DistractorAttentionStats:
 
     def as_scatter_data(self) -> dict[bool, dict[str, list[float]]]:
         """
-        Return only records that have both attn_distractor and attn_neutral,
-        structured for the scatter plot.
+        Return only records that have both attn_distractor and attn_neutral.
 
         :return: nested dict of the form
                  {True: {"distractor": [...], "neutral": [...]},
@@ -166,6 +172,7 @@ class DistractorAttentionStats:
             "version",
             "answer_correct",
             "attn_distractor",
+            "attn_supporting",
             "attn_neutral",
             "n_distractors",
             "n_neutral",
@@ -232,13 +239,6 @@ def _sentence_attn_from_interpretability(interpretability) -> dict[int, float] |
 def _mean_attn_over_indices(
     sent_attn: dict[int, float], indices: list[int]
 ) -> float | None:
-    """
-    Compute the mean attention over a specific set of sentence indices.
-
-    :param sent_attn: mapping of sentence index to mean attention value
-    :param indices: sentence indices to average over
-    :return: mean attention, or None if no indices overlap with sent_attn
-    """
     vals = [sent_attn[i] for i in indices if i in sent_attn]
     return float(np.mean(vals)) if vals else None
 
@@ -284,7 +284,6 @@ def collect_distractor_attention_record(
     all_context: set[int] = set(part.raw["context"].keys())
     neutral: set[int] = all_context - supporting - distractors
 
-    # --- attention aggregation ---
     attn_supporting = _mean_attn_over_indices(sent_attn, list(supporting))
     attn_distractor = _mean_attn_over_indices(sent_attn, list(distractors))
     attn_neutral = _mean_attn_over_indices(sent_attn, list(neutral))
@@ -366,12 +365,14 @@ def compute_distractor_attention_from_csvs(
         for _, row in df.iterrows():
             supporting = set(_parse_index_list(row.get(supporting_col, "")))
             distractors = set(_parse_index_list(row.get(distractor_col, "")))
+
             attn_cols = [c for c in row.index if c.startswith(attn_col_prefix)]
             all_ctx = {
                 int(c.replace(attn_col_prefix, ""))
                 for c in attn_cols
                 if pd.notna(row[c])
             }
+
             neutral = all_ctx - supporting - distractors
 
             stats.add(
@@ -382,6 +383,7 @@ def compute_distractor_attention_from_csvs(
                     version=version,
                     answer_correct=answer_correct,
                     attn_distractor=_row_mean_attn(row, list(distractors)),
+                    attn_supporting=_row_mean_attn(row, list(supporting)),
                     attn_neutral=_row_mean_attn(row, list(neutral)),
                     n_distractors=len(distractors),
                     n_neutral=len(neutral),
