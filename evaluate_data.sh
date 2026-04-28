@@ -10,10 +10,12 @@
 
 setting=$1
 task=$2
-samples_per_task=$3
-create_heatmaps=$4
+mode=$3
+samples_per_task=$4
+create_heatmaps=$5
 
-results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${task}/v1/all_tasks_joined/joined_reasoning_results.csv"
+results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/${mode}/test/${task}/v1/all_tasks_joined/joined_reasoning_results.csv"
+
 save_path="results/${setting}/${task}"
 
 ### JOB STEPS START HERE ###

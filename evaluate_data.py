@@ -27,9 +27,8 @@ from evaluation.DistractorAttention import (
     DistractorAttentionStats,
     collect_distractor_attention_record,
 )
-from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from evaluation.utils import extract_split
-from inference.DataLevels import Results, Sample, Split, Task, SamplePart, print_metrics
+from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 
@@ -685,6 +684,12 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         help="Path where to save the results.",
     )
     parser.add_argument(
+        "--mode",
+        type=str,
+        required=True,
+        help="Mode, either da or reasoning.",
+    )
+    parser.add_argument(
         "--samples_per_task",
         type=int,
         default=50,
@@ -741,10 +746,7 @@ def add_completeness_column(path: str, da: bool = False, before: bool = False) -
 
 
 if __name__ == "__main__":
-    # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
-    # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
     args = parse_args()
-    # python3.12 evaluate_data.py --results_path /pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv --save_path outputs/test-eval/SD --samples_per_task 2 --create_heatmaps --verbose
     run(
         results_path=args.results_path,
         save_path=args.save_path,
