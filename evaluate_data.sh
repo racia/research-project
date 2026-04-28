@@ -8,11 +8,11 @@
 #SBATCH --mail-user=""
 #SBATCH --mail-type=BEGIN,END,FAIL
 
+mode="da"
 setting=$1
-mode=$2
-task=$3
-samples_per_task=$4
-create_heatmaps=$5
+task=$2
+samples_per_task=$3
+create_heatmaps=$4
 
 results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/${mode}/test/${task}/v1/all_tasks_joined/joined_reasoning_results.csv"
 

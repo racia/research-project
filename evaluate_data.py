@@ -684,12 +684,6 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         help="Path where to save the results.",
     )
     parser.add_argument(
-        "--mode",
-        type=str,
-        required=True,
-        help="Mode, either da or reasoning.",
-    )
-    parser.add_argument(
         "--samples_per_task",
         type=int,
         default=50,
