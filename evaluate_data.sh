@@ -9,8 +9,8 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 
 setting=$1
-task=$2
-mode=$3
+mode=$2
+task=$3
 samples_per_task=$4
 create_heatmaps=$5
 
