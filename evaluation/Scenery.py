@@ -306,9 +306,10 @@ class Scenery:
 
 if __name__ == "__main__":
     from data.DataLoader import DataLoader
+    from data.utils import load_scenery
 
     loader = DataLoader()
-    scenery = Scenery(loader.load_scenery(("base_phrasal_verbs",)))
+    scenery = Scenery(load_scenery(("base_phrasal_verbs",)))
 
     scenery.data = loader.load_task_data(
         path="../../tasks_1-20_v1-2/en-valid", split="train"

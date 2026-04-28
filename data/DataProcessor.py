@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 
-from data.utils import expand_cardinal_points
+from data.utils import expand_cardinal_points, load_scenery
 from evaluation.Scenery import Scenery, SentenceScenery
 from inference.DataLevels import SamplePart
 from settings.config import Enumerate, Wrapper
@@ -15,7 +15,7 @@ class DataProcessor:
 
     def __init__(
         self,
-        scenery: Scenery,
+        scenery: Scenery = None,
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
     ):
@@ -29,7 +29,10 @@ class DataProcessor:
         self.part_counter: int = 0
         self.sample_counter: int = 0
 
-        self.scenery: Scenery = scenery
+        if scenery is not None:
+            self.scenery: Scenery = scenery
+        else:
+            self.scenery = Scenery(load_scenery(("base_phrasal_verbs",)))
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
 
