@@ -25,6 +25,7 @@ from interpretability.utils import InterpretabilityResult
 from plots.utils import (
     Identifiers,
     determine_colour_scheme,
+    extract_attention_by_correct,
     plot_task_map_grid,
     prepare_for_display_pie,
 )
@@ -1564,3 +1565,153 @@ class Plotter:
         self._save_plot(file_name=f"distractor_attn_scatter_{version}_.pdf")
         plt.close(fig)
         self.plot_counter_prompt += 1
+
+    def plot_supporting_attention(
+        self,
+        stats: DistractorAttentionStats,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        version: str | None = None,
+        title: str = "Supporting Attention",
+    ):
+        """
+        Plots mean supporting attention for correct vs incorrect answers.
+
+        The plot compares average supporting-sentence attention between:
+        - correct model outputs
+        - incorrect model outputs
+
+        The figure is saved using the Plotter saving pipeline and NOT displayed.
+        """
+
+        data = extract_attention_by_correct(stats)
+
+        labels = ["Correct", "Incorrect"]
+
+        supporting_means = [
+            np.mean(data[True]["supporting"]) if data[True]["supporting"] else np.nan,
+            np.mean(data[False]["supporting"]) if data[False]["supporting"] else np.nan,
+        ]
+
+        fig, ax = plt.subplots()
+
+        ax.bar(labels, supporting_means)
+        ax.set_ylabel("Attention")
+        ax.set_title(title)
+
+        plt.tight_layout()
+
+        self._save_fig(
+            fig=fig,
+            file_name="supporting_attention.pdf",
+            plot_name_add=plot_name_add,
+            path_add=path_add,
+            version=version,
+        )
+
+    def plot_distractor_supporting_ratio(
+        self,
+        stats: DistractorAttentionStats,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        version: str | None = None,
+        eps: float = 1e-8,
+    ):
+        """
+        Plots ratio of distractor attention to supporting attention.
+
+        Each sample contributes:
+            ratio = distractor_attention / (supporting_attention + eps)
+
+        The distribution is shown separately for correct and incorrect answers.
+        """
+
+        ratios_correct = []
+        ratios_incorrect = []
+
+        for r in stats.records:
+            if getattr(r, "attn_supporting", None) is None:
+                continue
+
+            if r.attn_supporting is None or r.attn_distractor is None:
+                continue
+
+            ratio = r.attn_distractor / (r.attn_supporting + eps)
+
+            if r.answer_correct:
+                ratios_correct.append(ratio)
+            else:
+                ratios_incorrect.append(ratio)
+
+        fig, ax = plt.subplots()
+
+        ax.boxplot(
+            [ratios_correct, ratios_incorrect],
+            labels=["Correct", "Incorrect"],
+        )
+
+        ax.set_ylabel("Distractor / Supporting Attention")
+        ax.set_title("Distractor-to-Supporting Attention Ratio")
+
+        plt.tight_layout()
+
+        self._save_fig(
+            fig=fig,
+            file_name="distractor_supporting_ratio.pdf",
+            plot_name_add=plot_name_add,
+            path_add=path_add,
+            version=version,
+        )
+
+    def plot_attention_triplet(
+        self,
+        stats: DistractorAttentionStats,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        version: str | None = None,
+    ):
+        """
+        Plots attention breakdown across three roles:
+            - supporting
+            - distractor
+            - neutral
+
+        Compares mean attention for correct vs incorrect predictions.
+
+        Output is saved via Plotter pipeline.
+        """
+
+        data = extract_attention_by_correct(stats)
+
+        categories = ["supporting", "distractor", "neutral"]
+        x = np.arange(len(categories))
+        width = 0.35
+
+        means_correct = [
+            np.mean(data[True][c]) if data[True][c] else np.nan for c in categories
+        ]
+
+        means_incorrect = [
+            np.mean(data[False][c]) if data[False][c] else np.nan for c in categories
+        ]
+
+        fig, ax = plt.subplots()
+
+        ax.bar(x - width / 2, means_correct, width, label="Correct")
+        ax.bar(x + width / 2, means_incorrect, width, label="Incorrect")
+
+        ax.set_xticks(x)
+        ax.set_xticklabels(categories)
+        ax.set_ylabel("Attention")
+        ax.set_title("Attention Breakdown: Supporting vs Distractor vs Neutral")
+        ax.legend()
+
+        plt.tight_layout()
+
+        self._save_fig(
+            fig=fig,
+            file_name="attention_triplet.pdf",
+            plot_name_add=plot_name_add,
+            path_add=path_add,
+            version=version,
+        )

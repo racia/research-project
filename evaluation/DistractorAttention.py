@@ -23,6 +23,7 @@ class DistractorAttentionRecord:
     version: str
     answer_correct: bool
     attn_distractor: float | None
+    attn_supporting: float | None
     attn_neutral: float | None
     n_distractors: int
     n_neutral: int
@@ -283,14 +284,20 @@ def collect_distractor_attention_record(
     all_context: set[int] = set(part.raw["context"].keys())
     neutral: set[int] = all_context - supporting - distractors
 
+    # --- attention aggregation ---
+    attn_supporting = _mean_attn_over_indices(sent_attn, list(supporting))
+    attn_distractor = _mean_attn_over_indices(sent_attn, list(distractors))
+    attn_neutral = _mean_attn_over_indices(sent_attn, list(neutral))
+
     return DistractorAttentionRecord(
         task_id=part.task_id,
         sample_id=part.sample_id,
         part_id=part.part_id,
         version=version,
         answer_correct=bool(answer_correct),
-        attn_distractor=_mean_attn_over_indices(sent_attn, list(distractors)),
-        attn_neutral=_mean_attn_over_indices(sent_attn, list(neutral)),
+        attn_supporting=attn_supporting,
+        attn_distractor=attn_distractor,
+        attn_neutral=attn_neutral,
         n_distractors=len(distractors),
         n_neutral=len(neutral),
     )

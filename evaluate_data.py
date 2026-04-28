@@ -481,6 +481,13 @@ def run(
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
                     path_add=Path(version, f"Task-{task_id}"),
                 )
+                plotter.plot_supporting_attention(
+                    d_stats_task,
+                    title=f"Supporting Attention (Task {task_id}, {version})",
+                )
+                plotter.plot_distractor_supporting_ratio(d_stats_task)
+                plotter.plot_attention_triplet(d_stats_task)
+
                 saver.save_output(
                     data=d_stats_task.as_csv_records(),
                     headers=d_stats_task.csv_headers,
@@ -645,6 +652,12 @@ def run(
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
                 path_add=Path(version),
             )
+            plotter.plot_supporting_attention(
+                d_stats, title=f"Supporting Attention (Split {split.name}, {version})"
+            )
+            plotter.plot_distractor_supporting_ratio(d_stats)
+            plotter.plot_attention_triplet(d_stats)
+
             saver.save_output(
                 data=d_stats.as_csv_records(),
                 headers=d_stats.csv_headers,
