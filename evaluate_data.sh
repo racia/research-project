@@ -10,9 +10,8 @@
 
 mode="da"
 setting=$1
-task=$2
-samples_per_task=$3
-create_heatmaps=$4
+samples_per_task=$2
+create_heatmaps=$3
 
 results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${mode}/v1/all_tasks_joined/joined_reasoning_results.csv"
 
