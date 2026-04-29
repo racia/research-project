@@ -64,14 +64,12 @@ class DataProcessor:
 
     def __init__(
         self,
-        scenery: Scenery = None,
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
     ):
         """
         Preprocess or postprocess the data.
 
-        :param scenery: a Scenery instance used to extract entities from context and question lines
         :param wrapper: wrapper for the data
         :param to_enumerate: enumeration for the data
         """
@@ -272,7 +270,7 @@ class DataProcessor:
             if isinstance(sent_text, list):
                 sent_text = " ".join(sent_text)
 
-            ctx_scenery = self.scenery.extract_from_line(sent_text)
+            ctx_scenery = self._scenery.extract_from_line(sent_text)
             ctx_tokens = _token_set(ctx_scenery, _OVERLAP_FIELDS)
 
             if ctx_tokens & q_tokens:
