@@ -1583,8 +1583,16 @@ class Plotter:
         labels = ["Correct", "Incorrect"]
 
         supporting_means = [
-            np.mean(data[True]["supporting"]) if data[True]["supporting"] else np.nan,
-            np.mean(data[False]["supporting"]) if data[False]["supporting"] else np.nan,
+            (
+                np.mean([v for v in data[True]["supporting"] if v is not None])
+                if any(v is not None for v in data[True]["supporting"])
+                else np.nan
+            ),
+            (
+                np.mean([v for v in data[False]["supporting"] if v is not None])
+                if any(v is not None for v in data[False]["supporting"])
+                else np.nan
+            ),
         ]
 
         plt.figure()
@@ -1662,11 +1670,21 @@ class Plotter:
         width = 0.35
 
         means_correct = [
-            np.mean(data[True][c]) if data[True][c] else np.nan for c in categories
+            (
+                np.mean([v for v in data[True][c] if v is not None])
+                if any(v is not None for v in data[True][c])
+                else np.nan
+            )
+            for c in categories
         ]
 
         means_incorrect = [
-            np.mean(data[False][c]) if data[False][c] else np.nan for c in categories
+            (
+                np.mean([v for v in data[False][c] if v is not None])
+                if any(v is not None for v in data[False][c])
+                else np.nan
+            )
+            for c in categories
         ]
 
         plt.figure()
