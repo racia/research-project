@@ -1,14 +1,11 @@
 from __future__ import annotations
 
 import re
-from typing import TYPE_CHECKING
 
 from data.utils import expand_cardinal_points, load_scenery
 from evaluation.Scenery import Scenery, SentenceScenery
+from inference.DataLevels import SamplePart
 from settings.config import Enumerate, Wrapper
-
-if TYPE_CHECKING:
-    from inference.DataLevels import SamplePart
 
 # Scenery fields used for overlap comparison.
 # Attribute fields (subj_attributes, obj_attributes) are excluded because
