@@ -292,6 +292,7 @@ class DataLoader:
         split: str = None,
         tasks: list[int] | None = None,
         sep: str = "\t",
+        multi_system: bool = True,
     ) -> tuple[dict | list, bool | None]:
         """
         Load the results or any csv file from the path.
@@ -310,6 +311,7 @@ class DataLoader:
         :param split: split of the data (to find the file)
         :param tasks: list of task ids to load
         :param sep: separator for the csv file
+        :param multi_system: whether the results are a multi-system run, i.e. there is a before and after version
         :return: result data and whether the data loaded is multi-system (if applicable)
         """
         if list_output and as_parts:
@@ -375,7 +377,7 @@ class DataLoader:
             path=data_path,
             split=split,
             tasks=tasks,
-            multi_system=True,
+            multi_system=multi_system,
             lookup=True,
         )
         multi_system = False
@@ -449,8 +451,7 @@ class DataLoader:
         if len(parts) != self.number_of_parts:
             warnings.warn(
                 "The number of raw loaded parts does not match the number of loaded results parts: "
-                "%d != %d"
-                % (len(parts), self.number_of_parts)
+                "%d != %d" % (len(parts), self.number_of_parts)
             )
         return structure_parts(parts), multi_system
 

@@ -213,12 +213,18 @@ def run(
         filtering_conditions=filtering_conditions,
     )
 
+    if setting in {"basic-baseline", "baseline", "skyline"}:
+        multi_system = False
+    else:
+        multi_system = True
+
     # loaded results in parts with original data, tokens-ids, and interpretability results
     results_data, multi_system = loader.load_results(
         results_path=results_path,
         data_path="../tasks_1-20_v1-2/en-valid/",
         split=extract_split(results_path),
         as_parts=True,
+        multi_system=multi_system,
     )
 
     # maybe loaded_baseline_results is not needed for evaluation
