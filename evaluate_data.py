@@ -280,6 +280,10 @@ def run(
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
 
+                # Distractor marking only needs part.raw and part.supporting_sent_inx,
+                # so it runs independently of whether versions and results are paired.
+                processor.mark_distractors(part)
+
                 if len(part.versions) != len(part.results):
                     print(
                         f"[WARNING] Skipping malformed part | "
@@ -289,7 +293,8 @@ def run(
                     )
                     continue
 
-                for version, version_result in zip(part.versions, part.results):
+                for version_result in part.results:
+                    version = version_result.version
 
                     if version_result.interpretability.empty():
                         continue
@@ -300,8 +305,6 @@ def run(
 
                     if answer_correct is None or pd.isna(answer_correct):
                         continue
-
-                    processor.mark_distractors(part)
 
                     record = collect_distractor_attention_record(
                         part=part,
