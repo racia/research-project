@@ -529,6 +529,16 @@ def run(
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
                 )
+                plotter.plot_distraction_vs_n_distractors(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                )
+                plotter.plot_accuracy_vs_distraction_ratio(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                )
 
                 saver.save_output(
                     data=d_stats_task.as_csv_records(),
@@ -705,6 +715,16 @@ def run(
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
             )
             plotter.plot_attention_triplet(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+            )
+            plotter.plot_distraction_vs_n_distractors(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+            )
+            plotter.plot_accuracy_vs_distraction_ratio(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
