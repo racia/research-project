@@ -1,11 +1,60 @@
 from __future__ import annotations
 
 import re
+from typing import TYPE_CHECKING
 
 from data.utils import expand_cardinal_points, load_scenery
 from evaluation.Scenery import Scenery, SentenceScenery
-from inference.DataLevels import SamplePart
 from settings.config import Enumerate, Wrapper
+
+if TYPE_CHECKING:
+    from inference.DataLevels import SamplePart
+
+# Scenery fields used for overlap comparison.
+# Attribute fields (subj_attributes, obj_attributes) are excluded because
+# adjectives recur too freely across unrelated sentences and would inflate
+# the distractor count.
+_OVERLAP_FIELDS: tuple[str, ...] = (
+    "human_subjects",
+    "non_human_subjects",
+    "direct_objects",
+    "indirect_objects",
+    "locations",
+    "relations",
+)
+
+
+def _normalise_token(tok) -> str:
+    """
+    Return a lower-cased string from a Scenery token.
+
+    Scenery tokens can be plain strings or tuples (head, *children from
+    get_DO_NP); only the head is used for matching so that partial
+    noun-phrase overlap counts.
+
+    :param tok: a string or tuple extracted by Scenery
+    :return: lower-cased head token as a string
+    """
+    if isinstance(tok, tuple):
+        return str(tok[0]).lower()
+    return str(tok).lower()
+
+
+def _token_set(scenery: SentenceScenery, fields: tuple[str, ...]) -> set[str]:
+    """
+    Collect all normalised tokens from the selected Scenery fields into a flat set.
+
+    :param scenery: a SentenceScenery instance for one sentence
+    :param fields: which SentenceScenery fields to include
+    :return: flat set of lower-cased head tokens
+    """
+    tokens: set[str] = set()
+    for field in fields:
+        for tok in getattr(scenery, field, []):
+            norm = _normalise_token(tok)
+            if norm:
+                tokens.add(norm)
+    return tokens
 
 
 class DataProcessor:
@@ -29,10 +78,7 @@ class DataProcessor:
         self.part_counter: int = 0
         self.sample_counter: int = 0
 
-        if scenery is not None:
-            self.scenery: Scenery = scenery
-        else:
-            self.scenery = Scenery(load_scenery(("base_phrasal_verbs",)))
+        self._scenery = Scenery(load_scenery(("base_phrasal_verbs",)) or [])
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
 
@@ -173,50 +219,72 @@ class DataProcessor:
                     else:
                         print("No match found for line: ", cleaned)
 
-        parts = self.mark_distractors(parts=parts)
         return parts
 
-    def mark_distractors(self, parts: list[SamplePart]) -> list[SamplePart]:
+    def mark_distractors(self, part: "SamplePart") -> None:
         """
-        For each question, mark the context lines that share an entity with the question
-        but are not a supporting fact as a distractor.
+        Identify distractor sentences for part and store them in-place as
+        part.distractors (list[int]).
 
-        Entity overlap is determined by a set intersection between the entities extracted
-        from the question line and the entities extracted from each context line. Only
-        context lines from the same sample are considered; across parts within the same
-        sample, context from earlier parts is also included.
+        After this call, part.distractors contains the indices of context
+        sentences that overlap with the question but are not supporting facts.
+        All remaining context sentences are implicitly neutral;
+        collect_distractor_attention_record derives that set via set subtraction.
 
-        :param parts: list of SamplePart objects to examine for distractors
-        :return: the same list of SampleParts with the distractors attribute set on each
+        If the part has no question text, no context, or no extractable
+        question tokens, part.distractors is set to [] and the method returns.
+
+        :param part: the SamplePart to annotate; modified in-place
         """
-        last_sample_key = None
-        for ix, curr_part in enumerate(parts):
-            curr_sample_key = (curr_part.task_id, curr_part.sample_id)
-            consider_prev_parts = (
-                curr_sample_key == last_sample_key and curr_part.part_id > 1
-            )
-            last_sample_key = curr_sample_key
+        part.distractors = []
 
-            context_keywords_with_line = dict(curr_part.keywords["context"])
+        raw = getattr(part, "raw", None)
+        if raw is None:
+            return
 
-            if consider_prev_parts:
-                j = ix - 1
-                while j >= 0:
-                    prev_part = parts[j]
-                    if (prev_part.task_id, prev_part.sample_id) != curr_sample_key:
-                        break
-                    context_keywords_with_line.update(prev_part.keywords["context"])
-                    j -= 1
+        # --- question tokens -------------------------------------------------
+        question_lines: dict = raw.get("question", {})
+        if not question_lines:
+            return
 
-            curr_distractors = set()
-            for line_num, question_entities in curr_part.keywords["questions"].items():
-                for ctx_line, ctx_entities in context_keywords_with_line.items():
-                    if (
-                        question_entities & ctx_entities
-                        and ctx_line not in curr_part.supporting_sent_inx
-                    ):
-                        curr_distractors.add(ctx_line)
+        question_text = " ".join(
+            v if isinstance(v, str) else " ".join(v) for v in question_lines.values()
+        )
+        q_scenery = self._scenery.extract_from_line(question_text)
+        q_tokens = _token_set(q_scenery, _OVERLAP_FIELDS)
 
-            curr_part.distractors = sorted(curr_distractors)
+        if not q_tokens:
+            return
 
-        return parts
+        # --- context sentences -----------------------------------------------
+        context: dict = raw.get("context", {})
+        if not context:
+            return
+
+        supporting: set[int] = set(part.supporting_sent_inx)
+        distractors: list[int] = []
+
+        for sent_idx, sent_text in context.items():
+            sent_idx = int(sent_idx)
+            if sent_idx in supporting:
+                continue
+
+            if isinstance(sent_text, list):
+                sent_text = " ".join(sent_text)
+
+            ctx_scenery = self.scenery.extract_from_line(sent_text)
+            ctx_tokens = _token_set(ctx_scenery, _OVERLAP_FIELDS)
+
+            if ctx_tokens & q_tokens:
+                distractors.append(sent_idx)
+
+        part.distractors = distractors
+
+    def mark_distractors_for_task(self, parts: list["SamplePart"]) -> None:
+        """
+        Call mark_distractors for every part in the list.
+
+        :param parts: list of SamplePart objects to annotate
+        """
+        for part in parts:
+            self.mark_distractors(part)

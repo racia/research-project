@@ -21,6 +21,7 @@ from pathlib import Path
 import pandas as pd
 
 from data.DataLoader import DataLoader
+from data.DataProcessor import DataProcessor
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
 from evaluation.DistractorAttention import (
@@ -242,6 +243,8 @@ def run(
         defaultdict(lambda: defaultdict(DistractorAttentionStats))
     )
 
+    processor = DataProcessor()
+
     data_split = extract_split(results_path)
     sample, task, split = None, None, Split(name=data_split, multi_system=multi_system)
     for task_id, samples in results_data.items():
@@ -297,6 +300,8 @@ def run(
 
                     if answer_correct is None or pd.isna(answer_correct):
                         continue
+
+                    processor.mark_distractors(part)
 
                     record = collect_distractor_attention_record(
                         part=part,

@@ -26,6 +26,7 @@ class DistractorAttentionRecord:
     attn_supporting: float | None
     attn_neutral: float | None
     n_distractors: int
+    n_supporting: int
     n_neutral: int
 
     def as_dict(self) -> dict:
@@ -48,6 +49,7 @@ class DistractorAttentionRecord:
             ),
             "attn_neutral": "" if self.attn_neutral is None else self.attn_neutral,
             "n_distractors": self.n_distractors,
+            "n_supporting": self.n_supporting,
             "n_neutral": self.n_neutral,
         }
 
@@ -150,6 +152,36 @@ class DistractorAttentionStats:
             out[r.answer_correct]["neutral"].append(r.attn_neutral)
         return out
 
+    def as_ratio_data(self, eps: float = 1e-8) -> dict[bool, dict[str, list[float]]]:
+        """
+        Return distractor-to-supporting and distractor-to-neutral attention
+        ratios, grouped by answer correctness.
+
+        Ratios are only included for records where both numerator and
+        denominator are non-None. A small epsilon is added to denominators
+        to prevent division by zero.
+
+        :param eps: small constant added to denominators (default 1e-8)
+        :return: nested dict of the form
+                 {True:  {"dist_over_supp": [...], "dist_over_neutral": [...]},
+                  False: {"dist_over_supp": [...], "dist_over_neutral": [...]}}
+        """
+        out: dict[bool, dict[str, list[float]]] = {
+            True: {"dist_over_supp": [], "dist_over_neutral": []},
+            False: {"dist_over_supp": [], "dist_over_neutral": []},
+        }
+        for r in self.records:
+            correct = r.answer_correct
+            if r.attn_distractor is not None and r.attn_supporting is not None:
+                out[correct]["dist_over_supp"].append(
+                    r.attn_distractor / (r.attn_supporting + eps)
+                )
+            if r.attn_distractor is not None and r.attn_neutral is not None:
+                out[correct]["dist_over_neutral"].append(
+                    r.attn_distractor / (r.attn_neutral + eps)
+                )
+        return out
+
     def as_csv_records(self) -> list[dict]:
         """
         Return all records as plain dicts suitable for saver.save_output.
@@ -175,6 +207,7 @@ class DistractorAttentionStats:
             "attn_supporting",
             "attn_neutral",
             "n_distractors",
+            "n_supporting",
             "n_neutral",
         ]
 
@@ -298,6 +331,7 @@ def collect_distractor_attention_record(
         attn_distractor=attn_distractor,
         attn_neutral=attn_neutral,
         n_distractors=len(distractors),
+        n_supporting=len(supporting),
         n_neutral=len(neutral),
     )
 
@@ -386,6 +420,7 @@ def compute_distractor_attention_from_csvs(
                     attn_supporting=_row_mean_attn(row, list(supporting)),
                     attn_neutral=_row_mean_attn(row, list(neutral)),
                     n_distractors=len(distractors),
+                    n_supporting=len(supporting),
                     n_neutral=len(neutral),
                 )
             )
