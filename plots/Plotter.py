@@ -1918,9 +1918,9 @@ class Plotter:
 
         categories = ["supporting", "distractor", "neutral"]
         category_labels = [
-            "Supporting\n(should attend)",
-            "Distractor\n(should ignore)",
-            "Neutral\n(baseline)",
+            "Supporting",
+            "Distractor",
+            "Neutral",
         ]
         x = np.arange(len(categories))
         width = 0.36
@@ -1987,18 +1987,22 @@ class Plotter:
         _annotate(bars_c, means_correct, sems_correct)
         _annotate(bars_i, means_incorrect, sems_incorrect)
 
-        ax.set_xticks(x)
-        ax.set_xticklabels(category_labels, fontsize=10)
-        ax.set_xlabel("Sentence role in the prompt", fontsize=11)
+        tick_positions = np.concatenate([x - width / 2, x + width / 2])
+
+        tick_labels = [f"{label}\nCorrect" for label in category_labels] + [
+            f"{label}\nIncorrect" for label in category_labels
+        ]
+
+        ax.set_xticks(tick_positions)
+        ax.set_xticklabels(tick_labels, fontsize=10)
+
+        ax.set_xlabel("Context sentence type", fontsize=11)
         ax.set_ylabel(
             "Mean attention per sentence (averaged over samples)",
             fontsize=11,
         )
 
-        title = (
-            "Attention allocation across sentence roles, by answer correctness\n"
-            "(does the model attend more to distractors when it answers wrong?)"
-        )
+        title = "Attention allocation across context sentence types, by answer correctness\n"
         if plot_name_add:
             title += f"  [{', '.join(plot_name_add)}]"
         ax.set_title(title, fontsize=11, pad=10)
@@ -2031,25 +2035,8 @@ class Plotter:
         """
         Show how attention allocation and accuracy degrade as the number of
         distractor sentences in the prompt grows.
-
-        For each value of `n_distractors` we compute:
-          - mean attention placed on distractor sentences (with SEM band),
-          - mean attention placed on supporting sentences (with SEM band),
-          - accuracy (fraction of correct answers, with Wilson 95% CI band).
-
-        Mean attention is plotted on the left y-axis and accuracy on the right
-        y-axis so all three curves are visible against the same x-axis.
-        Bins with fewer than `min_bin_size` samples are dropped to keep the
-        curves from being driven by single-sample noise; per-bin sample
-        counts are annotated above the x-axis so the reader can see where the
-        evidence is.
-
-        :param stats: accumulated distractor attention records for this version
-        :param version: "before" or "after", used in the output file name
-        :param plot_name_add: additional strings appended to the plot title
-        :param min_bin_size: minimum number of samples required to draw a bin
         """
-        # Group records by their n_distractors value.
+
         by_n: dict[int, list] = defaultdict(list)
         for r in stats.records:
             if r.attn_distractor is None or r.attn_supporting is None:
@@ -2071,38 +2058,42 @@ class Plotter:
             sem = arr.std(ddof=1) / np.sqrt(arr.size) if arr.size > 1 else 0.0
             return float(arr.mean()), float(sem)
 
-        def _wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float, float]:
-            """Wilson 95% CI for a binomial proportion. Returns (p, lo, hi)."""
+        def _normal_ci(k: int, n: int, z: float = 1.96):
+            """Normal-approximation CI for a binomial proportion."""
             if n == 0:
                 return np.nan, np.nan, np.nan
-            p = k / n
-            denom = 1 + z * z / n
-            centre = (p + z * z / (2 * n)) / denom
-            half = (z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n))) / denom
-            return p, max(0.0, centre - half), min(1.0, centre + half)
 
-        dist_mean: list[float] = []
-        dist_sem: list[float] = []
-        supp_mean: list[float] = []
-        supp_sem: list[float] = []
-        acc: list[float] = []
-        acc_lo: list[float] = []
-        acc_hi: list[float] = []
-        bin_n: list[int] = []
+            p = k / n
+            std = np.sqrt(p * (1 - p))  # standard deviation of Bernoulli
+            se = std / np.sqrt(n)  # standard error
+
+            lo = max(0.0, p - z * se)
+            hi = min(1.0, p + z * se)
+
+            return p, lo, hi
+
+        dist_mean, dist_sem = [], []
+        supp_mean, supp_sem = [], []
+        acc, acc_lo, acc_hi = [], [], []
+        bin_n = []
 
         for n in ns:
             recs = by_n[n]
+
             m, s = _mean_sem([r.attn_distractor for r in recs])
             dist_mean.append(m)
             dist_sem.append(s)
+
             m, s = _mean_sem([r.attn_supporting for r in recs])
             supp_mean.append(m)
             supp_sem.append(s)
+
             k = sum(1 for r in recs if r.answer_correct)
-            p, lo, hi = _wilson(k, len(recs))
+            p, lo, hi = _normal_ci(k, len(recs))
             acc.append(p)
             acc_lo.append(lo)
             acc_hi.append(hi)
+
             bin_n.append(len(recs))
 
         fig, ax_attn = plt.subplots(figsize=(8.5, 5.5))
@@ -2112,15 +2103,9 @@ class Plotter:
         supp_color = "#2980b9"
         acc_color = "#27ae60"
 
-        # Attention curves on the left axis.
-        line_d = ax_attn.plot(
-            ns,
-            dist_mean,
-            marker="o",
-            color=dist_color,
-            linewidth=2,
-            label="Mean attention on distractor sentences",
-        )[0]
+        line_d = ax_attn.plot(ns, dist_mean, marker="o", color=dist_color, linewidth=2)[
+            0
+        ]
         ax_attn.fill_between(
             ns,
             np.asarray(dist_mean) - np.asarray(dist_sem),
@@ -2128,14 +2113,10 @@ class Plotter:
             color=dist_color,
             alpha=0.15,
         )
-        line_s = ax_attn.plot(
-            ns,
-            supp_mean,
-            marker="s",
-            color=supp_color,
-            linewidth=2,
-            label="Mean attention on supporting sentences",
-        )[0]
+
+        line_s = ax_attn.plot(ns, supp_mean, marker="s", color=supp_color, linewidth=2)[
+            0
+        ]
         ax_attn.fill_between(
             ns,
             np.asarray(supp_mean) - np.asarray(supp_sem),
@@ -2144,15 +2125,8 @@ class Plotter:
             alpha=0.15,
         )
 
-        # Accuracy curve on the right axis.
         line_a = ax_acc.plot(
-            ns,
-            acc,
-            marker="^",
-            color=acc_color,
-            linewidth=2,
-            linestyle="--",
-            label="Answer accuracy (right axis)",
+            ns, acc, marker="^", color=acc_color, linewidth=2, linestyle="--"
         )[0]
         ax_acc.fill_between(
             ns,
@@ -2162,7 +2136,6 @@ class Plotter:
             alpha=0.12,
         )
 
-        # Sample counts above the x-axis.
         for n, count in zip(ns, bin_n):
             ax_attn.annotate(
                 f"n={count}",
@@ -2176,37 +2149,22 @@ class Plotter:
                 color="#555555",
             )
 
-        ax_attn.set_xlabel(
-            "Number of distractor sentences in the prompt",
-            fontsize=11,
-        )
-        ax_attn.set_ylabel(
-            "Mean attention per sentence (shaded: ± 1 SEM)",
-            fontsize=11,
-            color="#333333",
-        )
+        ax_attn.set_xlabel("Number of distractor sentences in the prompt", fontsize=11)
+        ax_attn.set_ylabel("Mean attention per sentence (± SEM)", fontsize=11)
         ax_attn.set_xticks(ns)
         ax_attn.set_ylim(bottom=0)
         ax_attn.grid(axis="y", linestyle="--", alpha=0.35)
 
-        ax_acc.set_ylabel(
-            "Answer accuracy (shaded: Wilson 95% CI)",
-            fontsize=11,
-            color=acc_color,
-        )
+        ax_acc.set_ylabel("Answer accuracy (± 95% CI)", fontsize=11, color=acc_color)
         ax_acc.set_ylim(0, 1.02)
         ax_acc.tick_params(axis="y", colors=acc_color)
         ax_acc.spines["right"].set_color(acc_color)
 
-        title = (
-            "Does the model degrade gracefully as more distractors are added?\n"
-            "Attention allocation and accuracy as a function of distractor count"
-        )
+        title = "Attention allocation and accuracy as a function of distractor count"
         if plot_name_add:
             title += f"  [{', '.join(plot_name_add)}]"
         ax_attn.set_title(title, fontsize=11, pad=10)
 
-        # Combined legend across both axes.
         ax_attn.legend(
             handles=[line_d, line_s, line_a],
             loc="upper left",
@@ -2239,30 +2197,12 @@ class Plotter:
         path_add: Path | None = None,
     ):
         """
-        Calibrate distraction against errors: how does answer accuracy change
-        with the per-sample distractor-to-supporting attention ratio?
-
-        Samples are binned by their ratio on a log scale (the ratio is
-        naturally multiplicative). For each bin we plot the empirical
-        accuracy with a Wilson 95% confidence interval. A vertical reference
-        line at ratio = 1.0 marks the boundary between "more attention on
-        supporting" (left, expected to be high-accuracy) and "more attention
-        on distractor" (right, expected to be low-accuracy).
-
-        This plot turns the qualitative claim "incorrect answers correlate
-        with higher distractor attention" into a quantitative one: at ratio R,
-        the model has accuracy A(R).
-
-        :param stats: accumulated distractor attention records for this version
-        :param version: "before" or "after", used in the output file name
-        :param plot_name_add: additional strings appended to the plot title
-        :param n_bins: number of log-spaced bins between the 5th and 95th
-                       percentile of observed ratios (outliers are clipped
-                       into the edge bins, not dropped)
-        :param min_bin_size: minimum samples required to draw a bin
+        Accuracy vs distractor/supporting attention ratio.
         """
+
         ratios: list[float] = []
         correct: list[bool] = []
+
         for r in stats.records:
             if r.attn_distractor is None or r.attn_supporting is None:
                 continue
@@ -2274,52 +2214,52 @@ class Plotter:
 
         if not ratios:
             print(
-                f"[plot_accuracy_vs_distraction_ratio] No data for "
-                f"version='{version}'."
+                f"[plot_accuracy_vs_distraction_ratio] No data for version='{version}'."
             )
             return
 
         ratios_arr = np.asarray(ratios)
         correct_arr = np.asarray(correct)
 
-        # Log-spaced bin edges anchored on the 5th–95th percentile range.
         log_r = np.log10(ratios_arr)
         lo, hi = np.percentile(log_r, [5, 95])
-        # Make sure the ratio = 1 boundary (log10 = 0) sits inside the range
-        # so the reference line lands within the plotted area.
         lo = min(lo, -0.05)
         hi = max(hi, 0.05)
         if hi - lo < 0.1:
             hi = lo + 0.1
+
         edges = np.linspace(lo, hi, n_bins + 1)
-        # Clip extremes into the edge bins so they're displayed, not dropped.
+
         log_r_clipped = np.clip(log_r, edges[0], edges[-1] - 1e-9)
         bin_idx = np.digitize(log_r_clipped, edges) - 1
         bin_idx = np.clip(bin_idx, 0, n_bins - 1)
 
-        def _wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float, float]:
+        def _normal_ci(k: int, n: int, z: float = 1.96):
+            """Normal approximation CI for binomial proportion."""
             if n == 0:
                 return np.nan, np.nan, np.nan
-            p = k / n
-            denom = 1 + z * z / n
-            centre = (p + z * z / (2 * n)) / denom
-            half = (z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n))) / denom
-            return p, max(0.0, centre - half), min(1.0, centre + half)
 
-        bin_centres: list[float] = []
-        bin_acc: list[float] = []
-        bin_lo: list[float] = []
-        bin_hi: list[float] = []
-        bin_n: list[int] = []
+            p = k / n
+            se = np.sqrt(p * (1 - p) / n)
+
+            lo_p = max(0.0, p - z * se)
+            hi_p = min(1.0, p + z * se)
+
+            return p, lo_p, hi_p
+
+        bin_centres, bin_acc, bin_lo, bin_hi, bin_n = [], [], [], [], []
+
         for b in range(n_bins):
             mask = bin_idx == b
             n_b = int(mask.sum())
             if n_b < min_bin_size:
                 continue
+
             k_b = int(correct_arr[mask].sum())
-            p, lo_p, hi_p = _wilson(k_b, n_b)
-            # Geometric mean of edges → centre on log scale.
+            p, lo_p, hi_p = _normal_ci(k_b, n_b)
+
             centre = 10 ** ((edges[b] + edges[b + 1]) / 2)
+
             bin_centres.append(centre)
             bin_acc.append(p)
             bin_lo.append(lo_p)
@@ -2335,50 +2275,41 @@ class Plotter:
 
         fig, ax = plt.subplots(figsize=(8.5, 5.5))
 
-        # Asymmetric error bars from the Wilson interval.
-        yerr_lo = np.asarray(bin_acc) - np.asarray(bin_lo)
-        yerr_hi = np.asarray(bin_hi) - np.asarray(bin_acc)
+        bin_acc = np.asarray(bin_acc)
+        bin_lo = np.asarray(bin_lo)
+        bin_hi = np.asarray(bin_hi)
+
+        yerr = np.vstack([bin_acc - bin_lo, bin_hi - bin_acc])
+
         ax.errorbar(
             bin_centres,
             bin_acc,
-            yerr=[yerr_lo, yerr_hi],
+            yerr=yerr,
             fmt="o-",
             color="#2c3e50",
             ecolor="#7f8c8d",
             capsize=4,
             linewidth=1.8,
             markersize=7,
-            label="Empirical accuracy (Wilson 95% CI)",
         )
 
-        # Reference line at ratio = 1.
         ax.axvline(1.0, color="#333333", linestyle="--", linewidth=1.0)
-        # Shade focused vs distracted halves.
-        ax.axvspan(10 ** edges[0], 1.0, facecolor="#2ecc71", alpha=0.06, zorder=0)
-        ax.axvspan(1.0, 10 ** edges[-1], facecolor="#e74c3c", alpha=0.06, zorder=0)
 
-        ax.text(
-            0.02,
-            0.04,
-            "Focused on supporting",
-            transform=ax.transAxes,
-            ha="left",
-            va="bottom",
-            fontsize=9,
-            color="#1e8449",
+        ax.axvspan(
+            10 ** edges[0],
+            1.0,
+            facecolor="#2ecc71",
+            alpha=0.06,
+            zorder=0,
         )
-        ax.text(
-            0.98,
-            0.04,
-            "Distracted",
-            transform=ax.transAxes,
-            ha="right",
-            va="bottom",
-            fontsize=9,
-            color="#a93226",
+        ax.axvspan(
+            1.0,
+            10 ** edges[-1],
+            facecolor="#e74c3c",
+            alpha=0.06,
+            zorder=0,
         )
 
-        # Annotate per-bin sample counts just above the x-axis.
         for x, count in zip(bin_centres, bin_n):
             ax.annotate(
                 f"n={count}",
@@ -2402,17 +2333,14 @@ class Plotter:
         )
         ax.set_ylabel("Answer accuracy in bin", fontsize=11)
 
-        title = (
-            "Does distractor attention predict errors?\n"
-            "Accuracy as a function of the distractor-to-supporting "
-            "attention ratio"
-        )
+        title = "Accuracy as a function of the distractor-to-supporting attention ratio"
         if plot_name_add:
             title += f"  [{', '.join(plot_name_add)}]"
+
         ax.set_title(title, fontsize=11, pad=10)
 
         ax.grid(linestyle="--", alpha=0.4)
-        ax.legend(loc="upper right", fontsize=9, framealpha=0.92)
+
         fig.tight_layout()
 
         self._save_plot(
