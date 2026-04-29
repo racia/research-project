@@ -170,7 +170,7 @@ class DataProcessor:
                             (task_id, sample_id, part_id), None
                         )
 
-                        question_scenery = self.scenery.extract_from_line(
+                        question_scenery = self._scenery.extract_from_line(
                             question_match.group(2)
                         )
                         keywords["questions"][line_num] = self._entities_from_scenery(
@@ -207,7 +207,7 @@ class DataProcessor:
                         line_num = int(context_match.group(1))
                         raw_part["context"][line_num] = context_match.group(2)
 
-                        context_scenery = self.scenery.extract_from_line(
+                        context_scenery = self._scenery.extract_from_line(
                             context_match.group(2)
                         )
                         keywords["context"][line_num] = self._entities_from_scenery(
