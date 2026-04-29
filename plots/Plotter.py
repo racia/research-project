@@ -113,6 +113,35 @@ class Plotter:
 
         self.warning_counter = 0
 
+    def _resolve_save_target(
+        self,
+        file_name: str,
+        path_add: Path | str | None,
+    ) -> str:
+        """
+        Combine ``path_add`` with ``file_name`` into a single relative path
+        suitable for ``_save_plot``'s ``file_name`` argument, creating the
+        target directory if necessary.
+
+        ``_save_plot`` writes its file to ``self.results_path / file_name`` and
+        does not understand a separate ``path_add``. To land plots inside a
+        sub-folder we have to (a) make sure the sub-folder exists and (b)
+        embed it in the ``file_name`` string. This helper centralises that
+        routing so callers can keep using ``path_add`` as a clean argument.
+
+        :param file_name: bare filename (no directory component)
+        :param path_add: optional sub-path under ``self.results_path``;
+                         ``None`` or empty means save directly under
+                         ``self.results_path``
+        :return: the combined ``"<path_add>/<file_name>"`` string, or just
+                 ``file_name`` when no sub-path was given
+        """
+        if not path_add:
+            return file_name
+        target_dir = self.results_path / path_add
+        target_dir.mkdir(parents=True, exist_ok=True)
+        return f"{path_add}/{file_name}"
+
     def _save_plot(
         self,
         y_label: str = None,
@@ -1418,7 +1447,10 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            file_name=f"distractor_attn_boxplot_{version}.png",
+            file_name=self._resolve_save_target(
+                f"distractor_attn_boxplot_{version}.png",
+                path_add,
+            ),
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1484,7 +1516,10 @@ class Plotter:
         fig.tight_layout()
 
         self._save_plot(
-            file_name=f"distractor_attn_per_task_{version}.png",
+            file_name=self._resolve_save_target(
+                f"distractor_attn_per_task_{version}.png",
+                path_add,
+            ),
         )
         plt.close(fig)
         self.plot_counter_prompt += 1
@@ -1562,7 +1597,12 @@ class Plotter:
         ax.grid(linestyle="--", alpha=0.35)
         fig.tight_layout()
 
-        self._save_plot(file_name=f"distractor_attn_scatter_{version}.png")
+        self._save_plot(
+            file_name=self._resolve_save_target(
+                f"distractor_attn_scatter_{version}.png",
+                path_add,
+            ),
+        )
         plt.close(fig)
         self.plot_counter_prompt += 1
 
@@ -1573,6 +1613,7 @@ class Plotter:
         y_label: str = "distraction_margin",
         plot_name_add: list[str] | None = None,
         version: str = "before",
+        path_add: Path | None = None,
     ):
         """
         Show *where* the model is distracted by distractor sentences.
@@ -1707,7 +1748,10 @@ class Plotter:
         self._save_plot(
             x_label=x_label,
             y_label=y_label,
-            file_name=f"supporting_attention_{version}.png",
+            file_name=self._resolve_save_target(
+                f"supporting_attention_{version}.png",
+                path_add,
+            ),
             plot_name_add=plot_name_add,
         )
 
@@ -1719,6 +1763,7 @@ class Plotter:
         plot_name_add: list[str] | None = None,
         eps: float = 1e-8,
         version: str = "before",
+        path_add: Path | None = None,
     ):
         """
         Per-sample ratio of attention placed on distractor sentences relative to
@@ -1844,7 +1889,10 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
-            file_name=f"distractor_supporting_ratio_{version}.png",
+            file_name=self._resolve_save_target(
+                f"distractor_supporting_ratio_{version}.png",
+                path_add,
+            ),
         )
 
     def plot_attention_triplet(
@@ -1854,6 +1902,7 @@ class Plotter:
         y_label: str = "mean_attention",
         plot_name_add: list[str] | None = None,
         version: str = "before",
+        path_add: Path | None = None,
     ):
         """
         Compare mean attention placed on the three sentence roles -- supporting,
@@ -1963,7 +2012,10 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
-            file_name=f"attention_triplet_{version}.png",
+            file_name=self._resolve_save_target(
+                f"attention_triplet_{version}.png",
+                path_add,
+            ),
         )
 
     def plot_distraction_vs_n_distractors(
@@ -1974,6 +2026,7 @@ class Plotter:
         plot_name_add: list[str] | None = None,
         version: str = "before",
         min_bin_size: int = 3,
+        path_add: Path | None = None,
     ):
         """
         Show how attention allocation and accuracy degrade as the number of
@@ -2167,7 +2220,10 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
-            file_name=f"distraction_vs_n_distractors_{version}.png",
+            file_name=self._resolve_save_target(
+                f"distraction_vs_n_distractors_{version}.png",
+                path_add,
+            ),
         )
 
     def plot_accuracy_vs_distraction_ratio(
@@ -2180,6 +2236,7 @@ class Plotter:
         n_bins: int = 6,
         min_bin_size: int = 3,
         eps: float = 1e-8,
+        path_add: Path | None = None,
     ):
         """
         Calibrate distraction against errors: how does answer accuracy change
@@ -2362,5 +2419,8 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             plot_name_add=plot_name_add,
-            file_name=f"accuracy_vs_distraction_ratio_{version}.png",
+            file_name=self._resolve_save_target(
+                f"accuracy_vs_distraction_ratio_{version}.png",
+                path_add,
+            ),
         )

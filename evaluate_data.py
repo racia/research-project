@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import warnings
 from collections import defaultdict
 from pathlib import Path
 
@@ -183,6 +184,7 @@ def run(
     filtering_conditions: dict = None,
     create_heatmaps: bool = True,
     verbose: bool = False,
+    max_tokens: int | None = None,
 ) -> None:
     """
     Run the evaluation pipeline.
@@ -198,6 +200,10 @@ def run(
                                  SamplePart __init__ and use it as a filtering condition
     :param create_heatmaps: whether to create heatmaps for the interpretability results
     :param verbose: whether to print the results to the console
+    :param max_tokens: the model's generation budget. Passed to
+                       :func:`add_completeness_column` so the truncation
+                       check can flag rows whose reasoning hit the limit.
+                       If ``None`` the truncation check is skipped.
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
@@ -518,26 +524,31 @@ def run(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
                 plotter.plot_distractor_supporting_ratio(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
                 plotter.plot_attention_triplet(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
                 plotter.plot_distraction_vs_n_distractors(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
                 plotter.plot_accuracy_vs_distraction_ratio(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
 
                 saver.save_output(
@@ -708,26 +719,31 @@ def run(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
             plotter.plot_distractor_supporting_ratio(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
             plotter.plot_attention_triplet(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
             plotter.plot_distraction_vs_n_distractors(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
             plotter.plot_accuracy_vs_distraction_ratio(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
 
             saver.save_output(
@@ -785,6 +801,44 @@ def run(
                 print(f"Case {case}: detected 0 occurrences. Nothing!")
 
     print(f"Plots produced: {plotter.plot_counter_prompt}")
+
+    # Annotate the per-row results CSV with a completeness column so downstream
+    # analyses can filter out rows where the model was truncated mid-reasoning
+    # or never produced an answer. Both versions ("before" and "after") are
+    # processed if their answer column exists; each writes a separate
+    # _with_completeness_<version>.csv next to the original.
+    results_csv_path = str(saver.run_path / results_file_name)
+    if Path(results_csv_path).exists():
+        try:
+            df_for_check = pd.read_csv(results_csv_path, nrows=0)
+        except Exception as err:
+            warnings.warn(
+                f"Could not read header of {results_csv_path} to add "
+                f"completeness column: {err}"
+            )
+            df_for_check = None
+
+        if df_for_check is not None:
+            is_da = experiment == "direct_answer"
+            for version in ("before", "after"):
+                if f"model_answer_{version}" in df_for_check.columns:
+                    add_completeness_column(
+                        path=results_csv_path,
+                        da=is_da,
+                        before=(version == "before"),
+                        max_tokens=max_tokens,
+                        output_suffix=f"_{version}",
+                    )
+                    print(
+                        f"Wrote completeness column for version='{version}' to "
+                        f"{Path(results_csv_path).stem}_with_completeness_{version}.csv"
+                    )
+    else:
+        warnings.warn(
+            f"Per-row results CSV not found at {results_csv_path}; "
+            "skipping completeness annotation."
+        )
+
     print("\nThe evaluation pipeline has finished successfully.")
 
 
@@ -824,6 +878,17 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         action="store_true",
         help="Whether to print the results to the console.",
     )
+    parser.add_argument(
+        "--max_tokens",
+        type=int,
+        default=None,
+        help=(
+            "The model's per-call generation budget. If a row's reasoning hits "
+            "this many tokens it is flagged as truncated (incomplete) by the "
+            "completeness annotation step. If omitted, the truncation check "
+            "is skipped."
+        ),
+    )
     if script_args is not None:
         if isinstance(script_args, str):
             script_args = script_args.split()
@@ -836,32 +901,97 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
     return parser.parse_args()
 
 
-def add_completeness_column(path: str, da: bool = False, before: bool = False) -> None:
+def add_completeness_column(
+    path: str,
+    da: bool = False,
+    before: bool = False,
+    max_tokens: int | None = None,
+    reasoning_tokens_col: str | None = None,
+    output_suffix: str = "",
+) -> None:
     """
-    Add a column to indicate whether the answer/reasoning is complete.
+    Add a ``completeness`` column to a results CSV indicating whether the
+    model's output for that row is complete.
 
-    :param path: path to the results file to update
-    :param da: whether the setting is direct answer; default False
-    :param before: whether to check the "before" columns; default False (checks "after")
-    :return: None
+    Criteria (non-DA case, i.e. reasoning + answer):
+      - The answer is incomplete if no answer text was produced.
+      - The reasoning is incomplete if either:
+          (a) the answer is empty -- a chain of thought that never reaches an
+              answer is, by definition, unfinished, or
+          (b) the reasoning hit the exact token-generation limit, which means
+              the model was cut off mid-thought rather than terminating
+              naturally.
+      - A row is complete iff both reasoning and answer are complete.
+
+    Criteria (DA case, i.e. direct answer only, no reasoning):
+      - Complete iff the answer is non-empty.
+
+    The token-limit check (b) requires a pre-computed token count column.
+    The function looks at ``reasoning_tokens_col`` (default
+    ``f"model_reasoning_tokens_{suffix}"``). If ``max_tokens`` is None, or
+    the token column is absent, the truncation check is skipped (a warning
+    is emitted in the latter case) and only the "answer non-empty"
+    criterion is applied to the reasoning.
+
+    :param path: path to the results CSV to update
+    :param da: whether the experiment is direct answer (no reasoning column)
+    :param before: whether to check the "before" columns (default: "after")
+    :param max_tokens: the generation budget the model was run with. If a
+                       row's reasoning has exactly this many tokens the
+                       reasoning is treated as truncated.
+    :param reasoning_tokens_col: name of an existing column carrying the
+                                  reasoning token count, if any
+    :param output_suffix: extra string appended to the output filename. When
+                          calling this for both "before" and "after" within
+                          one run, pass "_before" / "_after" to keep the two
+                          outputs distinct (default ``""`` keeps the
+                          original behaviour).
+    :return: None; writes ``<path>_with_completeness<output_suffix>.csv``
     """
     df = pd.read_csv(path)
     suffix = "before" if before else "after"
 
-    if da:
-        df["completeness"] = df[f"model_answer_{suffix}"].apply(
-            lambda x: True if pd.notna(x) and x.strip() != "" else False
-        )
-    else:
-        reasoning_complete = df[f"model_reasoning_{suffix}"].apply(
-            lambda x: True if pd.notna(x) and x.strip() != "" else False
-        )
-        answer_complete = df[f"model_answer_{suffix}"].apply(
-            lambda x: True if pd.notna(x) and x.strip() != "" else False
-        )
-        df["completeness"] = reasoning_complete & answer_complete
+    def _is_nonempty(x) -> bool:
+        return bool(pd.notna(x) and isinstance(x, str) and x.strip() != "")
 
-    df.to_csv(f"{path.split('.')[0]}_with_completeness.csv", index=False)
+    answer_col = f"model_answer_{suffix}"
+    answer_complete = df[answer_col].apply(_is_nonempty)
+
+    if da:
+        df["completeness"] = answer_complete
+        df.to_csv(
+            f"{path.split('.')[0]}_with_completeness{output_suffix}.csv",
+            index=False,
+        )
+        return
+
+    reasoning_col = f"model_reasoning_{suffix}"
+    reasoning_nonempty = df[reasoning_col].apply(_is_nonempty)
+
+    # --- Determine reasoning token counts (only needed if max_tokens is set).
+    if max_tokens is not None:
+        token_col = reasoning_tokens_col or f"model_reasoning_tokens_{suffix}"
+        if token_col in df.columns:
+            reasoning_tokens = pd.to_numeric(df[token_col], errors="coerce")
+            reasoning_truncated = reasoning_tokens >= max_tokens
+        else:
+            warnings.warn(
+                f"add_completeness_column: column '{token_col}' not found; "
+                "skipping the reasoning truncation check. To enable it, add a "
+                "per-row reasoning token-count column before calling this "
+                "function (or pass reasoning_tokens_col=...)."
+            )
+            reasoning_truncated = pd.Series(False, index=df.index)
+    else:
+        reasoning_truncated = pd.Series(False, index=df.index)
+    reasoning_complete = reasoning_nonempty & ~reasoning_truncated & answer_complete
+
+    df["completeness"] = reasoning_complete & answer_complete
+
+    df.to_csv(
+        f"{path.split('.')[0]}_with_completeness{output_suffix}.csv",
+        index=False,
+    )
 
 
 if __name__ == "__main__":
@@ -875,4 +1005,5 @@ if __name__ == "__main__":
         filtering_conditions={},
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
+        max_tokens=args.max_tokens,
     )
