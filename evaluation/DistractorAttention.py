@@ -212,42 +212,146 @@ class DistractorAttentionStats:
         ]
 
 
-def _sentence_attn_from_interpretability(interpretability) -> dict[int, float] | None:
+# Type tags emitted by Interpretability.process_attention in aggregated mode.
+# The full set comes from chat.get_sentence_spans; "context" is the only one we
+# care about for distractor analysis, but the others let us recognise the format.
+_AGGREGATED_TYPES: frozenset[str] = frozenset(
+    {
+        "sys_prompt",
+        "context",
+        "question",
+        "model_output",
+        "answer",
+        "reasoning",
+        "user",
+        "assistant",
+        "system",
+    }
+)
+
+
+def _parse_aggregated_token(tok: str) -> tuple[int, str] | None:
     """
-    Derive a mapping of {bAbI_line_number: mean_attention} from an InterpretabilityResult.
+    Parse one aggregated x_token like "* 3 context *" or "5 question" into
+    (chat_sentence_position, type_string).
 
-    The attention matrix (output_tokens × input_tokens) is averaged over output tokens
-    to yield one weight per input token. Sentence boundaries are found by locating
-    bare digit tokens in x_tokens, which correspond to the bAbI line-number prefixes
-    embedded in the prompt.
+    Returns None if the token does not match the aggregated label format.
 
-    :param interpretability: an InterpretabilityResult with attn_scores and x_tokens
-    :return: dict mapping sentence index to mean attention, or None if extraction fails
+    :param tok: one entry from interpretability.x_tokens
+    :return: (chat sentence position, type tag) or None
     """
-    if interpretability is None or interpretability.empty():
+    if not tok:
         return None
-
-    attn: np.ndarray = interpretability.attn_scores
-    x_tokens: list[str] = interpretability.x_tokens
-
-    if attn.size == 0 or not x_tokens:
+    parts = tok.replace("*", " ").split()
+    if len(parts) < 2 or not parts[0].isdigit():
         return None
+    return int(parts[0]), parts[1].lower()
 
-    token_weights: np.ndarray = attn.mean(axis=0)
 
-    if len(token_weights) != len(x_tokens):
+def _is_aggregated_x_tokens(x_tokens: list[str]) -> bool:
+    """
+    Decide whether x_tokens are sentence-level aggregated labels rather than
+    individual word/sub-word tokens.
+
+    Aggregated tokens have the form "[*] {digit} {type} [*]", where {type} is
+    one of the known chat-chunk type tags. We require the majority of tokens to
+    fit that shape to avoid false positives on verbose token streams that
+    happen to contain a few digits.
+
+    :param x_tokens: the candidate token list
+    :return: True if x_tokens look like aggregated sentence labels
+    """
+    if not x_tokens:
+        return False
+    n_match = 0
+    for tok in x_tokens:
+        parsed = _parse_aggregated_token(tok)
+        if parsed is not None and parsed[1] in _AGGREGATED_TYPES:
+            n_match += 1
+    return n_match >= max(1, len(x_tokens) // 2)
+
+
+def _aggregated_sentence_attn(
+    token_weights: np.ndarray,
+    x_tokens: list[str],
+    context_line_nums: list[int] | None,
+) -> dict[int, float] | None:
+    """
+    Build {bAbI_line_number: mean_attention} from aggregated sentence labels.
+
+    In aggregated mode each column of attn_scores corresponds to exactly one
+    chat sentence. The chat sentence position embedded in x_tokens is *not*
+    the bAbI line number — it counts every chat sentence including system
+    prompt sentences, the question, etc. To recover bAbI line numbers we map
+    the n-th "context" x_token to the n-th entry of context_line_nums (which
+    holds the part's bAbI line numbers in the order they were emitted).
+
+    If context_line_nums is None or shorter than the number of context tokens,
+    the missing entries are skipped rather than guessed.
+
+    :param token_weights: 1D array of per-sentence attention weights
+    :param x_tokens: aggregated sentence labels, same length as token_weights
+    :param context_line_nums: bAbI line numbers for the part's context, in order
+    :return: {bAbI_line_number: attention} or None if no context entry was found
+    """
+    sent_attn: dict[int, float] = {}
+    n_context_seen = 0
+
+    for i, tok in enumerate(x_tokens):
+        parsed = _parse_aggregated_token(tok)
+        if parsed is None:
+            continue
+        _, type_ = parsed
+        if type_ != "context":
+            continue
+        if context_line_nums is not None and n_context_seen < len(context_line_nums):
+            line_num = context_line_nums[n_context_seen]
+            sent_attn[line_num] = float(token_weights[i])
+        n_context_seen += 1
+
+    if (
+        context_line_nums is not None
+        and n_context_seen != len(context_line_nums)
+        and n_context_seen > 0
+    ):
         warnings.warn(
-            f"Token weight length ({len(token_weights)}) does not match x_tokens length "
-            f"({len(x_tokens)}); skipping part."
+            f"Number of 'context' x_tokens ({n_context_seen}) does not match the "
+            f"number of context line numbers for this part "
+            f"({len(context_line_nums)}); some sentences may be misaligned."
         )
-        return None
 
+    return sent_attn if sent_attn else None
+
+
+def _verbose_sentence_attn(
+    token_weights: np.ndarray,
+    x_tokens: list[str],
+) -> dict[int, float] | None:
+    """
+    Build {bAbI_line_number: mean_attention} from token-level x_tokens.
+
+    Sentence boundaries are bare digit tokens (the bAbI line-number prefixes
+    embedded in the prompt). The bAbI line number is the digit at the start of
+    each sentence; the attention is the mean over the tokens up to (but not
+    including) the next digit.
+
+    Tokeniser artefacts such as the SentencePiece "▁" or BPE "Ġ" prefix are
+    stripped before checking whether a token is a digit. Tokens wrapped in "*"
+    (used to highlight supporting facts) are also unwrapped.
+
+    :param token_weights: 1D array of per-token attention weights
+    :param x_tokens: token-level x_tokens, same length as token_weights
+    :return: {bAbI_line_number: attention} or None if no sentence was found
+    """
     sentence_spans: list[tuple[int, int, int]] = []
     current_sent: int | None = None
     start: int = 0
 
     for i, tok in enumerate(x_tokens):
-        first = tok.split()[0] if tok.strip() else ""
+        cleaned = tok.replace("*", " ").strip()
+        # Strip common subword-prefix markers so e.g. "▁1" / "Ġ1" register as digits.
+        cleaned = cleaned.lstrip("▁Ġ ")
+        first = cleaned.split()[0] if cleaned else ""
         if first.isdigit():
             if current_sent is not None:
                 sentence_spans.append((current_sent, start, i))
@@ -267,6 +371,57 @@ def _sentence_attn_from_interpretability(interpretability) -> dict[int, float] |
             sent_attn[sent_idx] = float(span.mean())
 
     return sent_attn if sent_attn else None
+
+
+def _sentence_attn_from_interpretability(
+    interpretability,
+    context_line_nums: list[int] | None = None,
+) -> dict[int, float] | None:
+    """
+    Derive a mapping of {bAbI_line_number: mean_attention} from an
+    InterpretabilityResult.
+
+    The attention matrix (output_tokens × input_tokens) is averaged over the
+    output tokens to yield one weight per input position. The function then
+    auto-detects whether the saved x_tokens are sentence-level aggregated
+    labels or token-level verbose tokens and dispatches accordingly:
+
+    * Aggregated mode (the default produced by Interpretability with
+      aggregate_attn=True): each x_token is one chat sentence labelled
+      "[*] {chat_sent_pos} {type} [*]". The n-th "context" entry is mapped to
+      context_line_nums[n] to recover the bAbI line number.
+    * Verbose mode: x_tokens are individual model tokens with bare digit
+      tokens marking bAbI line-number prefixes; sentences are formed between
+      consecutive digit tokens.
+
+    :param interpretability: an InterpretabilityResult with attn_scores and x_tokens
+    :param context_line_nums: bAbI line numbers for the part's context, in chat
+        order — only used in aggregated mode; pass None for verbose mode
+    :return: dict mapping bAbI line number to mean attention, or None if
+        extraction fails
+    """
+    if interpretability is None or interpretability.empty():
+        return None
+
+    attn: np.ndarray = interpretability.attn_scores
+    x_tokens: list[str] = interpretability.x_tokens
+
+    if attn.size == 0 or not x_tokens:
+        return None
+
+    token_weights: np.ndarray = attn.mean(axis=0)
+
+    if len(token_weights) != len(x_tokens):
+        warnings.warn(
+            f"Token weight length ({len(token_weights)}) does not match x_tokens length "
+            f"({len(x_tokens)}); skipping part."
+        )
+        return None
+
+    if _is_aggregated_x_tokens(x_tokens):
+        return _aggregated_sentence_attn(token_weights, x_tokens, context_line_nums)
+
+    return _verbose_sentence_attn(token_weights, x_tokens)
 
 
 def _mean_attn_over_indices(
@@ -306,8 +461,13 @@ def collect_distractor_attention_record(
     if result_for_version is None:
         return None
 
+    # Pass the part's bAbI context line numbers so aggregated-mode x_tokens can
+    # be mapped back from chat-sentence position to bAbI line number. Sorted to
+    # match the order context sentences are emitted into the prompt.
+    context_line_nums = sorted(int(k) for k in part.raw.get("context", {}).keys())
     sent_attn = _sentence_attn_from_interpretability(
-        result_for_version.interpretability
+        result_for_version.interpretability,
+        context_line_nums=context_line_nums,
     )
     if sent_attn is None:
         return None
