@@ -31,13 +31,6 @@ from plots.utils import (
 )
 
 # ---- Distractor-attention plot style constants ----------------------------
-
-_DA_COLOR_CORRECT: str = "#FF6E19"  # green
-_DA_COLOR_INCORRECT: str = "#F5CBA7"  # red
-_DA_COLOR_SUPPORTING: str = "#2980b9"  # blue
-_DA_COLOR_DISTRACTOR: str = "#e67e22"  # orange
-_DA_COLOR_NEUTRAL: str = "#95a5a6"  # gray
-
 _DA_ATTN_YMAX: float = 1  # max mean-attention per sentence
 _DA_MARGIN_ABS: float = 1  # max |distractor − supporting| margin shown
 _DA_RATIO_YMIN: float = 1e-2  # min log ratio shown (distractor / supporting)
@@ -84,6 +77,10 @@ class Plotter:
             "ans_corr_reas_incorr": "#D49F7A",  # brownish orange
             "ans_incorr_reas_corr": "#6B8FA4",  # brownish blue
             "ans_incorr_reas_incorr": "#D7CEC3",  # light brown
+            # Sentence-role colours used by the distractor-attention plots:
+            "supporting": "#2874A6",  # blue, matches reas_corr
+            "distractor": "#E67E22",  # orange, matches ans_corr_reas_null
+            "neutral": "#6E6E6E",  # gray, matches ans_null
         }
         self.case_color_map = {  # mathematical
             "ans_corr": "#FF6F1B",  # pure orange (255, 110, 25)
@@ -101,6 +98,10 @@ class Plotter:
             "ans_corr_reas_incorr": "#B48C8C",  # brownish orange (180, 140, 140)
             "ans_incorr_reas_corr": "#918CB4",  # brownish blue (145, 140, 180)
             "ans_incorr_reas_incorr": "#BEAFAA",  # light brown (190, 175, 170)
+            # Sentence-role colours used by the distractor-attention plots:
+            "supporting": "#196EFF",  # blue, matches reas_corr
+            "distractor": "#FF6F1B",  # orange, matches ans_corr
+            "neutral": "#6E6E6E",  # gray, matches ans_null
         }
         self.case_color_map = {  # with green and red as a basis?
             "ans_corr": "Greens",
@@ -118,6 +119,10 @@ class Plotter:
             "ans_corr_reas_incorr": "#966EAF",  # purple (150, 110, 175)
             "ans_incorr_reas_corr": "#508CAF",  # blue (80, 140, 175)
             "ans_incorr_reas_incorr": "#964B4B",  # dark red (150, 75, 75)
+            # Sentence-role colours used by the distractor-attention plots:
+            "supporting": "#196EFF",  # blue, matches reas_corr
+            "distractor": "Oranges",  # colormap, follows the family pattern of this variant
+            "neutral": "#6E6E6E",  # gray, matches reas_null
         }
         self.results_path: Path = results_path
 
@@ -125,6 +130,42 @@ class Plotter:
         self.plot_counter_prompt: int = 0
 
         self.warning_counter = 0
+
+        # Resolve the five distractor-plot colours from self.case_color_map so
+        # they match the rest of Plotter's colour scheme. Map values may be a
+        # hex string (e.g. "#FF6E19") or a colormap name (e.g. "Greens"); we
+        # normalise to a single hex either way via _resolve_case_color.
+        self._da_color_correct: str = self._resolve_case_color("ans_corr")
+        self._da_color_incorrect: str = self._resolve_case_color("ans_incorr")
+        self._da_color_supporting: str = self._resolve_case_color("supporting")
+        self._da_color_distractor: str = self._resolve_case_color("distractor")
+        self._da_color_neutral: str = self._resolve_case_color("neutral")
+
+    def _resolve_case_color(self, case: str, sample: float = 0.6) -> str:
+        """
+        Return a single hex colour for a given key in ``case_color_map``.
+
+        Some entries are colormap names (e.g. ``"Greens"``) rather than hex
+        strings; for those we sample the colormap at ``sample`` to get a
+        representative middle-saturation colour. Hex values are returned
+        unchanged. Missing keys fall back to a neutral gray.
+
+        :param case: key into ``self.case_color_map``
+        :param sample: position in the colormap to sample (only used for
+                       colormap-named entries); 0.6 gives a strong but not
+                       maximally saturated colour
+        :return: a hex colour string
+        """
+        value = self.case_color_map.get(case)
+        if value is None:
+            return "#888888"
+        if isinstance(value, str) and value.startswith("#"):
+            return value
+        try:
+            cmap = cm.get_cmap(value)
+            return mcolors.to_hex(cmap(sample))
+        except (ValueError, TypeError):
+            return "#888888"
 
     def _resolve_save_target(
         self,
@@ -1478,8 +1519,8 @@ class Plotter:
         grouped = stats.as_grouped()
 
         role_color = {
-            "distractor": _DA_COLOR_DISTRACTOR,
-            "neutral": _DA_COLOR_NEUTRAL,
+            "distractor": self._da_color_distractor,
+            "neutral": self._da_color_neutral,
         }
         ordering = [
             (True, "distractor"),
@@ -1592,9 +1633,21 @@ class Plotter:
         width = 0.18
 
         bar_spec = [
-            (True, "distractor", -1.5, _DA_COLOR_DISTRACTOR, "Correct / distractor"),
-            (True, "neutral", -0.5, _DA_COLOR_NEUTRAL, "Correct / neutral"),
-            (False, "distractor", 0.5, _DA_COLOR_INCORRECT, "Incorrect / distractor"),
+            (
+                True,
+                "distractor",
+                -1.5,
+                self._da_color_distractor,
+                "Correct / distractor",
+            ),
+            (True, "neutral", -0.5, self._da_color_neutral, "Correct / neutral"),
+            (
+                False,
+                "distractor",
+                0.5,
+                self._da_color_incorrect,
+                "Incorrect / distractor",
+            ),
             (False, "neutral", 1.5, "#7f8c8d", "Incorrect / neutral"),
         ]
 
@@ -1669,8 +1722,8 @@ class Plotter:
         fig, ax = plt.subplots(figsize=(5.5, 5.5))
 
         plot_spec = [
-            (True, _DA_COLOR_CORRECT, "Correct", "o"),
-            (False, _DA_COLOR_INCORRECT, "Incorrect", "^"),
+            (True, self._da_color_correct, "Correct", "o"),
+            (False, self._da_color_incorrect, "Incorrect", "^"),
         ]
         any_data = False
         txt_rows: list[tuple[str, float | int | None]] = []
@@ -1779,8 +1832,8 @@ class Plotter:
             return
 
         groups = [
-            ("Correct", margins_correct, _DA_COLOR_CORRECT),
-            ("Incorrect", margins_incorrect, _DA_COLOR_INCORRECT),
+            ("Correct", margins_correct, self._da_color_correct),
+            ("Incorrect", margins_incorrect, self._da_color_incorrect),
         ]
 
         fig, ax = plt.subplots(figsize=(6.5, 5))
@@ -1828,10 +1881,10 @@ class Plotter:
         # Reference line: margin = 0.
         ax.axhline(0.0, color="#333333", linestyle="--", linewidth=1.0)
         ax.axhspan(
-            0, _DA_MARGIN_ABS, facecolor=_DA_COLOR_INCORRECT, alpha=0.05, zorder=0
+            0, _DA_MARGIN_ABS, facecolor=self._da_color_incorrect, alpha=0.05, zorder=0
         )
         ax.axhspan(
-            -_DA_MARGIN_ABS, 0, facecolor=_DA_COLOR_CORRECT, alpha=0.05, zorder=0
+            -_DA_MARGIN_ABS, 0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
         )
 
         # Brief region cues at the y-axis edge — far less text than before.
@@ -1909,8 +1962,8 @@ class Plotter:
             return
 
         groups = [
-            ("Correct", ratios_correct, _DA_COLOR_CORRECT),
-            ("Incorrect", ratios_incorrect, _DA_COLOR_INCORRECT),
+            ("Correct", ratios_correct, self._da_color_correct),
+            ("Incorrect", ratios_incorrect, self._da_color_incorrect),
         ]
 
         fig, ax = plt.subplots(figsize=(6.5, 5))
@@ -1940,10 +1993,14 @@ class Plotter:
         ax.set_yscale("log")
         ax.set_ylim(_DA_RATIO_YMIN, _DA_RATIO_YMAX)
         ax.axhspan(
-            1.0, _DA_RATIO_YMAX, facecolor=_DA_COLOR_INCORRECT, alpha=0.05, zorder=0
+            1.0,
+            _DA_RATIO_YMAX,
+            facecolor=self._da_color_incorrect,
+            alpha=0.05,
+            zorder=0,
         )
         ax.axhspan(
-            _DA_RATIO_YMIN, 1.0, facecolor=_DA_COLOR_CORRECT, alpha=0.05, zorder=0
+            _DA_RATIO_YMIN, 1.0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
         )
 
         # Compact tick labels with just count and percentages.
@@ -2051,7 +2108,7 @@ class Plotter:
             yerr=sems_correct,
             capsize=4,
             label=f"Correct (n = {max(ns_correct) if ns_correct else 0})",
-            color=_DA_COLOR_CORRECT,
+            color=self._da_color_correct,
             alpha=0.82,
             edgecolor="#1e8449",
         )
@@ -2062,7 +2119,7 @@ class Plotter:
             yerr=sems_incorrect,
             capsize=4,
             label=f"Incorrect (n = {max(ns_incorrect) if ns_incorrect else 0})",
-            color=_DA_COLOR_INCORRECT,
+            color=self._da_color_incorrect,
             alpha=0.82,
             edgecolor="#a93226",
         )
@@ -2196,7 +2253,7 @@ class Plotter:
             ns,
             dist_mean,
             marker="o",
-            color=_DA_COLOR_DISTRACTOR,
+            color=self._da_color_distractor,
             linewidth=2,
             label="Distractor attention",
         )[0]
@@ -2204,14 +2261,14 @@ class Plotter:
             ns,
             np.asarray(dist_mean) - np.asarray(dist_sem),
             np.asarray(dist_mean) + np.asarray(dist_sem),
-            color=_DA_COLOR_DISTRACTOR,
+            color=self._da_color_distractor,
             alpha=0.15,
         )
         line_s = ax_attn.plot(
             ns,
             supp_mean,
             marker="s",
-            color=_DA_COLOR_SUPPORTING,
+            color=self._da_color_supporting,
             linewidth=2,
             label="Supporting attention",
         )[0]
@@ -2219,19 +2276,21 @@ class Plotter:
             ns,
             np.asarray(supp_mean) - np.asarray(supp_sem),
             np.asarray(supp_mean) + np.asarray(supp_sem),
-            color=_DA_COLOR_SUPPORTING,
+            color=self._da_color_supporting,
             alpha=0.15,
         )
         line_a = ax_acc.plot(
             ns,
             acc,
             marker="^",
-            color=_DA_COLOR_CORRECT,
+            color=self._da_color_correct,
             linewidth=2,
             linestyle="--",
             label="Accuracy",
         )[0]
-        ax_acc.fill_between(ns, acc_lo, acc_hi, color=_DA_COLOR_CORRECT, alpha=0.12)
+        ax_acc.fill_between(
+            ns, acc_lo, acc_hi, color=self._da_color_correct, alpha=0.12
+        )
 
         if show_values:
             for n, p in zip(ns, acc):
@@ -2252,10 +2311,12 @@ class Plotter:
         ax_attn.set_ylim(0, _DA_ATTN_YMAX)
         ax_attn.grid(axis="y", linestyle="--", alpha=0.35)
 
-        ax_acc.set_ylabel("Accuracy (± 95% CI)", fontsize=11, color=_DA_COLOR_CORRECT)
+        ax_acc.set_ylabel(
+            "Accuracy (± 95% CI)", fontsize=11, color=self._da_color_correct
+        )
         ax_acc.set_ylim(0, 1.02)
-        ax_acc.tick_params(axis="y", colors=_DA_COLOR_CORRECT)
-        ax_acc.spines["right"].set_color(_DA_COLOR_CORRECT)
+        ax_acc.tick_params(axis="y", colors=self._da_color_correct)
+        ax_acc.spines["right"].set_color(self._da_color_correct)
 
         ax_attn.set_title(
             self._format_short_title(
@@ -2403,10 +2464,14 @@ class Plotter:
         # Shade left/right of ratio = 1.
         ax.axvline(1.0, color="#333333", linestyle="--", linewidth=1.0)
         ax.axvspan(
-            _DA_RATIO_YMIN, 1.0, facecolor=_DA_COLOR_CORRECT, alpha=0.05, zorder=0
+            _DA_RATIO_YMIN, 1.0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
         )
         ax.axvspan(
-            1.0, _DA_RATIO_YMAX, facecolor=_DA_COLOR_INCORRECT, alpha=0.05, zorder=0
+            1.0,
+            _DA_RATIO_YMAX,
+            facecolor=self._da_color_incorrect,
+            alpha=0.05,
+            zorder=0,
         )
 
         if show_values:
