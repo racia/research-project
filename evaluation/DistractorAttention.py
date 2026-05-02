@@ -213,11 +213,13 @@ class DistractorAttentionStats:
 
 
 # Type tags emitted by Interpretability.process_attention in aggregated mode.
-# The exact tag for "context" is whatever chat.get_sentence_spans returns,
-# which we don't import here. Anything that contains "context" or "ctx"
-# (case-insensitive) is treated as a context sentence; everything else is
-# treated as non-context (sys_prompt, user, assistant, question, ...).
-_CONTEXT_TYPE_HINTS: tuple[str, ...] = ("context", "ctx")
+# The exact tag for context sentences is whatever chat.get_sentence_spans
+# returns. In this project the abbreviated tag "cont" is used (alongside
+# "sys", "ex", "wrap", "ques" for the other chat-chunk types). We match by
+# substring so that both "cont" and the longer "context" / "context_sent"
+# variants register as context sentences. "ctx" is kept as a fallback for
+# branches that use that abbreviation instead.
+_CONTEXT_TYPE_HINTS: tuple[str, ...] = ("cont", "ctx")
 
 
 # Set this to True to print one-line per-part debug info from

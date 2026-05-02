@@ -19,23 +19,16 @@ import warnings
 from collections import defaultdict
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 from data.DataLoader import DataLoader
 from data.DataProcessor import DataProcessor
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
-from evaluation import DistractorAttention as _da_module
 from evaluation.DistractorAttention import (
     DistractorAttentionStats,
     collect_distractor_attention_record,
 )
-
-# Turn on the in-module debug output that explains *why*
-# _sentence_attn_from_interpretability returned None for a given part. Quiet
-# by default; flip off here once distractor plots are populating reliably.
-_da_module.DEBUG_SENTENCE_ATTN = True
 from evaluation.utils import extract_split
 from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
@@ -262,12 +255,6 @@ def run(
         defaultdict(lambda: defaultdict(DistractorAttentionStats))
     )
 
-    # Diagnostic counters, one entry per (skip-reason or success). Reported at
-    # the end of the run so we can see at a glance which check is rejecting
-    # parts when distractor plots come out empty.
-    distractor_skip_counts: dict[str, int] = defaultdict(int)
-    debug_first_part_logged: bool = False
-
     processor = DataProcessor()
 
     data_split = extract_split(results_path)
@@ -309,45 +296,6 @@ def run(
                 # so it runs independently of whether versions and results are paired.
                 processor.mark_distractors(part)
 
-                # ---- one-shot diagnostic dump for the very first part -----
-                # Prints exactly what the distractor pipeline sees so we can
-                # tell at a glance whether the issue is missing attn data,
-                # missing distractors, an unexpected x_token format, etc.
-                if not debug_first_part_logged:
-                    print("\n[distractor-debug] First-part snapshot:")
-                    print(
-                        f"  task={part.task_id} sample={part.sample_id} "
-                        f"part={part.part_id}"
-                    )
-                    print(f"  supporting_sent_inx = {part.supporting_sent_inx}")
-                    print(f"  distractors          = {part.distractors}")
-                    print(
-                        f"  n context lines      = "
-                        f"{len(part.raw.get('context', {}))}"
-                    )
-                    print(f"  versions             = {part.versions}")
-                    for vr in part.results:
-                        interp = vr.interpretability
-                        empty = interp.empty()
-                        attn_shape = (
-                            getattr(interp, "attn_scores", np.array([])).shape
-                            if interp is not None
-                            else None
-                        )
-                        n_x = len(getattr(interp, "x_tokens", []) or [])
-                        sample_x = (
-                            (interp.x_tokens[:6] + ["…"] + interp.x_tokens[-3:])
-                            if n_x > 12
-                            else (interp.x_tokens if interp else [])
-                        )
-                        print(
-                            f"  version={vr.version!r} empty={empty} "
-                            f"attn_shape={attn_shape} n_x_tokens={n_x} "
-                            f"answer_correct={vr.answer_correct}"
-                        )
-                        print(f"    x_tokens sample: {sample_x}")
-                    debug_first_part_logged = True
-
                 if len(part.versions) != len(part.results):
                     print(
                         f"[WARNING] Skipping malformed part | "
@@ -355,28 +303,19 @@ def run(
                         f"versions={part.versions}\n"
                         f"n_results={len(part.results)}"
                     )
-                    distractor_skip_counts["malformed_part"] += 1
                     continue
 
                 for version_result in part.results:
                     version = version_result.version
 
                     if version_result.interpretability.empty():
-                        distractor_skip_counts[f"interpretability_empty_{version}"] += 1
                         continue
 
-                    # Read answer_correct directly off the Results object so we
-                    # don't depend on the metric dict being populated yet.
-                    # Falling back to the dict only if the attribute is unset.
-                    answer_correct = getattr(version_result, "answer_correct", None)
-                    if answer_correct is None:
-                        result_dict = version_result.get_result()
-                        answer_correct = result_dict.get(f"answer_correct_{version}")
+                    result_dict = version_result.get_result()
 
-                    if answer_correct is None or (
-                        not isinstance(answer_correct, bool) and pd.isna(answer_correct)
-                    ):
-                        distractor_skip_counts[f"answer_correct_none_{version}"] += 1
+                    answer_correct = result_dict.get(f"answer_correct_{version}")
+
+                    if answer_correct is None or pd.isna(answer_correct):
                         continue
 
                     record = collect_distractor_attention_record(
@@ -388,9 +327,6 @@ def run(
                     if record is not None:
                         distractor_stats[version].add(record)
                         distractor_stats_per_task[task_id][version].add(record)
-                        distractor_skip_counts[f"record_added_{version}"] += 1
-                    else:
-                        distractor_skip_counts[f"collect_returned_none_{version}"] += 1
 
                 saver.save_output(
                     data=[result],
@@ -629,16 +565,6 @@ def run(
 
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
-
-    # Diagnostic summary: print why each part was kept/skipped during distractor
-    # collection. If "record_added_*" is 0, the table tells you why.
-    print("\n[distractor-debug] Skip-reason counts across all parts:")
-    if distractor_skip_counts:
-        for reason, count in sorted(distractor_skip_counts.items()):
-            print(f"  {reason:40s} {count}")
-    else:
-        print("  (no parts processed)")
-    print()
 
     saver.save_split_metrics(
         split=split,
