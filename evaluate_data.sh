@@ -21,7 +21,7 @@ fi
 results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${mode}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
 
 # save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/results/${setting}/${mode}"
-save_path="/results/${setting}/${mode}"
+save_path="results/${setting}/${mode}"
 
 ### JOB STEPS START HERE ###
 # fix working directory
