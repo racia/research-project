@@ -31,6 +31,7 @@ class DataSaver:
         self.old_stdout: TextIO = sys.stdout
         # self.results_path is updated in create_result_paths
         self.results_path: Path = Path(save_to)
+        self.results_path.mkdir(parents=True, exist_ok=True)
         self.run_path: Path = Path(save_to)
         self.prompt_name: str = ""
 

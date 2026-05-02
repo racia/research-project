@@ -49,14 +49,15 @@ def clean(answer) -> str:
         addition = answer[len("not mentioned") :].strip()
         answer = lower_answer[: len("not mentioned")]
         warnings.warn(
-            f"Hallucinated 'not mentioned' answer contains additional text. Removing: '{addition}'"
+            f"Hallucinated 'not mentioned' answer contains additional text. Removing: '{addition}', resulting in answer: '{answer}'"
         )
         return answer
     bracket_pattern = re.compile(r"\([\s\S]+?\)$")
-    if bracket_pattern.search(answer):
+    found_bracket = bracket_pattern.search(answer)
+    if found_bracket:
         answer = bracket_pattern.sub("", answer).strip()
         warnings.warn(
-            f"The answer contains additional text in brackets. Removing: '{answer}'"
+            f"The answer contains additional text in brackets. Removing: '{found_bracket.group(0)}', resulting in answer: '{answer}'"
         )
     return answer
 
@@ -75,6 +76,7 @@ def not_mentioned_detected(reasoning: str) -> bool:
         "not specified",
         "not specify",
         "not provide",
+        "not enough information",
         # "no information",  # "no information that would contradict..." does not necessarily indicate "not mentioned"
     ]
     return any(phrase in reasoning.lower() for phrase in phrasings)
@@ -93,18 +95,18 @@ def parse_output(output: str) -> tuple:
     answer_search = answer_pattern.search(output)
     answer = answer_search[1].strip() if answer_search else ""
     answer = clean(answer)
-    if not answer:
-        print("DEBUG: Answer not found in the output")
+    # if not answer:
+        # print("DEBUG: Answer not found in the output")
     if len(answer) < 2:
-        print(
-            f"DEBUG: Too short answer: '{answer}', setting to empty string"
-        )
+        # print(
+        #     f"DEBUG: Too short answer: '{answer}', setting to empty string"
+        # )
         answer = ""
 
     reasoning_search = reasoning_pattern.search(output)
     reasoning = reasoning_search[1].strip() if reasoning_search else ""
     if not reasoning or reasoning.lower().startswith("answer:"):
-        print("DEBUG: Reasoning not found in the output")
+        # print("DEBUG: Reasoning not found in the output")
         reasoning = ""
 
     if not (answer or reasoning):
@@ -112,12 +114,12 @@ def parse_output(output: str) -> tuple:
             answer = output
         else:
             reasoning = output
-        print(
-            f"Saving the whole output as the {'answer' if answer else 'reasoning'}:",
-            output,
-            sep="\n",
-            end="\n\n",
-        )
+        # print(
+        #     f"Saving the whole output as the {'answer' if answer else 'reasoning'}:",
+        #     output,
+        #     sep="\n",
+        #     end="\n\n",
+        # )
         if not_mentioned_detected(reasoning):
             answer = "not mentioned"
             print(
