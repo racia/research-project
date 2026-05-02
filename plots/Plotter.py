@@ -31,20 +31,15 @@ from plots.utils import (
 )
 
 # ---- Distractor-attention plot style constants ----------------------------
-# Each role uses a fixed colour across all eight distractor plots so that, for
-# example, supporting sentences are always blue and distractors are always
-# orange. This makes plots from different runs (different prompts, settings,
-# splits) directly comparable at a glance.
-_DA_COLOR_CORRECT: str = "#2ecc71"  # green
-_DA_COLOR_INCORRECT: str = "#e74c3c"  # red
+
+_DA_COLOR_CORRECT: str = "#FF6E19"  # green
+_DA_COLOR_INCORRECT: str = "#F5CBA7"  # red
 _DA_COLOR_SUPPORTING: str = "#2980b9"  # blue
 _DA_COLOR_DISTRACTOR: str = "#e67e22"  # orange
 _DA_COLOR_NEUTRAL: str = "#95a5a6"  # gray
 
-# Fixed axis ranges so plots from different runs can be visually compared.
-# Bump these in one place if your runs produce values outside the defaults.
-_DA_ATTN_YMAX: float = 0.5  # max mean-attention per sentence
-_DA_MARGIN_ABS: float = 0.5  # max |distractor − supporting| margin shown
+_DA_ATTN_YMAX: float = 1  # max mean-attention per sentence
+_DA_MARGIN_ABS: float = 1  # max |distractor − supporting| margin shown
 _DA_RATIO_YMIN: float = 1e-2  # min log ratio shown (distractor / supporting)
 _DA_RATIO_YMAX: float = 1e2  # max log ratio shown
 
