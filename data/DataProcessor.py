@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 
-from data.utils import expand_cardinal_points, load_scenery
+from data.utils import _token_set, expand_cardinal_points, load_scenery
 from evaluation.Scenery import Scenery, SentenceScenery
 from inference.DataLevels import SamplePart
 from settings.config import Enumerate, Wrapper
@@ -19,39 +19,6 @@ _OVERLAP_FIELDS: tuple[str, ...] = (
     "locations",
     "relations",
 )
-
-
-def _normalise_token(tok) -> str:
-    """
-    Return a lower-cased string from a Scenery token.
-
-    Scenery tokens can be plain strings or tuples (head, *children from
-    get_DO_NP); only the head is used for matching so that partial
-    noun-phrase overlap counts.
-
-    :param tok: a string or tuple extracted by Scenery
-    :return: lower-cased head token as a string
-    """
-    if isinstance(tok, tuple):
-        return str(tok[0]).lower()
-    return str(tok).lower()
-
-
-def _token_set(scenery: SentenceScenery, fields: tuple[str, ...]) -> set[str]:
-    """
-    Collect all normalised tokens from the selected Scenery fields into a flat set.
-
-    :param scenery: a SentenceScenery instance for one sentence
-    :param fields: which SentenceScenery fields to include
-    :return: flat set of lower-cased head tokens
-    """
-    tokens: set[str] = set()
-    for field in fields:
-        for tok in getattr(scenery, field, []):
-            norm = _normalise_token(tok)
-            if norm:
-                tokens.add(norm)
-    return tokens
 
 
 class DataProcessor:
@@ -240,7 +207,9 @@ class DataProcessor:
         # --- question tokens -------------------------------------------------
         question_lines: dict = raw.get("question", {})
         if not question_lines:
-            return
+            raise Exception(
+                "Question lines missing from part.raw. Make sure the part was created correctly."
+            )
 
         question_text = " ".join(
             v if isinstance(v, str) else " ".join(v) for v in question_lines.values()
@@ -254,7 +223,9 @@ class DataProcessor:
         # --- context sentences -----------------------------------------------
         context: dict = raw.get("context", {})
         if not context:
-            return
+            raise Exception(
+                "Context lines missing from part.raw. Make sure the part was created correctly."
+            )
 
         supporting: set[int] = set(part.supporting_sent_inx)
         distractors: list[int] = []
@@ -274,12 +245,3 @@ class DataProcessor:
                 distractors.append(sent_idx)
 
         part.distractors = distractors
-
-    def mark_distractors_for_task(self, parts: list["SamplePart"]) -> None:
-        """
-        Call mark_distractors for every part in the list.
-
-        :param parts: list of SamplePart objects to annotate
-        """
-        for part in parts:
-            self.mark_distractors(part)

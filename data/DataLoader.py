@@ -380,7 +380,7 @@ class DataLoader:
             multi_system=multi_system,
             lookup=True,
         )
-        multi_system = False
+        multi_system_check = False
         for row in data:
             if row["sample_id"] > self.samples_per_task:
                 continue
@@ -393,7 +393,7 @@ class DataLoader:
             raw_part = raw_parts[identifier]
             for version in ["before", "after"]:
                 if not row.get(f"model_output_{version}", None):
-                    multi_system = False
+                    multi_system_check = False
                     continue
 
                 if not row[f"model_output_{version}"]:
@@ -401,7 +401,7 @@ class DataLoader:
                         f"Model output {version} is not found in row {row['id_']}: {row[f'model_output_{version}']}"
                     )
 
-                multi_system = True
+                multi_system_check = True
                 attn_path = (
                     Path(results_path).parent
                     / version
@@ -453,7 +453,14 @@ class DataLoader:
                 "The number of raw loaded parts does not match the number of loaded results parts: "
                 "%d != %d" % (len(parts), self.number_of_parts)
             )
-        return structure_parts(parts), multi_system
+
+        if multi_system != multi_system_check:
+            warnings.warn(
+                "The multi_system parameter does not match the loaded data: %s != %s"
+                % (multi_system, multi_system_check)
+            )
+
+        return structure_parts(parts), multi_system_check
 
     @staticmethod
     def load_ids_and_tokens(

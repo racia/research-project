@@ -25,18 +25,34 @@ from data.DataLoader import DataLoader
 from data.DataProcessor import DataProcessor
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
-from evaluation.DistractorAttention import (
-    DistractorAttentionStats,
-    collect_distractor_attention_record,
-)
 from evaluation.utils import extract_split
 from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
+from interpretability.DistractorAttention import (
+    DistractorAttentionStats,
+    collect_distractor_attention_record,
+)
 from plots.Plotter import Plotter
 
 PREFIX = Path.cwd()
 while PREFIX.name != "research-project":
     PREFIX = PREFIX.parent
+
+supported_single_system_settings = {
+    "basic-baseline",
+    "baseline",
+    "skyline",
+}
+
+supported_multi_system_settings = {
+    "feedback",
+    "speculative_decoding",
+    "sd",
+}
+
+supported_settings = supported_single_system_settings.union(
+    supported_multi_system_settings
+)
 
 
 def remove_unnecessary_columns(
@@ -145,13 +161,7 @@ def validate_inputs(run_fn):
                 f"Please choose either of {supported_experiments}"
             )
         setting = kwargs.get("setting", "").lower()
-        supported_settings = [
-            "baseline",
-            "feedback",
-            "skyline",
-            "speculative_decoding",
-            "sd",
-        ]
+
         if not setting:
             raise ValueError(
                 f"Please provide an experiment setting from {supported_settings}"
@@ -219,7 +229,7 @@ def run(
         filtering_conditions=filtering_conditions,
     )
 
-    if setting in {"basic-baseline", "baseline", "skyline"}:
+    if setting in supported_single_system_settings:
         multi_system = False
     else:
         multi_system = True
@@ -327,6 +337,10 @@ def run(
                     if record is not None:
                         distractor_stats[version].add(record)
                         distractor_stats_per_task[task_id][version].add(record)
+                    else:
+                        warnings.warn(
+                            f"Empty record collected for task {task_id} sample {sample_id} part {part.part_id} version '{version}'. Check that the part has interpretability data and distractors set."
+                        )
 
                 saver.save_output(
                     data=[result],
@@ -968,12 +982,21 @@ def add_completeness_column(
     reasoning_col = f"model_reasoning_{suffix}"
     reasoning_nonempty = df[reasoning_col].apply(_is_nonempty)
 
-    # --- Determine reasoning token counts (only needed if max_tokens is set).
     if max_tokens is not None:
         token_col = reasoning_tokens_col or f"model_reasoning_tokens_{suffix}"
         if token_col in df.columns:
             reasoning_tokens = pd.to_numeric(df[token_col], errors="coerce")
             reasoning_truncated = reasoning_tokens >= max_tokens
+            divisible_by_50 = reasoning_tokens % 50 == 0
+
+            if divisible_by_50.any():
+                multiple_of_50 = reasoning_tokens[divisible_by_50]
+                warnings.warn(
+                    "Some rows have reasoning token counts divisible by 50, "
+                    "which may indicate generation limits were reached.\n"
+                    f"Rows:\n{multiple_of_50}"
+                )
+
         else:
             warnings.warn(
                 f"add_completeness_column: column '{token_col}' not found; "
@@ -981,9 +1004,12 @@ def add_completeness_column(
                 "per-row reasoning token-count column before calling this "
                 "function (or pass reasoning_tokens_col=...)."
             )
+
             reasoning_truncated = pd.Series(False, index=df.index)
+
     else:
         reasoning_truncated = pd.Series(False, index=df.index)
+
     reasoning_complete = reasoning_nonempty & ~reasoning_truncated & answer_complete
 
     df["completeness"] = reasoning_complete & answer_complete

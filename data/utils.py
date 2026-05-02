@@ -7,6 +7,7 @@ from pathlib import Path
 
 from evaluation.Evaluator import MetricEvaluator
 from evaluation.Metrics import Accuracy, Metric
+from evaluation.Scenery import SentenceScenery
 from inference.DataLevels import Features, SamplePart
 
 
@@ -131,7 +132,7 @@ def format_metrics(
             raise TypeError(f"Expected Accuracy or Metric, got {type(metric)} instead.")
         metrics["mean"][header] = metric.get_mean()
         metrics["std"][header] = metric.get_std() if "std" not in metric.var else None
-        
+
     accuracies_to_save = metrics_to_save if metrics_to_save else {}
     for task, metrics in metrics.items():
         if not accuracies_to_save.get(task):
@@ -318,3 +319,36 @@ def get_samples_per_task(data: list[dict]) -> int:
         if row["sample_id"] not in tasks_samples[row["task_id"]]:
             tasks_samples[row["task_id"]].append(row["sample_id"])
     return len(max(tasks_samples.values(), key=len))
+
+
+def _normalise_token(tok) -> str:
+    """
+    Return a lower-cased string from a Scenery token.
+
+    Scenery tokens can be plain strings or tuples (head, *children from
+    get_DO_NP); only the head is used for matching so that partial
+    noun-phrase overlap counts.
+
+    :param tok: a string or tuple extracted by Scenery
+    :return: lower-cased head token as a string
+    """
+    if isinstance(tok, tuple):
+        return str(tok[0]).lower()
+    return str(tok).lower()
+
+
+def _token_set(scenery: SentenceScenery, fields: tuple[str, ...]) -> set[str]:
+    """
+    Collect all normalised tokens from the selected Scenery fields into a flat set.
+
+    :param scenery: a SentenceScenery instance for one sentence
+    :param fields: which SentenceScenery fields to include
+    :return: flat set of lower-cased head tokens
+    """
+    tokens: set[str] = set()
+    for field in fields:
+        for tok in getattr(scenery, field, []):
+            norm = _normalise_token(tok)
+            if norm:
+                tokens.add(norm)
+    return tokens

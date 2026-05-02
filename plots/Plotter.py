@@ -16,11 +16,11 @@ from matplotlib import cm
 from matplotlib.colors import ListedColormap
 from matplotlib.ticker import MultipleLocator, PercentFormatter
 
-from evaluation.DistractorAttention import DistractorAttentionStats
 from evaluation.Metrics import Accuracy, Metric
 from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS, FLOAT_2_STR
 from inference.DataLevels import Features
 from inference.Prompt import Prompt
+from interpretability.DistractorAttention import DistractorAttentionStats
 from interpretability.utils import InterpretabilityResult
 from plots.utils import (
     Identifiers,
