@@ -213,21 +213,18 @@ class DistractorAttentionStats:
 
 
 # Type tags emitted by Interpretability.process_attention in aggregated mode.
-# The full set comes from chat.get_sentence_spans; "context" is the only one we
-# care about for distractor analysis, but the others let us recognise the format.
-_AGGREGATED_TYPES: frozenset[str] = frozenset(
-    {
-        "sys_prompt",
-        "context",
-        "question",
-        "model_output",
-        "answer",
-        "reasoning",
-        "user",
-        "assistant",
-        "system",
-    }
-)
+# The exact tag for "context" is whatever chat.get_sentence_spans returns,
+# which we don't import here. Anything that contains "context" or "ctx"
+# (case-insensitive) is treated as a context sentence; everything else is
+# treated as non-context (sys_prompt, user, assistant, question, ...).
+_CONTEXT_TYPE_HINTS: tuple[str, ...] = ("context", "ctx")
+
+
+# Set this to True to print one-line per-part debug info from
+# _sentence_attn_from_interpretability. Useful when the distractor pipeline
+# returns no records and the cause isn't obvious. Off by default to keep
+# normal runs quiet.
+DEBUG_SENTENCE_ATTN: bool = False
 
 
 def _parse_aggregated_token(tok: str) -> tuple[int, str] | None:
@@ -245,7 +242,23 @@ def _parse_aggregated_token(tok: str) -> tuple[int, str] | None:
     parts = tok.replace("*", " ").split()
     if len(parts) < 2 or not parts[0].isdigit():
         return None
-    return int(parts[0]), parts[1].lower()
+    # Re-join the tail so multi-word type tags like "sys prompt" survive.
+    return int(parts[0]), " ".join(parts[1:]).lower()
+
+
+def _looks_like_context_type(type_: str) -> bool:
+    """
+    Heuristic: does this type tag look like it labels a context sentence?
+
+    The actual tag string comes from chat.get_sentence_spans and is not
+    fixed across project versions. Rather than hard-code an exhaustive list
+    of allowed tags, we accept anything that contains "context" or "ctx".
+
+    :param type_: the type tag part of an aggregated x_token
+    :return: True if the tag looks like a context label
+    """
+    type_low = type_.lower()
+    return any(hint in type_low for hint in _CONTEXT_TYPE_HINTS)
 
 
 def _is_aggregated_x_tokens(x_tokens: list[str]) -> bool:
@@ -253,21 +266,18 @@ def _is_aggregated_x_tokens(x_tokens: list[str]) -> bool:
     Decide whether x_tokens are sentence-level aggregated labels rather than
     individual word/sub-word tokens.
 
-    Aggregated tokens have the form "[*] {digit} {type} [*]", where {type} is
-    one of the known chat-chunk type tags. We require the majority of tokens to
-    fit that shape to avoid false positives on verbose token streams that
-    happen to contain a few digits.
+    Aggregated tokens have the form "[*] {digit} {type} [*]". Token-level
+    streams contain mostly sub-word strings without a leading digit, so a
+    simple majority check on "starts-with-digit-then-word" reliably
+    discriminates the two formats — without needing to know the exact set
+    of type tags.
 
     :param x_tokens: the candidate token list
     :return: True if x_tokens look like aggregated sentence labels
     """
     if not x_tokens:
         return False
-    n_match = 0
-    for tok in x_tokens:
-        parsed = _parse_aggregated_token(tok)
-        if parsed is not None and parsed[1] in _AGGREGATED_TYPES:
-            n_match += 1
+    n_match = sum(1 for tok in x_tokens if _parse_aggregated_token(tok) is not None)
     return n_match >= max(1, len(x_tokens) // 2)
 
 
@@ -283,17 +293,20 @@ def _aggregated_sentence_attn(
     chat sentence. The chat sentence position embedded in x_tokens is *not*
     the bAbI line number — it counts every chat sentence including system
     prompt sentences, the question, etc. To recover bAbI line numbers we map
-    the n-th "context" x_token to the n-th entry of context_line_nums (which
-    holds the part's bAbI line numbers in the order they were emitted).
+    the n-th context-typed x_token to the n-th entry of context_line_nums
+    (which holds the part's bAbI line numbers in the order they were emitted).
 
-    If context_line_nums is None or shorter than the number of context tokens,
-    the missing entries are skipped rather than guessed.
+    If context_line_nums is None we cannot recover bAbI line numbers and
+    return None.
 
     :param token_weights: 1D array of per-sentence attention weights
     :param x_tokens: aggregated sentence labels, same length as token_weights
     :param context_line_nums: bAbI line numbers for the part's context, in order
     :return: {bAbI_line_number: attention} or None if no context entry was found
     """
+    if context_line_nums is None:
+        return None
+
     sent_attn: dict[int, float] = {}
     n_context_seen = 0
 
@@ -302,21 +315,32 @@ def _aggregated_sentence_attn(
         if parsed is None:
             continue
         _, type_ = parsed
-        if type_ != "context":
+        if not _looks_like_context_type(type_):
             continue
-        if context_line_nums is not None and n_context_seen < len(context_line_nums):
+        if n_context_seen < len(context_line_nums):
             line_num = context_line_nums[n_context_seen]
             sent_attn[line_num] = float(token_weights[i])
         n_context_seen += 1
 
-    if (
-        context_line_nums is not None
-        and n_context_seen != len(context_line_nums)
-        and n_context_seen > 0
-    ):
+    if n_context_seen == 0 and DEBUG_SENTENCE_ATTN:
+        # Show which type tags actually appeared so we can see what context
+        # is really called in this run.
+        seen_types: list[str] = []
+        for tok in x_tokens[:30]:
+            parsed = _parse_aggregated_token(tok)
+            if parsed is not None and parsed[1] not in seen_types:
+                seen_types.append(parsed[1])
         warnings.warn(
-            f"Number of 'context' x_tokens ({n_context_seen}) does not match the "
-            f"number of context line numbers for this part "
+            "[DistractorAttention] Aggregated mode detected but no context-like "
+            f"x_tokens found. Type tags seen (first 30): {seen_types}. "
+            "If your context sentences carry a different label, extend "
+            "_CONTEXT_TYPE_HINTS in DistractorAttention.py."
+        )
+
+    if n_context_seen != len(context_line_nums) and n_context_seen > 0:
+        warnings.warn(
+            f"Number of context-typed x_tokens ({n_context_seen}) does not match "
+            f"the number of context line numbers for this part "
             f"({len(context_line_nums)}); some sentences may be misaligned."
         )
 
