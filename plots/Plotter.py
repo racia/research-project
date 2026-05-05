@@ -8,6 +8,7 @@ from typing import Sized
 import warnings
 
 import matplotlib.colors as mcolors
+from matplotlib.lines import Line2D
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -156,6 +157,8 @@ class Plotter:
         metr_types: int = 1,
         step: int | float = None,
         min_x_len: int = 0,
+        combined_handles: list[Line2D] = None,
+        combined_labels: list[str] = None,
         legend_title: str = None,
     ) -> None:
         """
@@ -178,7 +181,7 @@ class Plotter:
         try:
             if step >= 1:
                 plt.xticks(range(min_x_len, max_x_len + 1, step))
-            elif step > 0:
+            elif step > 0 and step < 1:
                 plt.xticks(np.arange(0, max_x_len + 0.1, step))
             elif step == 0:
                 pass
@@ -195,16 +198,15 @@ class Plotter:
         if "accurac" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.09, 0.01)
-            plt.ylim(bottom=0, top=0.1)
+            y_ticks = np.arange(0, 0.7, 0.1)
+            plt.ylim(bottom=0, top=0.6)
         elif "reasoning" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif displ_percentage:
             plt.ylim(bottom=0, top=1.01)
+        plt.yticks(y_ticks)
 
-        plt.yticks = y_ticks
-
-        type_of_data = " ".join([part.capitalize() for part in y_label.split(" ")])
+        type_of_data = " ".join([part.capitalize() if part not in ["Per", "Of", "On"] else part for part in y_label.split(" ")])
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
@@ -227,6 +229,8 @@ class Plotter:
 
         if num_of_data_arrays > 6 or metr_types > 6 or "attributes" in y_label.lower():
             plt.legend(
+                handles=combined_handles,
+                labels=combined_labels,
                 loc="center left",
                 bbox_to_anchor=(1, 0.5),
                 fancybox=True,
@@ -234,7 +238,7 @@ class Plotter:
                 title=legend_title,
             )
         else:
-            plt.legend(loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
+            plt.legend(handles=combined_handles, labels=combined_labels, loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
 
     def correlation_map(
         self,
@@ -264,8 +268,9 @@ class Plotter:
         axis = sns.heatmap(data, annot=True)
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
-        # Display x labels diagonally
-        plt.xticks(rotation=25, ha="right")
+        # Display x/ y labels diagonally
+        axis.set_xticklabels(axis.get_xticklabels(), rotation=25, ha="right")
+        axis.set_yticklabels(axis.get_yticklabels(), rotation=25, ha="right")
 
         plt.title(
             f"Correlation Map for {level} {split_name if split_name else id} ({version})",
@@ -535,6 +540,14 @@ class Plotter:
         ]
         colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
 
+        # Example scaling: avoid zero size, set min/max
+        def scale_stddev(stddevs, min_size=20, max_size=300):
+            stddevs = np.array(stddevs)
+            if stddevs.max() == stddevs.min():
+                return np.full_like(stddevs, (min_size + max_size) / 2)
+            scaled = (stddevs - stddevs.min()) / (stddevs.max() - stddevs.min())
+            return min_size + scaled * (max_size - min_size)
+
         for (metr_type, metr), std_dev, color in zip_longest(
             x_data_points.items(), x_err, colors
         ):
@@ -546,6 +559,13 @@ class Plotter:
                 max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
                 step_size = 5 if max_x_len > 30 else 1
             min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
+           
+            x_vals = metr.all
+            y_vals = [y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data
+
+            stddev_arr = np.array(std_dev) if std_dev is not None else np.zeros_like(x_vals)
+            sizes = scale_stddev(stddev_arr) if std_dev is not None else np.full_like(x_vals, 50)
+
             if len(metr) != len(y_data):
                 raise ValueError(
                     f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
@@ -553,17 +573,31 @@ class Plotter:
 
             if not y_data:
                 raise ValueError("y_data is empty")
+        
+            # Std dev is plotted as sizes in the scatter plot
+            # plt.errorbar(
+            #     x_vals,
+            #     y_vals,
+            #     xerr=stddev_arr,
+            #     fmt="none",
+            #     capsize=4,
+            #     # label=(
+            #     #     "{}{}".format(
+            #     #         " ".join(metr_type.split("_")).title(),
+            #     #         "\nwith Std Dev" if x_err else "",
+            #     #     )
+            #     #     if isinstance(metr_type, str)
+            #     #     else metr_type.name
+            #     # ),
+            #     ecolor=color,
+            #     zorder=2,
+            # )
 
-            plt.errorbar(
-                metr,
-                y=(
-                    [y.get_mean() for y in y_data]
-                    if isinstance(y_data[0], Metric)
-                    else y_data
-                ),
-                xerr=std_dev,
-                fmt="o",
-                capsize=4,
+            plt.scatter(
+                x_vals,
+                y_vals,
+                s=sizes,
+                # xerr=stddev_arr,
                 label=(
                     "{}{}".format(
                         " ".join(metr_type.split("_")).title(),
@@ -573,10 +607,44 @@ class Plotter:
                     else metr_type.name
                 ),
                 color=color,
+                edgecolors="black",
                 zorder=3,
             )
+
+            seen_points = set()
             for i, label in enumerate(label_add):
-                plt.annotate(label, (metr[i] + 0.001, y_data[i] + 0.001))
+                x, y = metr[i], y_data[i].get_mean() if isinstance(y_data[i], Metric) else y_data[i]
+                # Find all indices with the same x and y values (within a small tolerance to account for floating point issues)
+                same_points = [j for j in range(len(metr)) if abs(metr[j] - x) < 1e-6 and abs((y_data[j].get_mean() if isinstance(y_data[j], Metric) else y_data[j]) - y) < 1e-6]
+                # Skip points we've already labeled
+                same_points = [j for j in same_points if j not in seen_points and label_add[j] != label] # also check that the label is different to avoid labeling the same point multiple times if it has the same label
+                seen_points.update(same_points)
+                # Summarize the labels for these points (e.g. if they differ only by prompt, we can just list the prompts)
+                if len(same_points) > 1:
+                    same_labels = [label_add[j] for j in same_points]
+                    summarized_label = f"{label} ({', '.join(same_labels)})"
+                else:
+                    summarized_label = label
+                plt.annotate(summarized_label, (metr[i]+.001, y_data[i]+.001), xytext=(5, 5 if i%2==0 else -5), textcoords='offset points')
+        
+        legend_handles = [
+            Line2D(
+                [], [], 
+                marker='o', 
+                color='w', 
+                markerfacecolor='gray', 
+                markersize=np.sqrt(size),  # markersize is diameter in points
+                label=f"Std Dev: {val:.2f}"
+            )
+            for val, size in zip(stddev_arr, sizes) if val == min(stddev_arr) or val == max(stddev_arr) or abs(val - np.median(stddev_arr)) < 1e-6
+        ]
+
+        # 3. Get existing handles/labels
+        handles, labels = plt.gca().get_legend_handles_labels()
+
+        # 4. Combine and set the legend
+        combined_handles = handles + legend_handles
+        combined_labels = labels + [h.get_label() for h in legend_handles]
 
         self._plot_general_details(
             x_label,
@@ -587,6 +655,9 @@ class Plotter:
             metr_types=metr_types,
             step=0.1 if max_x_len == 1 else step_size,
             min_x_len=min_x_len,
+            combined_handles=combined_handles,
+            combined_labels=combined_labels,
+            legend_title="Metric Size & Circle Size" 
         )
         if path_add:
             file_name = path_add / file_name.lower()
@@ -634,8 +705,8 @@ class Plotter:
         min_score, max_score = 0.0, 1.0
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-            max_score = max(reasoning_scores.values())
-            min_score = min(reasoning_scores.values())
+            max_score = max([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 1.0
+            min_score = min([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 0.0
         else:
             # exclude simple answer/reasoning types
             answer_types = [
@@ -705,12 +776,21 @@ class Plotter:
                         case = ids_cases[idx]
                         if use_reasoning_scores and idx in reasoning_scores:
                             score = reasoning_scores[idx]
+                            try:
+                                assert isinstance(score, (int, float))
+                            except AssertionError:
+                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                warnings.warn(
+                                    f"Non-numeric reasoning score for index {idx}, cannot color."
+                                )
+                                continue
                             # Normalize score to [0, 1]
                             norm_score = (
                                 (score - min_score) / (max_score - min_score)
                                 if max_score > min_score
                                 else 0
                             )
+
                             colormap = colors[answer_types.index(case)]
                             # Resolve colormap object
                             if isinstance(colormap, str) and colormap.startswith("#"):
@@ -766,6 +846,11 @@ class Plotter:
                     for p_idx, p in enumerate(parts):
                         idx = (task, s, p)
                         if idx in reasoning_scores and not mask[s_idx, p_idx]:
+                            try:
+                                assert isinstance(reasoning_scores[idx], (int, float))
+                            except AssertionError:
+                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                continue
                             score = round(reasoning_scores[idx], 2)
                             ax.text(
                                 p_idx,
@@ -1109,9 +1194,16 @@ class Plotter:
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
-        label_column = (
-            " ".join(df.columns[2].split("_")).title() if len(df.columns) > 2 else None
-        )
+        max_x_len = max(df[x_label])
+        min_x_len = min(df[x_label])
+        if max_x_len > 100:
+            step_size = 5
+        elif max_x_len > 30:
+            step_size = 2
+        else:
+            step_size = 1
+
+        label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
 
         if "correct" in y_label.lower():  # e.g. parts_answer_correct
             if "answer_in_self" in df.columns[2]:
@@ -1180,6 +1272,7 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             max_x_len=max_x_len,
+            min_x_len=min_x_len,
             num_of_data_arrays=1,
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
@@ -1257,9 +1350,14 @@ class Plotter:
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            feat_str = [f.rstrip(f"_{version}") for f in feat_str]
+            feat_str = [f.removesuffix(f"_{version}")
+                        for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
+        if any(lab in x_label.lower() for lab in ["correct", "in self"]):
+            df[x_label] = df[x_label].map({0: "In previous parts" if "in self" in x_label.lower() else "Incorrect", 1: "In current part" if "in self" in x_label.lower() else "Correct"})
+        else:
+            df[x_label] = df[x_label].round()
         # Combine parts features to single column
         label_order = None
         if "parts_features" in y_data:
@@ -1291,7 +1389,7 @@ class Plotter:
                 else x
             )
         )
-        df[x_label] = df[x_label].round()
+        # df[x_label] = df[x_label].round()
 
         # this sns.boxplot returns an error:
         # UnboundLocalError: cannot access local variable 'boxprops' where it is not associated with a value
