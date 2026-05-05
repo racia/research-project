@@ -4,12 +4,10 @@ from collections import defaultdict
 from dataclasses import dataclass
 
 import numpy as np
-import pandas as pd
 
 from inference.DataLevels import SamplePart
 from interpretability.utils import (
     _mean_attn_over_indices,
-    _parse_index_list,
     _sentence_attn_from_interpretability,
 )
 
@@ -155,36 +153,6 @@ class DistractorAttentionStats:
             out[r.answer_correct]["neutral"].append(r.attn_neutral)
         return out
 
-    def as_ratio_data(self, eps: float = 1e-8) -> dict[bool, dict[str, list[float]]]:
-        """
-        Return distractor-to-supporting and distractor-to-neutral attention
-        ratios, grouped by answer correctness.
-
-        Ratios are only included for records where both numerator and
-        denominator are non-None. A small epsilon is added to denominators
-        to prevent division by zero.
-
-        :param eps: small constant added to denominators (default 1e-8)
-        :return: nested dict of the form
-                 {True:  {"dist_over_supp": [...], "dist_over_neutral": [...]},
-                  False: {"dist_over_supp": [...], "dist_over_neutral": [...]}}
-        """
-        out: dict[bool, dict[str, list[float]]] = {
-            True: {"dist_over_supp": [], "dist_over_neutral": []},
-            False: {"dist_over_supp": [], "dist_over_neutral": []},
-        }
-        for r in self.records:
-            correct = r.answer_correct
-            if r.attn_distractor is not None and r.attn_supporting is not None:
-                out[correct]["dist_over_supp"].append(
-                    r.attn_distractor / (r.attn_supporting + eps)
-                )
-            if r.attn_distractor is not None and r.attn_neutral is not None:
-                out[correct]["dist_over_neutral"].append(
-                    r.attn_distractor / (r.attn_neutral + eps)
-                )
-        return out
-
     def as_csv_records(self) -> list[dict]:
         """
         Return all records as plain dicts suitable for saver.save_output.
@@ -278,76 +246,3 @@ def collect_distractor_attention_record(
         n_supporting=len(supporting),
         n_neutral=len(neutral),
     )
-
-
-def compute_distractor_attention_from_csvs(
-    correct_df: pd.DataFrame,
-    incorrect_df: pd.DataFrame,
-    version: str,
-    attn_col_prefix: str = "attn_sentence_",
-    distractor_col: str = "distractors",
-    supporting_col: str = "supporting_sent_inx",
-) -> DistractorAttentionStats:
-    """
-    Build a DistractorAttentionStats from two pre-filtered DataFrames.
-
-    This is the offline entry point for comparing two separate filtered eval runs,
-    e.g. a CSV filtered to correct answers against one filtered to incorrect answers,
-    or the two halves of a single CSV split on an answer_correct column.
-
-    Expected columns per row:
-      - task_id, sample_id, part_id
-      - attn_sentence_1, attn_sentence_2, … (one column per context sentence)
-      - distractors: parseable list of sentence indices, e.g. "[3, 7]"
-      - supporting_sent_inx: parseable list of supporting fact indices
-
-    :param correct_df: rows where the model answered correctly
-    :param incorrect_df: rows where the model answered incorrectly
-    :param version: "before" or "after", stored verbatim in each record
-    :param attn_col_prefix: prefix for per-sentence attention columns
-    :param distractor_col: column name holding distractor sentence indices
-    :param supporting_col: column name holding supporting fact sentence indices
-    :return: populated DistractorAttentionStats
-    """
-    stats = DistractorAttentionStats()
-
-    def _row_mean_attn(row: pd.Series, indices: list[int]) -> float | None:
-        vals = [
-            float(row[f"{attn_col_prefix}{i}"])
-            for i in indices
-            if f"{attn_col_prefix}{i}" in row.index
-            and pd.notna(row[f"{attn_col_prefix}{i}"])
-        ]
-        return float(np.mean(vals)) if vals else None
-
-    for answer_correct, df in [(True, correct_df), (False, incorrect_df)]:
-        for _, row in df.iterrows():
-            supporting = set(_parse_index_list(row.get(supporting_col, "")))
-            distractors = set(_parse_index_list(row.get(distractor_col, "")))
-
-            attn_cols = [c for c in row.index if c.startswith(attn_col_prefix)]
-            all_ctx = {
-                int(c.replace(attn_col_prefix, ""))
-                for c in attn_cols
-                if pd.notna(row[c])
-            }
-
-            neutral = all_ctx - supporting - distractors
-
-            stats.add(
-                DistractorAttentionRecord(
-                    task_id=int(row["task_id"]),
-                    sample_id=int(row["sample_id"]),
-                    part_id=int(row["part_id"]),
-                    version=version,
-                    answer_correct=answer_correct,
-                    attn_distractor=_row_mean_attn(row, list(distractors)),
-                    attn_supporting=_row_mean_attn(row, list(supporting)),
-                    attn_neutral=_row_mean_attn(row, list(neutral)),
-                    n_distractors=len(distractors),
-                    n_supporting=len(supporting),
-                    n_neutral=len(neutral),
-                )
-            )
-
-    return stats
