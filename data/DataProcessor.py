@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import warnings
 
 from data.utils import _token_set, expand_cardinal_points, load_scenery
 from evaluation.Scenery import Scenery, SentenceScenery
@@ -183,7 +184,7 @@ class DataProcessor:
 
         return parts
 
-    def mark_distractors(self, part: "SamplePart") -> None:
+    def mark_distractors(self, part: SamplePart) -> None:
         """
         Identify distractor sentences for part and store them in-place as
         part.distractors (list[int]).
@@ -200,7 +201,6 @@ class DataProcessor:
         """
         part.distractors = []
 
-        # --- question tokens -------------------------------------------------
         question_lines: dict = part.raw.get("question", {})
         if not question_lines:
             raise Exception(
@@ -214,11 +214,11 @@ class DataProcessor:
         if not q_tokens:
             return
 
-        # --- context sentences -----------------------------------------------
         context: dict = part.raw.get("context", {})
         if not context:
-            raise Exception(
-                "Context lines missing from part.raw. Make sure the part was created correctly."
+            warnings.warn(
+                f"Context lines missing from part.raw {part.task_id, part.sample_id, part.part_id}. "
+                "Please make sure this is intended and that the part was created correctly."
             )
 
         supporting: set[int] = set(part.supporting_sent_inx)
