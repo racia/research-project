@@ -586,6 +586,26 @@ def run(
     )
 
     split_corr_matrices = split.calculate_metrics()
+
+    # ---- Before/after comparison plots --------------------------------------
+    # These four plots compare the same metrics across the "before" and
+    # "after" evaluators of this split. They run unconditionally — for
+    # single-system runs the methods just plot the one available version.
+    if len(split.evaluators) >= 1:
+        print(
+            f"\nPlotting before/after comparison plots for split '{split.name}'...",
+            end="\n\n",
+        )
+        ba_kwargs = dict(
+            evaluators=split.evaluators,
+            plot_name_add=[f"Split-{split.name}", *conditions_add],
+            path_add=Path("before_after"),
+        )
+        plotter.plot_before_after_accuracy(**ba_kwargs)
+        plotter.plot_before_after_reasoning_scores(**ba_kwargs)
+        plotter.plot_before_after_attention(**ba_kwargs)
+        plotter.plot_before_after_summary(**ba_kwargs)
+
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
     ):

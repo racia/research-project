@@ -294,6 +294,45 @@ class Plotter:
             return base
         return f"{base}  ({', '.join(tags)})"
 
+    @staticmethod
+    def _disambiguator_from_tags(plot_name_add: list[str] | None) -> str:
+        """
+        Build a filename-safe suffix from ``plot_name_add`` so plots that
+        share a base name (e.g. ``distractor_attn_boxplot``) don't overwrite
+        each other when the caller varies what they pass in ``plot_name_add``.
+
+        The suffix is the underscore-joined non-version tags, sanitised by
+        replacing path separators and whitespace with hyphens. ``before`` and
+        ``after`` are dropped because callers thread the version through a
+        separate parameter that already lands in the filename.
+
+        Examples
+        --------
+        ``["Task-1", "before"]``       -> ``"_Task-1"``
+        ``["Split-test", "before"]``   -> ``"_Split-test"``
+        ``["Task-3", "before", "f=v"]`` -> ``"_Task-3_f=v"``
+        ``["before"]`` or ``None``     -> ``""``
+
+        :param plot_name_add: list of context tags from the caller
+        :return: a filename suffix beginning with ``_`` (or empty string)
+        """
+        if not plot_name_add:
+            return ""
+        tags = []
+        for t in plot_name_add:
+            if not t:
+                continue
+            if t.lower() in ("before", "after"):
+                continue
+            # Replace anything that would break a filename or path:
+            # "/" "\" whitespace -> "-".
+            safe = "".join("-" if ch in "\\/ \t\n" else ch for ch in str(t))
+            if safe:
+                tags.append(safe)
+        if not tags:
+            return ""
+        return "_" + "_".join(tags)
+
     def _plot_general_details(
         self,
         x_label: str,
@@ -1583,7 +1622,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_attn_boxplot_{version}.png", path_add
+            f"distractor_attn_boxplot_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -1690,7 +1730,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_attn_per_task_{version}.png", path_add
+            f"distractor_attn_per_task_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -1788,7 +1829,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_attn_scatter_{version}.png", path_add
+            f"distractor_attn_scatter_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -1909,7 +1951,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"supporting_attention_{version}.png", path_add
+            f"supporting_attention_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2044,7 +2087,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_supporting_ratio_{version}.png", path_add
+            f"distractor_supporting_ratio_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2159,7 +2203,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"attention_triplet_{version}.png", path_add
+            f"attention_triplet_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2334,7 +2379,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distraction_vs_n_distractors_{version}.png", path_add
+            f"distraction_vs_n_distractors_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2501,7 +2547,8 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"accuracy_vs_distraction_ratio_{version}.png", path_add
+            f"accuracy_vs_distraction_ratio_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2513,3 +2560,456 @@ class Plotter:
             txt_rows.append((f"ratio_centre={c:.4f} acc_hi", float(hi)))
             txt_rows.append((f"ratio_centre={c:.4f} n", int(n)))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
+
+    # =====================================================================
+    # Before vs After comparison plots
+    # =====================================================================
+    # These plots compare the same metric across the "before" and "after"
+    # evaluators of one split. They expect ``evaluators`` to be the list
+    # ``split.evaluators`` (length 1 for single-system runs, length 2 for
+    # multi-system runs). When only one version is available, the plots fall
+    # back to a single-line/single-bar display so the figures still produce
+    # meaningful output.
+    #
+    # All four methods share the same signature shape so callers can wire
+    # them in uniformly:
+    #
+    #     plotter.plot_before_after_<name>(
+    #         evaluators=split.evaluators,
+    #         plot_name_add=[...],
+    #         path_add=Path("before_after"),
+    #         show_values=False,
+    #     )
+
+    @staticmethod
+    def _ba_pick_evaluators(
+        evaluators: list,
+    ) -> tuple[object | None, object | None]:
+        """
+        Find the ``before`` and ``after`` evaluators in a list.
+
+        Returns ``(before, after)``; either may be ``None`` if the
+        corresponding version is not present.
+
+        :param evaluators: list of MetricEvaluator instances, one per version
+        :return: tuple of (before_evaluator, after_evaluator)
+        """
+        before = next(
+            (e for e in evaluators if getattr(e, "version", None) == "before"),
+            None,
+        )
+        after = next(
+            (e for e in evaluators if getattr(e, "version", None) == "after"),
+            None,
+        )
+        return before, after
+
+    def _ba_per_task(
+        self,
+        evaluator,
+        mean_attr: str,
+        std_attr: str | None,
+    ) -> tuple[np.ndarray, np.ndarray]:
+        """
+        Pull the per-task means (and optional stds) from one evaluator.
+
+        :param evaluator: a MetricEvaluator
+        :param mean_attr: attribute name of the mean Metric (e.g. "exact_match_accuracy")
+        :param std_attr: attribute name of the std Metric, or None for no stds
+        :return: tuple of (means, stds) as numpy arrays; stds is zeros if
+            std_attr is None or absent
+        """
+        if evaluator is None:
+            return np.array([]), np.array([])
+        m_metric = getattr(evaluator, mean_attr, None)
+        means = np.asarray(getattr(m_metric, "all", []) or [], dtype=float)
+        if std_attr is None:
+            return means, np.zeros_like(means)
+        s_metric = getattr(evaluator, std_attr, None)
+        stds = np.asarray(getattr(s_metric, "all", []) or [], dtype=float)
+        if stds.size != means.size:
+            stds = np.zeros_like(means)
+        return means, stds
+
+    def _ba_plot_lines(
+        self,
+        ax,
+        before_eval,
+        after_eval,
+        mean_attr: str,
+        std_attr: str | None,
+        ylabel: str,
+        ylim: tuple[float, float] | None = None,
+        show_values: bool = False,
+    ) -> list[tuple[str, float | None]]:
+        """
+        Draw "before" and "after" line plots on ``ax`` for one metric, with
+        std-shaded bands. Returns rows for the sibling TXT.
+
+        :return: list of (label, value) rows for the data dump
+        """
+        rows: list[tuple[str, float | None]] = []
+
+        for label, evaluator, color, marker in [
+            ("Before", before_eval, self._da_color_supporting, "o"),
+            ("After", after_eval, self._da_color_distractor, "s"),
+        ]:
+            if evaluator is None:
+                continue
+            means, stds = self._ba_per_task(evaluator, mean_attr, std_attr)
+            if means.size == 0:
+                continue
+            x = np.arange(1, means.size + 1)
+            ax.plot(
+                x,
+                means,
+                marker=marker,
+                color=color,
+                linewidth=2,
+                label=label,
+                markersize=5,
+            )
+            if stds.any():
+                ax.fill_between(x, means - stds, means + stds, color=color, alpha=0.18)
+            if show_values:
+                for xi, mi in zip(x, means):
+                    ax.text(
+                        xi,
+                        mi,
+                        f"{mi:.2f}",
+                        fontsize=7,
+                        color="#222222",
+                        ha="center",
+                        va="bottom",
+                    )
+            rows.append((f"{label} mean (across tasks)", float(means.mean())))
+            for tid, mv in enumerate(means, 1):
+                rows.append((f"{label} task {tid}", float(mv)))
+
+        ax.set_xlabel("Task", fontsize=11)
+        ax.set_ylabel(ylabel, fontsize=11)
+        if ylim is not None:
+            ax.set_ylim(*ylim)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        return rows
+
+    def plot_before_after_accuracy(
+        self,
+        evaluators: list,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Compare exact-match and soft-match accuracy before vs after, per task.
+
+        Two side-by-side panels: exact-match on the left, soft-match on the
+        right. Each panel shows one line per version with std bands.
+
+        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label each point with its value
+        """
+        before, after = self._ba_pick_evaluators(evaluators)
+        if before is None and after is None:
+            print("[plot_before_after_accuracy] No evaluators provided.")
+            return
+
+        fig, (ax_em, ax_sm) = plt.subplots(1, 2, figsize=(13, 4.5), sharey=True)
+
+        em_rows = self._ba_plot_lines(
+            ax_em,
+            before,
+            after,
+            mean_attr="exact_match_accuracy",
+            std_attr="exact_match_std",
+            ylabel="Accuracy",
+            ylim=(0.0, 1.05),
+            show_values=show_values,
+        )
+        ax_em.set_title("Exact match", fontsize=11)
+        ax_em.legend(fontsize=9, loc="lower right", framealpha=0.9)
+
+        sm_rows = self._ba_plot_lines(
+            ax_sm,
+            before,
+            after,
+            mean_attr="soft_match_accuracy",
+            std_attr="soft_match_std",
+            ylabel="",
+            ylim=(0.0, 1.05),
+            show_values=show_values,
+        )
+        ax_sm.set_title("Soft match", fontsize=11)
+
+        fig.suptitle(
+            self._format_short_title("Accuracy: before vs after", plot_name_add),
+            fontsize=12,
+        )
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"before_after_accuracy{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        self._write_plot_data_txt(
+            png_path,
+            [("Exact match", em_rows), ("Soft match", sm_rows)],
+        )
+
+    def plot_before_after_reasoning_scores(
+        self,
+        evaluators: list,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Compare BLEU, ROUGE, and METEOR before vs after, per task.
+
+        Three side-by-side panels with shared y-axis (all three live in [0,1]),
+        one line per version each.
+
+        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label each point with its value
+        """
+        before, after = self._ba_pick_evaluators(evaluators)
+        if before is None and after is None:
+            print("[plot_before_after_reasoning_scores] No evaluators provided.")
+            return
+
+        fig, axes = plt.subplots(1, 3, figsize=(16, 4.5), sharey=True)
+        sections: list[tuple[str, list[tuple[str, float | None]]]] = []
+
+        score_specs = [
+            ("BLEU", "bleu", "bleu_std"),
+            ("ROUGE", "rouge", "rouge_std"),
+            ("METEOR", "meteor", "meteor_std"),
+        ]
+        for ax, (title, mean_attr, std_attr) in zip(axes, score_specs):
+            rows = self._ba_plot_lines(
+                ax,
+                before,
+                after,
+                mean_attr=mean_attr,
+                std_attr=std_attr,
+                ylabel="Score" if ax is axes[0] else "",
+                ylim=(0.0, 1.05),
+                show_values=show_values,
+            )
+            ax.set_title(title, fontsize=11)
+            sections.append((title, rows))
+
+        axes[0].legend(fontsize=9, loc="lower right", framealpha=0.9)
+        fig.suptitle(
+            self._format_short_title(
+                "Reasoning scores: before vs after", plot_name_add
+            ),
+            fontsize=12,
+        )
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"before_after_reasoning_scores{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+        self._write_plot_data_txt(png_path, sections)
+
+    def plot_before_after_attention(
+        self,
+        evaluators: list,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Compare max-supporting attention and attention-on-target before vs
+        after, per task.
+
+        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label each point with its value
+        """
+        before, after = self._ba_pick_evaluators(evaluators)
+        if before is None and after is None:
+            print("[plot_before_after_attention] No evaluators provided.")
+            return
+
+        fig, (ax_max, ax_target) = plt.subplots(1, 2, figsize=(13, 4.5))
+
+        max_rows = self._ba_plot_lines(
+            ax_max,
+            before,
+            after,
+            mean_attr="max_supp_attn",
+            std_attr="max_supp_attn_std",
+            ylabel="Mean attention",
+            ylim=(0.0, _DA_ATTN_YMAX),
+            show_values=show_values,
+        )
+        ax_max.set_title("Max attention on supporting", fontsize=11)
+        ax_max.legend(fontsize=9, loc="upper right", framealpha=0.9)
+
+        target_rows = self._ba_plot_lines(
+            ax_target,
+            before,
+            after,
+            mean_attr="attn_on_target",
+            std_attr="attn_on_target_std",
+            ylabel="Attention",
+            ylim=None,  # this metric is unbounded
+            show_values=show_values,
+        )
+        ax_target.set_title("Attention on target tokens", fontsize=11)
+
+        fig.suptitle(
+            self._format_short_title("Attention: before vs after", plot_name_add),
+            fontsize=12,
+        )
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"before_after_attention{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        self._write_plot_data_txt(
+            png_path,
+            [
+                ("Max attention on supporting", max_rows),
+                ("Attention on target", target_rows),
+            ],
+        )
+
+    def plot_before_after_summary(
+        self,
+        evaluators: list,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Compact dashboard summarising all metrics: one grouped bar chart with
+        the mean (across tasks) of each metric, before vs after side by side.
+
+        Useful as a single at-a-glance comparison; the per-task detail lives
+        in the other three before-after plots.
+
+        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label each bar with its value
+        """
+        before, after = self._ba_pick_evaluators(evaluators)
+        if before is None and after is None:
+            print("[plot_before_after_summary] No evaluators provided.")
+            return
+
+        # (display_label, attribute_name, group_name)
+        spec: list[tuple[str, str, str]] = [
+            ("Exact match", "exact_match_accuracy", "Accuracy"),
+            ("Soft match", "soft_match_accuracy", "Accuracy"),
+            ("BLEU", "bleu", "Reasoning"),
+            ("ROUGE", "rouge", "Reasoning"),
+            ("METEOR", "meteor", "Reasoning"),
+            ("Max-supp attn", "max_supp_attn", "Attention"),
+            ("Attn-on-target", "attn_on_target", "Attention"),
+        ]
+
+        labels = [s[0] for s in spec]
+        n = len(labels)
+        x = np.arange(n)
+        width = 0.36
+
+        def _means(evaluator) -> list[float | None]:
+            if evaluator is None:
+                return [None] * n
+            out: list[float | None] = []
+            for _, attr, _ in spec:
+                metric = getattr(evaluator, attr, None)
+                if metric is None:
+                    out.append(None)
+                    continue
+                try:
+                    out.append(float(metric.get_mean()))
+                except Exception:
+                    out.append(None)
+            return out
+
+        before_means = _means(before)
+        after_means = _means(after)
+
+        fig, ax = plt.subplots(figsize=(11, 4.8))
+
+        def _plot_bars(offset, values, color, label):
+            xs, hs = [], []
+            for xi, v in zip(x, values):
+                if v is None or not np.isfinite(v):
+                    continue
+                xs.append(xi + offset)
+                hs.append(v)
+            if not xs:
+                return None
+            bars = ax.bar(xs, hs, width, color=color, alpha=0.82, label=label)
+            if show_values:
+                for b, h in zip(bars, hs):
+                    ax.text(
+                        b.get_x() + b.get_width() / 2,
+                        h,
+                        f"{h:.2f}",
+                        ha="center",
+                        va="bottom",
+                        fontsize=7,
+                        color="#222222",
+                    )
+            return bars
+
+        _plot_bars(-width / 2, before_means, self._da_color_supporting, "Before")
+        _plot_bars(+width / 2, after_means, self._da_color_distractor, "After")
+
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, rotation=20, ha="right", fontsize=9)
+        ax.set_ylabel("Mean across tasks", fontsize=11)
+        # Most metrics live in [0, 1] but attn_on_target can exceed 1.
+        # Pick the y-limit dynamically so no bar gets clipped, but keep the
+        # baseline at 1.05 so different runs are still roughly comparable.
+        all_vals = [
+            v for v in (before_means + after_means) if v is not None and np.isfinite(v)
+        ]
+        ymax = max(1.05, max(all_vals) * 1.10) if all_vals else 1.05
+        ax.set_ylim(0, ymax)
+        ax.set_title(
+            self._format_short_title("Before vs after summary", plot_name_add),
+            fontsize=12,
+            pad=8,
+        )
+        ax.legend(fontsize=10, loc="upper right", framealpha=0.9)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"before_after_summary{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        rows: list[tuple[str, float | None]] = []
+        for label, b, a in zip(labels, before_means, after_means):
+            rows.append((f"{label} before", b))
+            rows.append((f"{label} after", a))
+            if b is not None and a is not None:
+                rows.append((f"{label} delta", float(a) - float(b)))
+        self._write_plot_data_txt(png_path, [("Mean across tasks", rows)])
