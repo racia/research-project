@@ -18,6 +18,9 @@ from settings.utils import parse_output
 
 
 class SilverReasoning:
+    # Column names accepted as the reasoning text field, in priority order.
+    REASONING_COLUMN_ALIASES = ("silver_reasoning", "reasoning")
+
     def __init__(self, loader: DataLoader = None):
         """
         Initialize the SilverReasoning class.
@@ -27,6 +30,21 @@ class SilverReasoning:
         self.split = ""
         self.task_id = 0
         self.loader = loader
+        # Set to True when all tasks have been loaded from a single combined file,
+        # so that per-task reloads are suppressed.
+        self._loaded_from_single_file: bool = False
+
+    @staticmethod
+    def _resolve_reasoning_key(row: dict) -> str:
+        """Return the reasoning value from a row regardless of column name."""
+        for alias in SilverReasoning.REASONING_COLUMN_ALIASES:
+            if alias in row:
+                return row[alias]
+        raise KeyError(
+            f"None of the expected reasoning column names "
+            f"{SilverReasoning.REASONING_COLUMN_ALIASES} were found in the row. "
+            f"Available keys: {list(row.keys())}"
+        )
 
     def get(
         self,
@@ -39,9 +57,14 @@ class SilverReasoning:
     ) -> str | dict[tuple[int, int, int], dict[str, str]]:
         """
         Get the silver reasoning for the part.
-        This method load the data for the whole task and only reloads it if the
+        This method loads the data for the whole task and only reloads it if the
         task_id or split changes. If the task_id is a list, it loads the data for
         all tasks and returns a dictionary with the reasoning for each task.
+
+        Supports two file layouts:
+        - Per-task files (original): reloads per task/split as before.
+        - Single combined file (new): detected automatically; all tasks are
+          loaded at once and subsequent calls skip disk access entirely.
 
         :param task_id: The task id.
         :param sample_id: The sample id (not used if task_id is a list).
@@ -52,20 +75,43 @@ class SilverReasoning:
         :return: The silver reasoning for the part.
         """
         if isinstance(task_id, int):
-            # reload the data if task_id or split changes
-            if task_id != self.task_id or split != self.split:
+            # Reload only when the task or split changes AND we haven't already
+            # loaded everything from a single combined file.
+            if not self._loaded_from_single_file and (
+                task_id != self.task_id or split != self.split
+            ):
                 self.task_id = task_id
                 self.split = split
-                self.silver_reasoning_data = self.loader.load_reasoning_data(
+                loaded, from_single = self.loader.load_reasoning_data(
                     task_id=task_id, split=split
                 )
+                self.silver_reasoning_data = loaded
+                self._loaded_from_single_file = from_single
+
             # enable getting all reasoning data for a specific task (not only one part)
             if get_all:
                 assert type(self.silver_reasoning_data) == dict
+                if self._loaded_from_single_file:
+                    # Return only the entries that belong to the requested task.
+                    return {
+                        k: v
+                        for k, v in self.silver_reasoning_data.items()
+                        if k[0] == task_id
+                    }
                 return self.silver_reasoning_data
 
         # enable getting all reasoning data for a list of tasks
         elif isinstance(task_id, list):
+            # If we already have everything (single-file load), avoid redundant
+            # per-task calls and return the whole dict filtered to the requested tasks.
+            if self._loaded_from_single_file:
+                task_set = set(task_id)
+                return {
+                    k: v
+                    for k, v in self.silver_reasoning_data.items()
+                    if k[0] in task_set
+                }
+
             all_reasoning = {}
             for t in task_id:
                 task_reasoning = self.get(
@@ -87,11 +133,11 @@ class SilverReasoning:
         # get the reasoning for the specific part
         row = self.silver_reasoning_data.get((task_id, sample_id, part_id), None)
         if row:
-            return row["silver_reasoning"]
+            return self._resolve_reasoning_key(row)
 
         available_keys = list(self.silver_reasoning_data.keys())
         raise ValueError(
-            f"Silver reasoning for <task_id={task_id}, sample_id={sample_id}, part_id={part_id}> not found."
+            f"Silver reasoning for <task_id={task_id}, sample_id={sample_id}, part_id={part_id}> not found. "
             f"Available keys: {available_keys}"
         )
 
@@ -449,8 +495,7 @@ class DataLoader:
         if len(parts) != self.number_of_parts:
             warnings.warn(
                 "The number of raw loaded parts does not match the number of loaded results parts: "
-                "%d != %d"
-                % (len(parts), self.number_of_parts)
+                "%d != %d" % (len(parts), self.number_of_parts)
             )
         return structure_parts(parts), multi_system
 
@@ -499,39 +544,90 @@ class DataLoader:
         return ids, tokens
 
     def load_reasoning_data(
-        self, task_id: int, split: str = DataSplits.valid
-    ) -> dict[tuple[int, int, int], dict]:
+        self, task_id: int, split: str = DataSplits.valid, use_single_file: bool = True
+    ) -> tuple[dict[tuple[int, int, int], dict], bool]:
         """
         Load the silver reasoning data for a specific task and split.
 
-        :param task_id: task id
+        Two file layouts are supported and tried in this order:
+
+        1. Per-task files* the filename contains
+           ``{split}_{task_id}.`` (e.g. ``valid_3.csv``).  Only the rows for
+           the requested task are loaded.
+
+        2. Single combined file: one CSV containing all tasks, detected
+           when no per-task file matches but a CSV containing the split name
+           without a task-id suffix exists The entire file is loaded once.
+
+        In both layouts the reasoning column can be named ``silver_reasoning``
+        or ``reasoning``.
+
+        :param task_id: task id (used only to match per-task filenames)
         :param split: split of the data
-        :return: silver reasoning data
+        :param use_single_file: whether to load only a single file. If not given, it will search for per-task files
+        first and then for a single combined file, and load from the first one found
+        :return: tuple of (silver_reasoning_data dict, from_single_file flag)
         """
         if not self.silver_reasoning_path.exists():
             raise FileNotFoundError(
                 "The silver reasoning data is not found at the path:",
                 self.silver_reasoning_path,
             )
-        silver_reasoning_data = []
+
+        per_task_file: Path | None = None
+        single_file_candidate: Path | None = None
+
         for path in self.silver_reasoning_path.iterdir():
+            if not path.name.endswith(".csv"):
+                continue
             if f"{split}_{task_id}." in path.name:
-                silver_reasoning_data, _ = self.load_results(
-                    Path.cwd() / path, list_output=True, sep=",", as_parts=False
-                )
-                break
+                per_task_file = path
+            if split in path.name and not any(
+                f"_{t}." in path.name for t in range(0, 21)
+            ):
+                single_file_candidate = path
 
-        if not silver_reasoning_data:
-            raise FileNotFoundError(
-                f"Silver reasoning data for task {task_id} and split {split} is "
-                f"not found in the path: {self.silver_reasoning_path}"
+        if per_task_file is not None and use_single_file == False:
+            silver_reasoning_data, _ = self.load_results(
+                Path.cwd() / per_task_file, list_output=True, sep=",", as_parts=False
             )
+            if not silver_reasoning_data:
+                raise FileNotFoundError(
+                    f"Silver reasoning data for task {task_id} and split {split} is "
+                    f"not found in the file: {per_task_file}"
+                )
+            result = {
+                (int(row["task_id"]), int(row["sample_id"]), int(row["part_id"])): row
+                for row in silver_reasoning_data
+            }
+            return result, False
 
-        silver_reasoning_data = {
-            (int(row["task_id"]), int(row["sample_id"]), int(row["part_id"])): row
-            for row in silver_reasoning_data
-        }
-        return silver_reasoning_data
+        if single_file_candidate is not None or use_single_file == True:
+            print(
+                f"No per-task file found for task {task_id}/{split}. "
+                f"Loading all tasks from combined file: {single_file_candidate.name}"
+            )
+            silver_reasoning_data, _ = self.load_results(
+                Path.cwd() / single_file_candidate,
+                list_output=True,
+                sep=",",
+                as_parts=False,
+            )
+            if not silver_reasoning_data:
+                raise FileNotFoundError(
+                    f"Silver reasoning data for task {task_id} and split {split} is "
+                    f"not found in the combined file: {single_file_candidate}"
+                )
+            result = {
+                (int(row["task_id"]), int(row["sample_id"]), int(row["part_id"])): row
+                for row in silver_reasoning_data
+            }
+            return result, True
+
+        raise FileNotFoundError(
+            f"Silver reasoning data for task {task_id} and split {split} is "
+            f"not found in the path: {self.silver_reasoning_path}"
+        )
 
     @staticmethod
     def load_interpretability(
