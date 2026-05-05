@@ -200,20 +200,14 @@ class DataProcessor:
         """
         part.distractors = []
 
-        raw = getattr(part, "raw", None)
-        if raw is None:
-            return
-
         # --- question tokens -------------------------------------------------
-        question_lines: dict = raw.get("question", {})
+        question_lines: dict = part.raw.get("question", {})
         if not question_lines:
             raise Exception(
                 "Question lines missing from part.raw. Make sure the part was created correctly."
             )
 
-        question_text = " ".join(
-            v if isinstance(v, str) else " ".join(v) for v in question_lines.values()
-        )
+        question_text = " ".join(question_lines.values())
         q_scenery = self._scenery.extract_from_line(question_text)
         q_tokens = _token_set(q_scenery, _OVERLAP_FIELDS)
 
@@ -221,7 +215,7 @@ class DataProcessor:
             return
 
         # --- context sentences -----------------------------------------------
-        context: dict = raw.get("context", {})
+        context: dict = part.raw.get("context", {})
         if not context:
             raise Exception(
                 "Context lines missing from part.raw. Make sure the part was created correctly."
@@ -234,9 +228,6 @@ class DataProcessor:
             sent_idx = int(sent_idx)
             if sent_idx in supporting:
                 continue
-
-            if isinstance(sent_text, list):
-                sent_text = " ".join(sent_text)
 
             ctx_scenery = self._scenery.extract_from_line(sent_text)
             ctx_tokens = _token_set(ctx_scenery, _OVERLAP_FIELDS)
