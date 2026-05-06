@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import warnings
 
 from data.utils import _token_set, expand_cardinal_points, load_scenery
 from evaluation.Scenery import Scenery, SentenceScenery
@@ -100,6 +101,7 @@ class DataProcessor:
                     "supporting_facts": [],
                 }
                 keywords = {"questions": {}, "context": {}}
+                context_history: dict[int, str] = {}
 
                 for line in sample:
                     cleaned = line.strip()
@@ -141,6 +143,9 @@ class DataProcessor:
                             question_scenery
                         )
 
+                        raw_part["context_all"] = dict(context_history)
+                        raw_part["context_all_order"] = list(context_history.keys())
+
                         part = SamplePart(
                             id_=self.part_counter,
                             task_id=task_id,
@@ -170,6 +175,7 @@ class DataProcessor:
                     elif context_match:
                         line_num = int(context_match.group(1))
                         raw_part["context"][line_num] = context_match.group(2)
+                        context_history[line_num] = context_match.group(2)
 
                         context_scenery = self._scenery.extract_from_line(
                             context_match.group(2)
@@ -183,65 +189,60 @@ class DataProcessor:
 
         return parts
 
-    def mark_distractors(self, part: "SamplePart") -> None:
+    def mark_distractors(self, part: SamplePart) -> None:
         """
         Identify distractor sentences for part and store them in-place as
         part.distractors (list[int]).
 
-        After this call, part.distractors contains the indices of context
-        sentences that overlap with the question but are not supporting facts.
-        All remaining context sentences are implicitly neutral;
-        collect_distractor_attention_record derives that set via set subtraction.
-
-        If the part has no question text, no context, or no extractable
-        question tokens, part.distractors is set to [] and the method returns.
-
-        :param part: the SamplePart to annotate; modified in-place
+        Roles are defined over the full context up to the current question
+        (part.raw["context_all"], including previous parts):
+          - supporting: indices in part.supporting_sent_inx
+          - distractor: overlaps with question entities but is not supporting
+          - neutral: no overlap with question entities and not supporting
         """
         part.distractors = []
+        part.neutral = []
 
-        raw = getattr(part, "raw", None)
-        if raw is None:
-            return
-
-        # --- question tokens -------------------------------------------------
-        question_lines: dict = raw.get("question", {})
+        question_lines: dict = part.raw.get("question", {})
         if not question_lines:
             raise Exception(
                 "Question lines missing from part.raw. Make sure the part was created correctly."
             )
 
-        question_text = " ".join(
-            v if isinstance(v, str) else " ".join(v) for v in question_lines.values()
-        )
+        question_text = " ".join(question_lines.values())
         q_scenery = self._scenery.extract_from_line(question_text)
         q_tokens = _token_set(q_scenery, _OVERLAP_FIELDS)
 
-        if not q_tokens:
-            return
-
-        # --- context sentences -----------------------------------------------
-        context: dict = raw.get("context", {})
+        context: dict = part.raw.get("context_all", part.raw.get("context", {}))
         if not context:
-            raise Exception(
-                "Context lines missing from part.raw. Make sure the part was created correctly."
+            warnings.warn(
+                f"Context lines missing from part.raw {part.task_id, part.sample_id, part.part_id}. "
+                "Please make sure this is intended and that the part was created correctly."
             )
 
         supporting: set[int] = set(part.supporting_sent_inx)
+
+        if not q_tokens:
+            part.neutral = [
+                int(idx) for idx in context.keys() if int(idx) not in supporting
+            ]
+            return
+
         distractors: list[int] = []
+        neutral: list[int] = []
 
         for sent_idx, sent_text in context.items():
             sent_idx = int(sent_idx)
             if sent_idx in supporting:
                 continue
 
-            if isinstance(sent_text, list):
-                sent_text = " ".join(sent_text)
-
             ctx_scenery = self._scenery.extract_from_line(sent_text)
             ctx_tokens = _token_set(ctx_scenery, _OVERLAP_FIELDS)
 
             if ctx_tokens & q_tokens:
                 distractors.append(sent_idx)
+            else:
+                neutral.append(sent_idx)
 
         part.distractors = distractors
+        part.neutral = neutral

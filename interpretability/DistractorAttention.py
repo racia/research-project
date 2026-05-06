@@ -1,14 +1,16 @@
 from __future__ import annotations
 
-import ast
 import warnings
 from collections import defaultdict
 from dataclasses import dataclass
 
 import numpy as np
-import pandas as pd
 
 from inference.DataLevels import SamplePart
+from interpretability.utils import (
+    _mean_attn_over_indices,
+    _sentence_attn_from_interpretability,
+)
 
 
 @dataclass
@@ -152,36 +154,6 @@ class DistractorAttentionStats:
             out[r.answer_correct]["neutral"].append(r.attn_neutral)
         return out
 
-    def as_ratio_data(self, eps: float = 1e-8) -> dict[bool, dict[str, list[float]]]:
-        """
-        Return distractor-to-supporting and distractor-to-neutral attention
-        ratios, grouped by answer correctness.
-
-        Ratios are only included for records where both numerator and
-        denominator are non-None. A small epsilon is added to denominators
-        to prevent division by zero.
-
-        :param eps: small constant added to denominators (default 1e-8)
-        :return: nested dict of the form
-                 {True:  {"dist_over_supp": [...], "dist_over_neutral": [...]},
-                  False: {"dist_over_supp": [...], "dist_over_neutral": [...]}}
-        """
-        out: dict[bool, dict[str, list[float]]] = {
-            True: {"dist_over_supp": [], "dist_over_neutral": []},
-            False: {"dist_over_supp": [], "dist_over_neutral": []},
-        }
-        for r in self.records:
-            correct = r.answer_correct
-            if r.attn_distractor is not None and r.attn_supporting is not None:
-                out[correct]["dist_over_supp"].append(
-                    r.attn_distractor / (r.attn_supporting + eps)
-                )
-            if r.attn_distractor is not None and r.attn_neutral is not None:
-                out[correct]["dist_over_neutral"].append(
-                    r.attn_distractor / (r.attn_neutral + eps)
-                )
-        return out
-
     def as_csv_records(self) -> list[dict]:
         """
         Return all records as plain dicts suitable for saver.save_output.
@@ -210,251 +182,6 @@ class DistractorAttentionStats:
             "n_supporting",
             "n_neutral",
         ]
-
-
-# Type tags emitted by Interpretability.process_attention in aggregated mode.
-# The exact tag for context sentences is whatever chat.get_sentence_spans
-# returns. In this project the abbreviated tag "cont" is used (alongside
-# "sys", "ex", "wrap", "ques" for the other chat-chunk types). We match by
-# substring so that both "cont" and the longer "context" / "context_sent"
-# variants register as context sentences. "ctx" is kept as a fallback for
-# branches that use that abbreviation instead.
-_CONTEXT_TYPE_HINTS: tuple[str, ...] = ("cont", "ctx")
-
-
-# Set this to True to print one-line per-part debug info from
-# _sentence_attn_from_interpretability. Useful when the distractor pipeline
-# returns no records and the cause isn't obvious. Off by default to keep
-# normal runs quiet.
-DEBUG_SENTENCE_ATTN: bool = False
-
-
-def _parse_aggregated_token(tok: str) -> tuple[int, str] | None:
-    """
-    Parse one aggregated x_token like "* 3 context *" or "5 question" into
-    (chat_sentence_position, type_string).
-
-    Returns None if the token does not match the aggregated label format.
-
-    :param tok: one entry from interpretability.x_tokens
-    :return: (chat sentence position, type tag) or None
-    """
-    if not tok:
-        return None
-    parts = tok.replace("*", " ").split()
-    if len(parts) < 2 or not parts[0].isdigit():
-        return None
-    # Re-join the tail so multi-word type tags like "sys prompt" survive.
-    return int(parts[0]), " ".join(parts[1:]).lower()
-
-
-def _looks_like_context_type(type_: str) -> bool:
-    """
-    Heuristic: does this type tag look like it labels a context sentence?
-
-    The actual tag string comes from chat.get_sentence_spans and is not
-    fixed across project versions. Rather than hard-code an exhaustive list
-    of allowed tags, we accept anything that contains "context" or "ctx".
-
-    :param type_: the type tag part of an aggregated x_token
-    :return: True if the tag looks like a context label
-    """
-    type_low = type_.lower()
-    return any(hint in type_low for hint in _CONTEXT_TYPE_HINTS)
-
-
-def _is_aggregated_x_tokens(x_tokens: list[str]) -> bool:
-    """
-    Decide whether x_tokens are sentence-level aggregated labels rather than
-    individual word/sub-word tokens.
-
-    Aggregated tokens have the form "[*] {digit} {type} [*]". Token-level
-    streams contain mostly sub-word strings without a leading digit, so a
-    simple majority check on "starts-with-digit-then-word" reliably
-    discriminates the two formats — without needing to know the exact set
-    of type tags.
-
-    :param x_tokens: the candidate token list
-    :return: True if x_tokens look like aggregated sentence labels
-    """
-    if not x_tokens:
-        return False
-    n_match = sum(1 for tok in x_tokens if _parse_aggregated_token(tok) is not None)
-    return n_match >= max(1, len(x_tokens) // 2)
-
-
-def _aggregated_sentence_attn(
-    token_weights: np.ndarray,
-    x_tokens: list[str],
-    context_line_nums: list[int] | None,
-) -> dict[int, float] | None:
-    """
-    Build {bAbI_line_number: mean_attention} from aggregated sentence labels.
-
-    In aggregated mode each column of attn_scores corresponds to exactly one
-    chat sentence. The chat sentence position embedded in x_tokens is *not*
-    the bAbI line number — it counts every chat sentence including system
-    prompt sentences, the question, etc. To recover bAbI line numbers we map
-    the n-th context-typed x_token to the n-th entry of context_line_nums
-    (which holds the part's bAbI line numbers in the order they were emitted).
-
-    If context_line_nums is None we cannot recover bAbI line numbers and
-    return None.
-
-    :param token_weights: 1D array of per-sentence attention weights
-    :param x_tokens: aggregated sentence labels, same length as token_weights
-    :param context_line_nums: bAbI line numbers for the part's context, in order
-    :return: {bAbI_line_number: attention} or None if no context entry was found
-    """
-    if context_line_nums is None:
-        return None
-
-    sent_attn: dict[int, float] = {}
-    n_context_seen = 0
-
-    for i, tok in enumerate(x_tokens):
-        parsed = _parse_aggregated_token(tok)
-        if parsed is None:
-            continue
-        _, type_ = parsed
-        if not _looks_like_context_type(type_):
-            continue
-        if n_context_seen < len(context_line_nums):
-            line_num = context_line_nums[n_context_seen]
-            sent_attn[line_num] = float(token_weights[i])
-        n_context_seen += 1
-
-    if n_context_seen == 0 and DEBUG_SENTENCE_ATTN:
-        # Show which type tags actually appeared so we can see what context
-        # is really called in this run.
-        seen_types: list[str] = []
-        for tok in x_tokens[:30]:
-            parsed = _parse_aggregated_token(tok)
-            if parsed is not None and parsed[1] not in seen_types:
-                seen_types.append(parsed[1])
-        warnings.warn(
-            "[DistractorAttention] Aggregated mode detected but no context-like "
-            f"x_tokens found. Type tags seen (first 30): {seen_types}. "
-            "If your context sentences carry a different label, extend "
-            "_CONTEXT_TYPE_HINTS in DistractorAttention.py."
-        )
-
-    if n_context_seen != len(context_line_nums) and n_context_seen > 0:
-        warnings.warn(
-            f"Number of context-typed x_tokens ({n_context_seen}) does not match "
-            f"the number of context line numbers for this part "
-            f"({len(context_line_nums)}); some sentences may be misaligned."
-        )
-
-    return sent_attn if sent_attn else None
-
-
-def _verbose_sentence_attn(
-    token_weights: np.ndarray,
-    x_tokens: list[str],
-) -> dict[int, float] | None:
-    """
-    Build {bAbI_line_number: mean_attention} from token-level x_tokens.
-
-    Sentence boundaries are bare digit tokens (the bAbI line-number prefixes
-    embedded in the prompt). The bAbI line number is the digit at the start of
-    each sentence; the attention is the mean over the tokens up to (but not
-    including) the next digit.
-
-    Tokeniser artefacts such as the SentencePiece "▁" or BPE "Ġ" prefix are
-    stripped before checking whether a token is a digit. Tokens wrapped in "*"
-    (used to highlight supporting facts) are also unwrapped.
-
-    :param token_weights: 1D array of per-token attention weights
-    :param x_tokens: token-level x_tokens, same length as token_weights
-    :return: {bAbI_line_number: attention} or None if no sentence was found
-    """
-    sentence_spans: list[tuple[int, int, int]] = []
-    current_sent: int | None = None
-    start: int = 0
-
-    for i, tok in enumerate(x_tokens):
-        cleaned = tok.replace("*", " ").strip()
-        # Strip common subword-prefix markers so e.g. "▁1" / "Ġ1" register as digits.
-        cleaned = cleaned.lstrip("▁Ġ ")
-        first = cleaned.split()[0] if cleaned else ""
-        if first.isdigit():
-            if current_sent is not None:
-                sentence_spans.append((current_sent, start, i))
-            current_sent = int(first)
-            start = i + 1
-
-    if current_sent is not None:
-        sentence_spans.append((current_sent, start, len(x_tokens)))
-
-    if not sentence_spans:
-        return None
-
-    sent_attn: dict[int, float] = {}
-    for sent_idx, s, e in sentence_spans:
-        span = token_weights[s:e]
-        if span.size > 0:
-            sent_attn[sent_idx] = float(span.mean())
-
-    return sent_attn if sent_attn else None
-
-
-def _sentence_attn_from_interpretability(
-    interpretability,
-    context_line_nums: list[int] | None = None,
-) -> dict[int, float] | None:
-    """
-    Derive a mapping of {bAbI_line_number: mean_attention} from an
-    InterpretabilityResult.
-
-    The attention matrix (output_tokens × input_tokens) is averaged over the
-    output tokens to yield one weight per input position. The function then
-    auto-detects whether the saved x_tokens are sentence-level aggregated
-    labels or token-level verbose tokens and dispatches accordingly:
-
-    * Aggregated mode (the default produced by Interpretability with
-      aggregate_attn=True): each x_token is one chat sentence labelled
-      "[*] {chat_sent_pos} {type} [*]". The n-th "context" entry is mapped to
-      context_line_nums[n] to recover the bAbI line number.
-    * Verbose mode: x_tokens are individual model tokens with bare digit
-      tokens marking bAbI line-number prefixes; sentences are formed between
-      consecutive digit tokens.
-
-    :param interpretability: an InterpretabilityResult with attn_scores and x_tokens
-    :param context_line_nums: bAbI line numbers for the part's context, in chat
-        order — only used in aggregated mode; pass None for verbose mode
-    :return: dict mapping bAbI line number to mean attention, or None if
-        extraction fails
-    """
-    if interpretability is None or interpretability.empty():
-        return None
-
-    attn: np.ndarray = interpretability.attn_scores
-    x_tokens: list[str] = interpretability.x_tokens
-
-    if attn.size == 0 or not x_tokens:
-        return None
-
-    token_weights: np.ndarray = attn.mean(axis=0)
-
-    if len(token_weights) != len(x_tokens):
-        warnings.warn(
-            f"Token weight length ({len(token_weights)}) does not match x_tokens length "
-            f"({len(x_tokens)}); skipping part."
-        )
-        return None
-
-    if _is_aggregated_x_tokens(x_tokens):
-        return _aggregated_sentence_attn(token_weights, x_tokens, context_line_nums)
-
-    return _verbose_sentence_attn(token_weights, x_tokens)
-
-
-def _mean_attn_over_indices(
-    sent_attn: dict[int, float], indices: list[int]
-) -> float | None:
-    vals = [sent_attn[i] for i in indices if i in sent_attn]
-    return float(np.mean(vals)) if vals else None
 
 
 def collect_distractor_attention_record(
@@ -487,10 +214,26 @@ def collect_distractor_attention_record(
     if result_for_version is None:
         return None
 
-    # Pass the part's bAbI context line numbers so aggregated-mode x_tokens can
-    # be mapped back from chat-sentence position to bAbI line number. Sorted to
-    # match the order context sentences are emitted into the prompt.
-    context_line_nums = sorted(int(k) for k in part.raw.get("context", {}).keys())
+    context_all = part.raw.get("context_all")
+    if context_all is None and part.part_id > 1:
+        warnings.warn(
+            f"context_all missing for part {part.task_id, part.sample_id, part.part_id}; "
+            "previous-part context will not be considered."
+        )
+    context_all = context_all or part.raw.get("context", {})
+    context_line_nums = part.raw.get("context_all_order")
+    if context_line_nums is None:
+        context_line_nums = list(context_all.keys())
+    else:
+        missing = set(map(int, context_all.keys())) - set(map(int, context_line_nums))
+        if missing:
+            warnings.warn(
+                f"context_all_order missing {len(missing)} context lines for part "
+                f"{part.task_id, part.sample_id, part.part_id}; "
+                "sentence-level attention may be misaligned."
+            )
+    context_line_nums = [int(k) for k in context_line_nums]
+
     sent_attn = _sentence_attn_from_interpretability(
         result_for_version.interpretability,
         context_line_nums=context_line_nums,
@@ -500,8 +243,10 @@ def collect_distractor_attention_record(
 
     supporting: set[int] = set(part.supporting_sent_inx)
     distractors: set[int] = set(getattr(part, "distractors", []))
-    all_context: set[int] = set(part.raw["context"].keys())
-    neutral: set[int] = all_context - supporting - distractors
+    all_context: set[int] = set(int(k) for k in context_all.keys())
+    neutral: set[int] = set(getattr(part, "neutral", [])) or (
+        all_context - supporting - distractors
+    )
 
     attn_supporting = _mean_attn_over_indices(sent_attn, list(supporting))
     attn_distractor = _mean_attn_over_indices(sent_attn, list(distractors))
@@ -520,95 +265,3 @@ def collect_distractor_attention_record(
         n_supporting=len(supporting),
         n_neutral=len(neutral),
     )
-
-
-def _parse_index_list(val) -> list[int]:
-    """
-    Parse a list of sentence indices from a stored value, tolerating multiple
-    serialisation formats including Python list literals and comma-separated strings.
-
-    :param val: the raw stored value
-    :return: list of integer sentence indices
-    """
-    if isinstance(val, list):
-        return [int(x) for x in val]
-    if not isinstance(val, str) or not val.strip():
-        return []
-    try:
-        parsed = ast.literal_eval(val)
-        return [int(x) for x in parsed]
-    except (ValueError, SyntaxError):
-        return [int(x) for x in val.split(",") if x.strip().lstrip("-").isdigit()]
-
-
-def compute_distractor_attention_from_csvs(
-    correct_df: pd.DataFrame,
-    incorrect_df: pd.DataFrame,
-    version: str,
-    attn_col_prefix: str = "attn_sentence_",
-    distractor_col: str = "distractors",
-    supporting_col: str = "supporting_sent_inx",
-) -> DistractorAttentionStats:
-    """
-    Build a DistractorAttentionStats from two pre-filtered DataFrames.
-
-    This is the offline entry point for comparing two separate filtered eval runs,
-    e.g. a CSV filtered to correct answers against one filtered to incorrect answers,
-    or the two halves of a single CSV split on an answer_correct column.
-
-    Expected columns per row:
-      - task_id, sample_id, part_id
-      - attn_sentence_1, attn_sentence_2, … (one column per context sentence)
-      - distractors: parseable list of sentence indices, e.g. "[3, 7]"
-      - supporting_sent_inx: parseable list of supporting fact indices
-
-    :param correct_df: rows where the model answered correctly
-    :param incorrect_df: rows where the model answered incorrectly
-    :param version: "before" or "after", stored verbatim in each record
-    :param attn_col_prefix: prefix for per-sentence attention columns
-    :param distractor_col: column name holding distractor sentence indices
-    :param supporting_col: column name holding supporting fact sentence indices
-    :return: populated DistractorAttentionStats
-    """
-    stats = DistractorAttentionStats()
-
-    def _row_mean_attn(row: pd.Series, indices: list[int]) -> float | None:
-        vals = [
-            float(row[f"{attn_col_prefix}{i}"])
-            for i in indices
-            if f"{attn_col_prefix}{i}" in row.index
-            and pd.notna(row[f"{attn_col_prefix}{i}"])
-        ]
-        return float(np.mean(vals)) if vals else None
-
-    for answer_correct, df in [(True, correct_df), (False, incorrect_df)]:
-        for _, row in df.iterrows():
-            supporting = set(_parse_index_list(row.get(supporting_col, "")))
-            distractors = set(_parse_index_list(row.get(distractor_col, "")))
-
-            attn_cols = [c for c in row.index if c.startswith(attn_col_prefix)]
-            all_ctx = {
-                int(c.replace(attn_col_prefix, ""))
-                for c in attn_cols
-                if pd.notna(row[c])
-            }
-
-            neutral = all_ctx - supporting - distractors
-
-            stats.add(
-                DistractorAttentionRecord(
-                    task_id=int(row["task_id"]),
-                    sample_id=int(row["sample_id"]),
-                    part_id=int(row["part_id"]),
-                    version=version,
-                    answer_correct=answer_correct,
-                    attn_distractor=_row_mean_attn(row, list(distractors)),
-                    attn_supporting=_row_mean_attn(row, list(supporting)),
-                    attn_neutral=_row_mean_attn(row, list(neutral)),
-                    n_distractors=len(distractors),
-                    n_supporting=len(supporting),
-                    n_neutral=len(neutral),
-                )
-            )
-
-    return stats
