@@ -469,13 +469,7 @@ class DataLoader:
                 "%d != %d" % (len(parts), self.number_of_parts)
             )
 
-        if multi_system != multi_system_check:
-            warnings.warn(
-                "The multi_system parameter does not match the loaded data: %s != %s"
-                % (multi_system, multi_system_check)
-            )
-
-        return structure_parts(parts), multi_system_check
+        return structure_parts(parts), multi_system
 
     @staticmethod
     def load_ids_and_tokens(
