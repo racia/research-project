@@ -3013,3 +3013,76 @@ class Plotter:
             if b is not None and a is not None:
                 rows.append((f"{label} delta", float(a) - float(b)))
         self._write_plot_data_txt(png_path, [("Mean across tasks", rows)])
+
+    def plot_before_after_delta_lineplot(
+        self,
+        evaluators: list,
+        plot_name_add: list[str] | None = None,
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Plots the absolute delta (after - before) for exact match and soft match accuracy
+        per task as a line plot. Positive delta means 'after' is better.
+        """
+        before, after = self._ba_pick_evaluators(evaluators)
+        if before is None or after is None:
+            print(
+                "[plot_before_after_delta_lineplot] Both 'before' and 'after' evaluators are required."
+            )
+            return
+
+        fig, ax = plt.subplots(figsize=(8, 5))
+
+        em_before, _ = self._ba_per_task(before, "exact_match_accuracy", None)
+        em_after, _ = self._ba_per_task(after, "exact_match_accuracy", None)
+        sm_before, _ = self._ba_per_task(before, "soft_match_accuracy", None)
+        sm_after, _ = self._ba_per_task(after, "soft_match_accuracy", None)
+
+        x = np.arange(1, len(em_before) + 1)
+        if len(em_before) > 0 and len(em_after) == len(em_before):
+            delta_em = em_after - em_before
+            ax.plot(
+                x,
+                delta_em,
+                marker="o",
+                color="#2874A6",
+                linewidth=2,
+                label="Exact Match Delta",
+            )
+            if show_values:
+                for xi, yi in zip(x, delta_em):
+                    ax.text(xi, yi, f"{yi:+.2f}", fontsize=8, ha="center", va="bottom")
+
+        if len(sm_before) > 0 and len(sm_after) == len(sm_before):
+            delta_sm = sm_after - sm_before
+            ax.plot(
+                x,
+                delta_sm,
+                marker="s",
+                color="#E67E22",
+                linewidth=2,
+                label="Soft Match Delta",
+            )
+            if show_values:
+                for xi, yi in zip(x, delta_sm):
+                    ax.text(xi, yi, f"{yi:+.2f}", fontsize=8, ha="center", va="top")
+
+        ax.axhline(0, color="gray", linestyle="--", linewidth=1.0)
+        ax.set_xlabel("Task", fontsize=11)
+        ax.set_ylabel("Accuracy Delta (After - Before)", fontsize=11)
+        ax.set_title(
+            self._format_short_title("Accuracy Delta per Task", plot_name_add),
+            fontsize=12,
+            pad=8,
+        )
+        ax.legend(fontsize=10, loc="upper right")
+        ax.grid(axis="both", linestyle="--", alpha=0.4)
+
+        fig.tight_layout()
+        png_path = self._resolve_save_target(
+            f"before_after_delta_lineplot{self._disambiguator_from_tags(plot_name_add)}.png",
+            path_add,
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)

@@ -606,6 +606,9 @@ def run(
         plotter.plot_before_after_attention(**ba_kwargs)
         plotter.plot_before_after_summary(**ba_kwargs)
 
+        if len(split.evaluators) > 1:
+            plotter.plot_before_after_delta_lineplot(**ba_kwargs)
+
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
     ):
