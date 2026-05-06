@@ -2221,7 +2221,9 @@ class Plotter:
             return
 
         def _mean_sem(vals: list[float]) -> tuple[float, float]:
-            arr = np.asarray(vals, dtype=float)
+            arr = np.asarray(
+                [v for v in vals if v is not None and np.isfinite(v)], dtype=float
+            )
             if arr.size == 0:
                 return float("nan"), 0.0
             sem = arr.std(ddof=1) / np.sqrt(arr.size) if arr.size > 1 else 0.0
