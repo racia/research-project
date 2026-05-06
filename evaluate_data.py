@@ -887,7 +887,14 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         "--setting",
         type=str,
         required=True,
-        choices=["baseline", "feedback", "skyline", "speculative_decoding", "sd"],
+        choices=[
+            "baseline",
+            "feedback",
+            "skyline",
+            "speculative_decoding",
+            "sd",
+            "basic-baseline",
+        ],
         help="The setting of the experiment to evaluate.",
     )
     parser.add_argument(
