@@ -14,6 +14,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import warnings
 from collections import defaultdict
@@ -150,7 +151,7 @@ def validate_inputs(run_fn):
 
     def validation_wrapper(**kwargs):
         experiment = kwargs.get("experiment", "").lower()
-        supported_experiments = ["reasoning_answer", "direct_answer"]
+        supported_experiments = ["reasoning", "direct_answer"]
         if not experiment:
             raise ValueError(
                 f"Please provide an experiment to evaluate from {supported_experiments}"
@@ -202,7 +203,7 @@ def run(
     :param results_path: path to the data for evaluation
     :param save_path: path to save the results
     :param samples_per_task: number of samples per task the results were run with
-    :param experiment: the experiment to evaluate (e.g., "reasoning_answer", "direct_answer")
+    :param experiment: the experiment to evaluate (e.g., "reasoning", "direct_answer")
     :param setting: the setting of the experiment (e.g., "baseline", "feedback")
     :param filtering_conditions: a dictionary of conditions (SamplePart attributes) and values;
                                  all the parts having an attribute with such value will be preserved;
@@ -292,6 +293,7 @@ def run(
                             task_id=part.task_id,
                             sample_id=part.sample_id,
                             part_id=part.part_id,
+                            version=version,
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category}, "
                             f"{', '.join(conditions_add)})",
@@ -584,7 +586,8 @@ def run(
         split=split,
         metric_file_name="eval_script_metrics.csv",
     )
-
+    # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
+    # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
     split_corr_matrices = split.calculate_metrics()
 
     # ---- Before/after comparison plots --------------------------------------
@@ -631,6 +634,7 @@ def run(
             version=version,
             split_name=split.name,
             file_name=f"corr_matrix_split_{split.name}.pdf",
+            path_add=Path(version),
         )
 
         # Plot Accuracy vs Attn on Target for the Split
@@ -704,6 +708,7 @@ def run(
             acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
             y_label="Accuracies with Standard Deviations",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting attentions for results '{version}'...",
@@ -713,6 +718,7 @@ def run(
             acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
             y_label="Attentions",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting reasoning scores for results '{version}'...",
@@ -722,6 +728,7 @@ def run(
             acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
             y_label="Reasoning Scores",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
@@ -900,10 +907,33 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         help="Path where to save the results.",
     )
     parser.add_argument(
+        "--setting",
+        type=str,
+        required=True,
+        choices=["baseline", "feedback", "skyline", "speculative_decoding", "sd"],
+        help="The setting of the experiment to evaluate.",
+    )
+    parser.add_argument(
+        "--experiment",
+        type=str,
+        required=True,
+        choices=["reasoning", "direct_answer"],
+        help="The experiment to evaluate.",
+    )
+    parser.add_argument(
         "--samples_per_task",
         type=int,
         default=50,
         help="Number of samples per task the results were run with (check your config for the run).",
+    )
+    parser.add_argument(
+        "--filtering_conditions",
+        type=json.loads,
+        default={},
+        help=(
+            "A JSON string representing a dictionary of conditions (SamplePart attributes) and values; "
+            "all the parts having an attribute with such value will be preserved."
+        ),
     )
     parser.add_argument(
         "--create_heatmaps",
@@ -1049,10 +1079,23 @@ if __name__ == "__main__":
         results_path=args.results_path,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
-        setting="baseline",
-        experiment="reasoning_answer",
+        setting=args.setting,
+        experiment=args.experiment,
         filtering_conditions={},
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
         max_tokens=args.max_tokens,
     )
+    # kwargs = {
+    #     "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "save_path": "results/basic-baseline",
+    #     "samples_per_task": 2,
+    #     "setting": "baseline",
+    #     "experiment": "direct_answer",
+    #     "filtering_conditions": {},
+    #     "create_heatmaps": True,
+    #     "verbose": True,
+    # }
+    # print("Starting evaluation with the following configuration:")
+    # print(json.dumps(kwargs, indent=2))
+    # run(**kwargs)

@@ -28,6 +28,7 @@ from plots.utils import (
     extract_attention_by_correct,
     plot_task_map_grid,
     prepare_for_display_pie,
+    safe_mean,
 )
 
 # ---- Distractor-attention plot style constants ----------------------------
@@ -126,7 +127,6 @@ class Plotter:
         }
         self.results_path: Path = results_path
 
-        self.plot_counter_task: int = 0
         self.plot_counter_prompt: int = 0
 
         self.warning_counter = 0
@@ -201,7 +201,7 @@ class Plotter:
         y_label: str = None,
         x_label: str = None,
         file_name: str = None,
-        plot_name_add: list[str] = None,
+        path_add: Path = None,
     ) -> None:
         """
         Save the plot to a file.
@@ -209,22 +209,21 @@ class Plotter:
         :param x_label: label for the x-axis, i.e. the data for testing
         :param y_label: label for the y-axis, i.e. the type of data
         :param file_name: name of the file without the path and extension
-        :param plot_name_add: addition to the plot name
+        :param path_add: addition to the plot subdirectory, e.g. for different versions or levels
 
         :return: None
         """
         if file_name:
             plt.savefig(self.results_path / file_name, bbox_inches="tight")
-        elif x_label and y_label and plot_name_add:
+        elif x_label and y_label and path_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
-                self.results_path
-                / f"{'_'.join(plot_name_add)}_{label}_per_{x_label.lower()}_no_{self.plot_counter_task}.png",
+                self.results_path / path_add / f"{label}_per_{x_label.lower()}.png",
                 bbox_inches="tight",
             )
         else:
             raise ValueError(
-                "Either 'file_name' should be provided or 'x_label', 'y_label', and 'plot_name_add'."
+                "Either 'file_name' should be provided or 'x_label', 'y_label', and 'path_add'."
             )
 
         self.plot_counter_prompt += 1
@@ -432,7 +431,7 @@ class Plotter:
         file_name: str = None,
         id: int = 1,
         split_name: str = None,
-        path_add: str = "",
+        path_add: Path = None,
     ) -> None:
         """
         Draw a heat map with the given data.
@@ -441,6 +440,8 @@ class Plotter:
         :param version: version of the data, e.g. "before", "after"
         :param file_name: name of the file to save the plot
         :param id: int id of the level
+        :param split_name: name of the split, if level is "split"
+        :param path_add: addition to the path where the plot is saved
         :return: None
         """
         plt.figure(figsize=(12, 8))
@@ -493,8 +494,15 @@ class Plotter:
         scores = interpretability_result.attn_scores
 
         plt.figure(figsize=(12, 8))
-        # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
-        max_score = max(np.max(scores[1:]), 0.25)
+        if len(scores) > 1:
+            # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
+            max_score = max(np.max(scores[1:]), 0.25)
+        else:
+            warnings.warn(
+                f"No attention scores for task {task_id}, sample {sample_id}, part {part_id},"
+                f" defaulting max_score to 0.25"
+            )
+            max_score = 0.25  # default
         ax = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
 
         # x_labels = x
@@ -521,7 +529,9 @@ class Plotter:
 
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
 
-        plot_subdirectory = self.results_path / version / "interpretability"
+        plot_subdirectory = (
+            self.results_path / version / f"Task-{task_id}" / "interpretability"
+        )
         Path.mkdir(plot_subdirectory, exist_ok=True, parents=True)
         verbosity = "aggr" if "sentence" in x_label.lower() else "ver"
         plt.savefig(
@@ -625,6 +635,7 @@ class Plotter:
         y_label: str = "Accuracy",
         file_name=None,
         plot_name_add: list[str] = None,
+        path_add: Path = None,
     ) -> None:
         plt.figure(figsize=(15, 5))
         num_of_data_arrays = 0
@@ -673,7 +684,7 @@ class Plotter:
             num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        self._save_plot(y_label, x_label, file_name, path_add)
 
     def plot_correlation(
         self,
@@ -683,10 +694,10 @@ class Plotter:
         y_label: str = "Y",
         file_name=None,
         plot_name_add: list[str] = None,
-        path_add: str = "",
+        path_add: Path = None,
         level: str = None,
         include_soft: bool = True,
-        label_add: list[str] = [],
+        label_add: list[str] = None,
     ) -> None:
         """
         Plot the correlation between two variables.
@@ -763,7 +774,7 @@ class Plotter:
                 color=color,
                 zorder=3,
             )
-            for i, label in enumerate(label_add):
+            for i, label in enumerate(label_add or []):
                 plt.annotate(label, (metr[i] + 0.001, y_data[i] + 0.001))
 
         self._plot_general_details(
@@ -1253,7 +1264,7 @@ class Plotter:
         plot_name_add: list[str] = None,
         level: str = None,
         id: int = 1,
-        path_add: str = None,
+        path_add: Path = None,
     ) -> None:
         """
         Plot the correlation between two variables as histogram, i.e. parts attributes per part lengths.
@@ -1393,7 +1404,7 @@ class Plotter:
         version: str = False,
         file_name: str = None,
         plot_name_add: list[str] = None,
-        path_add: str = "",
+        path_add: Path = None,
         level: str = None,
     ) -> None:
         """
@@ -2132,10 +2143,10 @@ class Plotter:
         stats_correct = [_mean_sem_n(data[True][c]) for c in categories]
         stats_incorrect = [_mean_sem_n(data[False][c]) for c in categories]
 
-        means_correct = [s[0] for s in stats_correct]
+        means_correct = [safe_mean(data[True][c]) for c in categories]
         sems_correct = [s[1] for s in stats_correct]
         ns_correct = [s[2] for s in stats_correct]
-        means_incorrect = [s[0] for s in stats_incorrect]
+        means_incorrect = [safe_mean(data[False][c]) for c in categories]
         sems_incorrect = [s[1] for s in stats_incorrect]
         ns_incorrect = [s[2] for s in stats_incorrect]
 
