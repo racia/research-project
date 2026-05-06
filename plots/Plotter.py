@@ -2276,6 +2276,7 @@ class Plotter:
             color=self._da_color_distractor,
             linewidth=2,
             label="Distractor attention",
+            linestyle="--",
         )[0]
         ax_attn.fill_between(
             ns,
@@ -2291,6 +2292,7 @@ class Plotter:
             color=self._da_color_supporting,
             linewidth=2,
             label="Supporting attention",
+            linestyle="-",
         )[0]
         ax_attn.fill_between(
             ns,
