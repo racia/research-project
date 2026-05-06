@@ -1,0 +1,27 @@
+name: research-project-eval
+channels:
+  - conda-forge
+  - defaults
+  - anaconda
+dependencies:
+  - python>=3.9
+  - numpy<1.23.0
+  - typing_extensions
+  - tqdm
+  - hydra-core
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - nltk
+  - huggingface_hub
+  - pyarrow
+  - ffmpeg
+  - openblas-devel
+  - pip
+  - pip:
+      - transformers
+      - datasets
+      - accelerate>=0.26.0
+      - scipy==1.8.0
+      - seaborn==0.13.2
+      - prettytable

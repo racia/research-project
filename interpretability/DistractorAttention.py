@@ -1,14 +1,16 @@
 from __future__ import annotations
 
-import ast
 import warnings
 from collections import defaultdict
 from dataclasses import dataclass
 
 import numpy as np
-import pandas as pd
 
 from inference.DataLevels import SamplePart
+from interpretability.utils import (
+    _mean_attn_over_indices,
+    _sentence_attn_from_interpretability,
+)
 
 
 @dataclass
@@ -26,6 +28,7 @@ class DistractorAttentionRecord:
     attn_supporting: float | None
     attn_neutral: float | None
     n_distractors: int
+    n_supporting: int
     n_neutral: int
 
     def as_dict(self) -> dict:
@@ -43,8 +46,12 @@ class DistractorAttentionRecord:
             "attn_distractor": (
                 "" if self.attn_distractor is None else self.attn_distractor
             ),
+            "attn_supporting": (
+                "" if self.attn_supporting is None else self.attn_supporting
+            ),
             "attn_neutral": "" if self.attn_neutral is None else self.attn_neutral,
             "n_distractors": self.n_distractors,
+            "n_supporting": self.n_supporting,
             "n_neutral": self.n_neutral,
         }
 
@@ -81,12 +88,9 @@ class DistractorAttentionStats:
         """
         Return attention values grouped by answer correctness and sentence role.
 
-        Records whose attn_distractor or attn_neutral is None are omitted from
-        the corresponding list but do not affect the other role.
-
         :return: nested dict of the form
-                 {True: {"distractor": [...], "neutral": [...]},
-                  False: {"distractor": [...], "neutral": [...]}}
+                 {True: {"distractor": [...], "supporting": [...], "neutral": [...]},
+                  False: {"distractor": [...], "supporting": [...], "neutral": [...]}}
         """
         groups: dict[bool, dict[str, list[float]]] = {
             True: defaultdict(list),
@@ -95,6 +99,8 @@ class DistractorAttentionStats:
         for r in self.records:
             if r.attn_distractor is not None:
                 groups[r.answer_correct]["distractor"].append(r.attn_distractor)
+            if r.attn_supporting is not None:
+                groups[r.answer_correct]["supporting"].append(r.attn_supporting)
             if r.attn_neutral is not None:
                 groups[r.answer_correct]["neutral"].append(r.attn_neutral)
         return groups
@@ -104,7 +110,7 @@ class DistractorAttentionStats:
         Return per-task mean attention values grouped by correctness and sentence role.
 
         :return: nested dict of the form
-                 {task_id: {True: {"distractor": mean, "neutral": mean}, False: {...}}}
+                 {task_id: {True: {"distractor": mean, "supporting": mean, "neutral": mean}, ...}}
         """
         per_task: dict[int, dict[bool, dict[str, list[float]]]] = defaultdict(
             lambda: {True: defaultdict(list), False: defaultdict(list)}
@@ -114,8 +120,13 @@ class DistractorAttentionStats:
                 per_task[r.task_id][r.answer_correct]["distractor"].append(
                     r.attn_distractor
                 )
+            if r.attn_supporting is not None:
+                per_task[r.task_id][r.answer_correct]["supporting"].append(
+                    r.attn_supporting
+                )
             if r.attn_neutral is not None:
                 per_task[r.task_id][r.answer_correct]["neutral"].append(r.attn_neutral)
+
         return {
             tid: {
                 correct: {role: float(np.mean(vals)) for role, vals in roles.items()}
@@ -126,8 +137,7 @@ class DistractorAttentionStats:
 
     def as_scatter_data(self) -> dict[bool, dict[str, list[float]]]:
         """
-        Return only records that have both attn_distractor and attn_neutral,
-        structured for the scatter plot.
+        Return only records that have both attn_distractor and attn_neutral.
 
         :return: nested dict of the form
                  {True: {"distractor": [...], "neutral": [...]},
@@ -166,81 +176,12 @@ class DistractorAttentionStats:
             "version",
             "answer_correct",
             "attn_distractor",
+            "attn_supporting",
             "attn_neutral",
             "n_distractors",
+            "n_supporting",
             "n_neutral",
         ]
-
-
-def _sentence_attn_from_interpretability(interpretability) -> dict[int, float] | None:
-    """
-    Derive a mapping of {bAbI_line_number: mean_attention} from an InterpretabilityResult.
-
-    The attention matrix (output_tokens × input_tokens) is averaged over output tokens
-    to yield one weight per input token. Sentence boundaries are found by locating
-    bare digit tokens in x_tokens, which correspond to the bAbI line-number prefixes
-    embedded in the prompt.
-
-    :param interpretability: an InterpretabilityResult with attn_scores and x_tokens
-    :return: dict mapping sentence index to mean attention, or None if extraction fails
-    """
-    if interpretability is None or interpretability.empty():
-        return None
-
-    attn: np.ndarray = interpretability.attn_scores
-    x_tokens: list[str] = interpretability.x_tokens
-
-    if attn.size == 0 or not x_tokens:
-        return None
-
-    token_weights: np.ndarray = attn.mean(axis=0)
-
-    if len(token_weights) != len(x_tokens):
-        warnings.warn(
-            f"Token weight length ({len(token_weights)}) does not match x_tokens length "
-            f"({len(x_tokens)}); skipping part."
-        )
-        return None
-
-    sentence_spans: list[tuple[int, int, int]] = []
-    current_sent: int | None = None
-    start: int = 0
-
-    for i, tok in enumerate(x_tokens):
-        first = tok.split()[0] if tok.strip() else ""
-        if first.isdigit():
-            if current_sent is not None:
-                sentence_spans.append((current_sent, start, i))
-            current_sent = int(first)
-            start = i + 1
-
-    if current_sent is not None:
-        sentence_spans.append((current_sent, start, len(x_tokens)))
-
-    if not sentence_spans:
-        return None
-
-    sent_attn: dict[int, float] = {}
-    for sent_idx, s, e in sentence_spans:
-        span = token_weights[s:e]
-        if span.size > 0:
-            sent_attn[sent_idx] = float(span.mean())
-
-    return sent_attn if sent_attn else None
-
-
-def _mean_attn_over_indices(
-    sent_attn: dict[int, float], indices: list[int]
-) -> float | None:
-    """
-    Compute the mean attention over a specific set of sentence indices.
-
-    :param sent_attn: mapping of sentence index to mean attention value
-    :param indices: sentence indices to average over
-    :return: mean attention, or None if no indices overlap with sent_attn
-    """
-    vals = [sent_attn[i] for i in indices if i in sent_attn]
-    return float(np.mean(vals)) if vals else None
 
 
 def collect_distractor_attention_record(
@@ -273,18 +214,40 @@ def collect_distractor_attention_record(
     if result_for_version is None:
         return None
 
+    context_all = part.raw.get("context_all")
+    if context_all is None and part.part_id > 1:
+        warnings.warn(
+            f"context_all missing for part {part.task_id, part.sample_id, part.part_id}; "
+            "previous-part context will not be considered."
+        )
+    context_all = context_all or part.raw.get("context", {})
+    context_line_nums = part.raw.get("context_all_order")
+    if context_line_nums is None:
+        context_line_nums = list(context_all.keys())
+    else:
+        missing = set(map(int, context_all.keys())) - set(map(int, context_line_nums))
+        if missing:
+            warnings.warn(
+                f"context_all_order missing {len(missing)} context lines for part "
+                f"{part.task_id, part.sample_id, part.part_id}; "
+                "sentence-level attention may be misaligned."
+            )
+    context_line_nums = [int(k) for k in context_line_nums]
+
     sent_attn = _sentence_attn_from_interpretability(
-        result_for_version.interpretability
+        result_for_version.interpretability,
+        context_line_nums=context_line_nums,
     )
     if sent_attn is None:
         return None
 
     supporting: set[int] = set(part.supporting_sent_inx)
     distractors: set[int] = set(getattr(part, "distractors", []))
-    all_context: set[int] = set(part.raw["context"].keys())
-    neutral: set[int] = all_context - supporting - distractors
+    all_context: set[int] = set(int(k) for k in context_all.keys())
+    neutral: set[int] = set(getattr(part, "neutral", [])) or (
+        all_context - supporting - distractors
+    )
 
-    # --- attention aggregation ---
     attn_supporting = _mean_attn_over_indices(sent_attn, list(supporting))
     attn_distractor = _mean_attn_over_indices(sent_attn, list(distractors))
     attn_neutral = _mean_attn_over_indices(sent_attn, list(neutral))
@@ -299,93 +262,6 @@ def collect_distractor_attention_record(
         attn_distractor=attn_distractor,
         attn_neutral=attn_neutral,
         n_distractors=len(distractors),
+        n_supporting=len(supporting),
         n_neutral=len(neutral),
     )
-
-
-def _parse_index_list(val) -> list[int]:
-    """
-    Parse a list of sentence indices from a stored value, tolerating multiple
-    serialisation formats including Python list literals and comma-separated strings.
-
-    :param val: the raw stored value
-    :return: list of integer sentence indices
-    """
-    if isinstance(val, list):
-        return [int(x) for x in val]
-    if not isinstance(val, str) or not val.strip():
-        return []
-    try:
-        parsed = ast.literal_eval(val)
-        return [int(x) for x in parsed]
-    except (ValueError, SyntaxError):
-        return [int(x) for x in val.split(",") if x.strip().lstrip("-").isdigit()]
-
-
-def compute_distractor_attention_from_csvs(
-    correct_df: pd.DataFrame,
-    incorrect_df: pd.DataFrame,
-    version: str,
-    attn_col_prefix: str = "attn_sentence_",
-    distractor_col: str = "distractors",
-    supporting_col: str = "supporting_sent_inx",
-) -> DistractorAttentionStats:
-    """
-    Build a DistractorAttentionStats from two pre-filtered DataFrames.
-
-    This is the offline entry point for comparing two separate filtered eval runs,
-    e.g. a CSV filtered to correct answers against one filtered to incorrect answers,
-    or the two halves of a single CSV split on an answer_correct column.
-
-    Expected columns per row:
-      - task_id, sample_id, part_id
-      - attn_sentence_1, attn_sentence_2, … (one column per context sentence)
-      - distractors: parseable list of sentence indices, e.g. "[3, 7]"
-      - supporting_sent_inx: parseable list of supporting fact indices
-
-    :param correct_df: rows where the model answered correctly
-    :param incorrect_df: rows where the model answered incorrectly
-    :param version: "before" or "after", stored verbatim in each record
-    :param attn_col_prefix: prefix for per-sentence attention columns
-    :param distractor_col: column name holding distractor sentence indices
-    :param supporting_col: column name holding supporting fact sentence indices
-    :return: populated DistractorAttentionStats
-    """
-    stats = DistractorAttentionStats()
-
-    def _row_mean_attn(row: pd.Series, indices: list[int]) -> float | None:
-        vals = [
-            float(row[f"{attn_col_prefix}{i}"])
-            for i in indices
-            if f"{attn_col_prefix}{i}" in row.index
-            and pd.notna(row[f"{attn_col_prefix}{i}"])
-        ]
-        return float(np.mean(vals)) if vals else None
-
-    for answer_correct, df in [(True, correct_df), (False, incorrect_df)]:
-        for _, row in df.iterrows():
-            supporting = set(_parse_index_list(row.get(supporting_col, "")))
-            distractors = set(_parse_index_list(row.get(distractor_col, "")))
-            attn_cols = [c for c in row.index if c.startswith(attn_col_prefix)]
-            all_ctx = {
-                int(c.replace(attn_col_prefix, ""))
-                for c in attn_cols
-                if pd.notna(row[c])
-            }
-            neutral = all_ctx - supporting - distractors
-
-            stats.add(
-                DistractorAttentionRecord(
-                    task_id=int(row["task_id"]),
-                    sample_id=int(row["sample_id"]),
-                    part_id=int(row["part_id"]),
-                    version=version,
-                    answer_correct=answer_correct,
-                    attn_distractor=_row_mean_attn(row, list(distractors)),
-                    attn_neutral=_row_mean_attn(row, list(neutral)),
-                    n_distractors=len(distractors),
-                    n_neutral=len(neutral),
-                )
-            )
-
-    return stats
