@@ -51,9 +51,10 @@ fi
 
 echo "Evaluating data for setting: $setting, task: $task, samples per task: $samples_per_task, create heatmaps: $create_heatmaps"
 
-if [ "$create_heatmaps" = "true" ]; then
-    srun python3 evaluate_data.py --results_path $results_path --save_path $save_path --samples_per_task $samples_per_task --experiment $experiment --setting $setting --create-heatmaps
-else
-    srun python3 evaluate_data.py --results_path $results_path --save_path $save_path --samples_per_task $samples_per_task
-fi
-
+srun python3 evaluate_data.py \
+    --results_path $results_path \
+    --save_path $save_path \
+    --samples_per_task $samples_per_task \
+    --experiment $full_mode \
+    --setting $setting \
+    ${create_heatmaps:+--create_heatmaps}
