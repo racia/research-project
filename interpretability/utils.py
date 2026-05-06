@@ -105,6 +105,11 @@ def _aggregated_sentence_attn(
     if context_line_nums is None:
         return None
 
+    seen: set[int] = set()
+    context_line_nums = [
+        int(x) for x in context_line_nums if not (int(x) in seen or seen.add(int(x)))
+    ]
+
     sent_attn: dict[int, float] = {}
     n_context_seen = 0
 

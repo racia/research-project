@@ -1510,11 +1510,7 @@ class Plotter:
         Boxplot of mean attention on distractor vs neutral context, split by
         answer correctness.
 
-        :param stats: accumulated distractor attention records for this version
-        :param version: "before" or "after"; appears in the filename
-        :param plot_name_add: extra tags appended to the title (in brackets)
-        :param path_add: sub-folder under results_path
-        :param show_values: when True, print the median of each box on the plot
+        Uses the full context up to each question (including previous parts).
         """
         grouped = stats.as_grouped()
 

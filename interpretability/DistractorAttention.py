@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import warnings
 from collections import defaultdict
 from dataclasses import dataclass
 
@@ -213,10 +214,26 @@ def collect_distractor_attention_record(
     if result_for_version is None:
         return None
 
-    # Pass the part's bAbI context line numbers so aggregated-mode x_tokens can
-    # be mapped back from chat-sentence position to bAbI line number. Sorted to
-    # match the order context sentences are emitted into the prompt.
-    context_line_nums = sorted(int(k) for k in part.raw.get("context", {}).keys())
+    context_all = part.raw.get("context_all")
+    if context_all is None and part.part_id > 1:
+        warnings.warn(
+            f"context_all missing for part {part.task_id, part.sample_id, part.part_id}; "
+            "previous-part context will not be considered."
+        )
+    context_all = context_all or part.raw.get("context", {})
+    context_line_nums = part.raw.get("context_all_order")
+    if context_line_nums is None:
+        context_line_nums = list(context_all.keys())
+    else:
+        missing = set(map(int, context_all.keys())) - set(map(int, context_line_nums))
+        if missing:
+            warnings.warn(
+                f"context_all_order missing {len(missing)} context lines for part "
+                f"{part.task_id, part.sample_id, part.part_id}; "
+                "sentence-level attention may be misaligned."
+            )
+    context_line_nums = [int(k) for k in context_line_nums]
+
     sent_attn = _sentence_attn_from_interpretability(
         result_for_version.interpretability,
         context_line_nums=context_line_nums,
@@ -226,8 +243,10 @@ def collect_distractor_attention_record(
 
     supporting: set[int] = set(part.supporting_sent_inx)
     distractors: set[int] = set(getattr(part, "distractors", []))
-    all_context: set[int] = set(part.raw["context"].keys())
-    neutral: set[int] = all_context - supporting - distractors
+    all_context: set[int] = set(int(k) for k in context_all.keys())
+    neutral: set[int] = set(getattr(part, "neutral", [])) or (
+        all_context - supporting - distractors
+    )
 
     attn_supporting = _mean_attn_over_indices(sent_attn, list(supporting))
     attn_distractor = _mean_attn_over_indices(sent_attn, list(distractors))
