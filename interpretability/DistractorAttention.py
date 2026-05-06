@@ -252,6 +252,9 @@ def collect_distractor_attention_record(
     attn_distractor = _mean_attn_over_indices(sent_attn, list(distractors))
     attn_neutral = _mean_attn_over_indices(sent_attn, list(neutral))
 
+    if len(distractors) == 0 and attn_distractor is None:
+        attn_distractor = 0.0
+
     return DistractorAttentionRecord(
         task_id=part.task_id,
         sample_id=part.sample_id,

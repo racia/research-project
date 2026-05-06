@@ -2208,7 +2208,9 @@ class Plotter:
         """
         by_n: dict[int, list] = defaultdict(list)
         for r in stats.records:
-            if r.attn_distractor is None or r.attn_supporting is None:
+            if r.attn_supporting is None:
+                continue
+            if r.attn_distractor is None and r.n_distractors != 0:
                 continue
             by_n[r.n_distractors].append(r)
 
@@ -2242,7 +2244,16 @@ class Plotter:
         bin_n = []
         for n in ns:
             recs = by_n[n]
-            m, s = _mean_sem([r.attn_distractor for r in recs])
+            dist_vals = [
+                (
+                    0.0
+                    if (r.attn_distractor is None and r.n_distractors == 0)
+                    else r.attn_distractor
+                )
+                for r in recs
+                if (r.attn_distractor is not None or r.n_distractors == 0)
+            ]
+            m, s = _mean_sem(dist_vals)
             dist_mean.append(m)
             dist_sem.append(s)
             m, s = _mean_sem([r.attn_supporting for r in recs])
