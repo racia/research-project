@@ -1,10 +1,10 @@
-name: research-project-4
+name: research-project
 channels:
   - conda-forge
   - defaults
   - anaconda
-#  - nvidia
-#  - pytorch
+  - nvidia
+  - pytorch
 dependencies:
   - python>=3.9
   - numpy<1.23.0
@@ -20,10 +20,10 @@ dependencies:
   - ffmpeg
   - openblas-devel
   - pip
-#  - pytorch=1.11.0
-#  - torchvision=0.12
-#  - torchaudio=0.11
-#  - cudatoolkit=11.5
+  - pytorch=1.11.0
+  - torchvision=0.12
+  - torchaudio=0.11
+  - cudatoolkit=11.5
   - pip:
       - transformers
       - datasets
