@@ -148,6 +148,8 @@ class DataLoader:
 
         self.filtering_conditions = filtering_conditions
 
+        self.missing_attn_scores = set()
+
     @staticmethod
     def get_task_mapping(path: Path) -> dict[int, list[Path]]:
         """
@@ -378,34 +380,41 @@ class DataLoader:
             multi_system=True,
             lookup=True,
         )
-        multi_system = False
+        if row.get(f"model_output_before", None):
+            multi_system = False
+        elif row.get(f"model_output_after", None):
+            multi_system = True
+        else:
+            print("row keys:", row.keys())
+            raise ValueError(
+                "Neither 'model_output_before' nor 'model_output_after' is found in the results data."
+            )
+
+        versions = ["before", "after"] if multi_system else ["before"]
         for row in data:
             if row["sample_id"] > self.samples_per_task:
                 continue
 
             identifier = (row["task_id"], row["sample_id"], row["part_id"])
-
             if identifier not in raw_parts.keys():
+                warnings.warn(
+                    "Identifier %s is found in the results but not in the raw data. Skipping this part."
+                    % str(identifier)
+                )
                 continue
 
             raw_part = raw_parts[identifier]
-            for version in ["before", "after"]:
-                if not row.get(f"model_output_{version}", None):
-                    multi_system = False
-                    continue
-
-                if not row[f"model_output_{version}"]:
-                    raise ValueError(
-                        f"Model output {version} is not found in row {row['id_']}: {row[f'model_output_{version}']}"
+            for version in versions:
+                if row.get(f"model_output_{version}") is None:
+                    warnings.warn(
+                        f"Model output for version '{version}' is None for identifier {identifier}. Setting the model output and reasoning to 'None'."
                     )
-
-                multi_system = True
-                attn_path = (
-                    Path(results_path).parent
-                    / version
-                    / "interpretability"
-                    / "attn_scores"
-                )
+                    row[f"model_output_{version}"] = "None"
+                    row[f"model_reasoning_{version}"] = "None"
+                    # raise ValueError(
+                    #     f"Model output '{version}' is not found for identifier {identifier}: {row}"
+                    # )
+                attn_path = Path(results_path).parent / version / "interpretability"
                 if not attn_path.exists():
                     # attn_scores subfolder is not present in newer results
                     attn_path = attn_path.parent
@@ -446,11 +455,16 @@ class DataLoader:
 
             parts.append(raw_part)
 
+        version_id = 1 if multi_system else 0
+        if all(part.results[version_id].interpretability.empty() for part in parts):
+            raise Exception(
+                "No interpretability found in this run for version %d." % version_id
+            )
+
         if len(parts) != self.number_of_parts:
             warnings.warn(
                 "The number of raw loaded parts does not match the number of loaded results parts: "
-                "%d != %d"
-                % (len(parts), self.number_of_parts)
+                "%d != %d" % (len(parts), self.number_of_parts)
             )
         return structure_parts(parts), multi_system
 
@@ -533,9 +547,8 @@ class DataLoader:
         }
         return silver_reasoning_data
 
-    @staticmethod
     def load_interpretability(
-        task_id: int, sample_id: int, part_id: int, attn_scores_path: str
+        self, task_id: int, sample_id: int, part_id: int, attn_scores_path: str
     ) -> InterpretabilityResult:
         """
         Load the interpretability results for a specific part.
@@ -547,39 +560,57 @@ class DataLoader:
         :return: Interpretability Result object
         """
         path = Path(attn_scores_path)
+        identifier = f"{task_id}-{sample_id}-{part_id}"
         if not path.exists():
             warnings.warn(
                 f"The interpretability data is not found at path: {attn_scores_path}"
             )
             return InterpretabilityResult(np.array([]), [], [], 0.0, 0.0)
 
-        if path.name != "interpretability":
-            raise ValueError("The attention subdirectory is not located.")
-
+        attn_scores_file = f"attn_scores-{identifier}.txt"
+        attn_scores_path = path / attn_scores_file
         try:
-            attn_scores_file = f"attn_scores-{task_id}-{sample_id}-{part_id}.txt"
-            with open(path / attn_scores_file, "r", encoding="UTF-8") as f:
+            with open(attn_scores_path, "r", encoding="UTF-8") as f:
                 attn_scores_rows = f.read().splitlines()
                 attn_scores = [
                     list(map(float, row.split("\t"))) for row in attn_scores_rows
                 ]
                 attn_scores = np.array(attn_scores)
-
         except FileNotFoundError:
+            self.missing_attn_scores.add((task_id, sample_id, part_id))
+            warnings.warn(
+                f"Attention scores file is not found for {identifier} at path {attn_scores_path}."
+            )
             attn_scores = np.array([])
 
+        x_tokens_file = f"x_tokens-{identifier}.txt"
+        x_tokens_path = path / x_tokens_file
         try:
-            x_tokens_file = f"x_tokens-{task_id}-{sample_id}-{part_id}.txt"
-            with open(path / x_tokens_file, "r", encoding="UTF-8") as f:
+            with open(x_tokens_path, "r", encoding="UTF-8") as f:
                 x_tokens = [token.strip() for token in f.read().splitlines()]
         except FileNotFoundError:
+            self.missing_attn_scores.add((task_id, sample_id, part_id))
+            warnings.warn(
+                f"x_tokens file is not found for {identifier} at path {x_tokens_path}."
+            )
             x_tokens = []
 
+        y_tokens_file = f"y_tokens-{identifier}.txt"
+        y_tokens_path = path / y_tokens_file
         try:
-            y_tokens_file = f"y_tokens-{task_id}-{sample_id}-{part_id}.txt"
-            with open(path / y_tokens_file, "r", encoding="UTF-8") as f:
+            if y_tokens_path.exists() and y_tokens_path.stat().st_size == 0:
+                warnings.warn(
+                    f"y_tokens file is empty for {identifier} at path {y_tokens_path}. "
+                    f"This may be the case of overgeneralisation and storing ['None'], so setting the tokens to that."
+                )
+                y_tokens = ["None"]
+            with open(y_tokens_path, "r", encoding="UTF-8") as f:
                 y_tokens = [token.strip() for token in f.read().splitlines()]
         except FileNotFoundError:
+            self.missing_attn_scores.add((task_id, sample_id, part_id))
+            warnings.warn(
+                f"y_tokens file is not found for {identifier} at path {y_tokens_path}."
+            )
             y_tokens = []
 
         interpretability_result = InterpretabilityResult(

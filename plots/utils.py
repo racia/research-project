@@ -244,3 +244,15 @@ def extract_attention_by_correct(stats: DistractorAttentionStats):
         grouped[r.answer_correct]["neutral"].append(r.attn_neutral)
 
     return grouped
+
+
+def safe_mean(arr):
+    if arr is None:
+        return np.nan
+
+    cleaned = [x for x in arr if x is not None]
+
+    if len(cleaned) == 0:
+        return np.nan
+
+    return np.mean(cleaned)
