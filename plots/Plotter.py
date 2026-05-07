@@ -199,7 +199,7 @@ class Plotter:
         if "accurac" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.7, 0.1)
+            y_ticks = np.arange(0, 0.7, 0.1) # Attention scores vary between 0 and 1, with higher values in the direct answer setting. We dynamically adjust the y-axis limit to better visualize the differences between the scores, which are often below 0.6. For da scores, we keep the full range up to 1, as they can vary more widely.
             plt.ylim(bottom=0, top=0.6)
         elif "reasoning" in y_label.lower():
             plt.ylim(bottom=0, top=1)
@@ -649,8 +649,9 @@ class Plotter:
                 markersize=np.sqrt(size),  # markersize is diameter in points
                 label=f"Std Dev: {val:.2f}"
             )
-            for val, size in zip(stddev_arr, sizes) if val == min(stddev_arr) or val == max(stddev_arr) or abs(val - np.median(stddev_arr)) < 1e-6
+            for val, size in set(zip(stddev_arr, sizes)) if val == min(stddev_arr) or val == max(stddev_arr) or abs(val - np.median(stddev_arr)) < 1e-1
         ]
+        legend_handles = sorted(legend_handles, key=lambda h: float(h.get_label().split(": ")[1]), reverse=True)
 
         # 3. Get existing handles/labels
         handles, labels = plt.gca().get_legend_handles_labels()
@@ -1252,7 +1253,7 @@ class Plotter:
                 2
             )  # Ensure numeric values are rounded if needed
         max_x_len = max(df[x_label])
-        step_size = 2 if max_x_len > 30 else 1
+        step_size = 4 if max_x_len >= 100 else 2 if max_x_len >= 30 else 1
 
         pivot_ratios = df.pivot_table(
             values=[corr_ratio, incorr_ratio],
@@ -1415,7 +1416,7 @@ class Plotter:
         #     hue_order=label_order if len(df.columns) > 2 else None,
         # )
         hue_col = f"{label_column}_"
-        use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) > 1
+        use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) >= 1 # only use hue if there is at least one non-NaN value
 
         try:
             ax = sns.boxplot(
