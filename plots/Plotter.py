@@ -161,6 +161,9 @@ class Plotter:
         combined_handles: list[Line2D] = None,
         combined_labels: list[str] = None,
         legend_title: str = None,
+        experiment: str = "direct_answer",
+        num_parts: int = None,
+        num_samples: int = None,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -177,6 +180,8 @@ class Plotter:
         :param min_x_len: minimum length of the x-axis
         :step: step size for x-ticks
         :min_x_len: minimum length of the x-axis
+        :num_parts: The number of parts processed (if applicable, e.g. for part-level plots)
+        :num_samples: The number of samples processed
         :return: None
         """
         try:
@@ -199,8 +204,12 @@ class Plotter:
         if "accurac" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.7, 0.1) # Attention scores vary between 0 and 1, with higher values in the direct answer setting. We dynamically adjust the y-axis limit to better visualize the differences between the scores, which are often below 0.6. For da scores, we keep the full range up to 1, as they can vary more widely.
-            plt.ylim(bottom=0, top=0.6)
+            if "direct" in experiment.lower():
+                # Attention scores vary between 0 and 1, with higher values in the direct answer setting. We dynamically adjust the y-axis limit to better visualize the differences between the scores, which are often below 0.6. For da scores, we keep the full range up to 1, as they can vary more widely.
+                plt.ylim(bottom=0, top=1.0)
+            else:
+                y_ticks = np.arange(0, 0.31, 0.05)
+                plt.ylim(bottom=0, top=0.3)
         elif "reasoning" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif displ_percentage:
@@ -222,6 +231,15 @@ class Plotter:
             title += f" ({'; '.join(plot_name_add)})"
 
         plt.title(title)
+
+        stats = []
+        if num_parts is not None:
+            stats.append(f"Processed parts: {num_parts}")
+        if num_samples is not None:
+            stats.append(f"Processed samples: {num_samples}")
+        if stats:
+            plt.gcf().text(0.01, 0.01, "\n".join(stats), fontsize=9, va='bottom', ha='left')
+
         if displ_percentage:
             plt.gca().yaxis.set_major_formatter(
                 PercentFormatter(1)
@@ -507,7 +525,7 @@ class Plotter:
 
     def plot_correlation(
         self,
-        x_data: dict[str | Prompt, Accuracy | Metric],
+        x_data: dict[str | Prompt, Accuracy | Metric]|list[float]|np.array,
         y_data: list[float],
         x_label: str = "X",
         y_label: str = "Y",
@@ -516,7 +534,8 @@ class Plotter:
         path_add: Path = None,
         level: str = None,
         include_soft: bool = True,
-        label_add: list[str] = None,
+        label_add: list[str] = [],
+        experiment: str = "direct_answer",
     ) -> None:
         """
         Plot the correlation between two variables.
@@ -542,15 +561,17 @@ class Plotter:
         max_x_len = 1
         metr_types = 0
         min_x_len = 0
-
-        x_data_points = {
-            k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
-        }
+        if isinstance(x_data, dict):
+            x_data_points = {
+                k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
+            }
+        else:
+            x_data_points = {"data": x_data}
         x_err = [
             x_data_points.pop(k)
-            for k in x_data
+            for k in x_data.keys()
             if "std" in k.lower() and k in x_data_points
-        ]
+        ] if isinstance(x_data, dict) else []
         colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
 
         # Example scaling: avoid zero size, set min/max
@@ -649,7 +670,7 @@ class Plotter:
                 markersize=np.sqrt(size),  # markersize is diameter in points
                 label=f"Std Dev: {val:.2f}"
             )
-            for val, size in set(zip(stddev_arr, sizes)) if val == min(stddev_arr) or val == max(stddev_arr) or abs(val - np.median(stddev_arr)) < 1e-1
+            for val, size in set(zip(stddev_arr, sizes)) if val == min(stddev_arr) or val == max(stddev_arr) or abs(val - np.median(stddev_arr)) <= 1e-2
         ]
         legend_handles = sorted(legend_handles, key=lambda h: float(h.get_label().split(": ")[1]), reverse=True)
 
@@ -671,7 +692,10 @@ class Plotter:
             min_x_len=min_x_len,
             combined_handles=combined_handles,
             combined_labels=combined_labels,
-            legend_title="Metric Size & Circle Size" 
+            legend_title="Metric Size & Circle Size", 
+            experiment=experiment,
+            num_parts=len(y_data) if isinstance(x_data, list) else None,
+            num_samples=len(x_data) if isinstance(x_data, dict) else None,
         )
         if path_add:
             file_name = path_add / file_name.lower()
@@ -1165,6 +1189,7 @@ class Plotter:
         level: str = None,
         id: int = 1,
         path_add: Path = None,
+        experiment: str = "direct_answer",
     ) -> None:
         """
         Plot the correlation between two variables as histogram, i.e. parts attributes per part lengths.
@@ -1203,7 +1228,7 @@ class Plotter:
         else:
             fig, ax = plt.subplots(figsize=(10, 5))
             width = 0.35
-
+        x_data = {k: v.all for k, v in x_data.items()} if isinstance(x_data, dict) else {"data": x_data}
         df = pd.DataFrame(
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
@@ -1292,6 +1317,7 @@ class Plotter:
             plot_name_add=plot_name_add,
             legend_title=label_column,
             step=step_size,
+            experiment=experiment,
         )
 
         (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
@@ -1304,7 +1330,7 @@ class Plotter:
 
     def plot_corr_boxplot(
         self,
-        x_data: dict[str | Prompt, Accuracy | Metric],
+        x_data: dict[str | Prompt, Accuracy | Metric]|list[float] | np.array,
         y_data: dict[str : list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
@@ -1314,6 +1340,7 @@ class Plotter:
         plot_name_add: list[str] = None,
         path_add: Path = None,
         level: str = None,
+        experiment: str = None,
     ) -> None:
         """
         Plot the correlation between two variables as boxplot, i.e. parts attributes per part lengths.
@@ -1332,6 +1359,9 @@ class Plotter:
         :param level: level of the data, e.g. "task", "sample", "part"
         :return: None
         """
+        # Part-level if x_data is list/array, else sample/task-level if dict
+        # Currently only used for part-level plots
+
         if level == "split":  # bigger plots for splits
             plt.figure(figsize=(12, 8))
         else:
@@ -1344,7 +1374,7 @@ class Plotter:
                 df_data.update(y_vals)
             else:
                 df_data[y_keys] = y_vals
-
+        x_data = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
         df = pd.DataFrame(
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
@@ -1403,8 +1433,6 @@ class Plotter:
                 else x
             )
         )
-        # df[x_label] = df[x_label].round()
-
         # this sns.boxplot returns an error:
         # UnboundLocalError: cannot access local variable 'boxprops' where it is not associated with a value
         # when the input is all-NaN/empty after filtering
@@ -1450,6 +1478,7 @@ class Plotter:
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
             legend_title=" ".join(label_column.split("_")).title(),
+            experiment=experiment,
         )
 
         if path_add:
