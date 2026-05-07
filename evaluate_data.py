@@ -10,18 +10,26 @@
 # 8) It prints the metrics table.
 # 9) It categorizes the results into different cases.
 # 10) It saves the categorized results to the specified path.
+
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from collections import defaultdict
 from pathlib import Path
 
+import pandas as pd
+
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
+from evaluation.DistractorAttention import (
+    DistractorAttentionStats,
+    collect_distractor_attention_record,
+)
 from evaluation.utils import extract_split
-from inference.DataLevels import Results, Sample, Split, Task, SamplePart, print_metrics
+from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
 from plots.Plotter import Plotter
 
@@ -36,8 +44,8 @@ def remove_unnecessary_columns(
     """
     Remove unnecessary columns from the row.
 
-    :param row: The row to remove the columns from.
-    :param headers: The headers of the columns.
+    :param row: the row to remove the columns from
+    :param headers: the headers of the columns
     :return: None
     """
     unnecessary_columns = [
@@ -59,12 +67,27 @@ def remove_unnecessary_columns(
             del headers["general"][headers["general"].index("silver_reasoning")]
 
 
+def extract_split(path) -> str:
+    """
+    Extract the split from the data path. If the split is not found, return "split".
+
+    :param path: the path to the data
+    :return: the split
+    """
+    for split in ["valid", "test", "train"]:
+        if split in path:
+            return split
+    return "split"
+
+
 def structure_result(headers_results: list[str], row: dict, version) -> dict[str, list]:
     """
     Structure the result into a dictionary.
-    :param headers_results: The headers and results.
-    :param row: The row of data to structure.
-    :return: The structured result.
+
+    :param headers_results: the headers and results
+    :param row: the row of data to structure
+    :param version: the version to structure for
+    :return: the structured result
     """
     h_patt = re.compile(r"(.+)_(?:after|before)")
     result = [
@@ -83,6 +106,12 @@ def get_result(
 ) -> dict[str, str] | None:
     """
     Get the result for the task_id, sample_id and part_id.
+
+    :param results_data: the list of result dicts to search
+    :param task_id: the task id to match
+    :param sample_id: the sample id to match
+    :param part_id: the part id to match
+    :return: the matching result dict, or None
     """
     for row in results_data:
         if (
@@ -95,11 +124,16 @@ def get_result(
 
 
 def validate_inputs(run_fn):
-    """Validate the inputs for the evaluation pipeline."""
+    """
+    Validate the inputs for the evaluation pipeline.
+
+    :param run_fn: the run function to wrap
+    :return: the wrapped function with input validation
+    """
 
     def validation_wrapper(**kwargs):
         experiment = kwargs.get("experiment", "").lower()
-        supported_experiments = ["reasoning_answer", "direct_answer"]
+        supported_experiments = ["reasoning", "direct_answer"]
         if not experiment:
             raise ValueError(
                 f"Please provide an experiment to evaluate from {supported_experiments}"
@@ -128,7 +162,7 @@ def validate_inputs(run_fn):
         if not kwargs.get("results_path", ""):
             raise ValueError("Please provide a path to the data for evaluation.")
 
-        filtering_conditions = kwargs.get("filtering_condition", {})
+        filtering_conditions = kwargs.get("filtering_conditions", {})
         if filtering_conditions:
             for attr in filtering_conditions.keys():
                 assert hasattr(
@@ -153,17 +187,17 @@ def run(
     """
     Run the evaluation pipeline.
 
-    :param results_path: Path to the data for evaluation
-    :param save_path: Path to save the results
-    :param samples_per_task: Number of samples per task the results were ran with
-    :param experiment: The experiment to evaluate (e.g., "reasoning_answer", "direct_answer")
-    :param setting: The setting of the experiment (e.g., "baseline", "feedback")
+    :param results_path: path to the data for evaluation
+    :param save_path: path to save the results
+    :param samples_per_task: number of samples per task the results were run with
+    :param experiment: the experiment to evaluate (e.g., "reasoning", "direct_answer")
+    :param setting: the setting of the experiment (e.g., "baseline", "feedback")
     :param filtering_conditions: a dictionary of conditions (SamplePart attributes) and values;
                                  all the parts having an attribute with such value will be preserved;
                                  if you need a function result, create a new attribute in
                                  SamplePart __init__ and use it as a filtering condition
-    :param verbose: Whether to print the results to the console
-    :param create_heatmaps: Whether to create heatmaps for the interpretability results
+    :param create_heatmaps: whether to create heatmaps for the interpretability results
+    :param verbose: whether to print the results to the console
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
@@ -178,6 +212,7 @@ def run(
         samples_per_task=samples_per_task,
         filtering_conditions=filtering_conditions,
     )
+
     # loaded results in parts with original data, tokens-ids, and interpretability results
     results_data, multi_system = loader.load_results(
         results_path=results_path,
@@ -185,6 +220,7 @@ def run(
         split=extract_split(results_path),
         as_parts=True,
     )
+
     # maybe loaded_baseline_results is not needed for evaluation
     saver = DataSaver(
         save_to=str(Path(save_path) / "eval"),
@@ -200,6 +236,13 @@ def run(
     print(f"\nLoaded results data for {len(results_data)} tasks.")
     print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
 
+    distractor_stats: dict[str, DistractorAttentionStats] = defaultdict(
+        DistractorAttentionStats
+    )
+    distractor_stats_per_task: dict[int, dict[str, DistractorAttentionStats]] = (
+        defaultdict(lambda: defaultdict(DistractorAttentionStats))
+    )
+
     data_split = extract_split(results_path)
     sample, task, split = None, None, Split(name=data_split, multi_system=multi_system)
     for task_id, samples in results_data.items():
@@ -213,12 +256,11 @@ def run(
                 sample_id=sample_id,
                 multi_system=multi_system,
             )
-            # Used to store the correct answers for each sample for later evaluation
 
+            # Used to store the correct answers for each sample for later evaluation
             for part in parts:
                 for version, result in zip(part.versions, part.results):
                     # TODO: add reasoning judgment to part results for it to be saved in the results table
-
                     if create_heatmaps and not result.interpretability.empty():
                         plotter.draw_heat(
                             result.interpretability,
@@ -234,9 +276,21 @@ def run(
 
                 sample.add_part(part)
                 result = part.get_result()
-
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
+
+                for version in part.versions:
+                    answer_correct = result.get(f"answer_correct_{version}")
+                    if answer_correct is not None:
+                        record = collect_distractor_attention_record(
+                            part=part,
+                            answer_correct=answer_correct,
+                            version=version,
+                        )
+                        if record is not None:
+                            distractor_stats[version].add(record)
+                            distractor_stats_per_task[task_id][version].add(record)
+
                 saver.save_output(
                     data=[result],
                     headers=list(result.keys()),
@@ -309,6 +363,7 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
+
             # Attn on Target for Answer Correct by Parts Features
             plotter.plot_corr_boxplot(
                 x_data={
@@ -342,6 +397,7 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
+
             # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths},
@@ -357,6 +413,7 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
+
             # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
                 x_data={"parts_seen_context_lengths": task.seen_context_lengths},
@@ -371,7 +428,6 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
             )
-
             plotter.correlation_map(
                 data=corr_matrix,
                 level=evaluator.level,
@@ -402,6 +458,58 @@ def run(
                     path_add=Path(version),
                 )
 
+            print(
+                f"\nPlotting distractor attention analysis for task {task_id} '{version}'...",
+                end="\n\n",
+            )
+            d_stats_task = distractor_stats_per_task[task_id][version]
+            if not d_stats_task.is_empty():
+                plotter.plot_distractor_attn_boxplot(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                plotter.plot_distractor_attn_per_task(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                plotter.plot_distractor_attn_scatter(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                plotter.plot_supporting_attention(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                )
+                plotter.plot_distractor_supporting_ratio(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                )
+                plotter.plot_attention_triplet(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                )
+
+                saver.save_output(
+                    data=d_stats_task.as_csv_records(),
+                    headers=d_stats_task.csv_headers,
+                    file_name=f"distractor_attention_{version}.csv",
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+            else:
+                print(
+                    f"No distractor attention records collected for task {task_id} version='{version}'. "
+                    "Check that parts have interpretability data and distractors set."
+                )
+
     if verbose:
         print_metrics_table(evaluators=split.evaluators, id_=data_split)
 
@@ -409,7 +517,8 @@ def run(
         split=split,
         metric_file_name="eval_script_metrics.csv",
     )
-
+    # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
+    # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
     split_corr_matrices = split.calculate_metrics()
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
@@ -433,7 +542,9 @@ def run(
             version=version,
             split_name=split.name,
             file_name=f"corr_matrix_split_{split.name}.pdf",
+            path_add=Path(version),
         )
+
         # Plot Accuracy vs Attn on Target for the Split
         plotter.plot_correlation(
             x_data=evaluator.get_accuracies(as_lists=True),
@@ -464,6 +575,7 @@ def run(
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
         )
+
         # Attn on Target for Target Distances by Answer Correct
         plotter.plot_corr_boxplot(
             x_data={"parts_target_distances": split.parts_target_distances},
@@ -480,6 +592,7 @@ def run(
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
         )
+
         # Answer Correct for Seen Context Lengths by Answer In Self
         plotter.plot_corr_hist(
             x_data={"parts_seen_context_lengths": split.seen_context_lengths},
@@ -503,6 +616,7 @@ def run(
             acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
             y_label="Accuracies with Standard Deviations",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting attentions for results '{version}'...",
@@ -512,6 +626,7 @@ def run(
             acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
             y_label="Attentions",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting reasoning scores for results '{version}'...",
@@ -521,6 +636,7 @@ def run(
             acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
             y_label="Reasoning Scores",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
@@ -528,7 +644,57 @@ def run(
             end="\n\n",
         )
 
-        # ERROR CASES
+        print(
+            f"\nPlotting distractor attention analysis for '{version}'...", end="\n\n"
+        )
+        d_stats = distractor_stats[version]
+        if not d_stats.is_empty():
+            plotter.plot_distractor_attn_boxplot(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
+            )
+            plotter.plot_distractor_attn_per_task(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
+            )
+            plotter.plot_distractor_attn_scatter(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
+            )
+            plotter.plot_supporting_attention(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+            )
+            plotter.plot_distractor_supporting_ratio(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+            )
+            plotter.plot_attention_triplet(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+            )
+
+            saver.save_output(
+                data=d_stats.as_csv_records(),
+                headers=d_stats.csv_headers,
+                file_name=f"distractor_attention_{version}.csv",
+                path_add=Path(version),
+            )
+        else:
+            print(
+                f"No distractor attention records collected for version='{version}'. "
+                "Check that parts have interpretability data and distractors set."
+            )
+
         print("Saving result categories...")
         plotter.plot_answer_type_per_part(
             Results.CASE_COUNTERS[version],
@@ -579,7 +745,8 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
     """
     Parse the command line arguments.
 
-    :return: None
+    :param script_args: optional list of argument strings; if None, sys.argv is used
+    :return: parsed argument namespace
     """
     parser = argparse.ArgumentParser(description="Evaluate the results of the model.")
     parser.add_argument(
@@ -595,12 +762,34 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         help="Path where to save the results.",
     )
     parser.add_argument(
+        "--setting",
+        type=str,
+        required=True,
+        choices=["baseline", "feedback", "skyline", "speculative_decoding", "sd"],
+        help="The setting of the experiment to evaluate.",
+    )
+    parser.add_argument(
+        "--experiment",
+        type=str,
+        required=True,
+        choices=["reasoning", "direct_answer"],
+        help="The experiment to evaluate.",
+    )
+    parser.add_argument(
         "--samples_per_task",
         type=int,
         default=50,
-        help="Number of samples per task the results were ran with (check your config for the run).",
+        help="Number of samples per task the results were run with (check your config for the run).",
     )
-    # Shouldn't always be True?
+    parser.add_argument(
+        "--filtering_conditions",
+        type=json.loads,
+        default={},
+        help=(
+            "A JSON string representing a dictionary of conditions (SamplePart attributes) and values; "
+            "all the parts having an attribute with such value will be preserved."
+        ),
+    )
     parser.add_argument(
         "--create_heatmaps",
         action="store_true",
@@ -623,18 +812,56 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
     return parser.parse_args()
 
 
+def add_completeness_column(path: str, da: bool = False, before: bool = False) -> None:
+    """
+    Add a column to indicate whether the answer/reasoning is complete.
+
+    :param path: path to the results file to update
+    :param da: whether the setting is direct answer; default False
+    :param before: whether to check the "before" columns; default False (checks "after")
+    :return: None
+    """
+    df = pd.read_csv(path)
+    suffix = "before" if before else "after"
+
+    if da:
+        df["completeness"] = df[f"model_answer_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+    else:
+        reasoning_complete = df[f"model_reasoning_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+        answer_complete = df[f"model_answer_{suffix}"].apply(
+            lambda x: True if pd.notna(x) and x.strip() != "" else False
+        )
+        df["completeness"] = reasoning_complete & answer_complete
+
+    df.to_csv(f"{path.split('.')[0]}_with_completeness.csv", index=False)
+
+
 if __name__ == "__main__":
-    # path = "--results_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test/reasoning/all_tasks/joined_reasoning_results_task_results.csv"
-    # args = " --save_path /pfs/work9/workspace/scratch/hd_nc326-research-project/baseline/test-eval/joined-data --samples_per_task 3 --verbose"
     args = parse_args()
-    # python3.12 evaluate_data.py --results_path /pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv --save_path outputs/test-eval/SD --samples_per_task 2 --create_heatmaps --verbose
     run(
         results_path=args.results_path,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
-        setting="SD",
-        experiment="reasoning_answer",
+        setting=args.setting,
+        experiment=args.experiment,
         filtering_conditions={},
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
     )
+    # kwargs = {
+    #     "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "save_path": "results/basic-baseline",
+    #     "samples_per_task": 2,
+    #     "setting": "baseline",
+    #     "experiment": "direct_answer",
+    #     "filtering_conditions": {},
+    #     "create_heatmaps": True,
+    #     "verbose": True,
+    # }
+    # print("Starting evaluation with the following configuration:")
+    # print(json.dumps(kwargs, indent=2))
+    # run(**kwargs)

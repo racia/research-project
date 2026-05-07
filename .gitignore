@@ -45,6 +45,9 @@ interpretability/residual_decoding.py
 *.log
 *.out
 *.err
+*_err.txt
+*_log.txt
+*_out.txt
 
 baseline/
 results/

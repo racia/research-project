@@ -7,6 +7,8 @@ from pathlib import Path
 
 import numpy as np
 
+from evaluation.DistractorAttention import DistractorAttentionStats
+
 
 class Identifiers:
     """
@@ -222,3 +224,35 @@ def plot_task_map_grid(
     # Adjust limits to crop unused space
     ax.set_xlim(-0.5, len(parts) - 0.5)
     ax.set_ylim(-0.5, len(samples) - 0.5)
+
+
+def extract_attention_by_correct(stats: DistractorAttentionStats):
+    """
+    Returns grouped attention values for plotting.
+    """
+    grouped = {
+        True: defaultdict(list),
+        False: defaultdict(list),
+    }
+
+    for r in stats.records:
+        if getattr(r, "attn_supporting", None) is None:
+            continue
+
+        grouped[r.answer_correct]["supporting"].append(r.attn_supporting)
+        grouped[r.answer_correct]["distractor"].append(r.attn_distractor)
+        grouped[r.answer_correct]["neutral"].append(r.attn_neutral)
+
+    return grouped
+
+
+def safe_mean(arr):
+    if arr is None:
+        return np.nan
+
+    cleaned = [x for x in arr if x is not None]
+
+    if len(cleaned) == 0:
+        return np.nan
+
+    return np.mean(cleaned)
