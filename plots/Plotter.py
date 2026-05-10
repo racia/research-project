@@ -238,7 +238,7 @@ class Plotter:
         if num_samples is not None:
             stats.append(f"Processed samples: {num_samples}")
         if stats:
-            plt.gcf().text(0.01, 0.01, "\n".join(stats), fontsize=9, va='bottom', ha='left')
+            plt.gcf().text(0.99, 0.01, "\n".join(stats), fontsize=9, ha="right", va="bottom") # transform=plt.gca().transAxes for in-axes placement
 
         if displ_percentage:
             plt.gca().yaxis.set_major_formatter(
@@ -523,185 +523,6 @@ class Plotter:
         )
         self._save_plot(y_label, x_label, file_name, path_add)
 
-    def plot_correlation(
-        self,
-        x_data: dict[str | Prompt, Accuracy | Metric]|list[float]|np.array,
-        y_data: list[float],
-        x_label: str = "X",
-        y_label: str = "Y",
-        file_name=None,
-        plot_name_add: list[str] = None,
-        path_add: Path = None,
-        level: str = None,
-        include_soft: bool = True,
-        label_add: list[str] = [],
-        experiment: str = "direct_answer",
-    ) -> None:
-        """
-        Plot the correlation between two variables.
-
-        :param x_data: Either acc_per_prompt_task or seen_context_lengths
-        :param y_data: data for the y-axis, e.g. attention scores
-        :param x_label: label for the x-axis
-        :param y_label: label for the y-axis
-        :param file_name: name of the plot
-        :param plot_name_add: addition to the plot name
-        :param path_add: addition to the path where the plot is saved
-        :param level: level of the data, e.g. "task", "sample", "part"
-        :param include_soft: whether to include soft metrics in the plot
-        :param label_add: addition to the data labels
-        :return: None
-        """
-        if level == "split":
-            plt.figure(figsize=(15, 5))
-        else:
-            plt.figure(figsize=(10, 5))
-
-        num_of_data_arrays = 0
-        max_x_len = 1
-        metr_types = 0
-        min_x_len = 0
-        if isinstance(x_data, dict):
-            x_data_points = {
-                k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
-            }
-        else:
-            x_data_points = {"data": x_data}
-        x_err = [
-            x_data_points.pop(k)
-            for k in x_data.keys()
-            if "std" in k.lower() and k in x_data_points
-        ] if isinstance(x_data, dict) else []
-        colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
-
-        # Example scaling: avoid zero size, set min/max
-        def scale_stddev(stddevs, min_size=20, max_size=300):
-            stddevs = np.array(stddevs)
-            if stddevs.max() == stddevs.min():
-                return np.full_like(stddevs, (min_size + max_size) / 2)
-            scaled = (stddevs - stddevs.min()) / (stddevs.max() - stddevs.min())
-            return min_size + scaled * (max_size - min_size)
-
-        for (metr_type, metr), std_dev, color in zip_longest(
-            x_data_points.items(), x_err, colors
-        ):
-            # number_of_prompts += 1
-            num_of_data_arrays += 1
-            metr_types += 1
-            # This covers both cases: Metric (i.e. length of sentences) and Accuracy
-            if max(metr.all) > max_x_len:
-                max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
-                step_size = 5 if max_x_len > 30 else 1
-            min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
-           
-            x_vals = metr.all
-            y_vals = [y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data
-
-            stddev_arr = np.array(std_dev) if std_dev is not None else np.zeros_like(x_vals)
-            sizes = scale_stddev(stddev_arr) if std_dev is not None else np.full_like(x_vals, 50)
-
-            if len(metr) != len(y_data):
-                raise ValueError(
-                    f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
-                )
-
-            if not y_data:
-                raise ValueError("y_data is empty")
-        
-            # Std dev is plotted as sizes in the scatter plot
-            # plt.errorbar(
-            #     x_vals,
-            #     y_vals,
-            #     xerr=stddev_arr,
-            #     fmt="none",
-            #     capsize=4,
-            #     # label=(
-            #     #     "{}{}".format(
-            #     #         " ".join(metr_type.split("_")).title(),
-            #     #         "\nwith Std Dev" if x_err else "",
-            #     #     )
-            #     #     if isinstance(metr_type, str)
-            #     #     else metr_type.name
-            #     # ),
-            #     ecolor=color,
-            #     zorder=2,
-            # )
-
-            plt.scatter(
-                x_vals,
-                y_vals,
-                s=sizes,
-                # xerr=stddev_arr,
-                label=(
-                    "{}{}".format(
-                        " ".join(metr_type.split("_")).title(),
-                        "\nwith Std Dev" if x_err else "",
-                    )
-                    if isinstance(metr_type, str)
-                    else metr_type.name
-                ),
-                color=color,
-                edgecolors="black",
-                zorder=3,
-            )
-
-            seen_points = set()
-            for i, label in enumerate(label_add):
-                x, y = metr[i], y_data[i].get_mean() if isinstance(y_data[i], Metric) else y_data[i]
-                # Find all indices with the same x and y values (within a small tolerance to account for floating point issues)
-                same_points = [j for j in range(len(metr)) if abs(metr[j] - x) < 1e-6 and abs((y_data[j].get_mean() if isinstance(y_data[j], Metric) else y_data[j]) - y) < 1e-6]
-                # Skip points we've already labeled
-                same_points = [j for j in same_points if j not in seen_points and label_add[j] != label] # also check that the label is different to avoid labeling the same point multiple times if it has the same label
-                seen_points.update(same_points)
-                # Summarize the labels for these points (e.g. if they differ only by prompt, we can just list the prompts)
-                if len(same_points) > 1:
-                    same_labels = [label_add[j] for j in same_points]
-                    summarized_label = f"{label} ({', '.join(same_labels)})"
-                else:
-                    summarized_label = label
-                plt.annotate(summarized_label, (metr[i]+.001, y_data[i]+.001), xytext=(5, 5 if i%2==0 else -5), textcoords='offset points')
-        
-        legend_handles = [
-            Line2D(
-                [], [], 
-                marker='o', 
-                color='w', 
-                markerfacecolor='gray', 
-                markersize=np.sqrt(size),  # markersize is diameter in points
-                label=f"Std Dev: {val:.2f}"
-            )
-            for val, size in set(zip(stddev_arr, sizes)) if val == min(stddev_arr) or val == max(stddev_arr) or abs(val - np.median(stddev_arr)) <= 1e-2
-        ]
-        legend_handles = sorted(legend_handles, key=lambda h: float(h.get_label().split(": ")[1]), reverse=True)
-
-        # 3. Get existing handles/labels
-        handles, labels = plt.gca().get_legend_handles_labels()
-
-        # 4. Combine and set the legend
-        combined_handles = handles + legend_handles
-        combined_labels = labels + [h.get_label() for h in legend_handles]
-
-        self._plot_general_details(
-            x_label,
-            y_label,
-            max_x_len,
-            plot_name_add,
-            num_of_data_arrays=num_of_data_arrays,
-            metr_types=metr_types,
-            step=0.1 if max_x_len == 1 else step_size,
-            min_x_len=min_x_len,
-            combined_handles=combined_handles,
-            combined_labels=combined_labels,
-            legend_title="Metric Size & Circle Size", 
-            experiment=experiment,
-            num_parts=len(y_data) if isinstance(x_data, list) else None,
-            num_samples=len(x_data) if isinstance(x_data, dict) else None,
-        )
-        if path_add:
-            file_name = path_add / file_name.lower()
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
-        plt.close()
 
     def get_color_or_map(self, c: str):
         """
@@ -1177,6 +998,179 @@ class Plotter:
         setting = setting.title().replace(" ", "_")
         self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}")
 
+    def plot_correlation(
+        self,
+        x_data: dict[str | Prompt, Accuracy | Metric]|list[float]|np.array,
+        y_data: list[float],
+        x_label: str = "X",
+        y_label: str = "Y",
+        file_name=None,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        level: str = None,
+        include_soft: bool = True,
+        label_add: list[str] = [],
+        experiment: str = "direct_answer",
+        num_samples: int = None,
+    ) -> None:
+        """
+        Plot the correlation between two variables.
+
+        :param x_data: Either acc_per_prompt_task or seen_context_lengths
+        :param y_data: data for the y-axis, e.g. attention scores
+        :param x_label: label for the x-axis
+        :param y_label: label for the y-axis
+        :param file_name: name of the plot
+        :param plot_name_add: addition to the plot name
+        :param path_add: addition to the path where the plot is saved
+        :param level: level of the data, e.g. "task", "sample", "part"
+        :param include_soft: whether to include soft metrics in the plot
+        :param label_add: addition to the data labels
+        :param experiment: name of the experiment, e.g. "direct_answer"
+        :param num_samples: number of samples considered, for labeling purposes
+        :return: None
+        """
+        if level == "split":
+            plt.figure(figsize=(15, 5))
+        else:
+            plt.figure(figsize=(10, 5))
+
+        num_of_data_arrays = 0
+        max_x_len = 1
+        metr_types = 0
+        min_x_len = 0
+        if isinstance(x_data, dict):
+            x_data_points = {
+                k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
+            }
+        else:
+            x_data_points = {"data": x_data}
+        x_err = [
+            x_data_points.pop(k)
+            for k in x_data.keys()
+            if "std" in k.lower() and k in x_data_points
+        ] if isinstance(x_data, dict) else []
+        colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
+
+        # Example scaling: avoid zero size, set min/max
+        def scale_stddev(stddevs, min_size=20, max_size=300):
+            stddevs = np.array(stddevs)
+            if stddevs.max() == stddevs.min():
+                return np.full_like(stddevs, (min_size + max_size) / 2)
+            scaled = (stddevs - stddevs.min()) / (stddevs.max() - stddevs.min())
+            return min_size + scaled * (max_size - min_size)
+
+        for (metr_type, metr), std_dev, color in zip_longest(
+            x_data_points.items(), x_err, colors
+        ):
+            # number_of_prompts += 1
+            num_of_data_arrays += 1
+            metr_types += 1
+            # This covers both cases: Metric (i.e. length of sentences) and Accuracy
+            if max(metr.all) > max_x_len:
+                max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
+                step_size = 5 if max_x_len > 30 else 1
+            min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
+           
+            x_vals = metr.all
+            y_vals = [y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data
+
+            stddev_arr = np.array(std_dev) if std_dev is not None else np.zeros_like(x_vals)
+            sizes = scale_stddev(stddev_arr) if std_dev is not None else np.full_like(x_vals, 50)
+
+            if len(metr) != len(y_data):
+                raise ValueError(
+                    f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
+                )
+
+            if not y_data:
+                raise ValueError("y_data is empty")
+        
+            plt.scatter(
+                x_vals,
+                y_vals,
+                s=sizes,
+                # xerr=stddev_arr,
+                label=(
+                    "{}{}".format(
+                        " ".join(metr_type.split("_")).title(),
+                        "\nwith Std Dev" if x_err else "",
+                    )
+                    if isinstance(metr_type, str)
+                    else metr_type.name
+                ),
+                color=color,
+                edgecolors="black",
+                zorder=3,
+            )
+
+            seen_points = set()
+            for i, label in enumerate(label_add):
+                if label in seen_points:
+                    continue  # skip if we've already labeled this point
+                x, y = metr[i], y_data[i].get_mean() if isinstance(y_data[i], Metric) else y_data[i]
+                # Find all indices with the same x and y values (within a small tolerance to account for floating point issues)
+                same_points = [j for j in range(len(metr)) if abs(metr[j] - x) < 1e-6 and abs((y_data[j].get_mean() if isinstance(y_data[j], Metric) else y_data[j]) - y) < 1e-6]
+                # Skip points we've already labeled
+                same_points = [j for j in same_points if j not in seen_points and label_add[j] != label] # also check that the label is different to avoid labeling the same point multiple times if it has the same label
+                seen_points.update(same_points)
+                # Summarize the labels for these points (e.g. if they differ only by prompt, we can just list the prompts)
+                if len(same_points) >= 1:
+                    same_labels = [label_add[j] for j in same_points]
+                    assert label not in same_labels, "The label for the current point should not be in the same_labels list"
+                    summarized_label = f"{label} ({', '.join(same_labels)})"
+                else:
+                    summarized_label = label
+                plt.annotate(summarized_label, (metr[i]+.001, y_data[i]+.001), xytext=(5, 5 if i%2==0 else -5), textcoords='offset points')
+        
+        idx_min, idx_max = np.argmin(stddev_arr), np.argmax(stddev_arr)
+        # idx_median = np.argsort(stddev_arr)[len(stddev_arr) // 2]
+        median_val = np.median(stddev_arr)
+        idx_median = np.argmin(np.abs(stddev_arr - median_val))
+
+        legend_handles = [
+            Line2D(
+                [], [], 
+                marker='o', 
+                color='w', 
+                markerfacecolor='gray', 
+                markersize=np.sqrt(size),  # markersize is diameter in points
+                label=f"Std Dev: {val:.2f}"
+            )
+            for val, size in set(zip([stddev_arr[idx_min], stddev_arr[idx_median], stddev_arr[idx_max]], sizes[[idx_min, idx_median, idx_max]]))
+        ]
+        legend_handles = sorted(legend_handles, key=lambda h: float(h.get_label().split(": ")[1]), reverse=True)
+
+        # 3. Get existing handles/labels
+        handles, labels = plt.gca().get_legend_handles_labels()
+
+        # 4. Combine and set the legend
+        combined_handles = handles + legend_handles
+        combined_labels = labels + [h.get_label() for h in legend_handles]
+
+        self._plot_general_details(
+            x_label,
+            y_label,
+            max_x_len,
+            plot_name_add,
+            num_of_data_arrays=num_of_data_arrays,
+            metr_types=metr_types,
+            step=0.1 if max_x_len == 1 else step_size,
+            min_x_len=min_x_len,
+            combined_handles=combined_handles,
+            combined_labels=combined_labels,
+            legend_title="Metric Size & Circle Size", 
+            experiment=experiment,
+            # num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None, # This may be confusing, better to stay with samples
+            num_samples=num_samples,
+        )
+        if path_add:
+            file_name = path_add / file_name.lower()
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        plt.close()
+
+
     def plot_corr_hist(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric],
@@ -1190,6 +1184,7 @@ class Plotter:
         id: int = 1,
         path_add: Path = None,
         experiment: str = "direct_answer",
+        num_samples: int = None,
     ) -> None:
         """
         Plot the correlation between two variables as histogram, i.e. parts attributes per part lengths.
@@ -1206,6 +1201,8 @@ class Plotter:
         :param path_add: addition to the path where the plot is saved
         :param level: level of the data, e.g. "task", "sample", "part"
         :param id: int id of the level
+        :param experiment: name of the experiment, e.g. "direct_answer"
+        :param num_samples: number of samples considered, for labeling purposes
         :return: None
         """
         color_map = {
@@ -1228,7 +1225,9 @@ class Plotter:
         else:
             fig, ax = plt.subplots(figsize=(10, 5))
             width = 0.35
-        x_data = {k: v.all for k, v in x_data.items()} if isinstance(x_data, dict) else {"data": x_data}
+
+        x_data = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
+
         df = pd.DataFrame(
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
@@ -1318,6 +1317,7 @@ class Plotter:
             legend_title=label_column,
             step=step_size,
             experiment=experiment,
+            num_samples=num_samples,
         )
 
         (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
@@ -1341,6 +1341,7 @@ class Plotter:
         path_add: Path = None,
         level: str = None,
         experiment: str = None,
+        num_samples: int = None,
     ) -> None:
         """
         Plot the correlation between two variables as boxplot, i.e. parts attributes per part lengths.
@@ -1357,6 +1358,8 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :param path_add: addition to the path where the plot is saved
         :param level: level of the data, e.g. "task", "sample", "part"
+        :param experiment: name of the experiment, e.g. "direct_answer"
+        :param num_samples: number of samples considered, for labeling purposes
         :return: None
         """
         # Part-level if x_data is list/array, else sample/task-level if dict
@@ -1374,9 +1377,9 @@ class Plotter:
                 df_data.update(y_vals)
             else:
                 df_data[y_keys] = y_vals
-        x_data = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
+        x_data_points = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
         df = pd.DataFrame(
-            list(zip(*x_data.values(), *df_data.values())),
+            list(zip(*x_data_points.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
 
@@ -1400,6 +1403,8 @@ class Plotter:
 
         if any(lab in x_label.lower() for lab in ["correct", "in self"]):
             df[x_label] = df[x_label].map({0: "In previous parts" if "in self" in x_label.lower() else "Incorrect", 1: "In current part" if "in self" in x_label.lower() else "Correct"})
+        elif "target" in x_label.lower():
+            df[x_label] = df[x_label].astype(int)
         else:
             df[x_label] = df[x_label].round()
         # Combine parts features to single column
@@ -1433,16 +1438,6 @@ class Plotter:
                 else x
             )
         )
-        # this sns.boxplot returns an error:
-        # UnboundLocalError: cannot access local variable 'boxprops' where it is not associated with a value
-        # when the input is all-NaN/empty after filtering
-        # ax = sns.boxplot(
-        #     data=df,
-        #     x=x_label,
-        #     y=df.columns[1],
-        #     hue=f"{label_column}_" if len(df.columns) > 2 else None,
-        #     hue_order=label_order if len(df.columns) > 2 else None,
-        # )
         hue_col = f"{label_column}_"
         use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) >= 1 # only use hue if there is at least one non-NaN value
 
@@ -1479,6 +1474,8 @@ class Plotter:
             plot_name_add=plot_name_add,
             legend_title=" ".join(label_column.split("_")).title(),
             experiment=experiment,
+            num_samples=num_samples,
+            num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None,
         )
 
         if path_add:

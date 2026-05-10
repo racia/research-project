@@ -324,7 +324,7 @@ def run(
         ):
             # Plot Attention vs Seen Context Lengths for the Task
             plotter.plot_correlation(
-                x_data=task.seen_context_lengths,
+                x_data={"Seen context lengths": task.seen_context_lengths},
                 y_data=evaluator.parts_attn_on_target.all,
                 x_label="Seen Context Lengths",
                 y_label="Attention on Target Tokens",
@@ -333,6 +333,7 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
                 experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Accuracy
@@ -347,6 +348,7 @@ def run(
                 level="task",
                 include_soft=False,
                 experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Target Distances by Answer Correct
@@ -365,6 +367,7 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Answer Correct by Parts Features
@@ -382,6 +385,7 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on target for Anwer in Self by Answer Correct
@@ -399,6 +403,7 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Seen Context Lengths by Answer Correct
@@ -416,6 +421,7 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Answer Correct for Seen Context Lengths by Answer In Self
@@ -431,6 +437,8 @@ def run(
                 file_name=f"parts_answer_correct.pdf",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
             plotter.correlation_map(
                 data=corr_matrix,
@@ -453,7 +461,7 @@ def run(
             )
             for metric in metrics:
                 metrics_to_save[metric["task_id"]].update(metric)
-
+                
             for metric in metrics_to_save.values():
                 saver.save_output(
                     data=[metric],
@@ -558,6 +566,7 @@ def run(
             file_name=f"acc-attn_on_target_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
             path_add=Path(version),
             level="split",
             include_soft=False,
@@ -566,7 +575,7 @@ def run(
 
         # Attn on Target for Seen Context Lengths by Answer Correct
         plotter.plot_corr_boxplot(
-            x_data={"seen_context_lengths": split.seen_context_lengths},
+            x_data=split.seen_context_lengths,
             y_data={
                 "parts_attn_on_targets": evaluator.parts_attn_on_target.all,
                 "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -576,6 +585,7 @@ def run(
             displ_percentage=False,
             version=version,
             experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
             level="split",
             file_name=f"attn-seen_context_lengths_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
@@ -595,6 +605,7 @@ def run(
             displ_percentage=False,
             version=version,
             experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
             file_name=f"attn-target_distances_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
@@ -614,6 +625,8 @@ def run(
             file_name=f"parts_answer_correct_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
+            experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
         )
         print(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
