@@ -1104,16 +1104,16 @@ class Plotter:
                 zorder=3,
             )
 
-            seen_points = set()
+            seen_points = dict()
             for i, label in enumerate(label_add):
-                if label in seen_points:
+                if label in seen_points.values():
                     continue  # skip if we've already labeled this point
                 x, y = metr[i], y_data[i].get_mean() if isinstance(y_data[i], Metric) else y_data[i]
                 # Find all indices with the same x and y values (within a small tolerance to account for floating point issues)
                 same_points = [j for j in range(len(metr)) if abs(metr[j] - x) < 1e-6 and abs((y_data[j].get_mean() if isinstance(y_data[j], Metric) else y_data[j]) - y) < 1e-6]
                 # Skip points we've already labeled
                 same_points = [j for j in same_points if j not in seen_points and label_add[j] != label] # also check that the label is different to avoid labeling the same point multiple times if it has the same label
-                seen_points.update(same_points)
+                seen_points.update({j: label_add[j] for j in same_points})
                 # Summarize the labels for these points (e.g. if they differ only by prompt, we can just list the prompts)
                 if len(same_points) >= 1:
                     same_labels = [label_add[j] for j in same_points]
