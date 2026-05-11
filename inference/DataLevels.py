@@ -779,17 +779,14 @@ class Sample:
                 sample_context_line_nums.extend(part.context_line_nums)
             self.seen_context_lengths.add(sum(sample_part_lengths))
             # How far the target is from the question
-            try:
-                target_sent_dist = round(
-                    part.context_line_nums[-1] - mean(part.supporting_sent_inx), 2
+            if part.context_line_nums:
+                last_context_line = part.context_line_nums[-1]
+                target_sent_dist =  round(
+                    last_context_line - mean(part.supporting_sent_inx), 2
                 )
-            except IndexError:
-                warnings.warn(
-                    f"Could not calculate target sentence distance for part {part.ids}. "
-                    f"Setting distance to last known distance."
-                )
-                target_sent_dist = self.target_sent_dist[-1] if self.target_sent_dist.all else 0
-            self.target_sent_dist.add(target_sent_dist)
+                self.target_sent_dist.add(target_sent_dist)
+            else:
+                self.target_sent_dist.add(self.target_sent_dist[-1])
         self.sample_length = self.seen_context_lengths.all[-1]
 
         for evaluator in self.evaluators:

@@ -4,14 +4,15 @@
 #SBATCH --job-name=eval_base
 
 #SBATCH --ntasks=1                   # Total number of tasks
-#SBATCH --cpus-per-task=4            # Number of CPU cores per task
+#SBATCH --cpus-per-task=2 #4            # Number of CPU cores per task
 #SBATCH --mem=16GB                    # Total memory requested
-#SBATCH --partition=students
-
+# SBATCH --partition=students
+#SBATCH --time=00:29:00              # Job time limit (30 minutes)
 # Output and error logs
 #SBATCH --output="eval_base.out"        # TODO: adjust standard output log
+# SBATCH --error="eval_base.err"         # TODO: adjust error log
 
-#SBATCH --mail-user="ivakhnenko@cl.uni-heidelberg.de"              # TODO: Add your email address
+#SBATCH --mail-user="sari@cl.uni-heidelberg.de"              # TODO: Add your email address
 #SBATCH --mail-type=ALL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
@@ -29,27 +30,29 @@ cd ~/research-project || exit 1
 source ~/.bashrc 2>/dev/null
 
 # Activate the conda environment
-ENV_NAME="research-project-4"
-conda activate $ENV_NAME
-#ENV_NAME=".env"
-#echo "Activating the project environment: $ENV_NAME"
-#if ! source $ENV_NAME/bin/activate; then
-#    echo "Error: Failed to activate the project environment '$ENV_NAME'."
-#    exit 1
-#else
-#    echo "The project environment '$ENV_NAME' activated successfully."
-#fi
+# ENV_NAME="research-project-4"
+ENV_NAME=".env"
+# conda activate $ENV_NAME
+echo "Activating the project environment: $ENV_NAME"
+if ! source $ENV_NAME/bin/activate; then
+   echo "Error: Failed to activate the project environment '$ENV_NAME'."
+   exit 1
+else
+   echo "The project environment '$ENV_NAME' activated successfully."
+fi
 
 # Toggle args here
-VERBOSE=true
-HEATMAPS=true
-RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
-SAVE_PATH="/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/"
-SETTING="baseline"
-EXPERIMENT="reasoning"
+VERBOSE=false #true
+HEATMAPS=false #true
+# RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
+RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/bl/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
+# SAVE_PATH="/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/"
+SAVE_PATH="results/baseline/da"
+SETTING="baseline" #"baseline"
+EXPERIMENT="reasoning" #"reasoning"
 # TODO: turn dict into a mapping of setting to filtering conditions
 #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
-SAMPLES_PER_TASK=100
+SAMPLES_PER_TASK=10 #100
 
 ARGS=(
   --results_path "$RES_PATH"
@@ -64,7 +67,7 @@ ARGS=(
 
 SCRIPT="evaluate_data.py"
 echo "Running script ${SCRIPT} with the following arguments: ${ARGS[*]}"
-srun python3 "$SCRIPT" "${ARGS[@]}"
+srun python3.9 "$SCRIPT" "${ARGS[@]}"
 
 
 # Verify if the script executed successfully
