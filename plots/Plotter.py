@@ -33,10 +33,80 @@ from plots.utils import (
 )
 
 # ---- Distractor-attention plot style constants ----------------------------
-_DA_ATTN_YMAX: float = 1  # max mean-attention per sentence
-_DA_MARGIN_ABS: float = 1  # max |distractor − supporting| margin shown
+# After row-normalising attn_scores, per-sentence attention values are
+# proportional to 1/n_context_sentences (≈ 0.03–0.5 depending on task).
+# Fixed limits of 1.0 leave most of the plot empty, so all DA plots use
+# data-driven y-limits computed by _da_attn_ylim() / _da_margin_ylim().
+# The ratio limits are scale-invariant and stay fixed.
 _DA_RATIO_YMIN: float = 1e-2  # min log ratio shown (distractor / supporting)
 _DA_RATIO_YMAX: float = 1e2  # max log ratio shown
+# Padding factor applied on top of the data maximum for attention plots.
+_DA_YPAD: float = 1.3
+
+
+def _da_attn_ylim(
+    *value_collections,
+    pad: float = _DA_YPAD,
+    abs_min: float = 1e-6,
+) -> tuple[float, float]:
+    """
+    Compute a tight (0, ceiling) y-limit for distractor-attention plots from
+    the actual data values in *value_collections*.
+
+    After row-normalisation, per-sentence attention is O(1/n_sentences), so
+    a fixed ceiling of 1.0 wastes most of the plot area.  This helper collects
+    all finite values, takes the maximum, applies a padding factor, and returns
+    a (0, ceiling) tuple suitable for ax.set_ylim().
+
+    Falls back to (0, 0.5) if no finite values are found.
+
+    :param value_collections: any number of flat lists / arrays of floats
+        (None entries and np.nan are ignored).
+    :param pad: multiplicative headroom above the observed maximum (default 1.3).
+    :param abs_min: minimum ceiling value so the axis is never degenerate.
+    :return: (0.0, ceiling)
+    """
+    all_vals: list[float] = []
+    for coll in value_collections:
+        if coll is None:
+            continue
+        for v in coll if hasattr(coll, "__iter__") else [coll]:
+            if v is not None and np.isfinite(float(v)):
+                all_vals.append(float(v))
+    if not all_vals:
+        return 0.0, 0.5
+    ceiling = max(abs_min, max(all_vals) * pad)
+    return 0.0, ceiling
+
+
+def _da_margin_ylim(
+    *value_collections,
+    pad: float = _DA_YPAD,
+    abs_min: float = 1e-6,
+) -> tuple[float, float]:
+    """
+    Compute a symmetric (-ceiling, +ceiling) y-limit for distractor-margin
+    plots (distractor − supporting attention) from the actual data values.
+
+    Falls back to (-0.2, 0.2) if no finite values are found.
+
+    :param value_collections: flat lists / arrays of margin floats
+        (None entries and np.nan are ignored).
+    :param pad: multiplicative headroom above the observed absolute maximum.
+    :param abs_min: minimum ceiling so the axis is never degenerate.
+    :return: (-ceiling, +ceiling)
+    """
+    all_vals: list[float] = []
+    for coll in value_collections:
+        if coll is None:
+            continue
+        for v in coll if hasattr(coll, "__iter__") else [coll]:
+            if v is not None and np.isfinite(float(v)):
+                all_vals.append(float(v))
+    if not all_vals:
+        return -0.2, 0.2
+    ceiling = max(abs_min, max(abs(v) for v in all_vals) * pad)
+    return -ceiling, ceiling
 
 
 class Plotter:
@@ -1791,7 +1861,7 @@ class Plotter:
         ax.set_xticks(range(1, len(tick_labels) + 1))
         ax.set_xticklabels(tick_labels, fontsize=10)
         ax.set_ylabel("Mean attention", fontsize=11)
-        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_ylim(*_da_attn_ylim(*box_data))
         ax.set_title(
             self._format_short_title(
                 "Attention on distractor vs neutral", plot_name_add
@@ -1912,7 +1982,15 @@ class Plotter:
         ax.set_xticks(x)
         ax.set_xticklabels([f"T{tid}" for tid in task_ids], fontsize=9)
         ax.set_ylabel("Mean attention", fontsize=11)
-        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_ylim(
+            *_da_attn_ylim(
+                *[
+                    [per_task[tid].get(c, {}).get(r) for tid in task_ids]
+                    for c in (True, False)
+                    for r in ("distractor", "neutral")
+                ]
+            )
+        )
         ax.set_title(
             self._format_short_title("Distractor vs neutral by task", plot_name_add),
             fontsize=11,
@@ -1996,17 +2074,23 @@ class Plotter:
             plt.close(fig)
             return
 
-        # Fixed range so different runs are directly comparable.
+        # Tight equal axes so the y=x reference line is meaningful.
+        _lo, _ceil = _da_attn_ylim(
+            scatter_data[True]["neutral"],
+            scatter_data[True]["distractor"],
+            scatter_data[False]["neutral"],
+            scatter_data[False]["distractor"],
+        )
         ax.plot(
-            [0, _DA_ATTN_YMAX],
-            [0, _DA_ATTN_YMAX],
+            [_lo, _ceil],
+            [_lo, _ceil],
             "k--",
             linewidth=0.9,
             alpha=0.45,
             label="y = x",
         )
-        ax.set_xlim(0, _DA_ATTN_YMAX)
-        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_xlim(_lo, _ceil)
+        ax.set_ylim(_lo, _ceil)
         ax.set_aspect("equal", adjustable="box")
 
         ax.set_xlabel("Attention on neutral", fontsize=11)
@@ -2113,17 +2197,14 @@ class Plotter:
 
         # Reference line: margin = 0.
         ax.axhline(0.0, color="#333333", linestyle="--", linewidth=1.0)
-        ax.axhspan(
-            0, _DA_MARGIN_ABS, facecolor=self._da_color_incorrect, alpha=0.05, zorder=0
-        )
-        ax.axhspan(
-            -_DA_MARGIN_ABS, 0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
-        )
+        _mlo, _mceil = _da_margin_ylim(margins_correct, margins_incorrect)
+        ax.axhspan(0, _mceil, facecolor=self._da_color_incorrect, alpha=0.05, zorder=0)
+        ax.axhspan(_mlo, 0, facecolor=self._da_color_correct, alpha=0.05, zorder=0)
 
         # Brief region cues at the y-axis edge — far less text than before.
         ax.set_ylabel("Distractor − supporting attention", fontsize=11)
         ax.set_xlabel("Answer", fontsize=11)
-        ax.set_ylim(-_DA_MARGIN_ABS, _DA_MARGIN_ABS)
+        ax.set_ylim(_mlo, _mceil)
 
         # Concise tick labels: just the group name and n.
         xtick_labels = []
@@ -2380,7 +2461,7 @@ class Plotter:
         ax.set_xticklabels(category_labels, fontsize=10)
         ax.set_xlabel("Sentence role", fontsize=11)
         ax.set_ylabel("Mean attention (± SEM)", fontsize=11)
-        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_ylim(*_da_attn_ylim(means_correct, means_incorrect))
         ax.set_title(
             self._format_short_title("Attention by sentence role", plot_name_add),
             fontsize=11,
@@ -2556,7 +2637,7 @@ class Plotter:
         ax_attn.set_xlabel("# distractor sentences", fontsize=11)
         ax_attn.set_ylabel("Mean attention (± SEM)", fontsize=11)
         ax_attn.set_xticks(ns)
-        ax_attn.set_ylim(0, _DA_ATTN_YMAX)
+        ax_attn.set_ylim(*_da_attn_ylim(dist_mean, supp_mean))
         ax_attn.grid(axis="y", linestyle="--", alpha=0.35)
 
         ax_acc.set_ylabel(
@@ -2922,7 +3003,7 @@ class Plotter:
             mean_attr="max_supp_attn",
             std_attr="max_supp_attn_std",
             ylabel="Mean attention",
-            ylim=(0.0, _DA_ATTN_YMAX),
+            ylim=None,  # data-driven; _ba_plot_lines handles None
             show_values=show_values,
         )
         ax_max.set_title("Max attention on supporting", fontsize=11)
