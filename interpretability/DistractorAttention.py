@@ -12,36 +12,6 @@ from interpretability.utils import (
     _sentence_attn_from_interpretability,
 )
 
-# Threshold for the coefficient of variation (std / mean) below which all
-# per-sentence attention values are considered suspiciously uniform.
-# A truly uniform distribution over N sentences has CV = 0; anything below
-# this tiny threshold almost certainly indicates degenerate/averaged-out
-# attention scores rather than a meaningful signal.
-_UNIFORM_ATTN_CV_THRESHOLD: float = 1e-3
-
-
-def _is_uniform_attention(sent_attn: dict[int, float]) -> bool:
-    """
-    Return True if all values in sent_attn are so close to equal that the
-    attention distribution carries no meaningful per-sentence signal.
-
-    This happens when the stored attn_scores have already been collapsed to a
-    uniform distribution (e.g. averaged incorrectly during inference), making
-    distractor vs. supporting attention comparisons meaningless.
-
-    :param sent_attn: mapping of bAbI line number → mean attention for that sentence
-    :return: True if attention is effectively uniform across all sentences
-    """
-    vals = list(sent_attn.values())
-    if len(vals) < 2:
-        return False
-    arr = np.asarray(vals, dtype=float)
-    mean = arr.mean()
-    if mean == 0:
-        return True
-    cv = arr.std() / mean
-    return bool(cv < _UNIFORM_ATTN_CV_THRESHOLD)
-
 
 @dataclass
 class DistractorAttentionRecord:
@@ -227,11 +197,8 @@ def collect_distractor_attention_record(
       - distractor: indices from part.distractors (set by DataProcessor.mark_distractors)
       - neutral: all context lines that are neither supporting nor distractor
 
-    Returns None when no interpretability data is available for this version,
-    when sentence-level attention cannot be extracted, or when the extracted
-    per-sentence attention values are effectively uniform across all context
-    sentences (which indicates degenerate/pre-averaged attention scores that
-    carry no meaningful per-sentence signal — see _is_uniform_attention).
+    Returns None when no interpretability data is available for this version
+    or when sentence-level attention cannot be extracted.
 
     :param part: the SamplePart to analyse; must have distractors attribute set
     :param answer_correct: correctness flag for this part at this version
@@ -275,24 +242,6 @@ def collect_distractor_attention_record(
         context_line_nums=context_line_nums,
     )
     if sent_attn is None:
-        return None
-
-    # Guard against degenerate attention data.  When attn_scores were saved
-    # as a uniform distribution (e.g. the attention matrix was collapsed to
-    # a single averaged row before being written to disk), every context
-    # sentence receives the same weight (1/N ± floating-point noise).  In
-    # that case distractor and supporting attention are numerically identical
-    # by construction and the resulting record would be misleading rather than
-    # informative.  Emit a warning and skip the part so that the stats only
-    # contain records where the attention signal is meaningful.
-    if _is_uniform_attention(sent_attn):
-        warnings.warn(
-            f"Skipping part {part.task_id, part.sample_id, part.part_id} version='{version}': "
-            f"per-sentence attention is effectively uniform (CV < {_UNIFORM_ATTN_CV_THRESHOLD}). "
-            "This usually means attn_scores were saved as a pre-averaged 1-D vector rather "
-            "than the full (output_tokens × input_tokens) matrix. "
-            "Check how attention scores are captured and written during inference."
-        )
         return None
 
     supporting: set[int] = set(part.supporting_sent_inx)
