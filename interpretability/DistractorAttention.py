@@ -197,12 +197,6 @@ def collect_distractor_attention_record(
       - distractor: indices from part.distractors (set by DataProcessor.mark_distractors)
       - neutral: all context lines that are neither supporting nor distractor
 
-    ``_sentence_attn_from_interpretability`` returns attention values indexed by
-    *position* within ``context_line_nums`` (i.e. the 0-based offset into the
-    ordered context list), not by the original line numbers from the bAbI file.
-    We therefore translate every set of line-number indices into the corresponding
-    positional indices before calling ``_mean_attn_over_indices``.
-
     Returns None when no interpretability data is available for this version
     or when sentence-level attention cannot be extracted.
 
@@ -250,30 +244,6 @@ def collect_distractor_attention_record(
     if sent_attn is None:
         return None
 
-    # Build a mapping from bAbI line number → positional index within
-    # context_line_nums.  _sentence_attn_from_interpretability aggregates
-    # attention over the tokens of each context sentence and returns one value
-    # per *position* in context_line_nums (i.e. index 0 = first context
-    # sentence, index 1 = second, …).  The role sets below (supporting,
-    # distractors, neutral) all use bAbI line numbers, so we must convert them
-    # to positional indices before passing them to _mean_attn_over_indices.
-    line_num_to_pos: dict[int, int] = {
-        line_num: pos for pos, line_num in enumerate(context_line_nums)
-    }
-
-    def _to_pos_indices(line_nums: set[int]) -> list[int]:
-        pos_indices = []
-        for ln in line_nums:
-            pos = line_num_to_pos.get(ln)
-            if pos is None:
-                warnings.warn(
-                    f"Line number {ln} not found in context_line_nums for part "
-                    f"{part.task_id, part.sample_id, part.part_id}; skipping."
-                )
-            else:
-                pos_indices.append(pos)
-        return pos_indices
-
     supporting: set[int] = set(part.supporting_sent_inx)
     distractors: set[int] = set(getattr(part, "distractors", []))
     all_context: set[int] = set(int(k) for k in context_all.keys())
@@ -281,9 +251,24 @@ def collect_distractor_attention_record(
         all_context - supporting - distractors
     )
 
-    attn_supporting = _mean_attn_over_indices(sent_attn, _to_pos_indices(supporting))
-    attn_distractor = _mean_attn_over_indices(sent_attn, _to_pos_indices(distractors))
-    attn_neutral = _mean_attn_over_indices(sent_attn, _to_pos_indices(neutral))
+    # ── DIAGNOSTIC ────────────────────────────────────────────────────────────
+    sent_attn_keys = set(sent_attn.keys())
+    print(
+        f"  [DA diag] task={part.task_id} sample={part.sample_id} part={part.part_id}"
+        f"\n    context_line_nums (first 10): {context_line_nums[:10]}"
+        f"\n    sent_attn keys   (first 10): {sorted(sent_attn_keys)[:10]}"
+        f"\n    supporting lines : {sorted(supporting)}"
+        f"\n    distractor lines : {sorted(distractors)}"
+        f"\n    supp keys in sent_attn  : {sorted(supporting & sent_attn_keys)}"
+        f"\n    dist keys in sent_attn  : {sorted(distractors & sent_attn_keys)}"
+        f"\n    sent_attn (supp)  : { {k: sent_attn[k] for k in supporting if k in sent_attn} }"
+        f"\n    sent_attn (dist)  : { {k: sent_attn[k] for k in distractors if k in sent_attn} }"
+    )
+    # ─────────────────────────────────────────────────────────────────────────
+
+    attn_supporting = _mean_attn_over_indices(sent_attn, list(supporting))
+    attn_distractor = _mean_attn_over_indices(sent_attn, list(distractors))
+    attn_neutral = _mean_attn_over_indices(sent_attn, list(neutral))
 
     if len(distractors) == 0 and attn_distractor is None:
         attn_distractor = 0.0
