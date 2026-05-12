@@ -663,6 +663,12 @@ class Sample:
             )
         for evaluator, result in zip(self.evaluators, part.results):
             evaluator.golden_answers.append(part.golden_answer)
+            try:
+                assert "<|eot_id|>" not in result.model_answer.lower(), (
+                    f"Model answer contains 'eot': {result.model_answer}"
+                )
+            except AssertionError as e:
+                warnings.warn(str(e))
             evaluator.pred_answers.append(result.model_answer)
             evaluator.pred_reasonings.append(result.model_reasoning)
             if result.model_reasoning:
@@ -773,10 +779,14 @@ class Sample:
                 sample_context_line_nums.extend(part.context_line_nums)
             self.seen_context_lengths.add(sum(sample_part_lengths))
             # How far the target is from the question
-            target_sent_dist = round(
-                sample_context_line_nums[-1] - mean(part.supporting_sent_inx), 2
-            )
-            self.target_sent_dist.add(target_sent_dist)
+            if part.context_line_nums:
+                last_context_line = part.context_line_nums[-1]
+                target_sent_dist =  round(
+                    last_context_line - mean(part.supporting_sent_inx), 2
+                )
+                self.target_sent_dist.add(target_sent_dist)
+            else:
+                self.target_sent_dist.add(self.target_sent_dist[-1])
         self.sample_length = self.seen_context_lengths.all[-1]
 
         for evaluator in self.evaluators:

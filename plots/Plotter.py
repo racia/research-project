@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Sized
 
 import matplotlib.colors as mcolors
+from matplotlib.lines import Line2D
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -293,45 +294,6 @@ class Plotter:
             return base
         return f"{base}  ({', '.join(tags)})"
 
-    @staticmethod
-    def _disambiguator_from_tags(plot_name_add: list[str] | None) -> str:
-        """
-        Build a filename-safe suffix from ``plot_name_add`` so plots that
-        share a base name (e.g. ``distractor_attn_boxplot``) don't overwrite
-        each other when the caller varies what they pass in ``plot_name_add``.
-
-        The suffix is the underscore-joined non-version tags, sanitised by
-        replacing path separators and whitespace with hyphens. ``before`` and
-        ``after`` are dropped because callers thread the version through a
-        separate parameter that already lands in the filename.
-
-        Examples
-        --------
-        ``["Task-1", "before"]``       -> ``"_Task-1"``
-        ``["Split-test", "before"]``   -> ``"_Split-test"``
-        ``["Task-3", "before", "f=v"]`` -> ``"_Task-3_f=v"``
-        ``["before"]`` or ``None``     -> ``""``
-
-        :param plot_name_add: list of context tags from the caller
-        :return: a filename suffix beginning with ``_`` (or empty string)
-        """
-        if not plot_name_add:
-            return ""
-        tags = []
-        for t in plot_name_add:
-            if not t:
-                continue
-            if t.lower() in ("before", "after"):
-                continue
-            # Replace anything that would break a filename or path:
-            # "/" "\" whitespace -> "-".
-            safe = "".join("-" if ch in "\\/ \t\n" else ch for ch in str(t))
-            if safe:
-                tags.append(safe)
-        if not tags:
-            return ""
-        return "_" + "_".join(tags)
-
     def _plot_general_details(
         self,
         x_label: str,
@@ -343,7 +305,12 @@ class Plotter:
         metr_types: int = 1,
         step: int | float = None,
         min_x_len: int = 0,
+        combined_handles: list[Line2D] = None,
+        combined_labels: list[str] = None,
         legend_title: str = None,
+        experiment: str = "direct_answer",
+        num_parts: int = None,
+        num_samples: int = None,
     ) -> None:
         """
         Plot the general details of the plot, e.g. labels, title, and legend.
@@ -360,12 +327,14 @@ class Plotter:
         :param min_x_len: minimum length of the x-axis
         :step: step size for x-ticks
         :min_x_len: minimum length of the x-axis
+        :num_parts: The number of parts processed (if applicable, e.g. for part-level plots)
+        :num_samples: The number of samples processed
         :return: None
         """
         try:
             if step >= 1:
                 plt.xticks(range(min_x_len, max_x_len + 1, step))
-            elif step > 0:
+            elif step > 0 and step < 1:
                 plt.xticks(np.arange(0, max_x_len + 0.1, step))
             elif step == 0:
                 pass
@@ -382,16 +351,19 @@ class Plotter:
         if "accurac" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
-            y_ticks = np.arange(0, 0.09, 0.01)
-            plt.ylim(bottom=0, top=0.1)
+            if "direct" in experiment.lower():
+                # Attention scores vary between 0 and 1, with higher values in the direct answer setting. We dynamically adjust the y-axis limit to better visualize the differences between the scores, which are often below 0.6. For da scores, we keep the full range up to 1, as they can vary more widely.
+                plt.ylim(bottom=0, top=1.0)
+            else:
+                y_ticks = np.arange(0, 0.31, 0.05)
+                plt.ylim(bottom=0, top=0.3)
         elif "reasoning" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif displ_percentage:
             plt.ylim(bottom=0, top=1.01)
+        plt.yticks(y_ticks)
 
-        plt.yticks = y_ticks
-
-        type_of_data = " ".join([part.capitalize() for part in y_label.split(" ")])
+        type_of_data = " ".join([part.capitalize() if part not in ["Per", "Of", "On"] else part for part in y_label.split(" ")])
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
@@ -406,6 +378,15 @@ class Plotter:
             title += f" ({'; '.join(plot_name_add)})"
 
         plt.title(title)
+
+        stats = []
+        if num_parts is not None:
+            stats.append(f"Processed parts: {num_parts}")
+        if num_samples is not None:
+            stats.append(f"Processed samples: {num_samples}")
+        if stats:
+            plt.gcf().text(0.99, 0.01, "\n".join(stats), fontsize=9, ha="right", va="bottom") # transform=plt.gca().transAxes for in-axes placement
+
         if displ_percentage:
             plt.gca().yaxis.set_major_formatter(
                 PercentFormatter(1)
@@ -414,6 +395,8 @@ class Plotter:
 
         if num_of_data_arrays > 6 or metr_types > 6 or "attributes" in y_label.lower():
             plt.legend(
+                handles=combined_handles,
+                labels=combined_labels,
                 loc="center left",
                 bbox_to_anchor=(1, 0.5),
                 fancybox=True,
@@ -421,7 +404,7 @@ class Plotter:
                 title=legend_title,
             )
         else:
-            plt.legend(loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
+            plt.legend(handles=combined_handles, labels=combined_labels, loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
 
     def correlation_map(
         self,
@@ -453,8 +436,9 @@ class Plotter:
         axis = sns.heatmap(data, annot=True)
         cbar = axis.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
-        # Display x labels diagonally
-        plt.xticks(rotation=25, ha="right")
+        # Display x/ y labels diagonally
+        axis.set_xticklabels(axis.get_xticklabels(), rotation=25, ha="right")
+        axis.set_yticklabels(axis.get_yticklabels(), rotation=25, ha="right")
 
         plt.title(
             f"Correlation Map for {level} {split_name if split_name else id} ({version})",
@@ -686,112 +670,6 @@ class Plotter:
         )
         self._save_plot(y_label, x_label, file_name, path_add)
 
-    def plot_correlation(
-        self,
-        x_data: dict[str | Prompt, Accuracy | Metric],
-        y_data: list[float],
-        x_label: str = "X",
-        y_label: str = "Y",
-        file_name=None,
-        plot_name_add: list[str] = None,
-        path_add: Path = None,
-        level: str = None,
-        include_soft: bool = True,
-        label_add: list[str] = None,
-    ) -> None:
-        """
-        Plot the correlation between two variables.
-
-        :param x_data: Either acc_per_prompt_task or seen_context_lengths
-        :param y_data: data for the y-axis, e.g. attention scores
-        :param x_label: label for the x-axis
-        :param y_label: label for the y-axis
-        :param file_name: name of the plot
-        :param plot_name_add: addition to the plot name
-        :param path_add: addition to the path where the plot is saved
-        :param level: level of the data, e.g. "task", "sample", "part"
-        :param include_soft: whether to include soft metrics in the plot
-        :param label_add: addition to the data labels
-        :return: None
-        """
-        if level == "split":
-            plt.figure(figsize=(15, 5))
-        else:
-            plt.figure(figsize=(10, 5))
-
-        num_of_data_arrays = 0
-        max_x_len = 1
-        metr_types = 0
-        min_x_len = 0
-
-        x_data_points = {
-            k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
-        }
-        x_err = [
-            x_data_points.pop(k)
-            for k in x_data
-            if "std" in k.lower() and k in x_data_points
-        ]
-        colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
-
-        for (metr_type, metr), std_dev, color in zip_longest(
-            x_data_points.items(), x_err, colors
-        ):
-            # number_of_prompts += 1
-            num_of_data_arrays += 1
-            metr_types += 1
-            # This covers both cases: Metric (i.e. length of sentences) and Accuracy
-            if max(metr.all) > max_x_len:
-                max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
-                step_size = 5 if max_x_len > 30 else 1
-            min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
-            if len(metr) != len(y_data):
-                raise ValueError(
-                    f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
-                )
-
-            if not y_data:
-                raise ValueError("y_data is empty")
-
-            plt.errorbar(
-                metr,
-                y=(
-                    [y.get_mean() for y in y_data]
-                    if isinstance(y_data[0], Metric)
-                    else y_data
-                ),
-                xerr=std_dev,
-                fmt="o",
-                capsize=4,
-                label=(
-                    "{}{}".format(
-                        " ".join(metr_type.split("_")).title(),
-                        "\nwith Std Dev" if x_err else "",
-                    )
-                    if isinstance(metr_type, str)
-                    else metr_type.name
-                ),
-                color=color,
-                zorder=3,
-            )
-            for i, label in enumerate(label_add or []):
-                plt.annotate(label, (metr[i] + 0.001, y_data[i] + 0.001))
-
-        self._plot_general_details(
-            x_label,
-            y_label,
-            max_x_len,
-            plot_name_add,
-            num_of_data_arrays=num_of_data_arrays,
-            metr_types=metr_types,
-            step=0.1 if max_x_len == 1 else step_size,
-            min_x_len=min_x_len,
-        )
-        if path_add:
-            file_name = path_add / file_name.lower()
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
-        plt.close()
 
     def get_color_or_map(self, c: str):
         """
@@ -833,8 +711,8 @@ class Plotter:
         min_score, max_score = 0.0, 1.0
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-            max_score = max(reasoning_scores.values())
-            min_score = min(reasoning_scores.values())
+            max_score = max([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 1.0
+            min_score = min([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 0.0
         else:
             # exclude simple answer/reasoning types
             answer_types = [
@@ -904,12 +782,21 @@ class Plotter:
                         case = ids_cases[idx]
                         if use_reasoning_scores and idx in reasoning_scores:
                             score = reasoning_scores[idx]
+                            try:
+                                assert isinstance(score, (int, float))
+                            except AssertionError:
+                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                warnings.warn(
+                                    f"Non-numeric reasoning score for index {idx}, cannot color."
+                                )
+                                continue
                             # Normalize score to [0, 1]
                             norm_score = (
                                 (score - min_score) / (max_score - min_score)
                                 if max_score > min_score
                                 else 0
                             )
+
                             colormap = colors[answer_types.index(case)]
                             # Resolve colormap object
                             if isinstance(colormap, str) and colormap.startswith("#"):
@@ -965,6 +852,11 @@ class Plotter:
                     for p_idx, p in enumerate(parts):
                         idx = (task, s, p)
                         if idx in reasoning_scores and not mask[s_idx, p_idx]:
+                            try:
+                                assert isinstance(reasoning_scores[idx], (int, float))
+                            except AssertionError:
+                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                continue
                             score = round(reasoning_scores[idx], 2)
                             ax.text(
                                 p_idx,
@@ -1253,6 +1145,179 @@ class Plotter:
         setting = setting.title().replace(" ", "_")
         self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}")
 
+    def plot_correlation(
+        self,
+        x_data: dict[str | Prompt, Accuracy | Metric]|list[float]|np.array,
+        y_data: list[float],
+        x_label: str = "X",
+        y_label: str = "Y",
+        file_name=None,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        level: str = None,
+        include_soft: bool = True,
+        label_add: list[str] = [],
+        experiment: str = "direct_answer",
+        num_samples: int = None,
+    ) -> None:
+        """
+        Plot the correlation between two variables.
+
+        :param x_data: Either acc_per_prompt_task or seen_context_lengths
+        :param y_data: data for the y-axis, e.g. attention scores
+        :param x_label: label for the x-axis
+        :param y_label: label for the y-axis
+        :param file_name: name of the plot
+        :param plot_name_add: addition to the plot name
+        :param path_add: addition to the path where the plot is saved
+        :param level: level of the data, e.g. "task", "sample", "part"
+        :param include_soft: whether to include soft metrics in the plot
+        :param label_add: addition to the data labels
+        :param experiment: name of the experiment, e.g. "direct_answer"
+        :param num_samples: number of samples considered, for labeling purposes
+        :return: None
+        """
+        if level == "split":
+            plt.figure(figsize=(15, 5))
+        else:
+            plt.figure(figsize=(10, 5))
+
+        num_of_data_arrays = 0
+        max_x_len = 1
+        metr_types = 0
+        min_x_len = 0
+        if isinstance(x_data, dict):
+            x_data_points = {
+                k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
+            }
+        else:
+            x_data_points = {"data": x_data}
+        x_err = [
+            x_data_points.pop(k)
+            for k in x_data.keys()
+            if "std" in k.lower() and k in x_data_points
+        ] if isinstance(x_data, dict) else []
+        colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
+
+        # Example scaling: avoid zero size, set min/max
+        def scale_stddev(stddevs, min_size=20, max_size=300):
+            stddevs = np.array(stddevs)
+            if stddevs.max() == stddevs.min():
+                return np.full_like(stddevs, (min_size + max_size) / 2)
+            scaled = (stddevs - stddevs.min()) / (stddevs.max() - stddevs.min())
+            return min_size + scaled * (max_size - min_size)
+
+        for (metr_type, metr), std_dev, color in zip_longest(
+            x_data_points.items(), x_err, colors
+        ):
+            # number_of_prompts += 1
+            num_of_data_arrays += 1
+            metr_types += 1
+            # This covers both cases: Metric (i.e. length of sentences) and Accuracy
+            if max(metr.all) > max_x_len:
+                max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
+                step_size = 5 if max_x_len > 30 else 1
+            min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
+           
+            x_vals = metr.all
+            y_vals = [y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data
+
+            stddev_arr = np.array(std_dev) if std_dev is not None else np.zeros_like(x_vals)
+            sizes = scale_stddev(stddev_arr) if std_dev is not None else np.full_like(x_vals, 50)
+
+            if len(metr) != len(y_data):
+                raise ValueError(
+                    f"x and y must have the same first dimension, but have shapes {len(metr)} and {len(y_data)}"
+                )
+
+            if not y_data:
+                raise ValueError("y_data is empty")
+        
+            plt.scatter(
+                x_vals,
+                y_vals,
+                s=sizes,
+                # xerr=stddev_arr,
+                label=(
+                    "{}{}".format(
+                        " ".join(metr_type.split("_")).title(),
+                        "\nwith Std Dev" if x_err else "",
+                    )
+                    if isinstance(metr_type, str)
+                    else metr_type.name
+                ),
+                color=color,
+                edgecolors="black",
+                zorder=3,
+            )
+
+            seen_points = dict()
+            for i, label in enumerate(label_add):
+                if label in seen_points.values():
+                    continue  # skip if we've already labeled this point
+                x, y = metr[i], y_data[i].get_mean() if isinstance(y_data[i], Metric) else y_data[i]
+                # Find all indices with the same x and y values (within a small tolerance to account for floating point issues)
+                same_points = [j for j in range(len(metr)) if abs(metr[j] - x) < 1e-6 and abs((y_data[j].get_mean() if isinstance(y_data[j], Metric) else y_data[j]) - y) < 1e-6]
+                # Skip points we've already labeled
+                same_points = [j for j in same_points if j not in seen_points and label_add[j] != label] # also check that the label is different to avoid labeling the same point multiple times if it has the same label
+                seen_points.update({j: label_add[j] for j in same_points})
+                # Summarize the labels for these points (e.g. if they differ only by prompt, we can just list the prompts)
+                if len(same_points) >= 1:
+                    same_labels = [label_add[j] for j in same_points]
+                    assert label not in same_labels, "The label for the current point should not be in the same_labels list"
+                    summarized_label = f"{label} ({', '.join(same_labels)})"
+                else:
+                    summarized_label = label
+                plt.annotate(summarized_label, (metr[i]+.001, y_data[i]+.001), xytext=(5, 5 if i%2==0 else -5), textcoords='offset points')
+        
+        idx_min, idx_max = np.argmin(stddev_arr), np.argmax(stddev_arr)
+        # idx_median = np.argsort(stddev_arr)[len(stddev_arr) // 2]
+        median_val = np.median(stddev_arr)
+        idx_median = np.argmin(np.abs(stddev_arr - median_val))
+
+        legend_handles = [
+            Line2D(
+                [], [], 
+                marker='o', 
+                color='w', 
+                markerfacecolor='gray', 
+                markersize=np.sqrt(size),  # markersize is diameter in points
+                label=f"Std Dev: {val:.2f}"
+            )
+            for val, size in set(zip([stddev_arr[idx_min], stddev_arr[idx_median], stddev_arr[idx_max]], sizes[[idx_min, idx_median, idx_max]]))
+        ]
+        legend_handles = sorted(legend_handles, key=lambda h: float(h.get_label().split(": ")[1]), reverse=True)
+
+        # 3. Get existing handles/labels
+        handles, labels = plt.gca().get_legend_handles_labels()
+
+        # 4. Combine and set the legend
+        combined_handles = handles + legend_handles
+        combined_labels = labels + [h.get_label() for h in legend_handles]
+
+        self._plot_general_details(
+            x_label,
+            y_label,
+            max_x_len,
+            plot_name_add,
+            num_of_data_arrays=num_of_data_arrays,
+            metr_types=metr_types,
+            step=0.1 if max_x_len == 1 else step_size,
+            min_x_len=min_x_len,
+            combined_handles=combined_handles,
+            combined_labels=combined_labels,
+            legend_title="Metric Size & Circle Size", 
+            experiment=experiment,
+            # num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None, # This may be confusing, better to stay with samples
+            num_samples=num_samples,
+        )
+        if path_add:
+            file_name = path_add / file_name.lower()
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        plt.close()
+
+
     def plot_corr_hist(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric],
@@ -1265,6 +1330,8 @@ class Plotter:
         level: str = None,
         id: int = 1,
         path_add: Path = None,
+        experiment: str = "direct_answer",
+        num_samples: int = None,
     ) -> None:
         """
         Plot the correlation between two variables as histogram, i.e. parts attributes per part lengths.
@@ -1281,6 +1348,8 @@ class Plotter:
         :param path_add: addition to the path where the plot is saved
         :param level: level of the data, e.g. "task", "sample", "part"
         :param id: int id of the level
+        :param experiment: name of the experiment, e.g. "direct_answer"
+        :param num_samples: number of samples considered, for labeling purposes
         :return: None
         """
         color_map = {
@@ -1304,13 +1373,22 @@ class Plotter:
             fig, ax = plt.subplots(figsize=(10, 5))
             width = 0.35
 
+        x_data = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
+
         df = pd.DataFrame(
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
-        label_column = (
-            " ".join(df.columns[2].split("_")).title() if len(df.columns) > 2 else None
-        )
+        max_x_len = max(df[x_label])
+        min_x_len = min(df[x_label])
+        if max_x_len > 100:
+            step_size = 5
+        elif max_x_len > 30:
+            step_size = 2
+        else:
+            step_size = 1
+
+        label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
 
         if "correct" in y_label.lower():  # e.g. parts_answer_correct
             if "answer_in_self" in df.columns[2]:
@@ -1346,7 +1424,7 @@ class Plotter:
                 2
             )  # Ensure numeric values are rounded if needed
         max_x_len = max(df[x_label])
-        step_size = 2 if max_x_len > 30 else 1
+        step_size = 4 if max_x_len >= 100 else 2 if max_x_len >= 30 else 1
 
         pivot_ratios = df.pivot_table(
             values=[corr_ratio, incorr_ratio],
@@ -1379,11 +1457,14 @@ class Plotter:
             x_label=x_label,
             y_label=y_label,
             max_x_len=max_x_len,
+            min_x_len=min_x_len,
             num_of_data_arrays=1,
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
             legend_title=label_column,
             step=step_size,
+            experiment=experiment,
+            num_samples=num_samples,
         )
 
         (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
@@ -1396,7 +1477,7 @@ class Plotter:
 
     def plot_corr_boxplot(
         self,
-        x_data: dict[str | Prompt, Accuracy | Metric],
+        x_data: dict[str | Prompt, Accuracy | Metric]|list[float] | np.array,
         y_data: dict[str : list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
@@ -1406,6 +1487,8 @@ class Plotter:
         plot_name_add: list[str] = None,
         path_add: Path = None,
         level: str = None,
+        experiment: str = None,
+        num_samples: int = None,
     ) -> None:
         """
         Plot the correlation between two variables as boxplot, i.e. parts attributes per part lengths.
@@ -1422,8 +1505,13 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :param path_add: addition to the path where the plot is saved
         :param level: level of the data, e.g. "task", "sample", "part"
+        :param experiment: name of the experiment, e.g. "direct_answer"
+        :param num_samples: number of samples considered, for labeling purposes
         :return: None
         """
+        # Part-level if x_data is list/array, else sample/task-level if dict
+        # Currently only used for part-level plots
+
         if level == "split":  # bigger plots for splits
             plt.figure(figsize=(12, 8))
         else:
@@ -1436,9 +1524,9 @@ class Plotter:
                 df_data.update(y_vals)
             else:
                 df_data[y_keys] = y_vals
-
+        x_data_points = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
         df = pd.DataFrame(
-            list(zip(*x_data.values(), *df_data.values())),
+            list(zip(*x_data_points.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
 
@@ -1456,9 +1544,16 @@ class Plotter:
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            feat_str = [f.rstrip(f"_{version}") for f in feat_str]
+            feat_str = [f.removesuffix(f"_{version}")
+                        for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
+        if any(lab in x_label.lower() for lab in ["correct", "in self"]):
+            df[x_label] = df[x_label].map({0: "In previous parts" if "in self" in x_label.lower() else "Incorrect", 1: "In current part" if "in self" in x_label.lower() else "Correct"})
+        elif "target" in x_label.lower():
+            df[x_label] = df[x_label].astype(int)
+        else:
+            df[x_label] = df[x_label].round()
         # Combine parts features to single column
         label_order = None
         if "parts_features" in y_data:
@@ -1490,20 +1585,8 @@ class Plotter:
                 else x
             )
         )
-        df[x_label] = df[x_label].round()
-
-        # this sns.boxplot returns an error:
-        # UnboundLocalError: cannot access local variable 'boxprops' where it is not associated with a value
-        # when the input is all-NaN/empty after filtering
-        # ax = sns.boxplot(
-        #     data=df,
-        #     x=x_label,
-        #     y=df.columns[1],
-        #     hue=f"{label_column}_" if len(df.columns) > 2 else None,
-        #     hue_order=label_order if len(df.columns) > 2 else None,
-        # )
         hue_col = f"{label_column}_"
-        use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) > 1
+        use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) >= 1 # only use hue if there is at least one non-NaN value
 
         try:
             ax = sns.boxplot(
@@ -1537,6 +1620,9 @@ class Plotter:
             displ_percentage=displ_percentage,
             plot_name_add=plot_name_add,
             legend_title=" ".join(label_column.split("_")).title(),
+            experiment=experiment,
+            num_samples=num_samples,
+            num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None,
         )
 
         if path_add:
@@ -1629,8 +1715,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_attn_boxplot_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"distractor_attn_boxplot_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -1737,8 +1822,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_attn_per_task_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"distractor_attn_per_task_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -1836,8 +1920,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_attn_scatter_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"distractor_attn_scatter_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -1958,8 +2041,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"supporting_attention_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"supporting_attention_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2094,8 +2176,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distractor_supporting_ratio_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"distractor_supporting_ratio_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2210,8 +2291,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"attention_triplet_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"attention_triplet_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2253,7 +2333,9 @@ class Plotter:
         """
         by_n: dict[int, list] = defaultdict(list)
         for r in stats.records:
-            if r.attn_distractor is None or r.attn_supporting is None:
+            if r.attn_supporting is None:
+                continue
+            if r.attn_distractor is None and r.n_distractors != 0:
                 continue
             by_n[r.n_distractors].append(r)
 
@@ -2266,7 +2348,9 @@ class Plotter:
             return
 
         def _mean_sem(vals: list[float]) -> tuple[float, float]:
-            arr = np.asarray(vals, dtype=float)
+            arr = np.asarray(
+                [v for v in vals if v is not None and np.isfinite(v)], dtype=float
+            )
             if arr.size == 0:
                 return float("nan"), 0.0
             sem = arr.std(ddof=1) / np.sqrt(arr.size) if arr.size > 1 else 0.0
@@ -2285,7 +2369,16 @@ class Plotter:
         bin_n = []
         for n in ns:
             recs = by_n[n]
-            m, s = _mean_sem([r.attn_distractor for r in recs])
+            dist_vals = [
+                (
+                    0.0
+                    if (r.attn_distractor is None and r.n_distractors == 0)
+                    else r.attn_distractor
+                )
+                for r in recs
+                if (r.attn_distractor is not None or r.n_distractors == 0)
+            ]
+            m, s = _mean_sem(dist_vals)
             dist_mean.append(m)
             dist_sem.append(s)
             m, s = _mean_sem([r.attn_supporting for r in recs])
@@ -2308,6 +2401,7 @@ class Plotter:
             color=self._da_color_distractor,
             linewidth=2,
             label="Distractor attention",
+            linestyle="--",
         )[0]
         ax_attn.fill_between(
             ns,
@@ -2323,6 +2417,7 @@ class Plotter:
             color=self._da_color_supporting,
             linewidth=2,
             label="Supporting attention",
+            linestyle="-",
         )[0]
         ax_attn.fill_between(
             ns,
@@ -2386,8 +2481,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"distraction_vs_n_distractors_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"distraction_vs_n_distractors_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2554,8 +2648,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"accuracy_vs_distraction_ratio_{version}{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
+            f"accuracy_vs_distraction_ratio_{version}.png", path_add
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
@@ -2567,529 +2660,3 @@ class Plotter:
             txt_rows.append((f"ratio_centre={c:.4f} acc_hi", float(hi)))
             txt_rows.append((f"ratio_centre={c:.4f} n", int(n)))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
-
-    # =====================================================================
-    # Before vs After comparison plots
-    # =====================================================================
-    # These plots compare the same metric across the "before" and "after"
-    # evaluators of one split. They expect ``evaluators`` to be the list
-    # ``split.evaluators`` (length 1 for single-system runs, length 2 for
-    # multi-system runs). When only one version is available, the plots fall
-    # back to a single-line/single-bar display so the figures still produce
-    # meaningful output.
-    #
-    # All four methods share the same signature shape so callers can wire
-    # them in uniformly:
-    #
-    #     plotter.plot_before_after_<name>(
-    #         evaluators=split.evaluators,
-    #         plot_name_add=[...],
-    #         path_add=Path("before_after"),
-    #         show_values=False,
-    #     )
-
-    @staticmethod
-    def _ba_pick_evaluators(
-        evaluators: list,
-    ) -> tuple[object | None, object | None]:
-        """
-        Find the ``before`` and ``after`` evaluators in a list.
-
-        Returns ``(before, after)``; either may be ``None`` if the
-        corresponding version is not present.
-
-        :param evaluators: list of MetricEvaluator instances, one per version
-        :return: tuple of (before_evaluator, after_evaluator)
-        """
-        before = next(
-            (e for e in evaluators if getattr(e, "version", None) == "before"),
-            None,
-        )
-        after = next(
-            (e for e in evaluators if getattr(e, "version", None) == "after"),
-            None,
-        )
-        return before, after
-
-    def _ba_per_task(
-        self,
-        evaluator,
-        mean_attr: str,
-        std_attr: str | None,
-    ) -> tuple[np.ndarray, np.ndarray]:
-        """
-        Pull the per-task means (and optional stds) from one evaluator.
-
-        :param evaluator: a MetricEvaluator
-        :param mean_attr: attribute name of the mean Metric (e.g. "exact_match_accuracy")
-        :param std_attr: attribute name of the std Metric, or None for no stds
-        :return: tuple of (means, stds) as numpy arrays; stds is zeros if
-            std_attr is None or absent
-        """
-        if evaluator is None:
-            return np.array([]), np.array([])
-        m_metric = getattr(evaluator, mean_attr, None)
-        means = np.asarray(getattr(m_metric, "all", []) or [], dtype=float)
-        if std_attr is None:
-            return means, np.zeros_like(means)
-        s_metric = getattr(evaluator, std_attr, None)
-        stds = np.asarray(getattr(s_metric, "all", []) or [], dtype=float)
-        if stds.size != means.size:
-            stds = np.zeros_like(means)
-        return means, stds
-
-    def _ba_plot_lines(
-        self,
-        ax,
-        before_eval,
-        after_eval,
-        mean_attr: str,
-        std_attr: str | None,
-        ylabel: str,
-        ylim: tuple[float, float] | None = None,
-        show_values: bool = False,
-    ) -> list[tuple[str, float | None]]:
-        """
-        Draw "before" and "after" line plots on ``ax`` for one metric, with
-        std-shaded bands. Returns rows for the sibling TXT.
-
-        :return: list of (label, value) rows for the data dump
-        """
-        rows: list[tuple[str, float | None]] = []
-
-        for label, evaluator, color, marker in [
-            ("Before", before_eval, self._da_color_supporting, "o"),
-            ("After", after_eval, self._da_color_distractor, "s"),
-        ]:
-            if evaluator is None:
-                continue
-            means, stds = self._ba_per_task(evaluator, mean_attr, std_attr)
-            if means.size == 0:
-                continue
-            x = np.arange(1, means.size + 1)
-            ax.plot(
-                x,
-                means,
-                marker=marker,
-                color=color,
-                linewidth=2,
-                label=label,
-                markersize=5,
-            )
-            if stds.any():
-                ax.fill_between(x, means - stds, means + stds, color=color, alpha=0.18)
-            if show_values:
-                for xi, mi in zip(x, means):
-                    ax.text(
-                        xi,
-                        mi,
-                        f"{mi:.2f}",
-                        fontsize=7,
-                        color="#222222",
-                        ha="center",
-                        va="bottom",
-                    )
-            rows.append((f"{label} mean (across tasks)", float(means.mean())))
-            for tid, mv in enumerate(means, 1):
-                rows.append((f"{label} task {tid}", float(mv)))
-
-        ax.set_xlabel("Task", fontsize=11)
-        ax.set_ylabel(ylabel, fontsize=11)
-        if ylim is not None:
-            ax.set_ylim(*ylim)
-        ax.grid(axis="y", linestyle="--", alpha=0.4)
-        return rows
-
-    def plot_before_after_accuracy(
-        self,
-        evaluators: list,
-        plot_name_add: list[str] | None = None,
-        path_add: Path | None = None,
-        show_values: bool = False,
-    ) -> None:
-        """
-        Compare exact-match and soft-match accuracy before vs after, per task.
-
-        Two side-by-side panels: exact-match on the left, soft-match on the
-        right. Each panel shows one line per version with std bands.
-
-        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
-        :param plot_name_add: extra tags appended to the title
-        :param path_add: sub-folder under results_path
-        :param show_values: when True, label each point with its value
-        """
-        before, after = self._ba_pick_evaluators(evaluators)
-        if before is None and after is None:
-            print("[plot_before_after_accuracy] No evaluators provided.")
-            return
-
-        fig, (ax_em, ax_sm) = plt.subplots(1, 2, figsize=(13, 4.5), sharey=True)
-
-        em_rows = self._ba_plot_lines(
-            ax_em,
-            before,
-            after,
-            mean_attr="exact_match_accuracy",
-            std_attr="exact_match_std",
-            ylabel="Accuracy",
-            ylim=(0.0, 1.05),
-            show_values=show_values,
-        )
-        ax_em.set_title("Exact match", fontsize=11)
-        ax_em.legend(fontsize=9, loc="lower right", framealpha=0.9)
-
-        sm_rows = self._ba_plot_lines(
-            ax_sm,
-            before,
-            after,
-            mean_attr="soft_match_accuracy",
-            std_attr="soft_match_std",
-            ylabel="",
-            ylim=(0.0, 1.05),
-            show_values=show_values,
-        )
-        ax_sm.set_title("Soft match", fontsize=11)
-
-        fig.suptitle(
-            self._format_short_title("Accuracy: before vs after", plot_name_add),
-            fontsize=12,
-        )
-        fig.tight_layout()
-
-        png_path = self._resolve_save_target(
-            f"before_after_accuracy{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
-        )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
-        self._write_plot_data_txt(
-            png_path,
-            [("Exact match", em_rows), ("Soft match", sm_rows)],
-        )
-
-    def plot_before_after_reasoning_scores(
-        self,
-        evaluators: list,
-        plot_name_add: list[str] | None = None,
-        path_add: Path | None = None,
-        show_values: bool = False,
-    ) -> None:
-        """
-        Compare BLEU, ROUGE, and METEOR before vs after, per task.
-
-        Three side-by-side panels with shared y-axis (all three live in [0,1]),
-        one line per version each.
-
-        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
-        :param plot_name_add: extra tags appended to the title
-        :param path_add: sub-folder under results_path
-        :param show_values: when True, label each point with its value
-        """
-        before, after = self._ba_pick_evaluators(evaluators)
-        if before is None and after is None:
-            print("[plot_before_after_reasoning_scores] No evaluators provided.")
-            return
-
-        fig, axes = plt.subplots(1, 3, figsize=(16, 4.5), sharey=True)
-        sections: list[tuple[str, list[tuple[str, float | None]]]] = []
-
-        score_specs = [
-            ("BLEU", "bleu", "bleu_std"),
-            ("ROUGE", "rouge", "rouge_std"),
-            ("METEOR", "meteor", "meteor_std"),
-        ]
-        for ax, (title, mean_attr, std_attr) in zip(axes, score_specs):
-            rows = self._ba_plot_lines(
-                ax,
-                before,
-                after,
-                mean_attr=mean_attr,
-                std_attr=std_attr,
-                ylabel="Score" if ax is axes[0] else "",
-                ylim=(0.0, 1.05),
-                show_values=show_values,
-            )
-            ax.set_title(title, fontsize=11)
-            sections.append((title, rows))
-
-        axes[0].legend(fontsize=9, loc="lower right", framealpha=0.9)
-        fig.suptitle(
-            self._format_short_title(
-                "Reasoning scores: before vs after", plot_name_add
-            ),
-            fontsize=12,
-        )
-        fig.tight_layout()
-
-        png_path = self._resolve_save_target(
-            f"before_after_reasoning_scores{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
-        )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-        self._write_plot_data_txt(png_path, sections)
-
-    def plot_before_after_attention(
-        self,
-        evaluators: list,
-        plot_name_add: list[str] | None = None,
-        path_add: Path | None = None,
-        show_values: bool = False,
-    ) -> None:
-        """
-        Compare max-supporting attention and attention-on-target before vs
-        after, per task.
-
-        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
-        :param plot_name_add: extra tags appended to the title
-        :param path_add: sub-folder under results_path
-        :param show_values: when True, label each point with its value
-        """
-        before, after = self._ba_pick_evaluators(evaluators)
-        if before is None and after is None:
-            print("[plot_before_after_attention] No evaluators provided.")
-            return
-
-        fig, (ax_max, ax_target) = plt.subplots(1, 2, figsize=(13, 4.5))
-
-        max_rows = self._ba_plot_lines(
-            ax_max,
-            before,
-            after,
-            mean_attr="max_supp_attn",
-            std_attr="max_supp_attn_std",
-            ylabel="Mean attention",
-            ylim=(0.0, _DA_ATTN_YMAX),
-            show_values=show_values,
-        )
-        ax_max.set_title("Max attention on supporting", fontsize=11)
-        ax_max.legend(fontsize=9, loc="upper right", framealpha=0.9)
-
-        target_rows = self._ba_plot_lines(
-            ax_target,
-            before,
-            after,
-            mean_attr="attn_on_target",
-            std_attr="attn_on_target_std",
-            ylabel="Attention",
-            ylim=None,  # this metric is unbounded
-            show_values=show_values,
-        )
-        ax_target.set_title("Attention on target tokens", fontsize=11)
-
-        fig.suptitle(
-            self._format_short_title("Attention: before vs after", plot_name_add),
-            fontsize=12,
-        )
-        fig.tight_layout()
-
-        png_path = self._resolve_save_target(
-            f"before_after_attention{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
-        )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
-        self._write_plot_data_txt(
-            png_path,
-            [
-                ("Max attention on supporting", max_rows),
-                ("Attention on target", target_rows),
-            ],
-        )
-
-    def plot_before_after_summary(
-        self,
-        evaluators: list,
-        plot_name_add: list[str] | None = None,
-        path_add: Path | None = None,
-        show_values: bool = False,
-    ) -> None:
-        """
-        Compact dashboard summarising all metrics: one grouped bar chart with
-        the mean (across tasks) of each metric, before vs after side by side.
-
-        Useful as a single at-a-glance comparison; the per-task detail lives
-        in the other three before-after plots.
-
-        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
-        :param plot_name_add: extra tags appended to the title
-        :param path_add: sub-folder under results_path
-        :param show_values: when True, label each bar with its value
-        """
-        before, after = self._ba_pick_evaluators(evaluators)
-        if before is None and after is None:
-            print("[plot_before_after_summary] No evaluators provided.")
-            return
-
-        # (display_label, attribute_name, group_name)
-        spec: list[tuple[str, str, str]] = [
-            ("Exact match", "exact_match_accuracy", "Accuracy"),
-            ("Soft match", "soft_match_accuracy", "Accuracy"),
-            ("BLEU", "bleu", "Reasoning"),
-            ("ROUGE", "rouge", "Reasoning"),
-            ("METEOR", "meteor", "Reasoning"),
-            ("Max-supp attn", "max_supp_attn", "Attention"),
-            ("Attn-on-target", "attn_on_target", "Attention"),
-        ]
-
-        labels = [s[0] for s in spec]
-        n = len(labels)
-        x = np.arange(n)
-        width = 0.36
-
-        def _means(evaluator) -> list[float | None]:
-            if evaluator is None:
-                return [None] * n
-            out: list[float | None] = []
-            for _, attr, _ in spec:
-                metric = getattr(evaluator, attr, None)
-                if metric is None:
-                    out.append(None)
-                    continue
-                try:
-                    out.append(float(metric.get_mean()))
-                except Exception:
-                    out.append(None)
-            return out
-
-        before_means = _means(before)
-        after_means = _means(after)
-
-        fig, ax = plt.subplots(figsize=(11, 4.8))
-
-        def _plot_bars(offset, values, color, label):
-            xs, hs = [], []
-            for xi, v in zip(x, values):
-                if v is None or not np.isfinite(v):
-                    continue
-                xs.append(xi + offset)
-                hs.append(v)
-            if not xs:
-                return None
-            bars = ax.bar(xs, hs, width, color=color, alpha=0.82, label=label)
-            if show_values:
-                for b, h in zip(bars, hs):
-                    ax.text(
-                        b.get_x() + b.get_width() / 2,
-                        h,
-                        f"{h:.2f}",
-                        ha="center",
-                        va="bottom",
-                        fontsize=7,
-                        color="#222222",
-                    )
-            return bars
-
-        _plot_bars(-width / 2, before_means, self._da_color_supporting, "Before")
-        _plot_bars(+width / 2, after_means, self._da_color_distractor, "After")
-
-        ax.set_xticks(x)
-        ax.set_xticklabels(labels, rotation=20, ha="right", fontsize=9)
-        ax.set_ylabel("Mean across tasks", fontsize=11)
-        # Most metrics live in [0, 1] but attn_on_target can exceed 1.
-        # Pick the y-limit dynamically so no bar gets clipped, but keep the
-        # baseline at 1.05 so different runs are still roughly comparable.
-        all_vals = [
-            v for v in (before_means + after_means) if v is not None and np.isfinite(v)
-        ]
-        ymax = max(1.05, max(all_vals) * 1.10) if all_vals else 1.05
-        ax.set_ylim(0, ymax)
-        ax.set_title(
-            self._format_short_title("Before vs after summary", plot_name_add),
-            fontsize=12,
-            pad=8,
-        )
-        ax.legend(fontsize=10, loc="upper right", framealpha=0.9)
-        ax.grid(axis="y", linestyle="--", alpha=0.4)
-        ax.set_axisbelow(True)
-        fig.tight_layout()
-
-        png_path = self._resolve_save_target(
-            f"before_after_summary{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
-        )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
-        rows: list[tuple[str, float | None]] = []
-        for label, b, a in zip(labels, before_means, after_means):
-            rows.append((f"{label} before", b))
-            rows.append((f"{label} after", a))
-            if b is not None and a is not None:
-                rows.append((f"{label} delta", float(a) - float(b)))
-        self._write_plot_data_txt(png_path, [("Mean across tasks", rows)])
-
-    def plot_before_after_delta_lineplot(
-        self,
-        evaluators: list,
-        plot_name_add: list[str] | None = None,
-        path_add: Path | None = None,
-        show_values: bool = False,
-    ) -> None:
-        """
-        Plots the absolute delta (after - before) for exact match and soft match accuracy
-        per task as a line plot. Positive delta means 'after' is better.
-        """
-        before, after = self._ba_pick_evaluators(evaluators)
-        if before is None or after is None:
-            print(
-                "[plot_before_after_delta_lineplot] Both 'before' and 'after' evaluators are required."
-            )
-            return
-
-        fig, ax = plt.subplots(figsize=(8, 5))
-
-        em_before, _ = self._ba_per_task(before, "exact_match_accuracy", None)
-        em_after, _ = self._ba_per_task(after, "exact_match_accuracy", None)
-        sm_before, _ = self._ba_per_task(before, "soft_match_accuracy", None)
-        sm_after, _ = self._ba_per_task(after, "soft_match_accuracy", None)
-
-        x = np.arange(1, len(em_before) + 1)
-        if len(em_before) > 0 and len(em_after) == len(em_before):
-            delta_em = em_after - em_before
-            ax.plot(
-                x,
-                delta_em,
-                marker="o",
-                color="#2874A6",
-                linewidth=2,
-                label="Exact Match Delta",
-            )
-            if show_values:
-                for xi, yi in zip(x, delta_em):
-                    ax.text(xi, yi, f"{yi:+.2f}", fontsize=8, ha="center", va="bottom")
-
-        if len(sm_before) > 0 and len(sm_after) == len(sm_before):
-            delta_sm = sm_after - sm_before
-            ax.plot(
-                x,
-                delta_sm,
-                marker="s",
-                color="#E67E22",
-                linewidth=2,
-                label="Soft Match Delta",
-            )
-            if show_values:
-                for xi, yi in zip(x, delta_sm):
-                    ax.text(xi, yi, f"{yi:+.2f}", fontsize=8, ha="center", va="top")
-
-        ax.axhline(0, color="gray", linestyle="--", linewidth=1.0)
-        ax.set_xlabel("Task", fontsize=11)
-        ax.set_ylabel("Accuracy Delta (After - Before)", fontsize=11)
-        ax.set_title(
-            self._format_short_title("Accuracy Delta per Task", plot_name_add),
-            fontsize=12,
-            pad=8,
-        )
-        ax.legend(fontsize=10, loc="upper right")
-        ax.grid(axis="both", linestyle="--", alpha=0.4)
-
-        fig.tight_layout()
-        png_path = self._resolve_save_target(
-            f"before_after_delta_lineplot{self._disambiguator_from_tags(plot_name_add)}.png",
-            path_add,
-        )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
