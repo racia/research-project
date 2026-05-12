@@ -7,7 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
-from evaluation.DistractorAttention import DistractorAttentionStats
+from interpretability.DistractorAttention import DistractorAttentionStats
 
 
 class Identifiers:

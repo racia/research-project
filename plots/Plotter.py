@@ -17,11 +17,11 @@ from matplotlib import cm
 from matplotlib.colors import ListedColormap
 from matplotlib.ticker import MultipleLocator, PercentFormatter
 
-from evaluation.DistractorAttention import DistractorAttentionStats
 from evaluation.Metrics import Accuracy, Metric
 from evaluation.utils import CASES_2_LABELS, CASES_TO_SIMPLE_ANS, FLOAT_2_STR
 from inference.DataLevels import Features
 from inference.Prompt import Prompt
+from interpretability.DistractorAttention import DistractorAttentionStats
 from interpretability.utils import InterpretabilityResult
 from plots.utils import (
     Identifiers,
@@ -31,6 +31,12 @@ from plots.utils import (
     prepare_for_display_pie,
     safe_mean,
 )
+
+# ---- Distractor-attention plot style constants ----------------------------
+_DA_ATTN_YMAX: float = 1  # max mean-attention per sentence
+_DA_MARGIN_ABS: float = 1  # max |distractor − supporting| margin shown
+_DA_RATIO_YMIN: float = 1e-2  # min log ratio shown (distractor / supporting)
+_DA_RATIO_YMAX: float = 1e2  # max log ratio shown
 
 
 class Plotter:
@@ -73,6 +79,10 @@ class Plotter:
             "ans_corr_reas_incorr": "#D49F7A",  # brownish orange
             "ans_incorr_reas_corr": "#6B8FA4",  # brownish blue
             "ans_incorr_reas_incorr": "#D7CEC3",  # light brown
+            # Sentence-role colours used by the distractor-attention plots:
+            "supporting": "#2874A6",  # blue, matches reas_corr
+            "distractor": "#E67E22",  # orange, matches ans_corr_reas_null
+            "neutral": "#6E6E6E",  # gray, matches ans_null
         }
         self.case_color_map = {  # mathematical
             "ans_corr": "#FF6F1B",  # pure orange (255, 110, 25)
@@ -90,6 +100,10 @@ class Plotter:
             "ans_corr_reas_incorr": "#B48C8C",  # brownish orange (180, 140, 140)
             "ans_incorr_reas_corr": "#918CB4",  # brownish blue (145, 140, 180)
             "ans_incorr_reas_incorr": "#BEAFAA",  # light brown (190, 175, 170)
+            # Sentence-role colours used by the distractor-attention plots:
+            "supporting": "#196EFF",  # blue, matches reas_corr
+            "distractor": "#FF6F1B",  # orange, matches ans_corr
+            "neutral": "#6E6E6E",  # gray, matches ans_null
         }
         self.case_color_map = {  # with green and red as a basis?
             "ans_corr": "Greens",
@@ -107,12 +121,81 @@ class Plotter:
             "ans_corr_reas_incorr": "#966EAF",  # purple (150, 110, 175)
             "ans_incorr_reas_corr": "#508CAF",  # blue (80, 140, 175)
             "ans_incorr_reas_incorr": "#964B4B",  # dark red (150, 75, 75)
+            # Sentence-role colours used by the distractor-attention plots:
+            "supporting": "#196EFF",  # blue, matches reas_corr
+            "distractor": "Oranges",  # colormap, follows the family pattern of this variant
+            "neutral": "#6E6E6E",  # gray, matches reas_null
         }
         self.results_path: Path = results_path
 
         self.plot_counter_prompt: int = 0
 
         self.warning_counter = 0
+
+        # Resolve the five distractor-plot colours from self.case_color_map so
+        # they match the rest of Plotter's colour scheme. Map values may be a
+        # hex string (e.g. "#FF6E19") or a colormap name (e.g. "Greens"); we
+        # normalise to a single hex either way via _resolve_case_color.
+        self._da_color_correct: str = self._resolve_case_color("ans_corr")
+        self._da_color_incorrect: str = self._resolve_case_color("ans_incorr")
+        self._da_color_supporting: str = self._resolve_case_color("supporting")
+        self._da_color_distractor: str = self._resolve_case_color("distractor")
+        self._da_color_neutral: str = self._resolve_case_color("neutral")
+
+    def _resolve_case_color(self, case: str, sample: float = 0.6) -> str:
+        """
+        Return a single hex colour for a given key in ``case_color_map``.
+
+        Some entries are colormap names (e.g. ``"Greens"``) rather than hex
+        strings; for those we sample the colormap at ``sample`` to get a
+        representative middle-saturation colour. Hex values are returned
+        unchanged. Missing keys fall back to a neutral gray.
+
+        :param case: key into ``self.case_color_map``
+        :param sample: position in the colormap to sample (only used for
+                       colormap-named entries); 0.6 gives a strong but not
+                       maximally saturated colour
+        :return: a hex colour string
+        """
+        value = self.case_color_map.get(case)
+        if value is None:
+            return "#888888"
+        if isinstance(value, str) and value.startswith("#"):
+            return value
+        try:
+            cmap = cm.get_cmap(value)
+            return mcolors.to_hex(cmap(sample))
+        except (ValueError, TypeError):
+            return "#888888"
+
+    def _resolve_save_target(
+        self,
+        file_name: str,
+        path_add: Path | str | None,
+    ) -> str:
+        """
+        Combine ``path_add`` with ``file_name`` into a single relative path
+        suitable for ``_save_plot``'s ``file_name`` argument, creating the
+        target directory if necessary.
+
+        ``_save_plot`` writes its file to ``self.results_path / file_name`` and
+        does not understand a separate ``path_add``. To land plots inside a
+        sub-folder we have to (a) make sure the sub-folder exists and (b)
+        embed it in the ``file_name`` string. This helper centralises that
+        routing so callers can keep using ``path_add`` as a clean argument.
+
+        :param file_name: bare filename (no directory component)
+        :param path_add: optional sub-path under ``self.results_path``;
+                         ``None`` or empty means save directly under
+                         ``self.results_path``
+        :return: the combined ``"<path_add>/<file_name>"`` string, or just
+                 ``file_name`` when no sub-path was given
+        """
+        if not path_add:
+            return file_name
+        target_dir = self.results_path / path_add
+        target_dir.mkdir(parents=True, exist_ok=True)
+        return f"{path_add}/{file_name}"
 
     def _save_plot(
         self,
@@ -146,6 +229,70 @@ class Plotter:
 
         self.plot_counter_prompt += 1
         plt.close()
+
+    def _write_plot_data_txt(
+        self,
+        png_path: str,
+        sections: list[tuple[str, list[tuple[str, float | int | None]]]],
+    ) -> None:
+        """
+        Save the underlying numbers of a plot as a sibling ``.txt`` file.
+
+        Given the relative PNG path that was passed to ``_save_plot`` (e.g.
+        ``"distractor/distractor_attn_boxplot_before.png"``), this writes
+        ``"distractor/distractor_attn_boxplot_before.txt"`` containing one
+        ``key: value`` line per entry, grouped under section headers.
+
+        Used by the distractor-attention plots so that exact medians, means,
+        sample counts, etc. are available without printing them on top of the
+        figure (which clutters the visual). The plots themselves accept a
+        ``show_values`` flag to toggle in-plot annotations independently.
+
+        :param png_path: relative path of the PNG (relative to results_path)
+        :param sections: list of (section_title, [(label, value), ...]) tuples;
+                         a value of None is rendered as "n/a"
+        """
+        txt_path = self.results_path / Path(png_path).with_suffix(".txt")
+        txt_path.parent.mkdir(parents=True, exist_ok=True)
+        lines: list[str] = []
+        for section_title, entries in sections:
+            lines.append(f"# {section_title}")
+            for label, value in entries:
+                if value is None:
+                    lines.append(f"{label}: n/a")
+                elif isinstance(value, float):
+                    lines.append(f"{label}: {value:.6f}")
+                else:
+                    lines.append(f"{label}: {value}")
+            lines.append("")
+        txt_path.write_text("\n".join(lines), encoding="utf-8")
+
+    def _format_short_title(
+        self,
+        base: str,
+        plot_name_add: list[str] | None,
+    ) -> str:
+        """
+        Build a short, easy-to-read plot title.
+
+        The original plots concatenated all ``plot_name_add`` entries verbatim
+        into the title, which produced long titles like
+        ``"... [my_prompt_v1, test, before]"``. This helper drops the version
+        suffix (which is already encoded in the filename and the colour scheme)
+        and keeps only the prompt/split tag in compact brackets.
+
+        :param base: short headline of the plot (e.g. "Attention by role")
+        :param plot_name_add: optional context tags from the caller
+        :return: a one-line title suitable for ``ax.set_title``
+        """
+        if not plot_name_add:
+            return base
+        # Drop the version tag ("before"/"after") to avoid duplication: the
+        # version is already in the filename and colour scheme.
+        tags = [t for t in plot_name_add if t.lower() not in ("before", "after")]
+        if not tags:
+            return base
+        return f"{base}  ({', '.join(tags)})"
 
     def _plot_general_details(
         self,
@@ -1493,39 +1640,37 @@ class Plotter:
         version: str,
         plot_name_add: list[str] = None,
         path_add: Path = None,
+        show_values: bool = False,
     ) -> None:
         """
-        Plot a four-box comparison of mean attention on distractor versus neutral
-        context sentences, split by answer correctness.
+        Boxplot of mean attention on distractor vs neutral context, split by
+        answer correctness.
 
-        The two correctness conditions (correct, incorrect) are shown side by side,
-        each with a box for distractor sentences and a box for neutral sentences.
-        A larger gap between the distractor and neutral boxes for incorrect answers
-        than for correct answers suggests the model is misled by distractors.
-
-        :param stats: accumulated distractor attention records for this version
-        :param version: "before" or "after", used in the output file name
-        :param plot_name_add: additional strings appended to the plot title
-        :param path_add: sub-path appended to the plotter's base results path
+        Uses the full context up to each question (including previous parts).
         """
         grouped = stats.as_grouped()
 
-        role_color = {"distractor": "#d7604a", "neutral": "#4a90d7"}
-        label_correct = {True: "Correct", False: "Incorrect"}
+        role_color = {
+            "distractor": self._da_color_distractor,
+            "neutral": self._da_color_neutral,
+        }
         ordering = [
             (True, "distractor"),
             (True, "neutral"),
             (False, "distractor"),
             (False, "neutral"),
         ]
+        label_correct = {True: "Correct", False: "Incorrect"}
 
-        box_data, tick_labels, colors = [], [], []
+        box_data, tick_labels, colors, medians, ns = [], [], [], [], []
         for correct, role in ordering:
             vals = grouped[correct].get(role, [])
             if vals:
                 box_data.append(vals)
-                tick_labels.append(f"{label_correct[correct]}\n({role})")
+                tick_labels.append(f"{label_correct[correct]}\n{role}")
                 colors.append(role_color[role])
+                medians.append(float(np.median(vals)))
+                ns.append(len(vals))
 
         if not box_data:
             print(
@@ -1533,31 +1678,62 @@ class Plotter:
             )
             return
 
-        fig, ax = plt.subplots(figsize=(8, 5))
-        bp = ax.boxplot(box_data, patch_artist=True, notch=False, widths=0.5)
+        fig, ax = plt.subplots(figsize=(7, 4.5))
+        bp = ax.boxplot(box_data, patch_artist=True, widths=0.55)
 
         for patch, color in zip(bp["boxes"], colors):
             patch.set_facecolor(color)
-            patch.set_alpha(0.72)
+            patch.set_alpha(0.78)
         for element in ("whiskers", "caps", "fliers", "medians"):
-            plt.setp(bp[element], color="#333333", linewidth=1.2)
+            plt.setp(bp[element], color="#333333", linewidth=1.1)
 
         ax.set_xticks(range(1, len(tick_labels) + 1))
         ax.set_xticklabels(tick_labels, fontsize=10)
-        ax.set_ylabel("Mean Attention on Sentence Role", fontsize=11)
+        ax.set_ylabel("Mean attention", fontsize=11)
+        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_title(
+            self._format_short_title(
+                "Attention on distractor vs neutral", plot_name_add
+            ),
+            fontsize=11,
+            pad=8,
+        )
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
 
-        title = "Distractor vs Neutral Attention by Answer Correctness"
-        if plot_name_add:
-            title += f"  [{', '.join(plot_name_add)}]"
-        ax.set_title(title, fontsize=11, pad=10)
-        ax.grid(axis="y", linestyle="--", alpha=0.45)
+        if show_values:
+            for i, m in enumerate(medians, 1):
+                ax.text(
+                    i,
+                    m,
+                    f"{m:.3f}",
+                    ha="center",
+                    va="bottom",
+                    fontsize=8,
+                    color="#222222",
+                )
+
         fig.tight_layout()
 
-        self._save_plot(
-            file_name=f"distractor_attn_boxplot_{version}.png",
+        png_path = self._resolve_save_target(
+            f"distractor_attn_boxplot_{version}.png", path_add
         )
+        self._save_plot(file_name=png_path)
         plt.close(fig)
         self.plot_counter_prompt += 1
+
+        self._write_plot_data_txt(
+            png_path,
+            [
+                (
+                    "Box medians by group",
+                    [(label, m) for label, m in zip(tick_labels, medians)],
+                ),
+                (
+                    "Sample counts (n)",
+                    [(label, n) for label, n in zip(tick_labels, ns)],
+                ),
+            ],
+        )
 
     def plot_distractor_attn_per_task(
         self,
@@ -1565,18 +1741,17 @@ class Plotter:
         version: str,
         plot_name_add: list[str] = None,
         path_add: Path = None,
+        show_values: bool = False,
     ) -> None:
         """
-        Plot a grouped bar chart of mean distractor and neutral attention per task,
-        with correct and incorrect conditions shown side by side.
-
-        Task and correctness combinations that have no data are left blank rather
-        than drawn as zero, to avoid misleading comparisons.
+        Grouped bar chart of mean distractor and neutral attention per task,
+        with correct and incorrect answers shown side by side.
 
         :param stats: accumulated distractor attention records for this version
-        :param version: "before" or "after", used in the output file name
-        :param plot_name_add: additional strings appended to the plot title
-        :param path_add: sub-path appended to the plotter's base results path
+        :param version: "before" or "after"; appears in the filename
+        :param plot_name_add: extra tags appended to the title (in brackets)
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, write each bar's height above it
         """
         per_task = stats.as_per_task()
         task_ids = sorted(per_task.keys())
@@ -1590,40 +1765,70 @@ class Plotter:
         width = 0.18
 
         bar_spec = [
-            (True, "distractor", -1.5, "#c0392b", "Correct / Distractor"),
-            (True, "neutral", -0.5, "#2980b9", "Correct / Neutral"),
-            (False, "distractor", 0.5, "#e67e22", "Incorrect / Distractor"),
-            (False, "neutral", 1.5, "#7f8c8d", "Incorrect / Neutral"),
+            (
+                True,
+                "distractor",
+                -1.5,
+                self._da_color_distractor,
+                "Correct / distractor",
+            ),
+            (True, "neutral", -0.5, self._da_color_neutral, "Correct / neutral"),
+            (
+                False,
+                "distractor",
+                0.5,
+                self._da_color_incorrect,
+                "Incorrect / distractor",
+            ),
+            (False, "neutral", 1.5, "#7f8c8d", "Incorrect / neutral"),
         ]
 
-        fig, ax = plt.subplots(figsize=(max(8, len(task_ids) * 1.1), 5))
+        fig, ax = plt.subplots(figsize=(max(7, len(task_ids) * 0.9), 4.5))
 
+        txt_rows: list[tuple[str, float | None]] = []
         for correct, role, offset_mult, color, label in bar_spec:
             means = [per_task[tid].get(correct, {}).get(role, None) for tid in task_ids]
-            xs = [
-                x[i] + offset_mult * width for i, m in enumerate(means) if m is not None
-            ]
-            heights = [m for m in means if m is not None]
+            xs, heights = [], []
+            for i, m in enumerate(means):
+                if m is not None:
+                    xs.append(x[i] + offset_mult * width)
+                    heights.append(m)
+                txt_rows.append((f"task={task_ids[i]} {label}", m))
             if xs:
-                ax.bar(xs, heights, width, label=label, color=color, alpha=0.82)
+                bars = ax.bar(xs, heights, width, label=label, color=color, alpha=0.82)
+                if show_values:
+                    for b, h in zip(bars, heights):
+                        ax.text(
+                            b.get_x() + b.get_width() / 2,
+                            h,
+                            f"{h:.2f}",
+                            ha="center",
+                            va="bottom",
+                            fontsize=7,
+                            color="#222222",
+                        )
 
         ax.set_xticks(x)
         ax.set_xticklabels([f"T{tid}" for tid in task_ids], fontsize=9)
-        ax.set_ylabel("Mean Attention", fontsize=11)
-
-        title = "Per-Task Distractor vs Neutral Attention"
-        if plot_name_add:
-            title += f"  [{', '.join(plot_name_add)}]"
-        ax.set_title(title, fontsize=11, pad=10)
-        ax.legend(fontsize=9, ncol=2, loc="upper right")
+        ax.set_ylabel("Mean attention", fontsize=11)
+        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_title(
+            self._format_short_title("Distractor vs neutral by task", plot_name_add),
+            fontsize=11,
+            pad=8,
+        )
+        ax.legend(fontsize=8, ncol=2, loc="upper right", framealpha=0.9)
         ax.grid(axis="y", linestyle="--", alpha=0.4)
         fig.tight_layout()
 
-        self._save_plot(
-            file_name=f"distractor_attn_per_task_{version}.png",
+        png_path = self._resolve_save_target(
+            f"distractor_attn_per_task_{version}.png", path_add
         )
+        self._save_plot(file_name=png_path)
         plt.close(fig)
         self.plot_counter_prompt += 1
+
+        self._write_plot_data_txt(png_path, [("Bar means", txt_rows)])
 
     def plot_distractor_attn_scatter(
         self,
@@ -1631,189 +1836,827 @@ class Plotter:
         version: str,
         plot_name_add: list[str] = None,
         path_add: Path = None,
+        show_values: bool = False,
     ) -> None:
         """
-        Plot a scatter of mean attention on neutral context versus mean attention
-        on distractor sentences per part, coloured by answer correctness.
-
-        A diagonal reference line (y = x) is included; points above it indicate
-        that the model allocated more attention to distractors than to neutral
-        context for that part. Clustering of incorrect answers above the diagonal
-        supports the hypothesis that distractor attention correlates with errors.
-
-        Only parts that have both attn_distractor and attn_neutral are plotted.
+        Per-part scatter of distractor attention vs neutral attention, coloured
+        by answer correctness. The y=x reference line marks where distractor
+        and neutral attention are equal.
 
         :param stats: accumulated distractor attention records for this version
-        :param version: "before" or "after", used in the output file name
-        :param plot_name_add: additional strings appended to the plot title
-        :param path_add: sub-path appended to the plotter's base results path
+        :param version: "before" or "after"; appears in the filename
+        :param plot_name_add: extra tags appended to the title (in brackets)
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label group means on the plot
         """
         scatter_data = stats.as_scatter_data()
 
-        fig, ax = plt.subplots(figsize=(6, 6))
+        fig, ax = plt.subplots(figsize=(5.5, 5.5))
 
         plot_spec = [
-            (True, "#2ecc71", "Correct", "o"),
-            (False, "#e74c3c", "Incorrect", "^"),
+            (True, self._da_color_correct, "Correct", "o"),
+            (False, self._da_color_incorrect, "Incorrect", "^"),
         ]
-        all_vals: list[float] = []
+        any_data = False
+        txt_rows: list[tuple[str, float | int | None]] = []
 
         for correct, color, label, marker in plot_spec:
             xvals = scatter_data[correct]["neutral"]
             yvals = scatter_data[correct]["distractor"]
             if xvals:
+                any_data = True
                 ax.scatter(
                     xvals,
                     yvals,
                     alpha=0.55,
-                    s=35,
+                    s=32,
                     color=color,
                     marker=marker,
                     label=f"{label} (n={len(xvals)})",
                     edgecolors="none",
                 )
-                all_vals.extend(xvals)
-                all_vals.extend(yvals)
+                mx, my = float(np.mean(xvals)), float(np.mean(yvals))
+                txt_rows.append((f"{label} n", len(xvals)))
+                txt_rows.append((f"{label} mean(neutral)", mx))
+                txt_rows.append((f"{label} mean(distractor)", my))
+                if show_values:
+                    ax.text(
+                        mx,
+                        my,
+                        f"  ({mx:.2f},{my:.2f})",
+                        fontsize=8,
+                        color="#222222",
+                    )
 
-        if not all_vals:
+        if not any_data:
             print(
                 f"[plot_distractor_attn_scatter] No data to plot for version='{version}'."
             )
             plt.close(fig)
             return
 
-        lo, hi = min(all_vals), max(all_vals)
-        margin = (hi - lo) * 0.05
-        ref = [lo - margin, hi + margin]
-        ax.plot(ref, ref, "k--", linewidth=0.9, alpha=0.45, label="y = x")
+        # Fixed range so different runs are directly comparable.
+        ax.plot(
+            [0, _DA_ATTN_YMAX],
+            [0, _DA_ATTN_YMAX],
+            "k--",
+            linewidth=0.9,
+            alpha=0.45,
+            label="y = x",
+        )
+        ax.set_xlim(0, _DA_ATTN_YMAX)
+        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_aspect("equal", adjustable="box")
 
-        ax.set_xlabel("Mean Attention on Neutral Context", fontsize=11)
-        ax.set_ylabel("Mean Attention on Distractor Sentences", fontsize=11)
-
-        title = "Distractor vs Neutral Attention per Part"
-        if plot_name_add:
-            title += f"  [{', '.join(plot_name_add)}]"
-        ax.set_title(title, fontsize=11, pad=10)
-        ax.legend(fontsize=9)
+        ax.set_xlabel("Attention on neutral", fontsize=11)
+        ax.set_ylabel("Attention on distractor", fontsize=11)
+        ax.set_title(
+            self._format_short_title("Per-part distractor vs neutral", plot_name_add),
+            fontsize=11,
+            pad=8,
+        )
+        ax.legend(fontsize=9, loc="upper left", framealpha=0.9)
         ax.grid(linestyle="--", alpha=0.35)
         fig.tight_layout()
 
-        self._save_plot(file_name=f"distractor_attn_scatter_{version}.png")
+        png_path = self._resolve_save_target(
+            f"distractor_attn_scatter_{version}.png", path_add
+        )
+        self._save_plot(file_name=png_path)
         plt.close(fig)
         self.plot_counter_prompt += 1
+
+        self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
 
     def plot_supporting_attention(
         self,
         stats: DistractorAttentionStats,
-        x_label: str = "answer_correct",
-        y_label: str = "supporting_attention",
         plot_name_add: list[str] | None = None,
         version: str = "before",
-    ):
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
         """
-        Mean supporting attention for correct vs incorrect answers.
+        Per-sample distraction margin (attention on distractor minus attention
+        on supporting), plotted as a strip plot split by answer correctness.
+
+        Margin > 0 → model is being distracted on that part.
+        Margin < 0 → model stays focused on the supporting facts.
+
+        :param stats: accumulated distractor attention records for this version
+        :param plot_name_add: extra tags appended to the title (in brackets)
+        :param version: "before" or "after"; appears in the filename
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label the group means and "% distracted"
         """
+        margins_correct: list[float] = []
+        margins_incorrect: list[float] = []
+        for r in stats.records:
+            if r.attn_distractor is None or r.attn_supporting is None:
+                continue
+            margin = r.attn_distractor - r.attn_supporting
+            (margins_correct if r.answer_correct else margins_incorrect).append(margin)
 
-        data = extract_attention_by_correct(stats)
+        if not margins_correct and not margins_incorrect:
+            print(
+                f"[plot_supporting_attention] No data to plot for version='{version}'."
+            )
+            return
 
-        labels = ["Correct", "Incorrect"]
-
-        supporting_means = [
-            np.mean(data[True]["supporting"]) if data[True]["supporting"] else np.nan,
-            np.mean(data[False]["supporting"]) if data[False]["supporting"] else np.nan,
+        groups = [
+            ("Correct", margins_correct, self._da_color_correct),
+            ("Incorrect", margins_incorrect, self._da_color_incorrect),
         ]
 
-        plt.figure()
+        fig, ax = plt.subplots(figsize=(6.5, 5))
 
-        plt.bar(labels, supporting_means)
-        plt.ylabel("Attention")
-        plt.title("Supporting Attention")
+        rng = np.random.default_rng(seed=0)
+        means = []
+        pct_distracted = []
+        for i, (_, vals, color) in enumerate(groups):
+            if not vals:
+                means.append(None)
+                pct_distracted.append(None)
+                continue
+            jitter = rng.uniform(-0.18, 0.18, size=len(vals))
+            ax.scatter(
+                np.full(len(vals), i) + jitter,
+                vals,
+                alpha=0.55,
+                s=26,
+                color=color,
+                edgecolors="none",
+            )
+            m = float(np.mean(vals))
+            means.append(m)
+            pct = 100.0 * sum(v > 0 for v in vals) / len(vals)
+            pct_distracted.append(pct)
+            ax.scatter(
+                [i],
+                [m],
+                marker="D",
+                s=70,
+                color="black",
+                zorder=5,
+                label="Group mean" if i == 0 else None,
+            )
+            if show_values:
+                ax.text(
+                    i + 0.05,
+                    m,
+                    f"{m:+.2f}",
+                    fontsize=9,
+                    color="#111111",
+                    va="center",
+                )
 
-        self._save_plot(
-            x_label=x_label,
-            y_label=y_label,
-            file_name=f"supporting_attention_{version}.png",
-            path_add=Path(*plot_name_add),
+        # Reference line: margin = 0.
+        ax.axhline(0.0, color="#333333", linestyle="--", linewidth=1.0)
+        ax.axhspan(
+            0, _DA_MARGIN_ABS, facecolor=self._da_color_incorrect, alpha=0.05, zorder=0
         )
+        ax.axhspan(
+            -_DA_MARGIN_ABS, 0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
+        )
+
+        # Brief region cues at the y-axis edge — far less text than before.
+        ax.set_ylabel("Distractor − supporting attention", fontsize=11)
+        ax.set_xlabel("Answer", fontsize=11)
+        ax.set_ylim(-_DA_MARGIN_ABS, _DA_MARGIN_ABS)
+
+        # Concise tick labels: just the group name and n.
+        xtick_labels = []
+        for label, vals, _ in groups:
+            xtick_labels.append(f"{label}\nn = {len(vals)}")
+        ax.set_xticks(range(len(groups)))
+        ax.set_xticklabels(xtick_labels, fontsize=10)
+
+        ax.set_title(
+            self._format_short_title("Distraction margin per part", plot_name_add),
+            fontsize=11,
+            pad=8,
+        )
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.legend(loc="upper left", fontsize=9, framealpha=0.9)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"supporting_attention_{version}.png", path_add
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        txt_rows: list[tuple[str, float | int | None]] = []
+        for (label, vals, _), m, pct in zip(groups, means, pct_distracted):
+            txt_rows.append((f"{label} n", len(vals)))
+            txt_rows.append((f"{label} mean margin", m))
+            txt_rows.append((f"{label} pct distracted", pct))
+        self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
 
     def plot_distractor_supporting_ratio(
         self,
         stats: DistractorAttentionStats,
-        x_label: str = "answer_correct",
-        y_label: str = "distractor_supporting_ratio",
         plot_name_add: list[str] | None = None,
         eps: float = 1e-8,
         version: str = "before",
-    ):
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
         """
-        Distractor / Supporting attention ratio per sample.
+        Per-sample boxplot of the distractor / supporting attention ratio,
+        on a log scale, split by answer correctness.
+
+        Ratio > 1 → distractor receives more attention than supporting.
+        Ratio < 1 → supporting still wins.
+
+        :param stats: accumulated distractor attention records for this version
+        :param plot_name_add: extra tags appended to the title (in brackets)
+        :param eps: stabiliser for division
+        :param version: "before" or "after"; appears in the filename
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label group medians and "% above 1"
         """
-
-        ratios_correct = []
-        ratios_incorrect = []
-
+        ratios_correct: list[float] = []
+        ratios_incorrect: list[float] = []
         for r in stats.records:
-            if getattr(r, "attn_supporting", None) is None:
-                continue
-
             if r.attn_supporting is None or r.attn_distractor is None:
                 continue
-
             ratio = r.attn_distractor / (r.attn_supporting + eps)
+            if ratio <= 0:
+                continue
+            (ratios_correct if r.answer_correct else ratios_incorrect).append(ratio)
 
-            if r.answer_correct:
-                ratios_correct.append(ratio)
-            else:
-                ratios_incorrect.append(ratio)
+        if not ratios_correct and not ratios_incorrect:
+            print(
+                f"[plot_distractor_supporting_ratio] No data to plot for "
+                f"version='{version}'."
+            )
+            return
 
-        plt.figure()
+        groups = [
+            ("Correct", ratios_correct, self._da_color_correct),
+            ("Incorrect", ratios_incorrect, self._da_color_incorrect),
+        ]
 
-        plt.boxplot([ratios_correct, ratios_incorrect], labels=["Correct", "Incorrect"])
-        plt.ylabel("Distractor / Supporting Attention")
-        plt.title("Distractor-to-Supporting Attention Ratio")
+        fig, ax = plt.subplots(figsize=(6.5, 5))
 
-        self._save_plot(
-            x_label=x_label,
-            y_label=y_label,
-            path_add=Path(*plot_name_add),
-            file_name=f"distractor_supporting_ratio_{version}.png",
+        # Boxplot needs a non-empty list per group; substitute NaN if absent.
+        box_data = [vals if vals else [np.nan] for _, vals, _ in groups]
+        bp = ax.boxplot(
+            box_data,
+            patch_artist=True,
+            widths=0.5,
+            showmeans=True,
+            meanprops=dict(
+                marker="D",
+                markerfacecolor="black",
+                markeredgecolor="black",
+                markersize=6,
+            ),
         )
+        for patch, (_, _, color) in zip(bp["boxes"], groups):
+            patch.set_facecolor(color)
+            patch.set_alpha(0.55)
+        for element in ("whiskers", "caps", "medians"):
+            plt.setp(bp[element], color="#333333", linewidth=1.1)
+
+        # Reference line at ratio = 1.0 and shaded half-planes.
+        ax.axhline(1.0, color="#333333", linestyle="--", linewidth=1.0)
+        ax.set_yscale("log")
+        ax.set_ylim(_DA_RATIO_YMIN, _DA_RATIO_YMAX)
+        ax.axhspan(
+            1.0,
+            _DA_RATIO_YMAX,
+            facecolor=self._da_color_incorrect,
+            alpha=0.05,
+            zorder=0,
+        )
+        ax.axhspan(
+            _DA_RATIO_YMIN, 1.0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
+        )
+
+        # Compact tick labels with just count and percentages.
+        medians: list[float | None] = []
+        pct_above: list[float | None] = []
+        xtick_labels: list[str] = []
+        for label, vals, _ in groups:
+            if vals:
+                medians.append(float(np.median(vals)))
+                pct = 100.0 * sum(v > 1.0 for v in vals) / len(vals)
+                pct_above.append(pct)
+                xtick_labels.append(f"{label}\nn = {len(vals)}")
+            else:
+                medians.append(None)
+                pct_above.append(None)
+                xtick_labels.append(f"{label}\nn = 0")
+
+        ax.set_xticks([1, 2])
+        ax.set_xticklabels(xtick_labels, fontsize=10)
+        ax.set_ylabel("Distractor / supporting (log)", fontsize=11)
+        ax.set_xlabel("Answer", fontsize=11)
+        ax.set_title(
+            self._format_short_title("Distractor-to-supporting ratio", plot_name_add),
+            fontsize=11,
+            pad=8,
+        )
+        ax.grid(axis="y", linestyle="--", alpha=0.4, which="both")
+
+        if show_values:
+            for i, (m, pct) in enumerate(zip(medians, pct_above), 1):
+                if m is not None:
+                    ax.text(
+                        i + 0.06,
+                        m,
+                        f"med={m:.2f}\n>1: {pct:.0f}%",
+                        fontsize=8,
+                        color="#222222",
+                        va="center",
+                    )
+
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"distractor_supporting_ratio_{version}.png", path_add
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        txt_rows: list[tuple[str, float | int | None]] = []
+        for (label, vals, _), m, pct in zip(groups, medians, pct_above):
+            txt_rows.append((f"{label} n", len(vals)))
+            txt_rows.append((f"{label} median ratio", m))
+            txt_rows.append((f"{label} pct above 1", pct))
+        self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
 
     def plot_attention_triplet(
         self,
         stats: DistractorAttentionStats,
-        x_label: str = "attention_role",
-        y_label: str = "attention",
         plot_name_add: list[str] | None = None,
         version: str = "before",
-    ):
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
         """
-        Compare supporting vs distractor vs neutral attention.
-        """
+        Bar chart of mean attention on supporting, distractor, and neutral
+        sentences, with correct/incorrect side by side. Error bars show SEM.
 
+        :param stats: accumulated distractor attention records for this version
+        :param plot_name_add: extra tags appended to the title (in brackets)
+        :param version: "before" or "after"; appears in the filename
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, write each bar's value above it
+        """
         data = extract_attention_by_correct(stats)
 
         categories = ["supporting", "distractor", "neutral"]
+        category_labels = ["Supporting", "Distractor", "Neutral"]
         x = np.arange(len(categories))
-        width = 0.35
+        width = 0.36
+
+        def _mean_sem_n(vals: list) -> tuple[float, float, int]:
+            clean = [v for v in vals if v is not None]
+            if not clean:
+                return float("nan"), 0.0, 0
+            arr = np.asarray(clean, dtype=float)
+            sem = arr.std(ddof=1) / np.sqrt(len(arr)) if len(arr) > 1 else 0.0
+            return float(arr.mean()), float(sem), len(arr)
+
+        stats_correct = [_mean_sem_n(data[True][c]) for c in categories]
+        stats_incorrect = [_mean_sem_n(data[False][c]) for c in categories]
 
         means_correct = [safe_mean(data[True][c]) for c in categories]
-
+        sems_correct = [s[1] for s in stats_correct]
+        ns_correct = [s[2] for s in stats_correct]
         means_incorrect = [safe_mean(data[False][c]) for c in categories]
+        sems_incorrect = [s[1] for s in stats_incorrect]
+        ns_incorrect = [s[2] for s in stats_incorrect]
 
-        plt.figure()
+        fig, ax = plt.subplots(figsize=(7.5, 5))
 
-        plt.bar(x - width / 2, means_correct, width, label="Correct")
-        plt.bar(x + width / 2, means_incorrect, width, label="Incorrect")
-
-        plt.xticks(x, categories)
-        plt.ylabel("Attention")
-        plt.title("Attention Breakdown")
-        plt.legend()
-
-        self._save_plot(
-            x_label=x_label,
-            y_label=y_label,
-            path_add=Path(*plot_name_add),
-            file_name=f"attention_triplet_{version}.png",
+        bars_c = ax.bar(
+            x - width / 2,
+            means_correct,
+            width,
+            yerr=sems_correct,
+            capsize=4,
+            label=f"Correct (n = {max(ns_correct) if ns_correct else 0})",
+            color=self._da_color_correct,
+            alpha=0.82,
+            edgecolor="#1e8449",
         )
+        bars_i = ax.bar(
+            x + width / 2,
+            means_incorrect,
+            width,
+            yerr=sems_incorrect,
+            capsize=4,
+            label=f"Incorrect (n = {max(ns_incorrect) if ns_incorrect else 0})",
+            color=self._da_color_incorrect,
+            alpha=0.82,
+            edgecolor="#a93226",
+        )
+
+        if show_values:
+
+            def _annotate(bars, means, sems):
+                for bar, m, s in zip(bars, means, sems):
+                    if not np.isfinite(m):
+                        continue
+                    ax.text(
+                        bar.get_x() + bar.get_width() / 2,
+                        m + s + 0.005,
+                        f"{m:.3f}",
+                        ha="center",
+                        va="bottom",
+                        fontsize=8,
+                        color="#222222",
+                    )
+
+            _annotate(bars_c, means_correct, sems_correct)
+            _annotate(bars_i, means_incorrect, sems_incorrect)
+
+        ax.set_xticks(x)
+        ax.set_xticklabels(category_labels, fontsize=10)
+        ax.set_xlabel("Sentence role", fontsize=11)
+        ax.set_ylabel("Mean attention (± SEM)", fontsize=11)
+        ax.set_ylim(0, _DA_ATTN_YMAX)
+        ax.set_title(
+            self._format_short_title("Attention by sentence role", plot_name_add),
+            fontsize=11,
+            pad=8,
+        )
+        ax.legend(fontsize=9, loc="upper right", framealpha=0.9)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"attention_triplet_{version}.png", path_add
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        txt_rows = []
+        for cat, (mc, sc, nc), (mi, si, ni) in zip(
+            category_labels, stats_correct, stats_incorrect
+        ):
+            txt_rows.append((f"{cat} correct mean", mc))
+            txt_rows.append((f"{cat} correct sem", sc))
+            txt_rows.append((f"{cat} correct n", nc))
+            txt_rows.append((f"{cat} incorrect mean", mi))
+            txt_rows.append((f"{cat} incorrect sem", si))
+            txt_rows.append((f"{cat} incorrect n", ni))
+        self._write_plot_data_txt(
+            png_path, [("Means by role and correctness", txt_rows)]
+        )
+
+    def plot_distraction_vs_n_distractors(
+        self,
+        stats: DistractorAttentionStats,
+        plot_name_add: list[str] | None = None,
+        version: str = "before",
+        min_bin_size: int = 3,
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Mean distractor and supporting attention plus accuracy as a function
+        of the number of distractor sentences in the prompt. Attention uses
+        the left y-axis; accuracy uses the right.
+
+        :param stats: accumulated distractor attention records for this version
+        :param plot_name_add: extra tags appended to the title (in brackets)
+        :param version: "before" or "after"; appears in the filename
+        :param min_bin_size: minimum number of records per bin to plot it
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label each accuracy point with its value
+        """
+        by_n: dict[int, list] = defaultdict(list)
+        for r in stats.records:
+            if r.attn_supporting is None:
+                continue
+            if r.attn_distractor is None and r.n_distractors != 0:
+                continue
+            by_n[r.n_distractors].append(r)
+
+        ns = sorted(k for k, v in by_n.items() if len(v) >= min_bin_size)
+        if not ns:
+            print(
+                f"[plot_distraction_vs_n_distractors] No bins meet "
+                f"min_bin_size={min_bin_size} for version='{version}'."
+            )
+            return
+
+        def _mean_sem(vals: list[float]) -> tuple[float, float]:
+            arr = np.asarray(
+                [v for v in vals if v is not None and np.isfinite(v)], dtype=float
+            )
+            if arr.size == 0:
+                return float("nan"), 0.0
+            sem = arr.std(ddof=1) / np.sqrt(arr.size) if arr.size > 1 else 0.0
+            return float(arr.mean()), float(sem)
+
+        def _normal_ci(k: int, n: int, z: float = 1.96):
+            if n == 0:
+                return float("nan"), float("nan"), float("nan")
+            p = k / n
+            se = np.sqrt(p * (1 - p) / n)
+            return p, max(0.0, p - z * se), min(1.0, p + z * se)
+
+        dist_mean, dist_sem = [], []
+        supp_mean, supp_sem = [], []
+        acc, acc_lo, acc_hi = [], [], []
+        bin_n = []
+        for n in ns:
+            recs = by_n[n]
+            dist_vals = [
+                (
+                    0.0
+                    if (r.attn_distractor is None and r.n_distractors == 0)
+                    else r.attn_distractor
+                )
+                for r in recs
+                if (r.attn_distractor is not None or r.n_distractors == 0)
+            ]
+            m, s = _mean_sem(dist_vals)
+            dist_mean.append(m)
+            dist_sem.append(s)
+            m, s = _mean_sem([r.attn_supporting for r in recs])
+            supp_mean.append(m)
+            supp_sem.append(s)
+            k = sum(1 for r in recs if r.answer_correct)
+            p, lo, hi = _normal_ci(k, len(recs))
+            acc.append(p)
+            acc_lo.append(lo)
+            acc_hi.append(hi)
+            bin_n.append(len(recs))
+
+        fig, ax_attn = plt.subplots(figsize=(7.5, 5))
+        ax_acc = ax_attn.twinx()
+
+        line_d = ax_attn.plot(
+            ns,
+            dist_mean,
+            marker="o",
+            color=self._da_color_distractor,
+            linewidth=2,
+            label="Distractor attention",
+            linestyle="--",
+        )[0]
+        ax_attn.fill_between(
+            ns,
+            np.asarray(dist_mean) - np.asarray(dist_sem),
+            np.asarray(dist_mean) + np.asarray(dist_sem),
+            color=self._da_color_distractor,
+            alpha=0.15,
+        )
+        line_s = ax_attn.plot(
+            ns,
+            supp_mean,
+            marker="s",
+            color=self._da_color_supporting,
+            linewidth=2,
+            label="Supporting attention",
+            linestyle="-",
+        )[0]
+        ax_attn.fill_between(
+            ns,
+            np.asarray(supp_mean) - np.asarray(supp_sem),
+            np.asarray(supp_mean) + np.asarray(supp_sem),
+            color=self._da_color_supporting,
+            alpha=0.15,
+        )
+        line_a = ax_acc.plot(
+            ns,
+            acc,
+            marker="^",
+            color=self._da_color_correct,
+            linewidth=2,
+            linestyle="--",
+            label="Accuracy",
+        )[0]
+        ax_acc.fill_between(
+            ns, acc_lo, acc_hi, color=self._da_color_correct, alpha=0.12
+        )
+
+        if show_values:
+            for n, p in zip(ns, acc):
+                if np.isfinite(p):
+                    ax_acc.text(
+                        n,
+                        p,
+                        f"{p:.2f}",
+                        fontsize=8,
+                        color="#222222",
+                        ha="left",
+                        va="bottom",
+                    )
+
+        ax_attn.set_xlabel("# distractor sentences", fontsize=11)
+        ax_attn.set_ylabel("Mean attention (± SEM)", fontsize=11)
+        ax_attn.set_xticks(ns)
+        ax_attn.set_ylim(0, _DA_ATTN_YMAX)
+        ax_attn.grid(axis="y", linestyle="--", alpha=0.35)
+
+        ax_acc.set_ylabel(
+            "Accuracy (± 95% CI)", fontsize=11, color=self._da_color_correct
+        )
+        ax_acc.set_ylim(0, 1.02)
+        ax_acc.tick_params(axis="y", colors=self._da_color_correct)
+        ax_acc.spines["right"].set_color(self._da_color_correct)
+
+        ax_attn.set_title(
+            self._format_short_title(
+                "Attention & accuracy vs distractor count", plot_name_add
+            ),
+            fontsize=11,
+            pad=8,
+        )
+        ax_attn.legend(
+            handles=[line_d, line_s, line_a],
+            loc="upper left",
+            fontsize=9,
+            framealpha=0.9,
+        )
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"distraction_vs_n_distractors_{version}.png", path_add
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        txt_rows = []
+        for n, dm, ds, sm, ss, p, lo, hi, bn in zip(
+            ns,
+            dist_mean,
+            dist_sem,
+            supp_mean,
+            supp_sem,
+            acc,
+            acc_lo,
+            acc_hi,
+            bin_n,
+        ):
+            txt_rows.append((f"n_dist={n} dist mean", dm))
+            txt_rows.append((f"n_dist={n} dist sem", ds))
+            txt_rows.append((f"n_dist={n} supp mean", sm))
+            txt_rows.append((f"n_dist={n} supp sem", ss))
+            txt_rows.append((f"n_dist={n} accuracy", p))
+            txt_rows.append((f"n_dist={n} acc lo", lo))
+            txt_rows.append((f"n_dist={n} acc hi", hi))
+            txt_rows.append((f"n_dist={n} bin n", bn))
+        self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
+
+    def plot_accuracy_vs_distraction_ratio(
+        self,
+        stats: DistractorAttentionStats,
+        plot_name_add: list[str] | None = None,
+        version: str = "before",
+        n_bins: int = 6,
+        min_bin_size: int = 3,
+        eps: float = 1e-8,
+        path_add: Path | None = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Accuracy as a function of the per-sample distractor / supporting
+        attention ratio. Bins are evenly spaced in log-ratio. Error bars are
+        95% normal-approximation CIs.
+
+        :param stats: accumulated distractor attention records for this version
+        :param plot_name_add: extra tags appended to the title (in brackets)
+        :param version: "before" or "after"; appears in the filename
+        :param n_bins: number of log-ratio bins
+        :param min_bin_size: minimum number of records per bin to plot it
+        :param eps: stabiliser for division
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, label each point with its accuracy
+        """
+        ratios: list[float] = []
+        correct: list[bool] = []
+        for r in stats.records:
+            if r.attn_distractor is None or r.attn_supporting is None:
+                continue
+            ratio = r.attn_distractor / (r.attn_supporting + eps)
+            if ratio <= 0:
+                continue
+            ratios.append(ratio)
+            correct.append(bool(r.answer_correct))
+
+        if not ratios:
+            print(
+                f"[plot_accuracy_vs_distraction_ratio] No data for version='{version}'."
+            )
+            return
+
+        ratios_arr = np.asarray(ratios)
+        correct_arr = np.asarray(correct)
+
+        # Use the same fixed log-range as the ratio boxplot so the plots line up.
+        lo_log = np.log10(_DA_RATIO_YMIN)
+        hi_log = np.log10(_DA_RATIO_YMAX)
+        edges = np.linspace(lo_log, hi_log, n_bins + 1)
+
+        log_r = np.clip(np.log10(ratios_arr), edges[0], edges[-1] - 1e-9)
+        bin_idx = np.clip(np.digitize(log_r, edges) - 1, 0, n_bins - 1)
+
+        def _normal_ci(k: int, n: int, z: float = 1.96):
+            if n == 0:
+                return float("nan"), float("nan"), float("nan")
+            p = k / n
+            se = np.sqrt(p * (1 - p) / n)
+            return p, max(0.0, p - z * se), min(1.0, p + z * se)
+
+        bin_centres, bin_acc, bin_lo, bin_hi, bin_n = [], [], [], [], []
+        for b in range(n_bins):
+            mask = bin_idx == b
+            n_b = int(mask.sum())
+            if n_b < min_bin_size:
+                continue
+            k_b = int(correct_arr[mask].sum())
+            p, lo_p, hi_p = _normal_ci(k_b, n_b)
+            centre = 10 ** ((edges[b] + edges[b + 1]) / 2)
+            bin_centres.append(centre)
+            bin_acc.append(p)
+            bin_lo.append(lo_p)
+            bin_hi.append(hi_p)
+            bin_n.append(n_b)
+
+        if not bin_centres:
+            print(
+                f"[plot_accuracy_vs_distraction_ratio] No bins meet "
+                f"min_bin_size={min_bin_size} for version='{version}'."
+            )
+            return
+
+        fig, ax = plt.subplots(figsize=(7.5, 5))
+        bin_acc = np.asarray(bin_acc)
+        bin_lo = np.asarray(bin_lo)
+        bin_hi = np.asarray(bin_hi)
+        yerr = np.vstack([bin_acc - bin_lo, bin_hi - bin_acc])
+
+        ax.errorbar(
+            bin_centres,
+            bin_acc,
+            yerr=yerr,
+            fmt="o-",
+            color="#2c3e50",
+            ecolor="#7f8c8d",
+            capsize=4,
+            linewidth=1.8,
+            markersize=7,
+        )
+
+        # Shade left/right of ratio = 1.
+        ax.axvline(1.0, color="#333333", linestyle="--", linewidth=1.0)
+        ax.axvspan(
+            _DA_RATIO_YMIN, 1.0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
+        )
+        ax.axvspan(
+            1.0,
+            _DA_RATIO_YMAX,
+            facecolor=self._da_color_incorrect,
+            alpha=0.05,
+            zorder=0,
+        )
+
+        if show_values:
+            for x, p in zip(bin_centres, bin_acc):
+                if np.isfinite(p):
+                    ax.text(
+                        x,
+                        p + 0.02,
+                        f"{p:.2f}",
+                        ha="center",
+                        va="bottom",
+                        fontsize=8,
+                        color="#222222",
+                    )
+
+        ax.set_xscale("log")
+        ax.set_xlim(_DA_RATIO_YMIN, _DA_RATIO_YMAX)
+        ax.set_ylim(0, 1.02)
+        ax.set_xlabel("Distractor / supporting (log)", fontsize=11)
+        ax.set_ylabel("Accuracy (± 95% CI)", fontsize=11)
+        ax.set_title(
+            self._format_short_title("Accuracy vs distractor ratio", plot_name_add),
+            fontsize=11,
+            pad=8,
+        )
+        ax.grid(linestyle="--", alpha=0.4)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            f"accuracy_vs_distraction_ratio_{version}.png", path_add
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        txt_rows = []
+        for c, p, lo, hi, n in zip(bin_centres, bin_acc, bin_lo, bin_hi, bin_n):
+            txt_rows.append((f"ratio_centre={c:.4f} accuracy", float(p)))
+            txt_rows.append((f"ratio_centre={c:.4f} acc_lo", float(lo)))
+            txt_rows.append((f"ratio_centre={c:.4f} acc_hi", float(hi)))
+            txt_rows.append((f"ratio_centre={c:.4f} n", int(n)))
+        self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
