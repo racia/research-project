@@ -19,9 +19,15 @@ else
     full_mode="direct_answer"
 fi
 
-results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
+if [ "$setting" = "sd" ]; then
+    setting_adj="SD"
+else
+    setting_adj="$setting"
+fi
 
-save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/analysis/${setting}/${experiment}"
+results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting_adj}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
+
+save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/analysis/${setting_adj}/${experiment}"
 # save_path="results/${setting}/${mode}"
 
 ### JOB STEPS START HERE ###
