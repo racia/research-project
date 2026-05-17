@@ -21,7 +21,7 @@ fi
 
 results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results_da_results.csv"
 
-save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/results/${setting}/${experiment}"
+save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/analysis/${setting}/${experiment}"
 # save_path="results/${setting}/${mode}"
 
 ### JOB STEPS START HERE ###
