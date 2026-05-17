@@ -753,6 +753,382 @@ class Plotter:
         )
         self._save_plot(y_label, x_label, file_name, path_add)
 
+    def plot_exact_vs_soft_match_per_task(
+        self,
+        evaluator,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Overlay exact-match and soft-match accuracy for a single evaluator,
+        one line per metric, plotted over tasks.
+
+        Useful to see at a glance which tasks have a large gap between exact
+        and soft match (many partially-correct answers) versus tasks where both
+        lines overlap (answers are either fully correct or fully wrong).
+
+        :param evaluator: a MetricEvaluator with exact_match_accuracy and
+                          soft_match_accuracy attributes
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, annotate each point with its value
+        """
+        em = getattr(evaluator, "exact_match_accuracy", None)
+        sm = getattr(evaluator, "soft_match_accuracy", None)
+        em_std = getattr(evaluator, "exact_match_std", None)
+        sm_std = getattr(evaluator, "soft_match_std", None)
+
+        if em is None and sm is None:
+            print("[plot_exact_vs_soft_match_per_task] No accuracy data available.")
+            return
+
+        fig, ax = plt.subplots(figsize=(10, 5))
+
+        specs = [
+            (em, em_std, self._da_color_supporting, "Exact match", "o"),
+            (sm, sm_std, self._da_color_distractor, "Soft match", "s"),
+        ]
+        txt_rows: list[tuple[str, float | None]] = []
+        for metric, std_metric, color, label, marker in specs:
+            if metric is None:
+                continue
+            vals = np.array(metric.all if hasattr(metric, "all") else metric)
+            x = np.arange(1, len(vals) + 1)
+            ax.plot(x, vals, marker=marker, color=color, linewidth=2, label=label)
+            if std_metric is not None:
+                stds = np.array(
+                    std_metric.all if hasattr(std_metric, "all") else std_metric
+                )
+                if len(stds) == len(vals):
+                    ax.fill_between(
+                        x, vals - stds, vals + stds, color=color, alpha=0.15
+                    )
+            for xi, v in zip(x, vals):
+                txt_rows.append((f"task={xi} {label}", float(v)))
+                if show_values:
+                    ax.text(
+                        xi,
+                        v,
+                        f"{v:.2f}",
+                        fontsize=7,
+                        ha="center",
+                        va="bottom",
+                        color="#222222",
+                    )
+
+        ax.set_xlabel("Task", fontsize=11)
+        ax.set_ylabel("Accuracy", fontsize=11)
+        ax.set_ylim(0, 1.05)
+        ax.set_xticks(
+            np.arange(
+                1,
+                max(
+                    len(em.all if em and hasattr(em, "all") else em or []),
+                    len(sm.all if sm and hasattr(sm, "all") else sm or []),
+                )
+                + 1,
+            )
+        )
+        title = "Exact vs soft match accuracy per task"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        ax.set_title(title, fontsize=12)
+        ax.legend(fontsize=10, loc="lower right", framealpha=0.9)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            "exact_vs_soft_match_per_task.png", path_add
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
+
+    def plot_reasoning_scores_per_task(
+        self,
+        evaluator,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Line plot of BLEU, ROUGE, and METEOR reasoning scores over tasks for
+        a single evaluator.
+
+        All three scores share the y-axis ([0, 1]) and are drawn with distinct
+        colours and markers so task-level trends are easy to compare.
+
+        :param evaluator: a MetricEvaluator with bleu, rouge, meteor attributes
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, annotate each point with its value
+        """
+        score_specs = [
+            ("bleu", "bleu_std", self._da_color_supporting, "BLEU", "o"),
+            ("rouge", "rouge_std", self._da_color_distractor, "ROUGE", "s"),
+            ("meteor", "meteor_std", self._da_color_neutral, "METEOR", "^"),
+        ]
+
+        any_data = False
+        fig, ax = plt.subplots(figsize=(10, 5))
+        txt_rows: list[tuple[str, float | None]] = []
+
+        for attr, std_attr, color, label, marker in score_specs:
+            metric = getattr(evaluator, attr, None)
+            if metric is None:
+                continue
+            vals = np.array(metric.all if hasattr(metric, "all") else metric)
+            if len(vals) == 0:
+                continue
+            any_data = True
+            x = np.arange(1, len(vals) + 1)
+            ax.plot(x, vals, marker=marker, color=color, linewidth=2, label=label)
+
+            std_metric = getattr(evaluator, std_attr, None)
+            if std_metric is not None:
+                stds = np.array(
+                    std_metric.all if hasattr(std_metric, "all") else std_metric
+                )
+                if len(stds) == len(vals):
+                    ax.fill_between(
+                        x, vals - stds, vals + stds, color=color, alpha=0.15
+                    )
+
+            for xi, v in zip(x, vals):
+                txt_rows.append((f"task={xi} {label}", float(v)))
+                if show_values:
+                    ax.text(
+                        xi,
+                        v,
+                        f"{v:.2f}",
+                        fontsize=7,
+                        ha="center",
+                        va="bottom",
+                        color="#222222",
+                    )
+
+        if not any_data:
+            print("[plot_reasoning_scores_per_task] No reasoning score data available.")
+            plt.close(fig)
+            return
+
+        ax.set_xlabel("Task", fontsize=11)
+        ax.set_ylabel("Score", fontsize=11)
+        ax.set_ylim(0, 1.05)
+        title = "Reasoning scores per task"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        ax.set_title(title, fontsize=12)
+        ax.legend(fontsize=10, loc="lower right", framealpha=0.9)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target("reasoning_scores_per_task.png", path_add)
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+        self._write_plot_data_txt(png_path, [("Reasoning scores per task", txt_rows)])
+
+    def plot_reasoning_vs_direct_answer_per_task(
+        self,
+        reasoning_evaluator,
+        direct_answer_evaluator,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Compare exact-match and soft-match accuracy between a reasoning
+        evaluator and a direct-answer evaluator, per task.
+
+        Two side-by-side panels (exact match | soft match). Each panel shows
+        one line for reasoning and one for direct answer, with std bands,
+        making it easy to see where step-by-step reasoning helps or hurts.
+
+        :param reasoning_evaluator: MetricEvaluator from the reasoning experiment
+        :param direct_answer_evaluator: MetricEvaluator from the direct-answer
+                                        experiment
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, annotate each point with its value
+        """
+        if reasoning_evaluator is None and direct_answer_evaluator is None:
+            print(
+                "[plot_reasoning_vs_direct_answer_per_task] "
+                "Both evaluators are None; nothing to plot."
+            )
+            return
+
+        evaluator_specs = [
+            (reasoning_evaluator, self._da_color_supporting, "Reasoning"),
+            (direct_answer_evaluator, self._da_color_distractor, "Direct answer"),
+        ]
+
+        metric_specs = [
+            ("exact_match_accuracy", "exact_match_std", "Exact match"),
+            ("soft_match_accuracy", "soft_match_std", "Soft match"),
+        ]
+
+        fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+        all_rows: list[tuple[str, list[tuple[str, float | None]]]] = []
+
+        for ax, (mean_attr, std_attr, panel_title) in zip(axes, metric_specs):
+            txt_rows: list[tuple[str, float | None]] = []
+            for evaluator, color, exp_label in evaluator_specs:
+                if evaluator is None:
+                    continue
+                metric = getattr(evaluator, mean_attr, None)
+                if metric is None:
+                    continue
+                vals = np.array(metric.all if hasattr(metric, "all") else metric)
+                if len(vals) == 0:
+                    continue
+                x = np.arange(1, len(vals) + 1)
+                ax.plot(x, vals, marker="o", color=color, linewidth=2, label=exp_label)
+                std_metric = getattr(evaluator, std_attr, None)
+                if std_metric is not None:
+                    stds = np.array(
+                        std_metric.all if hasattr(std_metric, "all") else std_metric
+                    )
+                    if len(stds) == len(vals):
+                        ax.fill_between(
+                            x, vals - stds, vals + stds, color=color, alpha=0.15
+                        )
+                for xi, v in zip(x, vals):
+                    txt_rows.append((f"task={xi} {exp_label}", float(v)))
+                    if show_values:
+                        ax.text(
+                            xi,
+                            v,
+                            f"{v:.2f}",
+                            fontsize=7,
+                            ha="center",
+                            va="bottom",
+                            color="#222222",
+                        )
+
+            ax.set_xlabel("Task", fontsize=11)
+            ax.set_ylabel("Accuracy", fontsize=11)
+            ax.set_ylim(0, 1.05)
+            ax.set_title(panel_title, fontsize=11)
+            ax.legend(fontsize=9, loc="lower right", framealpha=0.9)
+            ax.grid(axis="y", linestyle="--", alpha=0.4)
+            ax.set_axisbelow(True)
+            all_rows.append((panel_title, txt_rows))
+
+        title = "Reasoning vs direct answer accuracy per task"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        fig.suptitle(title, fontsize=12)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            "reasoning_vs_direct_answer_per_task.png", path_add
+        )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+        self._write_plot_data_txt(png_path, all_rows)
+
+    def plot_accuracy_distribution(
+        self,
+        evaluators: list,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+    ) -> None:
+        """
+        Boxplot (one box per evaluator version) of accuracy values across tasks.
+
+        Shows the spread and median of per-task accuracy in a single glance,
+        complementing the per-task line plots with a distributional view.
+        Both exact-match and soft-match are shown side by side.
+
+        :param evaluators: list of MetricEvaluator objects (one per version)
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        """
+        if not evaluators:
+            print("[plot_accuracy_distribution] No evaluators provided.")
+            return
+
+        metric_specs = [
+            ("exact_match_accuracy", "Exact match"),
+            ("soft_match_accuracy", "Soft match"),
+        ]
+
+        fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+        txt_rows: list[tuple[str, float | None]] = []
+
+        for ax, (attr, panel_title) in zip(axes, metric_specs):
+            box_data = []
+            tick_labels = []
+            colors = self.cmap(np.linspace(0, 1, len(evaluators)))
+
+            for evaluator, color in zip(evaluators, colors):
+                version = (
+                    getattr(evaluator, "version", "")
+                    or getattr(evaluator, "name", "")
+                    or ""
+                )
+                metric = getattr(evaluator, attr, None)
+                if metric is None:
+                    continue
+                vals = [
+                    v
+                    for v in (metric.all if hasattr(metric, "all") else metric)
+                    if v is not None and np.isfinite(float(v))
+                ]
+                if not vals:
+                    continue
+                box_data.append(vals)
+                tick_labels.append(str(version) if version else f"ev{len(box_data)}")
+                med = float(np.median(vals))
+                txt_rows.append((f"{panel_title} {version} median", med))
+                txt_rows.append((f"{panel_title} {version} mean", float(np.mean(vals))))
+                txt_rows.append((f"{panel_title} {version} n_tasks", len(vals)))
+
+            if not box_data:
+                ax.set_visible(False)
+                continue
+
+            bp = ax.boxplot(
+                box_data,
+                patch_artist=True,
+                widths=0.5,
+                showmeans=True,
+                meanprops=dict(
+                    marker="D",
+                    markerfacecolor="black",
+                    markeredgecolor="black",
+                    markersize=5,
+                ),
+            )
+            for patch, color in zip(bp["boxes"], colors):
+                patch.set_facecolor(color)
+                patch.set_alpha(0.6)
+            for element in ("whiskers", "caps", "medians"):
+                plt.setp(bp[element], color="#333333", linewidth=1.2)
+
+            ax.set_xticks(range(1, len(tick_labels) + 1))
+            ax.set_xticklabels(tick_labels, fontsize=10)
+            ax.set_ylabel("Accuracy across tasks", fontsize=11)
+            ax.set_ylim(0, 1.05)
+            ax.set_title(panel_title, fontsize=11)
+            ax.grid(axis="y", linestyle="--", alpha=0.4)
+            ax.set_axisbelow(True)
+
+        title = "Accuracy distribution across tasks"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        fig.suptitle(title, fontsize=12)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target("accuracy_distribution.png", path_add)
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+        self._write_plot_data_txt(png_path, [("Distribution stats", txt_rows)])
+
     def get_color_or_map(self, c: str):
         """
         Get the color or colormap for a given case.
@@ -2842,6 +3218,205 @@ class Plotter:
             txt_rows.append((f"ratio_centre={c:.4f} acc_hi", float(hi)))
             txt_rows.append((f"ratio_centre={c:.4f} n", int(n)))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
+
+    # ------------------------------------------------------------------
+    # Before/after comparison helpers
+    # ------------------------------------------------------------------
+
+    def _disambiguator_from_tags(self, plot_name_add: list[str] | None) -> str:
+        """
+        Build a filename-safe disambiguator suffix from ``plot_name_add``.
+
+        Drops the ``"before"`` / ``"after"`` version tags (which already appear
+        in the filename) and joins the remaining tags with underscores, prefixed
+        by ``"_"``.  Returns ``""`` when there is nothing meaningful to add.
+
+        :param plot_name_add: optional list of context tags from the caller
+        :return: e.g. ``"_Split-valid"`` or ``""``
+        """
+        if not plot_name_add:
+            return ""
+        tags = [t for t in plot_name_add if t.lower() not in ("before", "after")]
+        if not tags:
+            return ""
+        safe = "_".join(
+            t.replace(" ", "_").replace("/", "-").replace("\\", "-") for t in tags
+        )
+        return f"_{safe}"
+
+    def _ba_pick_evaluators(self, evaluators: list) -> tuple:
+        """
+        Pick the *before* and *after* evaluators from a list.
+
+        Matching is done by inspecting the ``version`` (or ``name``) attribute
+        of each evaluator for the strings ``"before"`` / ``"after"``.  If only
+        one evaluator is present it is returned as *after*.  If two evaluators
+        are present and neither can be identified by version string, the first
+        is treated as *before* and the second as *after*.
+
+        :param evaluators: list of MetricEvaluator objects
+        :return: (before, after) — either may be ``None``
+        """
+        before, after = None, None
+        for ev in evaluators:
+            version_str = str(
+                getattr(ev, "version", "") or getattr(ev, "name", "") or ""
+            ).lower()
+            if "before" in version_str:
+                before = ev
+            elif "after" in version_str:
+                after = ev
+
+        # Fall back: could not identify by version string
+        if before is None and after is None:
+            if len(evaluators) == 1:
+                after = evaluators[0]
+            elif len(evaluators) >= 2:
+                before, after = evaluators[0], evaluators[1]
+        elif after is None and len(evaluators) == 1:
+            after = evaluators[0]
+        elif before is None and len(evaluators) >= 2:
+            # one evaluator was identified as "after"; use the other as "before"
+            remaining = [ev for ev in evaluators if ev is not after]
+            if remaining:
+                before = remaining[0]
+
+        return before, after
+
+    def _ba_per_task(
+        self,
+        evaluator,
+        mean_attr: str,
+        std_attr: str | None,
+    ) -> tuple[np.ndarray, np.ndarray | None]:
+        """
+        Extract per-task mean and standard-deviation arrays from an evaluator.
+
+        Looks for *mean_attr* (and optionally *std_attr*) on the evaluator.
+        The attribute is expected to be a ``Metric``-like object with an
+        ``.all`` list of per-task values, or a plain list/array.
+
+        :param evaluator: a MetricEvaluator, or ``None``
+        :param mean_attr: attribute name for the mean metric
+        :param std_attr: attribute name for the std metric, or ``None``
+        :return: (means_array, stds_array_or_None)
+        """
+        if evaluator is None:
+            return np.array([]), None
+
+        metric = getattr(evaluator, mean_attr, None)
+        if metric is None:
+            return np.array([]), None
+
+        try:
+            raw = metric.all if hasattr(metric, "all") else list(metric)
+            means = np.array([float(v) if v is not None else np.nan for v in raw])
+        except Exception:
+            return np.array([]), None
+
+        stds = None
+        if std_attr:
+            std_metric = getattr(evaluator, std_attr, None)
+            if std_metric is not None:
+                try:
+                    raw_std = (
+                        std_metric.all
+                        if hasattr(std_metric, "all")
+                        else list(std_metric)
+                    )
+                    stds = np.array(
+                        [float(v) if v is not None else np.nan for v in raw_std]
+                    )
+                except Exception:
+                    stds = None
+
+        return means, stds
+
+    def _ba_plot_lines(
+        self,
+        ax,
+        before,
+        after,
+        mean_attr: str,
+        std_attr: str | None,
+        ylabel: str,
+        ylim: tuple[float, float] | None,
+        show_values: bool = False,
+    ) -> list[tuple[str, float | None]]:
+        """
+        Draw before/after lines with optional std bands onto *ax*.
+
+        Each version is drawn with a distinct colour (blue for *before*, orange
+        for *after*).  Missing evaluators are silently skipped.
+
+        :param ax: matplotlib ``Axes`` to draw on
+        :param before: *before* MetricEvaluator, or ``None``
+        :param after: *after* MetricEvaluator, or ``None``
+        :param mean_attr: evaluator attribute name for the per-task mean values
+        :param std_attr: evaluator attribute name for the per-task std values,
+                         or ``None`` to skip the band
+        :param ylabel: y-axis label (empty string → no label set)
+        :param ylim: ``(ymin, ymax)`` passed to ``ax.set_ylim``; ``None`` →
+                     data-driven limits
+        :param show_values: when ``True``, annotate each point with its value
+        :return: list of ``(label, value)`` pairs for the companion ``.txt``
+                 file
+        """
+        rows: list[tuple[str, float | None]] = []
+        specs = [
+            (before, self._da_color_supporting, "Before"),
+            (after, self._da_color_distractor, "After"),
+        ]
+
+        max_n = 0
+        for evaluator, color, label in specs:
+            means, stds = self._ba_per_task(evaluator, mean_attr, std_attr)
+            if len(means) == 0:
+                continue
+            max_n = max(max_n, len(means))
+            x = np.arange(1, len(means) + 1)
+            ax.plot(
+                x,
+                means,
+                marker="o",
+                color=color,
+                linewidth=2,
+                label=label,
+                zorder=3,
+            )
+            if stds is not None and len(stds) == len(means):
+                ax.fill_between(
+                    x,
+                    means - stds,
+                    means + stds,
+                    color=color,
+                    alpha=0.15,
+                    zorder=2,
+                )
+            for xi, v in zip(x, means):
+                val = float(v) if np.isfinite(v) else None
+                rows.append((f"task={xi} {label}", val))
+                if show_values and val is not None:
+                    ax.text(
+                        xi,
+                        v,
+                        f"{v:.2f}",
+                        fontsize=7,
+                        ha="center",
+                        va="bottom",
+                        color="#222222",
+                    )
+
+        ax.set_xlabel("Task", fontsize=10)
+        if ylabel:
+            ax.set_ylabel(ylabel, fontsize=10)
+        if max_n > 0:
+            ax.set_xticks(np.arange(1, max_n + 1))
+        if ylim is not None:
+            ax.set_ylim(*ylim)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        return rows
 
     def plot_before_after_accuracy(
         self,
