@@ -461,7 +461,7 @@ def run(
 
             # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data=task.seen_context_lengths.all, # Added .all to convert to list/array for part-level plotting
+                x_data=task.seen_context_lengths.all,  # Added .all to convert to list/array for part-level plotting
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -479,7 +479,7 @@ def run(
 
             # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
-                x_data=task.seen_context_lengths.all, # Added .all to convert to list/array for part-level plotting
+                x_data=task.seen_context_lengths.all,  # Added .all to convert to list/array for part-level plotting
                 y_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
                     "parts_answer_in_self": task.parts_answer_in_self,
@@ -514,7 +514,7 @@ def run(
             )
             for metric in metrics:
                 metrics_to_save[metric["task_id"]].update(metric)
-                
+
             for metric in metrics_to_save.values():
                 saver.save_output(
                     data=[metric],
@@ -612,6 +612,7 @@ def run(
         )
         ba_kwargs = dict(
             evaluators=split.evaluators,
+            versions=split.versions,
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path("before_after"),
         )
@@ -657,7 +658,7 @@ def run(
             file_name=f"acc-attn_on_target_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
             path_add=Path(version),
             level="split",
             include_soft=False,
@@ -676,7 +677,7 @@ def run(
             displ_percentage=False,
             version=version,
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
             level="split",
             file_name=f"attn-seen_context_lengths_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
@@ -696,7 +697,7 @@ def run(
             displ_percentage=False,
             version=version,
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
             file_name=f"attn-target_distances_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
@@ -717,7 +718,7 @@ def run(
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
         )
         print(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",

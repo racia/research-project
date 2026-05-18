@@ -3244,42 +3244,50 @@ class Plotter:
         )
         return f"_{safe}"
 
-    def _ba_pick_evaluators(self, evaluators: list) -> tuple:
+    def _ba_pick_evaluators(
+        self,
+        evaluators: list,
+        versions: list[str] | None = None,
+    ) -> tuple:
         """
         Pick the *before* and *after* evaluators from a list.
 
-        Matching is done by inspecting the ``version`` (or ``name``) attribute
-        of each evaluator for the strings ``"before"`` / ``"after"``.  If only
-        one evaluator is present it is returned as *after*.  If two evaluators
-        are present and neither can be identified by version string, the first
-        is treated as *before* and the second as *after*.
+        When *versions* is provided (the preferred path) it is used directly:
+        each evaluator is paired with its version string by position, and the
+        first one whose version contains ``"before"`` / ``"after"`` is chosen.
+        This is reliable because ``split.versions`` and ``split.evaluators``
+        are always in the same order.
 
-        :param evaluators: list of MetricEvaluator objects
+        When *versions* is not provided the method falls back to positional
+        assignment: one evaluator → *after* only; two evaluators → first is
+        *before*, second is *after*.
+
+        :param evaluators: list of MetricEvaluator objects (parallel to versions)
+        :param versions: optional list of version strings, e.g. ``["before", "after"]``
         :return: (before, after) — either may be ``None``
         """
         before, after = None, None
-        for ev in evaluators:
-            version_str = str(
-                getattr(ev, "version", "") or getattr(ev, "name", "") or ""
-            ).lower()
-            if "before" in version_str:
-                before = ev
-            elif "after" in version_str:
-                after = ev
 
-        # Fall back: could not identify by version string
+        if versions is not None:
+            for ev, v in zip(evaluators, versions):
+                v_low = v.lower()
+                if "before" in v_low:
+                    before = ev
+                elif "after" in v_low:
+                    after = ev
+            # If versions didn't contain "before"/"after" keywords, fall through
+            # to positional logic below.
+
         if before is None and after is None:
+            # Positional fallback: single-system → after only; two → first/second
             if len(evaluators) == 1:
                 after = evaluators[0]
             elif len(evaluators) >= 2:
                 before, after = evaluators[0], evaluators[1]
-        elif after is None and len(evaluators) == 1:
-            after = evaluators[0]
-        elif before is None and len(evaluators) >= 2:
-            # one evaluator was identified as "after"; use the other as "before"
-            remaining = [ev for ev in evaluators if ev is not after]
-            if remaining:
-                before = remaining[0]
+        elif after is None:
+            # We found a "before" but no "after" — use the last remaining one
+            remaining = [ev for ev in evaluators if ev is not before]
+            after = remaining[-1] if remaining else before
 
         return before, after
 
@@ -3421,6 +3429,7 @@ class Plotter:
     def plot_before_after_accuracy(
         self,
         evaluators: list,
+        versions: list[str] | None = None,
         plot_name_add: list[str] | None = None,
         path_add: Path | None = None,
         show_values: bool = False,
@@ -3432,11 +3441,14 @@ class Plotter:
         right. Each panel shows one line per version with std bands.
 
         :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param versions: ``split.versions`` — version strings parallel to evaluators,
+                         e.g. ``["before", "after"]``; used to identify which
+                         evaluator is which. If omitted falls back to position.
         :param plot_name_add: extra tags appended to the title
         :param path_add: sub-folder under results_path
         :param show_values: when True, label each point with its value
         """
-        before, after = self._ba_pick_evaluators(evaluators)
+        before, after = self._ba_pick_evaluators(evaluators, versions)
         if before is None and after is None:
             print("[plot_before_after_accuracy] No evaluators provided.")
             return
@@ -3489,6 +3501,7 @@ class Plotter:
     def plot_before_after_reasoning_scores(
         self,
         evaluators: list,
+        versions: list[str] | None = None,
         plot_name_add: list[str] | None = None,
         path_add: Path | None = None,
         show_values: bool = False,
@@ -3500,11 +3513,12 @@ class Plotter:
         one line per version each.
 
         :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param versions: ``split.versions`` — version strings parallel to evaluators
         :param plot_name_add: extra tags appended to the title
         :param path_add: sub-folder under results_path
         :param show_values: when True, label each point with its value
         """
-        before, after = self._ba_pick_evaluators(evaluators)
+        before, after = self._ba_pick_evaluators(evaluators, versions)
         if before is None and after is None:
             print("[plot_before_after_reasoning_scores] No evaluators provided.")
             return
@@ -3551,6 +3565,7 @@ class Plotter:
     def plot_before_after_attention(
         self,
         evaluators: list,
+        versions: list[str] | None = None,
         plot_name_add: list[str] | None = None,
         path_add: Path | None = None,
         show_values: bool = False,
@@ -3560,11 +3575,12 @@ class Plotter:
         after, per task.
 
         :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param versions: ``split.versions`` — version strings parallel to evaluators
         :param plot_name_add: extra tags appended to the title
         :param path_add: sub-folder under results_path
         :param show_values: when True, label each point with its value
         """
-        before, after = self._ba_pick_evaluators(evaluators)
+        before, after = self._ba_pick_evaluators(evaluators, versions)
         if before is None and after is None:
             print("[plot_before_after_attention] No evaluators provided.")
             return
@@ -3620,6 +3636,7 @@ class Plotter:
     def plot_before_after_summary(
         self,
         evaluators: list,
+        versions: list[str] | None = None,
         plot_name_add: list[str] | None = None,
         path_add: Path | None = None,
         show_values: bool = False,
@@ -3632,11 +3649,12 @@ class Plotter:
         in the other three before-after plots.
 
         :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param versions: ``split.versions`` — version strings parallel to evaluators
         :param plot_name_add: extra tags appended to the title
         :param path_add: sub-folder under results_path
         :param show_values: when True, label each bar with its value
         """
-        before, after = self._ba_pick_evaluators(evaluators)
+        before, after = self._ba_pick_evaluators(evaluators, versions)
         if before is None and after is None:
             print("[plot_before_after_summary] No evaluators provided.")
             return
@@ -3742,6 +3760,7 @@ class Plotter:
     def plot_before_after_delta_lineplot(
         self,
         evaluators: list,
+        versions: list[str] | None = None,
         plot_name_add: list[str] | None = None,
         path_add: Path | None = None,
         show_values: bool = False,
@@ -3749,8 +3768,11 @@ class Plotter:
         """
         Plots the absolute delta (after - before) for exact match and soft match accuracy
         per task as a line plot. Positive delta means 'after' is better.
+
+        :param evaluators: ``split.evaluators`` (one MetricEvaluator per version)
+        :param versions: ``split.versions`` — version strings parallel to evaluators
         """
-        before, after = self._ba_pick_evaluators(evaluators)
+        before, after = self._ba_pick_evaluators(evaluators, versions)
         if before is None or after is None:
             print(
                 "[plot_before_after_delta_lineplot] Both 'before' and 'after' evaluators are required."
