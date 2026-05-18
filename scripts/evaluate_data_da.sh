@@ -2,9 +2,9 @@
 #SBATCH --job-name=eval_data
 #SBATCH --output=eval_data_%j.out
 #SBATCH --error=eval_data_%j.err
-#SBATCH --time=06:00:00 # should be enough for 20 samples per task
+#SBATCH --time=06:00:00
 #SBATCH --cpus-per-task=4
-# SBATCH --partition=cpu
+#SBATCH --partition=cpu
 #SBATCH --mail-user=""
 #SBATCH --mail-type=BEGIN,END,FAIL
 
@@ -25,7 +25,11 @@ else
     setting_adj="$setting"
 fi
 
-results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting_adj}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
+if [ "$setting" = "skyline" ]; then
+    results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting_adj}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results_da_results.csv"
+else
+    results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting_adj}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
+fi
 
 save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/analysis/${setting_adj}/${experiment}"
 # save_path="results/${setting}/${mode}"
