@@ -14,27 +14,46 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
+import warnings
 from collections import defaultdict
 from pathlib import Path
 
 import pandas as pd
 
 from data.DataLoader import DataLoader
+from data.DataProcessor import DataProcessor
 from data.DataSaver import DataSaver
 from data.utils import format_metrics
-from evaluation.DistractorAttention import (
-    DistractorAttentionStats,
-    collect_distractor_attention_record,
-)
 from evaluation.utils import extract_split
 from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
 from inference.utils import print_metrics_table
+from interpretability.DistractorAttention import (
+    DistractorAttentionStats,
+    collect_distractor_attention_record,
+)
 from plots.Plotter import Plotter
 
 PREFIX = Path.cwd()
 while PREFIX.name != "research-project":
     PREFIX = PREFIX.parent
+
+supported_single_system_settings = {
+    "basic-baseline",
+    "baseline",
+    "skyline",
+}
+
+supported_multi_system_settings = {
+    "feedback",
+    "speculative_decoding",
+    "sd",
+}
+
+supported_settings = supported_single_system_settings.union(
+    supported_multi_system_settings
+)
 
 
 def remove_unnecessary_columns(
@@ -132,7 +151,7 @@ def validate_inputs(run_fn):
 
     def validation_wrapper(**kwargs):
         experiment = kwargs.get("experiment", "").lower()
-        supported_experiments = ["reasoning_answer", "direct_answer"]
+        supported_experiments = ["reasoning", "direct_answer"]
         if not experiment:
             raise ValueError(
                 f"Please provide an experiment to evaluate from {supported_experiments}"
@@ -143,13 +162,7 @@ def validate_inputs(run_fn):
                 f"Please choose either of {supported_experiments}"
             )
         setting = kwargs.get("setting", "").lower()
-        supported_settings = [
-            "baseline",
-            "feedback",
-            "skyline",
-            "speculative_decoding",
-            "sd",
-        ]
+
         if not setting:
             raise ValueError(
                 f"Please provide an experiment setting from {supported_settings}"
@@ -182,6 +195,7 @@ def run(
     filtering_conditions: dict = None,
     create_heatmaps: bool = True,
     verbose: bool = False,
+    max_tokens: int | None = None,
 ) -> None:
     """
     Run the evaluation pipeline.
@@ -189,7 +203,7 @@ def run(
     :param results_path: path to the data for evaluation
     :param save_path: path to save the results
     :param samples_per_task: number of samples per task the results were run with
-    :param experiment: the experiment to evaluate (e.g., "reasoning_answer", "direct_answer")
+    :param experiment: the experiment to evaluate (e.g., "reasoning", "direct_answer")
     :param setting: the setting of the experiment (e.g., "baseline", "feedback")
     :param filtering_conditions: a dictionary of conditions (SamplePart attributes) and values;
                                  all the parts having an attribute with such value will be preserved;
@@ -197,6 +211,10 @@ def run(
                                  SamplePart __init__ and use it as a filtering condition
     :param create_heatmaps: whether to create heatmaps for the interpretability results
     :param verbose: whether to print the results to the console
+    :param max_tokens: the model's generation budget. Passed to
+                       :func:`add_completeness_column` so the truncation
+                       check can flag rows whose reasoning hit the limit.
+                       If ``None`` the truncation check is skipped.
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
@@ -212,12 +230,18 @@ def run(
         filtering_conditions=filtering_conditions,
     )
 
+    if setting in supported_single_system_settings:
+        multi_system = False
+    else:
+        multi_system = True
+
     # loaded results in parts with original data, tokens-ids, and interpretability results
     results_data, multi_system = loader.load_results(
         results_path=results_path,
         data_path="../tasks_1-20_v1-2/en-valid/",
         split=extract_split(results_path),
         as_parts=True,
+        multi_system=multi_system,
     )
 
     # maybe loaded_baseline_results is not needed for evaluation
@@ -241,6 +265,8 @@ def run(
     distractor_stats_per_task: dict[int, dict[str, DistractorAttentionStats]] = (
         defaultdict(lambda: defaultdict(DistractorAttentionStats))
     )
+
+    processor = DataProcessor()
 
     data_split = extract_split(results_path)
     sample, task, split = None, None, Split(name=data_split, multi_system=multi_system)
@@ -267,6 +293,7 @@ def run(
                             task_id=part.task_id,
                             sample_id=part.sample_id,
                             part_id=part.part_id,
+                            version=version,
                             title=f"Attention Map for Task {part.task_id} Sample {part.sample_id} "
                             f"Part {part.part_id} (version: {version}, case: {result.category}, "
                             f"{', '.join(conditions_add)})",
@@ -277,17 +304,45 @@ def run(
                 # necessary only if we want to addition more columns to our original results
                 # otherwise we can just create separate tables or files
 
-                for version in part.versions:
-                    answer_correct = result.get(f"answer_correct_{version}")
-                    if answer_correct is not None:
-                        record = collect_distractor_attention_record(
-                            part=part,
-                            answer_correct=answer_correct,
-                            version=version,
+                # Distractor marking only needs part.raw and part.supporting_sent_inx,
+                # so it runs independently of whether versions and results are paired.
+                processor.mark_distractors(part)
+
+                if len(part.versions) != len(part.results):
+                    print(
+                        f"[WARNING] Skipping malformed part | "
+                        f"task={part.task_id} sample={part.sample_id} part={part.part_id}\n"
+                        f"versions={part.versions}\n"
+                        f"n_results={len(part.results)}"
+                    )
+                    continue
+
+                for version_result in part.results:
+                    version = version_result.version
+
+                    if version_result.interpretability.empty():
+                        continue
+
+                    result_dict = version_result.get_result()
+
+                    answer_correct = result_dict.get(f"answer_correct_{version}")
+
+                    if answer_correct is None or pd.isna(answer_correct):
+                        continue
+
+                    record = collect_distractor_attention_record(
+                        part=part,
+                        answer_correct=answer_correct,
+                        version=version,
+                    )
+
+                    if record is not None:
+                        distractor_stats[version].add(record)
+                        distractor_stats_per_task[task_id][version].add(record)
+                    else:
+                        warnings.warn(
+                            f"Empty record collected for task {task_id} sample {sample_id} part {part.part_id} version '{version}'. Check that the part has interpretability data and distractors set."
                         )
-                        if record is not None:
-                            distractor_stats[version].add(record)
-                            distractor_stats_per_task[task_id][version].add(record)
 
                 saver.save_output(
                     data=[result],
@@ -322,7 +377,7 @@ def run(
         ):
             # Plot Attention vs Seen Context Lengths for the Task
             plotter.plot_correlation(
-                x_data={"seen_context_lengths": task.seen_context_lengths},
+                x_data={"Seen context lengths": task.seen_context_lengths},
                 y_data=evaluator.parts_attn_on_target.all,
                 x_label="Seen Context Lengths",
                 y_label="Attention on Target Tokens",
@@ -330,6 +385,8 @@ def run(
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Accuracy
@@ -343,12 +400,13 @@ def run(
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
                 include_soft=False,
-                label_add=[f"s{sample.sample_id}" for sample in task.samples],
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Target Distances by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={"parts_target_distances": task.parts_target_distances.all},
+                x_data=task.parts_target_distances.all,
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -361,13 +419,13 @@ def run(
                 file_name=f"attn-target_distances.pdf",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Answer Correct by Parts Features
             plotter.plot_corr_boxplot(
-                x_data={
-                    "parts_answer_correct": evaluator.parts_answer_correct.all,
-                },
+                x_data=evaluator.parts_answer_correct.all,
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target,
                     "parts_features": task.parts_features[version],
@@ -379,11 +437,13 @@ def run(
                 file_name=f"attn-ans_correct.pdf",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on target for Anwer in Self by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={"parts_answer_in_self": task.parts_answer_in_self},
+                x_data=task.parts_answer_in_self.all,
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -395,11 +455,13 @@ def run(
                 file_name=f"attn-ans_in_self.pdf",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data={"parts_seen_context_lengths": task.seen_context_lengths},
+                x_data=task.seen_context_lengths.all, # Added .all to convert to list/array for part-level plotting
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -411,11 +473,13 @@ def run(
                 file_name=f"attn-seen_context_lengths.pdf",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
 
             # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
-                x_data={"parts_seen_context_lengths": task.seen_context_lengths},
+                x_data=task.seen_context_lengths.all, # Added .all to convert to list/array for part-level plotting
                 y_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
                     "parts_answer_in_self": task.parts_answer_in_self,
@@ -426,6 +490,8 @@ def run(
                 file_name=f"parts_answer_correct.pdf",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
+                experiment=experiment,
+                num_samples=samples_per_task,
             )
             plotter.correlation_map(
                 data=corr_matrix,
@@ -448,7 +514,7 @@ def run(
             )
             for metric in metrics:
                 metrics_to_save[metric["task_id"]].update(metric)
-
+                
             for metric in metrics_to_save.values():
                 saver.save_output(
                     data=[metric],
@@ -485,16 +551,31 @@ def run(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
                 plotter.plot_distractor_supporting_ratio(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
                 plotter.plot_attention_triplet(
                     stats=d_stats_task,
                     version=version,
                     plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                plotter.plot_distraction_vs_n_distractors(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
+                )
+                plotter.plot_accuracy_vs_distraction_ratio(
+                    stats=d_stats_task,
+                    version=version,
+                    plot_name_add=[f"Task-{task_id}", version, *conditions_add],
+                    path_add=Path(version, f"Task-{task_id}"),
                 )
 
                 saver.save_output(
@@ -516,7 +597,8 @@ def run(
         split=split,
         metric_file_name="eval_script_metrics.csv",
     )
-
+    # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
+    # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
     split_corr_matrices = split.calculate_metrics()
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
@@ -540,6 +622,7 @@ def run(
             version=version,
             split_name=split.name,
             file_name=f"corr_matrix_split_{split.name}.pdf",
+            path_add=Path(version),
         )
 
         # Plot Accuracy vs Attn on Target for the Split
@@ -550,6 +633,8 @@ def run(
             y_label="Attention on Target Tokens",
             file_name=f"acc-attn_on_target_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
+            experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
             path_add=Path(version),
             level="split",
             include_soft=False,
@@ -558,7 +643,7 @@ def run(
 
         # Attn on Target for Seen Context Lengths by Answer Correct
         plotter.plot_corr_boxplot(
-            x_data={"seen_context_lengths": split.seen_context_lengths},
+            x_data=split.seen_context_lengths,
             y_data={
                 "parts_attn_on_targets": evaluator.parts_attn_on_target.all,
                 "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -567,6 +652,8 @@ def run(
             y_label="Attention On Target",
             displ_percentage=False,
             version=version,
+            experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
             level="split",
             file_name=f"attn-seen_context_lengths_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
@@ -575,7 +662,7 @@ def run(
 
         # Attn on Target for Target Distances by Answer Correct
         plotter.plot_corr_boxplot(
-            x_data={"parts_target_distances": split.parts_target_distances},
+            x_data=split.parts_target_distances,
             y_data={
                 "parts_attn_on_targets": evaluator.parts_attn_on_target.all,
                 "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -585,6 +672,8 @@ def run(
             level="split",
             displ_percentage=False,
             version=version,
+            experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
             file_name=f"attn-target_distances_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
@@ -604,6 +693,8 @@ def run(
             file_name=f"parts_answer_correct_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
+            experiment=experiment,
+            num_samples=samples_per_task*len(split.tasks),
         )
         print(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
@@ -613,6 +704,7 @@ def run(
             acc_per_prompt_task=evaluator.get_accuracies(as_lists=True),
             y_label="Accuracies with Standard Deviations",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting attentions for results '{version}'...",
@@ -622,6 +714,7 @@ def run(
             acc_per_prompt_task=evaluator.get_attentions(as_lists=True),
             y_label="Attentions",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting reasoning scores for results '{version}'...",
@@ -631,6 +724,7 @@ def run(
             acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
             y_label="Reasoning Scores",
             plot_name_add=[split.name, version, *conditions_add],
+            path_add=Path(version),
         )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
@@ -665,16 +759,31 @@ def run(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
             plotter.plot_distractor_supporting_ratio(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
             plotter.plot_attention_triplet(
                 stats=d_stats,
                 version=version,
                 plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
+            )
+            plotter.plot_distraction_vs_n_distractors(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
+            )
+            plotter.plot_accuracy_vs_distraction_ratio(
+                stats=d_stats,
+                version=version,
+                plot_name_add=[f"Split-{split.name}", version, *conditions_add],
+                path_add=Path(version),
             )
 
             saver.save_output(
@@ -732,6 +841,44 @@ def run(
                 print(f"Case {case}: detected 0 occurrences. Nothing!")
 
     print(f"Plots produced: {plotter.plot_counter_prompt}")
+
+    # Annotate the per-row results CSV with a completeness column so downstream
+    # analyses can filter out rows where the model was truncated mid-reasoning
+    # or never produced an answer. Both versions ("before" and "after") are
+    # processed if their answer column exists; each writes a separate
+    # _with_completeness_<version>.csv next to the original.
+    results_csv_path = str(saver.run_path / results_file_name)
+    if Path(results_csv_path).exists():
+        try:
+            df_for_check = pd.read_csv(results_csv_path, nrows=0)
+        except Exception as err:
+            warnings.warn(
+                f"Could not read header of {results_csv_path} to add "
+                f"completeness column: {err}"
+            )
+            df_for_check = None
+
+        if df_for_check is not None:
+            is_da = experiment == "direct_answer"
+            for version in ("before", "after"):
+                if f"model_answer_{version}" in df_for_check.columns:
+                    add_completeness_column(
+                        path=results_csv_path,
+                        da=is_da,
+                        before=(version == "before"),
+                        max_tokens=max_tokens,
+                        output_suffix=f"_{version}",
+                    )
+                    print(
+                        f"Wrote completeness column for version='{version}' to "
+                        f"{Path(results_csv_path).stem}_with_completeness_{version}.csv"
+                    )
+    else:
+        warnings.warn(
+            f"Per-row results CSV not found at {results_csv_path}; "
+            "skipping completeness annotation."
+        )
+
     print("\nThe evaluation pipeline has finished successfully.")
 
 
@@ -756,10 +903,40 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         help="Path where to save the results.",
     )
     parser.add_argument(
+        "--setting",
+        type=str,
+        required=True,
+        choices=[
+            "baseline",
+            "feedback",
+            "skyline",
+            "speculative_decoding",
+            "sd",
+            "basic-baseline",
+        ],
+        help="The setting of the experiment to evaluate.",
+    )
+    parser.add_argument(
+        "--experiment",
+        type=str,
+        required=True,
+        choices=["reasoning", "direct_answer"],
+        help="The experiment to evaluate.",
+    )
+    parser.add_argument(
         "--samples_per_task",
         type=int,
         default=50,
         help="Number of samples per task the results were run with (check your config for the run).",
+    )
+    parser.add_argument(
+        "--filtering_conditions",
+        type=json.loads,
+        default={},
+        help=(
+            "A JSON string representing a dictionary of conditions (SamplePart attributes) and values; "
+            "all the parts having an attribute with such value will be preserved."
+        ),
     )
     parser.add_argument(
         "--create_heatmaps",
@@ -770,6 +947,17 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
         "--verbose",
         action="store_true",
         help="Whether to print the results to the console.",
+    )
+    parser.add_argument(
+        "--max_tokens",
+        type=int,
+        default=None,
+        help=(
+            "The model's per-call generation budget. If a row's reasoning hits "
+            "this many tokens it is flagged as truncated (incomplete) by the "
+            "completeness annotation step. If omitted, the truncation check "
+            "is skipped."
+        ),
     )
     if script_args is not None:
         if isinstance(script_args, str):
@@ -783,32 +971,109 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
     return parser.parse_args()
 
 
-def add_completeness_column(path: str, da: bool = False, before: bool = False) -> None:
+def add_completeness_column(
+    path: str,
+    da: bool = False,
+    before: bool = False,
+    max_tokens: int | None = None,
+    reasoning_tokens_col: str | None = None,
+    output_suffix: str = "",
+) -> None:
     """
-    Add a column to indicate whether the answer/reasoning is complete.
+    Add a ``completeness`` column to a results CSV indicating whether the
+    model's output for that row is complete.
 
-    :param path: path to the results file to update
-    :param da: whether the setting is direct answer; default False
-    :param before: whether to check the "before" columns; default False (checks "after")
-    :return: None
+    Criteria (non-DA case, i.e. reasoning + answer):
+      - The answer is incomplete if no answer text was produced.
+      - The reasoning is incomplete if either:
+          (a) the answer is empty -- a chain of thought that never reaches an
+              answer is, by definition, unfinished, or
+          (b) the reasoning hit the exact token-generation limit, which means
+              the model was cut off mid-thought rather than terminating
+              naturally.
+      - A row is complete iff both reasoning and answer are complete.
+
+    Criteria (DA case, i.e. direct answer only, no reasoning):
+      - Complete iff the answer is non-empty.
+
+    The token-limit check (b) requires a pre-computed token count column.
+    The function looks at ``reasoning_tokens_col`` (default
+    ``f"model_reasoning_tokens_{suffix}"``). If ``max_tokens`` is None, or
+    the token column is absent, the truncation check is skipped (a warning
+    is emitted in the latter case) and only the "answer non-empty"
+    criterion is applied to the reasoning.
+
+    :param path: path to the results CSV to update
+    :param da: whether the experiment is direct answer (no reasoning column)
+    :param before: whether to check the "before" columns (default: "after")
+    :param max_tokens: the generation budget the model was run with. If a
+                       row's reasoning has exactly this many tokens the
+                       reasoning is treated as truncated.
+    :param reasoning_tokens_col: name of an existing column carrying the
+                                  reasoning token count, if any
+    :param output_suffix: extra string appended to the output filename. When
+                          calling this for both "before" and "after" within
+                          one run, pass "_before" / "_after" to keep the two
+                          outputs distinct (default ``""`` keeps the
+                          original behaviour).
+    :return: None; writes ``<path>_with_completeness<output_suffix>.csv``
     """
     df = pd.read_csv(path)
     suffix = "before" if before else "after"
 
-    if da:
-        df["completeness"] = df[f"model_answer_{suffix}"].apply(
-            lambda x: True if pd.notna(x) and x.strip() != "" else False
-        )
-    else:
-        reasoning_complete = df[f"model_reasoning_{suffix}"].apply(
-            lambda x: True if pd.notna(x) and x.strip() != "" else False
-        )
-        answer_complete = df[f"model_answer_{suffix}"].apply(
-            lambda x: True if pd.notna(x) and x.strip() != "" else False
-        )
-        df["completeness"] = reasoning_complete & answer_complete
+    def _is_nonempty(x) -> bool:
+        return bool(pd.notna(x) and isinstance(x, str) and x.strip() != "")
 
-    df.to_csv(f"{path.split('.')[0]}_with_completeness.csv", index=False)
+    answer_col = f"model_answer_{suffix}"
+    answer_complete = df[answer_col].apply(_is_nonempty)
+
+    if da:
+        df["completeness"] = answer_complete
+        df.to_csv(
+            f"{path.split('.')[0]}_with_completeness{output_suffix}.csv",
+            index=False,
+        )
+        return
+
+    reasoning_col = f"model_reasoning_{suffix}"
+    reasoning_nonempty = df[reasoning_col].apply(_is_nonempty)
+
+    if max_tokens is not None:
+        token_col = reasoning_tokens_col or f"model_reasoning_tokens_{suffix}"
+        if token_col in df.columns:
+            reasoning_tokens = pd.to_numeric(df[token_col], errors="coerce")
+            reasoning_truncated = reasoning_tokens >= max_tokens
+            divisible_by_50 = reasoning_tokens % 50 == 0
+
+            if divisible_by_50.any():
+                multiple_of_50 = reasoning_tokens[divisible_by_50]
+                warnings.warn(
+                    "Some rows have reasoning token counts divisible by 50, "
+                    "which may indicate generation limits were reached.\n"
+                    f"Rows:\n{multiple_of_50}"
+                )
+
+        else:
+            warnings.warn(
+                f"add_completeness_column: column '{token_col}' not found; "
+                "skipping the reasoning truncation check. To enable it, add a "
+                "per-row reasoning token-count column before calling this "
+                "function (or pass reasoning_tokens_col=...)."
+            )
+
+            reasoning_truncated = pd.Series(False, index=df.index)
+
+    else:
+        reasoning_truncated = pd.Series(False, index=df.index)
+
+    reasoning_complete = reasoning_nonempty & ~reasoning_truncated & answer_complete
+
+    df["completeness"] = reasoning_complete & answer_complete
+
+    df.to_csv(
+        f"{path.split('.')[0]}_with_completeness{output_suffix}.csv",
+        index=False,
+    )
 
 
 if __name__ == "__main__":
@@ -817,9 +1082,23 @@ if __name__ == "__main__":
         results_path=args.results_path,
         save_path=args.save_path,
         samples_per_task=args.samples_per_task,
-        setting="baseline",
-        experiment="reasoning_answer",
+        setting=args.setting,
+        experiment=args.experiment,
         filtering_conditions={},
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
+        max_tokens=args.max_tokens,
     )
+    # kwargs = {
+    #     "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "save_path": "results/basic-baseline",
+    #     "samples_per_task": 2,
+    #     "setting": "baseline",
+    #     "experiment": "direct_answer",
+    #     "filtering_conditions": {},
+    #     "create_heatmaps": True,
+    #     "verbose": True,
+    # }
+    # print("Starting evaluation with the following configuration:")
+    # print(json.dumps(kwargs, indent=2))
+    # run(**kwargs)
