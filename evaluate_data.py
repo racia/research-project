@@ -597,6 +597,38 @@ def run(
         split=split,
         metric_file_name="eval_script_metrics.csv",
     )
+
+    # Write a ready-to-paste LaTeX row to latex_table_line.txt.
+    # ± is evaluator.X.get_std() at split level = std of per-task means across
+    # tasks (cross-task variability), which is the correct quantity for the
+    # paper table — distinct from the within-task std columns in the CSV.
+    # Table 1: EM-Acc | SM-Acc | Max Supp Attn | Attn on Trgt
+    # Table 2: BLEU | ROUGE | METEOR  (reasoning experiment only)
+    _cell = lambda m, s: f"${round(m, 2)}^{{{{\\pm}}}}{round(s, 2)}$"
+    _latex_lines: list[str] = []
+    for _ver, _ev in zip(split.versions, split.evaluators):
+        _em = _cell(
+            _ev.exact_match_accuracy.get_mean(), _ev.exact_match_accuracy.get_std()
+        )
+        _sm = _cell(
+            _ev.soft_match_accuracy.get_mean(), _ev.soft_match_accuracy.get_std()
+        )
+        _msa = _cell(_ev.max_supp_attn.get_mean(), _ev.max_supp_attn.get_std())
+        _aot = _cell(_ev.attn_on_target.get_mean(), _ev.attn_on_target.get_std())
+        _latex_lines.append(f"% Table 1 | {experiment} | {setting} | {_ver}")
+        _latex_lines.append(f"& {_em} & {_sm} & {_msa} & {_aot} \\\\")
+        if experiment == "reasoning":
+            _b = _cell(_ev.bleu.get_mean(), _ev.bleu.get_std())
+            _r = _cell(_ev.rouge.get_mean(), _ev.rouge.get_std())
+            _m = _cell(_ev.meteor.get_mean(), _ev.meteor.get_std())
+            _latex_lines.append(f"% Table 2 | {experiment} | {setting} | {_ver}")
+            _latex_lines.append(f"& {_b} & {_r} & {_m} \\\\")
+        _latex_lines.append("")
+    (saver.run_path / "latex_table_line.txt").write_text(
+        "\n".join(_latex_lines), encoding="utf-8"
+    )
+    print(f"LaTeX table line(s) written → {saver.run_path / 'latex_table_line.txt'}")
+
     # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
     # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
     split_corr_matrices = split.calculate_metrics()
