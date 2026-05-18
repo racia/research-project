@@ -377,6 +377,54 @@ class Plotter:
         )
         self._save_plot(x_label, y_label, plot_name_add, file_name)
 
+    def plot_acc_two_runs_per_task(
+        self,
+        acc_per_task_reas: dict[int, float],
+        acc_per_task_da: dict[int, float],
+        y_label: str = "Accuracy",
+        file_name: str | None = None,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Compare per-task accuracy between runs with and without reasoning.
+        """
+        tasks = sorted(acc_per_task_reas.keys())
+        x = np.arange(len(tasks))
+        width = 0.35
+
+        plt.figure(figsize=(12, 5))
+        colors = self.cmap(np.linspace(0, 1, 2))
+
+        acc_reas = [acc_per_task_reas[t] for t in tasks]
+        acc_no_reas = [acc_per_task_da[t] for t in tasks]
+
+        plt.bar(x - width / 2, acc_reas, width, label="With reasoning", color=colors[0])
+        plt.bar(
+            x + width / 2,
+            acc_no_reas,
+            width,
+            label="Direct answer",
+            color=colors[1],
+        )
+
+        plt.xticks(x, tasks)
+        self._plot_general_details(
+            x_label="Task",
+            y_label=y_label,
+            max_x_len=len(tasks),
+            plot_name_add=plot_name_add,
+            num_of_data_arrays=2,
+            step=1,
+        )
+        plt.legend(loc="upper right")
+
+        self._save_plot(
+            y_label=y_label,
+            x_label="Task",
+            file_name=file_name or "acc_two_runs_per_task.png",
+            plot_name_add=plot_name_add,
+        )
+
     def plot_acc_per_task_and_prompt(
         self,
         acc_per_prompt_task: dict[str | Prompt, Accuracy | Metric],
@@ -431,6 +479,36 @@ class Plotter:
             step=1,
         )
         self._save_plot(y_label, x_label, file_name, plot_name_add)
+
+    def plot_toxic_cot_per_task(
+        self,
+        toxic_per_task: dict[int, float],
+        file_name: str | None = None,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        tasks = sorted(toxic_per_task.keys())
+        vals = [toxic_per_task[t] for t in tasks]
+
+        plt.figure(figsize=(12, 5))
+        colors = self.cmap(np.linspace(0, 1, 1))
+        plt.bar(tasks, vals, color=colors[0])
+
+        self._plot_general_details(
+            x_label="Task",
+            y_label="Toxic-CoT rate",
+            max_x_len=len(tasks),
+            plot_name_add=plot_name_add,
+            num_of_data_arrays=1,
+            step=1,
+            displ_percentage=True,
+        )
+
+        self._save_plot(
+            y_label="Toxic-CoT rate",
+            x_label="Task",
+            file_name=file_name or "toxic_cot_per_task.png",
+            plot_name_add=plot_name_add,
+        )
 
     def plot_acc_with_std(
         self,
@@ -1684,4 +1762,216 @@ class Plotter:
             y_label=y_label,
             plot_name_add=plot_name_add,
             file_name=f"attention_triplet_{version}.png",
+        )
+
+    def plot_diff_two_runs_per_task(
+        self,
+        diff_per_task: dict[int, float],
+        y_label: str = "Difference",
+        file_name: str | None = None,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Plot per-task difference between two runs (reas - da) for a given metric.
+        """
+        tasks = sorted(diff_per_task.keys())
+        diffs = [diff_per_task[t] for t in tasks]
+
+        plt.figure(figsize=(12, 5))
+        colors = self.cmap(np.linspace(0, 1, 1))
+        x = np.arange(len(tasks))
+
+        plt.bar(x, diffs, color=colors[0])
+        plt.axhline(0.0, color="black", linewidth=0.8)
+
+        # Reuse your common formatting helper
+        self._plot_general_details(
+            x_label="Task",
+            y_label=y_label,
+            max_x_len=len(tasks),
+            plot_name_add=plot_name_add,
+            num_of_data_arrays=1,
+            step=1,
+        )
+        plt.xticks(x, tasks)
+
+        self._save_plot(
+            y_label=y_label,
+            x_label="Task",
+            file_name=file_name
+            or f"{y_label.replace(' ', '_').lower()}_diff_two_runs_per_task.png",
+            plot_name_add=plot_name_add,
+        )
+
+    def plot_toxic_cot_transition_overview(
+        self,
+        merged_before: pd.DataFrame,
+        merged_after: pd.DataFrame,
+        file_name: str = "toxic_cot_transition_overview.pdf",
+        plot_name_add: list[str] = None,
+        path_add: str | Path = "",
+    ) -> None:
+        """
+        Plot an overview of toxic COT transitions between before and after versions.
+
+        Categories:
+        - appeared:     before=False, after=True
+        - disappeared:  before=True,  after=False
+        - stayed:       before=True,  after=True
+        - never:        before=False, after=False
+        """
+        merged_together = pd.merge(
+            merged_before,
+            merged_after,
+            on=["task_id", "sample_id", "part_id"],
+            suffixes=("_before", "_after"),
+        )
+
+        toxic_cot_before = merged_together["toxic_cot_before"].astype(bool)
+        toxic_cot_after = merged_together["toxic_cot_after"].astype(bool)
+
+        merged_together["toxic_cot_appeared"] = (~toxic_cot_before) & toxic_cot_after
+        merged_together["toxic_cot_disappeared"] = toxic_cot_before & (~toxic_cot_after)
+        merged_together["toxic_cot_stayed"] = toxic_cot_before & toxic_cot_after
+        merged_together["toxic_cot_never"] = (~toxic_cot_before) & (~toxic_cot_after)
+
+        category_order = [
+            "toxic_cot_never",
+            "toxic_cot_disappeared",
+            "toxic_cot_appeared",
+            "toxic_cot_stayed",
+        ]
+        category_labels = {
+            "toxic_cot_never": "Never",
+            "toxic_cot_disappeared": "Disappeared",
+            "toxic_cot_appeared": "Appeared",
+            "toxic_cot_stayed": "Stayed",
+        }
+        category_colors = {
+            "toxic_cot_never": "#D9D9D9",
+            "toxic_cot_disappeared": "#4CAF50",
+            "toxic_cot_appeared": "#D55E00",
+            "toxic_cot_stayed": "#7B3294",
+        }
+
+        counts = {cat: int(merged_together[cat].sum()) for cat in category_order}
+        total = sum(counts.values())
+        ratios = {cat: val / total if total else 0.0 for cat, val in counts.items()}
+
+        fig, ax = plt.subplots(figsize=(11, 2.8))
+
+        left = 0.0
+        for cat in category_order:
+            width = ratios[cat]
+            ax.barh(
+                y=["Toxic COT Transition"],
+                width=[width],
+                left=left,
+                color=category_colors[cat],
+                label=category_labels[cat],
+                height=0.6,
+            )
+
+            if width > 0.04:
+                ax.text(
+                    left + width / 2,
+                    0,
+                    f"{category_labels[cat]}\n{counts[cat]} ({width:.1%})",
+                    ha="center",
+                    va="center",
+                    fontsize=9,
+                    color="black",
+                )
+            left += width
+
+        before_rate = toxic_cot_before.mean()
+        after_rate = toxic_cot_after.mean()
+        delta = after_rate - before_rate
+
+        title = "Toxic COT Transition Overview"
+        if plot_name_add:
+            title += f" ({'; '.join(plot_name_add)})"
+        ax.set_title(title)
+
+        ax.set_xlim(0, 1)
+        ax.xaxis.set_major_formatter(PercentFormatter(1))
+        x_label = f"Share of parts  |  Before: {before_rate:.1%}   After: {after_rate:.1%}   " \
+                    f"Delta: {delta:+.1%}"
+        ax.set_xlabel(x_label)
+        ax.grid(axis="x", linestyle="--", linewidth=0.5, alpha=0.7)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.spines["left"].set_visible(False)
+
+        ax.legend(loc="center left", bbox_to_anchor=(1, 0.5), title="Transition")
+        plt.tight_layout()
+
+        if path_add:
+            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
+            file_name = str(Path(path_add) / file_name)
+
+        self._save_plot(file_name=file_name, plot_name_add=plot_name_add)
+
+    def plot_attr_before_after_two_runs_per_task(
+        self,
+        vals_da: list[dict[int, float]],
+        vals_reas: list[dict[int, float]],
+        y_label: str = "Value",
+        file_name: str | None = None,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Plot per-task grouped bars for a metric:
+        - direct answer (before and after)
+        - reasoning (before and after)
+        'After' version can be omitted.
+        """
+        assert len(vals_reas) == len(
+            vals_da
+        ), "vals_reas and vals_da must have the same number of versions"
+        # Ensure all dicts have the same task keys
+        tasks = range(1, 21)
+
+        x = np.arange(len(tasks))
+        width = 0.2
+        colors = self.cmap(np.linspace(0, 1, 4))
+
+        da_before = [vals_da[0][t] for t in tasks]
+        reas_before = [vals_reas[0][t] for t in tasks]
+        reas_after, da_after = None, None
+        if len(vals_reas) > 1:
+            da_after = [vals_da[1][t] for t in tasks]
+            reas_after = [vals_reas[1][t] for t in tasks]
+
+        plt.figure(figsize=(14, 5))
+
+        plt.bar(
+            x - 1.5 * width, reas_before, width, label="Reasoning before", color=colors[0]
+        )
+        plt.bar(x + 0.5 * width, da_before, width, label="DA before", color=colors[2])
+        if reas_after and da_after:
+            plt.bar(x + 1.5 * width, da_after, width, label="DA after", color=colors[3])
+            plt.bar(
+                x - 0.5 * width, reas_after, width, label="Reasoning after", color=colors[1]
+            )
+
+        # Use your standard formatting helper
+        self._plot_general_details(
+            x_label="Task",
+            y_label=y_label,
+            max_x_len=len(tasks),
+            plot_name_add=plot_name_add,
+            num_of_data_arrays=4,
+            step=1,
+        )
+
+        plt.xticks(x, tasks)
+        plt.legend(loc="upper right")
+
+        self._save_plot(
+            y_label=y_label,
+            x_label="Task",
+            file_name=file_name
+            or f"{y_label.replace(' ', '_').lower()}_two_runs_per_task.png",
+            plot_name_add=plot_name_add,
         )
