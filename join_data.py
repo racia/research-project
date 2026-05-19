@@ -8,7 +8,6 @@
 
 from __future__ import annotations
 
-import argparse
 import re
 import shutil
 import warnings
@@ -348,6 +347,10 @@ def run(
             "paths and difference:",
             difference,
         )
+    if len(source_paths) > 1 and difference:
+        raise ValueError(
+            "Please provide at least two source_paths to join, or a difference to find."
+        )
 
     full_result_directory = PREFIX / target_directory
     full_result_directory.mkdir(parents=True, exist_ok=True)
@@ -400,11 +403,6 @@ def run(
         differences = [difference]
     else:
         differences = find_difference_in_paths(list(source_paths))
-    trimmed_source_paths = []
-    for path in source_paths:
-        while path.name not in differences:
-            path = path.parent
-        trimmed_source_paths.append(path)
 
     print(
         "\nFound the following differences in the paths:",
@@ -412,6 +410,13 @@ def run(
         sep="\n- ",
         end="\n\n",
     )
+
+    trimmed_source_paths = []
+    for path in source_paths:
+        while path.name not in differences:
+            path = path.parent
+        trimmed_source_paths.append(path)
+
     assert len(differences) == len(trimmed_source_paths), (
         f"The number of differences in the source paths does not match the number of source paths: "
         f"{len(differences)} != {len(trimmed_source_paths)}."
@@ -460,7 +465,8 @@ if __name__ == "__main__":
     # from settings.baseline.sources_basic_da import *
     # from settings.baseline.sources_basic_reasoning import *
 
-    # from settings.skyline.sources_da import *
+    from settings.skyline.sources_da import *
+
     # from settings.skyline.sources_reasoning import *
 
     # from settings.feedback.sources_reasoning import *
@@ -469,15 +475,19 @@ if __name__ == "__main__":
     # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
     paths = []
 
-    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined"
+    # result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined"
+    result = (
+        f"skyline/test/da/v1/all_tasks_joined"
+    )
+    prefix = Path("/workspace/students/reasoning/results/")
     run(
-        source_paths=paths,
-        target_directory=result,
+        source_paths=[prefix / path for path in skyline_da_v1],
+        target_directory=prefix / result,
         level="task",  # 'task' or 'sample'
         # might not work if too general! try "_results"
-        keyword=f"reasoning_results",  # example: "t_20" for a specific task,
+        keyword=f"direct_answer_results",  # example: "t_20" for a specific task,
         # "reasoning_results", "direct_answer_results", for generally saved results
-        task="reasoning",  # 'reasoning' or 'direct_answer' (direct answer)
-        # difference="all_tasks_joined_old",
+        task="direct_answer",  # 'reasoning' or 'direct_answer' (direct answer)
+        # difference=f"tasks_16_19_full_20_s_1_77",
         # 'difference' only necessary when extracting a subset of results from a single source path
     )
