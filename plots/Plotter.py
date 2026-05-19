@@ -8,13 +8,13 @@ from pathlib import Path
 from typing import Sized
 
 import matplotlib.colors as mcolors
-from matplotlib.lines import Line2D
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
 from matplotlib import cm
 from matplotlib.colors import ListedColormap
+from matplotlib.lines import Line2D
 from matplotlib.ticker import MultipleLocator, PercentFormatter
 
 from evaluation.Metrics import Accuracy, Metric
@@ -363,7 +363,12 @@ class Plotter:
             plt.ylim(bottom=0, top=1.01)
         plt.yticks(y_ticks)
 
-        type_of_data = " ".join([part.capitalize() if part not in ["Per", "Of", "On"] else part for part in y_label.split(" ")])
+        type_of_data = " ".join(
+            [
+                part.capitalize() if part not in ["Per", "Of", "On"] else part
+                for part in y_label.split(" ")
+            ]
+        )
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
@@ -385,7 +390,9 @@ class Plotter:
         if num_samples is not None:
             stats.append(f"Processed samples: {num_samples}")
         if stats:
-            plt.gcf().text(0.99, 0.01, "\n".join(stats), fontsize=9, ha="right", va="bottom") # transform=plt.gca().transAxes for in-axes placement
+            plt.gcf().text(
+                0.99, 0.01, "\n".join(stats), fontsize=9, ha="right", va="bottom"
+            )  # transform=plt.gca().transAxes for in-axes placement
 
         if displ_percentage:
             plt.gca().yaxis.set_major_formatter(
@@ -404,7 +411,13 @@ class Plotter:
                 title=legend_title,
             )
         else:
-            plt.legend(handles=combined_handles, labels=combined_labels, loc="upper left", bbox_to_anchor=(1, 1), title=legend_title)
+            plt.legend(
+                handles=combined_handles,
+                labels=combined_labels,
+                loc="upper left",
+                bbox_to_anchor=(1, 1),
+                title=legend_title,
+            )
 
     def correlation_map(
         self,
@@ -555,7 +568,12 @@ class Plotter:
             num_of_data_arrays=1,
             step=1,
         )
-        self._save_plot(x_label, y_label, plot_name_add, file_name)
+        self._save_plot(
+            x_label,
+            y_label,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+            file_name=file_name,
+        )
 
     def plot_acc_two_runs_per_task(
         self,
@@ -602,7 +620,7 @@ class Plotter:
             y_label=y_label,
             x_label="Task",
             file_name=file_name or "acc_two_runs_per_task.png",
-            plot_name_add=plot_name_add,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
         )
 
     def plot_acc_per_task_and_prompt(
@@ -658,7 +676,12 @@ class Plotter:
             num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        self._save_plot(
+            y_label,
+            x_label,
+            file_name,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
 
     def plot_toxic_cot_per_task(
         self,
@@ -687,7 +710,7 @@ class Plotter:
             y_label="Toxic-CoT rate",
             x_label="Task",
             file_name=file_name or "toxic_cot_per_task.png",
-            plot_name_add=plot_name_add,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
         )
 
     def plot_acc_with_std(
@@ -748,7 +771,6 @@ class Plotter:
         )
         self._save_plot(y_label, x_label, file_name, path_add)
 
-
     def get_color_or_map(self, c: str):
         """
         Get the color or colormap for a given case.
@@ -789,8 +811,28 @@ class Plotter:
         min_score, max_score = 0.0, 1.0
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-            max_score = max([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 1.0
-            min_score = min([val for val in reasoning_scores.values() if not isinstance(val, str)]) if reasoning_scores else 0.0
+            max_score = (
+                max(
+                    [
+                        val
+                        for val in reasoning_scores.values()
+                        if not isinstance(val, str)
+                    ]
+                )
+                if reasoning_scores
+                else 1.0
+            )
+            min_score = (
+                min(
+                    [
+                        val
+                        for val in reasoning_scores.values()
+                        if not isinstance(val, str)
+                    ]
+                )
+                if reasoning_scores
+                else 0.0
+            )
         else:
             # exclude simple answer/reasoning types
             answer_types = [
@@ -863,7 +905,9 @@ class Plotter:
                             try:
                                 assert isinstance(score, (int, float))
                             except AssertionError:
-                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                print(
+                                    f"Non-numeric reasoning score for index {idx}: {score}"
+                                )
                                 warnings.warn(
                                     f"Non-numeric reasoning score for index {idx}, cannot color."
                                 )
@@ -933,7 +977,9 @@ class Plotter:
                             try:
                                 assert isinstance(reasoning_scores[idx], (int, float))
                             except AssertionError:
-                                print(f"Non-numeric reasoning score for index {idx}: {score}")
+                                print(
+                                    f"Non-numeric reasoning score for index {idx}: {score}"
+                                )
                                 continue
                             score = round(reasoning_scores[idx], 2)
                             ax.text(
@@ -1225,7 +1271,7 @@ class Plotter:
 
     def plot_correlation(
         self,
-        x_data: dict[str | Prompt, Accuracy | Metric]|list[float]|np.array,
+        x_data: dict[str | Prompt, Accuracy | Metric] | list[float] | np.array,
         y_data: list[float],
         x_label: str = "X",
         y_label: str = "Y",
@@ -1266,15 +1312,21 @@ class Plotter:
         min_x_len = 0
         if isinstance(x_data, dict):
             x_data_points = {
-                k: v for k, v in x_data.items() if include_soft or "soft" not in k.lower()
+                k: v
+                for k, v in x_data.items()
+                if include_soft or "soft" not in k.lower()
             }
         else:
             x_data_points = {"data": x_data}
-        x_err = [
-            x_data_points.pop(k)
-            for k in x_data.keys()
-            if "std" in k.lower() and k in x_data_points
-        ] if isinstance(x_data, dict) else []
+        x_err = (
+            [
+                x_data_points.pop(k)
+                for k in x_data.keys()
+                if "std" in k.lower() and k in x_data_points
+            ]
+            if isinstance(x_data, dict)
+            else []
+        )
         colors = self.cmap(np.linspace(0, 1, len(x_data_points)), alpha=0.7)
 
         # Example scaling: avoid zero size, set min/max
@@ -1296,12 +1348,22 @@ class Plotter:
                 max_x_len = max(metr.all)  # Case sample_part_lenghts: Set to max value
                 step_size = 5 if max_x_len > 30 else 1
             min_x_len = min(metr.all) if min(metr.all) > 2 else min_x_len
-           
-            x_vals = metr.all
-            y_vals = [y.get_mean() for y in y_data] if isinstance(y_data[0], Metric) else y_data
 
-            stddev_arr = np.array(std_dev) if std_dev is not None else np.zeros_like(x_vals)
-            sizes = scale_stddev(stddev_arr) if std_dev is not None else np.full_like(x_vals, 50)
+            x_vals = metr.all
+            y_vals = (
+                [y.get_mean() for y in y_data]
+                if isinstance(y_data[0], Metric)
+                else y_data
+            )
+
+            stddev_arr = (
+                np.array(std_dev) if std_dev is not None else np.zeros_like(x_vals)
+            )
+            sizes = (
+                scale_stddev(stddev_arr)
+                if std_dev is not None
+                else np.full_like(x_vals, 50)
+            )
 
             if len(metr) != len(y_data):
                 raise ValueError(
@@ -1310,7 +1372,7 @@ class Plotter:
 
             if not y_data:
                 raise ValueError("y_data is empty")
-        
+
             plt.scatter(
                 x_vals,
                 y_vals,
@@ -1333,21 +1395,47 @@ class Plotter:
             for i, label in enumerate(label_add):
                 if label in seen_points.values():
                     continue  # skip if we've already labeled this point
-                x, y = metr[i], y_data[i].get_mean() if isinstance(y_data[i], Metric) else y_data[i]
+                x, y = metr[i], (
+                    y_data[i].get_mean() if isinstance(y_data[i], Metric) else y_data[i]
+                )
                 # Find all indices with the same x and y values (within a small tolerance to account for floating point issues)
-                same_points = [j for j in range(len(metr)) if abs(metr[j] - x) < 1e-6 and abs((y_data[j].get_mean() if isinstance(y_data[j], Metric) else y_data[j]) - y) < 1e-6]
+                same_points = [
+                    j
+                    for j in range(len(metr))
+                    if abs(metr[j] - x) < 1e-6
+                    and abs(
+                        (
+                            y_data[j].get_mean()
+                            if isinstance(y_data[j], Metric)
+                            else y_data[j]
+                        )
+                        - y
+                    )
+                    < 1e-6
+                ]
                 # Skip points we've already labeled
-                same_points = [j for j in same_points if j not in seen_points and label_add[j] != label] # also check that the label is different to avoid labeling the same point multiple times if it has the same label
+                same_points = [
+                    j
+                    for j in same_points
+                    if j not in seen_points and label_add[j] != label
+                ]  # also check that the label is different to avoid labeling the same point multiple times if it has the same label
                 seen_points.update({j: label_add[j] for j in same_points})
                 # Summarize the labels for these points (e.g. if they differ only by prompt, we can just list the prompts)
                 if len(same_points) >= 1:
                     same_labels = [label_add[j] for j in same_points]
-                    assert label not in same_labels, "The label for the current point should not be in the same_labels list"
+                    assert (
+                        label not in same_labels
+                    ), "The label for the current point should not be in the same_labels list"
                     summarized_label = f"{label} ({', '.join(same_labels)})"
                 else:
                     summarized_label = label
-                plt.annotate(summarized_label, (metr[i]+.001, y_data[i]+.001), xytext=(5, 5 if i%2==0 else -5), textcoords='offset points')
-        
+                plt.annotate(
+                    summarized_label,
+                    (metr[i] + 0.001, y_data[i] + 0.001),
+                    xytext=(5, 5 if i % 2 == 0 else -5),
+                    textcoords="offset points",
+                )
+
         idx_min, idx_max = np.argmin(stddev_arr), np.argmax(stddev_arr)
         # idx_median = np.argsort(stddev_arr)[len(stddev_arr) // 2]
         median_val = np.median(stddev_arr)
@@ -1355,16 +1443,26 @@ class Plotter:
 
         legend_handles = [
             Line2D(
-                [], [], 
-                marker='o', 
-                color='w', 
-                markerfacecolor='gray', 
+                [],
+                [],
+                marker="o",
+                color="w",
+                markerfacecolor="gray",
                 markersize=np.sqrt(size),  # markersize is diameter in points
-                label=f"Std Dev: {val:.2f}"
+                label=f"Std Dev: {val:.2f}",
             )
-            for val, size in set(zip([stddev_arr[idx_min], stddev_arr[idx_median], stddev_arr[idx_max]], sizes[[idx_min, idx_median, idx_max]]))
+            for val, size in set(
+                zip(
+                    [stddev_arr[idx_min], stddev_arr[idx_median], stddev_arr[idx_max]],
+                    sizes[[idx_min, idx_median, idx_max]],
+                )
+            )
         ]
-        legend_handles = sorted(legend_handles, key=lambda h: float(h.get_label().split(": ")[1]), reverse=True)
+        legend_handles = sorted(
+            legend_handles,
+            key=lambda h: float(h.get_label().split(": ")[1]),
+            reverse=True,
+        )
 
         # 3. Get existing handles/labels
         handles, labels = plt.gca().get_legend_handles_labels()
@@ -1384,7 +1482,7 @@ class Plotter:
             min_x_len=min_x_len,
             combined_handles=combined_handles,
             combined_labels=combined_labels,
-            legend_title="Metric Size & Circle Size", 
+            legend_title="Metric Size & Circle Size",
             experiment=experiment,
             # num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None, # This may be confusing, better to stay with samples
             num_samples=num_samples,
@@ -1392,14 +1490,18 @@ class Plotter:
         if path_add:
             file_name = path_add / file_name.lower()
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        self._save_plot(
+            y_label,
+            x_label,
+            file_name,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
         plt.close()
-
 
     def plot_corr_hist(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric],
-        y_data: dict[str : list[float] | np.array] = None,
+        y_data: dict[str, list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
         displ_percentage: bool = False,
@@ -1466,7 +1568,9 @@ class Plotter:
         else:
             step_size = 1
 
-        label_column = " ".join(df.columns[2].split("_")).title() if len(df.columns)>2 else None
+        label_column = (
+            " ".join(df.columns[2].split("_")).title() if len(df.columns) > 2 else None
+        )
 
         if "correct" in y_label.lower():  # e.g. parts_answer_correct
             if "answer_in_self" in df.columns[2]:
@@ -1555,8 +1659,8 @@ class Plotter:
 
     def plot_corr_boxplot(
         self,
-        x_data: dict[str | Prompt, Accuracy | Metric]|list[float] | np.array,
-        y_data: dict[str : list[float] | np.array] = None,
+        x_data: dict[str | Prompt, Accuracy | Metric] | list[float] | np.array,
+        y_data: dict[str, list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
         displ_percentage: bool = False,
@@ -1602,7 +1706,9 @@ class Plotter:
                 df_data.update(y_vals)
             else:
                 df_data[y_keys] = y_vals
-        x_data_points = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
+        x_data_points = (
+            {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
+        )
         df = pd.DataFrame(
             list(zip(*x_data_points.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
@@ -1622,12 +1728,20 @@ class Plotter:
                 for i, part in enumerate(x.split("-"))
                 if part in ["True", "1"]
             ]
-            feat_str = [f.removesuffix(f"_{version}")
-                        for f in feat_str]
+            feat_str = [f.removesuffix(f"_{version}") for f in feat_str]
             return "-".join(feat_str) if feat_str else None
 
         if any(lab in x_label.lower() for lab in ["correct", "in self"]):
-            df[x_label] = df[x_label].map({0: "In previous parts" if "in self" in x_label.lower() else "Incorrect", 1: "In current part" if "in self" in x_label.lower() else "Correct"})
+            df[x_label] = df[x_label].map(
+                {
+                    0: (
+                        "In previous parts"
+                        if "in self" in x_label.lower()
+                        else "Incorrect"
+                    ),
+                    1: "In current part" if "in self" in x_label.lower() else "Correct",
+                }
+            )
         elif "target" in x_label.lower():
             df[x_label] = df[x_label].astype(int)
         else:
@@ -1664,7 +1778,9 @@ class Plotter:
             )
         )
         hue_col = f"{label_column}_"
-        use_hue = hue_col in df.columns and df[hue_col].nunique(dropna=True) >= 1 # only use hue if there is at least one non-NaN value
+        use_hue = (
+            hue_col in df.columns and df[hue_col].nunique(dropna=True) >= 1
+        )  # only use hue if there is at least one non-NaN value
 
         try:
             ax = sns.boxplot(
@@ -2561,6 +2677,30 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distraction_vs_n_distractors_{version}.png", path_add
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+        txt_rows = []
+        for n, dm, ds, sm, ss, p, lo, hi, bn in zip(
+            ns,
+            dist_mean,
+            dist_sem,
+            supp_mean,
+            supp_sem,
+            acc,
+            acc_lo,
+            acc_hi,
+            bin_n,
+        ):
+            txt_rows.append((f"n_dist={n} dist mean", dm))
+            txt_rows.append((f"n_dist={n} dist sem", ds))
+            txt_rows.append((f"n_dist={n} supp mean", sm))
+            txt_rows.append((f"n_dist={n} supp sem", ss))
+            txt_rows.append((f"n_dist={n} accuracy", p))
+            txt_rows.append((f"n_dist={n} acc lo", lo))
+            txt_rows.append((f"n_dist={n} acc hi", hi))
+            txt_rows.append((f"n_dist={n} bin n", bn))
+        self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
 
     def plot_diff_two_runs_per_task(
         self,
@@ -2598,7 +2738,7 @@ class Plotter:
             x_label="Task",
             file_name=file_name
             or f"{y_label.replace(' ', '_').lower()}_diff_two_runs_per_task.png",
-            plot_name_add=plot_name_add,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
         )
 
     def plot_toxic_cot_transition_overview(
@@ -2693,8 +2833,10 @@ class Plotter:
 
         ax.set_xlim(0, 1)
         ax.xaxis.set_major_formatter(PercentFormatter(1))
-        x_label = f"Share of parts  |  Before: {before_rate:.1%}   After: {after_rate:.1%}   " \
-                    f"Delta: {delta:+.1%}"
+        x_label = (
+            f"Share of parts  |  Before: {before_rate:.1%}   After: {after_rate:.1%}   "
+            f"Delta: {delta:+.1%}"
+        )
         ax.set_xlabel(x_label)
         ax.grid(axis="x", linestyle="--", linewidth=0.5, alpha=0.7)
         ax.spines["top"].set_visible(False)
@@ -2708,7 +2850,10 @@ class Plotter:
             Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
             file_name = str(Path(path_add) / file_name)
 
-        self._save_plot(file_name=file_name, plot_name_add=plot_name_add)
+        self._save_plot(
+            file_name=file_name,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
 
     def plot_attr_before_after_two_runs_per_task(
         self,
@@ -2744,13 +2889,21 @@ class Plotter:
         plt.figure(figsize=(14, 5))
 
         plt.bar(
-            x - 1.5 * width, reas_before, width, label="Reasoning before", color=colors[0]
+            x - 1.5 * width,
+            reas_before,
+            width,
+            label="Reasoning before",
+            color=colors[0],
         )
         plt.bar(x + 0.5 * width, da_before, width, label="DA before", color=colors[2])
         if reas_after and da_after:
             plt.bar(x + 1.5 * width, da_after, width, label="DA after", color=colors[3])
             plt.bar(
-                x - 0.5 * width, reas_after, width, label="Reasoning after", color=colors[1]
+                x - 0.5 * width,
+                reas_after,
+                width,
+                label="Reasoning after",
+                color=colors[1],
             )
 
         # Use your standard formatting helper
@@ -2771,32 +2924,8 @@ class Plotter:
             x_label="Task",
             file_name=file_name
             or f"{y_label.replace(' ', '_').lower()}_two_runs_per_task.png",
-            plot_name_add=plot_name_add,
+            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
-        txt_rows = []
-        for n, dm, ds, sm, ss, p, lo, hi, bn in zip(
-            ns,
-            dist_mean,
-            dist_sem,
-            supp_mean,
-            supp_sem,
-            acc,
-            acc_lo,
-            acc_hi,
-            bin_n,
-        ):
-            txt_rows.append((f"n_dist={n} dist mean", dm))
-            txt_rows.append((f"n_dist={n} dist sem", ds))
-            txt_rows.append((f"n_dist={n} supp mean", sm))
-            txt_rows.append((f"n_dist={n} supp sem", ss))
-            txt_rows.append((f"n_dist={n} accuracy", p))
-            txt_rows.append((f"n_dist={n} acc lo", lo))
-            txt_rows.append((f"n_dist={n} acc hi", hi))
-            txt_rows.append((f"n_dist={n} bin n", bn))
-        self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
 
     def plot_accuracy_vs_distraction_ratio(
         self,
