@@ -465,8 +465,7 @@ if __name__ == "__main__":
     # from settings.baseline.sources_basic_da import *
     # from settings.baseline.sources_basic_reasoning import *
 
-    from settings.skyline.sources_da import *
-
+    # from settings.skyline.sources_da import *
     # from settings.skyline.sources_reasoning import *
 
     # from settings.feedback.sources_reasoning import *
@@ -475,19 +474,15 @@ if __name__ == "__main__":
     # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
     paths = []
 
-    # result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined"
-    result = (
-        f"skyline/test/da/v1/all_tasks_joined"
-    )
-    prefix = Path("/workspace/students/reasoning/results/")
+    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined"
     run(
-        source_paths=[prefix / path for path in skyline_da_v1],
-        target_directory=prefix / result,
+        source_paths=paths,
+        target_directory=result,
         level="task",  # 'task' or 'sample'
         # might not work if too general! try "_results"
-        keyword=f"direct_answer_results",  # example: "t_20" for a specific task,
+        keyword=f"reasoning_results",  # example: "t_20" for a specific task,
         # "reasoning_results", "direct_answer_results", for generally saved results
-        task="direct_answer",  # 'reasoning' or 'direct_answer' (direct answer)
-        # difference=f"tasks_16_19_full_20_s_1_77",
+        task="reasoning",  # 'reasoning' or 'direct_answer' (direct answer)
+        # difference="all_tasks_joined_old",
         # 'difference' only necessary when extracting a subset of results from a single source path
     )
