@@ -348,7 +348,11 @@ class Plotter:
         plt.xlabel(x_label)
 
         y_ticks = np.arange(0, 1.1, 0.1)
-        if "accurac" in y_label.lower():
+
+        if "diff" in y_label.lower():
+            y_ticks = np.arange(-2.0, 2.1, 0.2)
+            plt.ylim(bottom=-2.0, top=2.0)
+        elif "accurac" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
             if "direct" in experiment.lower():
@@ -361,6 +365,7 @@ class Plotter:
             plt.ylim(bottom=0, top=1)
         elif displ_percentage:
             plt.ylim(bottom=0, top=1.01)
+
         plt.yticks(y_ticks)
 
         type_of_data = " ".join(
@@ -577,8 +582,8 @@ class Plotter:
 
     def plot_acc_two_runs_per_task(
         self,
-        acc_per_task_reas: dict[int, float],
         acc_per_task_da: dict[int, float],
+        acc_per_task_reas: dict[int, float],
         y_label: str = "Accuracy",
         file_name: str | None = None,
         plot_name_add: list[str] | None = None,
@@ -593,16 +598,19 @@ class Plotter:
         plt.figure(figsize=(12, 5))
         colors = self.cmap(np.linspace(0, 1, 2))
 
-        acc_reas = [acc_per_task_reas[t] for t in tasks]
-        acc_no_reas = [acc_per_task_da[t] for t in tasks]
-
-        plt.bar(x - width / 2, acc_reas, width, label="With reasoning", color=colors[0])
         plt.bar(
-            x + width / 2,
-            acc_no_reas,
+            x - width / 2,
+            [acc_per_task_da[t] for t in tasks],
             width,
             label="Direct answer",
             color=colors[1],
+        )
+        plt.bar(
+            x + width / 2,
+            [acc_per_task_reas[t] for t in tasks],
+            width,
+            label="With reasoning",
+            color=colors[0],
         )
 
         plt.xticks(x, tasks)
@@ -691,6 +699,7 @@ class Plotter:
     ) -> None:
         tasks = sorted(toxic_per_task.keys())
         vals = [toxic_per_task[t] for t in tasks]
+        # TODO: drop the first "0th task"
 
         plt.figure(figsize=(12, 5))
         colors = self.cmap(np.linspace(0, 1, 1))

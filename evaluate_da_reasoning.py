@@ -30,7 +30,8 @@ def load_eval_table(run_dir: Path, label: str) -> pd.DataFrame:
     :param label: A label to identify the run (e.g., "reas" or "da") to suffix the columns with.
     :return: A DataFrame containing the evaluation results with an added 'run' column for the label.
     """
-    breakpoint()
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
     csv_files = list(run_dir.glob("*_upd.csv"))
     if len(csv_files) != 1:
         raise ValueError(
@@ -50,7 +51,8 @@ def build_wide_table(df_reas: pd.DataFrame, df_da: pd.DataFrame) -> pd.DataFrame
     :return: A merged DataFrame containing columns from both runs, with suffixes to distinguish them,
     and only rows that exist in both runs.
     """
-    breakpoint()
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
     # Suffix columns to distinguish runs
     df_da = df_da.add_suffix("_da")
     df_reas = df_reas.add_suffix("_reas")
@@ -80,7 +82,8 @@ def add_toxic_cot_flags(df: pd.DataFrame, version: str) -> pd.DataFrame:
     :param version: The result version for the columns ("before" or "after") to identify which answers to compare.
     :return: The DataFrame with added boolean columns for each of the categories described above.
     """
-    breakpoint()
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
     assert version in ("before", "after"), "Version must be 'before' or 'after'"
 
     # Adjust column names to your real ones
@@ -109,7 +112,8 @@ def summarize_global(df: pd.DataFrame, version: str) -> pd.DataFrame:
     :param version: The result version for the columns ("before" or "after").
     :return: A DataFrame summarizing the count and ratio of each category across the whole
     """
-    breakpoint()
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
     counts = df[
         [
             f"both_correct_{version}",
@@ -133,7 +137,8 @@ def summarize_by_task(df: pd.DataFrame, version: str) -> pd.DataFrame:
     :param version: The result version for the columns ("before" or "after").
     :return: A DataFrame summarizing the count and ratio of each category for each task_id.
     """
-    breakpoint()
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
     group = df.groupby("task_id")
     metrics = group[
         [
@@ -148,27 +153,17 @@ def summarize_by_task(df: pd.DataFrame, version: str) -> pd.DataFrame:
     return metrics.reset_index()
 
 
-ATTRS_BASE = [
-    "max_supp_attn",
-    "attn_on_target",
-    "there",
-    "verbs",
-    "pronouns",
-    "not_mentioned",
-    "context_sents_hall",
-]
-
-
 def summarize_attributes_global(df: pd.DataFrame, multi_system: bool) -> pd.DataFrame:
     """
     Global summary for each attribute and version, for both runs.
     Rows: attribute
     Columns: mean_reas_before, mean_reas_after, mean_da_before, mean_da_after, diff_before, diff_after
     """
-    breakpoint()
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
     records = []
 
-    for attr in ATTRS_BASE:
+    for attr in ATTRS:
         col_da_before = f"{attr}_before_da"
         col_da_after = f"{attr}_after_da"
         col_reas_before = f"{attr}_before_reas"
@@ -210,10 +205,11 @@ def summarize_attributes_by_task(df: pd.DataFrame, multi_system: bool) -> pd.Dat
     Per-task summary for each attribute.
     Rows: (task_id, attribute)
     """
-    breakpoint()
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
     rows = []
 
-    for attr in ATTRS_BASE:
+    for attr in ATTRS:
         col_da_before = f"{attr}_before_da"
         col_da_after = f"{attr}_after_da"
         col_reas_before = f"{attr}_before_reas"
@@ -300,7 +296,8 @@ def run(
                 "multi_system=" + str(multi_system),
             ],
         )
-        breakpoint()
+        if logging.getLogger().level == logging.DEBUG:
+            breakpoint()
         toxic_per_task = df.groupby("task_id")[f"toxic_cot_{version}"].mean().to_dict()
         plotter.plot_toxic_cot_per_task(
             toxic_per_task=toxic_per_task,
@@ -320,7 +317,9 @@ def run(
             # Align indices, then compute difference
             diff = (mean_reas - mean_da).to_dict()
 
-            pretty_label = attr.replace("_", " ").capitalize() + " (reas - da)"
+            pretty_label = (
+                attr.replace("_", " ").capitalize() + " Difference (reas - da)"
+            )
 
             plotter.plot_diff_two_runs_per_task(
                 diff_per_task=diff,
@@ -329,7 +328,10 @@ def run(
                 plot_name_add=["comparison", attr],
             )
 
-    breakpoint()
+    # TODO: combine acc comparison with Toxic-CoT plot
+
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
 
     if multi_system:
         assert (
@@ -342,6 +344,13 @@ def run(
             file_name="toxic_cot_overview_between_versions.pdf",
             plot_name_add=["comparison"],
         )
+        # toxic_per_task = df.groupby("task_id", "version")[f"toxic_cot_{version}"].mean().to_dict()
+        # plotter.plot_toxic_cot_per_task(
+        #     toxic_per_task=toxic_per_task,
+        #     plot_name_add=[version, "comparison"],
+        # )
+
+        # TODO: save toxic_cot cases for single version and for both
 
     for attr in ATTRS:
         col_da_before = f"{attr}_before_da"
@@ -418,34 +427,41 @@ def parse_args():
     return parser.parse_args()
 
 
-if __name__ == "__main__":
-    import pdb
+# TODO: plot the percentage of attrs in
+#       - da not part in toxic CoT
+#       - reas not part in toxic CoT
+#       - da that takes part in toxic CoT
+#       - da that takes part in toxic CoT
 
-    pdb.set_trace()
+
+if __name__ == "__main__":
+    # import pdb; pdb.set_trace()
+
     # python3 evaluate_da_reasoning.py \
     #   --run_with_reas /path/to/reasoning_run/eval \
     #   --run_without_reas /path/to/direct_run/eval \
     #   --out_dir /path/to/comparison
 
-    logging.basicConfig(level=logging.INFO)
-    args = parse_args()
-    run(
-        direct_answer_path=args.run_da,
-        reasoning_path=args.run_with_reas,
-        multi_system=args.multi_system,
-        out_dir=args.out_dir,
-    )
-
-    # logging.basicConfig(level=logging.DEBUG)
+    # logging.basicConfig(level=logging.INFO)
+    # args = parse_args()
     # run(
-    #     reasoning_path=Path(
-    #         "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/eval"
-    #     ),
-    #     direct_answer_path=Path(
-    #         "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/eval"
-    #     ),
-    #     multi_system=False,
-    #     out_dir=Path(
-    #         "/workspace/students/reasoning/results/basic-baseline/test/toxic_eval_test"
-    #     ),
+    #     direct_answer_path=args.run_da,
+    #     reasoning_path=args.run_with_reas,
+    #     multi_system=args.multi_system,
+    #     out_dir=args.out_dir,
     # )
+
+    # TODO: add negative ticks for attr_diff_two_runs_per_task
+    # TODO: add variables to summary_global
+
+    logging.basicConfig(level=logging.INFO)
+    run(
+        reasoning_path=Path(
+            "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/eval"
+        ),
+        direct_answer_path=Path(
+            "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/eval"
+        ),
+        multi_system=False,
+        out_dir=Path("/workspace/students/reasoning/results/basic-baseline/test/"),
+    )
