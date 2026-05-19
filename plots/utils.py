@@ -86,11 +86,13 @@ def find_difference_in_paths(paths: list[Path]) -> list[str]:
     :return: difference in the paths
     """
     paths = [Path(path) if isinstance(path, str) else path for path in paths]
+    print("Current paths:", paths)
     path_parts = [path.parts for path in paths]
     min_length = min(len(parts) for parts in path_parts)
-    differences = [i for i in range(len(paths))]
+    differences = [str(i) for i in range(len(paths))]
     for i in range(0, min_length):
         current_parts = [parts[i] for parts in path_parts]
+        print("Current parts in comparison:", current_parts)
         if len(current_parts) == len(set(current_parts)):
             differences = current_parts
             break
