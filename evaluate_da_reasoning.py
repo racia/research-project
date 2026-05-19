@@ -9,7 +9,6 @@ import pandas as pd
 from plots.Plotter import Plotter
 
 ID_COLS = ["task_id", "sample_id", "part_id"]
-VERSIONS = ["before", "after"]
 ATTRS = [
     "max_supp_attn",
     "attn_on_target",
@@ -95,7 +94,6 @@ def add_toxic_cot_flags(df: pd.DataFrame, version: str) -> pd.DataFrame:
     df[f"reas_only_correct_{version}"] = (~correct_da) & correct_reas
     df[f"da_only_correct_{version}"] = correct_da & (~correct_reas)
 
-    # One possible “Toxic‑CoT” definition:
     # cases where reasoning flips a correct answer into an incorrect one.
     df[f"toxic_cot_{version}"] = correct_da & (~correct_reas)
 
@@ -124,7 +122,11 @@ def summarize_global(df: pd.DataFrame, version: str) -> pd.DataFrame:
         ]
     ].sum()
     total = len(df)
-    summary = pd.DataFrame({"count": counts, "ratio": counts / total})
+    summary = (
+        pd.DataFrame({"count": counts, "ratio": counts / total})
+        .reset_index()
+        .rename(columns={"index": "category"})
+    )
     return summary
 
 
@@ -265,44 +267,54 @@ def run(
     merged = build_wide_table(df_reas, df_da)
 
     merged_before = add_toxic_cot_flags(merged, version="before")
-    merged_after = None
     if multi_system:
         merged_after = add_toxic_cot_flags(merged, version="after")
         merged_by_versions = [merged_before, merged_after]
+        merged_together = pd.merge(
+            merged_before,
+            merged_after,
+            on=["task_id", "sample_id", "part_id"],
+            suffixes=("_before", "_after"),
+        )
     else:
         merged_by_versions = [merged_before]
+        merged_together = merged_before
 
     plotter = Plotter(results_path=out_dir, color_map="tab20")
+    VERSIONS = ["before", "after"] if multi_system else ["before"]
 
     for version, df in zip(VERSIONS, merged_by_versions):
         summary_global = summarize_global(df, version=version)
         summary_by_task = summarize_by_task(df, version=version)
+        summary_global.to_csv(out_dir / f"summary_{version}_global.csv", index=False)
+        summary_by_task.to_csv(out_dir / f"summary_{version}_by_task.csv", index=False)
 
-        summary_global.to_csv(out_dir / "summary_global.csv", index=False)
-        summary_by_task.to_csv(out_dir / "summary_by_task.csv", index=False)
+        for group in ("task_id", "sample_id", "part_id"):
+            plotter.plot_acc_two_runs_per(
+                group,
+                df,
+                y_label="Accuracy",
+                file_name=f"acc_two_runs_per_{group}.png",
+                version=version,
+                plot_name_add=[
+                    version,
+                    "comparison",
+                    "multi_system=" + str(multi_system),
+                ],
+            )
+            if logging.getLogger().level == logging.DEBUG:
+                breakpoint()
 
-        acc_da = df.groupby("task_id")[f"answer_correct_{version}_da"].mean().to_dict()
-        acc_reas = (
-            df.groupby("task_id")[f"answer_correct_{version}_reas"].mean().to_dict()
-        )
-        plotter.plot_acc_two_runs_per_task(
-            acc_per_task_da=acc_da,
-            acc_per_task_reas=acc_reas,
-            y_label="Accuracy",
-            file_name="acc_two_runs_per_task.png",
-            plot_name_add=[
-                version,
-                "comparison",
-                "multi_system=" + str(multi_system),
-            ],
-        )
+            plotter.plot_toxic_cot_per(group, df, version, plot_name_add=[version])
+
+            if logging.getLogger().level == logging.DEBUG:
+                breakpoint()
+
+            plotter.plot_acc_and_toxic_cot(group, df, version, plot_name_add=[version])
+
         if logging.getLogger().level == logging.DEBUG:
             breakpoint()
-        toxic_per_task = df.groupby("task_id")[f"toxic_cot_{version}"].mean().to_dict()
-        plotter.plot_toxic_cot_per_task(
-            toxic_per_task=toxic_per_task,
-            plot_name_add=[version, "comparison"],
-        )
+
         for attr in ATTRS:
             col_da = f"{attr}_{version}_da"
             col_reas = f"{attr}_{version}_reas"
@@ -311,46 +323,39 @@ def run(
             if col_reas not in df.columns or col_da not in df.columns:
                 continue
 
-            mean_reas = df.groupby("task_id")[col_reas].mean()
-            mean_da = df.groupby("task_id")[col_da].mean()
+            mean_df = df.groupby("task_id")[[col_reas, col_da]].mean().reset_index()
+            mean_df["diff"] = mean_df[col_reas] - mean_df[col_da]
 
-            # Align indices, then compute difference
-            diff = (mean_reas - mean_da).to_dict()
-
-            pretty_label = (
-                attr.replace("_", " ").capitalize() + " Difference (reas - da)"
-            )
+            label = f"{attr.replace('_', ' ').title()} Difference (reas - da)"
 
             plotter.plot_diff_two_runs_per_task(
-                diff_per_task=diff,
-                y_label=pretty_label,
+                mean_df,
+                label,
                 file_name=f"{attr}_diff_two_runs_per_task.png",
-                plot_name_add=["comparison", attr],
+                plot_name_add=[version],
             )
-
-    # TODO: combine acc comparison with Toxic-CoT plot
 
     if logging.getLogger().level == logging.DEBUG:
         breakpoint()
 
     if multi_system:
-        assert (
-            merged_after is not None
-        ), "'merged_after' is required for comparison of toxic cot before and after an intervention."
-
         plotter.plot_toxic_cot_transition_overview(
-            merged_before,
-            merged_after,
+            merged_together,
             file_name="toxic_cot_overview_between_versions.pdf",
             plot_name_add=["comparison"],
         )
-        # toxic_per_task = df.groupby("task_id", "version")[f"toxic_cot_{version}"].mean().to_dict()
-        # plotter.plot_toxic_cot_per_task(
-        #     toxic_per_task=toxic_per_task,
-        #     plot_name_add=[version, "comparison"],
-        # )
+    plotter.plot_correctness_agreement(
+        merged_together,
+        VERSIONS,
+    )
+    plotter.plot_attr_agreement(
+        merged_together,
+        VERSIONS,
+    )
+    plotter.plot_attrs_by_runs_versions_toxicity(merged_together, ATTRS, multi_system)
 
-        # TODO: save toxic_cot cases for single version and for both
+    if logging.getLogger().level == logging.DEBUG:
+        breakpoint()
 
     for attr in ATTRS:
         col_da_before = f"{attr}_before_da"
@@ -360,7 +365,13 @@ def run(
 
         # Skip gracefully if any of the four columns are missing
         needed = [col_da_before, col_da_after, col_reas_before, col_reas_after]
+        logging.debug(f"Attr: {attr}")
+        logging.debug(f"Needed columns: {needed}")
+        logging.debug(f"Present columns: {merged.columns}")
         if any(col not in merged.columns for col in needed):
+            logging.warning(
+                f"Skipping attribute '{attr}' because not all needed columns are present in the merged DataFrame."
+            )
             continue
 
         mean_da_before = merged.groupby("task_id")[col_da_before].mean()
@@ -385,7 +396,11 @@ def run(
             vals_da=vals_da,
             vals_reas=vals_reas,
             y_label=f"{pretty_name}",
-            file_name=f"{attr}_before_after_two_runs_per_task.png",
+            file_name=(
+                f"{attr}_before_after_two_runs_per_task.png"
+                if multi_system
+                else f"{attr}_before_two_runs_per_task.png"
+            ),
             plot_name_add=["comparison", attr],
         )
 
@@ -393,6 +408,10 @@ def run(
     attr_global.to_csv(out_dir / "summary_attributes_global.csv", index=False)
     attr_by_task = summarize_attributes_by_task(merged, multi_system=multi_system)
     attr_by_task.to_csv(out_dir / "summary_attributes_by_task.csv", index=False)
+
+    merged_together.to_csv(
+        out_dir / "results_from_both_runs.csv", index=False, sep="\t"
+    )
 
     print("Comparison completed. Results saved to:", out_dir)
 
@@ -427,13 +446,6 @@ def parse_args():
     return parser.parse_args()
 
 
-# TODO: plot the percentage of attrs in
-#       - da not part in toxic CoT
-#       - reas not part in toxic CoT
-#       - da that takes part in toxic CoT
-#       - da that takes part in toxic CoT
-
-
 if __name__ == "__main__":
     # import pdb; pdb.set_trace()
 
@@ -451,9 +463,6 @@ if __name__ == "__main__":
     #     out_dir=args.out_dir,
     # )
 
-    # TODO: add negative ticks for attr_diff_two_runs_per_task
-    # TODO: add variables to summary_global
-
     logging.basicConfig(level=logging.INFO)
     run(
         reasoning_path=Path(
@@ -463,5 +472,7 @@ if __name__ == "__main__":
             "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/eval"
         ),
         multi_system=False,
-        out_dir=Path("/workspace/students/reasoning/results/basic-baseline/test/"),
+        out_dir=Path(
+            "/workspace/students/reasoning/results/basic-baseline/test/toxic_eval_test"
+        ),
     )

@@ -220,6 +220,7 @@ class Plotter:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
                 self.results_path / path_add / f"{label}_per_{x_label.lower()}.png",
+                dpi=300,
                 bbox_inches="tight",
             )
         else:
@@ -429,7 +430,7 @@ class Plotter:
         data: dict[str, dict[str, tuple]],
         level: str,
         version: str,
-        file_name: str = None,
+        file_name: str,
         id: int = 1,
         split_name: str = None,
         path_add: Path = None,
@@ -465,7 +466,7 @@ class Plotter:
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
 
         (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        plt.savefig(self.results_path / path_add / file_name)
+        plt.savefig(self.results_path / path_add / file_name, dpi=300)
         plt.close()
 
     def draw_heat(
@@ -538,7 +539,8 @@ class Plotter:
         verbosity = "aggr" if "sentence" in x_label.lower() else "ver"
         plt.savefig(
             plot_subdirectory
-            / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.png"
+            / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.png",
+            dpi=300,
         )
 
         plt.close()
@@ -580,10 +582,77 @@ class Plotter:
             file_name=file_name,
         )
 
-    def plot_acc_two_runs_per_task(
+    def plot_acc_and_toxic_cot(
         self,
-        acc_per_task_da: dict[int, float],
-        acc_per_task_reas: dict[int, float],
+        group: str,
+        df: pd.DataFrame,
+        version: str,
+        plot_name_add: list[str] | None = None,
+    ):
+        plt.close()
+        fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+
+        # PLOT ACCURACY
+        plot_df = (
+            df.groupby(group)
+            .agg(
+                Direct_answer=(f"answer_correct_{version}_da", "mean"),
+                With_reasoning=(f"answer_correct_{version}_reas", "mean"),
+            )
+            .reset_index()
+            .melt(id_vars=group, var_name="condition", value_name="accuracy")
+        )
+        ax = sns.barplot(
+            data=plot_df,
+            x=group,
+            y="accuracy",
+            hue="condition",
+            palette=[self.cmap(1), self.cmap(0)],
+            ax=axes[0],
+        )
+        ax.set_ylim(0, 1.05)
+        ax.set_yticks(np.arange(0.0, 1.05, 0.1))
+        ax.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        ax.set_xlabel(" ".join(group.title().split("_")))
+        ax.set_ylabel("Accuracy")
+        ax.set_title(
+            f"Accuracy of Direct Answers and Chain-of-Thought per {group.title()}"
+        )
+
+        # PLOT TOXIC COT
+        plot_df = df.groupby(group)[f"toxic_cot_{version}"].mean().reset_index()
+        plot_df = plot_df.melt(group, var_name="version", value_name="toxic_rate")
+        ax = sns.barplot(
+            data=plot_df,
+            x=group,
+            y="toxic_rate",
+            hue="version",
+            palette=[self.cmap(0), self.cmap(1)],
+            ax=axes[1],
+        )
+        ax.set_xlabel(" ".join(group.title().split("_")))
+        ax.set_ylabel("Toxic CoT Rate")
+        ax.set_title(
+            f"Percentage of Toxic Chain-of-Though in Correct Direct Answers per {group.title()}"
+        )
+        ax.set_ylim(0, 1.05)
+        ax.set_yticks(np.arange(0.0, 1.05, 0.1))
+        ax.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        path = self.results_path / (
+            Path("/".join(plot_name_add)) if plot_name_add else ""
+        )
+        path.mkdir(parents=True, exist_ok=True)
+        plt.savefig(
+            path / f"acc_and_toxic_cot_per_{group}.png",
+            bbox_inches="tight",
+            dpi=300,
+        )
+
+    def plot_acc_two_runs_per(
+        self,
+        group: str,
+        df: pd.DataFrame,
+        version: str,
         y_label: str = "Accuracy",
         file_name: str | None = None,
         plot_name_add: list[str] | None = None,
@@ -591,44 +660,40 @@ class Plotter:
         """
         Compare per-task accuracy between runs with and without reasoning.
         """
-        tasks = sorted(acc_per_task_reas.keys())
-        x = np.arange(len(tasks))
-        width = 0.35
+        plt.close()
 
-        plt.figure(figsize=(12, 5))
-        colors = self.cmap(np.linspace(0, 1, 2))
-
-        plt.bar(
-            x - width / 2,
-            [acc_per_task_da[t] for t in tasks],
-            width,
-            label="Direct answer",
-            color=colors[1],
-        )
-        plt.bar(
-            x + width / 2,
-            [acc_per_task_reas[t] for t in tasks],
-            width,
-            label="With reasoning",
-            color=colors[0],
+        plot_df = (
+            df.groupby(group)
+            .agg(
+                Direct_answer=(f"answer_correct_{version}_da", "mean"),
+                With_reasoning=(f"answer_correct_{version}_reas", "mean"),
+            )
+            .reset_index()
+            .melt(id_vars=group, var_name="condition", value_name="accuracy")
         )
 
-        plt.xticks(x, tasks)
-        self._plot_general_details(
-            x_label="Task",
-            y_label=y_label,
-            max_x_len=len(tasks),
-            plot_name_add=plot_name_add,
-            num_of_data_arrays=2,
-            step=1,
+        plt.figure(figsize=(len(df[group].unique()) * 0.4, 5))
+        ax = sns.barplot(
+            data=plot_df,
+            x=group,
+            y="accuracy",
+            hue="condition",
+            palette=[self.cmap(1), self.cmap(0)],
         )
-        plt.legend(loc="upper right")
-
+        ax.set_title(
+            f"Accuracy per {group.title()} for Direct Answers and Chain-of-Thought ({version})"
+        )
+        ax.set_xlabel(" ".join(group.title().split("_")))
+        ax.set_ylabel(y_label)
+        ax.set_ylim(0, 1.05)
+        ax.set_yticks(np.arange(0.0, 1.05, 0.1))
+        plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
         self._save_plot(
             y_label=y_label,
-            x_label="Task",
-            file_name=file_name or "acc_two_runs_per_task.png",
             path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+            file_name=file_name,
         )
 
     def plot_acc_per_task_and_prompt(
@@ -691,35 +756,144 @@ class Plotter:
             path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
         )
 
-    def plot_toxic_cot_per_task(
+    def plot_correctness_agreement(
         self,
-        toxic_per_task: dict[int, float],
-        file_name: str | None = None,
+        df: pd.DataFrame,
+        versions: list[str],
         plot_name_add: list[str] | None = None,
     ) -> None:
-        tasks = sorted(toxic_per_task.keys())
-        vals = [toxic_per_task[t] for t in tasks]
-        # TODO: drop the first "0th task"
+        """
+        Compare correctness agreement between runs with and without reasoning.
 
-        plt.figure(figsize=(12, 5))
-        colors = self.cmap(np.linspace(0, 1, 1))
-        plt.bar(tasks, vals, color=colors[0])
+        :param df: pd.DataFrame
+        :param versions: list of versions to compare, e.g. ["before", "after"]
+        :param group: optional column name to group by (e.g. "task" or "prompt");
+                     if None, agreement is computed across the whole dataset
+        :param plot_name_add: optional list of strings to add to the plot name (e.g. for version or group tags)
+        :return: None
+        """
+        plt.close()
+        plt.figure(figsize=(8, 6), constrained_layout=True)
 
-        self._plot_general_details(
-            x_label="Task",
-            y_label="Toxic-CoT rate",
-            max_x_len=len(tasks),
-            plot_name_add=plot_name_add,
-            num_of_data_arrays=1,
-            step=1,
-            displ_percentage=True,
+        correct_attrs = []
+        for version in versions:
+            correct_attrs.append(f"answer_correct_{version}_da")
+            correct_attrs.append(f"answer_correct_{version}_reas")
+
+        agree = pd.DataFrame(index=correct_attrs, columns=correct_attrs, dtype=float)
+        for a in correct_attrs:
+            for b in correct_attrs:
+                agree.loc[a, b] = (df[a] == df[b]).mean()
+
+        sns.heatmap(agree.astype(float), annot=True, vmin=0, vmax=1, cmap="Blues")
+        plt.title(
+            f"Answer Correct Agreement Between DA and Reasoning Runs with Versions={versions}"
+        )
+        plt.xticks(rotation=45, ha="right")
+        path = self.results_path / (
+            Path("/".join(plot_name_add)) if plot_name_add else ""
+        )
+        path.mkdir(parents=True, exist_ok=True)
+        plt.savefig(
+            path / f"correctness_agreement_{'_'.join(versions)}.png",
+            bbox_inches="tight",
+            dpi=300,
         )
 
-        self._save_plot(
-            y_label="Toxic-CoT rate",
-            x_label="Task",
-            file_name=file_name or "toxic_cot_per_task.png",
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+    def plot_attr_agreement(
+        self,
+        df: pd.DataFrame,
+        versions: list[str],
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Compare correctness agreement between runs with and without reasoning.
+
+        :param df: pd.DataFrame
+        :param versions: list of versions to compare, e.g. ["before", "after"]
+        :param group: optional column name to group by (e.g. "task" or "prompt");
+                     if None, agreement is computed across the whole dataset
+        :param plot_name_add: optional list of strings to add to the plot name (e.g. for version or group tags)
+        :return: None
+        """
+        plt.close()
+        plt.figure(figsize=(12, 8), constrained_layout=True)
+        ATTRS = [
+            "max_supp_attn",
+            "attn_on_target",
+            "there",
+            "verbs",
+            "pronouns",
+            "not_mentioned",
+            "context_sents_hall",
+        ]
+        correct_attrs = []
+        for version in versions:
+            for attr in ATTRS:
+                correct_attrs.append(f"{attr}_{version}_da")
+                correct_attrs.append(f"{attr}_{version}_reas")
+
+        agree = pd.DataFrame(index=correct_attrs, columns=correct_attrs, dtype=float)
+        for a in correct_attrs:
+            for b in correct_attrs:
+                agree.loc[a, b] = (df[a] == df[b]).mean()
+
+        sns.heatmap(agree.astype(float), annot=True, vmin=0, vmax=1, cmap="Blues")
+        plt.xticks(rotation=45, ha="right")
+        plt.title(
+            f"Answer Correct Agreement Between DA and Reasoning Runs with Versions={versions}"
+        )
+        path = self.results_path / (
+            Path("/".join(plot_name_add)) if plot_name_add else ""
+        )
+        path.mkdir(parents=True, exist_ok=True)
+        plt.savefig(
+            path / f"attribute_agreement_{'_'.join(versions)}.png",
+            # bbox_inches="tight",
+            dpi=300,
+        )
+
+    def plot_toxic_cot_per(
+        self,
+        group: str,
+        df: pd.DataFrame,
+        version: str,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        plt.close()
+        plot_df = (
+            df.groupby(group)[f"toxic_cot_{version}"]
+            .mean()
+            .reset_index(name="toxic_rate")
+        )
+        sns.barplot(
+            data=plot_df,
+            x=group,
+            y="toxic_rate",
+            color=self.cmap(0),
+        )
+        # sns.catplot(
+        #     data=plot_df,
+        #     x=group,
+        #     y="toxic_rate",
+        #     hue="version",
+        #     kind="bar",
+        #     height=5,
+        #     aspect=1.5,
+        # )
+        plt.xlabel(" ".join(group.title().split("_")))
+        plt.ylabel("Toxic CoT Rate")
+        plt.title(
+            f"Percentage of Toxic Chain-of-Though in Correct Direct Answers per {group.title()} ({version})"
+        )
+        path = self.results_path / (
+            Path("/".join(plot_name_add)) if plot_name_add else ""
+        )
+        path.mkdir(parents=True, exist_ok=True)
+        plt.savefig(
+            path / f"toxic_cot_per_{group}.png",
+            bbox_inches="tight",
+            dpi=300,
         )
 
     def plot_acc_with_std(
@@ -1052,7 +1226,7 @@ class Plotter:
             / specification.pop("version", "")
             / f"error_case_map_{'_'.join(specification.values())}.png"
         )
-        fig.savefig(out_path, bbox_inches="tight")
+        fig.savefig(out_path, bbox_inches="tight", dpi=300)
 
     def plot_case_heatmap(
         self,
@@ -2713,7 +2887,7 @@ class Plotter:
 
     def plot_diff_two_runs_per_task(
         self,
-        diff_per_task: dict[int, float],
+        df: pd.DataFrame,
         y_label: str = "Difference",
         file_name: str | None = None,
         plot_name_add: list[str] | None = None,
@@ -2721,39 +2895,40 @@ class Plotter:
         """
         Plot per-task difference between two runs (reas - da) for a given metric.
         """
-        tasks = sorted(diff_per_task.keys())
-        diffs = [diff_per_task[t] for t in tasks]
+        plt.close()
 
-        plt.figure(figsize=(12, 5))
-        colors = self.cmap(np.linspace(0, 1, 1))
-        x = np.arange(len(tasks))
+        plt.figure(figsize=(max(7, len(df["task_id"].unique()) * 0.75), 4.5))
 
-        plt.bar(x, diffs, color=colors[0])
-        plt.axhline(0.0, color="black", linewidth=0.8)
-
-        # Reuse your common formatting helper
-        self._plot_general_details(
-            x_label="Task",
-            y_label=y_label,
-            max_x_len=len(tasks),
-            plot_name_add=plot_name_add,
-            num_of_data_arrays=1,
-            step=1,
+        df = df.sort_values("task_id")
+        ax = sns.barplot(
+            data=df,
+            x="task_id",
+            y="diff",
+            color=self.cmap(0),
         )
-        plt.xticks(x, tasks)
 
-        self._save_plot(
-            y_label=y_label,
-            x_label="Task",
-            file_name=file_name
-            or f"{y_label.replace(' ', '_').lower()}_diff_two_runs_per_task.png",
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+        ax.axhline(0, color="black", linewidth=0.8)
+        ax.set_xlabel("Task")
+        ax.set_ylabel(y_label)
+        ax.set_title(f"Difference of {y_label}", fontsize=11)
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+
+        path = (
+            self.results_path / Path(*plot_name_add)
+            if plot_name_add
+            else self.results_path
+        )
+        path.mkdir(parents=True, exist_ok=True)
+        plt.savefig(
+            path / (file_name or "diff_two_runs_per_task.png"),
+            dpi=300,
+            bbox_inches="tight",
         )
 
     def plot_toxic_cot_transition_overview(
         self,
-        merged_before: pd.DataFrame,
-        merged_after: pd.DataFrame,
+        merged_df: pd.DataFrame,
         file_name: str = "toxic_cot_transition_overview.pdf",
         plot_name_add: list[str] = None,
         path_add: str | Path = "",
@@ -2767,20 +2942,13 @@ class Plotter:
         - stayed:       before=True,  after=True
         - never:        before=False, after=False
         """
-        merged_together = pd.merge(
-            merged_before,
-            merged_after,
-            on=["task_id", "sample_id", "part_id"],
-            suffixes=("_before", "_after"),
-        )
+        toxic_cot_before = merged_df["toxic_cot_before"].astype(bool)
+        toxic_cot_after = merged_df["toxic_cot_after"].astype(bool)
 
-        toxic_cot_before = merged_together["toxic_cot_before"].astype(bool)
-        toxic_cot_after = merged_together["toxic_cot_after"].astype(bool)
-
-        merged_together["toxic_cot_appeared"] = (~toxic_cot_before) & toxic_cot_after
-        merged_together["toxic_cot_disappeared"] = toxic_cot_before & (~toxic_cot_after)
-        merged_together["toxic_cot_stayed"] = toxic_cot_before & toxic_cot_after
-        merged_together["toxic_cot_never"] = (~toxic_cot_before) & (~toxic_cot_after)
+        merged_df["toxic_cot_appeared"] = (~toxic_cot_before) & toxic_cot_after
+        merged_df["toxic_cot_disappeared"] = toxic_cot_before & (~toxic_cot_after)
+        merged_df["toxic_cot_stayed"] = toxic_cot_before & toxic_cot_after
+        merged_df["toxic_cot_never"] = (~toxic_cot_before) & (~toxic_cot_after)
 
         category_order = [
             "toxic_cot_never",
@@ -2801,7 +2969,7 @@ class Plotter:
             "toxic_cot_stayed": "#7B3294",
         }
 
-        counts = {cat: int(merged_together[cat].sum()) for cat in category_order}
+        counts = {cat: int(merged_df[cat].sum()) for cat in category_order}
         total = sum(counts.values())
         ratios = {cat: val / total if total else 0.0 for cat, val in counts.items()}
 
@@ -2934,6 +3102,149 @@ class Plotter:
             file_name=file_name
             or f"{y_label.replace(' ', '_').lower()}_two_runs_per_task.png",
             path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
+
+    def plot_attrs_by_runs_versions_toxicity(
+        self,
+        df: pd.DataFrame,
+        attrs: list[str],
+        multi_system: bool,
+    ):
+        # TODO: Redo this method (currently doesn't plot counts from separate runs properly)
+        # plot_df = []
+        #
+        # for attr in attrs:
+        #     cols = [
+        #         "task_id",
+        #         "toxic_cot_before",
+        #         f"{attr}_before_da",
+        #         f"{attr}_before_reas",
+        #     ]
+        #     if multi_system:
+        #         cols += ["toxic_cot_after", f"{attr}_after_da", f"{attr}_after_reas"]
+        #
+        #     tmp = df[cols].copy()
+        #     tmp["attr"] = attr
+        #
+        #     tmp["da_toxic_before"] = tmp["toxic_cot_before"]
+        #     tmp["da_not_toxic_before"] = ~tmp["toxic_cot_before"]
+        #     tmp["reas_toxic_before"] = tmp["toxic_cot_before"]
+        #     tmp["reas_not_toxic_before"] = ~tmp["toxic_cot_before"]
+        #
+        #     if multi_system:
+        #         tmp["da_toxic_after"] = tmp["toxic_cot_after"]
+        #         tmp["da_not_toxic_after"] = ~tmp["toxic_cot_after"]
+        #         tmp["reas_toxic_after"] = tmp["toxic_cot_after"]
+        #         tmp["reas_not_toxic_after"] = ~tmp["toxic_cot_after"]
+        #
+        #     plot_df.append(tmp)
+        #
+        # plot_df = pd.concat(plot_df, ignore_index=True)
+        rows = []
+
+        for attr in attrs:
+            for run in ["da", "reas"]:
+                before_col = f"{attr}_before_{run}"
+                after_col = f"{attr}_after_{run}" if multi_system else None
+
+                cols = ["task_id", f"toxic_cot_before", before_col]
+                if multi_system:
+                    cols += [f"toxic_cot_after", after_col]
+
+                tmp = df[cols].copy()
+                tmp["attr"] = attr
+                tmp["run_type"] = run
+
+                tmp = tmp.rename(columns={before_col: "attr_value_before"})
+                if multi_system:
+                    tmp = tmp.rename(columns={after_col: "attr_value_after"})
+
+                rows.append(tmp)
+
+        plot_df = pd.concat(rows, ignore_index=True)
+        # value_cols = [c for c in plot_df.columns if c.startswith(("da_", "reas_"))]
+        # long_df = plot_df.melt(
+        #     id_vars=["task_id", "attr"],
+        #     value_vars=value_cols,
+        #     var_name="group",
+        #     value_name="flag",
+        # )
+        # summary = (
+        #     long_df.groupby(["task_id", "attr", "group"])["flag"]
+        #     .mean()
+        #     .reset_index(name="percentage")
+        # )
+        before_summary = (
+            plot_df.groupby(["attr", "run_type"])["toxic_cot_before"]
+            .agg(
+                toxic_count="sum",
+                total_count="size",
+            )
+            .reset_index()
+        )
+        before_summary["non_toxic_count"] = (
+            before_summary["total_count"] - before_summary["toxic_count"]
+        )
+        # For percentages
+        # before_summary = (
+        #     plot_df.groupby(["task_id", "attr", "run_type"])["toxic_cot_before"]
+        #     .mean()
+        #     .reset_index(name="toxic_rate")
+        # )
+        axes = None
+        after_summary = None
+        if multi_system:
+            after_summary = (
+                plot_df.groupby(["attr", "run_type"])["toxic_cot_after"]
+                .agg(
+                    toxic_count="sum",
+                    total_count="size",
+                )
+                .reset_index()
+            )
+            after_summary["non_toxic_count"] = (
+                after_summary["total_count"] - after_summary["toxic_count"]
+            )
+            fig, axes = plt.subplots(2, 1, figsize=(10, 5))
+
+        plot_df = before_summary.melt(
+            id_vars=["attr", "run_type"],
+            value_vars=["toxic_count", "non_toxic_count"],
+            var_name="toxicity",
+            value_name="count",
+        )
+        g = sns.catplot(
+            data=plot_df,
+            x="attr",
+            y="count",
+            hue="run_type",
+            col="toxicity",
+            kind="bar",
+            height=4,
+            aspect=1.4,
+        )
+
+        g.set_axis_labels("Attribute", "Count")
+        # g.legend.set_title("Toxic CoT")
+        g.set_xticklabels(rotation=45, ha="right")
+
+        if multi_system:
+            g = sns.catplot(
+                data=after_summary,
+                x="run_type",
+                y="count",
+                hue="toxic_cot_before",
+                # col="task_id",
+                row="attr",
+                kind="bar",
+                height=4,
+                aspect=1.4,
+                ax=axes[1],
+            )
+        plt.savefig(
+            self.results_path / "attrs_by_runs_versions_toxicity.png",
+            dpi=300,
+            bbox_inches="tight",
         )
 
     def plot_accuracy_vs_distraction_ratio(
