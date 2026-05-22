@@ -1182,6 +1182,7 @@ if __name__ == "__main__":
     #     "experiment": "direct_answer",
     #     "filtering_conditions": {},
     #     "create_heatmaps": True,
+    #     "max_tokens": 1000, # or None
     #     "verbose": True,
     # }
     # print("Starting evaluation with the following configuration:")
