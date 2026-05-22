@@ -317,6 +317,7 @@ def run(
                     )
                     continue
 
+                distractor_fields: dict = {}
                 for version_result in part.results:
                     version = version_result.version
 
@@ -339,11 +340,26 @@ def run(
                     if record is not None:
                         distractor_stats[version].add(record)
                         distractor_stats_per_task[task_id][version].add(record)
+                        # Stash distractor fields to enrich the results row below.
+                        distractor_fields[f"attn_distractor_{version}"] = (
+                            record.attn_distractor
+                        )
+                        distractor_fields[f"attn_supporting_{version}"] = (
+                            record.attn_supporting
+                        )
+                        distractor_fields[f"attn_neutral_{version}"] = (
+                            record.attn_neutral
+                        )
+                        if "n_distractors" not in distractor_fields:
+                            distractor_fields["n_distractors"] = record.n_distractors
                     else:
                         warnings.warn(
                             f"Empty record collected for task {task_id} sample {sample_id} part {part.part_id} version '{version}'. Check that the part has interpretability data and distractors set."
                         )
 
+                # Enrich the results row with distractor-attention attributes so
+                # downstream analyses (e.g. toxic-CoT filtering) have them inline.
+                result.update(distractor_fields)
                 saver.save_output(
                     data=[result],
                     headers=list(result.keys()),
@@ -598,36 +614,7 @@ def run(
         metric_file_name="eval_script_metrics.csv",
     )
 
-    # Write a ready-to-paste LaTeX row to latex_table_line.txt.
-    # ± is evaluator.X.get_std() at split level = std of per-task means across
-    # tasks (cross-task variability), which is the correct quantity for the
-    # paper table — distinct from the within-task std columns in the CSV.
-    # Table 1: EM-Acc | SM-Acc | Max Supp Attn | Attn on Trgt
-    # Table 2: BLEU | ROUGE | METEOR  (reasoning experiment only)
-    _cell = lambda m, s: f"${round(m, 2)}^{{{{\\pm}}}}{round(s, 2)}$"
-    _latex_lines: list[str] = []
-    for _ver, _ev in zip(split.versions, split.evaluators):
-        _em = _cell(
-            _ev.exact_match_accuracy.get_mean(), _ev.exact_match_accuracy.get_std()
-        )
-        _sm = _cell(
-            _ev.soft_match_accuracy.get_mean(), _ev.soft_match_accuracy.get_std()
-        )
-        _msa = _cell(_ev.max_supp_attn.get_mean(), _ev.max_supp_attn.get_std())
-        _aot = _cell(_ev.attn_on_target.get_mean(), _ev.attn_on_target.get_std())
-        _latex_lines.append(f"% Table 1 | {experiment} | {setting} | {_ver}")
-        _latex_lines.append(f"& {_em} & {_sm} & {_msa} & {_aot} \\\\")
-        if experiment == "reasoning":
-            _b = _cell(_ev.bleu.get_mean(), _ev.bleu.get_std())
-            _r = _cell(_ev.rouge.get_mean(), _ev.rouge.get_std())
-            _m = _cell(_ev.meteor.get_mean(), _ev.meteor.get_std())
-            _latex_lines.append(f"% Table 2 | {experiment} | {setting} | {_ver}")
-            _latex_lines.append(f"& {_b} & {_r} & {_m} \\\\")
-        _latex_lines.append("")
-    (saver.run_path / "latex_table_line.txt").write_text(
-        "\n".join(_latex_lines), encoding="utf-8"
-    )
-    print(f"LaTeX table line(s) written → {saver.run_path / 'latex_table_line.txt'}")
+    save_latex_table_line(split, experiment, setting, saver)
 
     # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
     # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
@@ -649,7 +636,8 @@ def run(
             path_add=Path("before_after"),
         )
         plotter.plot_before_after_accuracy(**ba_kwargs)
-        plotter.plot_before_after_reasoning_scores(**ba_kwargs)
+        if experiment != "direct_answer":
+            plotter.plot_before_after_reasoning_scores(**ba_kwargs)
         plotter.plot_before_after_attention(**ba_kwargs)
         plotter.plot_before_after_summary(**ba_kwargs)
 
@@ -776,12 +764,13 @@ def run(
             f"\nPlotting reasoning scores for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
-            y_label="Reasoning Scores",
-            plot_name_add=[split.name, version, *conditions_add],
-            path_add=Path(version),
-        )
+        if experiment != "direct_answer":
+            plotter.plot_acc_with_std(
+                acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
+                y_label="Reasoning Scores",
+                plot_name_add=[split.name, version, *conditions_add],
+                path_add=Path(version),
+            )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
             evaluator.get_correlations(as_lists=True),
@@ -1130,6 +1119,46 @@ def add_completeness_column(
         f"{path.split('.')[0]}_with_completeness{output_suffix}.csv",
         index=False,
     )
+
+
+def save_latex_table_line(split, experiment: str, setting: str, saver) -> None:
+    """
+    Write a ready-to-paste LaTeX row to latex_table_line.txt.
+    ± is evaluator.X.get_std() at split level = std of per-task means across
+    tasks (cross-task variability), which is the correct quantity for the
+    paper table — distinct from the within-task std columns in the CSV.
+    Table 1: EM-Acc | SM-Acc | Max Supp Attn | Attn on Trgt
+    Table 2: BLEU | ROUGE | METEOR  (reasoning experiment only)
+
+    :param split: the Split object containing the evaluators with the metrics to report
+    :param experiment: the experiment name (e.g., "reasoning" or "direct_answer") to determine which metrics to include
+    :param setting: the experimental setting (e.g., "baseline", "feedback", etc.) to include in the comment for context
+    :param saver: the Saver object to use for writing the output file
+    """
+    _cell = lambda m, s: f"${round(m, 2)}^{{{{\\pm}}}}{round(s, 2)}$"
+    _latex_lines: list[str] = []
+    for _ver, _ev in zip(split.versions, split.evaluators):
+        _em = _cell(
+            _ev.exact_match_accuracy.get_mean(), _ev.exact_match_accuracy.get_std()
+        )
+        _sm = _cell(
+            _ev.soft_match_accuracy.get_mean(), _ev.soft_match_accuracy.get_std()
+        )
+        _msa = _cell(_ev.max_supp_attn.get_mean(), _ev.max_supp_attn.get_std())
+        _aot = _cell(_ev.attn_on_target.get_mean(), _ev.attn_on_target.get_std())
+        _latex_lines.append(f"% Table 1 | {experiment} | {setting} | {_ver}")
+        _latex_lines.append(f"& {_em} & {_sm} & {_msa} & {_aot} \\\\")
+        if experiment == "reasoning":
+            _b = _cell(_ev.bleu.get_mean(), _ev.bleu.get_std())
+            _r = _cell(_ev.rouge.get_mean(), _ev.rouge.get_std())
+            _m = _cell(_ev.meteor.get_mean(), _ev.meteor.get_std())
+            _latex_lines.append(f"% Table 2 | {experiment} | {setting} | {_ver}")
+            _latex_lines.append(f"& {_b} & {_r} & {_m} \\\\")
+        _latex_lines.append("")
+    (saver.run_path / "latex_table_line.txt").write_text(
+        "\n".join(_latex_lines), encoding="utf-8"
+    )
+    print(f"LaTeX table line(s) written → {saver.run_path / 'latex_table_line.txt'}")
 
 
 if __name__ == "__main__":

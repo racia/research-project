@@ -32,21 +32,15 @@ from plots.utils import (
     safe_mean,
 )
 
-# ---- Distractor-attention plot style constants ----------------------------
-# After row-normalising attn_scores, per-sentence attention values are
-# proportional to 1/n_context_sentences (≈ 0.03–0.5 depending on task).
-# Fixed limits of 1.0 leave most of the plot empty, so all DA plots use
-# data-driven y-limits computed by _da_attn_ylim() / _da_margin_ylim().
-# The ratio limits are scale-invariant and stay fixed.
-_DA_RATIO_YMIN: float = 1e-2  # min log ratio shown (distractor / supporting)
-_DA_RATIO_YMAX: float = 1e2  # max log ratio shown
+RATIO_YMIN: float = 1e-2  # min log ratio shown (distractor / supporting)
+RATIO_YMAX: float = 1e2  # max log ratio shown
 # Padding factor applied on top of the data maximum for attention plots.
-_DA_YPAD: float = 1.3
+YPAD: float = 1.3
 
 
-def _da_attn_ylim(
+def attn_ylim(
     *value_collections,
-    pad: float = _DA_YPAD,
+    pad: float = YPAD,
     abs_min: float = 1e-6,
 ) -> tuple[float, float]:
     """
@@ -73,15 +67,14 @@ def _da_attn_ylim(
         for v in coll if hasattr(coll, "__iter__") else [coll]:
             if v is not None and np.isfinite(float(v)):
                 all_vals.append(float(v))
-    if not all_vals:
-        return 0.0, 0.5
+    all_vals = all_vals or [0.5]  # falling back to the default
     ceiling = max(abs_min, max(all_vals) * pad)
     return 0.0, ceiling
 
 
-def _da_margin_ylim(
+def margin_ylim(
     *value_collections,
-    pad: float = _DA_YPAD,
+    pad: float = YPAD,
     abs_min: float = 1e-6,
 ) -> tuple[float, float]:
     """
@@ -206,11 +199,11 @@ class Plotter:
         # they match the rest of Plotter's colour scheme. Map values may be a
         # hex string (e.g. "#FF6E19") or a colormap name (e.g. "Greens"); we
         # normalise to a single hex either way via _resolve_case_color.
-        self._da_color_correct: str = self._resolve_case_color("ans_corr")
-        self._da_color_incorrect: str = self._resolve_case_color("ans_incorr")
-        self._da_color_supporting: str = self._resolve_case_color("supporting")
-        self._da_color_distractor: str = self._resolve_case_color("distractor")
-        self._da_color_neutral: str = self._resolve_case_color("neutral")
+        self.color_correct: str = self._resolve_case_color("ans_corr")
+        self.color_incorrect: str = self._resolve_case_color("ans_incorr")
+        self.color_supporting: str = self._resolve_case_color("supporting")
+        self.color_distractor: str = self._resolve_case_color("distractor")
+        self.color_neutral: str = self._resolve_case_color("neutral")
 
     def _resolve_case_color(self, case: str, sample: float = 0.6) -> str:
         """
@@ -786,8 +779,8 @@ class Plotter:
         fig, ax = plt.subplots(figsize=(10, 5))
 
         specs = [
-            (em, em_std, self._da_color_supporting, "Exact match", "o"),
-            (sm, sm_std, self._da_color_distractor, "Soft match", "s"),
+            (em, em_std, self.color_supporting, "Exact match", "o"),
+            (sm, sm_std, self.color_distractor, "Soft match", "s"),
         ]
         txt_rows: list[tuple[str, float | None]] = []
         for metric, std_metric, color, label, marker in specs:
@@ -830,7 +823,7 @@ class Plotter:
                 + 1,
             )
         )
-        title = "Exact vs soft match accuracy per task"
+        title = "Exact vs Soft Match Accuracy Per Task"
         if plot_name_add:
             title += f"  ({', '.join(plot_name_add)})"
         ax.set_title(title, fontsize=12)
@@ -866,9 +859,9 @@ class Plotter:
         :param show_values: when True, annotate each point with its value
         """
         score_specs = [
-            ("bleu", "bleu_std", self._da_color_supporting, "BLEU", "o"),
-            ("rouge", "rouge_std", self._da_color_distractor, "ROUGE", "s"),
-            ("meteor", "meteor_std", self._da_color_neutral, "METEOR", "^"),
+            ("bleu", "bleu_std", self.color_supporting, "BLEU", "o"),
+            ("rouge", "rouge_std", self.color_distractor, "ROUGE", "s"),
+            ("meteor", "meteor_std", self.color_neutral, "METEOR", "^"),
         ]
 
         any_data = False
@@ -962,8 +955,8 @@ class Plotter:
             return
 
         evaluator_specs = [
-            (reasoning_evaluator, self._da_color_supporting, "Reasoning"),
-            (direct_answer_evaluator, self._da_color_distractor, "Direct answer"),
+            (reasoning_evaluator, self.color_supporting, "Reasoning"),
+            (direct_answer_evaluator, self.color_distractor, "Direct answer"),
         ]
 
         metric_specs = [
@@ -2198,8 +2191,8 @@ class Plotter:
         grouped = stats.as_grouped()
 
         role_color = {
-            "distractor": self._da_color_distractor,
-            "neutral": self._da_color_neutral,
+            "distractor": self.color_distractor,
+            "neutral": self.color_neutral,
         }
         ordering = [
             (True, "distractor"),
@@ -2209,12 +2202,19 @@ class Plotter:
         ]
         label_correct = {True: "Correct", False: "Incorrect"}
 
-        box_data, tick_labels, colors, medians, ns = [], [], [], [], []
-        for correct, role in ordering:
+        box_data, positions, colors, medians, ns = [], [], [], [], []
+        # positions [1,2] = Correct group, [4,5] = Incorrect group; gap at 3
+        group_ordering = [
+            (True, "distractor", 1),
+            (True, "neutral", 2),
+            (False, "distractor", 4),
+            (False, "neutral", 5),
+        ]
+        for correct, role, pos in group_ordering:
             vals = grouped[correct].get(role, [])
             if vals:
                 box_data.append(vals)
-                tick_labels.append(f"{label_correct[correct]}\n{role}")
+                positions.append(pos)
                 colors.append(role_color[role])
                 medians.append(float(np.median(vals)))
                 ns.append(len(vals))
@@ -2226,7 +2226,7 @@ class Plotter:
             return
 
         fig, ax = plt.subplots(figsize=(7, 4.5))
-        bp = ax.boxplot(box_data, patch_artist=True, widths=0.55)
+        bp = ax.boxplot(box_data, positions=positions, patch_artist=True, widths=0.55)
 
         for patch, color in zip(bp["boxes"], colors):
             patch.set_facecolor(color)
@@ -2234,10 +2234,28 @@ class Plotter:
         for element in ("whiskers", "caps", "fliers", "medians"):
             plt.setp(bp[element], color="#333333", linewidth=1.1)
 
-        ax.set_xticks(range(1, len(tick_labels) + 1))
-        ax.set_xticklabels(tick_labels, fontsize=10)
+        # Correctness group labels at group centres; vertical divider between groups.
+        ax.set_xticks([1.5, 4.5])
+        ax.set_xticklabels(["Correct", "Incorrect"], fontsize=10)
+        ax.axvline(3, color="#aaaaaa", linestyle=":", linewidth=0.8)
+        ax.set_xlim(0, 6)
+
+        # Colour legend maps sentence role to colour (correctness is already on x-axis).
+        from matplotlib.patches import Patch as _Patch
+
+        ax.legend(
+            handles=[
+                _Patch(
+                    facecolor=role_color["distractor"], alpha=0.78, label="Distractor"
+                ),
+                _Patch(facecolor=role_color["neutral"], alpha=0.78, label="Neutral"),
+            ],
+            fontsize=9,
+            loc="upper right",
+            framealpha=0.9,
+        )
         ax.set_ylabel("Mean attention", fontsize=11)
-        ax.set_ylim(*_da_attn_ylim(*box_data))
+        ax.set_ylim(*attn_ylim(*box_data))
         ax.set_title(
             self._format_short_title(
                 "Attention on distractor vs neutral", plot_name_add
@@ -2308,33 +2326,69 @@ class Plotter:
             )
             return
 
-        x = np.arange(len(task_ids))
-        width = 0.18
+        # Compute per-task supporting means directly from records (as_per_task may
+        # only expose distractor and neutral).
+        _supp: dict = defaultdict(lambda: {True: [], False: []})
+        for r in stats.records:
+            if r.attn_supporting is not None:
+                _supp[r.task_id][bool(r.answer_correct)].append(r.attn_supporting)
+        supp_per_task = {
+            tid: {c: float(np.mean(vs)) if vs else None for c, vs in by_c.items()}
+            for tid, by_c in _supp.items()
+        }
 
+        x = np.arange(len(task_ids))
+        width = 0.13
+
+        # (correct, role, offset_mult, color, label, hatch)
+        # Solid fill = correct; hatched = incorrect for unambiguous differentiation.
         bar_spec = [
             (
                 True,
                 "distractor",
-                -1.5,
-                self._da_color_distractor,
+                -2.5,
+                self.color_distractor,
                 "Correct / distractor",
+                "",
             ),
-            (True, "neutral", -0.5, self._da_color_neutral, "Correct / neutral"),
+            (
+                True,
+                "supporting",
+                -1.5,
+                self.color_supporting,
+                "Correct / supporting",
+                "",
+            ),
+            (True, "neutral", -0.5, self.color_neutral, "Correct / neutral", ""),
             (
                 False,
                 "distractor",
                 0.5,
-                self._da_color_incorrect,
+                self.color_distractor,
                 "Incorrect / distractor",
+                "//",
             ),
-            (False, "neutral", 1.5, "#7f8c8d", "Incorrect / neutral"),
+            (
+                False,
+                "supporting",
+                1.5,
+                self.color_supporting,
+                "Incorrect / supporting",
+                "//",
+            ),
+            (False, "neutral", 2.5, self.color_neutral, "Incorrect / neutral", "//"),
         ]
 
         fig, ax = plt.subplots(figsize=(max(7, len(task_ids) * 0.9), 4.5))
 
         txt_rows: list[tuple[str, float | None]] = []
-        for correct, role, offset_mult, color, label in bar_spec:
-            means = [per_task[tid].get(correct, {}).get(role, None) for tid in task_ids]
+        for correct, role, offset_mult, color, label, hatch in bar_spec:
+            if role == "supporting":
+                means = [supp_per_task.get(tid, {}).get(correct) for tid in task_ids]
+            else:
+                means = [
+                    per_task[tid].get(correct, {}).get(role, None) for tid in task_ids
+                ]
             xs, heights = [], []
             for i, m in enumerate(means):
                 if m is not None:
@@ -2342,7 +2396,15 @@ class Plotter:
                     heights.append(m)
                 txt_rows.append((f"task={task_ids[i]} {label}", m))
             if xs:
-                bars = ax.bar(xs, heights, width, label=label, color=color, alpha=0.82)
+                bars = ax.bar(
+                    xs,
+                    heights,
+                    width,
+                    label=label,
+                    color=color,
+                    alpha=0.82,
+                    hatch=hatch,
+                )
                 if show_values:
                     for b, h in zip(bars, heights):
                         ax.text(
@@ -2359,20 +2421,26 @@ class Plotter:
         ax.set_xticklabels([f"T{tid}" for tid in task_ids], fontsize=9)
         ax.set_ylabel("Mean attention", fontsize=11)
         ax.set_ylim(
-            *_da_attn_ylim(
+            *attn_ylim(
                 *[
                     [per_task[tid].get(c, {}).get(r) for tid in task_ids]
                     for c in (True, False)
                     for r in ("distractor", "neutral")
-                ]
+                ],
+                *[
+                    [supp_per_task.get(tid, {}).get(c) for tid in task_ids]
+                    for c in (True, False)
+                ],
             )
         )
         ax.set_title(
-            self._format_short_title("Distractor vs neutral by task", plot_name_add),
+            self._format_short_title(
+                "Attention by sentence role and correctness per task", plot_name_add
+            ),
             fontsize=11,
             pad=8,
         )
-        ax.legend(fontsize=8, ncol=2, loc="upper right", framealpha=0.9)
+        ax.legend(fontsize=8, ncol=3, loc="upper right", framealpha=0.9)
         ax.grid(axis="y", linestyle="--", alpha=0.4)
         fig.tight_layout()
 
@@ -2406,21 +2474,34 @@ class Plotter:
         """
         scatter_data = stats.as_scatter_data()
 
-        fig, ax = plt.subplots(figsize=(5.5, 5.5))
+        # Compute supporting vs neutral from raw records for the second panel.
+        supp_scatter: dict = {
+            True: {"supporting": [], "neutral": []},
+            False: {"supporting": [], "neutral": []},
+        }
+        for r in stats.records:
+            if r.attn_supporting is not None and r.attn_neutral is not None:
+                supp_scatter[bool(r.answer_correct)]["supporting"].append(
+                    r.attn_supporting
+                )
+                supp_scatter[bool(r.answer_correct)]["neutral"].append(r.attn_neutral)
+
+        fig, (ax_dist, ax_supp) = plt.subplots(1, 2, figsize=(11, 5.5))
 
         plot_spec = [
-            (True, self._da_color_correct, "Correct", "o"),
-            (False, self._da_color_incorrect, "Incorrect", "^"),
+            (True, self.color_correct, "Correct", "o"),
+            (False, self.color_incorrect, "Incorrect", "^"),
         ]
         any_data = False
         txt_rows: list[tuple[str, float | int | None]] = []
 
+        # --- left panel: distractor vs neutral (existing) ---
         for correct, color, label, marker in plot_spec:
             xvals = scatter_data[correct]["neutral"]
             yvals = scatter_data[correct]["distractor"]
             if xvals:
                 any_data = True
-                ax.scatter(
+                ax_dist.scatter(
                     xvals,
                     yvals,
                     alpha=0.55,
@@ -2431,53 +2512,93 @@ class Plotter:
                     edgecolors="none",
                 )
                 mx, my = float(np.mean(xvals)), float(np.mean(yvals))
-                txt_rows.append((f"{label} n", len(xvals)))
+                txt_rows.append((f"{label} distractor_vs_neutral n", len(xvals)))
                 txt_rows.append((f"{label} mean(neutral)", mx))
                 txt_rows.append((f"{label} mean(distractor)", my))
                 if show_values:
-                    ax.text(
-                        mx,
-                        my,
-                        f"  ({mx:.2f},{my:.2f})",
-                        fontsize=8,
-                        color="#222222",
+                    ax_dist.text(
+                        mx, my, f"  ({mx:.2f},{my:.2f})", fontsize=8, color="#222222"
                     )
 
-        if not any_data:
+        # --- right panel: supporting vs neutral ---
+        any_supp = False
+        for correct, color, label, marker in plot_spec:
+            xvals = supp_scatter[correct]["neutral"]
+            yvals = supp_scatter[correct]["supporting"]
+            if xvals:
+                any_supp = True
+                ax_supp.scatter(
+                    xvals,
+                    yvals,
+                    alpha=0.55,
+                    s=32,
+                    color=color,
+                    marker=marker,
+                    label=f"{label} (n={len(xvals)})",
+                    edgecolors="none",
+                )
+                mx, my = float(np.mean(xvals)), float(np.mean(yvals))
+                txt_rows.append((f"{label} supporting_vs_neutral n", len(xvals)))
+                txt_rows.append((f"{label} mean(neutral)", mx))
+                txt_rows.append((f"{label} mean(supporting)", my))
+                if show_values:
+                    ax_supp.text(
+                        mx, my, f"  ({mx:.2f},{my:.2f})", fontsize=8, color="#222222"
+                    )
+
+        if not any_data and not any_supp:
             print(
                 f"[plot_distractor_attn_scatter] No data to plot for version='{version}'."
             )
             plt.close(fig)
             return
 
-        # Tight equal axes so the y=x reference line is meaningful.
-        _lo, _ceil = _da_attn_ylim(
-            scatter_data[True]["neutral"],
-            scatter_data[True]["distractor"],
-            scatter_data[False]["neutral"],
-            scatter_data[False]["distractor"],
-        )
-        ax.plot(
-            [_lo, _ceil],
-            [_lo, _ceil],
-            "k--",
-            linewidth=0.9,
-            alpha=0.45,
-            label="y = x",
-        )
-        ax.set_xlim(_lo, _ceil)
-        ax.set_ylim(_lo, _ceil)
-        ax.set_aspect("equal", adjustable="box")
+        def _style_scatter_ax(ax, xlabel, ylabel, title, data_groups):
+            """Apply equal-axis limits and reference line."""
+            all_vals = []
+            for group in data_groups:
+                all_vals.extend(group)
+            _lo, _ceil = attn_ylim(all_vals)
+            ax.plot(
+                [_lo, _ceil],
+                [_lo, _ceil],
+                "k--",
+                linewidth=0.9,
+                alpha=0.45,
+                label="y = x",
+            )
+            ax.set_xlim(_lo, _ceil)
+            ax.set_ylim(_lo, _ceil)
+            ax.set_aspect("equal", adjustable="box")
+            ax.set_xlabel(xlabel, fontsize=11)
+            ax.set_ylabel(ylabel, fontsize=11)
+            ax.set_title(
+                self._format_short_title(title, plot_name_add), fontsize=11, pad=8
+            )
+            ax.legend(fontsize=9, loc="upper left", framealpha=0.9)
+            ax.grid(linestyle="--", alpha=0.35)
 
-        ax.set_xlabel("Attention on neutral", fontsize=11)
-        ax.set_ylabel("Attention on distractor", fontsize=11)
-        ax.set_title(
-            self._format_short_title("Per-part distractor vs neutral", plot_name_add),
-            fontsize=11,
-            pad=8,
+        _style_scatter_ax(
+            ax_dist,
+            "Neutral attention",
+            "Distractor attention",
+            "Per-part distractor vs neutral",
+            [
+                scatter_data[c]["neutral"] + scatter_data[c]["distractor"]
+                for c in (True, False)
+            ],
         )
-        ax.legend(fontsize=9, loc="upper left", framealpha=0.9)
-        ax.grid(linestyle="--", alpha=0.35)
+        _style_scatter_ax(
+            ax_supp,
+            "Neutral attention",
+            "Supporting attention",
+            "Per-part supporting vs neutral",
+            [
+                supp_scatter[c]["neutral"] + supp_scatter[c]["supporting"]
+                for c in (True, False)
+            ],
+        )
+
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
@@ -2525,8 +2646,8 @@ class Plotter:
             return
 
         groups = [
-            ("Correct", margins_correct, self._da_color_correct),
-            ("Incorrect", margins_incorrect, self._da_color_incorrect),
+            ("Correct", margins_correct, self.color_correct),
+            ("Incorrect", margins_incorrect, self.color_incorrect),
         ]
 
         fig, ax = plt.subplots(figsize=(6.5, 5))
@@ -2573,9 +2694,9 @@ class Plotter:
 
         # Reference line: margin = 0.
         ax.axhline(0.0, color="#333333", linestyle="--", linewidth=1.0)
-        _mlo, _mceil = _da_margin_ylim(margins_correct, margins_incorrect)
-        ax.axhspan(0, _mceil, facecolor=self._da_color_incorrect, alpha=0.05, zorder=0)
-        ax.axhspan(_mlo, 0, facecolor=self._da_color_correct, alpha=0.05, zorder=0)
+        _mlo, _mceil = margin_ylim(margins_correct, margins_incorrect)
+        ax.axhspan(0, _mceil, facecolor=self.color_incorrect, alpha=0.05, zorder=0)
+        ax.axhspan(_mlo, 0, facecolor=self.color_correct, alpha=0.05, zorder=0)
 
         # Brief region cues at the y-axis edge — far less text than before.
         ax.set_ylabel("Distractor − supporting attention", fontsize=11)
@@ -2652,8 +2773,8 @@ class Plotter:
             return
 
         groups = [
-            ("Correct", ratios_correct, self._da_color_correct),
-            ("Incorrect", ratios_incorrect, self._da_color_incorrect),
+            ("Correct", ratios_correct, self.color_correct),
+            ("Incorrect", ratios_incorrect, self.color_incorrect),
         ]
 
         fig, ax = plt.subplots(figsize=(6.5, 5))
@@ -2681,17 +2802,23 @@ class Plotter:
         # Reference line at ratio = 1.0 and shaded half-planes.
         ax.axhline(1.0, color="#333333", linestyle="--", linewidth=1.0)
         ax.set_yscale("log")
-        ax.set_ylim(_DA_RATIO_YMIN, _DA_RATIO_YMAX)
+
+        # Data-driven limits: pad one half-decade beyond the observed range so
+        # whiskers are never clipped, but don't waste space on orders of magnitude
+        # with no data.  Fall back to the global constants if data is absent.
+        all_ratios = ratios_correct + ratios_incorrect
+        if all_ratios:
+            log_vals = np.array([np.log10(r) for r in all_ratios if r > 0])
+            lo_log = max(np.log10(RATIO_YMIN), log_vals.min() - 0.5)
+            hi_log = min(np.log10(RATIO_YMAX), log_vals.max() + 0.5)
+        else:
+            lo_log, hi_log = np.log10(RATIO_YMIN), np.log10(RATIO_YMAX)
+        ax.set_ylim(10**lo_log, 10**hi_log)
+
         ax.axhspan(
-            1.0,
-            _DA_RATIO_YMAX,
-            facecolor=self._da_color_incorrect,
-            alpha=0.05,
-            zorder=0,
+            1.0, 10**hi_log, facecolor=self.color_incorrect, alpha=0.05, zorder=0
         )
-        ax.axhspan(
-            _DA_RATIO_YMIN, 1.0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
-        )
+        ax.axhspan(10**lo_log, 1.0, facecolor=self.color_correct, alpha=0.05, zorder=0)
 
         # Compact tick labels with just count and percentages.
         medians: list[float | None] = []
@@ -2710,7 +2837,9 @@ class Plotter:
 
         ax.set_xticks([1, 2])
         ax.set_xticklabels(xtick_labels, fontsize=10)
-        ax.set_ylabel("Distractor / supporting (log)", fontsize=11)
+        ax.set_ylabel(
+            "Distractor attention / supporting attention (log scale)", fontsize=11
+        )
         ax.set_xlabel("Answer", fontsize=11)
         ax.set_title(
             self._format_short_title("Distractor-to-supporting ratio", plot_name_add),
@@ -2798,7 +2927,7 @@ class Plotter:
             yerr=sems_correct,
             capsize=4,
             label=f"Correct (n = {max(ns_correct) if ns_correct else 0})",
-            color=self._da_color_correct,
+            color=self.color_correct,
             alpha=0.82,
             edgecolor="#1e8449",
         )
@@ -2809,7 +2938,7 @@ class Plotter:
             yerr=sems_incorrect,
             capsize=4,
             label=f"Incorrect (n = {max(ns_incorrect) if ns_incorrect else 0})",
-            color=self._da_color_incorrect,
+            color=self.color_incorrect,
             alpha=0.82,
             edgecolor="#a93226",
         )
@@ -2837,7 +2966,7 @@ class Plotter:
         ax.set_xticklabels(category_labels, fontsize=10)
         ax.set_xlabel("Sentence role", fontsize=11)
         ax.set_ylabel("Mean attention (± SEM)", fontsize=11)
-        ax.set_ylim(*_da_attn_ylim(means_correct, means_incorrect))
+        ax.set_ylim(*attn_ylim(means_correct, means_incorrect))
         ax.set_title(
             self._format_short_title("Attention by sentence role", plot_name_add),
             fontsize=11,
@@ -2956,46 +3085,46 @@ class Plotter:
             ns,
             dist_mean,
             marker="o",
-            color=self._da_color_distractor,
+            color=self.color_distractor,
             linewidth=2,
             label="Distractor attention",
             linestyle="--",
+            alpha=0.75,
         )[0]
         ax_attn.fill_between(
             ns,
             np.asarray(dist_mean) - np.asarray(dist_sem),
             np.asarray(dist_mean) + np.asarray(dist_sem),
-            color=self._da_color_distractor,
+            color=self.color_distractor,
             alpha=0.15,
         )
         line_s = ax_attn.plot(
             ns,
             supp_mean,
             marker="s",
-            color=self._da_color_supporting,
+            color=self.color_supporting,
             linewidth=2,
             label="Supporting attention",
             linestyle="-",
+            alpha=0.75,
         )[0]
         ax_attn.fill_between(
             ns,
             np.asarray(supp_mean) - np.asarray(supp_sem),
             np.asarray(supp_mean) + np.asarray(supp_sem),
-            color=self._da_color_supporting,
+            color=self.color_supporting,
             alpha=0.15,
         )
         line_a = ax_acc.plot(
             ns,
             acc,
             marker="^",
-            color=self._da_color_correct,
+            color=self.color_correct,
             linewidth=2,
             linestyle="--",
             label="Accuracy",
         )[0]
-        ax_acc.fill_between(
-            ns, acc_lo, acc_hi, color=self._da_color_correct, alpha=0.12
-        )
+        ax_acc.fill_between(ns, acc_lo, acc_hi, color=self.color_correct, alpha=0.12)
 
         if show_values:
             for n, p in zip(ns, acc):
@@ -3013,15 +3142,13 @@ class Plotter:
         ax_attn.set_xlabel("# distractor sentences", fontsize=11)
         ax_attn.set_ylabel("Mean attention (± SEM)", fontsize=11)
         ax_attn.set_xticks(ns)
-        ax_attn.set_ylim(*_da_attn_ylim(dist_mean, supp_mean))
+        ax_attn.set_ylim(*attn_ylim(dist_mean, supp_mean))
         ax_attn.grid(axis="y", linestyle="--", alpha=0.35)
 
-        ax_acc.set_ylabel(
-            "Accuracy (± 95% CI)", fontsize=11, color=self._da_color_correct
-        )
+        ax_acc.set_ylabel("Accuracy (± 95% CI)", fontsize=11, color=self.color_correct)
         ax_acc.set_ylim(0, 1.02)
-        ax_acc.tick_params(axis="y", colors=self._da_color_correct)
-        ax_acc.spines["right"].set_color(self._da_color_correct)
+        ax_acc.tick_params(axis="y", colors=self.color_correct)
+        ax_acc.spines["right"].set_color(self.color_correct)
 
         ax_attn.set_title(
             self._format_short_title(
@@ -3112,8 +3239,8 @@ class Plotter:
         correct_arr = np.asarray(correct)
 
         # Use the same fixed log-range as the ratio boxplot so the plots line up.
-        lo_log = np.log10(_DA_RATIO_YMIN)
-        hi_log = np.log10(_DA_RATIO_YMAX)
+        lo_log = np.log10(RATIO_YMIN)
+        hi_log = np.log10(RATIO_YMAX)
         edges = np.linspace(lo_log, hi_log, n_bins + 1)
 
         log_r = np.clip(np.log10(ratios_arr), edges[0], edges[-1] - 1e-9)
@@ -3168,13 +3295,11 @@ class Plotter:
 
         # Shade left/right of ratio = 1.
         ax.axvline(1.0, color="#333333", linestyle="--", linewidth=1.0)
-        ax.axvspan(
-            _DA_RATIO_YMIN, 1.0, facecolor=self._da_color_correct, alpha=0.05, zorder=0
-        )
+        ax.axvspan(RATIO_YMIN, 1.0, facecolor=self.color_correct, alpha=0.05, zorder=0)
         ax.axvspan(
             1.0,
-            _DA_RATIO_YMAX,
-            facecolor=self._da_color_incorrect,
+            RATIO_YMAX,
+            facecolor=self.color_incorrect,
             alpha=0.05,
             zorder=0,
         )
@@ -3193,9 +3318,12 @@ class Plotter:
                     )
 
         ax.set_xscale("log")
-        ax.set_xlim(_DA_RATIO_YMIN, _DA_RATIO_YMAX)
+        ax.set_xlim(RATIO_YMIN, RATIO_YMAX)
         ax.set_ylim(0, 1.02)
-        ax.set_xlabel("Distractor / supporting (log)", fontsize=11)
+        ax.set_xlabel(
+            "Ratio of attention paid to distractor sentences vs. supporting sentences (log)",
+            fontsize=11,
+        )
         ax.set_ylabel("Accuracy (± 95% CI)", fontsize=11)
         ax.set_title(
             self._format_short_title("Accuracy vs distractor ratio", plot_name_add),
@@ -3218,10 +3346,6 @@ class Plotter:
             txt_rows.append((f"ratio_centre={c:.4f} acc_hi", float(hi)))
             txt_rows.append((f"ratio_centre={c:.4f} n", int(n)))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
-
-    # ------------------------------------------------------------------
-    # Before/after comparison helpers
-    # ------------------------------------------------------------------
 
     def _disambiguator_from_tags(self, plot_name_add: list[str] | None) -> str:
         """
@@ -3255,12 +3379,6 @@ class Plotter:
         When *versions* is provided (the preferred path) it is used directly:
         each evaluator is paired with its version string by position, and the
         first one whose version contains ``"before"`` / ``"after"`` is chosen.
-        This is reliable because ``split.versions`` and ``split.evaluators``
-        are always in the same order.
-
-        When *versions* is not provided the method falls back to positional
-        assignment: one evaluator → *after* only; two evaluators → first is
-        *before*, second is *after*.
 
         :param evaluators: list of MetricEvaluator objects (parallel to versions)
         :param versions: optional list of version strings, e.g. ``["before", "after"]``
@@ -3275,8 +3393,6 @@ class Plotter:
                     before = ev
                 elif "after" in v_low:
                     after = ev
-            # If versions didn't contain "before"/"after" keywords, fall through
-            # to positional logic below.
 
         if before is None and after is None:
             # Positional fallback: single-system → after only; two → first/second
@@ -3287,7 +3403,7 @@ class Plotter:
         elif after is None:
             # We found a "before" but no "after" — use the last remaining one
             remaining = [ev for ev in evaluators if ev is not before]
-            after = remaining[-1] if remaining else before
+            after = remaining[-1] if remaining else None
 
         return before, after
 
@@ -3372,8 +3488,8 @@ class Plotter:
         """
         rows: list[tuple[str, float | None]] = []
         specs = [
-            (before, self._da_color_supporting, "Before"),
-            (after, self._da_color_distractor, "After"),
+            (before, self.color_supporting, "Before"),
+            (after, self.color_distractor, "After"),
         ]
 
         max_n = 0
@@ -3481,13 +3597,13 @@ class Plotter:
         ax_sm.set_title("Soft match", fontsize=11)
 
         fig.suptitle(
-            self._format_short_title("Accuracy: before vs after", plot_name_add),
+            self._format_short_title("Accuracy per version", plot_name_add),
             fontsize=12,
         )
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"before_after_accuracy{self._disambiguator_from_tags(plot_name_add)}.png",
+            f"split_accuracy{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
         self._save_plot(file_name=png_path)
@@ -3547,20 +3663,91 @@ class Plotter:
 
         axes[0].legend(fontsize=9, loc="lower right", framealpha=0.9)
         fig.suptitle(
-            self._format_short_title(
-                "Reasoning scores: before vs after", plot_name_add
-            ),
+            self._format_short_title("Reasoning scores per version", plot_name_add),
             fontsize=12,
         )
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"before_after_reasoning_scores{self._disambiguator_from_tags(plot_name_add)}.png",
+            f"split_reasoning_scores{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
         self._save_plot(file_name=png_path)
         plt.close(fig)
         self._write_plot_data_txt(png_path, sections)
+
+        # --- Second view: one panel per version, all three scores as lines ---
+        # Complements the per-score view by making it easy to compare BLEU/ROUGE/
+        # METEOR within a single version at a glance (mirroring how attention plots
+        # overlay max_supp_attn and attn_on_target on one axis).
+        version_evs = [
+            (lbl, ev)
+            for lbl, ev in [("Before", before), ("After", after)]
+            if ev is not None
+        ]
+        if version_evs:
+            n_ver = len(version_evs)
+            fig2, axes2 = plt.subplots(
+                1, n_ver, figsize=(7 * n_ver, 4.5), sharey=True, squeeze=False
+            )
+            score_line_specs = [
+                ("BLEU", "bleu", "bleu_std", self.color_supporting, "o"),
+                ("ROUGE", "rouge", "rouge_std", self.color_distractor, "s"),
+                ("METEOR", "meteor", "meteor_std", self.color_neutral, "^"),
+            ]
+            sections2: list[tuple[str, list[tuple[str, float | None]]]] = []
+            for ax2, (vlabel, ev) in zip(axes2[0], version_evs):
+                rows2: list[tuple[str, float | None]] = []
+                max_n2 = 0
+                for slabel, mean_attr, std_attr, color, marker in score_line_specs:
+                    means2, stds2 = self._ba_per_task(ev, mean_attr, std_attr)
+                    if len(means2) == 0:
+                        continue
+                    max_n2 = max(max_n2, len(means2))
+                    x2 = np.arange(1, len(means2) + 1)
+                    ax2.plot(
+                        x2,
+                        means2,
+                        marker=marker,
+                        color=color,
+                        linewidth=2,
+                        label=slabel,
+                    )
+                    if stds2 is not None and len(stds2) == len(means2):
+                        ax2.fill_between(
+                            x2, means2 - stds2, means2 + stds2, color=color, alpha=0.15
+                        )
+                    for xi, v in zip(x2, means2):
+                        rows2.append(
+                            (
+                                f"task={xi} {slabel}",
+                                float(v) if np.isfinite(v) else None,
+                            )
+                        )
+                ax2.set_title(vlabel, fontsize=11)
+                ax2.set_xlabel("Task", fontsize=10)
+                ax2.set_ylabel("Score" if ax2 is axes2[0][0] else "", fontsize=10)
+                ax2.set_ylim(0, 1.05)
+                if max_n2 > 0:
+                    ax2.set_xticks(np.arange(1, max_n2 + 1))
+                ax2.legend(fontsize=9, loc="lower right", framealpha=0.9)
+                ax2.grid(axis="y", linestyle="--", alpha=0.4)
+                ax2.set_axisbelow(True)
+                sections2.append((vlabel, rows2))
+
+            fig2.suptitle(
+                self._format_short_title("Reasoning scores by version", plot_name_add),
+                fontsize=12,
+            )
+            fig2.tight_layout()
+            png_path2 = self._resolve_save_target(
+                f"split_reasoning_scores_by_version"
+                f"{self._disambiguator_from_tags(plot_name_add)}.png",
+                path_add,
+            )
+            self._save_plot(file_name=png_path2)
+            plt.close(fig2)
+            self._write_plot_data_txt(png_path2, sections2)
 
     def plot_before_after_attention(
         self,
@@ -3613,13 +3800,13 @@ class Plotter:
         ax_target.set_title("Attention on target tokens", fontsize=11)
 
         fig.suptitle(
-            self._format_short_title("Attention: before vs after", plot_name_add),
+            self._format_short_title("Attention per version", plot_name_add),
             fontsize=12,
         )
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"before_after_attention{self._disambiguator_from_tags(plot_name_add)}.png",
+            f"split_attention{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
         self._save_plot(file_name=png_path)
@@ -3718,8 +3905,8 @@ class Plotter:
                     )
             return bars
 
-        _plot_bars(-width / 2, before_means, self._da_color_supporting, "Before")
-        _plot_bars(+width / 2, after_means, self._da_color_distractor, "After")
+        _plot_bars(-width / 2, before_means, self.color_supporting, "Before")
+        _plot_bars(+width / 2, after_means, self.color_distractor, "After")
 
         ax.set_xticks(x)
         ax.set_xticklabels(labels, rotation=20, ha="right", fontsize=9)
@@ -3733,7 +3920,7 @@ class Plotter:
         ymax = max(1.05, max(all_vals) * 1.10) if all_vals else 1.05
         ax.set_ylim(0, ymax)
         ax.set_title(
-            self._format_short_title("Before vs after summary", plot_name_add),
+            self._format_short_title("Summary", plot_name_add),
             fontsize=12,
             pad=8,
         )
@@ -3743,7 +3930,7 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
-            f"before_after_summary{self._disambiguator_from_tags(plot_name_add)}.png",
+            f"split_summary{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
         self._save_plot(file_name=png_path)
