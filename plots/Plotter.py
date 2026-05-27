@@ -2202,8 +2202,8 @@ class Plotter:
         ]
         label_correct = {True: "Correct", False: "Incorrect"}
 
-        box_data, positions, colors, medians, ns = [], [], [], [], []
-        # positions [1,2] = Correct group, [4,5] = Incorrect group; gap at 3
+        box_data, tick_labels, colors, medians, ns = [], [], [], [], []
+        # tick_labels [1,2] = Correct group, [4,5] = Incorrect group; gap at 3
         group_ordering = [
             (True, "distractor", 1),
             (True, "neutral", 2),
@@ -2214,7 +2214,7 @@ class Plotter:
             vals = grouped[correct].get(role, [])
             if vals:
                 box_data.append(vals)
-                positions.append(pos)
+                tick_labels.append(pos)
                 colors.append(role_color[role])
                 medians.append(float(np.median(vals)))
                 ns.append(len(vals))
@@ -2226,7 +2226,7 @@ class Plotter:
             return
 
         fig, ax = plt.subplots(figsize=(7, 4.5))
-        bp = ax.boxplot(box_data, positions=positions, patch_artist=True, widths=0.55)
+        bp = ax.boxplot(box_data, positions=tick_labels, patch_artist=True, widths=0.55)
 
         for patch, color in zip(bp["boxes"], colors):
             patch.set_facecolor(color)
