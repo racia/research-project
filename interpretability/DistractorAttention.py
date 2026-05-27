@@ -205,6 +205,9 @@ def collect_distractor_attention_record(
     :param version: "before" or "after"
     :return: a populated DistractorAttentionRecord, or None
     """
+    print(
+        f"supp={part.supporting_sent_inx} dist={getattr(part, 'distractors', 'MISSING')}"
+    )
     result_for_version = None
     for res in part.results:
         if res.version == version:

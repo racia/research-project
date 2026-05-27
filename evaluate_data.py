@@ -20,6 +20,7 @@ import warnings
 from collections import defaultdict
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from data.DataLoader import DataLoader
@@ -185,6 +186,54 @@ def validate_inputs(run_fn):
     return validation_wrapper
 
 
+def _row_normalise_attn_scores(attn_scores: np.ndarray) -> np.ndarray:
+    """
+    Return a row-normalised copy of a 2-D attention score matrix.
+
+    :param attn_scores: 2-D array of shape ``(output_tokens, num_sentences)``,
+                        column-normalised as produced by
+                        ``Interpretability.get_attention_scores``.
+    :return: row-normalised copy of the same shape; the original is not mutated.
+    """
+    row_sums = attn_scores.sum(axis=1, keepdims=True)
+    safe_row_sums = np.where(row_sums == 0, 1.0, row_sums)
+    return attn_scores / safe_row_sums
+
+
+def _collect_record_with_row_normalised_attn(part, answer_correct, version):
+    """
+    Temporarily replace the column-normalised ``attn_scores`` on the relevant
+    ``InterpretabilityResult`` with a row-normalised copy, call
+    ``collect_distractor_attention_record``, then restore the original scores.
+
+    This keeps the column-normalised scores intact for heatmap consumers while
+    letting the distractor analysis see the correct normalisation.
+
+    :param part: the ``SamplePart`` passed through to
+                 ``collect_distractor_attention_record``.
+    :param answer_correct: correctness flag for this part/version.
+    :param version: ``"before"`` or ``"after"``.
+    :return: the ``DistractorAttentionRecord`` returned by
+             ``collect_distractor_attention_record``, or ``None``.
+    """
+    result_for_version = next((r for r in part.results if r.version == version), None)
+    if result_for_version is None:
+        return collect_distractor_attention_record(part, answer_correct, version)
+
+    original_scores = getattr(result_for_version.interpretability, "attn_scores", None)
+    needs_correction = original_scores is not None and original_scores.ndim == 2
+
+    if needs_correction:
+        result_for_version.interpretability.attn_scores = _row_normalise_attn_scores(
+            original_scores
+        )
+    try:
+        return collect_distractor_attention_record(part, answer_correct, version)
+    finally:
+        if needs_correction:
+            result_for_version.interpretability.attn_scores = original_scores
+
+
 @validate_inputs
 def run(
     results_path: str,
@@ -317,6 +366,7 @@ def run(
                     )
                     continue
 
+                distractor_fields: dict = {}
                 for version_result in part.results:
                     version = version_result.version
 
@@ -330,7 +380,7 @@ def run(
                     if answer_correct is None or pd.isna(answer_correct):
                         continue
 
-                    record = collect_distractor_attention_record(
+                    record = _collect_record_with_row_normalised_attn(
                         part=part,
                         answer_correct=answer_correct,
                         version=version,
@@ -339,11 +389,26 @@ def run(
                     if record is not None:
                         distractor_stats[version].add(record)
                         distractor_stats_per_task[task_id][version].add(record)
+                        # Stash distractor fields to enrich the results row below.
+                        distractor_fields[f"attn_distractor_{version}"] = (
+                            record.attn_distractor
+                        )
+                        distractor_fields[f"attn_supporting_{version}"] = (
+                            record.attn_supporting
+                        )
+                        distractor_fields[f"attn_neutral_{version}"] = (
+                            record.attn_neutral
+                        )
+                        if "n_distractors" not in distractor_fields:
+                            distractor_fields["n_distractors"] = record.n_distractors
                     else:
                         warnings.warn(
                             f"Empty record collected for task {task_id} sample {sample_id} part {part.part_id} version '{version}'. Check that the part has interpretability data and distractors set."
                         )
 
+                # Enrich the results row with distractor-attention attributes so
+                # downstream analyses (e.g. toxic-CoT filtering) have them inline.
+                result.update(distractor_fields)
                 saver.save_output(
                     data=[result],
                     headers=list(result.keys()),
@@ -461,7 +526,7 @@ def run(
 
             # Attn on Target for Seen Context Lengths by Answer Correct
             plotter.plot_corr_boxplot(
-                x_data=task.seen_context_lengths.all, # Added .all to convert to list/array for part-level plotting
+                x_data=task.seen_context_lengths.all,  # Added .all to convert to list/array for part-level plotting
                 y_data={
                     "parts_attn_on_target": evaluator.parts_attn_on_target.all,
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
@@ -479,7 +544,7 @@ def run(
 
             # Answer Correct for Seen Context Lengths by Answer In Self
             plotter.plot_corr_hist(
-                x_data=task.seen_context_lengths.all, # Added .all to convert to list/array for part-level plotting
+                x_data=task.seen_context_lengths.all,  # Added .all to convert to list/array for part-level plotting
                 y_data={
                     "parts_answer_correct": evaluator.parts_answer_correct.all,
                     "parts_answer_in_self": task.parts_answer_in_self,
@@ -514,7 +579,7 @@ def run(
             )
             for metric in metrics:
                 metrics_to_save[metric["task_id"]].update(metric)
-                
+
             for metric in metrics_to_save.values():
                 saver.save_output(
                     data=[metric],
@@ -597,9 +662,37 @@ def run(
         split=split,
         metric_file_name="eval_script_metrics.csv",
     )
+
+    save_latex_table_line(split, experiment, setting, saver)
+
     # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
     # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
     split_corr_matrices = split.calculate_metrics()
+
+    # ---- Before/after comparison plots --------------------------------------
+    # These four plots compare the same metrics across the "before" and
+    # "after" evaluators of this split. They run unconditionally — for
+    # single-system runs the methods just plot the one available version.
+    if len(split.evaluators) >= 1:
+        print(
+            f"\nPlotting before/after comparison plots for split '{split.name}'...",
+            end="\n\n",
+        )
+        ba_kwargs = dict(
+            evaluators=split.evaluators,
+            versions=split.versions,
+            plot_name_add=[f"Split-{split.name}", *conditions_add],
+            path_add=Path("before_after"),
+        )
+        plotter.plot_before_after_accuracy(**ba_kwargs)
+        if experiment != "direct_answer":
+            plotter.plot_before_after_reasoning_scores(**ba_kwargs)
+        plotter.plot_before_after_attention(**ba_kwargs)
+        plotter.plot_before_after_summary(**ba_kwargs)
+
+        if len(split.evaluators) > 1:
+            plotter.plot_before_after_delta_lineplot(**ba_kwargs)
+
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
     ):
@@ -634,7 +727,7 @@ def run(
             file_name=f"acc-attn_on_target_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
             path_add=Path(version),
             level="split",
             include_soft=False,
@@ -653,7 +746,7 @@ def run(
             displ_percentage=False,
             version=version,
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
             level="split",
             file_name=f"attn-seen_context_lengths_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
@@ -673,7 +766,7 @@ def run(
             displ_percentage=False,
             version=version,
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
             file_name=f"attn-target_distances_{split.name}.pdf",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
@@ -694,7 +787,7 @@ def run(
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
             experiment=experiment,
-            num_samples=samples_per_task*len(split.tasks),
+            num_samples=samples_per_task * len(split.tasks),
         )
         print(
             f"\nPlotting accuracies and standard deviation for results '{version}'...",
@@ -720,12 +813,13 @@ def run(
             f"\nPlotting reasoning scores for results '{version}'...",
             end="\n\n",
         )
-        plotter.plot_acc_with_std(
-            acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
-            y_label="Reasoning Scores",
-            plot_name_add=[split.name, version, *conditions_add],
-            path_add=Path(version),
-        )
+        if experiment != "direct_answer":
+            plotter.plot_acc_with_std(
+                acc_per_prompt_task=evaluator.get_reasoning_scores(as_lists=True),
+                y_label="Reasoning Scores",
+                plot_name_add=[split.name, version, *conditions_add],
+                path_add=Path(version),
+            )
         print(
             f"\nPlotting correlations for results '{version}' between metrics:",
             evaluator.get_correlations(as_lists=True),
@@ -1074,6 +1168,46 @@ def add_completeness_column(
         f"{path.split('.')[0]}_with_completeness{output_suffix}.csv",
         index=False,
     )
+
+
+def save_latex_table_line(split, experiment: str, setting: str, saver) -> None:
+    """
+    Write a ready-to-paste LaTeX row to latex_table_line.txt.
+    ± is evaluator.X.get_std() at split level = std of per-task means across
+    tasks (cross-task variability), which is the correct quantity for the
+    paper table — distinct from the within-task std columns in the CSV.
+    Table 1: EM-Acc | SM-Acc | Max Supp Attn | Attn on Trgt
+    Table 2: BLEU | ROUGE | METEOR  (reasoning experiment only)
+
+    :param split: the Split object containing the evaluators with the metrics to report
+    :param experiment: the experiment name (e.g., "reasoning" or "direct_answer") to determine which metrics to include
+    :param setting: the experimental setting (e.g., "baseline", "feedback", etc.) to include in the comment for context
+    :param saver: the Saver object to use for writing the output file
+    """
+    _cell = lambda m, s: f"${round(m, 2)}^{{{{\\pm}}}}{round(s, 2)}$"
+    _latex_lines: list[str] = []
+    for _ver, _ev in zip(split.versions, split.evaluators):
+        _em = _cell(
+            _ev.exact_match_accuracy.get_mean(), _ev.exact_match_accuracy.get_std()
+        )
+        _sm = _cell(
+            _ev.soft_match_accuracy.get_mean(), _ev.soft_match_accuracy.get_std()
+        )
+        _msa = _cell(_ev.max_supp_attn.get_mean(), _ev.max_supp_attn.get_std())
+        _aot = _cell(_ev.attn_on_target.get_mean(), _ev.attn_on_target.get_std())
+        _latex_lines.append(f"% Table 1 | {experiment} | {setting} | {_ver}")
+        _latex_lines.append(f"& {_em} & {_sm} & {_msa} & {_aot} \\\\")
+        if experiment == "reasoning":
+            _b = _cell(_ev.bleu.get_mean(), _ev.bleu.get_std())
+            _r = _cell(_ev.rouge.get_mean(), _ev.rouge.get_std())
+            _m = _cell(_ev.meteor.get_mean(), _ev.meteor.get_std())
+            _latex_lines.append(f"% Table 2 | {experiment} | {setting} | {_ver}")
+            _latex_lines.append(f"& {_b} & {_r} & {_m} \\\\")
+        _latex_lines.append("")
+    (saver.run_path / "latex_table_line.txt").write_text(
+        "\n".join(_latex_lines), encoding="utf-8"
+    )
+    print(f"LaTeX table line(s) written → {saver.run_path / 'latex_table_line.txt'}")
 
 
 if __name__ == "__main__":
