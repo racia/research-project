@@ -141,7 +141,9 @@ class DataSaver:
             metrics = list(
                 format_metrics(evaluator.get_metrics(as_lists=True)).values()
             )
+            _LABEL_MAP = {"mean": "cross_task_mean", "std": "cross_task_std"}
             for metric in metrics:
+                metric["task_id"] = _LABEL_MAP.get(metric["task_id"], metric["task_id"])
                 metrics_to_save[metric["task_id"]].update(metric)
 
             for metric in metrics_to_save.values():
