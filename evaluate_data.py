@@ -186,22 +186,52 @@ def validate_inputs(run_fn):
     return validation_wrapper
 
 
-def _correct_attn_normalisation(interpretability) -> None:
+def _row_normalise_attn_scores(attn_scores: np.ndarray) -> np.ndarray:
     """
-    Undo the erroneous column-wise normalisation applied inside
-    ``Interpretability.get_attention_scores`` and replace it with the correct
-    row-wise normalisation, in place on the ``InterpretabilityResult`` object.
+    Return a row-normalised copy of a 2-D attention score matrix.
 
-    :param interpretability: an ``InterpretabilityResult`` whose ``attn_scores``
-                             attribute may carry column-normalised sentence scores.
+    :param attn_scores: 2-D array of shape ``(output_tokens, num_sentences)``,
+                        column-normalised as produced by
+                        ``Interpretability.get_attention_scores``.
+    :return: row-normalised copy of the same shape; the original is not mutated.
     """
-    scores = getattr(interpretability, "attn_scores", None)
-    if scores is None or scores.ndim != 2:
-        return
-
-    row_sums = scores.sum(axis=1, keepdims=True)
+    row_sums = attn_scores.sum(axis=1, keepdims=True)
     safe_row_sums = np.where(row_sums == 0, 1.0, row_sums)
-    interpretability.attn_scores = scores / safe_row_sums
+    return attn_scores / safe_row_sums
+
+
+def _collect_record_with_row_normalised_attn(part, answer_correct, version):
+    """
+    Temporarily replace the column-normalised ``attn_scores`` on the relevant
+    ``InterpretabilityResult`` with a row-normalised copy, call
+    ``collect_distractor_attention_record``, then restore the original scores.
+
+    This keeps the column-normalised scores intact for heatmap consumers while
+    letting the distractor analysis see the correct normalisation.
+
+    :param part: the ``SamplePart`` passed through to
+                 ``collect_distractor_attention_record``.
+    :param answer_correct: correctness flag for this part/version.
+    :param version: ``"before"`` or ``"after"``.
+    :return: the ``DistractorAttentionRecord`` returned by
+             ``collect_distractor_attention_record``, or ``None``.
+    """
+    result_for_version = next((r for r in part.results if r.version == version), None)
+    if result_for_version is None:
+        return collect_distractor_attention_record(part, answer_correct, version)
+
+    original_scores = getattr(result_for_version.interpretability, "attn_scores", None)
+    needs_correction = original_scores is not None and original_scores.ndim == 2
+
+    if needs_correction:
+        result_for_version.interpretability.attn_scores = _row_normalise_attn_scores(
+            original_scores
+        )
+    try:
+        return collect_distractor_attention_record(part, answer_correct, version)
+    finally:
+        if needs_correction:
+            result_for_version.interpretability.attn_scores = original_scores
 
 
 @validate_inputs
@@ -350,9 +380,7 @@ def run(
                     if answer_correct is None or pd.isna(answer_correct):
                         continue
 
-                    _correct_attn_normalisation(version_result.interpretability)
-
-                    record = collect_distractor_attention_record(
+                    record = _collect_record_with_row_normalised_attn(
                         part=part,
                         answer_correct=answer_correct,
                         version=version,
