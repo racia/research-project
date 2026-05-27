@@ -20,6 +20,7 @@ import warnings
 from collections import defaultdict
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 from data.DataLoader import DataLoader
@@ -185,6 +186,24 @@ def validate_inputs(run_fn):
     return validation_wrapper
 
 
+def _correct_attn_normalisation(interpretability) -> None:
+    """
+    Undo the erroneous column-wise normalisation applied inside
+    ``Interpretability.get_attention_scores`` and replace it with the correct
+    row-wise normalisation, in place on the ``InterpretabilityResult`` object.
+
+    :param interpretability: an ``InterpretabilityResult`` whose ``attn_scores``
+                             attribute may carry column-normalised sentence scores.
+    """
+    scores = getattr(interpretability, "attn_scores", None)
+    if scores is None or scores.ndim != 2:
+        return
+
+    row_sums = scores.sum(axis=1, keepdims=True)
+    safe_row_sums = np.where(row_sums == 0, 1.0, row_sums)
+    interpretability.attn_scores = scores / safe_row_sums
+
+
 @validate_inputs
 def run(
     results_path: str,
@@ -330,6 +349,8 @@ def run(
 
                     if answer_correct is None or pd.isna(answer_correct):
                         continue
+
+                    _correct_attn_normalisation(version_result.interpretability)
 
                     record = collect_distractor_attention_record(
                         part=part,
