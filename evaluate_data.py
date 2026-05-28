@@ -175,6 +175,14 @@ def validate_inputs(run_fn):
         if not kwargs.get("results_path", ""):
             raise ValueError("Please provide a path to the data for evaluation.")
 
+        reasoning_source = kwargs.get("reasoning_source")
+        supported_sources = ["claude", "llama"]
+        if reasoning_source is not None and reasoning_source not in supported_sources:
+            raise ValueError(
+                f"reasoning_source {reasoning_source!r} is not supported. "
+                f"Choose one of {supported_sources} or omit it to use the default path."
+            )
+
         filtering_conditions = kwargs.get("filtering_conditions", {})
         if filtering_conditions:
             for attr in filtering_conditions.keys():
@@ -245,6 +253,7 @@ def run(
     create_heatmaps: bool = True,
     verbose: bool = False,
     max_tokens: int | None = None,
+    reasoning_source: str | None = None,
 ) -> None:
     """
     Run the evaluation pipeline.
@@ -264,6 +273,14 @@ def run(
                        :func:`add_completeness_column` so the truncation
                        check can flag rows whose reasoning hit the limit.
                        If ``None`` the truncation check is skipped.
+    :param reasoning_source: which silver-reasoning corpus to use as the
+                             reference for reasoning quality metrics.
+                             ``None`` (default) uses the legacy flat directory
+                             ``data/silver_reasoning/``.
+                             ``"claude"`` reads from
+                             ``data/silver_reasoning/claude/``;
+                             ``"llama"`` reads from
+                             ``data/silver_reasoning/llama/``.
     :return: None
     """
     print("You are running the evaluation pipeline.", end="\n\n")
@@ -273,10 +290,15 @@ def run(
         print("Employing the following filtering conditions for the evaluation:")
         for attr, value in filtering_conditions.items():
             print(f"- {attr} = {value}")
+    if reasoning_source:
+        print(f"Using silver reasoning source: {reasoning_source!r}", end="\n\n")
+    else:
+        print("Using default silver reasoning source (legacy path).", end="\n\n")
     loader = DataLoader(
         prefix=PREFIX,
         samples_per_task=samples_per_task,
         filtering_conditions=filtering_conditions,
+        reasoning_source=reasoning_source,
     )
 
     if setting in supported_single_system_settings:
@@ -1096,6 +1118,20 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
             "is skipped."
         ),
     )
+    parser.add_argument(
+        "--reasoning_source",
+        type=str,
+        default=None,
+        choices=["claude", "llama"],
+        help=(
+            "Which silver-reasoning corpus to use when computing reasoning "
+            "quality scores. "
+            "'claude' reads from data/silver_reasoning/claude/; "
+            "'llama' reads from data/silver_reasoning/llama/. "
+            "Omit this argument to use the default flat directory "
+            "data/silver_reasoning/ (legacy behaviour)."
+        ),
+    )
     if script_args is not None:
         if isinstance(script_args, str):
             script_args = script_args.split()
@@ -1265,6 +1301,7 @@ if __name__ == "__main__":
         create_heatmaps=args.create_heatmaps,
         verbose=args.verbose,
         max_tokens=args.max_tokens,
+        reasoning_source=args.reasoning_source,
     )
     # kwargs = {
     #     "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",

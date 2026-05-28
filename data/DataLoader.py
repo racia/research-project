@@ -101,6 +101,10 @@ class DataLoader:
     This class handles loading the data.
     """
 
+    #: Recognised silver-reasoning source identifiers. Any other non-None
+    #: value is rejected at construction time so typos surface early.
+    SUPPORTED_REASONING_SOURCES: frozenset = frozenset({"claude", "llama"})
+
     def __init__(
         self,
         samples_per_task: int = None,
@@ -108,30 +112,56 @@ class DataLoader:
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
         filtering_conditions: dict = None,
+        reasoning_source: str | None = None,
     ):
         """
         Initialize the DataLoader.
-        The dataloader handles the reading and loading of data, as well as the mapping of tasks to
-        their respective data.
+        The dataloader handles the reading and loading of data, as well as the
+        mapping of tasks to their respective data.
 
         :param samples_per_task: number of samples to load per task
         :param prefix: path to the data
         :param wrapper: wrapper for the data
         :param to_enumerate: enumeration for the data
-        :param filtering_conditions: conditions to filter the data, e.g. only return samples with
-                                     correct answers. These conditions can be specified by providing
-                                     a dictionary with the attribute as key and the desired value as
-                                     value, e.g. {"model_answer": "correct"}.
-                                     Multiple conditions are possible,
-                                     e.g. {"model_answer": "correct", "attn_on_target": 0.5}.
+        :param filtering_conditions: conditions to filter the data, e.g. only
+                                     return samples with correct answers.
+                                     Provide a dict mapping SamplePart
+                                     attribute names to desired values, e.g.
+                                     {"model_answer": "correct"}.
+        :param reasoning_source: which silver-reasoning corpus to use.
+                                 ``None`` (default) preserves the original
+                                 behaviour and reads directly from
+                                 ``data/silver_reasoning/``.
+                                 Pass ``"claude"`` or ``"llama"`` to read from
+                                 the corresponding sub-directory
+                                 (``data/silver_reasoning/claude/`` or
+                                 ``data/silver_reasoning/llama/``).
         """
+        if (
+            reasoning_source is not None
+            and reasoning_source not in self.SUPPORTED_REASONING_SOURCES
+        ):
+            raise ValueError(
+                f"Unsupported reasoning_source {reasoning_source!r}. "
+                f"Choose one of {sorted(self.SUPPORTED_REASONING_SOURCES)} or None."
+            )
+
         self.number_of_parts: int = 0
         self.samples_per_task: int = samples_per_task
         self.number_of_tasks: int = 0
         self.tasks: list[int] = []
 
         self.prefix: Path = Path(prefix)
-        self.silver_reasoning_path: Path = self.prefix / "data/silver_reasoning/"
+        self.reasoning_source: str | None = reasoning_source
+
+        # When a specific source is requested, use the matching sub-directory
+        # so Claude- and Llama-generated files can coexist without name conflicts.
+        if reasoning_source:
+            self.silver_reasoning_path: Path = (
+                self.prefix / "data/silver_reasoning" / reasoning_source
+            )
+        else:
+            self.silver_reasoning_path: Path = self.prefix / "data/silver_reasoning/"
 
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
@@ -523,14 +553,24 @@ class DataLoader:
         """
         Load the silver reasoning data for a specific task and split.
 
+        The file is looked up inside ``self.silver_reasoning_path``, which is
+        set at construction time and depends on ``reasoning_source``:
+
+        * ``None``     → ``data/silver_reasoning/``
+        * ``"claude"`` → ``data/silver_reasoning/claude/``
+        * ``"llama"``  → ``data/silver_reasoning/llama/``
+
         :param task_id: task id
         :param split: split of the data
         :return: silver reasoning data
         """
+        source_label = (
+            f" (source: {self.reasoning_source})" if self.reasoning_source else ""
+        )
         if not self.silver_reasoning_path.exists():
             raise FileNotFoundError(
-                "The silver reasoning data is not found at the path:",
-                self.silver_reasoning_path,
+                f"Silver reasoning directory not found{source_label}: "
+                f"{self.silver_reasoning_path}"
             )
         silver_reasoning_data = []
         for path in self.silver_reasoning_path.iterdir():

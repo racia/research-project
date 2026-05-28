@@ -71,7 +71,11 @@ REP_DIR="/pfs/work9/workspace/scratch/hd_nc326-research-project"
 JOINED_DATA_PATH="$REP_DIR/baseline/test/reasoning/results_file.csv" # TODO: Adjust the path to your results file
 SAVE_PATH="$REP_DIR/baseline/test/reasoning/" # TODO: Adjust the path to your save directory (choose wisely!)
 
-python3 evaluate_data.py --results_path $JOINED_DATA_PATH --save_path $SAVE_PATH --samples_per_task 100 --create_heatmaps --verbose
+# Set to "claude" or "llama" to select a silver-reasoning corpus;
+# leave empty to use the default flat directory (legacy behaviour).
+REASONING_SOURCE=""  # "claude" | "llama" | ""
+
+python3 evaluate_data.py --results_path $JOINED_DATA_PATH --save_path $SAVE_PATH --samples_per_task 100 --create_heatmaps --verbose ${REASONING_SOURCE:+--reasoning_source $REASONING_SOURCE}
 
 # Verify if the script executed successfully
 if [ $? -eq 0 ]; then

@@ -44,6 +44,9 @@ fi
 # Toggle args here
 VERBOSE=false #true
 HEATMAPS=false #true
+# Set to "claude" or "llama" to select a silver-reasoning corpus;
+# leave empty to use the default flat directory (legacy behaviour).
+REASONING_SOURCE=""  # "claude" | "llama" | ""
 # RES_PATH="/workspace/students/reasoning/results/basic-SD/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
 RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
 # SAVE_PATH="/workspace/students/reasoning/results/basic-SD/test/reasoning/v1/all_tasks_joined/"
@@ -64,6 +67,7 @@ ARGS=(
 
 [ "$VERBOSE" = true ] && ARGS+=(--verbose)
 [ "$HEATMAPS" = true ] && ARGS+=(--create_heatmaps)
+[ -n "$REASONING_SOURCE" ] && ARGS+=(--reasoning_source "$REASONING_SOURCE")
 
 SCRIPT="evaluate_data.py"
 echo "Running script ${SCRIPT} with the following arguments: ${ARGS[*]}"
