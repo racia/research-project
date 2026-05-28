@@ -1,0 +1,756 @@
+task_id,reasoning,answer,part_id,sample_id
+18,"Sentence 2 says chocolate fits inside the box, so box > chocolate. The box cannot fit inside the chocolate.",no,1,1
+18,"box > chocolate (chocolate fits in box), so chocolate is NOT bigger.",no,2,1
+18,,no,3,1
+18,,no,4,1
+18,,no,5,1
+18,"chest > box > chocolate, so chocolate is smaller.",no,1,2
+18,,no,2,2
+18,"chest > chocolate, chest cannot fit in chocolate.",no,3,2
+18,chest > box > chocolate. Yes.,yes,4,2
+18,"suitcase > container > chocolate, so NO.",no,5,2
+18,chest > container > suitcase. Yes.,yes,1,3
+18,chest > container > suitcase. Yes.,yes,2,3
+18,,yes,3,3
+18,,yes,4,3
+18,box > suitcase > chocolate. No.,no,5,3
+18,,yes,1,4
+18,,yes,2,4
+18,,no,3,4
+18,,no,4,4
+18,,yes,5,4
+18,box > chest > box of chocolates. Yes.,yes,1,5
+18,,yes,2,5
+18,,yes,3,5
+18,,no,4,5
+18,,yes,5,5
+18,chest > box > container. No.,no,1,6
+18,box > box of chocolates > chocolate. Yes.,yes,2,6
+18,chest > box > container. No.,no,3,6
+18,chest > box > container. Yes.,yes,4,6
+18,suitcase > box of chocolates > chocolate. Yes.,yes,5,6
+18,,yes,1,7
+18,box > chest > chocolate. No.,no,2,7
+18,box > chocolate. No.,no,3,7
+18,box > chest > chocolate. Yes.,yes,4,7
+18,,yes,5,7
+18,,yes,1,8
+18,,yes,2,8
+18,,yes,3,8
+18,,yes,4,8
+18,,yes,5,8
+18,chest > chocolate (direct). Yes.,yes,1,9
+18,,no,2,9
+18,,no,3,9
+18,,yes,4,9
+18,,yes,5,9
+18,,yes,1,10
+18,,yes,2,10
+18,,no,3,10
+18,,yes,4,10
+18,,yes,5,10
+18,,yes,1,11
+18,suitcase > box > container. No.,no,2,11
+18,,no,3,11
+18,,yes,4,11
+18,,no,5,11
+18,container > chest > box of chocolates. No.,no,1,12
+18,box > chest > box of chocolates. Yes.,yes,2,12
+18,,yes,3,12
+18,,yes,4,12
+18,,yes,5,12
+18,chest > box > chocolate. Yes.,yes,1,13
+18,,no,2,13
+18,,yes,3,13
+18,,no,4,13
+18,,yes,5,13
+18,box > suitcase > chocolate. No.,no,1,14
+18,,yes,2,14
+18,,no,3,14
+18,,yes,4,14
+18,,no,5,14
+18,suitcase > chocolate. No.,no,1,15
+18,,yes,2,15
+18,,no,3,15
+18,,no,4,15
+18,,yes,5,15
+18,,yes,1,16
+18,,yes,2,16
+18,,yes,3,16
+18,,yes,4,16
+18,,yes,5,16
+18,,yes,1,17
+18,,yes,2,17
+18,,no,3,17
+18,,yes,4,17
+18,,yes,5,17
+18,,yes,1,18
+18,,no,2,18
+18,,no,3,18
+18,,yes,4,18
+18,,no,5,18
+18,,no,1,19
+18,,no,2,19
+18,,no,3,19
+18,,no,4,19
+18,,no,5,19
+18,container > box > chocolate. No.,no,1,20
+18,,yes,2,20
+18,,no,3,20
+18,,no,4,20
+18,,yes,5,20
+18,,yes,1,21
+18,,yes,2,21
+18,,no,3,21
+18,,yes,4,21
+18,,no,5,21
+18,,yes,1,22
+18,,yes,2,22
+18,,yes,3,22
+18,,yes,4,22
+18,,yes,5,22
+18,,no,1,23
+18,,no,2,23
+18,,no,3,23
+18,,yes,4,23
+18,,yes,5,23
+18,,no,1,24
+18,,no,2,24
+18,,no,3,24
+18,,no,4,24
+18,,no,5,24
+18,box > box of chocolates > chocolate. No.,no,1,25
+18,,no,2,25
+18,,no,3,25
+18,chest > box of chocolates (sentence 16). No.,no,4,25
+18,,no,6,25
+18,,no,7,25
+18,,no,8,25
+18,,no,9,25
+18,,no,1,26
+18,,no,2,26
+18,,no,3,26
+18,,no,4,26
+18,,yes,5,26
+18,,yes,1,27
+18,,yes,2,27
+18,,no,3,27
+18,,no,4,27
+18,,yes,5,27
+18,,yes,1,28
+18,,yes,2,28
+18,,no,3,28
+18,,no,4,28
+18,,yes,5,28
+18,,yes,1,29
+18,,no,2,29
+18,,yes,3,29
+18,,no,4,29
+18,,no,5,29
+18,,no,1,30
+18,,yes,2,30
+18,,no,3,30
+18,,no,4,30
+18,,no,5,30
+18,,yes,1,31
+18,,no,2,31
+18,,yes,3,31
+18,,yes,4,31
+18,,no,5,31
+18,box > chest > box of chocolates. No.,no,1,32
+18,,yes,2,32
+18,,yes,3,32
+18,,no,4,32
+18,,no,5,32
+18,,yes,1,33
+18,,no,2,33
+18,chest > box > box of chocolates. No.,no,3,33
+18,,yes,4,33
+18,,no,5,33
+18,,no,1,34
+18,,yes,2,34
+18,,no,3,34
+18,,yes,4,34
+18,,yes,5,34
+18,,yes,1,35
+18,,yes,2,35
+18,,no,3,35
+18,,no,4,35
+18,,no,5,35
+18,,no,1,36
+18,,no,2,36
+18,,yes,3,36
+18,,yes,4,36
+18,,yes,5,36
+18,,yes,1,37
+18,,no,2,37
+18,,no,3,37
+18,,no,4,37
+18,,no,5,37
+18,,yes,1,38
+18,,no,2,38
+18,,no,3,38
+18,,yes,4,38
+18,,no,5,38
+18,,yes,1,39
+18,,yes,2,39
+18,,yes,3,39
+18,,yes,4,39
+18,,yes,5,39
+18,,no,1,40
+18,,no,2,40
+18,,yes,3,40
+18,,yes,4,40
+18,,no,5,40
+18,,no,1,41
+18,,no,2,41
+18,,yes,3,41
+18,,yes,4,41
+18,,no,5,41
+18,,no,1,42
+18,,no,2,42
+18,,no,3,42
+18,,no,4,42
+18,,no,5,42
+18,,no,1,43
+18,,yes,2,43
+18,,yes,3,43
+18,,no,4,43
+18,,no,5,43
+18,,no,1,44
+18,,no,2,44
+18,,no,3,44
+18,,no,4,44
+18,,no,5,44
+18,,no,1,45
+18,,yes,2,45
+18,,yes,3,45
+18,,yes,4,45
+18,,no,5,45
+18,,no,1,46
+18,,no,2,46
+18,,no,3,46
+18,,no,4,46
+18,,no,5,46
+18,,yes,1,47
+18,,no,2,47
+18,,no,3,47
+18,,yes,4,47
+18,,yes,5,47
+18,,yes,1,48
+18,,yes,2,48
+18,,yes,3,48
+18,,yes,4,48
+18,,yes,5,48
+18,,yes,1,49
+18,,yes,2,49
+18,,yes,3,49
+18,,yes,4,49
+18,,yes,5,49
+18,box > chest > suitcase. No.,no,1,50
+18,,no,2,50
+18,,no,3,50
+18,,no,4,50
+18,,no,5,50
+18,,yes,1,51
+18,,yes,2,51
+18,,yes,3,51
+18,,no,4,51
+18,,yes,5,51
+18,,no,1,52
+18,,no,2,52
+18,,no,3,52
+18,,no,4,52
+18,,no,5,52
+18,,yes,1,53
+18,,no,2,53
+18,,yes,3,53
+18,,no,4,53
+18,,no,5,53
+18,,yes,1,54
+18,,yes,2,54
+18,,yes,3,54
+18,,yes,4,54
+18,,no,5,54
+18,,no,1,55
+18,,no,2,55
+18,chest > suitcase > chocolate. No.,no,3,55
+18,,no,4,55
+18,,no,5,55
+18,,yes,1,56
+18,,yes,2,56
+18,,no,3,56
+18,,no,4,56
+18,,yes,5,56
+18,box > container > chest. No.,no,1,57
+18,container > chest > box of chocolates. Yes.,yes,2,57
+18,,yes,3,57
+18,,no,4,57
+18,,no,5,57
+18,,no,1,58
+18,,no,2,58
+18,,no,3,58
+18,,no,4,58
+18,,yes,5,58
+18,,yes,1,59
+18,,yes,2,59
+18,,yes,3,59
+18,,yes,4,59
+18,,yes,5,59
+18,,no,1,60
+18,,no,2,60
+18,,yes,3,60
+18,,no,4,60
+18,,no,5,60
+18,,yes,1,61
+18,,no,2,61
+18,,yes,3,61
+18,,yes,4,61
+18,,yes,5,61
+18,suitcase > box > chest > box of chocolates. No.,no,1,62
+18,,no,2,62
+18,,no,3,62
+18,,no,4,62
+18,,yes,5,62
+18,box > chest > box of chocolates. Yes.,yes,1,63
+18,,yes,2,63
+18,,yes,3,63
+18,,yes,4,63
+18,,yes,5,63
+18,,no,1,64
+18,,yes,2,64
+18,,yes,3,64
+18,,yes,4,64
+18,,no,5,64
+18,,no,1,65
+18,,yes,2,65
+18,,no,3,65
+18,,no,4,65
+18,,no,5,65
+18,,no,1,66
+18,,no,2,66
+18,,no,3,66
+18,,no,4,66
+18,,no,5,66
+18,container > suitcase > box. Yes.,yes,1,67
+18,suitcase > box > box of chocolates. Yes.,yes,2,67
+18,,yes,3,67
+18,,yes,4,67
+18,,yes,5,67
+18,,yes,1,68
+18,,no,2,68
+18,,yes,3,68
+18,,no,4,68
+18,,no,5,68
+18,,yes,1,69
+18,,yes,2,69
+18,,yes,3,69
+18,,yes,4,69
+18,,yes,5,69
+18,,no,1,70
+18,,no,2,70
+18,suitcase > container > chest. No.,no,3,70
+18,,no,4,70
+18,,no,5,70
+18,,yes,1,71
+18,,yes,2,71
+18,,yes,3,71
+18,,yes,4,71
+18,,yes,5,71
+18,,yes,1,72
+18,,yes,2,72
+18,,yes,3,72
+18,,no,4,72
+18,,yes,5,72
+18,,yes,1,73
+18,,yes,2,73
+18,,yes,3,73
+18,,yes,4,73
+18,,yes,5,73
+18,,yes,1,74
+18,,yes,2,74
+18,,yes,3,74
+18,,no,4,74
+18,,yes,5,74
+18,,yes,1,75
+18,,yes,2,75
+18,,no,3,75
+18,,yes,4,75
+18,,yes,5,75
+18,,no,1,76
+18,,yes,2,76
+18,,no,3,76
+18,,yes,4,76
+18,,yes,5,76
+18,,no,1,77
+18,,no,2,77
+18,suitcase > container > chest. No.,no,3,77
+18,,yes,4,77
+18,,yes,5,77
+18,box > suitcase > box of chocolates. No.,no,1,78
+18,,no,2,78
+18,,yes,3,78
+18,,no,4,78
+18,,yes,5,78
+18,,no,1,79
+18,,no,2,79
+18,,no,3,79
+18,,no,4,79
+18,box > box of chocolates > chocolate. Yes.,yes,5,79
+18,,no,1,80
+18,,yes,2,80
+18,,yes,3,80
+18,,no,4,80
+18,,no,5,80
+18,,yes,1,81
+18,,no,2,81
+18,,yes,3,81
+18,,yes,4,81
+18,,no,5,81
+18,,yes,1,82
+18,,no,2,82
+18,,yes,3,82
+18,,yes,4,82
+18,,yes,5,82
+18,,no,1,83
+18,box > chest > suitcase. No.,no,2,83
+18,,no,3,83
+18,,no,4,83
+18,,no,5,83
+18,,no,1,84
+18,,no,2,84
+18,,yes,3,84
+18,container > chest > box of chocolates. No.,no,4,84
+18,,yes,5,84
+18,,yes,1,85
+18,,no,2,85
+18,,no,3,85
+18,,yes,4,85
+18,,no,5,85
+18,,no,1,86
+18,,no,2,86
+18,,no,3,86
+18,,no,4,86
+18,,no,5,86
+18,,no,1,87
+18,,no,2,87
+18,,yes,3,87
+18,,no,4,87
+18,,yes,5,87
+18,,no,1,88
+18,,no,2,88
+18,,yes,3,88
+18,,yes,4,88
+18,,no,5,88
+18,,yes,1,89
+18,,no,2,89
+18,,yes,3,89
+18,,yes,4,89
+18,,yes,5,89
+18,container > box > box of chocolates. No.,no,1,90
+18,,yes,2,90
+18,,no,3,90
+18,,no,4,90
+18,,no,5,90
+18,box > box of chocolates > chocolate. No.,no,1,91
+18,,yes,2,91
+18,,no,3,91
+18,,yes,4,91
+18,,yes,5,91
+18,container > box > box of chocolates. Yes.,yes,1,92
+18,,no,2,92
+18,,no,3,92
+18,,yes,4,92
+18,,no,5,92
+18,,no,1,93
+18,,yes,2,93
+18,,no,3,93
+18,,no,4,93
+18,,yes,5,93
+18,,yes,1,94
+18,,yes,2,94
+18,,yes,3,94
+18,,no,4,94
+18,,no,5,94
+18,,no,1,95
+18,,no,2,95
+18,,no,3,95
+18,,no,4,95
+18,,yes,5,95
+18,box > suitcase > container. No.,no,1,96
+18,,no,2,96
+18,,no,3,96
+18,,no,4,96
+18,,no,5,96
+18,,yes,1,97
+18,,yes,2,97
+18,,no,3,97
+18,,no,4,97
+18,,no,5,97
+18,,no,1,98
+18,,yes,2,98
+18,,yes,3,98
+18,,yes,4,98
+18,,yes,5,98
+18,box > chest > container. No.,no,1,99
+18,box > chest > suitcase. No.,no,2,99
+18,,no,3,99
+18,,no,4,99
+18,,no,5,99
+18,suitcase > chest > box of chocolates. No.,no,1,100
+18,,no,2,100
+18,,no,3,100
+18,,no,4,100
+18,,no,5,100
+18,box > container > suitcase. Yes.,yes,1,101
+18,container > chest > chocolate. Yes.,yes,2,101
+18,,no,3,101
+18,,no,4,101
+18,,no,5,101
+18,,no,1,102
+18,,yes,2,102
+18,,no,3,102
+18,,yes,4,102
+18,,no,5,102
+18,,yes,1,103
+18,,no,2,103
+18,,no,3,103
+18,,yes,4,103
+18,,no,5,103
+18,chest > suitcase > box. No.,no,1,104
+18,,no,2,104
+18,suitcase > box > chocolate. Yes.,yes,3,104
+18,,no,4,104
+18,,yes,5,104
+18,,no,1,105
+18,,no,2,105
+18,,no,3,105
+18,,no,4,105
+18,,no,5,105
+18,container > box > suitcase. No.,no,1,106
+18,,no,2,106
+18,,no,3,106
+18,,yes,4,106
+18,,no,5,106
+18,,yes,1,107
+18,,yes,2,107
+18,,no,3,107
+18,,yes,4,107
+18,,yes,5,107
+18,,no,1,108
+18,,yes,2,108
+18,,yes,3,108
+18,,yes,4,108
+18,,yes,5,108
+18,,no,1,109
+18,,yes,2,109
+18,,no,3,109
+18,,no,4,109
+18,,no,5,109
+18,suitcase > box > chest. No.,no,1,110
+18,,no,2,110
+18,,yes,3,110
+18,,no,4,110
+18,,yes,5,110
+18,,yes,1,111
+18,,yes,2,111
+18,,no,3,111
+18,,no,4,111
+18,,yes,5,111
+18,,no,1,112
+18,,no,2,112
+18,,no,3,112
+18,,no,4,112
+18,,no,5,112
+18,,yes,1,113
+18,,yes,2,113
+18,,yes,3,113
+18,chest > chocolate. No.,no,5,113
+18,,no,6,113
+18,,no,7,113
+18,,yes,8,113
+18,,yes,1,114
+18,,no,2,114
+18,,yes,3,114
+18,,no,4,114
+18,,no,5,114
+18,,no,1,115
+18,,yes,2,115
+18,,no,3,115
+18,,no,4,115
+18,,yes,5,115
+18,container > suitcase > box. No.,no,1,116
+18,container > suitcase > chocolate. No.,no,2,116
+18,,no,3,116
+18,,yes,4,116
+18,,no,5,116
+18,,no,1,117
+18,,no,2,117
+18,,yes,3,117
+18,,no,4,117
+18,,yes,5,117
+18,,no,1,118
+18,,yes,2,118
+18,,no,3,118
+18,,no,4,118
+18,,no,5,118
+18,,no,1,119
+18,,no,2,119
+18,,no,3,119
+18,,no,4,119
+18,,no,5,119
+18,,yes,1,120
+18,,no,2,120
+18,,no,3,120
+18,,yes,4,120
+18,,no,5,120
+18,,no,1,121
+18,,no,2,121
+18,,yes,3,121
+18,,no,4,121
+18,,yes,5,121
+18,,yes,1,122
+18,,no,2,122
+18,,no,3,122
+18,,yes,4,122
+18,,yes,5,122
+18,box > container > chocolate. Yes.,yes,1,123
+18,,no,2,123
+18,chest > suitcase > box of chocolates. No.,no,3,123
+18,,yes,4,123
+18,,yes,5,123
+18,,yes,1,124
+18,,no,2,124
+18,,yes,3,124
+18,,no,4,124
+18,,yes,5,124
+18,box > chest > container > box of chocolates → chest > container > box of chocolates. No.,no,1,125
+18,box > chest > container. Yes.,yes,2,125
+18,,no,3,125
+18,,no,4,125
+18,,yes,5,125
+18,,no,1,126
+18,chest > box of chocolates > chocolate. No.,no,2,126
+18,suitcase > box > container > box of chocolates. Yes.,yes,3,126
+18,,no,4,126
+18,,yes,5,126
+18,,no,1,127
+18,,yes,2,127
+18,,no,3,127
+18,,no,4,127
+18,,yes,5,127
+18,,no,1,128
+18,,no,2,128
+18,,no,3,128
+18,,no,4,128
+18,,no,5,128
+18,,yes,1,129
+18,,yes,2,129
+18,,yes,3,129
+18,,yes,4,129
+18,,yes,5,129
+18,box > chest > suitcase. No.,no,1,130
+18,,no,2,130
+18,,yes,3,130
+18,,no,4,130
+18,,no,5,130
+18,chest > box > box of chocolates. No.,no,1,131
+18,,yes,2,131
+18,,no,3,131
+18,,no,4,131
+18,,no,5,131
+18,,yes,1,132
+18,,yes,2,132
+18,,yes,3,132
+18,,yes,4,132
+18,container > box of chocolates > chocolate. No.,no,5,132
+18,,no,1,133
+18,box > box of chocolates > chocolate. No.,no,2,133
+18,,no,3,133
+18,,no,4,133
+18,,no,5,133
+18,suitcase > chest > box of chocolates. No.,no,1,134
+18,,yes,2,134
+18,,no,3,134
+18,,yes,4,134
+18,,no,5,134
+18,suitcase > chest > box of chocolates. No.,no,1,135
+18,container > suitcase > chest. No.,no,2,135
+18,,yes,3,135
+18,,yes,4,135
+18,,yes,5,135
+18,,no,1,136
+18,,yes,2,136
+18,,yes,3,136
+18,,yes,4,136
+18,,yes,5,136
+18,,yes,1,137
+18,,yes,2,137
+18,,yes,3,137
+18,,yes,4,137
+18,,yes,5,137
+18,,no,1,138
+18,,no,2,138
+18,,no,3,138
+18,,no,4,138
+18,,no,5,138
+18,,no,1,139
+18,,no,2,139
+18,,no,3,139
+18,,no,4,139
+18,,no,5,139
+18,,yes,1,140
+18,,yes,2,140
+18,,yes,3,140
+18,,no,4,140
+18,,yes,5,140
+18,,yes,1,141
+18,,no,2,141
+18,,no,3,141
+18,,no,4,141
+18,,no,5,141
+18,,no,1,142
+18,,no,2,142
+18,,yes,3,142
+18,,no,4,142
+18,,yes,5,142
+18,box > suitcase > box of chocolates. No.,no,1,143
+18,,yes,2,143
+18,,yes,3,143
+18,,yes,4,143
+18,,no,5,143
+18,,no,1,144
+18,,yes,2,144
+18,,yes,3,144
+18,,yes,4,144
+18,,yes,5,144
+18,,no,1,145
+18,,yes,2,145
+18,,yes,3,145
+18,,yes,4,145
+18,,yes,5,145
+18,,yes,1,146
+18,box > container > box of chocolates. No.,no,2,146
+18,,yes,3,146
+18,,no,4,146
+18,,yes,5,146
+18,,yes,1,147
+18,,yes,2,147
+18,,yes,3,147
+18,,yes,4,147
+18,,yes,5,147
+18,,no,1,148
+18,,no,2,148
+18,,no,3,148
+18,,no,4,148
+18,,no,5,148
+18,,yes,1,149
+18,,yes,2,149
+18,,yes,3,149
+18,,yes,4,149
+18,,yes,5,149
+18,,yes,1,150
+18,,no,2,150
+18,,no,3,150
+18,,yes,4,150
+18,,no,5,150

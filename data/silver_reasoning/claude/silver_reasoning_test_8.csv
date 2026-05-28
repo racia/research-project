@@ -1,0 +1,501 @@
+task_id,reasoning,answer,part_id,sample_id
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,1
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,2,1
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,3,1
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,4,1
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the apple.",apple,5,1
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,2
+8,"In the given context: Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,2,2
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,3,2
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,4,2
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,5,2
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,3
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,2,3
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,3,3
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,4,3
+8,"In the given context: Mary dropped the milk. Sandra picked up the milk. Therefore, Mary is not currently carrying anything.",nothing,5,3
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,4
+8,"In the given context: Daniel dropped the football. Sandra picked up the milk. Therefore, Daniel is not currently carrying anything.",nothing,2,4
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,3,4
+8,"In the given context: Sandra dropped the milk. Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,4,4
+8,"In the given context: John picked up the apple. Therefore, Sandra is currently carrying the milk.",milk,5,4
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,5
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,2,5
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,3,5
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,4,5
+8,"In the given context: Mary dropped the milk. Therefore, Daniel is currently carrying the football.",football,5,5
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,6
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,2,6
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,3,6
+8,"In the given context: Daniel dropped the apple. Mary picked up the apple. Therefore, Daniel is not currently carrying anything.",nothing,4,6
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,5,6
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,7
+8,"In the given context: Daniel picked up the milk. Sandra dropped the football. Therefore, Daniel is currently carrying the milk.",milk,2,7
+8,"In the given context: John picked up the apple. Therefore, Daniel is currently carrying the milk.",milk,3,7
+8,"In the given context: John dropped the apple. Daniel dropped the milk. Therefore, John is not currently carrying anything.",nothing,4,7
+8,"In the given context: Mary picked up the football. Mary dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,5,7
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,8
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,2,8
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,3,8
+8,"In the given context: Mary picked up the apple. Therefore, Sandra is not currently carrying anything.",nothing,4,8
+8,"In the given context: Mary picked up the football. John picked up the milk. Therefore, Sandra is not currently carrying anything.",nothing,5,8
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,9
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,2,9
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,3,9
+8,"In the given context: John picked up the football. Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,4,9
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,5,9
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,10
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,2,10
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,3,10
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,4,10
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,5,10
+8,"In the given context: Daniel picked up the milk. Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,1,11
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,2,11
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,3,11
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,4,11
+8,"In the given context: Sandra picked up the football. Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,5,11
+8,"In the given context: Mary picked up the football. Therefore, Mary is currently carrying the football.",football,1,12
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the football.",football,2,12
+8,"In the given context: Mary dropped the football. Therefore, Mary is not currently carrying anything.",nothing,3,12
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,4,12
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,5,12
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,13
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,2,13
+8,"In the given context: Sandra picked up the apple. Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,3,13
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,4,13
+8,"In the given context: John dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,5,13
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,14
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,2,14
+8,"In the given context: Mary picked up the milk. Therefore, Sandra is not currently carrying anything.",nothing,3,14
+8,"In the given context: Mary dropped the milk. Daniel picked up the milk. Therefore, Mary is not currently carrying anything.",nothing,4,14
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,5,14
+8,"In the given context: Sandra picked up the milk. John picked up the apple. Therefore, Sandra is currently carrying the milk.",milk,1,15
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the apple.",apple,2,15
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the apple.",apple,3,15
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,4,15
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,5,15
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,1,16
+8,"In the given context: John dropped the apple. Therefore, John is not currently carrying anything.",nothing,2,16
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,3,16
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,4,16
+8,"In the given context: John dropped the apple. Therefore, John is not currently carrying anything.",nothing,5,16
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,17
+8,"In the given context: Mary picked up the football. Daniel dropped the apple. Therefore, Mary is currently carrying the football.",football,2,17
+8,"In the given context: Daniel picked up the apple. Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,3,17
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,4,17
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,5,17
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,18
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,2,18
+8,"In the given context: John picked up the apple. Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,3,18
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,4,18
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,5,18
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,19
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,2,19
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,3,19
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,4,19
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,5,19
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,20
+8,"In the given context: John picked up the apple. John dropped the apple. Therefore, Daniel is currently carrying the milk.",milk,2,20
+8,"In the given context: Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,3,20
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,4,20
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,5,20
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,21
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,21
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,3,21
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,4,21
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,5,21
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,1,22
+8,"In the given context: John dropped the apple. Therefore, John is not currently carrying anything.",nothing,2,22
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,3,22
+8,"In the given context: John dropped the apple. Therefore, John is not currently carrying anything.",nothing,4,22
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,5,22
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,23
+8,"In the given context: Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,2,23
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,3,23
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,4,23
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the apple.",apple,5,23
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,24
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the football.",football,2,24
+8,"In the given context: Daniel picked up the apple. Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,3,24
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,4,24
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,5,24
+8,"In the given context: Sandra picked up the milk. Mary picked up the apple. Therefore, Sandra is currently carrying the milk.",milk,1,25
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the apple.",apple,2,25
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the apple.",apple,3,25
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,4,25
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,5,25
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,26
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,2,26
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,3,26
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,4,26
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,5,26
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,27
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,2,27
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,3,27
+8,"In the given context: Daniel dropped the milk. Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,4,27
+8,"In the given context: Sandra picked up the milk. Therefore, Daniel is not currently carrying anything.",nothing,5,27
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,28
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,28
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,3,28
+8,"In the given context: Sandra dropped the apple. Therefore, Mary is currently carrying the milk.",milk,4,28
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,5,28
+8,"In the given context: Sandra picked up the apple. John picked up the football. Therefore, Sandra is currently carrying the apple.",apple,1,29
+8,"In the given context: Mary picked up the milk. Therefore, John is currently carrying the football.",football,2,29
+8,"In the given context: Mary dropped the milk. Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,3,29
+8,"In the given context: John dropped the football. Therefore, Mary is not currently carrying anything.",nothing,4,29
+8,"In the given context: Daniel picked up the apple. John picked up the football. Therefore, Daniel is currently carrying the apple.",apple,5,29
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,1,30
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,2,30
+8,"In the given context: Sandra picked up the apple. John picked up the milk. Therefore, Mary is not currently carrying anything.",nothing,3,30
+8,"In the given context: John dropped the milk. Therefore, John is not currently carrying anything.",nothing,4,30
+8,"In the given context: John picked up the milk. John dropped the milk. Therefore, John is not currently carrying anything.",nothing,5,30
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,1,31
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,2,31
+8,"In the given context: John dropped the football. Therefore, John is not currently carrying anything.",nothing,3,31
+8,"In the given context: Mary picked up the apple. Therefore, John is not currently carrying anything.",nothing,4,31
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the apple.",apple,5,31
+8,"In the given context: John picked up the milk. John dropped the milk. Therefore, John is not currently carrying anything.",nothing,1,32
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,2,32
+8,"In the given context: John dropped the milk. Therefore, John is not currently carrying anything.",nothing,3,32
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,4,32
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,5,32
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,33
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,2,33
+8,"In the given context: Mary picked up the milk. John picked up the football. Therefore, John is currently carrying the football.",football,3,33
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,4,33
+8,"In the given context: John dropped the football. John picked up the football. Therefore, Mary is not currently carrying anything.",nothing,5,33
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,34
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,2,34
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,3,34
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,4,34
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,5,34
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,35
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,2,35
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,3,35
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,4,35
+8,"In the given context: Sandra dropped the milk. Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,5,35
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,1,36
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,2,36
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,3,36
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,4,36
+8,"In the given context: Mary dropped the apple. Therefore, Daniel is currently carrying the football.",football,5,36
+8,"In the given context: John picked up the football. Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,37
+8,"In the given context: Daniel picked up the milk. John dropped the football. Therefore, Daniel is currently carrying the milk.",milk,2,37
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,3,37
+8,"In the given context: Daniel dropped the apple. Therefore, John is not currently carrying anything.",nothing,4,37
+8,"In the given context: Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,5,37
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,38
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,2,38
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,3,38
+8,"In the given context: Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,4,38
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,5,38
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,39
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,2,39
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,3,39
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,4,39
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,5,39
+8,"In the given context: John picked up the milk. John dropped the milk. Therefore, John is not currently carrying anything.",nothing,1,40
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,2,40
+8,"In the given context: John picked up the milk. Sandra picked up the football. Therefore, John is currently carrying the milk.",milk,3,40
+8,"In the given context: John dropped the milk. Therefore, John is not currently carrying anything.",nothing,4,40
+8,"In the given context: John picked up the milk. John dropped the milk. Therefore, John is not currently carrying anything.",nothing,5,40
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,41
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,2,41
+8,"In the given context: John picked up the football. Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,3,41
+8,"In the given context: Mary dropped the apple. John dropped the football. Therefore, Mary is not currently carrying anything.",nothing,4,41
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,5,41
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,1,42
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,2,42
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the apple.",apple,3,42
+8,"In the given context: John dropped the milk. Therefore, John is not currently carrying anything.",nothing,4,42
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,5,42
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,1,43
+8,"In the given context: John dropped the milk. John picked up the football. Therefore, John is currently carrying the football.",football,2,43
+8,"In the given context: John dropped the football. Therefore, John is not currently carrying anything.",nothing,3,43
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,4,43
+8,"In the given context: Mary picked up the apple. Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,5,43
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,1,44
+8,"In the given context: John dropped the apple. Therefore, John is not currently carrying anything.",nothing,2,44
+8,"In the given context: Daniel picked up the football. Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,3,44
+8,"In the given context: John picked up the apple. Daniel picked up the football. Therefore, John is currently carrying the apple.",apple,4,44
+8,"In the given context: Daniel dropped the football. Therefore, John is currently carrying the apple.",apple,5,44
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,45
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the football.",football,2,45
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,3,45
+8,"In the given context: Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,4,45
+8,"In the given context: Sandra picked up the football. Therefore, Daniel is not currently carrying anything.",nothing,5,45
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,46
+8,"In the given context: Mary picked up the milk. Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,2,46
+8,"In the given context: Daniel dropped the football. Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,3,46
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,4,46
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,5,46
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,47
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,2,47
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,3,47
+8,"In the given context: Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,4,47
+8,"In the given context: Mary picked up the football. Therefore, Daniel is not currently carrying anything.",nothing,5,47
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,48
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,2,48
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,3,48
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,4,48
+8,"In the given context: Sandra picked up the apple. John picked up the milk. Therefore, John is currently carrying the milk.",milk,5,48
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,49
+8,"In the given context: Daniel dropped the apple. Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,2,49
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,3,49
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,4,49
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,5,49
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,1,50
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the milk.",milk,2,50
+8,"In the given context: John dropped the milk. Therefore, John is not currently carrying anything.",nothing,3,50
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,4,50
+8,"In the given context: John picked up the football. Sandra picked up the milk. Therefore, John is currently carrying the football.",football,5,50
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,1,51
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the milk.",milk,2,51
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the milk.",milk,3,51
+8,"In the given context: Mary picked up the football. Therefore, Mary is currently carrying the football.",football,4,51
+8,"In the given context: John dropped the milk. Therefore, John is not currently carrying anything.",nothing,5,51
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,52
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,2,52
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,3,52
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,4,52
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,5,52
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,1,53
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the apple.",apple,2,53
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,3,53
+8,"In the given context: John picked up the apple. John dropped the apple. Therefore, John is not currently carrying anything.",nothing,4,53
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,5,53
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,54
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,2,54
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,3,54
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,4,54
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,5,54
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,55
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,2,55
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,3,55
+8,"In the given context: Daniel dropped the football. Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,4,55
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the football.",football,5,55
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,56
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,2,56
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,3,56
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,4,56
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,5,56
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,57
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,2,57
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,3,57
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,4,57
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,5,57
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,58
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,2,58
+8,"In the given context: John picked up the milk. Therefore, Daniel is not currently carrying anything.",nothing,3,58
+8,"In the given context: John dropped the milk. Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,4,58
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,5,58
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,59
+8,"In the given context: John picked up the milk. Therefore, Sandra is currently carrying the apple.",apple,2,59
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the milk.",milk,3,59
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,4,59
+8,"In the given context: John dropped the milk. Therefore, John is not currently carrying anything.",nothing,5,59
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,60
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,2,60
+8,"In the given context: Daniel picked up the football. Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,3,60
+8,"In the given context: Sandra picked up the football. Therefore, Daniel is not currently carrying anything.",nothing,4,60
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,5,60
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,61
+8,"In the given context: Sandra picked up the apple. Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,2,61
+8,"In the given context: Mary picked up the milk. Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,3,61
+8,"In the given context: Mary dropped the milk. Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,4,61
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,5,61
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,62
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,62
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,3,62
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,4,62
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the football.",football,5,62
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,1,63
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,2,63
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,3,63
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,4,63
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,5,63
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,64
+8,"In the given context: Mary picked up the apple. Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,2,64
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,3,64
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,4,64
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,5,64
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,1,65
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,2,65
+8,"In the given context: Daniel picked up the milk. Therefore, Mary is not currently carrying anything.",nothing,3,65
+8,"In the given context: Mary picked up the apple. Daniel dropped the milk. Therefore, Mary is currently carrying the apple.",apple,4,65
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,5,65
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,66
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,66
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,3,66
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,4,66
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,5,66
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,67
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,2,67
+8,"In the given context: Daniel picked up the football. Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,3,67
+8,"In the given context: Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,4,67
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,5,67
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,68
+8,"In the given context: John picked up the football. Therefore, Daniel is currently carrying the milk.",milk,2,68
+8,"In the given context: Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,3,68
+8,"In the given context: John picked up the apple. Therefore, Daniel is not currently carrying anything.",nothing,4,68
+8,"In the given context: Daniel picked up the milk. John dropped the football. Therefore, John is not currently carrying anything.",nothing,5,68
+8,"In the given context: John picked up the milk. Therefore, John is currently carrying the milk.",milk,1,69
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the milk.",milk,2,69
+8,"In the given context: Daniel picked up the football. Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,3,69
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,4,69
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,5,69
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,70
+8,"In the given context: Mary picked up the football. Mary dropped the football. Therefore, Mary is not currently carrying anything.",nothing,2,70
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,3,70
+8,"In the given context: Daniel dropped the milk. Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,4,70
+8,"In the given context: Sandra picked up the football. Sandra dropped the football. Therefore, Daniel is currently carrying the milk.",milk,5,70
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,71
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,71
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,3,71
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,4,71
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,5,71
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,72
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,2,72
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,3,72
+8,"In the given context: Daniel dropped the milk. John picked up the milk. Therefore, John is currently carrying the milk.",milk,4,72
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,5,72
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,1,73
+8,"In the given context: Sandra picked up the milk. Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,2,73
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,3,73
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,4,73
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,5,73
+8,"In the given context: Sandra picked up the milk. Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,1,74
+8,"In the given context: Sandra picked up the milk. Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,2,74
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,3,74
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,4,74
+8,"In the given context: Daniel dropped the football. John picked up the milk. Therefore, Daniel is not currently carrying anything.",nothing,5,74
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,75
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,2,75
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,3,75
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,4,75
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,5,75
+8,"In the given context: Mary picked up the football. Mary dropped the football. Therefore, Mary is not currently carrying anything.",nothing,1,76
+8,"In the given context: Mary picked up the football. Therefore, Mary is currently carrying the football.",football,2,76
+8,"In the given context: Mary dropped the football. Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,3,76
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,4,76
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the apple.",apple,5,76
+8,"In the given context: John picked up the milk. John dropped the milk. Therefore, John is not currently carrying anything.",nothing,1,77
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,2,77
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,3,77
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,4,77
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,5,77
+8,"In the given context: Mary picked up the football. Therefore, Mary is currently carrying the football.",football,1,78
+8,"In the given context: Sandra picked up the milk. John picked up the apple. Therefore, John is currently carrying the apple.",apple,2,78
+8,"In the given context: John dropped the apple. Therefore, Sandra is currently carrying the milk.",milk,3,78
+8,"In the given context: Mary dropped the football. John picked up the apple. Therefore, John is currently carrying the apple.",apple,4,78
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,5,78
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,79
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,79
+8,"In the given context: Sandra picked up the milk. Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,3,79
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,4,79
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,5,79
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,80
+8,"In the given context: John picked up the apple. Therefore, Daniel is currently carrying the milk.",milk,2,80
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,3,80
+8,"In the given context: Daniel dropped the milk. Therefore, John is currently carrying the apple.",apple,4,80
+8,"In the given context: John picked up the milk. Therefore, Daniel is not currently carrying anything.",nothing,5,80
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,81
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,2,81
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,3,81
+8,"In the given context: Mary picked up the football. Therefore, Daniel is not currently carrying anything.",nothing,4,81
+8,"In the given context: Mary dropped the football. Therefore, Mary is not currently carrying anything.",nothing,5,81
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,82
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,2,82
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,3,82
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,4,82
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,5,82
+8,"In the given context: Mary picked up the football. Therefore, Mary is currently carrying the football.",football,1,83
+8,"In the given context: Mary dropped the football. Mary picked up the football. Therefore, Mary is currently carrying the football.",football,2,83
+8,"In the given context: Mary dropped the football. Therefore, Mary is not currently carrying anything.",nothing,3,83
+8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,4,83
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,5,83
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,84
+8,"In the given context: Sandra dropped the football. Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,2,84
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,3,84
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,4,84
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,5,84
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,85
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,85
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,3,85
+8,"In the given context: Mary picked up the milk. John picked up the football. Therefore, Sandra is not currently carrying anything.",nothing,4,85
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,5,85
+8,"In the given context: Mary picked up the football. Therefore, Mary is currently carrying the football.",football,1,86
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the football.",football,2,86
+8,"In the given context: John picked up the apple. Therefore, Mary is currently carrying the football.",football,3,86
+8,"In the given context: John dropped the apple. Mary dropped the football. Therefore, Mary is not currently carrying anything.",nothing,4,86
+8,"In the given context: Mary picked up the football. Mary picked up the apple. Therefore, John is not currently carrying anything.",nothing,5,86
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,87
+8,"In the given context: Daniel dropped the apple. Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,2,87
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,3,87
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,4,87
+8,"In the given context: Daniel dropped the apple. Sandra picked up the apple. Therefore, Daniel is not currently carrying anything.",nothing,5,87
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,88
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,2,88
+8,"In the given context: Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,3,88
+8,"In the given context: Daniel dropped the apple. Therefore, Daniel is not currently carrying anything.",nothing,4,88
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,5,88
+8,"In the given context: Daniel picked up the apple. Therefore, Daniel is currently carrying the apple.",apple,1,89
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the apple.",apple,2,89
+8,"In the given context: Daniel dropped the apple. Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,3,89
+8,"In the given context: Daniel dropped the milk. Therefore, Daniel is not currently carrying anything.",nothing,4,89
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,5,89
+8,"In the given context: Daniel picked up the football. Sandra picked up the apple. Therefore, Daniel is currently carrying the football.",football,1,90
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the apple.",apple,2,90
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,3,90
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is not currently carrying anything.",nothing,4,90
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,5,90
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,1,91
+8,"In the given context: John dropped the apple. Therefore, John is not currently carrying anything.",nothing,2,91
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,3,91
+8,"In the given context: John dropped the apple. Therefore, John is not currently carrying anything.",nothing,4,91
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is not currently carrying anything.",nothing,5,91
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,92
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the football.",football,2,92
+8,"In the given context: Sandra dropped the football. Daniel picked up the apple. Therefore, Sandra is not currently carrying anything.",nothing,3,92
+8,"In the given context: Daniel dropped the apple. Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,4,92
+8,"In the given context: Sandra picked up the football. Therefore, Daniel is not currently carrying anything.",nothing,5,92
+8,"In the given context: Daniel picked up the milk. Therefore, Daniel is currently carrying the milk.",milk,1,93
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,2,93
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is currently carrying the milk.",milk,3,93
+8,"In the given context: Daniel dropped the milk. Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,4,93
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Daniel is not currently carrying anything.",nothing,5,93
+8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,94
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,2,94
+8,"In the given context: Mary picked up the football. Therefore, Mary is currently carrying the football.",football,3,94
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the football.",football,4,94
+8,"In the given context: Mary dropped the milk. Therefore, Mary is not currently carrying anything.",nothing,5,94
+8,"In the given context: Daniel picked up the football. Therefore, Daniel is currently carrying the football.",football,1,95
+8,"In the given context: Mary picked up the milk. Therefore, Daniel is currently carrying the football.",football,2,95
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,3,95
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is currently carrying the milk.",milk,4,95
+8,"In the given context: Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,5,95
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,1,96
+8,"In the given context: Sandra dropped the milk. Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,2,96
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the milk.",milk,3,96
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,4,96
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,5,96
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,1,97
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,2,97
+8,"In the given context: Daniel picked up the football. Therefore, Mary is not currently carrying anything.",nothing,3,97
+8,"In the given context: Mary picked up the apple. Therefore, Daniel is currently carrying the football.",football,4,97
+8,"In the given context: Daniel dropped the football. Therefore, Daniel is not currently carrying anything.",nothing,5,97
+8,"In the given context: John picked up the apple. Therefore, John is currently carrying the apple.",apple,1,98
+8,"In the given context: Sandra picked up the milk. Therefore, John is currently carrying the apple.",apple,2,98
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,3,98
+8,"In the given context: Sandra picked up the milk. Therefore, Sandra is currently carrying the milk.",milk,4,98
+8,"In the given context: Sandra dropped the milk. Therefore, Sandra is not currently carrying anything.",nothing,5,98
+8,"In the given context: Sandra picked up the apple. Therefore, Sandra is currently carrying the apple.",apple,1,99
+8,"In the given context: Sandra dropped the apple. Therefore, Sandra is not currently carrying anything.",nothing,2,99
+8,"In the given context: Mary picked up the apple. Therefore, Mary is currently carrying the apple.",apple,3,99
+8,"In the given context: Mary dropped the apple. Therefore, Mary is not currently carrying anything.",nothing,4,99
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Mary is not currently carrying anything.",nothing,5,99
+8,"In the given context: Sandra picked up the football. Therefore, Sandra is currently carrying the football.",football,1,100
+8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, Sandra is currently carrying the football.",football,2,100
+8,"In the given context: Sandra dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,3,100
+8,"In the given context: Daniel picked up the football. Daniel dropped the football. Therefore, Sandra is not currently carrying anything.",nothing,4,100
+8,"In the given context: Daniel picked up the football. Therefore, Sandra is not currently carrying anything.",nothing,5,100
