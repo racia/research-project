@@ -278,7 +278,13 @@ class Plotter:
         :return: None
         """
         if file_name:
-            plt.savefig(self.results_path / file_name, bbox_inches="tight")
+            file_name = str(file_name)
+            if not Path(file_name).suffix:
+                raise ValueError(
+                    f"'file_name' must include a file-type suffix (e.g. '.png'), "
+                    f"got: {file_name!r}"
+                )
+            plt.savefig(self.results_path / file_name, dpi=300, bbox_inches="tight")
         elif x_label and y_label and path_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
@@ -441,6 +447,7 @@ class Plotter:
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        plt.gca().set_axisbelow(True)
 
         title = f"{type_of_data} per {x_label}"
         if num_of_data_arrays > 1:
@@ -528,9 +535,8 @@ class Plotter:
         )
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
 
-        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        plt.savefig(self.results_path / path_add / file_name, dpi=300)
-        plt.close()
+        png_path = self._resolve_save_target(file_name, path_add)
+        self._save_plot(file_name=png_path)
 
     def draw_heat(
         self,
@@ -628,7 +634,12 @@ class Plotter:
         """
         plt.figure(figsize=(10, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
-        plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
+        plt.plot(
+            range(1, len(acc_per_task) + 1),
+            acc_per_task.all,
+            color=colors[0],
+            alpha=0.82,
+        )
 
         self._plot_general_details(
             x_label,
@@ -638,12 +649,15 @@ class Plotter:
             num_of_data_arrays=1,
             step=1,
         )
-        self._save_plot(
-            x_label,
-            y_label,
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
-            file_name=file_name,
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        png_path = self._resolve_save_target(
+            file_name
+            or f"{y_label.lower().replace(' ', '_')}_per_{x_label.lower()}.png",
+            path_add,
         )
+        txt_rows = [(f"task={i}", float(v)) for i, v in enumerate(acc_per_task.all, 1)]
+        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
+        self._save_plot(file_name=png_path)
 
     def plot_acc_and_toxic_cot(
         self,
@@ -676,6 +690,7 @@ class Plotter:
         ax.set_ylim(0, 1.05)
         ax.set_yticks(np.arange(0.0, 1.05, 0.1))
         ax.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        ax.set_axisbelow(True)
         ax.set_xlabel(" ".join(group.title().split("_")))
         ax.set_ylabel("Accuracy")
         ax.set_title(
@@ -701,15 +716,12 @@ class Plotter:
         ax.set_ylim(0, 1.05)
         ax.set_yticks(np.arange(0.0, 1.05, 0.1))
         ax.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
-        path = self.results_path / (
-            Path("/".join(plot_name_add)) if plot_name_add else ""
+        ax.set_axisbelow(True)
+        png_path = self._resolve_save_target(
+            f"acc_and_toxic_cot_per_{group}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
         )
-        path.mkdir(parents=True, exist_ok=True)
-        plt.savefig(
-            path / f"acc_and_toxic_cot_per_{group}.png",
-            bbox_inches="tight",
-            dpi=300,
-        )
+        self._save_plot(file_name=png_path)
 
     def plot_acc_two_runs_per(
         self,
@@ -751,13 +763,15 @@ class Plotter:
         ax.set_ylim(0, 1.05)
         ax.set_yticks(np.arange(0.0, 1.05, 0.1))
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        plt.gca().set_axisbelow(True)
         plt.xticks(rotation=45, ha="right")
         plt.tight_layout()
-        self._save_plot(
-            y_label=y_label,
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
-            file_name=file_name,
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        png_path = self._resolve_save_target(
+            file_name or f"{y_label.lower().replace(' ', '_')}_per_{group}.png",
+            path_add,
         )
+        self._save_plot(file_name=png_path)
 
     def plot_acc_per_task_and_prompt(
         self,
@@ -812,12 +826,12 @@ class Plotter:
             num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
-        self._save_plot(
-            y_label,
-            x_label,
-            file_name,
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
-        )
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        if file_name:
+            png_path = self._resolve_save_target(file_name, path_add)
+            self._save_plot(file_name=png_path)
+        else:
+            self._save_plot(y_label, x_label, path_add=path_add)
 
     def plot_correctness_agreement(
         self,
@@ -853,15 +867,11 @@ class Plotter:
             f"Answer Correct Agreement Between DA and Reasoning Runs with Versions={versions}"
         )
         plt.xticks(rotation=45, ha="right")
-        path = self.results_path / (
-            Path("/".join(plot_name_add)) if plot_name_add else ""
+        png_path = self._resolve_save_target(
+            f"correctness_agreement_{'_'.join(versions)}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
         )
-        path.mkdir(parents=True, exist_ok=True)
-        plt.savefig(
-            path / f"correctness_agreement_{'_'.join(versions)}.png",
-            bbox_inches="tight",
-            dpi=300,
-        )
+        self._save_plot(file_name=png_path)
 
     def plot_attr_agreement(
         self,
@@ -906,15 +916,11 @@ class Plotter:
         plt.title(
             f"Answer Correct Agreement Between DA and Reasoning Runs with Versions={versions}"
         )
-        path = self.results_path / (
-            Path("/".join(plot_name_add)) if plot_name_add else ""
+        png_path = self._resolve_save_target(
+            f"attribute_agreement_{'_'.join(versions)}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
         )
-        path.mkdir(parents=True, exist_ok=True)
-        plt.savefig(
-            path / f"attribute_agreement_{'_'.join(versions)}.png",
-            # bbox_inches="tight",
-            dpi=300,
-        )
+        self._save_plot(file_name=png_path)
 
     def plot_toxic_cot_per(
         self,
@@ -949,15 +955,11 @@ class Plotter:
         plt.title(
             f"Percentage of Toxic Chain-of-Though in Correct Direct Answers per {group.title()} ({version})"
         )
-        path = self.results_path / (
-            Path("/".join(plot_name_add)) if plot_name_add else ""
+        png_path = self._resolve_save_target(
+            f"toxic_cot_per_{group}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
         )
-        path.mkdir(parents=True, exist_ok=True)
-        plt.savefig(
-            path / f"toxic_cot_per_{group}.png",
-            bbox_inches="tight",
-            dpi=300,
-        )
+        self._save_plot(file_name=png_path)
 
     def plot_acc_with_std(
         self,
@@ -1015,7 +1017,11 @@ class Plotter:
             num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
-        self._save_plot(y_label, x_label, file_name, path_add)
+        if file_name:
+            png_path = self._resolve_save_target(file_name, path_add)
+            self._save_plot(file_name=png_path)
+        else:
+            self._save_plot(y_label, x_label, path_add=path_add)
 
     def plot_exact_vs_soft_match_per_task(
         self,
@@ -1106,9 +1112,9 @@ class Plotter:
         png_path = self._resolve_save_target(
             "exact_vs_soft_match_per_task.png", path_add
         )
+        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
 
     def plot_reasoning_scores_per_task(
         self,
@@ -1191,9 +1197,9 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target("reasoning_scores_per_task.png", path_add)
+        self._write_plot_data_txt(png_path, [("Reasoning scores per task", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, [("Reasoning scores per task", txt_rows)])
 
     def plot_reasoning_vs_direct_answer_per_task(
         self,
@@ -1291,9 +1297,9 @@ class Plotter:
         png_path = self._resolve_save_target(
             "reasoning_vs_direct_answer_per_task.png", path_add
         )
+        self._write_plot_data_txt(png_path, all_rows)
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, all_rows)
 
     def plot_accuracy_distribution(
         self,
@@ -1389,9 +1395,9 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target("accuracy_distribution.png", path_add)
+        self._write_plot_data_txt(png_path, [("Distribution stats", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, [("Distribution stats", txt_rows)])
 
     def get_color_or_map(self, c: str):
         """
@@ -1751,7 +1757,7 @@ class Plotter:
             fontsize=14,
         )
         fig.tight_layout(rect=(0, 0, 1, 0.96))
-        self._save_plot(file_name=f"error_case_heatmap_{case_type}")
+        self._save_plot(file_name=f"error_case_heatmap_{case_type}.png")
 
     def plot_error_histogram(
         self,
@@ -1826,7 +1832,7 @@ class Plotter:
         plt.tight_layout()
         normalization = "normalized" if normalize else "absolute"
         self._save_plot(
-            file_name=f"error_histogram_{normalization}_{setting.title().replace(' ', '_')}"
+            file_name=f"error_histogram_{normalization}_{setting.title().replace(' ', '_')}.png"
         )
 
     def plot_case_pie(
@@ -1889,7 +1895,7 @@ class Plotter:
         plt.tight_layout(rect=(0, 0, 0.8, 1))
         uniqueness = "_unique" if unique else "_all"
         setting = setting.title().replace(" ", "_")
-        self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}")
+        self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}.png")
 
     def plot_correlation(
         self,
@@ -2109,15 +2115,14 @@ class Plotter:
             # num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None, # This may be confusing, better to stay with samples
             num_samples=num_samples,
         )
-        if path_add:
-            file_name = path_add / file_name.lower()
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(
-            y_label,
-            x_label,
-            file_name,
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
-        )
+        if file_name:
+            png_path = self._resolve_save_target(str(file_name).lower(), path_add)
+        else:
+            label = y_label.lower().replace(" ", "_")
+            png_path = self._resolve_save_target(
+                f"{label}_per_{x_label.lower()}.png", path_add
+            )
+        self._save_plot(file_name=png_path)
         plt.close()
 
     def plot_corr_hist(
@@ -2271,12 +2276,12 @@ class Plotter:
             num_samples=num_samples,
         )
 
-        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(
-            y_label=y_label,
-            x_label=x_label,
-            file_name=f"{path_add}/{file_name.lower()}",
+        png_path = self._resolve_save_target(file_name.lower(), path_add)
+        self._write_plot_data_txt(
+            png_path,
+            [("Plot data", [(str(x_label), None)])],
         )
+        self._save_plot(file_name=png_path)
         plt.close()
 
     def plot_corr_boxplot(
@@ -2427,6 +2432,7 @@ class Plotter:
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
         ax.xaxis.grid(True, which="minor", color="black", lw=1, ls=":")
+        ax.set_axisbelow(True)
 
         self._plot_general_details(
             x_label=x_label,
@@ -2441,13 +2447,12 @@ class Plotter:
             num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None,
         )
 
-        if path_add:
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(
-            y_label=y_label,
-            x_label=x_label,
-            file_name=f"{path_add}/{file_name.lower()}",
+        png_path = self._resolve_save_target(file_name.lower(), path_add)
+        self._write_plot_data_txt(
+            png_path,
+            [("Plot data", [(str(x_label), None)])],
         )
+        self._save_plot(file_name=png_path)
         plt.close()
 
     def plot_distractor_attn_boxplot(
@@ -2540,6 +2545,7 @@ class Plotter:
             pad=8,
         )
         ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
 
         if show_values:
             for i, m in enumerate(medians, 1):
@@ -2558,10 +2564,6 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distractor_attn_boxplot_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-        self.plot_counter_prompt += 1
-
         self._write_plot_data_txt(
             png_path,
             [
@@ -2575,6 +2577,8 @@ class Plotter:
                 ),
             ],
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_distractor_attn_per_task(
         self,
@@ -2718,16 +2722,15 @@ class Plotter:
         )
         ax.legend(fontsize=8, ncol=3, loc="upper right", framealpha=0.9)
         ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
             f"distractor_attn_per_task_{version}.png", path_add
         )
+        self._write_plot_data_txt(png_path, [("Bar means", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self.plot_counter_prompt += 1
-
-        self._write_plot_data_txt(png_path, [("Bar means", txt_rows)])
 
     def plot_distractor_attn_scatter(
         self,
@@ -2853,6 +2856,7 @@ class Plotter:
             )
             ax.legend(fontsize=9, loc="upper left", framealpha=0.9)
             ax.grid(linestyle="--", alpha=0.35)
+            ax.set_axisbelow(True)
 
         _style_scatter_ax(
             ax_dist,
@@ -2880,11 +2884,9 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distractor_attn_scatter_{version}.png", path_add
         )
+        self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self.plot_counter_prompt += 1
-
-        self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
 
     def plot_supporting_attention(
         self,
@@ -2992,21 +2994,21 @@ class Plotter:
             pad=8,
         )
         ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
         ax.legend(loc="upper left", fontsize=9, framealpha=0.9)
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
             f"supporting_attention_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows: list[tuple[str, float | int | None]] = []
         for (label, vals, _), m, pct in zip(groups, means, pct_distracted):
             txt_rows.append((f"{label} n", len(vals)))
             txt_rows.append((f"{label} mean margin", m))
             txt_rows.append((f"{label} pct distracted", pct))
         self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_distractor_supporting_ratio(
         self,
@@ -3123,6 +3125,7 @@ class Plotter:
             pad=8,
         )
         ax.grid(axis="y", linestyle="--", alpha=0.4, which="both")
+        ax.set_axisbelow(True)
 
         if show_values:
             for i, (m, pct) in enumerate(zip(medians, pct_above), 1):
@@ -3141,15 +3144,14 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distractor_supporting_ratio_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows: list[tuple[str, float | int | None]] = []
         for (label, vals, _), m, pct in zip(groups, medians, pct_above):
             txt_rows.append((f"{label} n", len(vals)))
             txt_rows.append((f"{label} median ratio", m))
             txt_rows.append((f"{label} pct above 1", pct))
         self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_attention_triplet(
         self,
@@ -3256,9 +3258,6 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"attention_triplet_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows = []
         for cat, (mc, sc, nc), (mi, si, ni) in zip(
             category_labels, stats_correct, stats_incorrect
@@ -3272,6 +3271,8 @@ class Plotter:
         self._write_plot_data_txt(
             png_path, [("Means by role and correctness", txt_rows)]
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_distraction_vs_n_distractors(
         self,
@@ -3420,6 +3421,7 @@ class Plotter:
         ax_attn.set_xticks(ns)
         ax_attn.set_ylim(*attn_ylim(dist_mean, supp_mean))
         ax_attn.grid(axis="y", linestyle="--", alpha=0.35)
+        ax_attn.set_axisbelow(True)
 
         ax_acc.set_ylabel("Accuracy (± 95% CI)", fontsize=11, color=self.color_correct)
         ax_acc.set_ylim(0, 1.02)
@@ -3444,9 +3446,6 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distraction_vs_n_distractors_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows = []
         for n, dm, ds, sm, ss, p, lo, hi, bn in zip(
             ns,
@@ -3468,6 +3467,8 @@ class Plotter:
             txt_rows.append((f"n_dist={n} acc hi", hi))
             txt_rows.append((f"n_dist={n} bin n", bn))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_diff_two_runs_per_task(
         self,
@@ -3498,17 +3499,12 @@ class Plotter:
         plt.xticks(rotation=45, ha="right")
         plt.tight_layout()
 
-        path = (
-            self.results_path / Path(*plot_name_add)
-            if plot_name_add
-            else self.results_path
+        path_add_resolved = Path(*plot_name_add) if plot_name_add else None
+        png_path = self._resolve_save_target(
+            file_name or "diff_two_runs_per_task.png",
+            path_add_resolved,
         )
-        path.mkdir(parents=True, exist_ok=True)
-        plt.savefig(
-            path / (file_name or "diff_two_runs_per_task.png"),
-            dpi=300,
-            bbox_inches="tight",
-        )
+        self._save_plot(file_name=png_path)
 
     def plot_toxic_cot_transition_overview(
         self,
@@ -3600,6 +3596,7 @@ class Plotter:
         )
         ax.set_xlabel(x_label)
         ax.grid(axis="x", linestyle="--", linewidth=0.5, alpha=0.7)
+        ax.set_axisbelow(True)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
         ax.spines["left"].set_visible(False)
@@ -3607,14 +3604,8 @@ class Plotter:
         ax.legend(loc="center left", bbox_to_anchor=(1, 0.5), title="Transition")
         plt.tight_layout()
 
-        if path_add:
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-            file_name = str(Path(path_add) / file_name)
-
-        self._save_plot(
-            file_name=file_name,
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
-        )
+        png_path = self._resolve_save_target(file_name, path_add if path_add else None)
+        self._save_plot(file_name=png_path)
 
     def plot_attr_before_after_two_runs_per_task(
         self,
@@ -3680,13 +3671,10 @@ class Plotter:
         plt.xticks(x, tasks)
         plt.legend(loc="upper right")
 
-        self._save_plot(
-            y_label=y_label,
-            x_label="Task",
-            file_name=file_name
-            or f"{y_label.replace(' ', '_').lower()}_two_runs_per_task.png",
-            path_add=Path("/".join(plot_name_add)) if plot_name_add else None,
-        )
+        fn = file_name or f"{y_label.replace(' ', '_').lower()}_two_runs_per_task.png"
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        png_path = self._resolve_save_target(fn, path_add)
+        self._save_plot(file_name=png_path)
 
     def plot_attrs_by_runs_versions_toxicity(
         self,
@@ -3825,11 +3813,7 @@ class Plotter:
                 aspect=1.4,
                 ax=axes[1],
             )
-        plt.savefig(
-            self.results_path / "attrs_by_runs_versions_toxicity.png",
-            dpi=300,
-            bbox_inches="tight",
-        )
+        self._save_plot(file_name="attrs_by_runs_versions_toxicity.png")
 
     def plot_accuracy_vs_distraction_ratio(
         self,
@@ -3969,14 +3953,12 @@ class Plotter:
             pad=8,
         )
         ax.grid(linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
             f"accuracy_vs_distraction_ratio_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows = []
         for c, p, lo, hi, n in zip(bin_centres, bin_acc, bin_lo, bin_hi, bin_n):
             txt_rows.append((f"ratio_centre={c:.4f} accuracy", float(p)))
@@ -3984,6 +3966,8 @@ class Plotter:
             txt_rows.append((f"ratio_centre={c:.4f} acc_hi", float(hi)))
             txt_rows.append((f"ratio_centre={c:.4f} n", int(n)))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def _disambiguator_from_tags(self, plot_name_add: list[str] | None) -> str:
         """
@@ -4244,13 +4228,12 @@ class Plotter:
             f"split_accuracy{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         self._write_plot_data_txt(
             png_path,
             [("Exact match", em_rows), ("Soft match", sm_rows)],
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_before_after_reasoning_scores(
         self,
@@ -4310,9 +4293,9 @@ class Plotter:
             f"split_reasoning_scores{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
+        self._write_plot_data_txt(png_path, sections)
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, sections)
 
         # --- Second view: one panel per version, all three scores as lines ---
         # Complements the per-score view by making it easy to compare BLEU/ROUGE/
@@ -4383,9 +4366,9 @@ class Plotter:
                 f"{self._disambiguator_from_tags(plot_name_add)}.png",
                 path_add,
             )
+            self._write_plot_data_txt(png_path2, sections2)
             self._save_plot(file_name=png_path2)
             plt.close(fig2)
-            self._write_plot_data_txt(png_path2, sections2)
 
     def plot_before_after_attention(
         self,
@@ -4447,9 +4430,6 @@ class Plotter:
             f"split_attention{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         self._write_plot_data_txt(
             png_path,
             [
@@ -4457,6 +4437,8 @@ class Plotter:
                 ("Attention on target", target_rows),
             ],
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_before_after_summary(
         self,
@@ -4571,9 +4553,6 @@ class Plotter:
             f"split_summary{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         rows: list[tuple[str, float | None]] = []
         for label, b, a in zip(labels, before_means, after_means):
             rows.append((f"{label} before", b))
@@ -4581,6 +4560,8 @@ class Plotter:
             if b is not None and a is not None:
                 rows.append((f"{label} delta", float(a) - float(b)))
         self._write_plot_data_txt(png_path, [("Mean across tasks", rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_before_after_delta_lineplot(
         self,
@@ -4650,6 +4631,7 @@ class Plotter:
         )
         ax.legend(fontsize=10, loc="upper right")
         ax.grid(axis="both", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
 
         fig.tight_layout()
         png_path = self._resolve_save_target(

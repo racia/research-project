@@ -469,6 +469,29 @@ def run(
                 num_samples=samples_per_task,
             )
 
+            # Correlation of accuracy with answer_not_mentioned and empty_attn_scores
+            for extra_metric in ("answer_not_mentioned", "empty_attn_scores"):
+                metric_obj = getattr(evaluator, extra_metric, None)
+                if metric_obj is not None:
+                    y_vals = (
+                        metric_obj.all
+                        if hasattr(metric_obj, "all")
+                        else list(metric_obj)
+                    )
+                    plotter.plot_correlation(
+                        x_data=evaluator.get_accuracies(as_lists=True),
+                        y_data=y_vals,
+                        x_label="Accuracy",
+                        y_label=extra_metric.replace("_", " ").title(),
+                        file_name=f"acc-{extra_metric}.pdf",
+                        plot_name_add=[f"Task-{task_id}", *conditions_add],
+                        path_add=Path(version, f"Task-{task_id}"),
+                        level="task",
+                        include_soft=False,
+                        experiment=experiment,
+                        num_samples=samples_per_task,
+                    )
+
             # Attn on Target for Target Distances by Answer Correct
             plotter.plot_corr_boxplot(
                 x_data=task.parts_target_distances.all,
@@ -665,8 +688,6 @@ def run(
 
     save_latex_table_line(split, experiment, setting, saver)
 
-    # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
-    # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
     split_corr_matrices = split.calculate_metrics()
 
     # ---- Before/after comparison plots --------------------------------------
@@ -733,6 +754,28 @@ def run(
             include_soft=False,
             label_add=[f"t{task.task_id}" for task in split.tasks],
         )
+
+        # Correlation of accuracy with answer_not_mentioned and empty_attn_scores
+        for extra_metric in ("answer_not_mentioned", "empty_attn_scores"):
+            metric_obj = getattr(evaluator, extra_metric, None)
+            if metric_obj is not None:
+                y_vals = (
+                    metric_obj.all if hasattr(metric_obj, "all") else list(metric_obj)
+                )
+                plotter.plot_correlation(
+                    x_data=evaluator.get_accuracies(as_lists=True),
+                    y_data=y_vals,
+                    x_label="Accuracy",
+                    y_label=extra_metric.replace("_", " ").title(),
+                    file_name=f"acc-{extra_metric}_{split.name}.pdf",
+                    plot_name_add=[f"Split-{split.name}", *conditions_add],
+                    experiment=experiment,
+                    num_samples=samples_per_task * len(split.tasks),
+                    path_add=Path(version),
+                    level="split",
+                    include_soft=False,
+                    label_add=[f"t{task.task_id}" for task in split.tasks],
+                )
 
         # Attn on Target for Seen Context Lengths by Answer Correct
         plotter.plot_corr_boxplot(
