@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=2 #4            # Number of CPU cores per task
 #SBATCH --mem=16GB                    # Total memory requested
 # SBATCH --partition=students
-#SBATCH --time=03:00:00              # Job time limit (30 minutes)
+#SBATCH --time=01:00:00              # Job time limit (30 minutes)
 # Output and error logs
 #SBATCH --output="eval_sl-da.out"        # TODO: adjust standard output log
 # SBATCH --error="eval_sl-da.err"         # TODO: adjust error log
@@ -17,7 +17,7 @@
 
 ### JOB STEPS START HERE ###
 # fix working directory
-cd ~/research-project || exit 1
+# cd ~/research-project || exit 1
 
 #if command -v module >/dev/null 2>&1; then
 #    echo "Module util is available. Loading python"
@@ -45,7 +45,7 @@ fi
 VERBOSE=false #true
 HEATMAPS=false #true
 # RES_PATH="/workspace/students/reasoning/results/basic-skyline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
-RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/skyline/test/da/v1/all_tasks_joined/joined_direct_answer_results_da_results.csv"
+RES_PATH="/workspace/students/reasoning/results/skyline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv"
 # SAVE_PATH="/workspace/students/reasoning/results/basic-skyline/test/reasoning/v1/all_tasks_joined/"
 SAVE_PATH="results/skyline/da"
 SETTING="skyline" #"skyline"
@@ -67,7 +67,7 @@ ARGS=(
 
 SCRIPT="evaluate_data.py"
 echo "Running script ${SCRIPT} with the following arguments: ${ARGS[*]}"
-srun python3.9 "$SCRIPT" "${ARGS[@]}"
+srun python3.12 "$SCRIPT" "${ARGS[@]}"
 
 
 # Verify if the script executed successfully

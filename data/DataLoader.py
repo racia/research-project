@@ -382,8 +382,10 @@ class DataLoader:
             multi_system=multi_system,
             lookup=True,
         )
-        if row.get("model_output_after"):
-            # Both _before and _after columns are present: this is a multi-system run.
+        print(f"Number of raw parts loaded: {len(raw_parts)}")
+        if row.get(f"model_output_before", None):
+            multi_system = False
+        elif row.get(f"model_output_after", None):
             multi_system = True
         elif row.get("model_output_before"):
             # Only _before column is present: single-system run (baseline/skyline).
