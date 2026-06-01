@@ -221,7 +221,18 @@ def _sentence_attn_from_interpretability(
     if attn.size == 0 or not x_tokens:
         return None
 
-    token_weights: np.ndarray = attn.mean(axis=0)
+    # Each row of attn_scores is one output token's attention distribution over
+    # the input positions.  The scores are saved as raw (unnormalised) values
+    # rather than softmax probabilities, so each row sums to a value >> 1.
+    # Averaging such rows directly collapses every column to the same constant
+    # (row_sum_mean / n_cols), making every context sentence look identical.
+    # Row-normalising first converts each row to a proper probability
+    # distribution before taking the column mean.
+    row_sums: np.ndarray = attn.sum(axis=1, keepdims=True)
+    # Guard against all-zero rows (e.g. padding) to avoid division by zero.
+    row_sums = np.where(row_sums == 0, 1.0, row_sums)
+    attn_norm: np.ndarray = attn / row_sums
+    token_weights: np.ndarray = attn_norm.mean(axis=0)
 
     if len(token_weights) != len(x_tokens):
         warnings.warn(

@@ -8,7 +8,6 @@
 
 from __future__ import annotations
 
-import argparse
 import re
 import shutil
 import warnings
@@ -348,6 +347,10 @@ def run(
             "paths and difference:",
             difference,
         )
+    if len(source_paths) > 1 and difference:
+        raise ValueError(
+            "Please provide at least two source_paths to join, or a difference to find."
+        )
 
     full_result_directory = PREFIX / target_directory
     full_result_directory.mkdir(parents=True, exist_ok=True)
@@ -400,11 +403,6 @@ def run(
         differences = [difference]
     else:
         differences = find_difference_in_paths(list(source_paths))
-    trimmed_source_paths = []
-    for path in source_paths:
-        while path.name not in differences:
-            path = path.parent
-        trimmed_source_paths.append(path)
 
     print(
         "\nFound the following differences in the paths:",
@@ -412,6 +410,13 @@ def run(
         sep="\n- ",
         end="\n\n",
     )
+
+    trimmed_source_paths = []
+    for path in source_paths:
+        while path.name not in differences:
+            path = path.parent
+        trimmed_source_paths.append(path)
+
     assert len(differences) == len(trimmed_source_paths), (
         f"The number of differences in the source paths does not match the number of source paths: "
         f"{len(differences)} != {len(trimmed_source_paths)}."

@@ -13,6 +13,7 @@ dependencies:
   - scikit-learn
   - matplotlib
   - nltk
+  - spacy<=3.8.2
   - huggingface_hub
   - pyarrow
   - ffmpeg
@@ -25,3 +26,4 @@ dependencies:
       - scipy==1.8.0
       - seaborn==0.13.2
       - prettytable
+      - evaluate==0.4.6

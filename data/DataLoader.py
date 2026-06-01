@@ -382,10 +382,12 @@ class DataLoader:
             multi_system=multi_system,
             lookup=True,
         )
-        if row.get(f"model_output_before", None):
-            multi_system = False
-        elif row.get(f"model_output_after", None):
+        if row.get("model_output_after"):
+            # Both _before and _after columns are present: this is a multi-system run.
             multi_system = True
+        elif row.get("model_output_before"):
+            # Only _before column is present: single-system run (baseline/skyline).
+            multi_system = False
         else:
             print("row keys:", row.keys())
             raise ValueError(

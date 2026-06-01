@@ -17,6 +17,8 @@ ATTRS = [
     "pronouns",
     "not_mentioned",
     "context_sents_hall",
+    "answer_not_mentioned",
+    "empty_attn_scores",
 ]
 
 
