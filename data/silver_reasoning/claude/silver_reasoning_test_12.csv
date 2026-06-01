@@ -1,0 +1,751 @@
+task_id,reasoning,answer,part_id,sample_id
+12,"In this part, Sandra and Mary journeyed to the bedroom. → Mary is in the bedroom.",bedroom,1,1
+12,"In this part, Mary and Daniel travelled to the bathroom. → Mary is in the bathroom.",bathroom,2,1
+12,"In this part, Daniel and Sandra travelled to the hallway. → Sandra is in the hallway.",hallway,3,1
+12,"In this part, Sandra and Mary travelled to the hallway. → Mary is in the hallway.",hallway,4,1
+12,"In this part, Daniel and John journeyed to the bathroom. → John is in the bathroom.",bathroom,5,1
+12,"In this part, Mary and Sandra went back to the bedroom. → Mary is in the bedroom.",bedroom,1,2
+12,"In this part, Mary and Sandra travelled to the bathroom. → Sandra is in the bathroom.",bathroom,2,2
+12,"In this part, Mary and Daniel journeyed to the bedroom. → Mary is in the bedroom.",bedroom,3,2
+12,"In this part, John and Daniel moved to the office. → Daniel is in the office.",office,4,2
+12,"In this part, John and Mary journeyed to the kitchen. → John is in the kitchen.",kitchen,5,2
+12,"In this part, Mary and Sandra went to the bathroom. → Mary is in the bathroom.",bathroom,1,3
+12,"In this part, John and Sandra travelled to the office. → John is in the office.",office,2,3
+12,"In this part, Mary and Daniel moved to the office. → Daniel is in the office.",office,3,3
+12,"In this part, John and Sandra travelled to the garden. → Sandra is in the garden.",garden,4,3
+12,"In this part, Sandra and Mary moved to the hallway. → Mary is in the hallway.",hallway,5,3
+12,"In this part, Sandra and Mary moved to the bathroom. → Mary is in the bathroom.",bathroom,1,4
+12,"In this part, Mary and Sandra journeyed to the kitchen. → Sandra is in the kitchen.",kitchen,2,4
+12,"In this part, Daniel and Sandra went to the garden. → Sandra is in the garden.",garden,3,4
+12,"In this part, Daniel and John went to the bathroom. → Daniel is in the bathroom.",bathroom,4,4
+12,"In this part, John and Daniel travelled to the hallway. → Daniel is in the hallway.",hallway,5,4
+12,"In this part, Mary and John moved to the kitchen. → John is in the kitchen.",kitchen,1,5
+12,"In this part, John and Daniel travelled to the hallway. → Daniel is in the hallway.",hallway,2,5
+12,"In this part, Mary and Daniel journeyed to the kitchen. → Daniel is in the kitchen.",kitchen,3,5
+12,"In this part, Mary and Sandra travelled to the garden. → Mary is in the garden.",garden,4,5
+12,"In this part, John and Sandra moved to the office. → Sandra is in the office.",office,5,5
+12,"In this part, John and Sandra moved to the bedroom. → Sandra is in the bedroom.",bedroom,1,6
+12,"In this part, Mary and John travelled to the garden. → Mary is in the garden.",garden,2,6
+12,"In this part, Sandra and Mary moved to the kitchen. → Sandra is in the kitchen.",kitchen,3,6
+12,"In this part, Mary and Sandra journeyed to the bathroom. → Mary is in the bathroom.",bathroom,4,6
+12,"In this part, Mary and Sandra went back to the kitchen. → Sandra is in the kitchen.",kitchen,5,6
+12,"In this part, John and Sandra moved to the bathroom. → Sandra is in the bathroom.",bathroom,1,7
+12,"In this part, Sandra and Daniel went back to the office. → Sandra is in the office.",office,2,7
+12,"In this part, Mary and Sandra moved to the office. → Mary is in the office.",office,3,7
+12,"In this part, Daniel and John travelled to the bathroom. → John is in the bathroom.",bathroom,4,7
+12,"In this part, Daniel and Mary went back to the office. → Daniel is in the office.",office,5,7
+12,"In this part, Mary and John went back to the kitchen. → John is in the kitchen.",kitchen,1,8
+12,"In this part, John and Mary went to the bathroom. → Mary is in the bathroom.",bathroom,2,8
+12,"In this part, John and Mary went back to the garden. → John is in the garden.",garden,3,8
+12,"In this part, Mary and Daniel moved to the kitchen. → Daniel is in the kitchen.",kitchen,4,8
+12,"In this part, Daniel and John journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,5,8
+12,"In this part, Sandra and John went back to the office. → John is in the office.",office,1,9
+12,"In this part, Daniel and John moved to the garden. → John is in the garden.",garden,2,9
+12,"In this part, John and Sandra went to the kitchen. → John is in the kitchen.",kitchen,3,9
+12,"In this part, John and Daniel went to the kitchen. → Daniel is in the kitchen.",kitchen,4,9
+12,"In this part, Sandra and Mary went to the kitchen. → Sandra is in the kitchen.",kitchen,5,9
+12,"In this part, Mary and John went to the kitchen. → John is in the kitchen.",kitchen,1,10
+12,"In this part, Sandra and Daniel moved to the garden. → Daniel is in the garden.",garden,2,10
+12,"In this part, Daniel and Mary moved to the hallway. → Daniel is in the hallway.",hallway,3,10
+12,"In this part, Daniel and Sandra went to the hallway. → Sandra is in the hallway.",hallway,4,10
+12,"In this part, John and Mary travelled to the bedroom. → Mary is in the bedroom.",bedroom,5,10
+12,"In this part, John and Mary went to the office. → Mary is in the office.",office,1,11
+12,"In this part, Mary and John went to the bathroom. → Mary is in the bathroom.",bathroom,2,11
+12,"In this part, Sandra and Daniel went back to the garden. → Daniel is in the garden.",garden,3,11
+12,"In this part, Daniel and Sandra moved to the hallway. → Daniel is in the hallway.",hallway,4,11
+12,"In this part, Daniel and Mary went back to the garden. → Mary is in the garden.",garden,5,11
+12,"In this part, Daniel and John went to the office. → Daniel is in the office.",office,1,12
+12,"In this part, Mary and John moved to the garden. → John is in the garden.",garden,2,12
+12,"In this part, Daniel and John journeyed to the hallway. → Daniel is in the hallway.",hallway,3,12
+12,"In this part, John and Sandra journeyed to the bathroom. → Sandra is in the bathroom.",bathroom,4,12
+12,"In this part, Daniel and Sandra journeyed to the hallway. → Daniel is in the hallway.",hallway,5,12
+12,"In this part, John and Sandra journeyed to the bedroom. → Sandra is in the bedroom.",bedroom,1,13
+12,"In this part, Mary and Sandra moved to the kitchen. → Sandra is in the kitchen.",kitchen,2,13
+12,"In this part, Sandra and Daniel travelled to the bathroom. → Sandra is in the bathroom.",bathroom,3,13
+12,"In this part, Sandra and Daniel journeyed to the hallway. → Daniel is in the hallway.",hallway,4,13
+12,"In this part, John and Mary went back to the garden. → Mary is in the garden.",garden,5,13
+12,"In this part, John and Daniel went to the bedroom. → John is in the bedroom.",bedroom,1,14
+12,"In this part, Sandra and John travelled to the kitchen. → John is in the kitchen.",kitchen,2,14
+12,"In this part, Sandra and John moved to the bathroom. → Sandra is in the bathroom.",bathroom,3,14
+12,"Daniel last moved in S8: 'Mary and Daniel moved to the bedroom.' → Daniel was at the bedroom. Current part sentences (S10: John and Sandra travelled to the kitchen.; S11: Mary and Sandra went to the office.) do not mention Daniel, so Daniel remains at the bedroom.",bedroom,4,14
+12,"In this part, Mary and Daniel went to the bedroom. → Daniel is in the bedroom.",bedroom,5,14
+12,"In this part, Daniel and John travelled to the hallway. → Daniel is in the hallway.",hallway,1,15
+12,"Mary last moved in S2: 'John and Mary went back to the office.' → Mary was at the office. Current part sentences (S4: John and Sandra travelled to the bedroom.; S5: John and Sandra went to the garden.) do not mention Mary, so Mary remains at the office.",office,2,15
+12,"In this part, Daniel and John journeyed to the office. → Daniel is in the office.",office,3,15
+12,"In this part, Mary and Daniel went back to the kitchen. → Daniel is in the kitchen.",kitchen,4,15
+12,"In this part, Daniel and John went back to the office. → Daniel is in the office.",office,5,15
+12,"In this part, John and Mary went to the hallway. → Mary is in the hallway.",hallway,1,16
+12,"In this part, Mary and John went back to the garden. → Mary is in the garden.",garden,2,16
+12,"In this part, Daniel and John went back to the office. → Daniel is in the office.",office,3,16
+12,"In this part, John and Sandra travelled to the hallway. → John is in the hallway.",hallway,4,16
+12,"In this part, John and Sandra moved to the bedroom. → Sandra is in the bedroom.",bedroom,5,16
+12,"In this part, Mary and John went to the kitchen. → John is in the kitchen.",kitchen,1,17
+12,"In this part, John and Sandra journeyed to the hallway. → John is in the hallway.",hallway,2,17
+12,"In this part, Daniel and John moved to the bathroom. → Daniel is in the bathroom.",bathroom,3,17
+12,"In this part, John and Mary travelled to the bedroom. → Mary is in the bedroom.",bedroom,4,17
+12,"In this part, John and Mary travelled to the kitchen. → John is in the kitchen.",kitchen,5,17
+12,"In this part, Sandra and John went back to the office. → John is in the office.",office,1,18
+12,"In this part, Sandra and Mary travelled to the kitchen. → Mary is in the kitchen.",kitchen,2,18
+12,"In this part, Mary and Daniel went back to the hallway. → Mary is in the hallway.",hallway,3,18
+12,"In this part, Daniel and John went to the bathroom. → John is in the bathroom.",bathroom,4,18
+12,"In this part, Mary and Sandra went to the office. → Mary is in the office.",office,5,18
+12,"In this part, Sandra and John travelled to the kitchen. → John is in the kitchen.",kitchen,1,19
+12,"In this part, John and Daniel travelled to the garden. → John is in the garden.",garden,2,19
+12,"Daniel last moved in S5: 'Sandra and Daniel went to the bedroom.' → Daniel was at the bedroom. Current part sentences (S7: Sandra and Mary travelled to the garden.; S8: Sandra and John went to the hallway.) do not mention Daniel, so Daniel remains at the bedroom.",bedroom,3,19
+12,"John last moved in S8: 'Sandra and John went to the hallway.' → John was at the hallway. Current part sentences (S10: Daniel and Sandra journeyed to the kitchen.; S11: Daniel and Mary went to the bedroom.) do not mention John, so John remains at the hallway.",hallway,4,19
+12,"In this part, Daniel and Mary went back to the hallway. → Daniel is in the hallway.",hallway,5,19
+12,"In this part, Mary and Sandra journeyed to the hallway. → Sandra is in the hallway.",hallway,1,20
+12,"In this part, Sandra and Mary journeyed to the kitchen. → Sandra is in the kitchen.",kitchen,2,20
+12,"In this part, Daniel and John journeyed to the kitchen. → John is in the kitchen.",kitchen,3,20
+12,"In this part, Mary and Sandra travelled to the bedroom. → Mary is in the bedroom.",bedroom,4,20
+12,"In this part, John and Daniel travelled to the office. → Daniel is in the office.",office,5,20
+12,"In this part, Mary and Daniel went to the garden. → Mary is in the garden.",garden,1,21
+12,"In this part, John and Daniel went to the bedroom. → Daniel is in the bedroom.",bedroom,2,21
+12,"In this part, John and Mary went to the hallway. → John is in the hallway.",hallway,3,21
+12,"In this part, John and Daniel journeyed to the kitchen. → John is in the kitchen.",kitchen,4,21
+12,"In this part, Daniel and Mary journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,5,21
+12,"In this part, Daniel and John went to the hallway. → Daniel is in the hallway.",hallway,1,22
+12,"In this part, Sandra and Daniel travelled to the bathroom. → Sandra is in the bathroom.",bathroom,2,22
+12,"In this part, John and Mary went back to the bedroom. → John is in the bedroom.",bedroom,3,22
+12,"In this part, Mary and John travelled to the bathroom. → John is in the bathroom.",bathroom,4,22
+12,"In this part, Mary and Sandra travelled to the hallway. → Sandra is in the hallway.",hallway,5,22
+12,"In this part, Daniel and Sandra moved to the bathroom. → Daniel is in the bathroom.",bathroom,1,23
+12,"In this part, Daniel and John travelled to the garden. → John is in the garden.",garden,2,23
+12,"In this part, John and Daniel went to the bathroom. → Daniel is in the bathroom.",bathroom,3,23
+12,"Daniel last moved in S8: 'John and Daniel went to the bathroom.' → Daniel was at the bathroom. Current part sentences (S10: Sandra and Mary moved to the office.; S11: Sandra and Mary travelled to the kitchen.) do not mention Daniel, so Daniel remains at the bathroom.",bathroom,4,23
+12,"In this part, Mary and Sandra moved to the office. → Mary is in the office.",office,5,23
+12,"In this part, Mary and Daniel moved to the bathroom. → Mary is in the bathroom.",bathroom,1,24
+12,"Daniel last moved in S2: 'Mary and Daniel moved to the bathroom.' → Daniel was at the bathroom. Current part sentences (S4: Mary and John journeyed to the garden.; S5: John and Sandra moved to the bathroom.) do not mention Daniel, so Daniel remains at the bathroom.",bathroom,2,24
+12,"In this part, Daniel and John moved to the bedroom. → John is in the bedroom.",bedroom,3,24
+12,"In this part, John and Mary moved to the hallway. → John is in the hallway.",hallway,4,24
+12,"In this part, John and Daniel went back to the office. → John is in the office.",office,5,24
+12,"In this part, Mary and John went back to the bedroom. → John is in the bedroom.",bedroom,1,25
+12,"In this part, Mary and John went to the hallway. → Mary is in the hallway.",hallway,2,25
+12,"In this part, Daniel and Sandra journeyed to the office. → Daniel is in the office.",office,3,25
+12,"In this part, Mary and Daniel journeyed to the bedroom. → Mary is in the bedroom.",bedroom,4,25
+12,"In this part, John and Mary went to the bathroom. → John is in the bathroom.",bathroom,5,25
+12,"In this part, Sandra and Daniel moved to the office. → Sandra is in the office.",office,1,26
+12,"In this part, Mary and Daniel went to the bedroom. → Daniel is in the bedroom.",bedroom,2,26
+12,"In this part, John and Sandra went back to the garden. → John is in the garden.",garden,3,26
+12,"In this part, John and Daniel went to the bedroom. → Daniel is in the bedroom.",bedroom,4,26
+12,"In this part, Daniel and John moved to the bedroom. → John is in the bedroom.",bedroom,5,26
+12,"In this part, Mary and John journeyed to the office. → Mary is in the office.",office,1,27
+12,"In this part, Mary and John went back to the kitchen. → John is in the kitchen.",kitchen,2,27
+12,"In this part, Daniel and Sandra went back to the kitchen. → Sandra is in the kitchen.",kitchen,3,27
+12,"In this part, Daniel and Sandra went back to the hallway. → Sandra is in the hallway.",hallway,4,27
+12,"In this part, John and Daniel travelled to the office. → Daniel is in the office.",office,5,27
+12,"In this part, John and Sandra journeyed to the kitchen. → John is in the kitchen.",kitchen,1,28
+12,"In this part, Sandra and Daniel journeyed to the bedroom. → Daniel is in the bedroom.",bedroom,2,28
+12,"In this part, Sandra and Mary went back to the hallway. → Mary is in the hallway.",hallway,3,28
+12,"In this part, Mary and Sandra journeyed to the kitchen. → Mary is in the kitchen.",kitchen,4,28
+12,"In this part, Mary and John went to the bedroom. → John is in the bedroom.",bedroom,5,28
+12,"In this part, Sandra and John went back to the bedroom. → John is in the bedroom.",bedroom,1,29
+12,"In this part, John and Mary journeyed to the hallway. → John is in the hallway.",hallway,2,29
+12,"In this part, John and Daniel moved to the bedroom. → Daniel is in the bedroom.",bedroom,3,29
+12,"In this part, John and Sandra moved to the bathroom. → John is in the bathroom.",bathroom,4,29
+12,"In this part, Daniel and Sandra moved to the garden. → Sandra is in the garden.",garden,5,29
+12,"In this part, Daniel and John journeyed to the bedroom. → Daniel is in the bedroom.",bedroom,1,30
+12,"In this part, Mary and Sandra went to the bedroom. → Mary is in the bedroom.",bedroom,2,30
+12,"In this part, Daniel and John journeyed to the kitchen. → John is in the kitchen.",kitchen,3,30
+12,"In this part, Mary and John went back to the kitchen. → John is in the kitchen.",kitchen,4,30
+12,"In this part, Daniel and John went back to the hallway. → Daniel is in the hallway.",hallway,5,30
+12,"In this part, Mary and Daniel went back to the bathroom. → Mary is in the bathroom.",bathroom,1,31
+12,"In this part, Sandra and Mary went back to the garden. → Sandra is in the garden.",garden,2,31
+12,"In this part, Daniel and Sandra travelled to the hallway. → Sandra is in the hallway.",hallway,3,31
+12,"In this part, Mary and John travelled to the kitchen. → John is in the kitchen.",kitchen,4,31
+12,"In this part, Sandra and Daniel moved to the kitchen. → Daniel is in the kitchen.",kitchen,5,31
+12,"In this part, Sandra and Mary moved to the bathroom. → Mary is in the bathroom.",bathroom,1,32
+12,"In this part, Sandra and Daniel travelled to the bathroom. → Daniel is in the bathroom.",bathroom,2,32
+12,"In this part, Mary and Daniel moved to the bedroom. → Daniel is in the bedroom.",bedroom,3,32
+12,"In this part, Sandra and John travelled to the hallway. → John is in the hallway.",hallway,4,32
+12,"In this part, Mary and Sandra journeyed to the hallway. → Sandra is in the hallway.",hallway,5,32
+12,"In this part, Sandra and John travelled to the office. → Sandra is in the office.",office,1,33
+12,"In this part, Daniel and Mary travelled to the garden. → Daniel is in the garden.",garden,2,33
+12,"In this part, Daniel and John went to the hallway. → John is in the hallway.",hallway,3,33
+12,"In this part, Daniel and John journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,4,33
+12,"In this part, John and Sandra travelled to the kitchen. → John is in the kitchen.",kitchen,5,33
+12,"In this part, Mary and Daniel journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,1,34
+12,"In this part, Mary and Daniel journeyed to the bedroom. → Mary is in the bedroom.",bedroom,2,34
+12,"In this part, Sandra and Daniel journeyed to the bathroom. → Sandra is in the bathroom.",bathroom,3,34
+12,"In this part, Mary and John went back to the bathroom. → John is in the bathroom.",bathroom,4,34
+12,"In this part, Sandra and Mary went to the bedroom. → Mary is in the bedroom.",bedroom,5,34
+12,"In this part, Daniel and John travelled to the garden. → Daniel is in the garden.",garden,1,35
+12,"In this part, Sandra and Daniel went back to the kitchen. → Daniel is in the kitchen.",kitchen,2,35
+12,"In this part, Sandra and Mary travelled to the hallway. → Mary is in the hallway.",hallway,3,35
+12,"In this part, Mary and Sandra travelled to the bedroom. → Mary is in the bedroom.",bedroom,4,35
+12,"In this part, Sandra and John went to the office. → Sandra is in the office.",office,5,35
+12,"In this part, John and Mary went back to the hallway. → John is in the hallway.",hallway,1,36
+12,"In this part, Daniel and Mary journeyed to the garden. → Mary is in the garden.",garden,2,36
+12,"In this part, Mary and Sandra travelled to the office. → Mary is in the office.",office,3,36
+12,"In this part, Mary and John went back to the bedroom. → Mary is in the bedroom.",bedroom,4,36
+12,"In this part, Sandra and John went back to the hallway. → John is in the hallway.",hallway,5,36
+12,"In this part, John and Daniel went back to the garden. → John is in the garden.",garden,1,37
+12,"In this part, John and Sandra went back to the kitchen. → John is in the kitchen.",kitchen,2,37
+12,"In this part, Daniel and Sandra moved to the bathroom. → Daniel is in the bathroom.",bathroom,3,37
+12,"In this part, Daniel and John went back to the bathroom. → Daniel is in the bathroom.",bathroom,4,37
+12,"In this part, Sandra and John journeyed to the hallway. → John is in the hallway.",hallway,5,37
+12,"In this part, Mary and Daniel went back to the kitchen. → Daniel is in the kitchen.",kitchen,1,38
+12,"In this part, Daniel and John moved to the garden. → Daniel is in the garden.",garden,2,38
+12,"In this part, Mary and Sandra moved to the kitchen. → Sandra is in the kitchen.",kitchen,3,38
+12,"In this part, Daniel and John journeyed to the bedroom. → John is in the bedroom.",bedroom,4,38
+12,"In this part, Daniel and Sandra travelled to the kitchen. → Sandra is in the kitchen.",kitchen,5,38
+12,"In this part, Daniel and Sandra travelled to the bathroom. → Daniel is in the bathroom.",bathroom,1,39
+12,"In this part, Sandra and John travelled to the office. → Sandra is in the office.",office,2,39
+12,"In this part, Sandra and Mary moved to the kitchen. → Sandra is in the kitchen.",kitchen,3,39
+12,"In this part, Daniel and John moved to the garden. → Daniel is in the garden.",garden,4,39
+12,"In this part, John and Sandra went to the hallway. → Sandra is in the hallway.",hallway,5,39
+12,"In this part, John and Mary travelled to the hallway. → John is in the hallway.",hallway,1,40
+12,"In this part, Sandra and Daniel travelled to the hallway. → Daniel is in the hallway.",hallway,2,40
+12,"In this part, Daniel and Sandra journeyed to the bedroom. → Sandra is in the bedroom.",bedroom,3,40
+12,"In this part, Daniel and John travelled to the garden. → Daniel is in the garden.",garden,4,40
+12,"In this part, Mary and Daniel went to the bathroom. → Mary is in the bathroom.",bathroom,5,40
+12,"In this part, Daniel and John travelled to the bedroom. → Daniel is in the bedroom.",bedroom,1,41
+12,"In this part, John and Mary moved to the bedroom. → John is in the bedroom.",bedroom,2,41
+12,"In this part, Mary and Daniel journeyed to the hallway. → Mary is in the hallway.",hallway,3,41
+12,"In this part, Mary and Daniel went to the office. → Daniel is in the office.",office,4,41
+12,"In this part, Daniel and Mary travelled to the bathroom. → Mary is in the bathroom.",bathroom,5,41
+12,"In this part, Daniel and John journeyed to the bathroom. → John is in the bathroom.",bathroom,1,42
+12,"In this part, John and Daniel travelled to the office. → Daniel is in the office.",office,2,42
+12,"In this part, John and Mary moved to the garden. → John is in the garden.",garden,3,42
+12,"In this part, Daniel and Sandra journeyed to the kitchen. → Sandra is in the kitchen.",kitchen,4,42
+12,"In this part, John and Daniel journeyed to the hallway. → John is in the hallway.",hallway,5,42
+12,"In this part, Daniel and John travelled to the bathroom. → Daniel is in the bathroom.",bathroom,1,43
+12,"In this part, John and Daniel went to the hallway. → John is in the hallway.",hallway,2,43
+12,"In this part, John and Sandra went back to the office. → John is in the office.",office,3,43
+12,"In this part, Daniel and Sandra went to the bedroom. → Daniel is in the bedroom.",bedroom,4,43
+12,"In this part, Sandra and Mary moved to the hallway. → Mary is in the hallway.",hallway,5,43
+12,"In this part, Daniel and Mary went to the bathroom. → Daniel is in the bathroom.",bathroom,1,44
+12,"In this part, Sandra and John went to the kitchen. → John is in the kitchen.",kitchen,2,44
+12,"In this part, Daniel and Mary went to the bedroom. → Mary is in the bedroom.",bedroom,3,44
+12,"In this part, John and Daniel went back to the garden. → John is in the garden.",garden,4,44
+12,"In this part, Sandra and John went back to the kitchen. → Sandra is in the kitchen.",kitchen,5,44
+12,"In this part, Mary and John travelled to the hallway. → John is in the hallway.",hallway,1,45
+12,"John last moved in S2: 'Mary and John travelled to the hallway.' → John was at the hallway. Current part sentences (S4: Sandra and Mary travelled to the bedroom.; S5: Sandra and Daniel went to the kitchen.) do not mention John, so John remains at the hallway.",hallway,2,45
+12,"In this part, Daniel and Mary journeyed to the garden. → Daniel is in the garden.",garden,3,45
+12,"In this part, Sandra and John went to the hallway. → Sandra is in the hallway.",hallway,4,45
+12,"In this part, Daniel and John went back to the office. → Daniel is in the office.",office,5,45
+12,"In this part, Daniel and Sandra moved to the bedroom. → Sandra is in the bedroom.",bedroom,1,46
+12,"In this part, Mary and John went to the kitchen. → John is in the kitchen.",kitchen,2,46
+12,"In this part, John and Mary went back to the garden. → Mary is in the garden.",garden,3,46
+12,"In this part, John and Mary went to the hallway. → Mary is in the hallway.",hallway,4,46
+12,"In this part, Daniel and Mary travelled to the bathroom. → Mary is in the bathroom.",bathroom,5,46
+12,"In this part, Sandra and Daniel went to the bedroom. → Sandra is in the bedroom.",bedroom,1,47
+12,"In this part, Sandra and Daniel went to the kitchen. → Sandra is in the kitchen.",kitchen,2,47
+12,"In this part, Sandra and John travelled to the office. → John is in the office.",office,3,47
+12,"In this part, John and Daniel went back to the office. → John is in the office.",office,4,47
+12,"In this part, Sandra and John travelled to the bedroom. → John is in the bedroom.",bedroom,5,47
+12,"In this part, Mary and Sandra moved to the hallway. → Mary is in the hallway.",hallway,1,48
+12,"In this part, Sandra and Daniel went to the bathroom. → Sandra is in the bathroom.",bathroom,2,48
+12,"In this part, Mary and Sandra moved to the garden. → Mary is in the garden.",garden,3,48
+12,"In this part, Mary and Sandra moved to the hallway. → Sandra is in the hallway.",hallway,4,48
+12,"In this part, John and Daniel journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,5,48
+12,"In this part, Daniel and Mary moved to the garden. → Daniel is in the garden.",garden,1,49
+12,"In this part, John and Mary moved to the hallway. → Mary is in the hallway.",hallway,2,49
+12,"In this part, Daniel and Mary went to the bedroom. → Mary is in the bedroom.",bedroom,3,49
+12,"In this part, Sandra and John went to the garden. → Sandra is in the garden.",garden,4,49
+12,"In this part, John and Daniel went back to the hallway. → John is in the hallway.",hallway,5,49
+12,"In this part, Daniel and Mary travelled to the garden. → Mary is in the garden.",garden,1,50
+12,"In this part, John and Mary journeyed to the bedroom. → Mary is in the bedroom.",bedroom,2,50
+12,"In this part, John and Sandra travelled to the office. → John is in the office.",office,3,50
+12,"In this part, Mary and Sandra moved to the garden. → Sandra is in the garden.",garden,4,50
+12,"In this part, Sandra and Daniel travelled to the bedroom. → Sandra is in the bedroom.",bedroom,5,50
+12,"In this part, John and Daniel went back to the bathroom. → Daniel is in the bathroom.",bathroom,1,51
+12,"In this part, Sandra and John went back to the hallway. → Sandra is in the hallway.",hallway,2,51
+12,"In this part, Sandra and Daniel journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,3,51
+12,"In this part, Daniel and Sandra moved to the office. → Sandra is in the office.",office,4,51
+12,"In this part, Daniel and Mary went back to the bedroom. → Daniel is in the bedroom.",bedroom,5,51
+12,"In this part, Daniel and John moved to the kitchen. → Daniel is in the kitchen.",kitchen,1,52
+12,"In this part, Daniel and Mary travelled to the garden. → Mary is in the garden.",garden,2,52
+12,"In this part, John and Daniel journeyed to the office. → John is in the office.",office,3,52
+12,"In this part, Daniel and Sandra moved to the office. → Daniel is in the office.",office,4,52
+12,"In this part, Mary and Sandra went back to the bedroom. → Mary is in the bedroom.",bedroom,5,52
+12,"In this part, John and Sandra moved to the garden. → John is in the garden.",garden,1,53
+12,"In this part, Daniel and Mary went back to the office. → Daniel is in the office.",office,2,53
+12,"In this part, Daniel and John went to the garden. → Daniel is in the garden.",garden,3,53
+12,"In this part, Daniel and Mary moved to the office. → Mary is in the office.",office,4,53
+12,"In this part, Daniel and Sandra went back to the kitchen. → Sandra is in the kitchen.",kitchen,5,53
+12,"In this part, Mary and John moved to the bathroom. → Mary is in the bathroom.",bathroom,1,54
+12,"In this part, Mary and Sandra moved to the garden. → Mary is in the garden.",garden,2,54
+12,"In this part, Sandra and Daniel went to the hallway. → Daniel is in the hallway.",hallway,3,54
+12,"In this part, Mary and John went to the kitchen. → Mary is in the kitchen.",kitchen,4,54
+12,"In this part, John and Sandra went back to the bedroom. → Sandra is in the bedroom.",bedroom,5,54
+12,"In this part, Daniel and Mary moved to the bedroom. → Daniel is in the bedroom.",bedroom,1,55
+12,"In this part, Daniel and Mary travelled to the bedroom. → Mary is in the bedroom.",bedroom,2,55
+12,"In this part, Daniel and John went back to the garden. → Daniel is in the garden.",garden,3,55
+12,"In this part, Mary and John went back to the office. → John is in the office.",office,4,55
+12,"In this part, John and Sandra travelled to the office. → Sandra is in the office.",office,5,55
+12,"In this part, John and Sandra moved to the garden. → John is in the garden.",garden,1,56
+12,"In this part, Sandra and Mary travelled to the kitchen. → Mary is in the kitchen.",kitchen,2,56
+12,"In this part, Mary and Daniel went back to the bathroom. → Mary is in the bathroom.",bathroom,3,56
+12,"In this part, Sandra and John went to the hallway. → John is in the hallway.",hallway,4,56
+12,"In this part, Daniel and Mary went back to the office. → Mary is in the office.",office,5,56
+12,"In this part, Mary and Sandra moved to the hallway. → Mary is in the hallway.",hallway,1,57
+12,"In this part, Sandra and Mary went to the bedroom. → Sandra is in the bedroom.",bedroom,2,57
+12,"In this part, John and Sandra moved to the bathroom. → Sandra is in the bathroom.",bathroom,3,57
+12,"In this part, Mary and John moved to the bathroom. → John is in the bathroom.",bathroom,4,57
+12,"In this part, Mary and Sandra travelled to the bedroom. → Mary is in the bedroom.",bedroom,5,57
+12,"In this part, Sandra and John went back to the garden. → Sandra is in the garden.",garden,1,58
+12,"In this part, Sandra and Mary journeyed to the hallway. → Mary is in the hallway.",hallway,2,58
+12,"In this part, John and Sandra went back to the office. → John is in the office.",office,3,58
+12,"In this part, Sandra and Mary travelled to the garden. → Mary is in the garden.",garden,4,58
+12,"In this part, Daniel and John travelled to the kitchen. → John is in the kitchen.",kitchen,5,58
+12,"In this part, John and Daniel moved to the bedroom. → John is in the bedroom.",bedroom,1,59
+12,"In this part, John and Sandra journeyed to the kitchen. → Sandra is in the kitchen.",kitchen,2,59
+12,"In this part, Sandra and Daniel went to the kitchen. → Sandra is in the kitchen.",kitchen,3,59
+12,"In this part, Daniel and Sandra travelled to the hallway. → Daniel is in the hallway.",hallway,4,59
+12,"In this part, Mary and John journeyed to the bedroom. → John is in the bedroom.",bedroom,5,59
+12,"In this part, John and Daniel went back to the garden. → Daniel is in the garden.",garden,1,60
+12,"In this part, John and Daniel went to the bedroom. → Daniel is in the bedroom.",bedroom,2,60
+12,"In this part, Mary and Sandra moved to the bedroom. → Mary is in the bedroom.",bedroom,3,60
+12,"In this part, John and Mary moved to the kitchen. → John is in the kitchen.",kitchen,4,60
+12,"In this part, Daniel and John went to the office. → Daniel is in the office.",office,5,60
+12,"In this part, Daniel and Mary travelled to the garden. → Mary is in the garden.",garden,1,61
+12,"Mary last moved in S2: 'Daniel and Mary travelled to the garden.' → Mary was at the garden. Current part sentences (S4: Sandra and John went to the bedroom.; S5: Daniel and John journeyed to the office.) do not mention Mary, so Mary remains at the garden.",garden,2,61
+12,"In this part, Mary and Sandra travelled to the kitchen. → Mary is in the kitchen.",kitchen,3,61
+12,"In this part, Sandra and Daniel went to the hallway. → Sandra is in the hallway.",hallway,4,61
+12,"In this part, Mary and Sandra travelled to the garden. → Sandra is in the garden.",garden,5,61
+12,"In this part, Sandra and John went to the kitchen. → Sandra is in the kitchen.",kitchen,1,62
+12,"In this part, Daniel and Mary journeyed to the kitchen. → Daniel is in the kitchen.",kitchen,2,62
+12,"In this part, Mary and Daniel travelled to the kitchen. → Mary is in the kitchen.",kitchen,3,62
+12,"In this part, Daniel and John travelled to the hallway. → John is in the hallway.",hallway,4,62
+12,"John last moved in S11: 'Daniel and John travelled to the hallway.' → John was at the hallway. Current part sentences (S13: Mary and Daniel went to the kitchen.; S14: Sandra and Mary went to the bathroom.) do not mention John, so John remains at the hallway.",hallway,5,62
+12,"In this part, John and Daniel went back to the kitchen. → Daniel is in the kitchen.",kitchen,1,63
+12,"In this part, Daniel and John moved to the hallway. → John is in the hallway.",hallway,2,63
+12,"In this part, Sandra and Daniel went back to the bedroom. → Daniel is in the bedroom.",bedroom,3,63
+12,"In this part, John and Daniel went to the bathroom. → John is in the bathroom.",bathroom,4,63
+12,"In this part, Daniel and Mary moved to the garden. → Daniel is in the garden.",garden,5,63
+12,"In this part, John and Daniel moved to the bedroom. → Daniel is in the bedroom.",bedroom,1,64
+12,"In this part, John and Sandra moved to the hallway. → Sandra is in the hallway.",hallway,2,64
+12,"In this part, John and Sandra moved to the kitchen. → John is in the kitchen.",kitchen,3,64
+12,"In this part, John and Mary went to the bedroom. → Mary is in the bedroom.",bedroom,4,64
+12,"In this part, Daniel and Mary journeyed to the kitchen. → Mary is in the kitchen.",kitchen,5,64
+12,"In this part, John and Mary moved to the hallway. → Mary is in the hallway.",hallway,1,65
+12,"In this part, Mary and Daniel travelled to the kitchen. → Daniel is in the kitchen.",kitchen,2,65
+12,"In this part, Sandra and John travelled to the bedroom. → Sandra is in the bedroom.",bedroom,3,65
+12,"John last moved in S8: 'Sandra and John travelled to the bedroom.' → John was at the bedroom. Current part sentences (S10: Daniel and Sandra went back to the kitchen.; S11: Sandra and Mary went back to the garden.) do not mention John, so John remains at the bedroom.",bedroom,4,65
+12,"In this part, Sandra and John travelled to the hallway. → John is in the hallway.",hallway,5,65
+12,"In this part, Sandra and Daniel journeyed to the bedroom. → Sandra is in the bedroom.",bedroom,1,66
+12,"In this part, Daniel and Mary moved to the bathroom. → Mary is in the bathroom.",bathroom,2,66
+12,"In this part, John and Daniel journeyed to the office. → John is in the office.",office,3,66
+12,"In this part, Mary and Daniel went back to the office. → Mary is in the office.",office,4,66
+12,"In this part, Sandra and Daniel went to the kitchen. → Sandra is in the kitchen.",kitchen,5,66
+12,"In this part, Sandra and John went back to the bedroom. → Sandra is in the bedroom.",bedroom,1,67
+12,"John last moved in S2: 'Sandra and John went back to the bedroom.' → John was at the bedroom. Current part sentences (S4: Sandra and Daniel went to the kitchen.; S5: Daniel and Sandra went to the hallway.) do not mention John, so John remains at the bedroom.",bedroom,2,67
+12,"In this part, Daniel and Sandra went back to the kitchen. → Daniel is in the kitchen.",kitchen,3,67
+12,"In this part, Mary and John went back to the bathroom. → Mary is in the bathroom.",bathroom,4,67
+12,"In this part, Mary and Sandra journeyed to the bathroom. → Sandra is in the bathroom.",bathroom,5,67
+12,"In this part, John and Sandra went to the hallway. → Sandra is in the hallway.",hallway,1,68
+12,"In this part, Sandra and John went back to the garden. → Sandra is in the garden.",garden,2,68
+12,"In this part, Sandra and John journeyed to the bathroom. → John is in the bathroom.",bathroom,3,68
+12,"In this part, Sandra and Daniel went to the office. → Daniel is in the office.",office,4,68
+12,"In this part, Sandra and Daniel went to the bedroom. → Sandra is in the bedroom.",bedroom,5,68
+12,"In this part, John and Daniel moved to the garden. → Daniel is in the garden.",garden,1,69
+12,"In this part, Daniel and Mary travelled to the kitchen. → Daniel is in the kitchen.",kitchen,2,69
+12,"In this part, Mary and Daniel travelled to the office. → Mary is in the office.",office,3,69
+12,"In this part, Mary and John went to the office. → Mary is in the office.",office,4,69
+12,"In this part, Daniel and John went back to the office. → Daniel is in the office.",office,5,69
+12,"In this part, Mary and John journeyed to the kitchen. → Mary is in the kitchen.",kitchen,1,70
+12,"In this part, Mary and John went back to the bedroom. → Mary is in the bedroom.",bedroom,2,70
+12,"In this part, Daniel and Sandra travelled to the garden. → Sandra is in the garden.",garden,3,70
+12,"In this part, Daniel and Sandra journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,4,70
+12,"In this part, Daniel and Mary went back to the garden. → Mary is in the garden.",garden,5,70
+12,"In this part, John and Daniel journeyed to the garden. → John is in the garden.",garden,1,71
+12,"In this part, John and Mary went to the bedroom. → John is in the bedroom.",bedroom,2,71
+12,"In this part, Mary and John went to the bedroom. → John is in the bedroom.",bedroom,3,71
+12,"In this part, Daniel and John went back to the bathroom. → Daniel is in the bathroom.",bathroom,4,71
+12,"In this part, Daniel and Sandra went to the kitchen. → Daniel is in the kitchen.",kitchen,5,71
+12,"In this part, Daniel and Mary moved to the kitchen. → Mary is in the kitchen.",kitchen,1,72
+12,"In this part, Sandra and John went to the garden. → John is in the garden.",garden,2,72
+12,"In this part, John and Mary went to the bathroom. → Mary is in the bathroom.",bathroom,3,72
+12,"In this part, John and Sandra went to the hallway. → John is in the hallway.",hallway,4,72
+12,"In this part, Daniel and John went back to the bathroom. → John is in the bathroom.",bathroom,5,72
+12,"In this part, Sandra and John moved to the garden. → Sandra is in the garden.",garden,1,73
+12,"In this part, John and Mary journeyed to the garden. → John is in the garden.",garden,2,73
+12,"In this part, Daniel and Mary moved to the bedroom. → Daniel is in the bedroom.",bedroom,3,73
+12,"In this part, Sandra and Mary moved to the hallway. → Mary is in the hallway.",hallway,4,73
+12,"In this part, Mary and Daniel went back to the hallway. → Daniel is in the hallway.",hallway,5,73
+12,"In this part, John and Daniel went back to the hallway. → Daniel is in the hallway.",hallway,1,74
+12,"In this part, Daniel and John travelled to the kitchen. → Daniel is in the kitchen.",kitchen,2,74
+12,"In this part, Daniel and Sandra moved to the bathroom. → Daniel is in the bathroom.",bathroom,3,74
+12,"In this part, Daniel and Sandra journeyed to the bedroom. → Sandra is in the bedroom.",bedroom,4,74
+12,"In this part, John and Mary travelled to the hallway. → John is in the hallway.",hallway,5,74
+12,"In this part, John and Daniel journeyed to the hallway. → John is in the hallway.",hallway,1,75
+12,"In this part, Sandra and John moved to the kitchen. → Sandra is in the kitchen.",kitchen,2,75
+12,"John last moved in S5: 'Sandra and John moved to the kitchen.' → John was at the kitchen. Current part sentences (S7: Mary and Daniel went to the kitchen.; S8: Mary and Sandra went to the garden.) do not mention John, so John remains at the kitchen.",kitchen,3,75
+12,"In this part, Mary and Sandra moved to the bathroom. → Sandra is in the bathroom.",bathroom,4,75
+12,"In this part, Sandra and John moved to the garden. → Sandra is in the garden.",garden,5,75
+12,"In this part, Sandra and Daniel journeyed to the bedroom. → Daniel is in the bedroom.",bedroom,1,76
+12,"In this part, Mary and Sandra went back to the kitchen. → Sandra is in the kitchen.",kitchen,2,76
+12,"In this part, Sandra and Mary travelled to the bedroom. → Sandra is in the bedroom.",bedroom,3,76
+12,"In this part, Mary and Sandra went to the bathroom. → Mary is in the bathroom.",bathroom,4,76
+12,"In this part, Sandra and Daniel travelled to the bathroom. → Sandra is in the bathroom.",bathroom,5,76
+12,"In this part, Daniel and Mary went to the office. → Mary is in the office.",office,1,77
+12,"In this part, Daniel and Mary went to the hallway. → Daniel is in the hallway.",hallway,2,77
+12,"In this part, Mary and Daniel went to the office. → Mary is in the office.",office,3,77
+12,"Daniel last moved in S8: 'Mary and Daniel went to the office.' → Daniel was at the office. Current part sentences (S10: Sandra and Mary went back to the garden.; S11: John and Sandra moved to the kitchen.) do not mention Daniel, so Daniel remains at the office.",office,4,77
+12,"In this part, Sandra and Daniel journeyed to the garden. → Daniel is in the garden.",garden,5,77
+12,"In this part, Mary and Sandra journeyed to the garden. → Sandra is in the garden.",garden,1,78
+12,"In this part, Daniel and John went back to the hallway. → Daniel is in the hallway.",hallway,2,78
+12,"Mary last moved in S5: 'John and Mary went to the office.' → Mary was at the office. Current part sentences (S7: Daniel and Sandra moved to the bedroom.; S8: Sandra and John moved to the garden.) do not mention Mary, so Mary remains at the office.",office,3,78
+12,"In this part, Sandra and Daniel travelled to the bathroom. → Daniel is in the bathroom.",bathroom,4,78
+12,"In this part, John and Daniel journeyed to the hallway. → John is in the hallway.",hallway,5,78
+12,"In this part, Daniel and John went to the garden. → Daniel is in the garden.",garden,1,79
+12,"In this part, Sandra and John moved to the bathroom. → John is in the bathroom.",bathroom,2,79
+12,"In this part, John and Mary journeyed to the office. → John is in the office.",office,3,79
+12,"In this part, Daniel and Mary moved to the bedroom. → Mary is in the bedroom.",bedroom,4,79
+12,"In this part, John and Sandra went back to the bedroom. → Sandra is in the bedroom.",bedroom,5,79
+12,"In this part, Mary and John went to the bathroom. → John is in the bathroom.",bathroom,1,80
+12,"In this part, Sandra and Mary travelled to the garden. → Sandra is in the garden.",garden,2,80
+12,"In this part, Sandra and Mary moved to the kitchen. → Sandra is in the kitchen.",kitchen,3,80
+12,"In this part, Mary and Sandra went back to the hallway. → Mary is in the hallway.",hallway,4,80
+12,"In this part, Sandra and Daniel journeyed to the garden. → Sandra is in the garden.",garden,5,80
+12,"In this part, Mary and Daniel travelled to the bedroom. → Mary is in the bedroom.",bedroom,1,81
+12,"In this part, Daniel and Sandra travelled to the garden. → Sandra is in the garden.",garden,2,81
+12,"In this part, John and Daniel moved to the office. → John is in the office.",office,3,81
+12,"In this part, Mary and Sandra moved to the hallway. → Sandra is in the hallway.",hallway,4,81
+12,"In this part, Daniel and John travelled to the kitchen. → Daniel is in the kitchen.",kitchen,5,81
+12,"In this part, Sandra and Mary went to the bedroom. → Sandra is in the bedroom.",bedroom,1,82
+12,"In this part, John and Daniel went back to the office. → John is in the office.",office,2,82
+12,"In this part, John and Mary travelled to the bedroom. → John is in the bedroom.",bedroom,3,82
+12,"In this part, Sandra and Mary moved to the hallway. → Sandra is in the hallway.",hallway,4,82
+12,"In this part, Mary and John journeyed to the bedroom. → Mary is in the bedroom.",bedroom,5,82
+12,"In this part, Daniel and Sandra went back to the garden. → Daniel is in the garden.",garden,1,83
+12,"In this part, Daniel and Sandra went to the hallway. → Sandra is in the hallway.",hallway,2,83
+12,"In this part, Daniel and John travelled to the bedroom. → John is in the bedroom.",bedroom,3,83
+12,"In this part, Mary and Sandra travelled to the office. → Sandra is in the office.",office,4,83
+12,"In this part, Daniel and Sandra journeyed to the kitchen. → Sandra is in the kitchen.",kitchen,5,83
+12,"In this part, John and Sandra went to the bathroom. → Sandra is in the bathroom.",bathroom,1,84
+12,"In this part, John and Sandra journeyed to the garden. → Sandra is in the garden.",garden,2,84
+12,"In this part, John and Daniel went back to the office. → John is in the office.",office,3,84
+12,"In this part, Mary and Daniel travelled to the kitchen. → Mary is in the kitchen.",kitchen,4,84
+12,"In this part, Mary and John journeyed to the bathroom. → Mary is in the bathroom.",bathroom,5,84
+12,"In this part, John and Sandra went to the hallway. → John is in the hallway.",hallway,1,85
+12,"In this part, John and Mary moved to the kitchen. → Mary is in the kitchen.",kitchen,2,85
+12,"In this part, John and Daniel travelled to the garden. → John is in the garden.",garden,3,85
+12,"In this part, John and Daniel moved to the hallway. → Daniel is in the hallway.",hallway,4,85
+12,"Daniel last moved in S11: 'John and Daniel moved to the hallway.' → Daniel was at the hallway. Current part sentences (S13: John and Mary moved to the garden.; S14: John and Sandra went back to the bathroom.) do not mention Daniel, so Daniel remains at the hallway.",hallway,5,85
+12,"In this part, John and Mary moved to the garden. → John is in the garden.",garden,1,86
+12,"In this part, Daniel and Mary moved to the bathroom. → Mary is in the bathroom.",bathroom,2,86
+12,"Mary last moved in S5: 'Daniel and Mary moved to the bathroom.' → Mary was at the bathroom. Current part sentences (S7: Daniel and Sandra went back to the kitchen.; S8: Daniel and John travelled to the office.) do not mention Mary, so Mary remains at the bathroom.",bathroom,3,86
+12,"In this part, Daniel and Mary went back to the hallway. → Mary is in the hallway.",hallway,4,86
+12,"In this part, Daniel and Sandra went back to the kitchen. → Sandra is in the kitchen.",kitchen,5,86
+12,"In this part, Sandra and Mary moved to the kitchen. → Sandra is in the kitchen.",kitchen,1,87
+12,"In this part, Mary and Sandra went back to the bedroom. → Sandra is in the bedroom.",bedroom,2,87
+12,"In this part, John and Daniel went to the bedroom. → Daniel is in the bedroom.",bedroom,3,87
+12,"In this part, John and Sandra moved to the kitchen. → John is in the kitchen.",kitchen,4,87
+12,"In this part, Daniel and Sandra journeyed to the bedroom. → Daniel is in the bedroom.",bedroom,5,87
+12,"In this part, Sandra and Mary moved to the hallway. → Mary is in the hallway.",hallway,1,88
+12,"In this part, John and Sandra moved to the kitchen. → John is in the kitchen.",kitchen,2,88
+12,"In this part, John and Sandra travelled to the bathroom. → John is in the bathroom.",bathroom,3,88
+12,"In this part, Sandra and Mary moved to the kitchen. → Sandra is in the kitchen.",kitchen,4,88
+12,"In this part, Daniel and Sandra travelled to the office. → Daniel is in the office.",office,5,88
+12,"In this part, Sandra and Mary journeyed to the office. → Mary is in the office.",office,1,89
+12,"In this part, Mary and John went to the kitchen. → Mary is in the kitchen.",kitchen,2,89
+12,"In this part, Sandra and John journeyed to the kitchen. → John is in the kitchen.",kitchen,3,89
+12,"In this part, Mary and Daniel travelled to the kitchen. → Mary is in the kitchen.",kitchen,4,89
+12,"In this part, Sandra and John travelled to the hallway. → Sandra is in the hallway.",hallway,5,89
+12,"In this part, John and Mary travelled to the hallway. → John is in the hallway.",hallway,1,90
+12,"In this part, Daniel and John went back to the bathroom. → Daniel is in the bathroom.",bathroom,2,90
+12,"In this part, Mary and Daniel travelled to the garden. → Daniel is in the garden.",garden,3,90
+12,"In this part, Mary and Daniel moved to the hallway. → Daniel is in the hallway.",hallway,4,90
+12,"In this part, Daniel and Sandra moved to the kitchen. → Sandra is in the kitchen.",kitchen,5,90
+12,"In this part, John and Mary went to the bathroom. → John is in the bathroom.",bathroom,1,91
+12,"In this part, Daniel and Mary journeyed to the garden. → Mary is in the garden.",garden,2,91
+12,"In this part, John and Mary journeyed to the bathroom. → Mary is in the bathroom.",bathroom,3,91
+12,"In this part, Sandra and Mary went back to the hallway. → Mary is in the hallway.",hallway,4,91
+12,"In this part, Daniel and Mary journeyed to the bathroom. → Mary is in the bathroom.",bathroom,5,91
+12,"In this part, Daniel and John went to the hallway. → Daniel is in the hallway.",hallway,1,92
+12,"In this part, John and Mary travelled to the bedroom. → John is in the bedroom.",bedroom,2,92
+12,"In this part, Daniel and Sandra moved to the garden. → Sandra is in the garden.",garden,3,92
+12,"In this part, Mary and Sandra journeyed to the bathroom. → Mary is in the bathroom.",bathroom,4,92
+12,"In this part, Daniel and John journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,5,92
+12,"In this part, John and Daniel journeyed to the bathroom. → John is in the bathroom.",bathroom,1,93
+12,"In this part, John and Mary journeyed to the hallway. → Mary is in the hallway.",hallway,2,93
+12,"In this part, Daniel and John travelled to the bedroom. → John is in the bedroom.",bedroom,3,93
+12,"In this part, John and Mary went to the hallway. → Mary is in the hallway.",hallway,4,93
+12,"In this part, Sandra and Daniel went back to the bathroom. → Daniel is in the bathroom.",bathroom,5,93
+12,"In this part, Daniel and Mary moved to the bathroom. → Daniel is in the bathroom.",bathroom,1,94
+12,"In this part, John and Daniel travelled to the office. → Daniel is in the office.",office,2,94
+12,"In this part, Daniel and Sandra moved to the office. → Daniel is in the office.",office,3,94
+12,"In this part, Sandra and Mary journeyed to the hallway. → Mary is in the hallway.",hallway,4,94
+12,"In this part, Sandra and Daniel moved to the garden. → Sandra is in the garden.",garden,5,94
+12,"In this part, Sandra and John moved to the office. → John is in the office.",office,1,95
+12,"In this part, Sandra and Mary journeyed to the garden. → Mary is in the garden.",garden,2,95
+12,"In this part, Daniel and Mary journeyed to the office. → Daniel is in the office.",office,3,95
+12,"Mary last moved in S8: 'Daniel and Mary journeyed to the office.' → Mary was at the office. Current part sentences (S10: Daniel and Sandra travelled to the hallway.; S11: Daniel and Sandra went back to the bedroom.) do not mention Mary, so Mary remains at the office.",office,4,95
+12,"In this part, Mary and Daniel travelled to the garden. → Daniel is in the garden.",garden,5,95
+12,"In this part, Mary and John journeyed to the hallway. → Mary is in the hallway.",hallway,1,96
+12,"In this part, Mary and John journeyed to the bedroom. → Mary is in the bedroom.",bedroom,2,96
+12,"In this part, John and Mary went back to the garden. → John is in the garden.",garden,3,96
+12,"In this part, Mary and Sandra moved to the kitchen. → Mary is in the kitchen.",kitchen,4,96
+12,"In this part, Sandra and Daniel moved to the bedroom. → Sandra is in the bedroom.",bedroom,5,96
+12,"In this part, Sandra and Mary went back to the garden. → Sandra is in the garden.",garden,1,97
+12,"In this part, Daniel and Mary went back to the office. → Daniel is in the office.",office,2,97
+12,"In this part, Mary and Sandra travelled to the hallway. → Mary is in the hallway.",hallway,3,97
+12,"In this part, Daniel and John journeyed to the office. → John is in the office.",office,4,97
+12,"In this part, Mary and Daniel journeyed to the bathroom. → Mary is in the bathroom.",bathroom,5,97
+12,"In this part, Mary and Daniel went to the garden. → Mary is in the garden.",garden,1,98
+12,"In this part, Mary and Sandra went to the kitchen. → Mary is in the kitchen.",kitchen,2,98
+12,"In this part, Daniel and Mary went back to the hallway. → Daniel is in the hallway.",hallway,3,98
+12,"In this part, Daniel and Sandra moved to the hallway. → Daniel is in the hallway.",hallway,4,98
+12,"In this part, Sandra and Daniel went back to the office. → Sandra is in the office.",office,5,98
+12,"In this part, Sandra and Mary went back to the hallway. → Sandra is in the hallway.",hallway,1,99
+12,"In this part, Mary and John went to the garden. → John is in the garden.",garden,2,99
+12,"In this part, Sandra and John journeyed to the bedroom. → Sandra is in the bedroom.",bedroom,3,99
+12,"In this part, Mary and Sandra travelled to the hallway. → Mary is in the hallway.",hallway,4,99
+12,"In this part, Mary and Sandra journeyed to the garden. → Sandra is in the garden.",garden,5,99
+12,"In this part, Daniel and Mary journeyed to the bedroom. → Daniel is in the bedroom.",bedroom,1,100
+12,"In this part, Mary and Sandra went back to the bedroom. → Sandra is in the bedroom.",bedroom,2,100
+12,"In this part, Sandra and Daniel went back to the bathroom. → Sandra is in the bathroom.",bathroom,3,100
+12,"In this part, John and Mary travelled to the bathroom. → John is in the bathroom.",bathroom,4,100
+12,"In this part, John and Daniel went back to the bedroom. → Daniel is in the bedroom.",bedroom,5,100
+12,"In this part, John and Daniel travelled to the kitchen. → Daniel is in the kitchen.",kitchen,1,101
+12,"In this part, Daniel and Sandra travelled to the bedroom. → Sandra is in the bedroom.",bedroom,2,101
+12,"In this part, Mary and Daniel moved to the hallway. → Mary is in the hallway.",hallway,3,101
+12,"In this part, John and Daniel went back to the bathroom. → John is in the bathroom.",bathroom,4,101
+12,"In this part, John and Daniel travelled to the office. → Daniel is in the office.",office,5,101
+12,"In this part, Daniel and John moved to the kitchen. → Daniel is in the kitchen.",kitchen,1,102
+12,"In this part, Sandra and Daniel journeyed to the bathroom. → Sandra is in the bathroom.",bathroom,2,102
+12,"In this part, Sandra and Daniel moved to the kitchen. → Sandra is in the kitchen.",kitchen,3,102
+12,"In this part, John and Daniel moved to the garden. → John is in the garden.",garden,4,102
+12,"In this part, Daniel and Mary moved to the bathroom. → Daniel is in the bathroom.",bathroom,5,102
+12,"In this part, John and Mary went to the garden. → John is in the garden.",garden,1,103
+12,"In this part, John and Sandra journeyed to the bedroom. → Sandra is in the bedroom.",bedroom,2,103
+12,"In this part, John and Daniel journeyed to the kitchen. → Daniel is in the kitchen.",kitchen,3,103
+12,"In this part, Daniel and Mary travelled to the hallway. → Daniel is in the hallway.",hallway,4,103
+12,"In this part, Sandra and John travelled to the bathroom. → John is in the bathroom.",bathroom,5,103
+12,"In this part, Mary and John went back to the hallway. → Mary is in the hallway.",hallway,1,104
+12,"In this part, John and Daniel went back to the garden. → Daniel is in the garden.",garden,2,104
+12,"In this part, Sandra and John went to the garden. → John is in the garden.",garden,3,104
+12,"In this part, Daniel and Mary travelled to the hallway. → Mary is in the hallway.",hallway,4,104
+12,"In this part, Sandra and Daniel moved to the hallway. → Daniel is in the hallway.",hallway,5,104
+12,"In this part, John and Mary went back to the bedroom. → Mary is in the bedroom.",bedroom,1,105
+12,"In this part, Daniel and John journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,2,105
+12,"In this part, Sandra and Mary travelled to the office. → Sandra is in the office.",office,3,105
+12,"In this part, Daniel and John journeyed to the kitchen. → John is in the kitchen.",kitchen,4,105
+12,"In this part, John and Mary travelled to the office. → John is in the office.",office,5,105
+12,"In this part, Sandra and Daniel went back to the kitchen. → Daniel is in the kitchen.",kitchen,1,106
+12,"In this part, Sandra and John went back to the bathroom. → Sandra is in the bathroom.",bathroom,2,106
+12,"In this part, Sandra and John journeyed to the bedroom. → John is in the bedroom.",bedroom,3,106
+12,"In this part, Daniel and Sandra went to the kitchen. → Daniel is in the kitchen.",kitchen,4,106
+12,"Sandra last moved in S11: 'Daniel and Sandra went to the kitchen.' → Sandra was at the kitchen. Current part sentences (S13: John and Daniel went to the office.; S14: Daniel and John journeyed to the kitchen.) do not mention Sandra, so Sandra remains at the kitchen.",kitchen,5,106
+12,"In this part, John and Daniel went back to the hallway. → Daniel is in the hallway.",hallway,1,107
+12,"In this part, Mary and Daniel travelled to the bedroom. → Mary is in the bedroom.",bedroom,2,107
+12,"In this part, Mary and John travelled to the kitchen. → Mary is in the kitchen.",kitchen,3,107
+12,"In this part, John and Daniel moved to the office. → Daniel is in the office.",office,4,107
+12,"In this part, Mary and Sandra travelled to the bathroom. → Mary is in the bathroom.",bathroom,5,107
+12,"In this part, Daniel and John travelled to the bathroom. → John is in the bathroom.",bathroom,1,108
+12,"In this part, Sandra and John went to the garden. → John is in the garden.",garden,2,108
+12,"In this part, Mary and John went back to the office. → John is in the office.",office,3,108
+12,"In this part, Sandra and Daniel travelled to the hallway. → Daniel is in the hallway.",hallway,4,108
+12,"In this part, John and Sandra went to the office. → Sandra is in the office.",office,5,108
+12,"In this part, Mary and John moved to the bedroom. → Mary is in the bedroom.",bedroom,1,109
+12,"In this part, John and Daniel journeyed to the kitchen. → John is in the kitchen.",kitchen,2,109
+12,"In this part, John and Daniel journeyed to the hallway. → John is in the hallway.",hallway,3,109
+12,"In this part, Daniel and Mary went to the kitchen. → Mary is in the kitchen.",kitchen,4,109
+12,"In this part, Daniel and John moved to the hallway. → John is in the hallway.",hallway,5,109
+12,"In this part, Daniel and Sandra moved to the kitchen. → Sandra is in the kitchen.",kitchen,1,110
+12,"In this part, Daniel and Mary went to the garden. → Mary is in the garden.",garden,2,110
+12,"In this part, Mary and Daniel travelled to the bathroom. → Mary is in the bathroom.",bathroom,3,110
+12,"In this part, Daniel and John travelled to the office. → John is in the office.",office,4,110
+12,"In this part, Mary and Daniel travelled to the hallway. → Daniel is in the hallway.",hallway,5,110
+12,"In this part, Daniel and Mary went to the bedroom. → Mary is in the bedroom.",bedroom,1,111
+12,"In this part, Sandra and Mary went to the bathroom. → Sandra is in the bathroom.",bathroom,2,111
+12,"In this part, Daniel and Sandra moved to the garden. → Sandra is in the garden.",garden,3,111
+12,"In this part, John and Mary went back to the hallway. → Mary is in the hallway.",hallway,4,111
+12,"In this part, Mary and Daniel journeyed to the office. → Daniel is in the office.",office,5,111
+12,"In this part, Mary and Sandra journeyed to the kitchen. → Mary is in the kitchen.",kitchen,1,112
+12,"In this part, John and Daniel went back to the office. → Daniel is in the office.",office,2,112
+12,"In this part, Daniel and Mary went back to the bathroom. → Daniel is in the bathroom.",bathroom,3,112
+12,"Mary last moved in S8: 'Daniel and Mary went back to the bathroom.' → Mary was at the bathroom. Current part sentences (S10: John and Sandra journeyed to the garden.; S11: John and Daniel travelled to the kitchen.) do not mention Mary, so Mary remains at the bathroom.",bathroom,4,112
+12,"In this part, Daniel and John went back to the garden. → Daniel is in the garden.",garden,5,112
+12,"In this part, Sandra and Mary moved to the kitchen. → Mary is in the kitchen.",kitchen,1,113
+12,"In this part, Daniel and Mary travelled to the bedroom. → Mary is in the bedroom.",bedroom,2,113
+12,"In this part, John and Sandra moved to the hallway. → Sandra is in the hallway.",hallway,3,113
+12,"In this part, Sandra and Daniel moved to the kitchen. → Sandra is in the kitchen.",kitchen,4,113
+12,"Daniel last moved in S11: 'Sandra and Daniel moved to the kitchen.' → Daniel was at the kitchen. Current part sentences (S13: Sandra and Mary went back to the office.; S14: Sandra and John journeyed to the bedroom.) do not mention Daniel, so Daniel remains at the kitchen.",kitchen,5,113
+12,"In this part, Daniel and Mary travelled to the bathroom. → Mary is in the bathroom.",bathroom,1,114
+12,"In this part, Daniel and John travelled to the office. → John is in the office.",office,2,114
+12,"In this part, Daniel and Mary went back to the garden. → Daniel is in the garden.",garden,3,114
+12,"In this part, John and Sandra moved to the bathroom. → John is in the bathroom.",bathroom,4,114
+12,"In this part, Daniel and Sandra journeyed to the garden. → Sandra is in the garden.",garden,5,114
+12,"In this part, Mary and Daniel travelled to the office. → Mary is in the office.",office,1,115
+12,"In this part, Sandra and Daniel travelled to the office. → Daniel is in the office.",office,2,115
+12,"In this part, Mary and John went to the office. → Mary is in the office.",office,3,115
+12,"In this part, Daniel and Sandra journeyed to the hallway. → Sandra is in the hallway.",hallway,4,115
+12,"In this part, Sandra and Daniel moved to the office. → Sandra is in the office.",office,5,115
+12,"In this part, Mary and Sandra travelled to the office. → Sandra is in the office.",office,1,116
+12,"In this part, John and Sandra went back to the bathroom. → Sandra is in the bathroom.",bathroom,2,116
+12,"In this part, Mary and Daniel moved to the hallway. → Daniel is in the hallway.",hallway,3,116
+12,"In this part, Daniel and John went back to the office. → Daniel is in the office.",office,4,116
+12,"In this part, Mary and John moved to the office. → Mary is in the office.",office,5,116
+12,"In this part, Sandra and John journeyed to the kitchen. → John is in the kitchen.",kitchen,1,117
+12,"In this part, Daniel and Mary travelled to the bedroom. → Mary is in the bedroom.",bedroom,2,117
+12,"In this part, Mary and Daniel moved to the kitchen. → Mary is in the kitchen.",kitchen,3,117
+12,"In this part, John and Mary travelled to the kitchen. → Mary is in the kitchen.",kitchen,4,117
+12,"In this part, Mary and John moved to the hallway. → John is in the hallway.",hallway,5,117
+12,"In this part, Daniel and John went back to the office. → John is in the office.",office,1,118
+12,"In this part, Mary and Daniel journeyed to the office. → Mary is in the office.",office,2,118
+12,"In this part, Mary and John journeyed to the kitchen. → Mary is in the kitchen.",kitchen,3,118
+12,"In this part, John and Mary went to the kitchen. → Mary is in the kitchen.",kitchen,4,118
+12,"In this part, Mary and Daniel moved to the bedroom. → Daniel is in the bedroom.",bedroom,5,118
+12,"In this part, Daniel and Mary went back to the kitchen. → Mary is in the kitchen.",kitchen,1,119
+12,"In this part, Daniel and John travelled to the hallway. → John is in the hallway.",hallway,2,119
+12,"In this part, Mary and Sandra moved to the bedroom. → Sandra is in the bedroom.",bedroom,3,119
+12,"In this part, John and Daniel travelled to the bedroom. → John is in the bedroom.",bedroom,4,119
+12,"Daniel last moved in S11: 'John and Daniel travelled to the bedroom.' → Daniel was at the bedroom. Current part sentences (S13: John and Sandra journeyed to the hallway.; S14: John and Sandra went back to the office.) do not mention Daniel, so Daniel remains at the bedroom.",bedroom,5,119
+12,"In this part, Sandra and Mary went to the office. → Sandra is in the office.",office,1,120
+12,"Mary last moved in S2: 'Daniel and Mary went back to the kitchen.' → Mary was at the kitchen. Current part sentences (S4: John and Sandra went to the kitchen.; S5: John and Daniel went back to the garden.) do not mention Mary, so Mary remains at the kitchen.",kitchen,2,120
+12,"In this part, Mary and Daniel journeyed to the bedroom. → Daniel is in the bedroom.",bedroom,3,120
+12,"In this part, Daniel and Mary went back to the garden. → Daniel is in the garden.",garden,4,120
+12,"In this part, Mary and John went back to the office. → John is in the office.",office,5,120
+12,"In this part, Mary and John went back to the kitchen. → John is in the kitchen.",kitchen,1,121
+12,"In this part, Mary and Sandra journeyed to the bathroom. → Sandra is in the bathroom.",bathroom,2,121
+12,"In this part, Daniel and Mary travelled to the office. → Mary is in the office.",office,3,121
+12,"In this part, John and Mary moved to the kitchen. → John is in the kitchen.",kitchen,4,121
+12,"In this part, Mary and Sandra went to the kitchen. → Mary is in the kitchen.",kitchen,5,121
+12,"In this part, Daniel and Sandra moved to the hallway. → Daniel is in the hallway.",hallway,1,122
+12,"In this part, Sandra and John moved to the bedroom. → John is in the bedroom.",bedroom,2,122
+12,"In this part, Mary and John travelled to the bathroom. → Mary is in the bathroom.",bathroom,3,122
+12,"In this part, Mary and Daniel went to the garden. → Daniel is in the garden.",garden,4,122
+12,"In this part, Mary and Daniel moved to the bedroom. → Mary is in the bedroom.",bedroom,5,122
+12,"In this part, Daniel and John journeyed to the hallway. → John is in the hallway.",hallway,1,123
+12,"In this part, John and Daniel moved to the bathroom. → John is in the bathroom.",bathroom,2,123
+12,"In this part, Daniel and Sandra went back to the garden. → Daniel is in the garden.",garden,3,123
+12,"In this part, Sandra and John journeyed to the office. → Sandra is in the office.",office,4,123
+12,"In this part, Daniel and Sandra went to the hallway. → Sandra is in the hallway.",hallway,5,123
+12,"In this part, John and Daniel went back to the hallway. → Daniel is in the hallway.",hallway,1,124
+12,"In this part, Mary and Daniel moved to the bathroom. → Mary is in the bathroom.",bathroom,2,124
+12,"In this part, Sandra and Mary went back to the garden. → Sandra is in the garden.",garden,3,124
+12,"In this part, Mary and John travelled to the bathroom. → Mary is in the bathroom.",bathroom,4,124
+12,"In this part, Daniel and Mary moved to the hallway. → Daniel is in the hallway.",hallway,5,124
+12,"In this part, Daniel and Mary journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,1,125
+12,"In this part, Sandra and Mary moved to the bedroom. → Mary is in the bedroom.",bedroom,2,125
+12,"In this part, Mary and Sandra travelled to the office. → Mary is in the office.",office,3,125
+12,"In this part, Mary and John went back to the kitchen. → John is in the kitchen.",kitchen,4,125
+12,"In this part, Daniel and Sandra travelled to the bathroom. → Sandra is in the bathroom.",bathroom,5,125
+12,"In this part, Daniel and Sandra went back to the hallway. → Daniel is in the hallway.",hallway,1,126
+12,"In this part, John and Sandra journeyed to the garden. → John is in the garden.",garden,2,126
+12,"In this part, John and Mary went back to the kitchen. → John is in the kitchen.",kitchen,3,126
+12,"In this part, Mary and John went to the garden. → Mary is in the garden.",garden,4,126
+12,"In this part, Daniel and Sandra went back to the hallway. → Sandra is in the hallway.",hallway,5,126
+12,"In this part, Daniel and John travelled to the bedroom. → Daniel is in the bedroom.",bedroom,1,127
+12,"In this part, Mary and John went to the kitchen. → John is in the kitchen.",kitchen,2,127
+12,"Mary last moved in S5: 'Daniel and Mary travelled to the bathroom.' → Mary was at the bathroom. Current part sentences (S7: John and Daniel went to the hallway.; S8: Sandra and John travelled to the garden.) do not mention Mary, so Mary remains at the bathroom.",bathroom,3,127
+12,"In this part, John and Daniel journeyed to the bedroom. → Daniel is in the bedroom.",bedroom,4,127
+12,"In this part, Daniel and Mary went to the garden. → Mary is in the garden.",garden,5,127
+12,"In this part, John and Sandra journeyed to the bedroom. → John is in the bedroom.",bedroom,1,128
+12,"In this part, John and Sandra went back to the bathroom. → John is in the bathroom.",bathroom,2,128
+12,"In this part, John and Sandra travelled to the garden. → John is in the garden.",garden,3,128
+12,"In this part, Sandra and Daniel went to the garden. → Daniel is in the garden.",garden,4,128
+12,"In this part, Mary and Daniel journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,5,128
+12,"In this part, Daniel and Sandra went to the kitchen. → Sandra is in the kitchen.",kitchen,1,129
+12,"In this part, John and Mary travelled to the hallway. → John is in the hallway.",hallway,2,129
+12,"In this part, Sandra and Mary moved to the hallway. → Sandra is in the hallway.",hallway,3,129
+12,"In this part, John and Sandra travelled to the kitchen. → Sandra is in the kitchen.",kitchen,4,129
+12,"In this part, Mary and Daniel moved to the kitchen. → Daniel is in the kitchen.",kitchen,5,129
+12,"In this part, John and Daniel went to the bathroom. → John is in the bathroom.",bathroom,1,130
+12,"In this part, Mary and John travelled to the office. → Mary is in the office.",office,2,130
+12,"In this part, Sandra and Mary went to the bedroom. → Sandra is in the bedroom.",bedroom,3,130
+12,"In this part, Mary and Sandra travelled to the kitchen. → Mary is in the kitchen.",kitchen,4,130
+12,"Sandra last moved in S11: 'Mary and Sandra travelled to the kitchen.' → Sandra was at the kitchen. Current part sentences (S13: John and Daniel went back to the office.; S14: Daniel and Mary went to the bedroom.) do not mention Sandra, so Sandra remains at the kitchen.",kitchen,5,130
+12,"In this part, Mary and John went to the office. → John is in the office.",office,1,131
+12,"In this part, Sandra and Mary journeyed to the bathroom. → Sandra is in the bathroom.",bathroom,2,131
+12,"In this part, John and Mary went back to the hallway. → John is in the hallway.",hallway,3,131
+12,"In this part, John and Mary journeyed to the kitchen. → Mary is in the kitchen.",kitchen,4,131
+12,"In this part, Mary and John journeyed to the bathroom. → Mary is in the bathroom.",bathroom,5,131
+12,"In this part, Mary and Sandra travelled to the kitchen. → Mary is in the kitchen.",kitchen,1,132
+12,"In this part, Mary and Daniel went back to the office. → Mary is in the office.",office,2,132
+12,"In this part, Sandra and Mary travelled to the hallway. → Mary is in the hallway.",hallway,3,132
+12,"In this part, Mary and Sandra went back to the kitchen. → Mary is in the kitchen.",kitchen,4,132
+12,"In this part, Sandra and John journeyed to the office. → John is in the office.",office,5,132
+12,"In this part, John and Mary moved to the hallway. → John is in the hallway.",hallway,1,133
+12,"In this part, John and Daniel moved to the bathroom. → John is in the bathroom.",bathroom,2,133
+12,"In this part, Daniel and Mary went back to the garden. → Daniel is in the garden.",garden,3,133
+12,"In this part, Sandra and Daniel journeyed to the hallway. → Sandra is in the hallway.",hallway,4,133
+12,"In this part, Daniel and Sandra journeyed to the hallway. → Daniel is in the hallway.",hallway,5,133
+12,"In this part, Daniel and Mary travelled to the garden. → Daniel is in the garden.",garden,1,134
+12,"In this part, Daniel and John travelled to the bedroom. → Daniel is in the bedroom.",bedroom,2,134
+12,"In this part, John and Mary moved to the bathroom. → Mary is in the bathroom.",bathroom,3,134
+12,"In this part, Mary and Sandra went back to the bathroom. → Sandra is in the bathroom.",bathroom,4,134
+12,"In this part, Daniel and Sandra went to the kitchen. → Sandra is in the kitchen.",kitchen,5,134
+12,"In this part, Mary and Sandra journeyed to the hallway. → Sandra is in the hallway.",hallway,1,135
+12,"In this part, Sandra and Daniel went back to the kitchen. → Sandra is in the kitchen.",kitchen,2,135
+12,"In this part, Sandra and Daniel travelled to the bathroom. → Daniel is in the bathroom.",bathroom,3,135
+12,"In this part, Sandra and Mary travelled to the garden. → Sandra is in the garden.",garden,4,135
+12,"In this part, Mary and John moved to the bedroom. → Mary is in the bedroom.",bedroom,5,135
+12,"In this part, John and Sandra journeyed to the bedroom. → John is in the bedroom.",bedroom,1,136
+12,"In this part, Daniel and Sandra went to the office. → Sandra is in the office.",office,2,136
+12,"In this part, Daniel and Mary journeyed to the kitchen. → Mary is in the kitchen.",kitchen,3,136
+12,"In this part, Daniel and John journeyed to the hallway. → John is in the hallway.",hallway,4,136
+12,"In this part, Daniel and John travelled to the bathroom. → John is in the bathroom.",bathroom,5,136
+12,"In this part, Sandra and Mary went to the bathroom. → Mary is in the bathroom.",bathroom,1,137
+12,"In this part, Daniel and Mary travelled to the garden. → Mary is in the garden.",garden,2,137
+12,"In this part, John and Mary moved to the bathroom. → John is in the bathroom.",bathroom,3,137
+12,"In this part, John and Mary moved to the garden. → Mary is in the garden.",garden,4,137
+12,"In this part, Mary and John moved to the bedroom. → John is in the bedroom.",bedroom,5,137
+12,"In this part, Mary and John travelled to the hallway. → Mary is in the hallway.",hallway,1,138
+12,"In this part, John and Mary travelled to the kitchen. → John is in the kitchen.",kitchen,2,138
+12,"In this part, Sandra and Daniel went to the bedroom. → Sandra is in the bedroom.",bedroom,3,138
+12,"In this part, Sandra and Mary went to the garden. → Sandra is in the garden.",garden,4,138
+12,"In this part, John and Daniel journeyed to the bathroom. → John is in the bathroom.",bathroom,5,138
+12,"In this part, Daniel and Mary travelled to the garden. → Mary is in the garden.",garden,1,139
+12,"In this part, Mary and John journeyed to the office. → Mary is in the office.",office,2,139
+12,"In this part, Sandra and Mary moved to the garden. → Sandra is in the garden.",garden,3,139
+12,"In this part, Daniel and John travelled to the bathroom. → Daniel is in the bathroom.",bathroom,4,139
+12,"In this part, Daniel and John moved to the hallway. → John is in the hallway.",hallway,5,139
+12,"In this part, Sandra and Daniel went back to the garden. → Daniel is in the garden.",garden,1,140
+12,"In this part, Sandra and Mary moved to the hallway. → Sandra is in the hallway.",hallway,2,140
+12,"In this part, John and Daniel moved to the bathroom. → John is in the bathroom.",bathroom,3,140
+12,"In this part, Mary and Sandra went to the kitchen. → Sandra is in the kitchen.",kitchen,4,140
+12,"In this part, John and Mary went to the office. → Mary is in the office.",office,5,140
+12,"In this part, Daniel and Sandra moved to the garden. → Sandra is in the garden.",garden,1,141
+12,"In this part, Sandra and Mary moved to the hallway. → Mary is in the hallway.",hallway,2,141
+12,"In this part, Mary and Sandra travelled to the bathroom. → Mary is in the bathroom.",bathroom,3,141
+12,"In this part, John and Mary went to the bedroom. → Mary is in the bedroom.",bedroom,4,141
+12,"In this part, Sandra and Mary journeyed to the bathroom. → Sandra is in the bathroom.",bathroom,5,141
+12,"In this part, Mary and John journeyed to the office. → John is in the office.",office,1,142
+12,"In this part, Mary and Sandra journeyed to the bedroom. → Sandra is in the bedroom.",bedroom,2,142
+12,"In this part, John and Daniel journeyed to the hallway. → Daniel is in the hallway.",hallway,3,142
+12,"In this part, John and Mary went back to the hallway. → John is in the hallway.",hallway,4,142
+12,"In this part, Daniel and Mary went back to the bathroom. → Daniel is in the bathroom.",bathroom,5,142
+12,"In this part, Daniel and Sandra went back to the kitchen. → Daniel is in the kitchen.",kitchen,1,143
+12,"In this part, Sandra and Mary travelled to the hallway. → Sandra is in the hallway.",hallway,2,143
+12,"In this part, John and Mary went back to the bathroom. → John is in the bathroom.",bathroom,3,143
+12,"In this part, Daniel and Sandra travelled to the hallway. → Sandra is in the hallway.",hallway,4,143
+12,"In this part, John and Daniel went to the bedroom. → John is in the bedroom.",bedroom,5,143
+12,"In this part, Daniel and John moved to the garden. → Daniel is in the garden.",garden,1,144
+12,"In this part, Mary and Daniel journeyed to the hallway. → Mary is in the hallway.",hallway,2,144
+12,"In this part, John and Mary went back to the garden. → Mary is in the garden.",garden,3,144
+12,"In this part, Sandra and Mary went to the bathroom. → Mary is in the bathroom.",bathroom,4,144
+12,"In this part, Mary and Sandra moved to the kitchen. → Sandra is in the kitchen.",kitchen,5,144
+12,"In this part, Sandra and Mary went back to the kitchen. → Mary is in the kitchen.",kitchen,1,145
+12,"In this part, Sandra and Mary went back to the bedroom. → Mary is in the bedroom.",bedroom,2,145
+12,"In this part, John and Daniel went back to the hallway. → Daniel is in the hallway.",hallway,3,145
+12,"In this part, Sandra and John moved to the office. → Sandra is in the office.",office,4,145
+12,"In this part, Mary and Daniel went to the garden. → Mary is in the garden.",garden,5,145
+12,"In this part, Sandra and Daniel went back to the kitchen. → Sandra is in the kitchen.",kitchen,1,146
+12,"In this part, Mary and Sandra went to the bathroom. → Mary is in the bathroom.",bathroom,2,146
+12,"In this part, John and Sandra travelled to the bathroom. → Sandra is in the bathroom.",bathroom,3,146
+12,"In this part, Mary and Sandra went to the bedroom. → Mary is in the bedroom.",bedroom,4,146
+12,"In this part, Daniel and Mary journeyed to the office. → Mary is in the office.",office,5,146
+12,"In this part, Mary and Sandra travelled to the hallway. → Sandra is in the hallway.",hallway,1,147
+12,"In this part, Mary and Sandra went to the kitchen. → Sandra is in the kitchen.",kitchen,2,147
+12,"In this part, Daniel and John went to the bedroom. → Daniel is in the bedroom.",bedroom,3,147
+12,"In this part, Daniel and John went to the kitchen. → John is in the kitchen.",kitchen,4,147
+12,"In this part, Sandra and Mary journeyed to the hallway. → Sandra is in the hallway.",hallway,5,147
+12,"In this part, Sandra and Daniel went to the kitchen. → Sandra is in the kitchen.",kitchen,1,148
+12,"In this part, John and Mary went to the office. → John is in the office.",office,2,148
+12,"In this part, Mary and Daniel journeyed to the hallway. → Mary is in the hallway.",hallway,3,148
+12,"In this part, Daniel and Sandra moved to the garden. → Daniel is in the garden.",garden,4,148
+12,"In this part, Sandra and Daniel moved to the bathroom. → Daniel is in the bathroom.",bathroom,5,148
+12,"In this part, Sandra and Mary went to the hallway. → Mary is in the hallway.",hallway,1,149
+12,"In this part, Mary and Sandra went back to the bathroom. → Sandra is in the bathroom.",bathroom,2,149
+12,"In this part, John and Daniel journeyed to the bedroom. → John is in the bedroom.",bedroom,3,149
+12,"In this part, Mary and Sandra moved to the kitchen. → Mary is in the kitchen.",kitchen,4,149
+12,"In this part, Mary and Daniel moved to the bathroom. → Daniel is in the bathroom.",bathroom,5,149
+12,"In this part, Daniel and Mary went to the garden. → Mary is in the garden.",garden,1,150
+12,"In this part, Sandra and Mary went back to the hallway. → Sandra is in the hallway.",hallway,2,150
+12,"In this part, Sandra and Daniel went to the kitchen. → Daniel is in the kitchen.",kitchen,3,150
+12,"In this part, Mary and Sandra moved to the garden. → Sandra is in the garden.",garden,4,150
+12,"In this part, Mary and Daniel journeyed to the bathroom. → Daniel is in the bathroom.",bathroom,5,150

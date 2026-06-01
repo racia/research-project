@@ -1,0 +1,102 @@
+task_id,reasoning,answer,part_id,sample_id
+14,S1: John travelled to hallway. S2: Mary to bathroom. John's last location is hallway.,hallway,1,1
+14,"From P1 S2: Mary journeyed to bathroom. S4: Daniel went to bathroom, S5: John to bedroom — neither updates Mary's location. Mary remains in bathroom.",bathroom,2,1
+14,S8: Sandra journeyed to kitchen. Sandra's last location is kitchen.,kitchen,3,1
+14,S10: Sandra travelled to hallway. S11: John to garden. Sandra's last location is hallway.,hallway,4,1
+14,S13: Sandra went back to bathroom. S14: Sandra moved to kitchen. Last location for Sandra is kitchen.,kitchen,5,1
+14,S1: Mary got milk (wherever she was). S4: Mary travelled to hallway. Mary carries milk to hallway. Milk is in hallway.,hallway,1,2
+14,S6: John got football there (in bedroom). S7: John went to hallway. John carries football to hallway. Football is in hallway.,hallway,2,2
+14,S9: John put down football (John was in hallway from P2). Football stays in hallway. S10: Mary to garden has no effect on football.,hallway,3,2
+14,"Football was put down in hallway (S9). S12: John to kitchen, S13: Sandra to hallway. John left without picking up football. Football remains in hallway.",hallway,4,2
+14,"Mary got milk in P1 (hallway), then went to garden in P3 carrying milk. S16: Mary discarded milk — milk is left at Mary's location, which is garden.",garden,5,2
+14,"Apple path: John grabbed apple in bedroom (S4), carried to garden (S6), left S13, picked up S14, to kitchen S18, dropped S20, grabbed S21, carried to office S22, to bathroom S25. Before bathroom, apple was in office.",office,1,3
+14,"Apple path continues: After bathroom S25, John to office S26, to hallway S30. Before hallway (S30), apple was in office (S26).",office,2,3
+14,"Same apple path as P2. Before John carried apple to hallway (S30), apple was in office (John carried it from bathroom S25 to office S26 then to hallway S30). Before hallway = office.",office,3,3
+14,"Football path: bedroom→garden(S6)→dropped(S8)→Daniel took(S10 garden)→left(S16)→took(S17)→dropped(S19 garden)→Daniel took(S33 garden)→Daniel to bathroom(S41, carrying football)→Daniel to garden(S44). Before garden(S44), football was in bathroom(S41).",bathroom,4,3
+14,Same reasoning as P4. Football's path to the garden came from bathroom (Daniel carried it from bathroom S41 to garden S44). Before garden = bathroom.,bathroom,5,3
+14,"S2: Bedroom is west of bathroom. If bedroom is west of bathroom, then bathroom is east of bedroom.",bedroom,1,4
+14,S1: Fred picked up football. S2: Fred gave football to Jeff. Fred gave football.,football,1,5
+14,"From P1: Fred gave football to Jeff. S4: Bill to bathroom, S5: Jeff grabbed milk — neither changes who gave football. Fred gave it.",fred,2,5
+14,S7: Jeff gave football to Fred. S8: Fred handed football to Jeff. Most recent transfer: Fred gave football to Jeff.,football,3,5
+14,S10: Jeff handed football to Fred. S11: Fred gave football to Jeff. Fred gave football to Jeff.,jeff,4,5
+14,S13: Jeff gave football to Fred. S14: Jeff put down milk. Jeff gave football to Fred.,fred,5,5
+14,"S2: John moved to bedroom. John is in bedroom, not kitchen.",no,1,6
+14,"S5: John went to garden. John is in garden, not kitchen.",no,2,6
+14,"From P2 S5: John went to garden. S7: Daniel to bedroom, S8: Daniel to garden — neither moves John. John is still in garden.",yes,3,6
+14,S10: Daniel travelled to bathroom. Daniel is in bathroom.,yes,4,6
+14,"Daniel's last position was bathroom (S10). S13-S14 mention Mary and Sandra but not Daniel. Daniel is still in bathroom, not bedroom.",no,5,6
+14,S1: Mary got milk. John moved to bedroom. Mary has milk = one object.,one,1,7
+14,"S4: Sandra to bathroom, S5: John got football. Mary still has milk from P1. Count = one.",one,2,7
+14,S7: Mary to bathroom. S8: Mary gave milk to Sandra. Mary gave away her only object. Count = none.,none,3,7
+14,John got football in P2. S10: John to bathroom. S11: John left football. John dropped only object. Count = none.,none,4,7
+14,S13: Sandra gave milk to John. John received milk. Count = one.,one,5,7
+14,S1: Mary got milk. S2: John to bedroom. Mary is carrying milk.,milk,1,8
+14,S4: John picked up football. S5: John to bathroom. John is carrying football.,football,2,8
+14,"S7: John to garden, S8: Daniel to hallway. John still has football from P2. John is carrying football.",football,3,8
+14,John had football from P2. S15: John picked up apple there (in bedroom). Now John has football and apple.,football apple,4,8
+14,"S17: Sandra to bedroom, S18: Sandra to kitchen. No change to John's items. John still carries football and apple.",football apple,5,8
+14,"S2: Sandra is in kitchen. The question asks about bedroom. Sandra is in kitchen, not bedroom.",no,1,9
+14,S4: Sandra journeyed to bedroom. Sandra is now in bedroom.,yes,2,9
+14,S8: Sandra is no longer in bedroom. Explicit negation — Sandra is not in bedroom.,no,3,9
+14,S11: Mary is not in bathroom. Explicit statement — Mary is not in bathroom.,no,4,9
+14,"S14: Mary journeyed to garden. Mary is in garden, not kitchen.",no,5,9
+14,"S2: Bill is in kitchen. Bill is in kitchen, not bedroom.",no,1,10
+14,S4: Bill journeyed to bedroom. Bill is now in bedroom.,yes,2,10
+14,S8: Bill is either in school or office. Bill is NOT in park.,no,3,10
+14,"S7: Fred went back to park (from P3). S10: Mary to cinema, S11: Julie either in school/office — neither moves Fred. Fred is still in park.",yes,4,10
+14,S14: Bill went back to office. Bill is in office.,yes,5,10
+14,S1: John to hallway. S2: 'After that he journeyed to the garden' — 'he' = John. John is in garden.,garden,1,11
+14,S4: John to office. S5: 'Following that he went to the hallway' — 'he' = John. John is in hallway.,hallway,2,11
+14,S7: Sandra to bedroom. S8: 'Then she moved to the hallway' — 'she' = Sandra. Sandra is in hallway.,hallway,3,11
+14,S10: Mary to hallway. S11: 'Afterwards she went to the bathroom' — 'she' = Mary. Sandra's last known location was hallway (P3). No update on Sandra. Sandra remains in hallway.,hallway,4,11
+14,S10-S11 established Mary in bathroom. S13: John to office. S14: 'After that he moved to bathroom' — 'he' = John. No change to Mary. Mary remains in bathroom.,bathroom,5,11
+14,S1: John AND Mary to hallway. S2: Sandra AND Mary to bedroom. Mary's last location = bedroom.,bedroom,1,12
+14,S4: Mary AND Daniel to bathroom. S5: Daniel AND Sandra to office (Mary not included). Mary remains in bathroom.,bathroom,2,12
+14,S7: Daniel and Mary to bedroom. S8: Daniel AND Sandra to hallway. Sandra's last location = hallway.,hallway,3,12
+14,S10: Mary AND Sandra to garden. S11: Sandra AND Mary to hallway. Mary's last location = hallway.,hallway,4,12
+14,S13: Daniel AND John to bathroom. S14: Daniel AND Mary to office (John NOT included). John remains in bathroom.,bathroom,5,12
+14,S1: John and Mary to hallway. S2: 'Then they went to bathroom' — they = John and Mary. John is in bathroom.,bathroom,1,13
+14,S4: Mary and John to hallway. S5: 'Following that they moved to kitchen' — they = Mary and John. John is in kitchen.,kitchen,2,13
+14,S7: Daniel and Sandra to office. S8: 'Following that they went back to kitchen' — they = Daniel and Sandra. John was last in kitchen (P2). No update. John remains in kitchen.,kitchen,3,13
+14,S10: John and Daniel to office. S11: 'Following that they travelled to hallway' — they = John and Daniel. Sandra's last known location was kitchen (P3). No update on Sandra. Sandra remains in kitchen.,kitchen,4,13
+14,S13: Mary and Sandra to garden. S14: 'After that they went back to kitchen' — they = Mary and Sandra. Sandra is in kitchen.,kitchen,5,13
+14,Mary's temporal sequence: yesterday→school; this morning→kitchen; this afternoon→cinema. Immediately before cinema (this afternoon) was kitchen (this morning).,kitchen,1,14
+14,Bill's sequence: yesterday→bedroom (S3); this morning→office (S7). Immediately before office = bedroom.,bedroom,2,14
+14,Bill: yesterday bedroom → this morning office → this afternoon kitchen. The question 'before the office' refers to Bill's first office visit. Before office = bedroom.,bedroom,3,14
+14,Mary's full sequence: yesterday→school; this morning→kitchen; this afternoon→cinema; this evening→school (S9). Before the most recent school visit (this evening) = cinema (this afternoon).,cinema,4,14
+14,Same context as P4 for Mary. Mary: kitchen → cinema → school. Before school = cinema.,cinema,5,14
+14,Emily is a cat (S7). Cats are afraid of wolves (S5). Therefore Emily is afraid of wolves.,wolf,1,15
+14,Winona is a sheep (S3). Sheep are afraid of mice (S2). Therefore Winona is afraid of mice.,mouse,2,15
+14,Gertrude is a wolf (S8). Wolves are afraid of mice (S1). Therefore Gertrude is afraid of mice.,mouse,3,15
+14,Jessica is a mouse (S6). Mice are afraid of cats (S4). Therefore Jessica is afraid of cats.,cat,4,15
+14,Brian is a lion (S5). Bernhard is also a lion (S2) and is white (S4). Lions are white. Therefore Brian is white.,white,1,16
+14,"From S1-S2: pink rectangle → triangle → red square (left to right). Pink rectangle is to the LEFT of red square, not the right.",no,1,17
+14,Order: pink rectangle → triangle → red square. Pink rectangle is left of red square.,yes,2,17
+14,Same spatial arrangement. Pink rectangle is left of red square.,yes,3,17
+14,Same spatial arrangement. Pink rectangle is left of red square.,yes,4,17
+14,Pink rectangle is left of red square (not right).,no,5,17
+14,Red square is to the right of pink rectangle (since pink rectangle is left of red square).,yes,6,17
+14,Pink rectangle is left of red square.,yes,7,17
+14,Pink rectangle is left of red square.,yes,8,17
+14,"S1: Suitcase fits inside box → box > suitcase. S2: Chocolate fits inside box → box > chocolate. Box is bigger than chocolate, so box cannot fit inside chocolate.",no,1,18
+14,"Chocolate fits inside box (S2), meaning box > chocolate. Chocolate is NOT bigger than box.",no,2,18
+14,Box > chocolate (S2). Box cannot fit in chocolate.,no,3,18
+14,Box > chocolate. Box cannot fit in chocolate.,no,4,18
+14,Box > chocolate. Chocolate is not bigger than box.,no,5,18
+14,S9: Chocolate fits inside chest → chest > chocolate. S5: Box > box of chocolates. Box of chocolates is smaller than both box and chest. Box of chocolates is NOT bigger than chest.,no,6,18
+14,Box > chocolate. Chocolate is not bigger than box.,no,7,18
+14,Box > chocolate. Chocolate is not bigger than box.,no,8,18
+14,Box > chocolate. Box cannot fit in chocolate.,no,9,18
+14,"Map: bathroom(north) → bedroom(south of bathroom, north of hallway) → hallway(south of bedroom) → office(south of hallway). To go from bathroom to hallway: go south (bathroom→bedroom), then south again (bedroom→hallway). Path = south south.",south south,1,19
+14,Jason is thirsty. Thirsty people go to the kitchen (to drink). Jason will go to kitchen.,kitchen,1,20
+14,Antoine is bored. Bored people go to the garden (to play). Antoine will go to garden.,garden,2,20
+14,Jason was stated as thirsty (S1). Thirsty → go to kitchen. Jason went to kitchen because he was thirsty.,thirsty,3,20
+14,Antoine was stated as bored (S3). Bored → go to garden. Antoine went to garden because he was bored.,bored,4,20
+14,Sumit is hungry. Hungry people go to the kitchen (to eat). Sumit will go to kitchen.,kitchen,5,20
+14,Antoine was bored (S3). He went to garden and grabbed football — getting a football is associated with boredom/play.,bored,6,20
+14,Sumit was hungry (S9). Hungry → kitchen. Sumit went to kitchen because he was hungry.,hungry,7,20
+14,Jason was thirsty (S1). He went to kitchen and took milk — getting milk is associated with thirst.,thirsty,8,20
+14,Sumit was hungry (S9). He went to kitchen and took apple — getting food is associated with hunger.,hungry,9,20
+14,Yann is thirsty (S19). Thirsty → kitchen. Yann will go to kitchen.,kitchen,10,20
+14,Yann was thirsty (S19). Thirsty → kitchen. Yann went to kitchen because he was thirsty.,thirsty,11,20
+14,Jason grabbed football. Getting a football is associated with boredom (established by the Antoine pattern: bored → garden → football). Jason got football because he was bored.,bored,12,20
