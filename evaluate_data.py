@@ -688,6 +688,8 @@ def run(
 
     save_latex_table_line(split, experiment, setting, saver)
 
+    # TODO: add "answer_not_mentioned" and "empty_attn_scores" to the metrics for correlation analysis and plotting
+    # TODO: add a metric to see whether the answer is valid (among entities mentioned in the sample)
     split_corr_matrices = split.calculate_metrics()
 
     # ---- Before/after comparison plots --------------------------------------
