@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 16,"emily is a cat (stated directly). Cats are afraid of wolves (stated directly). Therefore, emily is afraid of wolves.",wolf,1,1
 16,"winona is a sheep (stated directly). Sheep are afraid of mice (stated directly). Therefore, winona is afraid of mice.",mouse,2,1
 16,"gertrude is a wolf (stated directly). Wolves are afraid of mice (stated directly). Therefore, gertrude is afraid of mice.",mouse,3,1

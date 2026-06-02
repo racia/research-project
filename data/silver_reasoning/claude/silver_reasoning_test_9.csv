@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 9,"John is in the hallway. Sandra is in the kitchen. Sandra is currently in the kitchen, not the bedroom.",no,1,1
 9,Sandra goes to the bedroom. Mary goes to the garden. Sandra is currently in the bedroom.,yes,2,1
 9,Mary goes to the bathroom. Sandra leaves the bedroom. Sandra is not in the bedroom.,no,3,1

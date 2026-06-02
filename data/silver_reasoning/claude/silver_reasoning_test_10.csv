@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 10,"Mary starts in the school. Bill is stated to be in the kitchen. The question asks if Bill is in the bedroom. Since Bill's current location is explicitly stated as the kitchen, and there are no movements mentioned, Bill is not in the bedroom.",no,1,1
 10,"Bill journeyed to the bedroom, which means he moved there and is now in the bedroom. Fred travelled to the cinema (this doesn't affect Bill). The question asks if Bill is in the bedroom. Since Bill just journeyed to the bedroom, he is now there.",yes,2,1
 10,"Fred went back to the park (this doesn't affect Bill's location). Bill is either in the school or the office, meaning his location is one of these two places but not both. The question asks if Bill is in the park. Since Bill is constrained to being in either the school or the office, he cannot be in the park.",no,3,1

@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 2,Tracking the milk through the context: Sentence 1: Mary got the milk there.. The milk is at the hallway.,hallway,1,1
 2,Tracking the football through the context: Sentence 5: John got the football there.. The football is at the hallway.,hallway,2,1
 2,Tracking the football through the context: Sentence 5: John got the football there.; Sentence 7: John put down the football.. The football is at the hallway.,hallway,3,1

@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 17,Context establishes: pink rectangle left triangle; triangle left red square. No direct or transitive chain establishes that pink rectangle is right of red square.,no,1,1
 17,"Context establishes: pink rectangle left triangle; triangle left red square. By direct statement or transitive reasoning, pink rectangle is left of red square.",yes,2,1
 17,"Context establishes: pink rectangle left triangle; triangle left red square. By direct statement or transitive reasoning, pink rectangle is left of red square.",yes,3,1

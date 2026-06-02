@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 11,Tracking John: John to hallway → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,1,1
 11,Tracking John: John to office → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,2,1
 11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,1

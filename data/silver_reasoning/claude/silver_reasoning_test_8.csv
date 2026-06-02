@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 8,"In the given context: Mary picked up the milk. Therefore, Mary is currently carrying the milk.",milk,1,1
 8,"In the given context: John picked up the football. Therefore, John is currently carrying the football.",football,2,1
 8,"In the given context, only movement actions occurred, which do not affect what the actors are carrying. Therefore, John is currently carrying the football.",football,3,1

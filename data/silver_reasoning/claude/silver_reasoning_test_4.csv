@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 4,"From sentence 1, the hallway is east of the bathroom, which means the bathroom is west of the hallway. From sentence 2, the bedroom is west of the bathroom, which means the bathroom is east of the bedroom. The question asks what is the bathroom east of, so the answer is the bedroom.",bedroom,1,1
 4,"From sentence 1, the bedroom is west of the kitchen. From sentence 2, the hallway is west of the bedroom. The question asks what is west of the kitchen. According to sentence 1, the bedroom is west of the kitchen.",bedroom,1,2
 4,"From sentence 1, the bathroom is north of the garden. From sentence 2, the hallway is north of the bathroom. The question asks what is north of the garden. According to sentence 1, the bathroom is north of the garden.",bathroom,1,3
