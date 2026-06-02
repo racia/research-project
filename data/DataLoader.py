@@ -112,7 +112,7 @@ class DataLoader:
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
         filtering_conditions: dict = None,
-        reasoning_source: str | None = None,
+        reasoning_source: str | None = "llama",
     ):
         """
         Initialize the DataLoader.
@@ -129,13 +129,12 @@ class DataLoader:
                                      attribute names to desired values, e.g.
                                      {"model_answer": "correct"}.
         :param reasoning_source: which silver-reasoning corpus to use.
-                                 ``None`` (default) preserves the original
-                                 behaviour and reads directly from
-                                 ``data/silver_reasoning/``.
-                                 Pass ``"claude"`` or ``"llama"`` to read from
-                                 the corresponding sub-directory
-                                 (``data/silver_reasoning/claude/`` or
-                                 ``data/silver_reasoning/llama/``).
+                                 Defaults to ``"llama"``, which reads from
+                                 ``data/silver_reasoning/llama/``.
+                                 Pass ``"claude"`` to read from
+                                 ``data/silver_reasoning/claude/``, or
+                                 ``None`` to read directly from
+                                 ``data/silver_reasoning/`` (legacy behaviour).
         """
         if (
             reasoning_source is not None
