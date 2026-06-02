@@ -284,9 +284,7 @@ class Plotter:
                     f"'file_name' must include a file-type suffix (e.g. '.png'), "
                     f"got: {file_name!r}"
                 )
-            plt.savefig(
-                self.results_path / file_name / ".png", dpi=300, bbox_inches="tight"
-            )
+            plt.savefig(self.results_path / file_name, dpi=300, bbox_inches="tight")
         elif x_label and y_label and path_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
@@ -3618,7 +3616,7 @@ class Plotter:
     def plot_toxic_cot_transition_overview(
         self,
         merged_df: pd.DataFrame,
-        file_name: str = "toxic_cot_transition_overview.pdf",
+        file_name: str = "toxic_cot_transition_overview.png",
         plot_name_add: list[str] = None,
         path_add: str | Path = "",
     ) -> None:
