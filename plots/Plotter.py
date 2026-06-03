@@ -278,11 +278,18 @@ class Plotter:
         :return: None
         """
         if file_name:
-            plt.savefig(self.results_path / file_name, bbox_inches="tight")
+            file_name = str(file_name)
+            if not Path(file_name).suffix:
+                raise ValueError(
+                    f"'file_name' must include a file-type suffix (e.g. '.png'), "
+                    f"got: {file_name!r}"
+                )
+            plt.savefig(self.results_path / file_name, dpi=300, bbox_inches="tight")
         elif x_label and y_label and path_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
                 self.results_path / path_add / f"{label}_per_{x_label.lower()}.png",
+                dpi=300,
                 bbox_inches="tight",
             )
         else:
@@ -411,7 +418,11 @@ class Plotter:
         plt.xlabel(x_label)
 
         y_ticks = np.arange(0, 1.1, 0.1)
-        if "accurac" in y_label.lower():
+
+        if "diff" in y_label.lower():
+            y_ticks = np.arange(-2.0, 2.1, 0.2)
+            plt.ylim(bottom=-2.0, top=2.0)
+        elif "accurac" in y_label.lower():
             plt.ylim(bottom=0, top=1)
         elif "attention" in y_label.lower():
             if "direct" in experiment.lower():
@@ -424,6 +435,7 @@ class Plotter:
             plt.ylim(bottom=0, top=1)
         elif displ_percentage:
             plt.ylim(bottom=0, top=1.01)
+
         plt.yticks(y_ticks)
 
         type_of_data = " ".join(
@@ -435,6 +447,7 @@ class Plotter:
         plt.ylabel(type_of_data)
 
         plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        plt.gca().set_axisbelow(True)
 
         title = f"{type_of_data} per {x_label}"
         if num_of_data_arrays > 1:
@@ -487,7 +500,7 @@ class Plotter:
         data: dict[str, dict[str, tuple]],
         level: str,
         version: str,
-        file_name: str = None,
+        file_name: str,
         id: int = 1,
         split_name: str = None,
         path_add: Path = None,
@@ -522,9 +535,8 @@ class Plotter:
         )
         plt.subplots_adjust(left=0.15, right=0.99, bottom=0.15)
 
-        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        plt.savefig(self.results_path / path_add / file_name)
-        plt.close()
+        png_path = self._resolve_save_target(file_name, path_add)
+        self._save_plot(file_name=png_path)
 
     def draw_heat(
         self,
@@ -596,7 +608,8 @@ class Plotter:
         verbosity = "aggr" if "sentence" in x_label.lower() else "ver"
         plt.savefig(
             plot_subdirectory
-            / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.png"
+            / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.png",
+            dpi=300,
         )
 
         plt.close()
@@ -621,7 +634,12 @@ class Plotter:
         """
         plt.figure(figsize=(10, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
-        plt.plot(range(1, len(acc_per_task) + 1), acc_per_task.all, color=colors[0])
+        plt.plot(
+            range(1, len(acc_per_task) + 1),
+            acc_per_task.all,
+            color=colors[0],
+            alpha=0.82,
+        )
 
         self._plot_general_details(
             x_label,
@@ -631,7 +649,129 @@ class Plotter:
             num_of_data_arrays=1,
             step=1,
         )
-        self._save_plot(x_label, y_label, plot_name_add, file_name)
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        png_path = self._resolve_save_target(
+            file_name
+            or f"{y_label.lower().replace(' ', '_')}_per_{x_label.lower()}.png",
+            path_add,
+        )
+        txt_rows = [(f"task={i}", float(v)) for i, v in enumerate(acc_per_task.all, 1)]
+        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
+        self._save_plot(file_name=png_path)
+
+    def plot_acc_and_toxic_cot(
+        self,
+        group: str,
+        df: pd.DataFrame,
+        version: str,
+        plot_name_add: list[str] | None = None,
+    ):
+        plt.close()
+        fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+
+        # PLOT ACCURACY
+        plot_df = (
+            df.groupby(group)
+            .agg(
+                Direct_answer=(f"answer_correct_{version}_da", "mean"),
+                With_reasoning=(f"answer_correct_{version}_reas", "mean"),
+            )
+            .reset_index()
+            .melt(id_vars=group, var_name="condition", value_name="accuracy")
+        )
+        ax = sns.barplot(
+            data=plot_df,
+            x=group,
+            y="accuracy",
+            hue="condition",
+            palette=[self.cmap(1), self.cmap(0)],
+            ax=axes[0],
+        )
+        ax.set_ylim(0, 1.05)
+        ax.set_yticks(np.arange(0.0, 1.05, 0.1))
+        ax.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        ax.set_axisbelow(True)
+        ax.set_xlabel(" ".join(group.title().split("_")))
+        ax.set_ylabel("Accuracy")
+        ax.set_title(
+            f"Accuracy of Direct Answers and Chain-of-Thought per {group.title()}"
+        )
+
+        # PLOT TOXIC COT
+        plot_df = df.groupby(group)[f"toxic_cot_{version}"].mean().reset_index()
+        plot_df = plot_df.melt(group, var_name="version", value_name="toxic_rate")
+        ax = sns.barplot(
+            data=plot_df,
+            x=group,
+            y="toxic_rate",
+            hue="version",
+            palette=[self.cmap(0), self.cmap(1)],
+            ax=axes[1],
+        )
+        ax.set_xlabel(" ".join(group.title().split("_")))
+        ax.set_ylabel("Toxic CoT Rate")
+        ax.set_title(
+            f"Percentage of Toxic Chain-of-Though in Correct Direct Answers per {group.title()}"
+        )
+        ax.set_ylim(0, 1.05)
+        ax.set_yticks(np.arange(0.0, 1.05, 0.1))
+        ax.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        ax.set_axisbelow(True)
+        png_path = self._resolve_save_target(
+            f"acc_and_toxic_cot_per_{group}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
+        self._save_plot(file_name=png_path)
+
+    def plot_acc_two_runs_per(
+        self,
+        group: str,
+        df: pd.DataFrame,
+        version: str,
+        y_label: str = "Accuracy",
+        file_name: str | None = None,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Compare per-task accuracy between runs with and without reasoning.
+        """
+        plt.close()
+
+        plot_df = (
+            df.groupby(group)
+            .agg(
+                Direct_answer=(f"answer_correct_{version}_da", "mean"),
+                With_reasoning=(f"answer_correct_{version}_reas", "mean"),
+            )
+            .reset_index()
+            .melt(id_vars=group, var_name="condition", value_name="accuracy")
+        )
+
+        plt.figure(figsize=(len(df[group].unique()) * 0.4, 5))
+        ax = sns.barplot(
+            data=plot_df,
+            x=group,
+            y="accuracy",
+            hue="condition",
+            palette=[self.cmap(1), self.cmap(0)],
+        )
+        ax.set_title(
+            f"Accuracy per {group.title()} for Direct Answers and Chain-of-Thought ({version})"
+        )
+        ax.set_xlabel(" ".join(group.title().split("_")))
+        ax.set_ylabel(y_label)
+        ax.set_ylim(0, 1.05)
+        ax.set_yticks(np.arange(0.0, 1.05, 0.1))
+        plt.grid(which="both", linewidth=0.5, axis="y", linestyle="--")
+        plt.gca().set_axisbelow(True)
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        png_path = self._resolve_save_target(
+            file_name or f"{y_label.lower().replace(' ', '_')}_per_{group}.png",
+            path_add,
+        )
+        self._save_plot(file_name=png_path)
 
     def plot_acc_per_task_and_prompt(
         self,
@@ -686,7 +826,140 @@ class Plotter:
             num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        if file_name:
+            png_path = self._resolve_save_target(file_name, path_add)
+            self._save_plot(file_name=png_path)
+        else:
+            self._save_plot(y_label, x_label, path_add=path_add)
+
+    def plot_correctness_agreement(
+        self,
+        df: pd.DataFrame,
+        versions: list[str],
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Compare correctness agreement between runs with and without reasoning.
+
+        :param df: pd.DataFrame
+        :param versions: list of versions to compare, e.g. ["before", "after"]
+        :param group: optional column name to group by (e.g. "task" or "prompt");
+                     if None, agreement is computed across the whole dataset
+        :param plot_name_add: optional list of strings to add to the plot name (e.g. for version or group tags)
+        :return: None
+        """
+        plt.close()
+        plt.figure(figsize=(8, 6), constrained_layout=True)
+
+        correct_attrs = []
+        for version in versions:
+            correct_attrs.append(f"answer_correct_{version}_da")
+            correct_attrs.append(f"answer_correct_{version}_reas")
+
+        agree = pd.DataFrame(index=correct_attrs, columns=correct_attrs, dtype=float)
+        for a in correct_attrs:
+            for b in correct_attrs:
+                agree.loc[a, b] = (df[a] == df[b]).mean()
+
+        sns.heatmap(agree.astype(float), annot=True, vmin=0, vmax=1, cmap="Blues")
+        plt.title(
+            f"Answer Correct Agreement Between DA and Reasoning Runs with Versions={versions}"
+        )
+        plt.xticks(rotation=45, ha="right")
+        png_path = self._resolve_save_target(
+            f"correctness_agreement_{'_'.join(versions)}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
+        self._save_plot(file_name=png_path)
+
+    def plot_attr_agreement(
+        self,
+        df: pd.DataFrame,
+        versions: list[str],
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Compare correctness agreement between runs with and without reasoning.
+
+        :param df: pd.DataFrame
+        :param versions: list of versions to compare, e.g. ["before", "after"]
+        :param group: optional column name to group by (e.g. "task" or "prompt");
+                     if None, agreement is computed across the whole dataset
+        :param plot_name_add: optional list of strings to add to the plot name (e.g. for version or group tags)
+        :return: None
+        """
+        plt.close()
+        plt.figure(figsize=(12, 8), constrained_layout=True)
+        ATTRS = [
+            "max_supp_attn",
+            "attn_on_target",
+            "there",
+            "verbs",
+            "pronouns",
+            "not_mentioned",
+            "context_sents_hall",
+        ]
+        correct_attrs = []
+        for version in versions:
+            for attr in ATTRS:
+                correct_attrs.append(f"{attr}_{version}_da")
+                correct_attrs.append(f"{attr}_{version}_reas")
+
+        agree = pd.DataFrame(index=correct_attrs, columns=correct_attrs, dtype=float)
+        for a in correct_attrs:
+            for b in correct_attrs:
+                agree.loc[a, b] = (df[a] == df[b]).mean()
+
+        sns.heatmap(agree.astype(float), annot=True, vmin=0, vmax=1, cmap="Blues")
+        plt.xticks(rotation=45, ha="right")
+        plt.title(
+            f"Answer Correct Agreement Between DA and Reasoning Runs with Versions={versions}"
+        )
+        png_path = self._resolve_save_target(
+            f"attribute_agreement_{'_'.join(versions)}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
+        self._save_plot(file_name=png_path)
+
+    def plot_toxic_cot_per(
+        self,
+        group: str,
+        df: pd.DataFrame,
+        version: str,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        plt.close()
+        plot_df = (
+            df.groupby(group)[f"toxic_cot_{version}"]
+            .mean()
+            .reset_index(name="toxic_rate")
+        )
+        sns.barplot(
+            data=plot_df,
+            x=group,
+            y="toxic_rate",
+            color=self.cmap(0),
+        )
+        # sns.catplot(
+        #     data=plot_df,
+        #     x=group,
+        #     y="toxic_rate",
+        #     hue="version",
+        #     kind="bar",
+        #     height=5,
+        #     aspect=1.5,
+        # )
+        plt.xlabel(" ".join(group.title().split("_")))
+        plt.ylabel("Toxic CoT Rate")
+        plt.title(
+            f"Percentage of Toxic Chain-of-Though in Correct Direct Answers per {group.title()} ({version})"
+        )
+        png_path = self._resolve_save_target(
+            f"toxic_cot_per_{group}.png",
+            Path("/".join(plot_name_add)) if plot_name_add else None,
+        )
+        self._save_plot(file_name=png_path)
 
     def plot_acc_with_std(
         self,
@@ -744,7 +1017,11 @@ class Plotter:
             num_of_data_arrays=num_of_data_arrays,
             step=1,
         )
-        self._save_plot(y_label, x_label, file_name, path_add)
+        if file_name:
+            png_path = self._resolve_save_target(file_name, path_add)
+            self._save_plot(file_name=png_path)
+        else:
+            self._save_plot(y_label, x_label, path_add=path_add)
 
     def plot_exact_vs_soft_match_per_task(
         self,
@@ -835,9 +1112,9 @@ class Plotter:
         png_path = self._resolve_save_target(
             "exact_vs_soft_match_per_task.png", path_add
         )
+        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
 
     def plot_reasoning_scores_per_task(
         self,
@@ -920,9 +1197,9 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target("reasoning_scores_per_task.png", path_add)
+        self._write_plot_data_txt(png_path, [("Reasoning scores per task", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, [("Reasoning scores per task", txt_rows)])
 
     def plot_reasoning_vs_direct_answer_per_task(
         self,
@@ -1020,9 +1297,9 @@ class Plotter:
         png_path = self._resolve_save_target(
             "reasoning_vs_direct_answer_per_task.png", path_add
         )
+        self._write_plot_data_txt(png_path, all_rows)
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, all_rows)
 
     def plot_accuracy_distribution(
         self,
@@ -1118,9 +1395,384 @@ class Plotter:
         fig.tight_layout()
 
         png_path = self._resolve_save_target("accuracy_distribution.png", path_add)
+        self._write_plot_data_txt(png_path, [("Distribution stats", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
+    def plot_exact_vs_soft_match_per_task(
+        self,
+        evaluator,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Overlay exact-match and soft-match accuracy for a single evaluator,
+        one line per metric, plotted over tasks.
+
+        Useful to see at a glance which tasks have a large gap between exact
+        and soft match (many partially-correct answers) versus tasks where both
+        lines overlap (answers are either fully correct or fully wrong).
+
+        :param evaluator: a MetricEvaluator with exact_match_accuracy and
+                          soft_match_accuracy attributes
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, annotate each point with its value
+        """
+        em = getattr(evaluator, "exact_match_accuracy", None)
+        sm = getattr(evaluator, "soft_match_accuracy", None)
+        em_std = getattr(evaluator, "exact_match_std", None)
+        sm_std = getattr(evaluator, "soft_match_std", None)
+
+        if em is None and sm is None:
+            print("[plot_exact_vs_soft_match_per_task] No accuracy data available.")
+            return
+
+        fig, ax = plt.subplots(figsize=(10, 5))
+
+        specs = [
+            (em, em_std, self.color_supporting, "Exact match", "o"),
+            (sm, sm_std, self.color_distractor, "Soft match", "s"),
+        ]
+        txt_rows: list[tuple[str, float | None]] = []
+        for metric, std_metric, color, label, marker in specs:
+            if metric is None:
+                continue
+            vals = np.array(metric.all if hasattr(metric, "all") else metric)
+            x = np.arange(1, len(vals) + 1)
+            ax.plot(x, vals, marker=marker, color=color, linewidth=2, label=label)
+            if std_metric is not None:
+                stds = np.array(
+                    std_metric.all if hasattr(std_metric, "all") else std_metric
+                )
+                if len(stds) == len(vals):
+                    ax.fill_between(
+                        x, vals - stds, vals + stds, color=color, alpha=0.15
+                    )
+            for xi, v in zip(x, vals):
+                txt_rows.append((f"task={xi} {label}", float(v)))
+                if show_values:
+                    ax.text(
+                        xi,
+                        v,
+                        f"{v:.2f}",
+                        fontsize=7,
+                        ha="center",
+                        va="bottom",
+                        color="#222222",
+                    )
+
+        ax.set_xlabel("Task", fontsize=11)
+        ax.set_ylabel("Accuracy", fontsize=11)
+        ax.set_ylim(0, 1.05)
+        ax.set_xticks(
+            np.arange(
+                1,
+                max(
+                    len(em.all if em and hasattr(em, "all") else em or []),
+                    len(sm.all if sm and hasattr(sm, "all") else sm or []),
+                )
+                + 1,
+            )
+        )
+        title = "Exact vs Soft Match Accuracy Per Task"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        ax.set_title(title, fontsize=12)
+        ax.legend(fontsize=10, loc="lower right", framealpha=0.9)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            "exact_vs_soft_match_per_task.png", path_add
+        )
+        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+    def plot_reasoning_scores_per_task(
+        self,
+        evaluator,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Line plot of BLEU, ROUGE, and METEOR reasoning scores over tasks for
+        a single evaluator.
+
+        All three scores share the y-axis ([0, 1]) and are drawn with distinct
+        colours and markers so task-level trends are easy to compare.
+
+        :param evaluator: a MetricEvaluator with bleu, rouge, meteor attributes
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, annotate each point with its value
+        """
+        score_specs = [
+            ("bleu", "bleu_std", self.color_supporting, "BLEU", "o"),
+            ("rouge", "rouge_std", self.color_distractor, "ROUGE", "s"),
+            ("meteor", "meteor_std", self.color_neutral, "METEOR", "^"),
+        ]
+
+        any_data = False
+        fig, ax = plt.subplots(figsize=(10, 5))
+        txt_rows: list[tuple[str, float | None]] = []
+
+        for attr, std_attr, color, label, marker in score_specs:
+            metric = getattr(evaluator, attr, None)
+            if metric is None:
+                continue
+            vals = np.array(metric.all if hasattr(metric, "all") else metric)
+            if len(vals) == 0:
+                continue
+            any_data = True
+            x = np.arange(1, len(vals) + 1)
+            ax.plot(x, vals, marker=marker, color=color, linewidth=2, label=label)
+
+            std_metric = getattr(evaluator, std_attr, None)
+            if std_metric is not None:
+                stds = np.array(
+                    std_metric.all if hasattr(std_metric, "all") else std_metric
+                )
+                if len(stds) == len(vals):
+                    ax.fill_between(
+                        x, vals - stds, vals + stds, color=color, alpha=0.15
+                    )
+
+            for xi, v in zip(x, vals):
+                txt_rows.append((f"task={xi} {label}", float(v)))
+                if show_values:
+                    ax.text(
+                        xi,
+                        v,
+                        f"{v:.2f}",
+                        fontsize=7,
+                        ha="center",
+                        va="bottom",
+                        color="#222222",
+                    )
+
+        if not any_data:
+            print("[plot_reasoning_scores_per_task] No reasoning score data available.")
+            plt.close(fig)
+            return
+
+        ax.set_xlabel("Task", fontsize=11)
+        ax.set_ylabel("Score", fontsize=11)
+        ax.set_ylim(0, 1.05)
+        title = "Reasoning scores per task"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        ax.set_title(title, fontsize=12)
+        ax.legend(fontsize=10, loc="lower right", framealpha=0.9)
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target("reasoning_scores_per_task.png", path_add)
+        self._write_plot_data_txt(png_path, [("Reasoning scores per task", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+    def plot_reasoning_vs_direct_answer_per_task(
+        self,
+        reasoning_evaluator,
+        direct_answer_evaluator,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+        show_values: bool = False,
+    ) -> None:
+        """
+        Compare exact-match and soft-match accuracy between a reasoning
+        evaluator and a direct-answer evaluator, per task.
+
+        Two side-by-side panels (exact match | soft match). Each panel shows
+        one line for reasoning and one for direct answer, with std bands,
+        making it easy to see where step-by-step reasoning helps or hurts.
+
+        :param reasoning_evaluator: MetricEvaluator from the reasoning experiment
+        :param direct_answer_evaluator: MetricEvaluator from the direct-answer
+                                        experiment
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        :param show_values: when True, annotate each point with its value
+        """
+        if reasoning_evaluator is None and direct_answer_evaluator is None:
+            print(
+                "[plot_reasoning_vs_direct_answer_per_task] "
+                "Both evaluators are None; nothing to plot."
+            )
+            return
+
+        evaluator_specs = [
+            (reasoning_evaluator, self.color_supporting, "Reasoning"),
+            (direct_answer_evaluator, self.color_distractor, "Direct answer"),
+        ]
+
+        metric_specs = [
+            ("exact_match_accuracy", "exact_match_std", "Exact match"),
+            ("soft_match_accuracy", "soft_match_std", "Soft match"),
+        ]
+
+        fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
+        all_rows: list[tuple[str, list[tuple[str, float | None]]]] = []
+
+        for ax, (mean_attr, std_attr, panel_title) in zip(axes, metric_specs):
+            txt_rows: list[tuple[str, float | None]] = []
+            for evaluator, color, exp_label in evaluator_specs:
+                if evaluator is None:
+                    continue
+                metric = getattr(evaluator, mean_attr, None)
+                if metric is None:
+                    continue
+                vals = np.array(metric.all if hasattr(metric, "all") else metric)
+                if len(vals) == 0:
+                    continue
+                x = np.arange(1, len(vals) + 1)
+                ax.plot(x, vals, marker="o", color=color, linewidth=2, label=exp_label)
+                std_metric = getattr(evaluator, std_attr, None)
+                if std_metric is not None:
+                    stds = np.array(
+                        std_metric.all if hasattr(std_metric, "all") else std_metric
+                    )
+                    if len(stds) == len(vals):
+                        ax.fill_between(
+                            x, vals - stds, vals + stds, color=color, alpha=0.15
+                        )
+                for xi, v in zip(x, vals):
+                    txt_rows.append((f"task={xi} {exp_label}", float(v)))
+                    if show_values:
+                        ax.text(
+                            xi,
+                            v,
+                            f"{v:.2f}",
+                            fontsize=7,
+                            ha="center",
+                            va="bottom",
+                            color="#222222",
+                        )
+
+            ax.set_xlabel("Task", fontsize=11)
+            ax.set_ylabel("Accuracy", fontsize=11)
+            ax.set_ylim(0, 1.05)
+            ax.set_title(panel_title, fontsize=11)
+            ax.legend(fontsize=9, loc="lower right", framealpha=0.9)
+            ax.grid(axis="y", linestyle="--", alpha=0.4)
+            ax.set_axisbelow(True)
+            all_rows.append((panel_title, txt_rows))
+
+        title = "Reasoning vs direct answer accuracy per task"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        fig.suptitle(title, fontsize=12)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target(
+            "reasoning_vs_direct_answer_per_task.png", path_add
+        )
+        self._write_plot_data_txt(png_path, all_rows)
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+    def plot_accuracy_distribution(
+        self,
+        evaluators: list,
+        plot_name_add: list[str] = None,
+        path_add: Path = None,
+    ) -> None:
+        """
+        Boxplot (one box per evaluator version) of accuracy values across tasks.
+
+        Shows the spread and median of per-task accuracy in a single glance,
+        complementing the per-task line plots with a distributional view.
+        Both exact-match and soft-match are shown side by side.
+
+        :param evaluators: list of MetricEvaluator objects (one per version)
+        :param plot_name_add: extra tags appended to the title
+        :param path_add: sub-folder under results_path
+        """
+        if not evaluators:
+            print("[plot_accuracy_distribution] No evaluators provided.")
+            return
+
+        metric_specs = [
+            ("exact_match_accuracy", "Exact match"),
+            ("soft_match_accuracy", "Soft match"),
+        ]
+
+        fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+        txt_rows: list[tuple[str, float | None]] = []
+
+        for ax, (attr, panel_title) in zip(axes, metric_specs):
+            box_data = []
+            tick_labels = []
+            colors = self.cmap(np.linspace(0, 1, len(evaluators)))
+
+            for evaluator, color in zip(evaluators, colors):
+                version = (
+                    getattr(evaluator, "version", "")
+                    or getattr(evaluator, "name", "")
+                    or ""
+                )
+                metric = getattr(evaluator, attr, None)
+                if metric is None:
+                    continue
+                vals = [
+                    v
+                    for v in (metric.all if hasattr(metric, "all") else metric)
+                    if v is not None and np.isfinite(float(v))
+                ]
+                if not vals:
+                    continue
+                box_data.append(vals)
+                tick_labels.append(str(version) if version else f"ev{len(box_data)}")
+                med = float(np.median(vals))
+                txt_rows.append((f"{panel_title} {version} median", med))
+                txt_rows.append((f"{panel_title} {version} mean", float(np.mean(vals))))
+                txt_rows.append((f"{panel_title} {version} n_tasks", len(vals)))
+
+            if not box_data:
+                ax.set_visible(False)
+                continue
+
+            bp = ax.boxplot(
+                box_data,
+                patch_artist=True,
+                widths=0.5,
+                showmeans=True,
+                meanprops=dict(
+                    marker="D",
+                    markerfacecolor="black",
+                    markeredgecolor="black",
+                    markersize=5,
+                ),
+            )
+            for patch, color in zip(bp["boxes"], colors):
+                patch.set_facecolor(color)
+                patch.set_alpha(0.6)
+            for element in ("whiskers", "caps", "medians"):
+                plt.setp(bp[element], color="#333333", linewidth=1.2)
+
+            ax.set_xticks(range(1, len(tick_labels) + 1))
+            ax.set_xticklabels(tick_labels, fontsize=10)
+            ax.set_ylabel("Accuracy across tasks", fontsize=11)
+            ax.set_ylim(0, 1.05)
+            ax.set_title(panel_title, fontsize=11)
+            ax.grid(axis="y", linestyle="--", alpha=0.4)
+            ax.set_axisbelow(True)
+
+        title = "Accuracy distribution across tasks"
+        if plot_name_add:
+            title += f"  ({', '.join(plot_name_add)})"
+        fig.suptitle(title, fontsize=12)
+        fig.tight_layout()
+
+        png_path = self._resolve_save_target("accuracy_distribution.png", path_add)
         self._write_plot_data_txt(png_path, [("Distribution stats", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def get_color_or_map(self, c: str):
         """
@@ -1394,7 +2046,7 @@ class Plotter:
             / specification.pop("version", "")
             / f"error_case_map_{'_'.join(specification.values())}.png"
         )
-        fig.savefig(out_path, bbox_inches="tight")
+        fig.savefig(out_path, bbox_inches="tight", dpi=300)
 
     def plot_case_heatmap(
         self,
@@ -1480,7 +2132,7 @@ class Plotter:
             fontsize=14,
         )
         fig.tight_layout(rect=(0, 0, 1, 0.96))
-        self._save_plot(file_name=f"error_case_heatmap_{case_type}")
+        self._save_plot(file_name=f"error_case_heatmap_{case_type}.png")
 
     def plot_error_histogram(
         self,
@@ -1555,7 +2207,7 @@ class Plotter:
         plt.tight_layout()
         normalization = "normalized" if normalize else "absolute"
         self._save_plot(
-            file_name=f"error_histogram_{normalization}_{setting.title().replace(' ', '_')}"
+            file_name=f"error_histogram_{normalization}_{setting.title().replace(' ', '_')}.png"
         )
 
     def plot_case_pie(
@@ -1618,7 +2270,7 @@ class Plotter:
         plt.tight_layout(rect=(0, 0, 0.8, 1))
         uniqueness = "_unique" if unique else "_all"
         setting = setting.title().replace(" ", "_")
-        self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}")
+        self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}.png")
 
     def plot_correlation(
         self,
@@ -1838,16 +2490,20 @@ class Plotter:
             # num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None, # This may be confusing, better to stay with samples
             num_samples=num_samples,
         )
-        if path_add:
-            file_name = path_add / file_name.lower()
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(y_label, x_label, file_name, plot_name_add)
+        if file_name:
+            png_path = self._resolve_save_target(str(file_name).lower(), path_add)
+        else:
+            label = y_label.lower().replace(" ", "_")
+            png_path = self._resolve_save_target(
+                f"{label}_per_{x_label.lower()}.png", path_add
+            )
+        self._save_plot(file_name=png_path)
         plt.close()
 
     def plot_corr_hist(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric],
-        y_data: dict[str : list[float] | np.array] = None,
+        y_data: dict[str, list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
         displ_percentage: bool = False,
@@ -1995,12 +2651,12 @@ class Plotter:
             num_samples=num_samples,
         )
 
-        (self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(
-            y_label=y_label,
-            x_label=x_label,
-            file_name=f"{path_add}/{file_name.lower()}",
+        png_path = self._resolve_save_target(file_name.lower(), path_add)
+        self._write_plot_data_txt(
+            png_path,
+            [("Plot data", [(str(x_label), None)])],
         )
+        self._save_plot(file_name=png_path)
         plt.close()
 
     def plot_corr_boxplot(
@@ -2151,6 +2807,7 @@ class Plotter:
         # Add vertical lines separating x categories
         ax.xaxis.set_minor_locator(MultipleLocator(0.5))
         ax.xaxis.grid(True, which="minor", color="black", lw=1, ls=":")
+        ax.set_axisbelow(True)
 
         self._plot_general_details(
             x_label=x_label,
@@ -2165,13 +2822,12 @@ class Plotter:
             num_parts=len(x_data) if isinstance(x_data, (list, np.ndarray)) else None,
         )
 
-        if path_add:
-            Path(self.results_path / path_add).mkdir(parents=True, exist_ok=True)
-        self._save_plot(
-            y_label=y_label,
-            x_label=x_label,
-            file_name=f"{path_add}/{file_name.lower()}",
+        png_path = self._resolve_save_target(file_name.lower(), path_add)
+        self._write_plot_data_txt(
+            png_path,
+            [("Plot data", [(str(x_label), None)])],
         )
+        self._save_plot(file_name=png_path)
         plt.close()
 
     def plot_distractor_attn_boxplot(
@@ -2264,6 +2920,7 @@ class Plotter:
             pad=8,
         )
         ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
 
         if show_values:
             for i, m in enumerate(medians, 1):
@@ -2282,10 +2939,6 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distractor_attn_boxplot_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-        self.plot_counter_prompt += 1
-
         self._write_plot_data_txt(
             png_path,
             [
@@ -2299,6 +2952,8 @@ class Plotter:
                 ),
             ],
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_distractor_attn_per_task(
         self,
@@ -2357,6 +3012,10 @@ class Plotter:
                 -1.5,
                 self.color_supporting,
                 "Correct / supporting",
+                "",
+                -2.5,
+                self.color_distractor,
+                "Correct / distractor",
                 "",
             ),
             (True, "neutral", -0.5, self.color_neutral, "Correct / neutral", ""),
@@ -2442,16 +3101,15 @@ class Plotter:
         )
         ax.legend(fontsize=8, ncol=3, loc="upper right", framealpha=0.9)
         ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
             f"distractor_attn_per_task_{version}.png", path_add
         )
+        self._write_plot_data_txt(png_path, [("Bar means", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self.plot_counter_prompt += 1
-
-        self._write_plot_data_txt(png_path, [("Bar means", txt_rows)])
 
     def plot_distractor_attn_scatter(
         self,
@@ -2577,6 +3235,7 @@ class Plotter:
             )
             ax.legend(fontsize=9, loc="upper left", framealpha=0.9)
             ax.grid(linestyle="--", alpha=0.35)
+            ax.set_axisbelow(True)
 
         _style_scatter_ax(
             ax_dist,
@@ -2604,11 +3263,9 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distractor_attn_scatter_{version}.png", path_add
         )
+        self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self.plot_counter_prompt += 1
-
-        self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
 
     def plot_supporting_attention(
         self,
@@ -2716,21 +3373,21 @@ class Plotter:
             pad=8,
         )
         ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
         ax.legend(loc="upper left", fontsize=9, framealpha=0.9)
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
             f"supporting_attention_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows: list[tuple[str, float | int | None]] = []
         for (label, vals, _), m, pct in zip(groups, means, pct_distracted):
             txt_rows.append((f"{label} n", len(vals)))
             txt_rows.append((f"{label} mean margin", m))
             txt_rows.append((f"{label} pct distracted", pct))
         self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_distractor_supporting_ratio(
         self,
@@ -2847,6 +3504,7 @@ class Plotter:
             pad=8,
         )
         ax.grid(axis="y", linestyle="--", alpha=0.4, which="both")
+        ax.set_axisbelow(True)
 
         if show_values:
             for i, (m, pct) in enumerate(zip(medians, pct_above), 1):
@@ -2865,15 +3523,14 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distractor_supporting_ratio_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows: list[tuple[str, float | int | None]] = []
         for (label, vals, _), m, pct in zip(groups, medians, pct_above):
             txt_rows.append((f"{label} n", len(vals)))
             txt_rows.append((f"{label} median ratio", m))
             txt_rows.append((f"{label} pct above 1", pct))
         self._write_plot_data_txt(png_path, [("Group statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_attention_triplet(
         self,
@@ -2980,9 +3637,6 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"attention_triplet_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows = []
         for cat, (mc, sc, nc), (mi, si, ni) in zip(
             category_labels, stats_correct, stats_incorrect
@@ -2996,6 +3650,8 @@ class Plotter:
         self._write_plot_data_txt(
             png_path, [("Means by role and correctness", txt_rows)]
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_distraction_vs_n_distractors(
         self,
@@ -3144,6 +3800,7 @@ class Plotter:
         ax_attn.set_xticks(ns)
         ax_attn.set_ylim(*attn_ylim(dist_mean, supp_mean))
         ax_attn.grid(axis="y", linestyle="--", alpha=0.35)
+        ax_attn.set_axisbelow(True)
 
         ax_acc.set_ylabel("Accuracy (± 95% CI)", fontsize=11, color=self.color_correct)
         ax_acc.set_ylim(0, 1.02)
@@ -3168,9 +3825,6 @@ class Plotter:
         png_path = self._resolve_save_target(
             f"distraction_vs_n_distractors_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows = []
         for n, dm, ds, sm, ss, p, lo, hi, bn in zip(
             ns,
@@ -3192,6 +3846,353 @@ class Plotter:
             txt_rows.append((f"n_dist={n} acc hi", hi))
             txt_rows.append((f"n_dist={n} bin n", bn))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
+
+    def plot_diff_two_runs_per_task(
+        self,
+        df: pd.DataFrame,
+        y_label: str = "Difference",
+        file_name: str | None = None,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Plot per-task difference between two runs (reas - da) for a given metric.
+        """
+        plt.close()
+
+        plt.figure(figsize=(max(7, len(df["task_id"].unique()) * 0.75), 4.5))
+
+        df = df.sort_values("task_id")
+        ax = sns.barplot(
+            data=df,
+            x="task_id",
+            y="diff",
+            color=self.cmap(0),
+        )
+
+        ax.axhline(0, color="black", linewidth=0.8)
+        ax.set_xlabel("Task")
+        ax.set_ylabel(y_label)
+        ax.set_title(f"Difference of {y_label}", fontsize=11)
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
+
+        path_add_resolved = Path(*plot_name_add) if plot_name_add else None
+        png_path = self._resolve_save_target(
+            file_name or "diff_two_runs_per_task.png",
+            path_add_resolved,
+        )
+        self._save_plot(file_name=png_path)
+
+    def plot_toxic_cot_transition_overview(
+        self,
+        merged_df: pd.DataFrame,
+        file_name: str = "toxic_cot_transition_overview.pdf",
+        plot_name_add: list[str] = None,
+        path_add: str | Path = "",
+    ) -> None:
+        """
+        Plot an overview of toxic COT transitions between before and after versions.
+
+        Categories:
+        - appeared:     before=False, after=True
+        - disappeared:  before=True,  after=False
+        - stayed:       before=True,  after=True
+        - never:        before=False, after=False
+        """
+        toxic_cot_before = merged_df["toxic_cot_before"].astype(bool)
+        toxic_cot_after = merged_df["toxic_cot_after"].astype(bool)
+
+        merged_df["toxic_cot_appeared"] = (~toxic_cot_before) & toxic_cot_after
+        merged_df["toxic_cot_disappeared"] = toxic_cot_before & (~toxic_cot_after)
+        merged_df["toxic_cot_stayed"] = toxic_cot_before & toxic_cot_after
+        merged_df["toxic_cot_never"] = (~toxic_cot_before) & (~toxic_cot_after)
+
+        category_order = [
+            "toxic_cot_never",
+            "toxic_cot_disappeared",
+            "toxic_cot_appeared",
+            "toxic_cot_stayed",
+        ]
+        category_labels = {
+            "toxic_cot_never": "Never",
+            "toxic_cot_disappeared": "Disappeared",
+            "toxic_cot_appeared": "Appeared",
+            "toxic_cot_stayed": "Stayed",
+        }
+        category_colors = {
+            "toxic_cot_never": "#D9D9D9",
+            "toxic_cot_disappeared": "#4CAF50",
+            "toxic_cot_appeared": "#D55E00",
+            "toxic_cot_stayed": "#7B3294",
+        }
+
+        counts = {cat: int(merged_df[cat].sum()) for cat in category_order}
+        total = sum(counts.values())
+        ratios = {cat: val / total if total else 0.0 for cat, val in counts.items()}
+
+        fig, ax = plt.subplots(figsize=(11, 2.8))
+
+        left = 0.0
+        for cat in category_order:
+            width = ratios[cat]
+            ax.barh(
+                y=["Toxic COT Transition"],
+                width=[width],
+                left=left,
+                color=category_colors[cat],
+                label=category_labels[cat],
+                height=0.6,
+            )
+
+            if width > 0.04:
+                ax.text(
+                    left + width / 2,
+                    0,
+                    f"{category_labels[cat]}\n{counts[cat]} ({width:.1%})",
+                    ha="center",
+                    va="center",
+                    fontsize=9,
+                    color="black",
+                )
+            left += width
+
+        before_rate = toxic_cot_before.mean()
+        after_rate = toxic_cot_after.mean()
+        delta = after_rate - before_rate
+
+        title = "Toxic COT Transition Overview"
+        if plot_name_add:
+            title += f" ({'; '.join(plot_name_add)})"
+        ax.set_title(title)
+
+        ax.set_xlim(0, 1)
+        ax.xaxis.set_major_formatter(PercentFormatter(1))
+        x_label = (
+            f"Share of parts  |  Before: {before_rate:.1%}   After: {after_rate:.1%}   "
+            f"Delta: {delta:+.1%}"
+        )
+        ax.set_xlabel(x_label)
+        ax.grid(axis="x", linestyle="--", linewidth=0.5, alpha=0.7)
+        ax.set_axisbelow(True)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.spines["left"].set_visible(False)
+
+        ax.legend(loc="center left", bbox_to_anchor=(1, 0.5), title="Transition")
+        plt.tight_layout()
+
+        png_path = self._resolve_save_target(file_name, path_add if path_add else None)
+        self._save_plot(file_name=png_path)
+
+    def plot_attr_before_after_two_runs_per_task(
+        self,
+        vals_da: list[dict[int, float]],
+        vals_reas: list[dict[int, float]],
+        y_label: str = "Value",
+        file_name: str | None = None,
+        plot_name_add: list[str] | None = None,
+    ) -> None:
+        """
+        Plot per-task grouped bars for a metric:
+        - direct answer (before and after)
+        - reasoning (before and after)
+        'After' version can be omitted.
+        """
+        assert len(vals_reas) == len(
+            vals_da
+        ), "vals_reas and vals_da must have the same number of versions"
+        # Ensure all dicts have the same task keys
+        tasks = range(1, 21)
+
+        x = np.arange(len(tasks))
+        width = 0.2
+        colors = self.cmap(np.linspace(0, 1, 4))
+
+        da_before = [vals_da[0][t] for t in tasks]
+        reas_before = [vals_reas[0][t] for t in tasks]
+        reas_after, da_after = None, None
+        if len(vals_reas) > 1:
+            da_after = [vals_da[1][t] for t in tasks]
+            reas_after = [vals_reas[1][t] for t in tasks]
+
+        plt.figure(figsize=(14, 5))
+
+        plt.bar(
+            x - 1.5 * width,
+            reas_before,
+            width,
+            label="Reasoning before",
+            color=colors[0],
+        )
+        plt.bar(x + 0.5 * width, da_before, width, label="DA before", color=colors[2])
+        if reas_after and da_after:
+            plt.bar(x + 1.5 * width, da_after, width, label="DA after", color=colors[3])
+            plt.bar(
+                x - 0.5 * width,
+                reas_after,
+                width,
+                label="Reasoning after",
+                color=colors[1],
+            )
+
+        # Use your standard formatting helper
+        self._plot_general_details(
+            x_label="Task",
+            y_label=y_label,
+            max_x_len=len(tasks),
+            plot_name_add=plot_name_add,
+            num_of_data_arrays=4,
+            step=1,
+        )
+
+        plt.xticks(x, tasks)
+        plt.legend(loc="upper right")
+
+        fn = file_name or f"{y_label.replace(' ', '_').lower()}_two_runs_per_task.png"
+        path_add = Path("/".join(plot_name_add)) if plot_name_add else None
+        png_path = self._resolve_save_target(fn, path_add)
+        self._save_plot(file_name=png_path)
+
+    def plot_attrs_by_runs_versions_toxicity(
+        self,
+        df: pd.DataFrame,
+        attrs: list[str],
+        multi_system: bool,
+    ):
+        # TODO: Redo this method (currently doesn't plot counts from separate runs properly)
+        # plot_df = []
+        #
+        # for attr in attrs:
+        #     cols = [
+        #         "task_id",
+        #         "toxic_cot_before",
+        #         f"{attr}_before_da",
+        #         f"{attr}_before_reas",
+        #     ]
+        #     if multi_system:
+        #         cols += ["toxic_cot_after", f"{attr}_after_da", f"{attr}_after_reas"]
+        #
+        #     tmp = df[cols].copy()
+        #     tmp["attr"] = attr
+        #
+        #     tmp["da_toxic_before"] = tmp["toxic_cot_before"]
+        #     tmp["da_not_toxic_before"] = ~tmp["toxic_cot_before"]
+        #     tmp["reas_toxic_before"] = tmp["toxic_cot_before"]
+        #     tmp["reas_not_toxic_before"] = ~tmp["toxic_cot_before"]
+        #
+        #     if multi_system:
+        #         tmp["da_toxic_after"] = tmp["toxic_cot_after"]
+        #         tmp["da_not_toxic_after"] = ~tmp["toxic_cot_after"]
+        #         tmp["reas_toxic_after"] = tmp["toxic_cot_after"]
+        #         tmp["reas_not_toxic_after"] = ~tmp["toxic_cot_after"]
+        #
+        #     plot_df.append(tmp)
+        #
+        # plot_df = pd.concat(plot_df, ignore_index=True)
+        rows = []
+
+        for attr in attrs:
+            for run in ["da", "reas"]:
+                before_col = f"{attr}_before_{run}"
+                after_col = f"{attr}_after_{run}" if multi_system else None
+
+                cols = ["task_id", f"toxic_cot_before", before_col]
+                if multi_system:
+                    cols += [f"toxic_cot_after", after_col]
+
+                tmp = df[cols].copy()
+                tmp["attr"] = attr
+                tmp["run_type"] = run
+
+                tmp = tmp.rename(columns={before_col: "attr_value_before"})
+                if multi_system:
+                    tmp = tmp.rename(columns={after_col: "attr_value_after"})
+
+                rows.append(tmp)
+
+        plot_df = pd.concat(rows, ignore_index=True)
+        # value_cols = [c for c in plot_df.columns if c.startswith(("da_", "reas_"))]
+        # long_df = plot_df.melt(
+        #     id_vars=["task_id", "attr"],
+        #     value_vars=value_cols,
+        #     var_name="group",
+        #     value_name="flag",
+        # )
+        # summary = (
+        #     long_df.groupby(["task_id", "attr", "group"])["flag"]
+        #     .mean()
+        #     .reset_index(name="percentage")
+        # )
+        before_summary = (
+            plot_df.groupby(["attr", "run_type"])["toxic_cot_before"]
+            .agg(
+                toxic_count="sum",
+                total_count="size",
+            )
+            .reset_index()
+        )
+        before_summary["non_toxic_count"] = (
+            before_summary["total_count"] - before_summary["toxic_count"]
+        )
+        # For percentages
+        # before_summary = (
+        #     plot_df.groupby(["task_id", "attr", "run_type"])["toxic_cot_before"]
+        #     .mean()
+        #     .reset_index(name="toxic_rate")
+        # )
+        axes = None
+        after_summary = None
+        if multi_system:
+            after_summary = (
+                plot_df.groupby(["attr", "run_type"])["toxic_cot_after"]
+                .agg(
+                    toxic_count="sum",
+                    total_count="size",
+                )
+                .reset_index()
+            )
+            after_summary["non_toxic_count"] = (
+                after_summary["total_count"] - after_summary["toxic_count"]
+            )
+            fig, axes = plt.subplots(2, 1, figsize=(10, 5))
+
+        plot_df = before_summary.melt(
+            id_vars=["attr", "run_type"],
+            value_vars=["toxic_count", "non_toxic_count"],
+            var_name="toxicity",
+            value_name="count",
+        )
+        g = sns.catplot(
+            data=plot_df,
+            x="attr",
+            y="count",
+            hue="run_type",
+            col="toxicity",
+            kind="bar",
+            height=4,
+            aspect=1.4,
+        )
+
+        g.set_axis_labels("Attribute", "Count")
+        # g.legend.set_title("Toxic CoT")
+        g.set_xticklabels(rotation=45, ha="right")
+
+        if multi_system:
+            g = sns.catplot(
+                data=after_summary,
+                x="run_type",
+                y="count",
+                hue="toxic_cot_before",
+                # col="task_id",
+                row="attr",
+                kind="bar",
+                height=4,
+                aspect=1.4,
+                ax=axes[1],
+            )
+        self._save_plot(file_name="attrs_by_runs_versions_toxicity.png")
 
     def plot_accuracy_vs_distraction_ratio(
         self,
@@ -3331,14 +4332,12 @@ class Plotter:
             pad=8,
         )
         ax.grid(linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
         fig.tight_layout()
 
         png_path = self._resolve_save_target(
             f"accuracy_vs_distraction_ratio_{version}.png", path_add
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         txt_rows = []
         for c, p, lo, hi, n in zip(bin_centres, bin_acc, bin_lo, bin_hi, bin_n):
             txt_rows.append((f"ratio_centre={c:.4f} accuracy", float(p)))
@@ -3346,6 +4345,8 @@ class Plotter:
             txt_rows.append((f"ratio_centre={c:.4f} acc_hi", float(hi)))
             txt_rows.append((f"ratio_centre={c:.4f} n", int(n)))
         self._write_plot_data_txt(png_path, [("Bin statistics", txt_rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def _disambiguator_from_tags(self, plot_name_add: list[str] | None) -> str:
         """
@@ -3606,13 +4607,12 @@ class Plotter:
             f"split_accuracy{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         self._write_plot_data_txt(
             png_path,
             [("Exact match", em_rows), ("Soft match", sm_rows)],
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_before_after_reasoning_scores(
         self,
@@ -3672,9 +4672,9 @@ class Plotter:
             f"split_reasoning_scores{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
+        self._write_plot_data_txt(png_path, sections)
         self._save_plot(file_name=png_path)
         plt.close(fig)
-        self._write_plot_data_txt(png_path, sections)
 
         # --- Second view: one panel per version, all three scores as lines ---
         # Complements the per-score view by making it easy to compare BLEU/ROUGE/
@@ -3745,9 +4745,9 @@ class Plotter:
                 f"{self._disambiguator_from_tags(plot_name_add)}.png",
                 path_add,
             )
+            self._write_plot_data_txt(png_path2, sections2)
             self._save_plot(file_name=png_path2)
             plt.close(fig2)
-            self._write_plot_data_txt(png_path2, sections2)
 
     def plot_before_after_attention(
         self,
@@ -3809,9 +4809,6 @@ class Plotter:
             f"split_attention{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         self._write_plot_data_txt(
             png_path,
             [
@@ -3819,6 +4816,8 @@ class Plotter:
                 ("Attention on target", target_rows),
             ],
         )
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_before_after_summary(
         self,
@@ -3933,9 +4932,6 @@ class Plotter:
             f"split_summary{self._disambiguator_from_tags(plot_name_add)}.png",
             path_add,
         )
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
         rows: list[tuple[str, float | None]] = []
         for label, b, a in zip(labels, before_means, after_means):
             rows.append((f"{label} before", b))
@@ -3943,6 +4939,8 @@ class Plotter:
             if b is not None and a is not None:
                 rows.append((f"{label} delta", float(a) - float(b)))
         self._write_plot_data_txt(png_path, [("Mean across tasks", rows)])
+        self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_before_after_delta_lineplot(
         self,
@@ -4012,6 +5010,7 @@ class Plotter:
         )
         ax.legend(fontsize=10, loc="upper right")
         ax.grid(axis="both", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
 
         fig.tight_layout()
         png_path = self._resolve_save_target(

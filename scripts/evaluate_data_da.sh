@@ -12,6 +12,9 @@ experiment="da"
 setting=$1
 samples_per_task=$2
 create_heatmaps=$3
+# Optional: pass "claude" or "llama" to select a specific silver-reasoning
+# corpus.  Omit (or leave empty) to use the default flat directory.
+reasoning_source=$4
 
 if [ $experiment = "reasoning" ]; then
     full_mode="reasoning"
@@ -59,7 +62,7 @@ else
     echo "The project environment '$ENV_NAME' activated successfully."
 fi
 
-echo "Evaluating data for setting: $setting, task: $task, samples per task: $samples_per_task, create heatmaps: $create_heatmaps"
+echo "Evaluating data for setting: $setting, task: $task, samples per task: $samples_per_task, create heatmaps: $create_heatmaps, reasoning source: ${reasoning_source:-default}"
 
 srun python3 evaluate_data.py \
     --results_path $results_path \
@@ -67,4 +70,5 @@ srun python3 evaluate_data.py \
     --samples_per_task $samples_per_task \
     --experiment $full_mode \
     --setting $setting \
-    ${create_heatmaps:+--create_heatmaps}
+    ${create_heatmaps:+--create_heatmaps} \
+    ${reasoning_source:+--reasoning_source $reasoning_source}
