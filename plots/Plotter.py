@@ -563,7 +563,9 @@ class Plotter:
         """
         x_labels = interpretability_result.x_tokens
         y_labels = interpretability_result.y_tokens
+        y_labels = y_labels[1:]
         scores = interpretability_result.attn_scores
+        scores = scores[1:]
 
         plt.figure(figsize=(12, 8))
         if len(scores) > 1:
@@ -575,7 +577,7 @@ class Plotter:
                 f" defaulting max_score to 0.25"
             )
             max_score = 0.25  # default
-        ax = sns.heatmap(scores[1:], cmap="rocket_r", vmin=0, vmax=max_score)
+        ax = sns.heatmap(scores, cmap="rocket_r", vmin=0, vmax=max_score)
 
         # x_labels = x
         # y_labels = y[1:]
@@ -589,8 +591,8 @@ class Plotter:
         # plt.yticks(ticks=y_ticks, labels=y, fontsize=5, rotation=0)
         ax.set_xticks(x_tick_values)
         ax.set_xticklabels(x_labels, fontsize=5, rotation=60, ha="right")
-        ax.set_yticks(y_tick_values[1:])
-        ax.set_yticklabels(y_labels[1:], fontsize=5, rotation=0)
+        ax.set_yticks(y_tick_values)
+        ax.set_yticklabels(y_labels, fontsize=5, rotation=0)
 
         cbar = ax.collections[0].colorbar
         cbar.ax.tick_params(labelsize=5)
@@ -3041,41 +3043,44 @@ class Plotter:
         fig, ax = plt.subplots(figsize=(max(7, len(task_ids) * 0.9), 4.5))
 
         txt_rows: list[tuple[str, float | None]] = []
-        for correct, role, offset_mult, color, label, hatch in bar_spec:
-            if role == "supporting":
-                means = [supp_per_task.get(tid, {}).get(correct) for tid in task_ids]
-            else:
-                means = [
-                    per_task[tid].get(correct, {}).get(role, None) for tid in task_ids
-                ]
-            xs, heights = [], []
-            for i, m in enumerate(means):
-                if m is not None:
-                    xs.append(x[i] + offset_mult * width)
-                    heights.append(m)
-                txt_rows.append((f"task={task_ids[i]} {label}", m))
-            if xs:
-                bars = ax.bar(
-                    xs,
-                    heights,
-                    width,
-                    label=label,
-                    color=color,
-                    alpha=0.82,
-                    hatch=hatch,
-                )
-                if show_values:
-                    for b, h in zip(bars, heights):
-                        ax.text(
-                            b.get_x() + b.get_width() / 2,
-                            h,
-                            f"{h:.2f}",
-                            ha="center",
-                            va="bottom",
-                            fontsize=7,
-                            color="#222222",
-                        )
+        try:
 
+            for correct, role, offset_mult, color, label, hatch in bar_spec:
+                if role == "supporting":
+                    means = [supp_per_task.get(tid, {}).get(correct) for tid in task_ids]
+                else:
+                    means = [
+                        per_task[tid].get(correct, {}).get(role, None) for tid in task_ids
+                    ]
+                xs, heights = [], []
+                for i, m in enumerate(means):
+                    if m is not None:
+                        xs.append(x[i] + offset_mult * width)
+                        heights.append(m)
+                    txt_rows.append((f"task={task_ids[i]} {label}", m))
+                if xs:
+                    bars = ax.bar(
+                        xs,
+                        heights,
+                        width,
+                        label=label,
+                        color=color,
+                        alpha=0.82,
+                        hatch=hatch,
+                    )
+                    if show_values:
+                        for b, h in zip(bars, heights):
+                            ax.text(
+                                b.get_x() + b.get_width() / 2,
+                                h,
+                                f"{h:.2f}",
+                                ha="center",
+                                va="bottom",
+                                fontsize=7,
+                                color="#222222",
+                            )
+        except ValueError as e:
+            print(str(e)) # Unexpected number of returned bar_spec variables
         ax.set_xticks(x)
         ax.set_xticklabels([f"T{tid}" for tid in task_ids], fontsize=9)
         ax.set_ylabel("Mean attention", fontsize=11)
