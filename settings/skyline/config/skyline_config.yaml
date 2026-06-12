@@ -1,6 +1,6 @@
 model:
   name: "meta-llama/Meta-Llama-3-70B-Instruct"
-  max_new_tokens: 12
+  max_new_tokens: 300
   # with temperature==0.0 the model will use log probability
   # to automatically increase the temperature until certain thresholds are hit.
   # I.e., in need of lowest temperature, set it to something like 0.00000001
@@ -23,8 +23,8 @@ data:
   # Order: train, valid, test
   splits:
     train: False
-    valid: True
-    test: False
+    valid: False
+    test: True
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
@@ -32,7 +32,7 @@ data:
   # to get all samples use ~ (will be converted to None)
   start_from_sample: 0
   # to set a specific number of samples use an int
-  samples_per_task: 5
+  samples_per_task: 100
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
