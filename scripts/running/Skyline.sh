@@ -3,15 +3,15 @@
 # Job name
 #SBATCH --job-name=sky8
 
-#SBATCH --time=00:30:00              # Job time limit (30 minutes)
+#SBATCH --time=20:00:00              # Job time limit (30 minutes)
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --gres=gpu:2                 # Request 2 GPUs
 #SBATCH --cpus-per-task=2            # Number of CPU cores per task
-#SBATCH --mem=64G                    # Total memory requested
-#SBATCH --partition=dev_gpu_h100
+#SBATCH --mem=84G                    # Total memory requested
+#SBATCH --partition=dev_gpu_a100
 
 # Output and error logs
-#SBATCH --output="sky8_out.txt"        # TODO: adjust standard output log
+#SBATCH --output="sky_300_out.txt"        # TODO: adjust standard output log
 # SBATCH --error="skyline_err.txt"         # TODO: adjust error log
 
 # Email notifications
@@ -73,7 +73,7 @@ export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:128,expandable_segments:True"
 # declare array of config paths and names, e.g. "/path/to/config config_name"
 # TODO: add config(s) to array
 declare -a CONFIGS=(
-  "$HOME/research-project/settings/skyline/config skyline_test_da"
+  "$HOME/research-project/settings/skyline/config skyline_test_reasoning"
 )
 
 for CONFIG in "${CONFIGS[@]}"
