@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 14,S1: John travelled to hallway. S2: Mary to bathroom. John's last location is hallway.,hallway,1,1
 14,"From P1 S2: Mary journeyed to bathroom. S4: Daniel went to bathroom, S5: John to bedroom — neither updates Mary's location. Mary remains in bathroom.",bathroom,2,1
 14,S8: Sandra journeyed to kitchen. Sandra's last location is kitchen.,kitchen,3,1

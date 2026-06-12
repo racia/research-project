@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 18,"Sentence 2 says chocolate fits inside the box, so box > chocolate. The box cannot fit inside the chocolate.",no,1,1
 18,"box > chocolate (chocolate fits in box), so chocolate is NOT bigger.",no,2,1
 18,,no,3,1

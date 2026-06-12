@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 5,Fred picked up the football. Fred gave the football to Jeff.,football,1,1
 5,Fred picked up the football. Fred gave the football to Jeff. Bill went back to the bathroom. Jeff grabbed the milk.,Fred,2,1
 5,Fred picked up the football. Fred gave the football to Jeff. Bill went back to the bathroom. Jeff grabbed the milk. Jeff gave the football to Fred. Fred handed the football to Jeff.,football,3,1

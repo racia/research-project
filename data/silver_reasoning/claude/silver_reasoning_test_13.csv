@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 13,"Context: 1. John and Mary went back to the hallway. Then: 2. Then they went to the bathroom. John is one of the actors in these sentences. They first moved to the hallway, then in the second action they moved to the bathroom. The last known location of John is the bathroom.",bathroom,1,1
 13,"Context: 4. Mary and John moved to the hallway. Then: 5. Following that they moved to the kitchen. John is one of the actors in these sentences. They first moved to the hallway, then in the second action they moved to the kitchen. The last known location of John is the kitchen.",kitchen,2,1
 13,"Context: 7. Daniel and Sandra went to the office. Then: 8. Following that they went back to the kitchen. John does not appear in either context sentence. The sentences only describe movements of Daniel, Sandra. Since John's location is not mentioned, it cannot be determined from the given context.",unknown,3,1

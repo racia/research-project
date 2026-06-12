@@ -72,6 +72,8 @@ class SilverReasoning:
                     t, split=split, from_zero=from_zero, get_all=True
                 )
                 all_reasoning.update(task_reasoning)
+            # Write the per-task source report now that all tasks are resolved.
+            self.loader.write_reasoning_source_report()
             return all_reasoning
 
         if not (sample_id or part_id):
@@ -112,7 +114,7 @@ class DataLoader:
         wrapper: Wrapper = None,
         to_enumerate: Enumerate = None,
         filtering_conditions: dict = None,
-        reasoning_source: str | None = None,
+        reasoning_source: str | None = "llama",
     ):
         """
         Initialize the DataLoader.
@@ -129,13 +131,18 @@ class DataLoader:
                                      attribute names to desired values, e.g.
                                      {"model_answer": "correct"}.
         :param reasoning_source: which silver-reasoning corpus to use.
-                                 ``None`` (default) preserves the original
-                                 behaviour and reads directly from
-                                 ``data/silver_reasoning/``.
-                                 Pass ``"claude"`` or ``"llama"`` to read from
-                                 the corresponding sub-directory
-                                 (``data/silver_reasoning/claude/`` or
-                                 ``data/silver_reasoning/llama/``).
+                                 Defaults to ``"llama"``, which reads from
+                                 ``data/silver_reasoning/llama/``.
+                                 Pass ``"claude"`` to read from
+                                 ``data/silver_reasoning/claude/``, or
+                                 ``None`` to read directly from
+                                 ``data/silver_reasoning/`` (legacy behaviour).
+                                 For any task whose file is absent from the
+                                 primary source, llama is used as a fallback.
+                                 After loading, ``task_reasoning_sources``
+                                 records which source was used per task, and
+                                 ``write_reasoning_source_report()`` dumps that
+                                 mapping to a text file.
         """
         if (
             reasoning_source is not None
@@ -162,6 +169,12 @@ class DataLoader:
             )
         else:
             self.silver_reasoning_path: Path = self.prefix / "data/silver_reasoning/"
+
+        # Llama is always available as the fallback source.
+        self.llama_reasoning_path: Path = self.prefix / "data/silver_reasoning/llama/"
+
+        # Records which silver-reasoning source was actually used for each task id.
+        self.task_reasoning_sources: dict[int, str] = {}
 
         self.wrapper: Wrapper = wrapper
         self.to_enumerate: Enumerate = to_enumerate
@@ -549,18 +562,40 @@ class DataLoader:
 
         return ids, tokens
 
+    def _find_task_file_in_dir(
+        self, directory: Path, task_id: int, split: str
+    ) -> Path | None:
+        """
+        Return the path of the silver-reasoning file for *task_id* inside
+        *directory*, or ``None`` if it does not exist.
+        """
+        if not directory.exists():
+            return None
+        for path in directory.iterdir():
+            if f"{split}_{task_id}." in path.name:
+                return path
+        return None
+
     def load_reasoning_data(
         self, task_id: int, split: str = DataSplits.valid
     ) -> dict[tuple[int, int, int], dict]:
         """
         Load the silver reasoning data for a specific task and split.
 
-        The file is looked up inside ``self.silver_reasoning_path``, which is
-        set at construction time and depends on ``reasoning_source``:
+        The method first looks for the task file in ``self.silver_reasoning_path``
+        (determined by ``reasoning_source`` at construction time).  If the file is
+        not found there, it falls back to the llama sub-directory
+        (``data/silver_reasoning/llama/``).  The source that was actually used is
+        recorded in ``self.task_reasoning_sources[task_id]``.
 
-        * ``None``     → ``data/silver_reasoning/``
-        * ``"claude"`` → ``data/silver_reasoning/claude/``
-        * ``"llama"``  → ``data/silver_reasoning/llama/``
+        Directory resolution:
+
+        * ``reasoning_source=None``     → ``data/silver_reasoning/``  (legacy)
+        * ``reasoning_source="claude"`` → ``data/silver_reasoning/claude/``
+        * ``reasoning_source="llama"``  → ``data/silver_reasoning/llama/``
+
+        Fallback (when primary source lacks the task file):
+        * always ``data/silver_reasoning/llama/``
 
         :param task_id: task id
         :param split: split of the data
@@ -569,30 +604,87 @@ class DataLoader:
         source_label = (
             f" (source: {self.reasoning_source})" if self.reasoning_source else ""
         )
-        if not self.silver_reasoning_path.exists():
-            raise FileNotFoundError(
-                f"Silver reasoning directory not found{source_label}: "
-                f"{self.silver_reasoning_path}"
-            )
-        silver_reasoning_data = []
-        for path in self.silver_reasoning_path.iterdir():
-            if f"{split}_{task_id}." in path.name:
-                silver_reasoning_data, _ = self.load_results(
-                    Path.cwd() / path, list_output=True, sep=",", as_parts=False
-                )
-                break
 
-        if not silver_reasoning_data:
+        # --- try primary path ---
+        task_file = self._find_task_file_in_dir(
+            self.silver_reasoning_path, task_id, split
+        )
+        used_source = self.reasoning_source or "root"
+
+        # --- fall back to llama if not found in primary path ---
+        if (
+            task_file is None
+            and self.silver_reasoning_path != self.llama_reasoning_path
+        ):
+            task_file = self._find_task_file_in_dir(
+                self.llama_reasoning_path, task_id, split
+            )
+            if task_file is not None:
+                warnings.warn(
+                    f"Silver reasoning for task {task_id} not found in primary path"
+                    f"{source_label}; falling back to llama."
+                )
+                used_source = "llama"
+
+        if task_file is None:
             raise FileNotFoundError(
                 f"Silver reasoning data for task {task_id} and split {split} is "
-                f"not found in the path: {self.silver_reasoning_path}"
+                f"not found in primary path ({self.silver_reasoning_path}) "
+                f"or llama fallback ({self.llama_reasoning_path})."
             )
+
+        # Record which source was used for this task.
+        self.task_reasoning_sources[task_id] = used_source
+
+        silver_reasoning_data, _ = self.load_results(
+            Path.cwd() / task_file, list_output=True, sep=",", as_parts=False
+        )
 
         silver_reasoning_data = {
             (int(row["task_id"]), int(row["sample_id"]), int(row["part_id"])): row
             for row in silver_reasoning_data
         }
         return silver_reasoning_data
+
+    def write_reasoning_source_report(
+        self, output_path: str | Path = "reasoning_sources.txt"
+    ) -> None:
+        """
+        Write a human-readable report of which silver-reasoning source was used
+        for each task to *output_path*.
+
+        The file is (re-)written every time this method is called so it always
+        reflects the most recent set of loaded tasks.
+
+        :param output_path: path to the output text file (default:
+                            ``reasoning_sources.txt`` in the current directory).
+        """
+        output_path = Path(output_path)
+        lines = [
+            "Silver Reasoning Source Report",
+            "=" * 40,
+            f"Configured source : {self.reasoning_source or 'root (legacy)'}",
+            f"Fallback source   : llama",
+            "=" * 40,
+            "",
+        ]
+        if not self.task_reasoning_sources:
+            lines.append("No tasks have been loaded yet.")
+        else:
+            lines.append(f"{'Task ID':<10} {'Source Used'}")
+            lines.append("-" * 30)
+            for task_id in sorted(self.task_reasoning_sources):
+                source = self.task_reasoning_sources[task_id]
+                fallback_note = (
+                    "  [FALLBACK]"
+                    if source == "llama"
+                    and self.reasoning_source not in (None, "llama")
+                    else ""
+                )
+                lines.append(f"{task_id:<10} {source}{fallback_note}")
+        lines.append("")
+        output_path.write_text("\n".join(lines), encoding="UTF-8")
+        print(f"Reasoning source report written to: {output_path}")
 
     def load_interpretability(
         self, task_id: int, sample_id: int, part_id: int, attn_scores_path: str

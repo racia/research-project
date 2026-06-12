@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 6,"Sentence 1: Mary got the milk there. Sentence 2: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the kitchen.",no,1,1
 6,"Sentence 4: Mary discarded the milk. Sentence 5: John moved to the garden. Based on the movements described, John's last known location is the garden, not the kitchen.",no,2,1
 6,Sentence 7: Daniel moved to the bedroom. Sentence 8: Daniel moved to the garden. There is no information about John moving to any location in these sentences.,unknown,3,1

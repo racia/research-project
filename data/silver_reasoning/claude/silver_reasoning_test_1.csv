@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 1,"Tracking John's movements through the context sentences. In sentence 1, John travelled to the hallway. Since the last recorded movement for John places them at the hallway, this is their current location.",hallway,1,1
 1,"Tracking Mary's movements through the context sentences. In sentence 2, Mary journeyed to the bathroom. Since the last recorded movement for Mary places them at the bathroom, this is their current location.",bathroom,2,1
 1,"Tracking Sandra's movements through the context sentences. In sentence 8, Sandra journeyed to the kitchen. Since the last recorded movement for Sandra places them at the kitchen, this is their current location.",kitchen,3,1

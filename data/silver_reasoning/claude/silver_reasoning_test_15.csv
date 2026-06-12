@@ -1,4 +1,4 @@
-task_id,reasoning,answer,part_id,sample_id
+task_id,silver_reasoning,answer,part_id,sample_id
 15,Emily is a cat. Cats are afraid of wolves. So emily is afraid of wolves.,wolves,1,1
 15,Winona is a sheep. Sheep are afraid of mice. So winona is afraid of mice.,mice,2,1
 15,Gertrude is a wolf. Wolves are afraid of mice. So gertrude is afraid of mice.,mice,3,1
