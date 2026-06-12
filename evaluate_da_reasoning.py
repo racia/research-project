@@ -456,25 +456,25 @@ if __name__ == "__main__":
     #   --run_without_reas /path/to/direct_run/eval \
     #   --out_dir /path/to/comparison
 
-    # logging.basicConfig(level=logging.INFO)
-    # args = parse_args()
-    # run(
-    #     direct_answer_path=args.run_da,
-    #     reasoning_path=args.run_with_reas,
-    #     multi_system=args.multi_system,
-    #     out_dir=args.out_dir,
-    # )
-
     logging.basicConfig(level=logging.INFO)
+    args = parse_args()
     run(
-        reasoning_path=Path(
-            "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/eval"
-        ),
-        direct_answer_path=Path(
-            "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/eval"
-        ),
-        multi_system=False,
-        out_dir=Path(
-            "/workspace/students/reasoning/results/basic-baseline/test/toxic_eval_test"
-        ),
+        direct_answer_path=args.run_da,
+        reasoning_path=args.run_with_reas,
+        multi_system=args.multi_system,
+        out_dir=args.out_dir,
     )
+
+    # logging.basicConfig(level=logging.INFO)
+    # run(
+    #     reasoning_path=Path(
+    #         "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/eval"
+    #     ),
+    #     direct_answer_path=Path(
+    #         "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/eval"
+    #     ),
+    #     multi_system=False,
+    #     out_dir=Path(
+    #         "/workspace/students/reasoning/results/basic-baseline/test/toxic_eval_test"
+    #     ),
+    # )

@@ -388,7 +388,12 @@ def majority_vote(values: list) -> list[str] | None:
     """
     if not values:
         return None
-    value_counts = Counter(values)
-    highest_freq = value_counts.most_common(1)[0][0]
-    majority_values = [v for v, count in value_counts.items() if count == highest_freq]
+    values_lower = [v.lower() for v in values]
+    value_counts = Counter(values_lower)
+    highest_freq = value_counts.most_common(1)[0][1]
+    majority_values = []
+    for v, count in value_counts.items():
+        if count == highest_freq:
+            value = v.capitalize() if v not in values else v
+            majority_values.append(value)
     return majority_values

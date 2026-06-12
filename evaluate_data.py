@@ -294,17 +294,25 @@ def run(
         print(f"Using silver reasoning source: {reasoning_source!r}", end="\n\n")
     else:
         print("Using default silver reasoning source (legacy path).", end="\n\n")
-    loader = DataLoader(
-        prefix=PREFIX,
-        samples_per_task=samples_per_task,
-        filtering_conditions=filtering_conditions,
-        reasoning_source=reasoning_source,
-    )
 
     if setting in supported_single_system_settings:
         multi_system = False
     else:
         multi_system = True
+
+    # maybe loaded_baseline_results is not needed for evaluation
+    saver = DataSaver(
+        save_to=str(Path(save_path) / "eval"),
+        loaded_baseline_results=True if multi_system else False,
+    )
+
+    loader = DataLoader(
+        prefix=PREFIX,
+        samples_per_task=samples_per_task,
+        filtering_conditions=filtering_conditions,
+        reasoning_source=reasoning_source,
+        saving_path=saver.results_path,
+    )
 
     # loaded results in parts with original data, tokens-ids, and interpretability results
     results_data, multi_system = loader.load_results(
@@ -315,11 +323,6 @@ def run(
         multi_system=multi_system,
     )
 
-    # maybe loaded_baseline_results is not needed for evaluation
-    saver = DataSaver(
-        save_to=str(Path(save_path) / "eval"),
-        loaded_baseline_results=True if multi_system else False,
-    )
     results_file_name = f"{Path(results_path).stem}_upd.csv"
     plotter = Plotter(results_path=saver.run_path, color_map="tab20")
     if filtering_conditions:
@@ -1290,30 +1293,30 @@ def save_latex_table_line(split, experiment: str, setting: str, saver) -> None:
 
 
 if __name__ == "__main__":
-    args = parse_args()
-    run(
-        results_path=args.results_path,
-        save_path=args.save_path,
-        samples_per_task=args.samples_per_task,
-        setting=args.setting,
-        experiment=args.experiment,
-        filtering_conditions={},
-        create_heatmaps=args.create_heatmaps,
-        verbose=args.verbose,
-        max_tokens=args.max_tokens,
-        reasoning_source=args.reasoning_source,
-    )
-    # kwargs = {
-    #     "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
-    #     "save_path": "results/basic-baseline",
-    #     "samples_per_task": 2,
-    #     "setting": "baseline",
-    #     "experiment": "direct_answer",
-    #     "filtering_conditions": {},
-    #     "create_heatmaps": True,
-    #     "max_tokens": 1000, # or None
-    #     "verbose": True,
-    # }
-    # print("Starting evaluation with the following configuration:")
-    # print(json.dumps(kwargs, indent=2))
-    # run(**kwargs)
+    # args = parse_args()
+    # run(
+    #     results_path=args.results_path,
+    #     save_path=args.save_path,
+    #     samples_per_task=args.samples_per_task,
+    #     setting=args.setting,
+    #     experiment=args.experiment,
+    #     filtering_conditions={},
+    #     create_heatmaps=args.create_heatmaps,
+    #     verbose=args.verbose,
+    #     max_tokens=args.max_tokens,
+    #     reasoning_source=args.reasoning_source,
+    # )
+    kwargs = {
+        "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/joined_direct_answer_results_averaged.csv",
+        "save_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/",
+        "samples_per_task": 2,
+        "setting": "basic-baseline",
+        "experiment": "direct_answer",
+        "filtering_conditions": {},
+        "create_heatmaps": False,
+        "max_tokens": 12,  # or None
+        "verbose": True,
+    }
+    print("Starting evaluation with the following configuration:")
+    print(json.dumps(kwargs, indent=2))
+    run(**kwargs)
