@@ -1,3 +1,8 @@
+skyline_da_v1_t8 = [
+    "skyline/test/da/v1/tasks_6_7_full_8_s_1_77",
+    "skyline/test/da/v1/task_8_s_77",
+    "skyline/test/da/v1/tasks_8_s_78_100_tasks_9_10_full",
+]
 skyline_da_v1_t_16_19 = [
     "skyline/test/da/v1/unjoined/tasks_16_20/tasks_16_19_full_20_s_1_77",
 ]
@@ -9,7 +14,8 @@ skyline_da_v1 = [
     "skyline/test/da/v1/tasks_1_2",
     "skyline/test/da/v1/tasks_3_5",
     "skyline/test/da/v1/tasks_6_7_full_8_s_1_77",
-    "skyline/test/da/v1/tasks_8_10",
+    "skyline/test/da/v1/task_8",
+    "skyline/test/da/v1/tasks_8_s_78_100_tasks_9_10_full",
     "skyline/test/da/v1/tasks_11_15",
     *[
         f"skyline/test/da/v1/task_{t}"
@@ -52,7 +58,9 @@ skyline_da_v4_t_14 = [
 ]
 skyline_da_v4 = [
     "skyline/test/da/v4/tasks_1_2",
+    "skyline/test/da/v4/task_3",
     "skyline/test/da/v4/tasks_4_13_full_14_s_1_26",
+    "skyline/test/da/v4/task_14",
     "skyline/test/da/v4/task_14_s_25_100_task_15_full",
     "skyline/test/da/v4/tasks_16_20",
 ]
