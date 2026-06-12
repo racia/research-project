@@ -1293,30 +1293,30 @@ def save_latex_table_line(split, experiment: str, setting: str, saver) -> None:
 
 
 if __name__ == "__main__":
-    # args = parse_args()
-    # run(
-    #     results_path=args.results_path,
-    #     save_path=args.save_path,
-    #     samples_per_task=args.samples_per_task,
-    #     setting=args.setting,
-    #     experiment=args.experiment,
-    #     filtering_conditions={},
-    #     create_heatmaps=args.create_heatmaps,
-    #     verbose=args.verbose,
-    #     max_tokens=args.max_tokens,
-    #     reasoning_source=args.reasoning_source,
-    # )
-    kwargs = {
-        "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/joined_direct_answer_results_averaged.csv",
-        "save_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/",
-        "samples_per_task": 2,
-        "setting": "basic-baseline",
-        "experiment": "direct_answer",
-        "filtering_conditions": {},
-        "create_heatmaps": False,
-        "max_tokens": 12,  # or None
-        "verbose": True,
-    }
-    print("Starting evaluation with the following configuration:")
-    print(json.dumps(kwargs, indent=2))
-    run(**kwargs)
+    args = parse_args()
+    run(
+        results_path=args.results_path,
+        save_path=args.save_path,
+        samples_per_task=args.samples_per_task,
+        setting=args.setting,
+        experiment=args.experiment,
+        filtering_conditions={},
+        create_heatmaps=args.create_heatmaps,
+        verbose=args.verbose,
+        max_tokens=args.max_tokens,
+        reasoning_source=args.reasoning_source,
+    )
+    # kwargs = {
+    #     "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/joined_direct_answer_results_averaged.csv",
+    #     "save_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/",
+    #     "samples_per_task": 2,
+    #     "setting": "basic-baseline",
+    #     "experiment": "direct_answer",
+    #     "filtering_conditions": {},
+    #     "create_heatmaps": False,
+    #     "max_tokens": 12,  # or None
+    #     "verbose": True,
+    # }
+    # print("Starting evaluation with the following configuration:")
+    # print(json.dumps(kwargs, indent=2))
+    # run(**kwargs)

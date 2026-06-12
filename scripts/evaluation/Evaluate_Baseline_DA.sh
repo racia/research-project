@@ -57,7 +57,7 @@ for version in "v2" "v3" "v4" "v5";
       echo "Evaluating Baseline Direct Answer results for version ${version}..."
       RES_PATH="/workspace/students/reasoning/results/baseline/test/da/${version}/all_tasks_joined/joined_direct_answer_results.csv"
       #RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv"
-      SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/test/da/${version}/"
+      SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/da/${version}/"
       #SAVE_PATH="results/baseline/da"
       # TODO: turn dict into a mapping of setting to filtering conditions
       #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
@@ -89,7 +89,7 @@ for version in "v2" "v3" "v4" "v5";
 
 echo "Evaluating Baseline Direct Answer results averaged across versions..."
 RES_PATH="/workspace/students/reasoning/results/baseline/test/da/average_run/joined_direct_answer_results_averaged.csv"
-SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/test/da/average_run/"
+SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/da/average_run/"
 # TODO: turn dict into a mapping of setting to filtering conditions
 #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
 
