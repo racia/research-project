@@ -41,7 +41,7 @@ conda activate $ENV_NAME
 #fi
 
 # Toggle args here
-VERBOSE=false #true
+VERBOSE=true #false
 HEATMAPS=false #true
 # Set to "claude" or "llama" to select a silver-reasoning corpus;
 # leave empty to use the default flat directory (legacy behaviour).
@@ -62,7 +62,7 @@ for version in "v1" "v2" "v3" "v4" "v5";
     echo "Evaluating Basic Baseline Reasoning results for version ${version}..."
     RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/reasoning/${version}/all_tasks_joined/joined_reasoning_results.csv"
     #RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/basic-baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
-    SAVE_PATH="/workspace/students/reasoning/results/analysis/basic-baseline/reasoning/${version}/${REASONING_SOURCE:-default}/"
+    SAVE_PATH="/workspace/students/reasoning/results/analysis/basic-baseline/reasoning/${version}/"
     #SAVE_PATH="results/basic-baseline/reasoning"
     # TODO: turn dict into a mapping of setting to filtering conditions
     #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
@@ -94,8 +94,8 @@ for version in "v1" "v2" "v3" "v4" "v5";
   done
 
 echo "Evaluating Basic Baseline Reasoning results averaged across versions..."
-RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/reasoning/average_run/all_tasks_joined/joined_reasoning_results.csv"
-SAVE_PATH="/workspace/students/reasoning/results/analysis/basic-baseline/reasoning/average_run/${REASONING_SOURCE:-default}/"
+RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/reasoning/average_run/all_tasks_joined/joined_reasoning_results_averaged.csv"
+SAVE_PATH="/workspace/students/reasoning/results/analysis/basic-baseline/reasoning/average_run/"
 # TODO: turn dict into a mapping of setting to filtering conditions
 #FILTERING_CONDITIONS='{"basic-baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
 

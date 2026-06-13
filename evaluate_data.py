@@ -302,7 +302,7 @@ def run(
 
     # maybe loaded_baseline_results is not needed for evaluation
     saver = DataSaver(
-        save_to=str(Path(save_path) / "eval"),
+        save_to=str(Path(save_path) / "eval" / f"silver_{reasoning_source or 'default'}" / f"max_tokens_{max_tokens}"),
         loaded_baseline_results=True if multi_system else False,
     )
 
@@ -739,32 +739,31 @@ def run(
         if len(split.evaluators) > 1:
             plotter.plot_before_after_delta_lineplot(**ba_kwargs)
 
-        if max_tokens:
-            print(
-                "Plotting histograms of model token lengths for each version and per task...",
-                end="\n\n",
-            )
-            token_lengths = {version: {} for version in split.versions}
-            for i, version in enumerate(split.versions):
-                for task in split.tasks:
-                    for part in task.parts:
-                        identifier = (part.task_id, part.sample_id, part.part_id)
-                        if not part.results[i].interpretability:
-                            continue
-                        model_tokens = flatten(
-                            part.results[i].interpretability.y_tokens
-                        )
-                        token_lengths[version][identifier] = len(model_tokens)
-
-                if token_lengths[version]:
-                    plotter.plot_token_length_histogram(
-                        token_lengths[version], version, max_tokens
+        print(
+            "Plotting histograms of model token lengths for each version and per task...",
+            end="\n\n",
+        )
+        token_lengths = {version: {} for version in split.versions}
+        for i, version in enumerate(split.versions):
+            for task in split.tasks:
+                for part in task.parts:
+                    identifier = (part.task_id, part.sample_id, part.part_id)
+                    if not part.results[i].interpretability:
+                        continue
+                    model_tokens = flatten(
+                        part.results[i].interpretability.y_tokens
                     )
-            if any(len(lengths) for lengths in token_lengths.values()):
-                plotter.plot_token_length_histogram_all_versions(
-                    token_lengths, max_tokens
+                    token_lengths[version][identifier] = len(model_tokens)
+
+            if token_lengths[version]:
+                plotter.plot_token_length_histogram(
+                    token_lengths[version], version, max_tokens or 0
                 )
-                plotter.plot_token_length_histogram_per_task(token_lengths, max_tokens)
+        if any(len(lengths) for lengths in token_lengths.values()):
+            plotter.plot_token_length_histogram_all_versions(
+                token_lengths, max_tokens or 0
+            )
+            plotter.plot_token_length_histogram_per_task(token_lengths, max_tokens)
 
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
@@ -1093,7 +1092,7 @@ def parse_args(script_args: str | list[str] | None = None) -> argparse.Namespace
     )
     parser.add_argument(
         "--setting",
-        type=str,
+        type=str.lower,
         required=True,
         choices=[
             "baseline",

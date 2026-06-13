@@ -41,7 +41,7 @@ conda activate $ENV_NAME
 #fi
 
 # Toggle args here
-VERBOSE=false #true
+VERBOSE=true #false
 HEATMAPS=false #true
 # Set to "claude" or "llama" to select a silver-reasoning corpus;
 # leave empty to use the default flat directory (legacy behaviour).

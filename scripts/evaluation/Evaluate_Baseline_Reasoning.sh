@@ -57,44 +57,44 @@ MAX_TOKENS=300 # TODO: check what average max tokens value was
 # v5 - all 300
 
 # v1 is already evaluated, but with hybrid reasoning source
-for version in "v1" "v2" "v3" "v4" "v5";
-  do
-    echo "Evaluating Baseline Reasoning results for version ${version}..."
-    RES_PATH="/workspace/students/reasoning/results/baseline/test/reasoning/${version}/all_tasks_joined/joined_reasoning_results.csv"
-    #RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
-    SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/reasoning/${version}/${REASONING_SOURCE:-default}/max_tokens_${MAX_TOKENS}/"
-    #SAVE_PATH="results/baseline/reasoning"
-    # TODO: turn dict into a mapping of setting to filtering conditions
-    #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
-
-    ARGS=(
-      --results_path "$RES_PATH"
-      --save_path "$SAVE_PATH"
-      --setting "$SETTING"
-      --experiment "$EXPERIMENT"
-      --samples_per_task "$SAMPLES_PER_TASK"
-    )
-
-    [ "$VERBOSE" = true ] && ARGS+=(--verbose)
-    [ "$HEATMAPS" = true ] && ARGS+=(--create_heatmaps)
-    [ -n "$REASONING_SOURCE" ] && ARGS+=(--reasoning_source "$REASONING_SOURCE")
-
-    SCRIPT="evaluate_data.py"
-    echo "Running script ${SCRIPT} with the following arguments: ${ARGS[*]}"
-    srun python3 "$SCRIPT" "${ARGS[@]}"
-
-    # Verify if the script executed successfully
-    if [ $? -eq 0 ]; then
-        echo "Python script '$SCRIPT' executed successfully."
-    else
-        echo "Error: Python script '$SCRIPT' failed."
-        exit 1
-    fi
-  done
+#for version in "v1" "v2" "v3" "v4" "v5";
+#  do
+#    echo "Evaluating Baseline Reasoning results for version ${version}..."
+#    RES_PATH="/workspace/students/reasoning/results/baseline/test/reasoning/${version}/all_tasks_joined/joined_reasoning_results.csv"
+#    #RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv"
+#    SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/reasoning/${version}/"
+#    #SAVE_PATH="results/baseline/reasoning"
+#    # TODO: turn dict into a mapping of setting to filtering conditions
+#    #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
+#
+#    ARGS=(
+#      --results_path "$RES_PATH"
+#      --save_path "$SAVE_PATH"
+#      --setting "$SETTING"
+#      --experiment "$EXPERIMENT"
+#      --samples_per_task "$SAMPLES_PER_TASK"
+#    )
+#
+#    [ "$VERBOSE" = true ] && ARGS+=(--verbose)
+#    [ "$HEATMAPS" = true ] && ARGS+=(--create_heatmaps)
+#    [ -n "$REASONING_SOURCE" ] && ARGS+=(--reasoning_source "$REASONING_SOURCE")
+#
+#    SCRIPT="evaluate_data.py"
+#    echo "Running script ${SCRIPT} with the following arguments: ${ARGS[*]}"
+#    srun python3 "$SCRIPT" "${ARGS[@]}"
+#
+#    # Verify if the script executed successfully
+#    if [ $? -eq 0 ]; then
+#        echo "Python script '$SCRIPT' executed successfully."
+#    else
+#        echo "Error: Python script '$SCRIPT' failed."
+#        exit 1
+#    fi
+#  done
 
 echo "Evaluating Baseline Reasoning results averaged across versions..."
-RES_PATH="/workspace/students/reasoning/results/baseline/test/reasoning/average_run/all_tasks_joined/joined_reasoning_results.csv"
-SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/reasoning/average_run/${REASONING_SOURCE:-default}/"
+RES_PATH="/workspace/students/reasoning/results/baseline/test/reasoning/average_run/joined_reasoning_results_averaged.csv"
+SAVE_PATH="/workspace/students/reasoning/results/analysis/baseline/reasoning/average_run/"
 # TODO: turn dict into a mapping of setting to filtering conditions
 #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
 
