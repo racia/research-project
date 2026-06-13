@@ -44,7 +44,7 @@ conda activate $ENV_NAME
 echo "Comparing Direct Answer and Reasoning results for the Basic Baseline setting..."
 RUN_WITH_REAS="/workspace/students/reasoning/results/basic-baseline/test/da/average_run/joined_direct_answer_results_averaged.csv"
 RUN_WITHOUT_REAS="/workspace/students/reasoning/results/basic-baseline/test/reasoning/average_run/joined_reasoning_results_averaged.csv"
-OUT_DIR="/workspace/students/reasoning/results/analysis/basic-baseline/test/average_comparison/"
+OUT_DIR="/workspace/students/reasoning/results/analysis/basic-baseline/average_comparison/"
 
 python3 evaluate_da_reasoning.py \
    --run_with_reas $RUN_WITH_REAS \
@@ -55,7 +55,7 @@ python3 evaluate_da_reasoning.py \
 echo "Comparing Direct Answer and Reasoning results for the Baseline setting..."
 RUN_WITH_REAS="/workspace/students/reasoning/results/baseline/test/da/average_run/joined_direct_answer_results_averaged.csv"
 RUN_WITHOUT_REAS="/workspace/students/reasoning/results/baseline/test/reasoning/average_run/joined_reasoning_results_averaged.csv"
-OUT_DIR="/workspace/students/reasoning/results/analysis/baseline/test/average_comparison/"
+OUT_DIR="/workspace/students/reasoning/results/analysis/baseline/average_comparison/"
 
 python3 evaluate_da_reasoning.py \
    --run_with_reas $RUN_WITH_REAS \
@@ -66,7 +66,7 @@ python3 evaluate_da_reasoning.py \
 echo "Comparing Direct Answer and Reasoning results for the Skyline setting..."
 RUN_WITH_REAS="/workspace/students/reasoning/results/skyline/test/da/v1/joined_direct_answer_results.csv"
 RUN_WITHOUT_REAS="/workspace/students/reasoning/results/skyline/test/reasoning/v1/joined_reasoning_results.csv"
-OUT_DIR="/workspace/students/reasoning/results/analysis/skyline/test/v1_comparison/"
+OUT_DIR="/workspace/students/reasoning/results/analysis/skyline/v1_comparison/"
 
 python3 evaluate_da_reasoning.py \
    --run_with_reas $RUN_WITH_REAS \
