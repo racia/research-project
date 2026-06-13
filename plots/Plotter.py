@@ -2011,8 +2011,10 @@ class Plotter:
         ax.set_title("Output Length Distribution")
         ax.set_xlabel("Output length in tokens")
         ax.set_ylabel("Count")
+        if df["version"].nunique() > 1:
+            plt.legend(title="Version")
 
-        if max_new_tokens is not None:
+        if max_new_tokens:
             ax.axvline(
                 max_new_tokens,
                 color="red",
@@ -2037,7 +2039,6 @@ class Plotter:
             ],
             ignore_index=True,
         )
-
         g = sns.displot(
             data=df,
             x="token_length",
@@ -2050,6 +2051,8 @@ class Plotter:
             height=4,
             aspect=1.3,
         )
+        if df["version"].nunique() > 1:
+            plt.legend(title="Version")
 
         g.set_axis_labels("Output length in tokens", "Count")
 
@@ -2060,7 +2063,7 @@ class Plotter:
 
         g.figure.suptitle("Output Length Distribution per Task", y=1.02)
 
-        if max_new_tokens is not None:
+        if max_new_tokens:
             for ax in g.axes.flat:
                 ax.axvline(
                     max_new_tokens,
