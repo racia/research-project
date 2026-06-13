@@ -29,7 +29,7 @@ from data.DataSaver import DataSaver
 from data.utils import format_metrics
 from evaluation.utils import extract_split
 from inference.DataLevels import Results, Sample, SamplePart, Split, Task, print_metrics
-from inference.utils import print_metrics_table
+from inference.utils import print_metrics_table, flatten
 from interpretability.DistractorAttention import (
     DistractorAttentionStats,
     collect_distractor_attention_record,
@@ -739,6 +739,33 @@ def run(
         if len(split.evaluators) > 1:
             plotter.plot_before_after_delta_lineplot(**ba_kwargs)
 
+        if max_tokens:
+            print(
+                "Plotting histograms of model token lengths for each version and per task...",
+                end="\n\n",
+            )
+            token_lengths = {version: {} for version in split.versions}
+            for i, version in enumerate(split.versions):
+                for task in split.tasks:
+                    for part in task.parts:
+                        identifier = (part.task_id, part.sample_id, part.part_id)
+                        if not part.results[i].interpretability:
+                            continue
+                        model_tokens = flatten(
+                            part.results[i].interpretability.y_tokens
+                        )
+                        token_lengths[version][identifier] = len(model_tokens)
+
+                if token_lengths[version]:
+                    plotter.plot_token_length_histogram(
+                        token_lengths[version], version, max_tokens
+                    )
+            if any(len(lengths) for lengths in token_lengths.values()):
+                plotter.plot_token_length_histogram_all_versions(
+                    token_lengths, max_tokens
+                )
+                plotter.plot_token_length_histogram_per_task(token_lengths, max_tokens)
+
     for version, evaluator, features, corr_matrix in zip(
         split.versions, split.evaluators, split.features, split_corr_matrices.values()
     ):
@@ -1307,14 +1334,14 @@ if __name__ == "__main__":
         reasoning_source=args.reasoning_source,
     )
     # kwargs = {
-    #     "results_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/joined_direct_answer_results_averaged.csv",
-    #     "save_path": "/workspace/students/reasoning/results/basic-baseline/test/da/average_run/",
+    #     "results_path": "/workspace/students/reasoning/results/baseline/test/reasoning/v4/all_tasks_joined/joined_reasoning_results.csv",
+    #     "save_path": "/workspace/students/reasoning/results/baseline/test/reasoning/v4/all_tasks_joined/test-eval",
     #     "samples_per_task": 2,
-    #     "setting": "basic-baseline",
-    #     "experiment": "direct_answer",
+    #     "setting": "baseline",
+    #     "experiment": "reasoning",
     #     "filtering_conditions": {},
     #     "create_heatmaps": False,
-    #     "max_tokens": 12,  # or None
+    #     "max_tokens": 300,  # or None
     #     "verbose": True,
     # }
     # print("Starting evaluation with the following configuration:")

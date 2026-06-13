@@ -267,8 +267,8 @@ class InterpretabilityResult:
         """
         Interpretability result class
         :param attn_scores: attention scores
-        :param x_tokens: tokenized x tokens
-        :param y_tokens: tokenized y tokens
+        :param x_tokens: tokenized x tokens, task
+        :param y_tokens: tokenized y tokens, model output
         :param max_supp_attn: ratio of max supporting sent
         :param attn_on_target: average attention on supporting sentences
         :param type_: keyword for the result (aggregated or verbose)

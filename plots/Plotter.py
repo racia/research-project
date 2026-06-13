@@ -30,6 +30,7 @@ from plots.utils import (
     plot_task_map_grid,
     prepare_for_display_pie,
     safe_mean,
+    token_lengths_to_df,
 )
 
 RATIO_YMIN: float = 1e-2  # min log ratio shown (distractor / supporting)
@@ -284,7 +285,9 @@ class Plotter:
                     f"'file_name' must include a file-type suffix (e.g. '.png'), "
                     f"got: {file_name!r}"
                 )
-            plt.savefig(self.results_path / file_name, dpi=300, bbox_inches="tight")
+            plt.savefig(
+                self.results_path / (path_add or "") / file_name, dpi=300, bbox_inches="tight"
+            )
         elif x_label and y_label and path_add:
             label = y_label.lower().replace(" ", "_")
             plt.savefig(
@@ -1930,6 +1933,145 @@ class Plotter:
             file_name=f"error_histogram_{normalization}_{setting.title().replace(' ', '_')}.png"
         )
 
+    def plot_token_length_histogram(
+        self,
+        token_lengths: dict[tuple[int, int, int], int],
+        version: str,
+        max_new_tokens: int,
+    ) -> None:
+        """
+        Plots a histogram for the number of items in each group (task/sample/part),
+        divided by error category using different colors.
+
+        :param token_lengths: length of model output in tokens per version and identifier
+        :param version: version of the result
+        :param max_new_tokens: maximum number of new tokens
+        :return: None
+        """
+        df = token_lengths_to_df(token_lengths, version)
+        fig, ax = plt.subplots(figsize=(10, 6))
+
+        sns.histplot(
+            data=df,
+            x="token_length",
+            bins=max_new_tokens // 10,
+            ax=ax,
+        )
+        ax.set_title(f"Model Output Length Distribution ({version})")
+        ax.set_xlabel("Model output length in tokens")
+        ax.set_ylabel("Count")
+
+        # annotate the plot
+        ax.axvline(
+            x=max_new_tokens,
+            color="red",
+            linestyle="--",
+            label=f"Max new tokens ({max_new_tokens})",
+        )
+        ax.legend()
+
+        plt.tight_layout()
+        plt.show()
+        self._save_plot(
+            file_name=f"model_output_token_len_histogram_{version}.png",
+            path_add=Path(version),
+        )
+
+    def plot_token_length_histogram_all_versions(
+        self,
+        token_lengths_by_version: dict[str, dict[tuple[int, int, int], int]],
+        max_new_tokens: int,
+    ) -> None:
+        """
+        Plots a histogram for the number of items in each group (task/sample/part),
+        divided by error category using different colors.
+
+        :param token_lengths_by_version: model output token lengths in structure {version: {identifier: token_length}}
+        :param max_new_tokens: maximum number of new tokens
+        """
+        df = pd.concat(
+            [
+                token_lengths_to_df(token_lengths, version)
+                for version, token_lengths in token_lengths_by_version.items()
+            ],
+            ignore_index=True,
+        )
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        sns.histplot(
+            data=df,
+            x="token_length",
+            hue="version" if df["version"].nunique() > 1 else None,
+            bins=max_new_tokens // 10,
+            multiple="layer",
+            alpha=0.4,
+            ax=ax,
+        )
+
+        ax.set_title("Output Length Distribution")
+        ax.set_xlabel("Output length in tokens")
+        ax.set_ylabel("Count")
+
+        if max_new_tokens is not None:
+            ax.axvline(
+                max_new_tokens,
+                color="red",
+                linestyle="--",
+                label=f"max_new_tokens={max_new_tokens}",
+            )
+            ax.legend()
+
+        plt.tight_layout()
+        plt.show()
+        self._save_plot(file_name=f"model_output_token_len_histogram.png")
+
+    def plot_token_length_histogram_per_task(
+        self,
+        token_lengths_by_version: dict[str, dict[tuple[int, int, int], int]],
+        max_new_tokens: int | None = None,
+    ) -> None:
+        df = pd.concat(
+            [
+                token_lengths_to_df(token_lengths, version)
+                for version, token_lengths in token_lengths_by_version.items()
+            ],
+            ignore_index=True,
+        )
+
+        g = sns.displot(
+            data=df,
+            x="token_length",
+            col="task",
+            col_wrap=5,
+            hue="version" if df["version"].nunique() > 1 else None,
+            bins=30,
+            multiple="layer",
+            alpha=0.4,
+            height=4,
+            aspect=1.3,
+        )
+
+        g.set_axis_labels("Output length in tokens", "Count")
+
+        ticks = range(0, max_new_tokens + 1, 200)
+        for ax in g.axes.flat:
+            ax.set_xticks(ticks)
+            ax.set_xticklabels(ticks)
+
+        g.figure.suptitle("Output Length Distribution per Task", y=1.02)
+
+        if max_new_tokens is not None:
+            for ax in g.axes.flat:
+                ax.axvline(
+                    max_new_tokens,
+                    color="red",
+                    linestyle="--",
+                    linewidth=1.5,
+                )
+
+        plt.show()
+        self._save_plot(file_name=f"model_output_token_len_histogram_per_task.png")
+
     def plot_case_pie(
         self,
         cases_indices: dict,
@@ -2775,10 +2917,13 @@ class Plotter:
 
             for correct, role, offset_mult, color, label, hatch in bar_spec:
                 if role == "supporting":
-                    means = [supp_per_task.get(tid, {}).get(correct) for tid in task_ids]
+                    means = [
+                        supp_per_task.get(tid, {}).get(correct) for tid in task_ids
+                    ]
                 else:
                     means = [
-                        per_task[tid].get(correct, {}).get(role, None) for tid in task_ids
+                        per_task[tid].get(correct, {}).get(role, None)
+                        for tid in task_ids
                     ]
                 xs, heights = [], []
                 for i, m in enumerate(means):
@@ -2808,7 +2953,7 @@ class Plotter:
                                 color="#222222",
                             )
         except ValueError as e:
-            print(str(e)) # Unexpected number of returned bar_spec variables
+            print(str(e))  # Unexpected number of returned bar_spec variables
         ax.set_xticks(x)
         ax.set_xticklabels([f"T{tid}" for tid in task_ids], fontsize=9)
         ax.set_ylabel("Mean attention", fontsize=11)

@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
 from interpretability.DistractorAttention import DistractorAttentionStats
 
@@ -258,3 +259,20 @@ def safe_mean(arr):
         return np.nan
 
     return np.mean(cleaned)
+
+
+def token_lengths_to_df(
+    token_lengths: dict[tuple[int, int, int], int],
+    version: str,
+) -> pd.DataFrame:
+    rows = [
+        {
+            "task": task,
+            "sample": sample,
+            "part": part,
+            "token_length": length,
+            "version": version,
+        }
+        for (task, sample, part), length in token_lengths.items()
+    ]
+    return pd.DataFrame(rows)
