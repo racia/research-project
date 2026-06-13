@@ -9,8 +9,7 @@
 #SBATCH --partition=students
 # SBATCH --time=00:30:00              # Job time limit (30 minutes)
 # Output and error logs
-#SBATCH --output="eval_sky_fb_sd_reasoning.out"        # TODO: adjust stanreasoningrd output log
-# SBATCH --error="eval_sky_fb_sd_reasoning.err"         # TODO: adjust error log
+#SBATCH --output="eval_sky_fb_sd_reasoning_%j.log"
 
 #SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=ALL  # Send email when the job ends or fails

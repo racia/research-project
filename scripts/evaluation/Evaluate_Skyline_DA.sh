@@ -9,8 +9,7 @@
 #SBATCH --partition=students
 # SBATCH --time=00:30:00              # Job time limit (30 minutes)
 # Output and error logs
-#SBATCH --output="eval_sky_da.out"        # TODO: adjust standard output log
-# SBATCH --error="eval_sky_da.err"         # TODO: adjust error log
+#SBATCH --output="eval_sky_da_%j.log"        # TODO: adjust standard output log
 
 #SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=ALL  # Send email when the job ends or fails
@@ -51,7 +50,7 @@ SAMPLES_PER_TASK=100 #100
 SETTING="skyline" #"skyline"
 EXPERIMENT="direct_answer" #"da"
 
-for version in "v1" "v2" "v3" "v4" "v5":
+for version in "v1" "v2" "v3" "v4" "v5";
   do
     echo "Evaluating Skyline Direct Answer results for version ${version}..."
     RES_PATH="/workspace/students/reasoning/results/skyline/test/da/${version}/all_tasks_joined/joined_direct_answer_results.csv"

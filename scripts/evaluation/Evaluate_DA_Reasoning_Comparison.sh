@@ -9,8 +9,7 @@
 #SBATCH --partition=students
 # SBATCH --time=01:00:00              # Job time limit (30 minutes)
 # Output and error logs
-#SBATCH --output="eval_da_reas.out"        # TODO: adjust standard output log
-# SBATCH --error="eval_da_reas.err"         # TODO: adjust error log
+#SBATCH --output="eval_da_reas_%j.log"
 
 #SBATCH --mail-user=""              # TODO: Add your email address
 #SBATCH --mail-type=ALL  # Send email when the job ends or fails
