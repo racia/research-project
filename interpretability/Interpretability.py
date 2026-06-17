@@ -6,6 +6,7 @@ import numpy as np
 import torch
 from transformers import PreTrainedTokenizerFast
 from transformers.modeling_outputs import CausalLMOutputWithPast
+import re
 
 from data.utils import load_scenery
 from evaluation.Scenery import nlp
@@ -33,33 +34,31 @@ class Interpretability:
     def get_stop_word_idxs(
         self,
         attn_scores: np.ndarray,
-        chat_ids: np.ndarray,
-        span_ids: dict = None,
+        chat_tokens: list[str],
     ) -> list[int]:
         # TODO: update the name and description
         """
         Get indices of stop words in the current task.
 
         :param chat_ids: current sample part ids (task and model's output)
-        :param attn_scores: the attention scores for the current task
+        :param attn_scores: the attention scores for the current task (filtered for task tokens)
         :param span_ids: the sentence spans of the current chat for all types of chunks
         :return: list of indices of stop words in the current task
         """
         assert attn_scores.ndim == 2
         ids_to_remove = []
-        task_indices = get_indices(span_ids, "task")
-        chat_tokens = self.tokenizer.batch_decode(chat_ids)
 
-        for output_row in attn_scores:
-            for task_idx in range(len(output_row)):
-                # filter out non-task tokens
-                # if task_idx in task_indices:
-                #     # ids_to_remove.append(task_idx)
-                #     continue
-                token = chat_tokens[task_idx].strip().lower()
-                for token_ in nlp(token):
-                    if token_.lemma_ not in self.scenery_words:
-                        ids_to_remove.append(task_idx)
+        for task_idx, _ in enumerate(attn_scores): # Iterate over the token indices in the current task span
+            print(f"Task idx: {task_idx}, {chat_tokens[task_idx], len(chat_tokens)}, {attn_scores.shape[1]}")
+            token = chat_tokens[task_idx]
+            token_str = self.tokenizer.convert_tokens_to_string([token])
+            print(f"Token_str: {token_str}")
+            print(f"String conv. token: {token_str}")
+
+            for token_ in nlp(token_str.strip().lower()):
+                if token_.lemma_ not in self.scenery_words:
+                    print(f"Stop word: {token_.lemma_}")
+                    ids_to_remove.append(task_idx)
         return ids_to_remove
 
     @staticmethod
@@ -95,7 +94,7 @@ class Interpretability:
         # Takes mean over the attention heads: dimensions, model_output, current task
         # (w/o model output, as it is in y-axis)
         attn_tensor = attn_tensor[
-            :, -model_output_len:-1, sys_prompt_len:-model_output_len
+            :, -model_output_len:-1, sys_prompt_len:-model_output_len # TODO: Check if sys_prompt_len needs -1 (for zero-indexing) 
         ].mean(dim=0)
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
@@ -137,19 +136,19 @@ class Interpretability:
         return attn_scores
 
     def filter_attn_indices(
-        self, attention_scores: np.ndarray, chat_ids: np.ndarray, span_ids: dict = None
+        self, attention_scores: np.ndarray, chat_ids: np.ndarray, task_spans: list = None
     ) -> list:
         """
         Provide indices for scenery words of context and question in each row of the output attention scores.
         Additionally also for message role tokens.
 
-        :param attention_scores: The attention scores of the current chat
-        :param chat_ids: current sample part ids (task and model's output)
-        :param span_ids: the sentence spans of the current chat for all types of chunks
+        :param attention_scores: The attention scores of the current chat for task
+        :param chat_tokens: current sample part tokens
+        :param task_spans: the sentence spans of the current chat for all types of chunks
         :return: according attention_indices
         """
         stop_words_indices = self.get_stop_word_idxs(
-            attention_scores, chat_ids, span_ids
+            attention_scores, chat_tokens
         )
         attention_indices = filter(
             lambda x: x not in stop_words_indices, range(attention_scores.shape[1])
@@ -197,31 +196,39 @@ class Interpretability:
             attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
         else:
             sys_prompt_len = len(flatten(chat.messages[0]["ids"]))
+            print(f"Sys prompt len: {sys_prompt_len}, offset len: {chat.offset}")
             chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
                 model_output_len=len(flatten(chat.messages[-1]["ids"])),
                 sys_prompt_len=sys_prompt_len,
             )
-            attention_indices = self.filter_attn_indices(attn_scores, chat_ids.numpy())
+            task_spans = {spans: type_ for spans, type_ in spans_with_types.items() if type_ in ["cont", "ques"]}
             # Filter attention scores
-            attn_scores = attn_scores[:, attention_indices]
             x_tokens = chat.convert_into_datatype(
-                datatype="tokens", identify_target=False
+                datatype="tokens", identify_target=False, sys_prompt=True, include_generation_tokens=False
             )
-            supp_sent_ranges = [
+            attention_indices = self.filter_attn_indices(attn_scores, x_tokens)
+            print(f"All tokens: {x_tokens[:2]}, {len(x_tokens)}")
+            supp_sent_ranges = [    # Get the length of the supporting spans
                 list(range(*span))
                 for span in sent_spans
                 if span in chat.supp_sent_spans
             ]
             flat_supp_sent_ranges = flatten(supp_sent_ranges)
+            # print(f"Supp sent tok range: {flat_supp_sent_ranges}")
+            x_tokens_str_map = {idx: self.tokenizer.convert_tokens_to_string([token]) for idx, token in enumerate(x_tokens)}
             x_tokens = [
                 f"* {tok} *" if i in flat_supp_sent_ranges else tok
-                for i, tok in enumerate(x_tokens)
+                for i, tok in enumerate(x_tokens_str_map.values())
                 if i in attention_indices
             ]
-            max_supp_attn_ratio = get_max_attn_ratio(attn_scores, flat_supp_sent_ranges)
+            # print(f"Filtered tokens: {x_tokens}")
+            # Compute attention metrics before filtering for correct indexing
+            max_supp_attn_ratio = get_max_attn_ratio(attn_scores, flat_supp_sent_ranges) 
             attn_on_target = get_attn_on_target(attn_scores, flat_supp_sent_ranges)
+            attn_scores = attn_scores[:, attention_indices] # Filter attention scores to only include those corresponding to the remaining tokens
+
 
         if not chat.messages[-1]["tokens"][0]:
             raise ValueError(

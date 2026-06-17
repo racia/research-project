@@ -9,7 +9,7 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     BitsAndBytesConfig,
-    OpenLlamaPreTrainedModel,
+    # OpenLlamaPreTrainedModel,
     PreTrainedTokenizerFast,
 )
 
@@ -55,6 +55,7 @@ class Model:
         mode: Mode = "eval",
         wrapper: Wrapper = None,
         interpretability: bool = None,
+        aggregate_attn: bool = True,
     ):
         self.token: str = os.getenv("HUGGINGFACE")
         self.name: str = name
@@ -67,7 +68,7 @@ class Model:
         self.model, self.tokenizer = self.load()
 
         if interpretability:
-            self.interpretability = Interpretability()
+            self.interpretability = Interpretability(aggregate_attn=aggregate_attn)
             self.interpretability.tokenizer = self.tokenizer
 
         self.wrapper = encode_wrapper(wrapper, self.tokenizer) if wrapper else None
