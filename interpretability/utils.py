@@ -1,4 +1,5 @@
 import ast
+from typing import Optional
 import warnings
 
 import numpy as np
@@ -25,7 +26,7 @@ def _parse_index_list(val) -> list[int]:
         return [int(x) for x in val.split(",") if x.strip().lstrip("-").isdigit()]
 
 
-def _parse_aggregated_token(tok: str) -> tuple[int, str] | None:
+def _parse_aggregated_token(tok: str) -> Optional[tuple[int, str]]:
     """
     Parse one aggregated x_token like "* 3 context *" or "5 question" into
     (chat_sentence_position, type_string).
@@ -82,8 +83,8 @@ def _is_aggregated_x_tokens(x_tokens: list[str]) -> bool:
 def _aggregated_sentence_attn(
     token_weights: np.ndarray,
     x_tokens: list[str],
-    context_line_nums: list[int] | None,
-) -> dict[int, float] | None:
+    context_line_nums: Optional[list[int]],
+) -> Optional[dict[int, float]]:
     """
     Build {bAbI_line_number: mean_attention} from aggregated sentence labels.
 
@@ -138,7 +139,7 @@ def _aggregated_sentence_attn(
 def _verbose_sentence_attn(
     token_weights: np.ndarray,
     x_tokens: list[str],
-) -> dict[int, float] | None:
+) -> Optional[dict[int, float]]:
     """
     Build {bAbI_line_number: mean_attention} from token-level x_tokens.
 
@@ -156,7 +157,7 @@ def _verbose_sentence_attn(
     :return: {bAbI_line_number: attention} or None if no sentence was found
     """
     sentence_spans: list[tuple[int, int, int]] = []
-    current_sent: int | None = None
+    current_sent: Optional[int] = None
     start: int = 0
 
     for i, tok in enumerate(x_tokens):
@@ -187,8 +188,8 @@ def _verbose_sentence_attn(
 
 def _sentence_attn_from_interpretability(
     interpretability,
-    context_line_nums: list[int] | None = None,
-) -> dict[int, float] | None:
+    context_line_nums: Optional[list[int]] = None,
+) -> Optional[dict[int, float]]:
     """
     Derive a mapping of {bAbI_line_number: mean_attention} from an
     InterpretabilityResult.
@@ -238,7 +239,7 @@ def _sentence_attn_from_interpretability(
 
 def _mean_attn_over_indices(
     sent_attn: dict[int, float], indices: list[int]
-) -> float | None:
+) -> Optional[float]:
     vals = [sent_attn[i] for i in indices if i in sent_attn]
     return float(np.mean(vals)) if vals else None
 
