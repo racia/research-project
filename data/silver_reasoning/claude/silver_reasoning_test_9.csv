@@ -1,0 +1,501 @@
+task_id,silver_reasoning,answer,part_id,sample_id
+9,"John is in the hallway. Sandra is in the kitchen. Sandra is currently in the kitchen, not the bedroom.",no,1,1
+9,Sandra goes to the bedroom. Mary goes to the garden. Sandra is currently in the bedroom.,yes,2,1
+9,Mary goes to the bathroom. Sandra leaves the bedroom. Sandra is not in the bedroom.,no,3,1
+9,John is in the office. Mary leaves the bathroom. Mary is not in the bathroom.,no,4,1
+9,"John is in the hallway. Mary goes to the garden. Mary is currently in the garden, not the kitchen.",no,5,1
+9,"Mary goes to the office. Mary moves from the office to the garden. Mary is currently in the garden, not the office.",no,1,2
+9,Daniel leaves the kitchen. John leaves the bathroom. Daniel is not in the kitchen.,no,2,2
+9,John is in the garden. Sandra goes to the bedroom. John is currently in the garden.,yes,3,2
+9,Mary goes to the kitchen. Sandra leaves the bedroom. John is not in the garden.,yes,4,2
+9,John goes to the hallway. Daniel goes to the bathroom. Daniel is currently in the bathroom.,yes,5,2
+9,John leaves the bathroom. Sandra leaves the bedroom. John is not in the bathroom.,no,1,3
+9,Mary goes to the garden. Sandra is in the hallway. Sandra is currently in the hallway.,yes,2,3
+9,"Sandra leaves the hallway. Mary goes to the kitchen. Mary is currently in the kitchen, not the garden.",no,3,3
+9,Mary is in the hallway. Mary moves from the hallway to the kitchen. Sandra is not in the hallway.,no,4,3
+9,John is in the bedroom. Sandra leaves the garden. Mary is not in the kitchen.,yes,5,3
+9,"John goes to the hallway. John moves from the hallway to the office. John is currently in the office, not the bathroom.",no,1,4
+9,Daniel goes to the office. Sandra leaves the hallway. Sandra is not in the hallway.,no,2,4
+9,Sandra goes to the hallway. John goes to the garden. John is currently in the garden.,yes,3,4
+9,"Daniel goes to the bathroom. John goes to the office. John is currently in the office, not the kitchen.",no,4,4
+9,Sandra is in the kitchen. Sandra leaves the kitchen. Sandra is not in the kitchen.,no,5,4
+9,John leaves the garden. Daniel is in the hallway. John is not in the garden.,no,1,5
+9,Mary leaves the kitchen. Mary is in the hallway. Mary is currently in the hallway.,yes,2,5
+9,Sandra goes to the hallway. Mary goes to the office. Daniel is not in the hallway.,yes,3,5
+9,Sandra leaves the hallway. Mary goes to the hallway. Sandra is not in the hallway.,no,4,5
+9,Sandra goes to the office. Mary goes to the kitchen. Mary is currently in the kitchen.,yes,5,5
+9,"John goes to the hallway. John is in the office. John is currently in the office, not the hallway.",no,1,6
+9,John leaves the office. Daniel goes to the kitchen. John is not in the office.,no,2,6
+9,Sandra leaves the hallway. Daniel goes to the bathroom. John is not in the office.,no,3,6
+9,Daniel goes to the bedroom. Sandra leaves the garden. Sandra is not in the garden.,no,4,6
+9,"Daniel is in the bathroom. John goes to the hallway. Daniel is currently in the bathroom, not the office.",no,5,6
+9,Sandra goes to the bathroom. John leaves the office. John is not in the office.,no,1,7
+9,Sandra leaves the bathroom. Daniel goes to the kitchen. Sandra is not in the bathroom.,no,2,7
+9,Sandra leaves the hallway. John is in the bedroom. Sandra is not in the hallway.,no,3,7
+9,John goes to the garden. John is in the bathroom. Daniel is not in the kitchen.,yes,4,7
+9,"John goes to the office. John is in the bedroom. John is currently in the bedroom, not the bathroom.",no,5,7
+9,Mary goes to the bathroom. Daniel goes to the hallway. Mary is currently in the bathroom.,yes,1,8
+9,Daniel leaves the hallway. Sandra leaves the hallway. Daniel is not in the hallway.,no,2,8
+9,Sandra goes to the hallway. Mary goes to the kitchen. Daniel is not in the hallway.,no,3,8
+9,Daniel goes to the office. Sandra goes to the kitchen. Sandra is currently in the kitchen.,yes,4,8
+9,John leaves the bathroom. Mary is in the hallway. Daniel is not in the office.,yes,5,8
+9,Mary goes to the bedroom. Mary moves from the bedroom to the garden. Mary is currently in the garden.,yes,1,9
+9,Mary is in the bathroom. John leaves the kitchen. John is not in the kitchen.,no,2,9
+9,John is in the bathroom. Mary is in the bedroom. Mary is currently in the bedroom.,yes,3,9
+9,"Sandra is in the hallway. John goes to the kitchen. John is currently in the kitchen, not the garden.",no,4,9
+9,Mary is in the garden. Sandra goes to the kitchen. John is not in the kitchen.,yes,5,9
+9,"John goes to the kitchen. Mary goes to the garden. John is currently in the kitchen, not the bathroom.",no,1,10
+9,Daniel leaves the bathroom. Mary leaves the garden. John is not in the bathroom.,no,2,10
+9,"Daniel goes to the office. John goes to the office. Daniel is currently in the office, not the bathroom.",no,3,10
+9,Daniel leaves the office. Mary leaves the bedroom. John is not in the office.,yes,4,10
+9,"Mary goes to the bedroom. John goes to the garden. John is currently in the garden, not the bathroom.",no,5,10
+9,John goes to the office. Sandra goes to the bathroom. Sandra is currently in the bathroom.,yes,1,11
+9,Mary goes to the hallway. Sandra leaves the bathroom. Sandra is not in the bathroom.,no,2,11
+9,Daniel is in the bathroom. Daniel moves from the bathroom to the garden. Mary is not in the hallway.,yes,3,11
+9,Sandra goes to the kitchen. Mary is in the bedroom. Sandra is currently in the kitchen.,yes,4,11
+9,John is in the garden. Mary leaves the bedroom. Sandra is not in the kitchen.,yes,5,11
+9,"Mary goes to the kitchen. John leaves the garden. Mary is currently in the kitchen, not the bedroom.",no,1,12
+9,Sandra leaves the bathroom. John leaves the hallway. John is not in the hallway.,no,2,12
+9,Mary is in the garden. Mary moves from the garden to the office. John is not in the hallway.,no,3,12
+9,"Daniel goes to the office. Mary goes to the hallway. Mary is currently in the hallway, not the bathroom.",no,4,12
+9,"Mary goes to the bathroom. John goes to the bathroom. Mary is currently in the bathroom, not the garden.",no,5,12
+9,Mary goes to the garden. Sandra leaves the office. Sandra is not in the office.,no,1,13
+9,John leaves the bedroom. Mary is in the bathroom. Mary is currently in the bathroom.,yes,2,13
+9,John goes to the bathroom. Daniel goes to the hallway. Sandra is not in the office.,no,3,13
+9,John goes to the bedroom. Mary leaves the bathroom. Mary is not in the bathroom.,no,4,13
+9,"John goes to the kitchen. Mary leaves the garden. John is currently in the kitchen, not the office.",no,5,13
+9,"John goes to the kitchen. Mary leaves the kitchen. John is currently in the kitchen, not the garden.",no,1,14
+9,"Daniel is in the bedroom. Mary goes to the kitchen. Mary is currently in the kitchen, not the bedroom.",no,2,14
+9,Daniel leaves the bedroom. Mary goes to the bathroom. Mary is currently in the bathroom.,yes,3,14
+9,"Mary goes to the kitchen. Mary is in the bedroom. Mary is currently in the bedroom, not the office.",no,4,14
+9,John is in the bathroom. Sandra goes to the bathroom. Sandra is currently in the bathroom.,yes,5,14
+9,"Sandra leaves the kitchen. Sandra is in the kitchen. Sandra is currently in the kitchen, not the hallway.",no,1,15
+9,Daniel is in the kitchen. Sandra leaves the kitchen. Sandra is not in the kitchen.,no,2,15
+9,Daniel leaves the kitchen. John leaves the office. Sandra is not in the kitchen.,no,3,15
+9,Mary goes to the bedroom. John is in the kitchen. John is currently in the kitchen.,yes,4,15
+9,Sandra goes to the kitchen. John goes to the garden. John is currently in the garden.,yes,5,15
+9,Sandra goes to the kitchen. Daniel goes to the hallway. Sandra is currently in the kitchen.,yes,1,16
+9,Daniel leaves the hallway. Mary leaves the bedroom. Daniel is not in the hallway.,no,2,16
+9,Daniel goes to the office. Sandra leaves the kitchen. Daniel is currently in the office.,yes,3,16
+9,"Sandra leaves the office. Mary is in the hallway. Mary is currently in the hallway, not the bedroom.",no,4,16
+9,Sandra leaves the kitchen. John goes to the bathroom. Sandra is not in the kitchen.,no,5,16
+9,Sandra is in the hallway. John goes to the kitchen. Sandra is currently in the hallway.,yes,1,17
+9,Daniel goes to the garden. Daniel leaves the garden. John is not in the garden.,no,2,17
+9,John is in the garden. John is in the kitchen. Daniel is not in the garden.,no,3,17
+9,Mary goes to the bedroom. John goes to the bathroom. Daniel is not in the garden.,no,4,17
+9,Sandra goes to the bathroom. Daniel goes to the kitchen. Sandra is currently in the bathroom.,yes,5,17
+9,Daniel leaves the bathroom. Sandra leaves the garden. Sandra is not in the garden.,no,1,18
+9,Sandra goes to the office. Mary leaves the office. Sandra is currently in the office.,yes,2,18
+9,"Sandra is in the bathroom. Daniel leaves the kitchen. Sandra is currently in the bathroom, not the bedroom.",no,3,18
+9,"Daniel is in the kitchen. John goes to the bathroom. Daniel is currently in the kitchen, not the hallway.",no,4,18
+9,John leaves the bathroom. Daniel leaves the kitchen. Daniel is not in the kitchen.,no,5,18
+9,John goes to the bathroom. Mary is in the bedroom. Mary is currently in the bedroom.,yes,1,19
+9,"John goes to the hallway. Sandra is in the hallway. Sandra is currently in the hallway, not the office.",no,2,19
+9,Sandra leaves the hallway. Sandra goes to the office. John is not in the kitchen.,no,3,19
+9,Sandra leaves the office. John is in the office. Sandra is not in the office.,no,4,19
+9,John goes to the bathroom. Daniel is in the kitchen. John is currently in the bathroom.,yes,5,19
+9,Mary leaves the hallway. Sandra goes to the kitchen. Mary is not in the hallway.,no,1,20
+9,Daniel goes to the bathroom. Mary goes to the hallway. Sandra is not in the hallway.,no,2,20
+9,John goes to the bedroom. Daniel goes to the kitchen. John is currently in the bedroom.,yes,3,20
+9,Sandra leaves the kitchen. Sandra goes to the bedroom. Sandra is currently in the bedroom.,yes,4,20
+9,Sandra goes to the bathroom. John leaves the bedroom. Sandra is currently in the bathroom.,yes,5,20
+9,John goes to the office. Sandra goes to the kitchen. John is currently in the office.,yes,1,21
+9,"John goes to the hallway. Daniel goes to the bathroom. Daniel is currently in the bathroom, not the kitchen.",no,2,21
+9,John goes to the garden. Sandra is in the office. Daniel is not in the office.,no,3,21
+9,"Daniel goes to the bedroom. John leaves the garden. Daniel is currently in the bedroom, not the hallway.",no,4,21
+9,Daniel is in the kitchen. Mary goes to the bedroom. Daniel is currently in the kitchen.,yes,5,21
+9,Mary goes to the kitchen. Mary leaves the kitchen. Mary is not in the kitchen.,no,1,22
+9,John goes to the bathroom. Daniel goes to the office. Mary is not in the kitchen.,no,2,22
+9,Mary is in the hallway. Sandra is in the office. Mary is currently in the hallway.,yes,3,22
+9,Daniel leaves the office. Daniel is in the bedroom. Mary is not in the garden.,no,4,22
+9,Mary leaves the hallway. Sandra goes to the kitchen. Sandra is currently in the kitchen.,yes,5,22
+9,Sandra leaves the bathroom. Daniel leaves the bathroom. Sandra is not in the bathroom.,no,1,23
+9,Mary goes to the hallway. Daniel leaves the office. Sandra is not in the bathroom.,no,2,23
+9,Daniel goes to the bathroom. John goes to the garden. Mary is not in the bedroom.,no,3,23
+9,Sandra goes to the bedroom. Daniel leaves the bathroom. Daniel is not in the bathroom.,no,4,23
+9,Mary goes to the bathroom. John leaves the garden. John is not in the garden.,no,5,23
+9,"John is in the kitchen. John moves from the kitchen to the hallway. John is currently in the hallway, not the kitchen.",no,1,24
+9,John goes to the office. Sandra leaves the kitchen. Sandra is not in the kitchen.,no,2,24
+9,Daniel leaves the hallway. John is in the bathroom. John is currently in the bathroom.,yes,3,24
+9,John goes to the garden. Mary is in the kitchen. John is currently in the garden.,yes,4,24
+9,Daniel goes to the bedroom. Sandra is in the garden. John is not in the garden.,yes,5,24
+9,"Sandra goes to the office. Daniel is in the kitchen. Daniel is currently in the kitchen, not the hallway.",no,1,25
+9,Daniel is in the hallway. John goes to the office. Sandra is not in the bathroom.,no,2,25
+9,Sandra is in the bedroom. Sandra leaves the bedroom. Sandra is not in the bedroom.,no,3,25
+9,Daniel is in the kitchen. Sandra goes to the bedroom. John is not in the office.,yes,4,25
+9,"John goes to the bedroom. Daniel is in the bathroom. Daniel is currently in the bathroom, not the bedroom.",no,5,25
+9,"Mary goes to the office. Mary is in the bathroom. Mary is currently in the bathroom, not the hallway.",no,1,26
+9,Mary goes to the garden. Sandra leaves the office. Mary is currently in the garden.,yes,2,26
+9,Mary leaves the garden. John goes to the hallway. John is currently in the hallway.,yes,3,26
+9,Mary goes to the hallway. John goes to the garden. John is currently in the garden.,yes,4,26
+9,"Mary leaves the hallway. Mary goes to the hallway. Mary is currently in the hallway, not the kitchen.",no,5,26
+9,"Daniel is in the bedroom. Sandra goes to the office. Daniel is currently in the bedroom, not the hallway.",no,1,27
+9,"Daniel is in the kitchen. Mary goes to the bedroom. Daniel is currently in the kitchen, not the bathroom.",no,2,27
+9,"Mary goes to the office. Sandra goes to the kitchen. Mary is currently in the office, not the garden.",no,3,27
+9,Mary goes to the bedroom. John goes to the hallway. Sandra is not in the bedroom.,no,4,27
+9,"Mary leaves the bedroom. John goes to the bedroom. John is currently in the bedroom, not the hallway.",no,5,27
+9,John goes to the bedroom. Mary leaves the office. Mary is not in the office.,no,1,28
+9,"John goes to the garden. Daniel goes to the kitchen. John is currently in the garden, not the kitchen.",no,2,28
+9,Sandra leaves the kitchen. Daniel leaves the kitchen. Sandra is not in the kitchen.,no,3,28
+9,Sandra leaves the hallway. Mary goes to the office. Mary is currently in the office.,yes,4,28
+9,Sandra goes to the garden. Mary is in the hallway. Daniel is not in the kitchen.,no,5,28
+9,John leaves the bathroom. John goes to the garden. John is currently in the garden.,yes,1,29
+9,John goes to the office. Daniel is in the office. John is currently in the office.,yes,2,29
+9,John goes to the hallway. Daniel goes to the bedroom. John is currently in the hallway.,yes,3,29
+9,Sandra goes to the office. Mary goes to the hallway. Daniel is not in the bathroom.,no,4,29
+9,John leaves the hallway. Mary goes to the bedroom. Sandra is not in the office.,yes,5,29
+9,Daniel is in the bathroom. Mary leaves the garden. Mary is not in the garden.,no,1,30
+9,"Daniel goes to the office. Mary is in the kitchen. Mary is currently in the kitchen, not the bedroom.",no,2,30
+9,"Daniel goes to the bathroom. Sandra is in the kitchen. Daniel is currently in the bathroom, not the bedroom.",no,3,30
+9,"Mary goes to the bedroom. John goes to the garden. Mary is currently in the bedroom, not the office.",no,4,30
+9,Sandra goes to the bedroom. Daniel is in the bedroom. Mary is not in the garden.,no,5,30
+9,"John goes to the hallway. Sandra goes to the garden. Sandra is currently in the garden, not the bedroom.",no,1,31
+9,Sandra goes to the bathroom. John is in the bedroom. Sandra is currently in the bathroom.,yes,2,31
+9,Mary goes to the garden. Mary leaves the garden. John is not in the bathroom.,no,3,31
+9,"Mary goes to the garden. Mary moves from the garden to the bathroom. Mary is currently in the bathroom, not the garden.",no,4,31
+9,John is in the bathroom. Daniel goes to the hallway. Mary is not in the hallway.,no,5,31
+9,John goes to the hallway. Daniel leaves the bedroom. Daniel is not in the bedroom.,no,1,32
+9,Daniel leaves the bathroom. John is in the office. Daniel is not in the bathroom.,no,2,32
+9,Sandra is in the bedroom. Mary goes to the kitchen. Daniel is not in the bathroom.,no,3,32
+9,Sandra leaves the bedroom. Sandra goes to the garden. Sandra is currently in the garden.,yes,4,32
+9,Sandra is in the bedroom. Sandra moves from the bedroom to the kitchen. Mary is not in the kitchen.,yes,5,32
+9,"Mary is in the garden. Sandra goes to the garden. Sandra is currently in the garden, not the office.",no,1,33
+9,Mary goes to the bathroom. Daniel is in the bathroom. Mary is currently in the bathroom.,yes,2,33
+9,John goes to the bathroom. John moves from the bathroom to the garden. Mary is not in the hallway.,no,3,33
+9,Mary goes to the garden. Mary moves from the garden to the hallway. Daniel is not in the office.,no,4,33
+9,"John goes to the office. Daniel goes to the hallway. John is currently in the office, not the bedroom.",no,5,33
+9,"Mary goes to the bedroom. Daniel leaves the hallway. Mary is currently in the bedroom, not the garden.",no,1,34
+9,"John goes to the office. John moves from the office to the kitchen. John is currently in the kitchen, not the hallway.",no,2,34
+9,John goes to the hallway. Daniel goes to the office. Daniel is currently in the office.,yes,3,34
+9,Sandra goes to the kitchen. Mary leaves the bedroom. Sandra is currently in the kitchen.,yes,4,34
+9,Sandra is in the office. Mary is in the garden. Sandra is currently in the office.,yes,5,34
+9,Mary leaves the bathroom. Daniel goes to the bedroom. Mary is not in the bathroom.,no,1,35
+9,Daniel leaves the bedroom. John leaves the bathroom. Mary is not in the bathroom.,no,2,35
+9,John goes to the kitchen. John leaves the kitchen. Daniel is not in the bedroom.,no,3,35
+9,John leaves the bedroom. Mary goes to the bathroom. John is not in the bedroom.,no,4,35
+9,John leaves the office. Mary leaves the bathroom. Mary is not in the bathroom.,no,5,35
+9,John goes to the office. Sandra goes to the bedroom. John is currently in the office.,yes,1,36
+9,"Sandra is in the bathroom. Sandra moves from the bathroom to the hallway. Sandra is currently in the hallway, not the bathroom.",no,2,36
+9,Mary goes to the kitchen. Sandra leaves the hallway. Sandra is not in the hallway.,no,3,36
+9,John is in the bathroom. Daniel is in the hallway. Sandra is not in the hallway.,no,4,36
+9,"Sandra is in the office. Mary is in the garden. Sandra is currently in the office, not the kitchen.",no,5,36
+9,"Daniel is in the garden. Daniel moves from the garden to the kitchen. Daniel is currently in the kitchen, not the bedroom.",no,1,37
+9,John goes to the bedroom. Daniel is in the garden. Daniel is currently in the garden.,yes,2,37
+9,"Daniel goes to the bathroom. John goes to the hallway. Daniel is currently in the bathroom, not the hallway.",no,3,37
+9,John is in the garden. Mary goes to the bedroom. John is currently in the garden.,yes,4,37
+9,"Mary goes to the office. Mary is in the garden. Mary is currently in the garden, not the hallway.",no,5,37
+9,Daniel goes to the office. Sandra is in the hallway. Sandra is currently in the hallway.,yes,1,38
+9,"Mary goes to the hallway. Daniel goes to the bathroom. Daniel is currently in the bathroom, not the bedroom.",no,2,38
+9,Sandra is in the kitchen. Sandra is in the garden. Sandra is currently in the garden.,yes,3,38
+9,"Sandra is in the hallway. Daniel goes to the garden. Daniel is currently in the garden, not the hallway.",no,4,38
+9,"Mary is in the bedroom. John goes to the bedroom. John is currently in the bedroom, not the kitchen.",no,5,38
+9,Mary goes to the kitchen. Sandra is in the bathroom. Sandra is currently in the bathroom.,yes,1,39
+9,"Mary is in the office. Daniel is in the hallway. Mary is currently in the office, not the hallway.",no,2,39
+9,John goes to the bathroom. John leaves the bathroom. Sandra is not in the bedroom.,no,3,39
+9,John goes to the hallway. Mary goes to the bathroom. John is currently in the hallway.,yes,4,39
+9,Sandra goes to the office. Mary goes to the bedroom. Mary is currently in the bedroom.,yes,5,39
+9,Daniel goes to the garden. Sandra goes to the office. Sandra is currently in the office.,yes,1,40
+9,"John is in the bathroom. Daniel goes to the bedroom. Daniel is currently in the bedroom, not the garden.",no,2,40
+9,"Daniel leaves the bedroom. Daniel is in the bathroom. Daniel is currently in the bathroom, not the kitchen.",no,3,40
+9,Mary goes to the kitchen. John leaves the bathroom. Daniel is not in the hallway.,no,4,40
+9,Sandra goes to the bathroom. Daniel goes to the garden. John is not in the bathroom.,no,5,40
+9,John is in the hallway. Mary leaves the garden. John is currently in the hallway.,yes,1,41
+9,John leaves the hallway. Daniel is in the garden. John is not in the hallway.,no,2,41
+9,John is in the kitchen. Mary leaves the hallway. Daniel is not in the garden.,yes,3,41
+9,"Sandra goes to the bathroom. Daniel leaves the garden. Sandra is currently in the bathroom, not the kitchen.",no,4,41
+9,"Mary is in the bathroom. Daniel goes to the garden. Daniel is currently in the garden, not the bedroom.",no,5,41
+9,Daniel leaves the office. Sandra goes to the hallway. Sandra is currently in the hallway.,yes,1,42
+9,Sandra leaves the hallway. Daniel is in the garden. Sandra is not in the hallway.,no,2,42
+9,Sandra goes to the garden. John goes to the garden. Sandra is currently in the garden.,yes,3,42
+9,"Daniel goes to the bedroom. John goes to the office. Daniel is currently in the bedroom, not the bathroom.",no,4,42
+9,Sandra leaves the garden. John goes to the garden. John is currently in the garden.,yes,5,42
+9,Daniel leaves the office. Sandra is in the kitchen. Sandra is currently in the kitchen.,yes,1,43
+9,Mary leaves the bathroom. Mary goes to the bedroom. Mary is currently in the bedroom.,yes,2,43
+9,John is in the kitchen. Mary leaves the bedroom. Mary is not in the bedroom.,no,3,43
+9,John is in the garden. Mary is in the bedroom. Mary is currently in the bedroom.,yes,4,43
+9,John is in the office. Mary goes to the kitchen. John is currently in the office.,yes,5,43
+9,"Mary goes to the garden. Mary is in the bathroom. Mary is currently in the bathroom, not the garden.",no,1,44
+9,Mary is in the office. Mary moves from the office to the bathroom. Mary is currently in the bathroom.,yes,2,44
+9,Sandra goes to the garden. John leaves the garden. Mary is not in the garden.,no,3,44
+9,Sandra goes to the office. Sandra moves from the office to the garden. Mary is not in the bathroom.,yes,4,44
+9,"John leaves the hallway. Sandra goes to the hallway. Sandra is currently in the hallway, not the garden.",no,5,44
+9,Mary leaves the kitchen. Daniel leaves the hallway. Daniel is not in the hallway.,no,1,45
+9,John leaves the hallway. Daniel leaves the kitchen. Mary is not in the kitchen.,no,2,45
+9,Sandra goes to the garden. Mary goes to the bathroom. Daniel is not in the kitchen.,no,3,45
+9,"Daniel goes to the hallway. Daniel moves from the hallway to the garden. Daniel is currently in the garden, not the kitchen.",no,4,45
+9,Sandra goes to the bathroom. John leaves the garden. John is not in the garden.,no,5,45
+9,Sandra goes to the bedroom. Sandra moves from the bedroom to the office. Sandra is currently in the office.,yes,1,46
+9,"Sandra goes to the hallway. Sandra moves from the hallway to the garden. Sandra is currently in the garden, not the office.",no,2,46
+9,John goes to the bedroom. Daniel is in the bedroom. Sandra is not in the bedroom.,no,3,46
+9,John goes to the garden. John is in the office. Daniel is not in the bedroom.,yes,4,46
+9,Mary goes to the garden. Sandra leaves the garden. Daniel is not in the bedroom.,yes,5,46
+9,"John goes to the garden. Daniel leaves the garden. John is currently in the garden, not the hallway.",no,1,47
+9,John is in the bathroom. Daniel leaves the bedroom. Daniel is not in the bedroom.,no,2,47
+9,John goes to the kitchen. Daniel leaves the kitchen. John is currently in the kitchen.,yes,3,47
+9,"John goes to the bathroom. Mary goes to the bedroom. Mary is currently in the bedroom, not the garden.",no,4,47
+9,Sandra leaves the hallway. John is in the kitchen. Sandra is not in the hallway.,no,5,47
+9,"Daniel is in the garden. John is in the bedroom. John is currently in the bedroom, not the garden.",no,1,48
+9,Mary goes to the hallway. Daniel goes to the office. Mary is currently in the hallway.,yes,2,48
+9,Mary goes to the bedroom. Sandra leaves the garden. Sandra is not in the garden.,no,3,48
+9,John goes to the bathroom. Sandra leaves the bathroom. Sandra is not in the bathroom.,no,4,48
+9,"John goes to the bedroom. Sandra goes to the kitchen. John is currently in the bedroom, not the office.",no,5,48
+9,John goes to the bedroom. Mary goes to the bathroom. John is currently in the bedroom.,yes,1,49
+9,Mary leaves the bathroom. John leaves the bedroom. John is not in the bedroom.,no,2,49
+9,"Daniel leaves the bathroom. Daniel goes to the garden. Daniel is currently in the garden, not the kitchen.",no,3,49
+9,"Daniel goes to the bedroom. Daniel is in the garden. Daniel is currently in the garden, not the bathroom.",no,4,49
+9,"Daniel goes to the kitchen. Sandra leaves the office. Daniel is currently in the kitchen, not the hallway.",no,5,49
+9,"Sandra goes to the bathroom. Sandra moves from the bathroom to the office. Sandra is currently in the office, not the bedroom.",no,1,50
+9,Daniel goes to the kitchen. Daniel moves from the kitchen to the garden. Daniel is currently in the garden.,yes,2,50
+9,John is in the bathroom. Mary goes to the garden. Daniel is not in the office.,no,3,50
+9,John is in the garden. John leaves the garden. Daniel is not in the garden.,yes,4,50
+9,"Mary goes to the office. Daniel goes to the hallway. Daniel is currently in the hallway, not the garden.",no,5,50
+9,Mary leaves the bedroom. Daniel is in the office. Mary is not in the bedroom.,no,1,51
+9,"John leaves the garden. Mary goes to the office. Mary is currently in the office, not the garden.",no,2,51
+9,Mary is in the bathroom. John goes to the garden. Daniel is not in the office.,yes,3,51
+9,"Mary goes to the bedroom. Mary moves from the bedroom to the office. Mary is currently in the office, not the hallway.",no,4,51
+9,Daniel is in the bedroom. Mary goes to the kitchen. Daniel is currently in the bedroom.,yes,5,51
+9,John goes to the kitchen. John is in the bedroom. John is currently in the bedroom.,yes,1,52
+9,Daniel leaves the hallway. Sandra goes to the kitchen. John is not in the bedroom.,yes,2,52
+9,Mary goes to the hallway. John is in the kitchen. John is currently in the kitchen.,yes,3,52
+9,Sandra goes to the bedroom. John goes to the garden. Mary is not in the garden.,no,4,52
+9,Daniel leaves the kitchen. Mary goes to the kitchen. Mary is currently in the kitchen.,yes,5,52
+9,Mary leaves the bedroom. Daniel goes to the garden. Mary is not in the bedroom.,no,1,53
+9,Sandra is in the bathroom. John leaves the garden. Daniel is not in the garden.,yes,2,53
+9,Daniel is in the office. Sandra leaves the bathroom. Sandra is not in the bathroom.,no,3,53
+9,Sandra goes to the hallway. Sandra moves from the hallway to the kitchen. Sandra is currently in the kitchen.,yes,4,53
+9,"Mary goes to the bedroom. John goes to the garden. John is currently in the garden, not the office.",no,5,53
+9,Sandra leaves the garden. Daniel leaves the office. Daniel is not in the office.,no,1,54
+9,Mary is in the bedroom. Daniel goes to the office. Daniel is currently in the office.,yes,2,54
+9,Mary goes to the kitchen. Sandra goes to the hallway. Daniel is not in the bedroom.,no,3,54
+9,John is in the office. Daniel goes to the hallway. Daniel is currently in the hallway.,yes,4,54
+9,John goes to the hallway. Sandra is in the kitchen. John is currently in the hallway.,yes,5,54
+9,"Daniel goes to the bathroom. Sandra goes to the bathroom. Sandra is currently in the bathroom, not the hallway.",no,1,55
+9,"Sandra goes to the bedroom. Sandra moves from the bedroom to the hallway. Sandra is currently in the hallway, not the bathroom.",no,2,55
+9,"Daniel is in the hallway. Sandra goes to the bathroom. Sandra is currently in the bathroom, not the office.",no,3,55
+9,Daniel goes to the bedroom. John goes to the hallway. Daniel is currently in the bedroom.,yes,4,55
+9,Mary goes to the hallway. Daniel leaves the bedroom. John is not in the hallway.,yes,5,55
+9,Daniel is in the office. Daniel moves from the office to the garden. Daniel is currently in the garden.,yes,1,56
+9,"Sandra goes to the kitchen. Sandra moves from the kitchen to the bathroom. Sandra is currently in the bathroom, not the hallway.",no,2,56
+9,Daniel is in the kitchen. Mary goes to the hallway. Mary is currently in the hallway.,yes,3,56
+9,Mary goes to the garden. Sandra leaves the bathroom. Daniel is not in the kitchen.,yes,4,56
+9,Mary goes to the bathroom. Daniel goes to the bedroom. Sandra is not in the bathroom.,no,5,56
+9,Sandra is in the kitchen. Daniel goes to the kitchen. Daniel is currently in the kitchen.,yes,1,57
+9,Sandra goes to the garden. Sandra moves from the garden to the bathroom. Sandra is currently in the bathroom.,yes,2,57
+9,"Daniel is in the office. Sandra goes to the garden. Sandra is currently in the garden, not the hallway.",no,3,57
+9,John goes to the office. Sandra is in the bedroom. Daniel is not in the bathroom.,no,4,57
+9,Daniel leaves the office. Mary leaves the office. Mary is not in the office.,no,5,57
+9,"Sandra goes to the kitchen. Mary goes to the hallway. Sandra is currently in the kitchen, not the bedroom.",no,1,58
+9,Daniel goes to the bathroom. Mary goes to the bedroom. Mary is currently in the bedroom.,yes,2,58
+9,"Daniel is in the kitchen. Sandra goes to the garden. Daniel is currently in the kitchen, not the hallway.",no,3,58
+9,John goes to the bathroom. Sandra goes to the bathroom. Sandra is currently in the bathroom.,yes,4,58
+9,John goes to the office. Daniel goes to the garden. John is currently in the office.,yes,5,58
+9,"Sandra goes to the office. Sandra moves from the office to the kitchen. Sandra is currently in the kitchen, not the garden.",no,1,59
+9,"Sandra leaves the kitchen. Sandra goes to the office. Sandra is currently in the office, not the kitchen.",no,2,59
+9,Mary leaves the office. John goes to the bathroom. Sandra is not in the garden.,no,3,59
+9,"Daniel goes to the bathroom. Mary goes to the bathroom. Mary is currently in the bathroom, not the kitchen.",no,4,59
+9,Sandra leaves the office. Daniel goes to the kitchen. John is not in the bedroom.,no,5,59
+9,"Daniel leaves the garden. Sandra goes to the hallway. Sandra is currently in the hallway, not the bedroom.",no,1,60
+9,John goes to the bathroom. Daniel goes to the kitchen. Sandra is not in the hallway.,yes,2,60
+9,Mary is in the bathroom. Sandra leaves the hallway. Daniel is not in the kitchen.,yes,3,60
+9,Sandra leaves the office. John goes to the hallway. Mary is not in the bathroom.,yes,4,60
+9,John leaves the hallway. Mary goes to the bedroom. John is not in the hallway.,no,5,60
+9,"John is in the bathroom. John moves from the bathroom to the office. John is currently in the office, not the hallway.",no,1,61
+9,Daniel goes to the bathroom. Sandra leaves the bathroom. John is not in the office.,yes,2,61
+9,"Sandra leaves the garden. Sandra goes to the bedroom. Sandra is currently in the bedroom, not the hallway.",no,3,61
+9,John goes to the kitchen. Daniel goes to the office. Sandra is not in the bedroom.,yes,4,61
+9,Sandra goes to the kitchen. Mary goes to the hallway. Sandra is currently in the kitchen.,yes,5,61
+9,John goes to the hallway. Daniel is in the hallway. John is currently in the hallway.,yes,1,62
+9,Sandra is in the hallway. Daniel goes to the bedroom. John is not in the office.,no,2,62
+9,Sandra goes to the garden. Mary goes to the hallway. Sandra is currently in the garden.,yes,3,62
+9,Daniel leaves the bedroom. Mary leaves the hallway. Daniel is not in the bedroom.,no,4,62
+9,"John goes to the bedroom. Daniel goes to the bedroom. John is currently in the bedroom, not the hallway.",no,5,62
+9,Daniel leaves the bathroom. Mary goes to the bathroom. Daniel is not in the bathroom.,no,1,63
+9,Mary leaves the bathroom. Sandra goes to the bathroom. Daniel is not in the bathroom.,no,2,63
+9,John goes to the hallway. Mary leaves the garden. Sandra is not in the bedroom.,no,3,63
+9,"Sandra goes to the bedroom. Daniel leaves the office. Sandra is currently in the bedroom, not the bathroom.",no,4,63
+9,John is in the kitchen. John moves from the kitchen to the garden. Sandra is not in the bedroom.,yes,5,63
+9,"John leaves the bedroom. John is in the bathroom. John is currently in the bathroom, not the garden.",no,1,64
+9,"John goes to the hallway. Sandra goes to the bedroom. John is currently in the hallway, not the bedroom.",no,2,64
+9,"John leaves the hallway. Daniel goes to the office. Daniel is currently in the office, not the kitchen.",no,3,64
+9,John leaves the bathroom. John goes to the bathroom. John is currently in the bathroom.,yes,4,64
+9,"John is in the garden. John is in the hallway. John is currently in the hallway, not the kitchen.",no,5,64
+9,"Mary goes to the garden. Daniel is in the garden. Mary is currently in the garden, not the bathroom.",no,1,65
+9,Sandra goes to the bathroom. John goes to the office. Sandra is currently in the bathroom.,yes,2,65
+9,John is in the garden. Daniel is in the bedroom. Sandra is not in the bathroom.,yes,3,65
+9,Mary leaves the garden. Mary goes to the bathroom. Mary is currently in the bathroom.,yes,4,65
+9,John leaves the garden. Sandra leaves the bathroom. John is not in the garden.,no,5,65
+9,John leaves the bathroom. Mary is in the hallway. John is not in the bathroom.,no,1,66
+9,Daniel goes to the office. Daniel moves from the office to the kitchen. John is not in the bathroom.,no,2,66
+9,"Mary goes to the garden. John is in the bathroom. John is currently in the bathroom, not the hallway.",no,3,66
+9,Sandra leaves the hallway. Mary is in the bathroom. Sandra is not in the hallway.,no,4,66
+9,Sandra leaves the garden. Daniel leaves the kitchen. Mary is not in the bathroom.,yes,5,66
+9,Daniel leaves the garden. Mary goes to the hallway. Mary is currently in the hallway.,yes,1,67
+9,Daniel leaves the kitchen. John is in the bathroom. Daniel is not in the kitchen.,no,2,67
+9,Daniel leaves the bedroom. Sandra goes to the bedroom. Daniel is not in the bedroom.,no,3,67
+9,John leaves the bathroom. John goes to the hallway. Daniel is not in the bedroom.,no,4,67
+9,Mary goes to the bedroom. Daniel goes to the kitchen. Sandra is not in the bathroom.,no,5,67
+9,Daniel goes to the bedroom. Mary goes to the bedroom. Mary is currently in the bedroom.,yes,1,68
+9,John leaves the office. John goes to the hallway. John is currently in the hallway.,yes,2,68
+9,Daniel leaves the bedroom. Mary goes to the bathroom. Mary is currently in the bathroom.,yes,3,68
+9,"Sandra leaves the office. Daniel goes to the kitchen. Daniel is currently in the kitchen, not the office.",no,4,68
+9,Sandra leaves the garden. John leaves the hallway. Mary is not in the bedroom.,no,5,68
+9,Sandra goes to the bathroom. Daniel is in the office. Daniel is currently in the office.,yes,1,69
+9,Sandra goes to the kitchen. Daniel goes to the hallway. Sandra is currently in the kitchen.,yes,2,69
+9,John is in the office. Mary goes to the garden. Daniel is not in the hallway.,yes,3,69
+9,Sandra goes to the bathroom. Sandra moves from the bathroom to the bedroom. John is not in the office.,yes,4,69
+9,Sandra goes to the hallway. Daniel leaves the hallway. Daniel is not in the hallway.,no,5,69
+9,"John is in the garden. Sandra goes to the kitchen. Sandra is currently in the kitchen, not the bedroom.",no,1,70
+9,Daniel goes to the bedroom. Mary goes to the bedroom. Sandra is not in the kitchen.,yes,2,70
+9,Mary goes to the hallway. Daniel leaves the bedroom. Sandra is not in the bedroom.,no,3,70
+9,"Daniel goes to the bedroom. John goes to the kitchen. Daniel is currently in the bedroom, not the garden.",no,4,70
+9,"John is in the garden. Sandra is in the office. John is currently in the garden, not the office.",no,5,70
+9,John goes to the bathroom. Daniel is in the bathroom. Daniel is currently in the bathroom.,yes,1,71
+9,"Daniel leaves the bathroom. Sandra goes to the garden. Sandra is currently in the garden, not the bedroom.",no,2,71
+9,"Daniel leaves the office. Daniel is in the office. Daniel is currently in the office, not the bathroom.",no,3,71
+9,John goes to the hallway. Mary goes to the bathroom. John is currently in the hallway.,yes,4,71
+9,Mary is in the hallway. Daniel is in the bathroom. Mary is currently in the hallway.,yes,5,71
+9,"Daniel goes to the hallway. Mary goes to the bathroom. Daniel is currently in the hallway, not the bathroom.",no,1,72
+9,"Sandra goes to the bedroom. John is in the bathroom. John is currently in the bathroom, not the garden.",no,2,72
+9,Sandra leaves the bedroom. Daniel goes to the bathroom. Daniel is currently in the bathroom.,yes,3,72
+9,Mary leaves the bathroom. Sandra goes to the office. Sandra is currently in the office.,yes,4,72
+9,"Mary is in the bathroom. Mary moves from the bathroom to the hallway. Mary is currently in the hallway, not the bathroom.",no,5,72
+9,"John goes to the garden. John moves from the garden to the bathroom. John is currently in the bathroom, not the kitchen.",no,1,73
+9,"Daniel goes to the kitchen. John goes to the hallway. John is currently in the hallway, not the bedroom.",no,2,73
+9,Sandra leaves the bathroom. Sandra goes to the hallway. John is not in the hallway.,yes,3,73
+9,John is in the bedroom. John leaves the bedroom. John is not in the bedroom.,no,4,73
+9,Sandra leaves the hallway. Daniel goes to the office. John is not in the bedroom.,no,5,73
+9,"Sandra leaves the kitchen. John is in the bedroom. John is currently in the bedroom, not the office.",no,1,74
+9,"Sandra goes to the bedroom. Mary is in the garden. Sandra is currently in the bedroom, not the garden.",no,2,74
+9,Daniel goes to the office. John leaves the bedroom. John is not in the bedroom.,no,3,74
+9,Daniel is in the hallway. Daniel leaves the hallway. Daniel is not in the hallway.,no,4,74
+9,Sandra leaves the bedroom. Mary leaves the garden. Sandra is not in the bedroom.,no,5,74
+9,"Mary is in the hallway. John goes to the kitchen. Mary is currently in the hallway, not the bathroom.",no,1,75
+9,"Daniel is in the bathroom. Daniel moves from the bathroom to the bedroom. Daniel is currently in the bedroom, not the kitchen.",no,2,75
+9,"Daniel goes to the office. Mary goes to the office. Daniel is currently in the office, not the hallway.",no,3,75
+9,Sandra is in the office. Daniel leaves the office. Daniel is not in the office.,no,4,75
+9,Mary goes to the garden. Mary moves from the garden to the kitchen. Mary is currently in the kitchen.,yes,5,75
+9,Mary leaves the bathroom. John is in the kitchen. Mary is not in the bathroom.,no,1,76
+9,John goes to the garden. Daniel goes to the office. Daniel is currently in the office.,yes,2,76
+9,Sandra goes to the hallway. Sandra is in the kitchen. John is not in the bathroom.,no,3,76
+9,"John goes to the hallway. Daniel goes to the garden. Daniel is currently in the garden, not the kitchen.",no,4,76
+9,Daniel is in the bathroom. Sandra is in the office. John is not in the bedroom.,no,5,76
+9,Mary is in the garden. Sandra leaves the kitchen. Sandra is not in the kitchen.,no,1,77
+9,Mary goes to the bathroom. Sandra leaves the bedroom. Mary is currently in the bathroom.,yes,2,77
+9,"Mary goes to the kitchen. Sandra goes to the bathroom. Sandra is currently in the bathroom, not the hallway.",no,3,77
+9,Mary goes to the hallway. Sandra goes to the hallway. Mary is currently in the hallway.,yes,4,77
+9,John goes to the hallway. Mary leaves the hallway. John is currently in the hallway.,yes,5,77
+9,"Daniel is in the bathroom. Sandra leaves the bedroom. Daniel is currently in the bathroom, not the kitchen.",no,1,78
+9,Mary leaves the bedroom. Sandra leaves the kitchen. Sandra is not in the kitchen.,no,2,78
+9,Sandra is in the hallway. Daniel is in the garden. Sandra is currently in the hallway.,yes,3,78
+9,"Sandra is in the bedroom. Sandra is in the bathroom. Sandra is currently in the bathroom, not the bedroom.",no,4,78
+9,"Sandra goes to the hallway. John is in the kitchen. Sandra is currently in the hallway, not the kitchen.",no,5,78
+9,"Mary is in the office. John goes to the kitchen. Mary is currently in the office, not the bathroom.",no,1,79
+9,Sandra goes to the bathroom. John is in the garden. John is currently in the garden.,yes,2,79
+9,Daniel goes to the hallway. Daniel moves from the hallway to the bathroom. Daniel is currently in the bathroom.,yes,3,79
+9,John is in the hallway. John moves from the hallway to the kitchen. John is currently in the kitchen.,yes,4,79
+9,Sandra leaves the bathroom. Mary goes to the bathroom. John is not in the hallway.,no,5,79
+9,Sandra goes to the bathroom. Sandra is in the office. Sandra is currently in the office.,yes,1,80
+9,Mary is in the hallway. Mary moves from the hallway to the garden. Mary is currently in the garden.,yes,2,80
+9,"Daniel goes to the bathroom. Mary is in the bedroom. Mary is currently in the bedroom, not the garden.",no,3,80
+9,"John goes to the office. John moves from the office to the bedroom. John is currently in the bedroom, not the garden.",no,4,80
+9,"John leaves the bedroom. John goes to the bedroom. John is currently in the bedroom, not the bathroom.",no,5,80
+9,Mary leaves the kitchen. John goes to the kitchen. John is currently in the kitchen.,yes,1,81
+9,John goes to the office. John moves from the office to the bathroom. Mary is not in the kitchen.,no,2,81
+9,John is in the office. John moves from the office to the bedroom. John is currently in the bedroom.,yes,3,81
+9,Mary goes to the office. Daniel goes to the hallway. Mary is currently in the office.,yes,4,81
+9,Sandra goes to the bathroom. Sandra moves from the bathroom to the hallway. Sandra is currently in the hallway.,yes,5,81
+9,John leaves the kitchen. Daniel goes to the hallway. John is not in the kitchen.,no,1,82
+9,"John goes to the kitchen. Daniel goes to the bedroom. Daniel is currently in the bedroom, not the hallway.",no,2,82
+9,John goes to the bathroom. John is in the bedroom. John is currently in the bedroom.,yes,3,82
+9,Daniel goes to the kitchen. Mary leaves the hallway. Daniel is currently in the kitchen.,yes,4,82
+9,"John goes to the office. Mary is in the office. Mary is currently in the office, not the bedroom.",no,5,82
+9,John goes to the hallway. Daniel goes to the hallway. John is currently in the hallway.,yes,1,83
+9,Mary goes to the bathroom. John leaves the hallway. Daniel is not in the bedroom.,no,2,83
+9,John leaves the garden. Sandra leaves the garden. Daniel is not in the hallway.,yes,3,83
+9,"Daniel is in the office. John goes to the office. Daniel is currently in the office, not the hallway.",no,4,83
+9,Daniel goes to the bedroom. Daniel moves from the bedroom to the hallway. Daniel is currently in the hallway.,yes,5,83
+9,John leaves the garden. John goes to the garden. John is currently in the garden.,yes,1,84
+9,"John goes to the bathroom. Sandra is in the office. John is currently in the bathroom, not the garden.",no,2,84
+9,"Daniel is in the garden. John goes to the bedroom. John is currently in the bedroom, not the bathroom.",no,3,84
+9,"Daniel goes to the hallway. John is in the hallway. John is currently in the hallway, not the bedroom.",no,4,84
+9,John leaves the hallway. Daniel goes to the bathroom. Daniel is currently in the bathroom.,yes,5,84
+9,"Mary is in the bedroom. Sandra goes to the office. Mary is currently in the bedroom, not the bathroom.",no,1,85
+9,John goes to the garden. Daniel leaves the hallway. Mary is not in the garden.,no,2,85
+9,"John goes to the bathroom. Daniel goes to the office. John is currently in the bathroom, not the hallway.",no,3,85
+9,Daniel leaves the office. Daniel goes to the office. Daniel is currently in the office.,yes,4,85
+9,John goes to the garden. Sandra is in the kitchen. Daniel is not in the bedroom.,no,5,85
+9,"Mary goes to the office. John is in the bathroom. Mary is currently in the office, not the bathroom.",no,1,86
+9,John goes to the bedroom. Mary goes to the bathroom. Mary is currently in the bathroom.,yes,2,86
+9,Mary goes to the hallway. Sandra is in the office. John is not in the bedroom.,yes,3,86
+9,"Mary goes to the garden. Daniel goes to the kitchen. Daniel is currently in the kitchen, not the bedroom.",no,4,86
+9,Mary goes to the kitchen. Sandra goes to the bathroom. Daniel is not in the kitchen.,yes,5,86
+9,John leaves the office. John is in the kitchen. John is currently in the kitchen.,yes,1,87
+9,"Sandra is in the garden. John goes to the bedroom. John is currently in the bedroom, not the office.",no,2,87
+9,Mary leaves the kitchen. Sandra goes to the bathroom. Sandra is currently in the bathroom.,yes,3,87
+9,"Daniel goes to the kitchen. Sandra is in the office. Sandra is currently in the office, not the garden.",no,4,87
+9,Sandra is in the hallway. Daniel goes to the garden. Sandra is currently in the hallway.,yes,5,87
+9,"John is in the bathroom. John is in the garden. John is currently in the garden, not the bedroom.",no,1,88
+9,John is in the bathroom. John is in the bedroom. John is currently in the bedroom.,yes,2,88
+9,Daniel is in the bathroom. Mary leaves the garden. John is not in the garden.,no,3,88
+9,Daniel goes to the kitchen. John goes to the hallway. Mary is not in the garden.,no,4,88
+9,Sandra goes to the kitchen. Sandra moves from the kitchen to the hallway. Sandra is currently in the hallway.,yes,5,88
+9,Daniel is in the kitchen. Sandra leaves the office. Sandra is not in the office.,no,1,89
+9,John goes to the hallway. Mary is in the kitchen. Daniel is not in the bathroom.,no,2,89
+9,Mary leaves the kitchen. Mary leaves the bedroom. Sandra is not in the office.,no,3,89
+9,"Sandra goes to the office. Mary goes to the garden. Mary is currently in the garden, not the kitchen.",no,4,89
+9,Mary goes to the office. Mary leaves the office. Mary is not in the office.,no,5,89
+9,"John leaves the kitchen. John goes to the garden. John is currently in the garden, not the kitchen.",no,1,90
+9,Daniel leaves the bedroom. Mary goes to the office. Daniel is not in the bedroom.,no,2,90
+9,Daniel leaves the garden. Daniel leaves the office. Daniel is not in the office.,no,3,90
+9,Mary leaves the office. Daniel goes to the office. Mary is not in the office.,no,4,90
+9,Mary leaves the bedroom. John leaves the garden. Mary is not in the bedroom.,no,5,90
+9,Daniel leaves the kitchen. Mary leaves the garden. Daniel is not in the kitchen.,no,1,91
+9,Daniel is in the hallway. Sandra goes to the bathroom. Daniel is currently in the hallway.,yes,2,91
+9,"Mary goes to the office. Daniel leaves the hallway. Mary is currently in the office, not the hallway.",no,3,91
+9,Mary leaves the office. Mary is in the kitchen. Sandra is not in the hallway.,no,4,91
+9,Daniel leaves the office. Mary goes to the bathroom. Mary is currently in the bathroom.,yes,5,91
+9,John leaves the garden. John goes to the bedroom. John is currently in the bedroom.,yes,1,92
+9,John goes to the hallway. Mary leaves the garden. Mary is not in the garden.,no,2,92
+9,Mary leaves the hallway. Sandra leaves the bathroom. John is not in the hallway.,yes,3,92
+9,John leaves the hallway. John is in the bathroom. Mary is not in the hallway.,no,4,92
+9,John leaves the bathroom. Mary is in the garden. Mary is currently in the garden.,yes,5,92
+9,Mary leaves the garden. Sandra goes to the garden. Mary is not in the garden.,no,1,93
+9,John goes to the bedroom. John leaves the bedroom. Sandra is not in the garden.,yes,2,93
+9,"John goes to the garden. Sandra goes to the hallway. John is currently in the garden, not the office.",no,3,93
+9,"John leaves the garden. Sandra is in the bedroom. Sandra is currently in the bedroom, not the garden.",no,4,93
+9,Sandra goes to the bathroom. John leaves the hallway. John is not in the hallway.,no,5,93
+9,Daniel goes to the kitchen. Daniel moves from the kitchen to the garden. Daniel is currently in the garden.,yes,1,94
+9,Daniel is in the hallway. Sandra goes to the garden. Sandra is currently in the garden.,yes,2,94
+9,"John is in the garden. Daniel is in the office. Daniel is currently in the office, not the garden.",no,3,94
+9,Mary goes to the office. Daniel is in the bathroom. Sandra is not in the kitchen.,no,4,94
+9,"Daniel goes to the hallway. Mary leaves the office. Daniel is currently in the hallway, not the office.",no,5,94
+9,John goes to the bedroom. Daniel leaves the kitchen. Daniel is not in the kitchen.,no,1,95
+9,"Daniel goes to the kitchen. Mary goes to the kitchen. Daniel is currently in the kitchen, not the hallway.",no,2,95
+9,John leaves the bedroom. Daniel is in the office. Mary is not in the kitchen.,yes,3,95
+9,Mary goes to the hallway. Daniel leaves the office. Daniel is not in the office.,no,4,95
+9,Daniel goes to the bedroom. John is in the garden. Daniel is currently in the bedroom.,yes,5,95
+9,Daniel is in the bathroom. Daniel leaves the bathroom. Daniel is not in the bathroom.,no,1,96
+9,Sandra leaves the kitchen. John leaves the bedroom. Sandra is not in the kitchen.,no,2,96
+9,Sandra goes to the office. Daniel goes to the garden. John is not in the bedroom.,no,3,96
+9,Mary is in the bathroom. Mary leaves the bathroom. John is not in the bedroom.,no,4,96
+9,Sandra leaves the office. John goes to the garden. Mary is not in the bathroom.,no,5,96
+9,John is in the kitchen. Mary leaves the garden. Mary is not in the garden.,no,1,97
+9,Daniel goes to the bathroom. John goes to the hallway. Mary is not in the garden.,no,2,97
+9,Daniel is in the hallway. Sandra leaves the garden. John is not in the hallway.,yes,3,97
+9,"Daniel leaves the hallway. Daniel goes to the kitchen. Daniel is currently in the kitchen, not the office.",no,4,97
+9,"John goes to the kitchen. Daniel goes to the hallway. Daniel is currently in the hallway, not the bathroom.",no,5,97
+9,"Mary leaves the hallway. Daniel goes to the garden. Daniel is currently in the garden, not the bedroom.",no,1,98
+9,Sandra is in the garden. Sandra leaves the garden. Daniel is not in the bathroom.,no,2,98
+9,Daniel goes to the office. John is in the office. John is currently in the office.,yes,3,98
+9,John leaves the office. John goes to the office. Daniel is not in the office.,yes,4,98
+9,"Daniel goes to the kitchen. Mary goes to the office. Daniel is currently in the kitchen, not the bedroom.",no,5,98
+9,"John leaves the kitchen. Sandra goes to the bathroom. Sandra is currently in the bathroom, not the garden.",no,1,99
+9,Daniel is in the bedroom. John goes to the hallway. Sandra is not in the kitchen.,no,2,99
+9,Daniel leaves the bedroom. Daniel leaves the bathroom. Daniel is not in the bathroom.,no,3,99
+9,Sandra is in the garden. John goes to the bedroom. Daniel is not in the bathroom.,no,4,99
+9,"Mary goes to the hallway. John goes to the office. John is currently in the office, not the hallway.",no,5,99
+9,John goes to the bathroom. Sandra goes to the garden. John is currently in the bathroom.,yes,1,100
+9,Daniel goes to the garden. Sandra goes to the office. Daniel is currently in the garden.,yes,2,100
+9,Daniel goes to the kitchen. Mary is in the bathroom. Sandra is not in the bathroom.,no,3,100
+9,Sandra goes to the hallway. Daniel is in the office. Sandra is currently in the hallway.,yes,4,100
+9,"Daniel goes to the kitchen. Sandra leaves the hallway. Daniel is currently in the kitchen, not the hallway.",no,5,100

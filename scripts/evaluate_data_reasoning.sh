@@ -2,16 +2,19 @@
 #SBATCH --job-name=eval_data
 #SBATCH --output=eval_data_%j.out
 #SBATCH --error=eval_data_%j.err
-#SBATCH --time=02:00:00 # should be enough for 20 samples per task
+#SBATCH --time=12:00:00
 #SBATCH --cpus-per-task=4
-# SBATCH --partition=dev_cpu_il
+#SBATCH --partition=cpu
 #SBATCH --mail-user=""
 #SBATCH --mail-type=BEGIN,END,FAIL
 
-experiment="da"
+experiment="reasoning"
 setting=$1
 samples_per_task=$2
 create_heatmaps=$3
+# Optional: pass "claude" or "llama" to select a specific silver-reasoning
+# corpus.  Omit (or leave empty) to use the default flat directory.
+reasoning_source=$4
 
 if [ $experiment = "reasoning" ]; then
     full_mode="reasoning"
@@ -19,9 +22,15 @@ else
     full_mode="direct_answer"
 fi
 
-results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
+if [ "$setting" = "sd" ]; then
+    setting_adj="SD"
+else
+    setting_adj="$setting"
+fi
 
-save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/results/${setting}/${experiment}"
+results_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/${setting_adj}/test/${experiment}/v1/all_tasks_joined/joined_${full_mode}_results.csv"
+
+save_path="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/analysis/${setting_adj}/${experiment}"
 # save_path="results/${setting}/${mode}"
 
 ### JOB STEPS START HERE ###
@@ -49,7 +58,7 @@ else
     echo "The project environment '$ENV_NAME' activated successfully."
 fi
 
-echo "Evaluating data for setting: $setting, task: $task, samples per task: $samples_per_task, create heatmaps: $create_heatmaps"
+echo "Evaluating data for setting: $setting, task: $task, samples per task: $samples_per_task, create heatmaps: $create_heatmaps, reasoning source: ${reasoning_source:-default}"
 
 srun python3 evaluate_data.py \
     --results_path $results_path \
@@ -57,4 +66,5 @@ srun python3 evaluate_data.py \
     --samples_per_task $samples_per_task \
     --experiment $full_mode \
     --setting $setting \
-    ${create_heatmaps:+--create_heatmaps}
+    ${create_heatmaps:+--create_heatmaps} \
+    ${reasoning_source:+--reasoning_source $reasoning_source}

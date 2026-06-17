@@ -1,0 +1,501 @@
+task_id,silver_reasoning,answer,part_id,sample_id
+6,"Sentence 1: Mary got the milk there. Sentence 2: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the kitchen.",no,1,1
+6,"Sentence 4: Mary discarded the milk. Sentence 5: John moved to the garden. Based on the movements described, John's last known location is the garden, not the kitchen.",no,2,1
+6,Sentence 7: Daniel moved to the bedroom. Sentence 8: Daniel moved to the garden. There is no information about John moving to any location in these sentences.,unknown,3,1
+6,"Sentence 10: Daniel moved to the bathroom. Sentence 11: Sandra moved to the bedroom. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,4,1
+6,Sentence 13: Mary took the football there. Sentence 14: Sandra grabbed the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,5,1
+6,"Sentence 1: Daniel moved to the kitchen. Sentence 2: Mary grabbed the apple there. Based on the movements described, Daniel's last known location is the kitchen, not the office.",no,1,2
+6,"Sentence 4: Daniel moved to the office. Sentence 5: John moved to the office. Based on the movements described, Daniel's last known location is the office, not the hallway.",no,2,2
+6,"Sentence 7: Mary left the apple. Sentence 8: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, which matches the queried location.",yes,3,2
+6,"Sentence 10: John moved to the hallway. Sentence 11: Daniel picked up the milk there. Based on the movements described, John's last known location is the hallway, not the kitchen.",no,4,2
+6,Sentence 13: John grabbed the football there. Sentence 14: Mary got the apple there. There is no information about Daniel moving to any location in these sentences.,unknown,5,2
+6,"Sentence 1: John moved to the hallway. Sentence 2: Sandra moved to the bedroom. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,1,3
+6,Sentence 4: Sandra moved to the garden. Sentence 5: John got the football there. There is no information about John moving to any location in these sentences.,unknown,2,3
+6,Sentence 7: Daniel moved to the bedroom. Sentence 8: Mary moved to the bathroom. There is no information about Sandra moving to any location in these sentences.,unknown,3,3
+6,"Sentence 10: Mary moved to the kitchen. Sentence 11: Sandra moved to the hallway. Based on the movements described, Mary's last known location is the kitchen, which matches the queried location.",yes,4,3
+6,Sentence 13: Sandra moved to the kitchen. Sentence 14: John dropped the football. There is no information about Mary moving to any location in these sentences.,unknown,5,3
+6,"Sentence 1: John moved to the hallway. Sentence 2: John got the apple there. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,1,4
+6,Sentence 4: Daniel moved to the hallway. Sentence 5: Daniel moved to the kitchen. There is no information about John moving to any location in these sentences.,unknown,2,4
+6,"Sentence 7: John put down the apple. Sentence 8: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, not the kitchen.",no,3,4
+6,"Sentence 10: John moved to the bedroom. Sentence 11: Sandra moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the bathroom.",no,4,4
+6,Sentence 13: Sandra moved to the bathroom. Sentence 14: John moved to the office. There is no information about Daniel moving to any location in these sentences.,unknown,5,4
+6,"Sentence 1: Daniel grabbed the apple there. Sentence 2: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, which matches the queried location.",yes,1,5
+6,Sentence 4: Sandra got the milk there. Sentence 5: Daniel moved to the hallway. There is no information about Mary moving to any location in these sentences.,unknown,2,5
+6,"Sentence 7: Daniel moved to the bathroom. Sentence 8: Mary took the football there. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,3,5
+6,"Sentence 10: Daniel discarded the apple. Sentence 11: Sandra moved to the hallway. Based on the movements described, Sandra's last known location is the hallway, not the bedroom.",no,4,5
+6,"Sentence 13: Sandra dropped the milk. Sentence 14: John moved to the hallway. Based on the movements described, John's last known location is the hallway, not the bedroom.",no,5,5
+6,"Sentence 1: Daniel grabbed the apple there. Sentence 2: John moved to the office. Based on the movements described, John's last known location is the office, which matches the queried location.",yes,1,6
+6,"Sentence 4: Mary moved to the bathroom. Sentence 5: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, which matches the queried location.",yes,2,6
+6,Sentence 7: Daniel discarded the apple. Sentence 8: Sandra moved to the bedroom. There is no information about John moving to any location in these sentences.,unknown,3,6
+6,"Sentence 10: John moved to the kitchen. Sentence 11: Sandra got the apple there. Based on the movements described, John's last known location is the kitchen, not the office.",no,4,6
+6,"Sentence 13: Sandra dropped the apple. Sentence 14: Mary moved to the hallway. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,5,6
+6,"Sentence 1: Daniel grabbed the apple there. Sentence 2: John moved to the garden. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,1,7
+6,Sentence 4: Sandra picked up the milk there. Sentence 5: Mary moved to the hallway. There is no information about John moving to any location in these sentences.,unknown,2,7
+6,"Sentence 7: Sandra put down the milk there. Sentence 8: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, not the bedroom.",no,3,7
+6,"Sentence 10: John moved to the bedroom. Sentence 11: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, not the bedroom.",no,4,7
+6,"Sentence 13: Sandra moved to the garden. Sentence 14: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, not the garden.",no,5,7
+6,"Sentence 1: John took the apple there. Sentence 2: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, not the kitchen.",no,1,8
+6,"Sentence 4: John left the apple. Sentence 5: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,2,8
+6,"Sentence 7: Mary moved to the bedroom. Sentence 8: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, which matches the queried location.",yes,3,8
+6,Sentence 10: John picked up the apple there. Sentence 11: John moved to the bathroom. There is no information about Mary moving to any location in these sentences.,unknown,4,8
+6,"Sentence 13: John got the football there. Sentence 14: Mary moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, not the office.",no,5,8
+6,"Sentence 1: John moved to the kitchen. Sentence 2: Mary got the football there. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,1,9
+6,Sentence 4: Sandra picked up the apple there. Sentence 5: Sandra moved to the bedroom. There is no information about John moving to any location in these sentences.,unknown,2,9
+6,Sentence 7: Daniel moved to the bathroom. Sentence 8: Sandra dropped the apple there. There is no information about Sandra moving to any location in these sentences.,unknown,3,9
+6,"Sentence 10: John moved to the office. Sentence 11: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, not the bathroom.",no,4,9
+6,"Sentence 13: Mary moved to the office. Sentence 14: Sandra moved to the bathroom. Based on the movements described, Mary's last known location is the office, which matches the queried location.",yes,5,9
+6,"Sentence 1: Daniel moved to the bathroom. Sentence 2: Daniel moved to the office. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,1,10
+6,"Sentence 4: Daniel moved to the hallway. Sentence 5: Mary took the milk there. Based on the movements described, Daniel's last known location is the hallway, which matches the queried location.",yes,2,10
+6,"Sentence 7: Mary moved to the kitchen. Sentence 8: Mary discarded the milk. Based on the movements described, Mary's last known location is the kitchen, not the bathroom.",no,3,10
+6,Sentence 10: Mary picked up the football there. Sentence 11: Mary took the milk there. There is no information about Mary moving to any location in these sentences.,unknown,4,10
+6,"Sentence 13: Daniel moved to the kitchen. Sentence 14: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,5,10
+6,"Sentence 1: Mary moved to the kitchen. Sentence 2: Daniel picked up the football there. Based on the movements described, Mary's last known location is the kitchen, which matches the queried location.",yes,1,11
+6,Sentence 4: John picked up the apple there. Sentence 5: John discarded the apple there. There is no information about Mary moving to any location in these sentences.,unknown,2,11
+6,"Sentence 7: John picked up the apple there. Sentence 8: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, which matches the queried location.",yes,3,11
+6,"Sentence 10: Daniel put down the football. Sentence 11: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, which matches the queried location.",yes,4,11
+6,"Sentence 13: Sandra moved to the kitchen. Sentence 14: Daniel moved to the office. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,5,11
+6,"Sentence 1: John moved to the office. Sentence 2: Daniel picked up the football there. Based on the movements described, John's last known location is the office, not the bathroom.",no,1,12
+6,"Sentence 4: John grabbed the apple there. Sentence 5: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, not the bedroom.",no,2,12
+6,Sentence 7: Daniel picked up the milk there. Sentence 8: Daniel discarded the football. There is no information about Mary moving to any location in these sentences.,unknown,3,12
+6,"Sentence 10: Mary moved to the office. Sentence 11: Daniel took the football there. Based on the movements described, Mary's last known location is the office, not the bedroom.",no,4,12
+6,"Sentence 13: Mary moved to the garden. Sentence 14: John dropped the apple. Based on the movements described, Mary's last known location is the garden, not the office.",no,5,12
+6,"Sentence 1: John moved to the office. Sentence 2: Daniel picked up the football there. Based on the movements described, John's last known location is the office, not the garden.",no,1,13
+6,"Sentence 4: Daniel moved to the office. Sentence 5: Sandra moved to the office. Based on the movements described, Daniel's last known location is the office, not the bedroom.",no,2,13
+6,"Sentence 7: Daniel discarded the football there. Sentence 8: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, not the office.",no,3,13
+6,"Sentence 10: Mary moved to the kitchen. Sentence 11: John picked up the football there. Based on the movements described, Mary's last known location is the kitchen, not the office.",no,4,13
+6,Sentence 13: John discarded the football. Sentence 14: John moved to the kitchen. There is no information about Mary moving to any location in these sentences.,unknown,5,13
+6,"Sentence 1: Sandra moved to the kitchen. Sentence 2: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,1,14
+6,Sentence 4: Daniel picked up the football there. Sentence 5: Sandra moved to the garden. There is no information about John moving to any location in these sentences.,unknown,2,14
+6,Sentence 7: John moved to the office. Sentence 8: Daniel picked up the milk there. There is no information about Sandra moving to any location in these sentences.,unknown,3,14
+6,Sentence 10: John moved to the hallway. Sentence 11: John got the apple there. There is no information about Sandra moving to any location in these sentences.,unknown,4,14
+6,"Sentence 13: Daniel moved to the garden. Sentence 14: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, not the garden.",no,5,14
+6,"Sentence 1: Sandra moved to the bathroom. Sentence 2: Mary got the milk there. Based on the movements described, Sandra's last known location is the bathroom, not the bedroom.",no,1,15
+6,"Sentence 4: Mary moved to the bathroom. Sentence 5: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, which matches the queried location.",yes,2,15
+6,"Sentence 7: Sandra moved to the bedroom. Sentence 8: Daniel moved to the hallway. Based on the movements described, Sandra's last known location is the bedroom, not the bathroom.",no,3,15
+6,"Sentence 10: Mary moved to the garden. Sentence 11: Daniel moved to the garden. Based on the movements described, Mary's last known location is the garden, which matches the queried location.",yes,4,15
+6,"Sentence 13: John moved to the bedroom. Sentence 14: Mary dropped the milk. Based on the movements described, John's last known location is the bedroom, not the garden.",no,5,15
+6,"Sentence 1: Mary moved to the garden. Sentence 2: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,1,16
+6,"Sentence 4: John moved to the bedroom. Sentence 5: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, which matches the queried location.",yes,2,16
+6,Sentence 7: John got the apple there. Sentence 8: John discarded the apple. There is no information about John moving to any location in these sentences.,unknown,3,16
+6,Sentence 10: John took the apple there. Sentence 11: Sandra moved to the office. There is no information about Mary moving to any location in these sentences.,unknown,4,16
+6,Sentence 13: John moved to the office. Sentence 14: John moved to the bathroom. There is no information about Sandra moving to any location in these sentences.,unknown,5,16
+6,"Sentence 1: Sandra moved to the office. Sentence 2: Daniel grabbed the football there. Based on the movements described, Sandra's last known location is the office, which matches the queried location.",yes,1,17
+6,Sentence 4: Daniel moved to the garden. Sentence 5: Daniel moved to the bathroom. There is no information about Sandra moving to any location in these sentences.,unknown,2,17
+6,Sentence 7: John moved to the bedroom. Sentence 8: Sandra grabbed the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,3,17
+6,"Sentence 10: John moved to the hallway. Sentence 11: Mary moved to the hallway. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,4,17
+6,Sentence 13: Sandra moved to the bathroom. Sentence 14: Sandra put down the milk. There is no information about John moving to any location in these sentences.,unknown,5,17
+6,"Sentence 1: John moved to the office. Sentence 2: Daniel moved to the kitchen. Based on the movements described, John's last known location is the office, not the bathroom.",no,1,18
+6,"Sentence 4: Daniel got the milk there. Sentence 5: Sandra moved to the office. Based on the movements described, Sandra's last known location is the office, which matches the queried location.",yes,2,18
+6,"Sentence 7: Sandra moved to the hallway. Sentence 8: John moved to the bathroom. Based on the movements described, Sandra's last known location is the hallway, not the kitchen.",no,3,18
+6,Sentence 10: Mary moved to the bathroom. Sentence 11: Mary took the football there. There is no information about Sandra moving to any location in these sentences.,unknown,4,18
+6,Sentence 13: Mary left the football. Sentence 14: Daniel moved to the bedroom. There is no information about Mary moving to any location in these sentences.,unknown,5,18
+6,"Sentence 1: Mary picked up the apple there. Sentence 2: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, which matches the queried location.",yes,1,19
+6,Sentence 4: Sandra moved to the bathroom. Sentence 5: Sandra grabbed the football there. There is no information about Mary moving to any location in these sentences.,unknown,2,19
+6,"Sentence 7: Sandra moved to the bedroom. Sentence 8: Mary moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, not the office.",no,3,19
+6,Sentence 10: Sandra moved to the office. Sentence 11: Sandra left the football. There is no information about Mary moving to any location in these sentences.,unknown,4,19
+6,Sentence 13: Daniel got the football there. Sentence 14: Sandra moved to the bedroom. There is no information about Mary moving to any location in these sentences.,unknown,5,19
+6,"Sentence 1: Daniel moved to the bedroom. Sentence 2: Mary moved to the hallway. Based on the movements described, Mary's last known location is the hallway, not the bedroom.",no,1,20
+6,"Sentence 4: John moved to the garden. Sentence 5: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, not the hallway.",no,2,20
+6,"Sentence 7: John moved to the hallway. Sentence 8: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,3,20
+6,"Sentence 10: Sandra moved to the kitchen. Sentence 11: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, which matches the queried location.",yes,4,20
+6,Sentence 13: Sandra took the milk there. Sentence 14: John moved to the bathroom. There is no information about Daniel moving to any location in these sentences.,unknown,5,20
+6,"Sentence 1: John took the apple there. Sentence 2: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, not the hallway.",no,1,21
+6,"Sentence 4: John moved to the office. Sentence 5: Mary picked up the milk there. Based on the movements described, John's last known location is the office, not the hallway.",no,2,21
+6,Sentence 7: John dropped the apple there. Sentence 8: Mary picked up the football there. There is no information about John moving to any location in these sentences.,unknown,3,21
+6,"Sentence 10: John got the apple there. Sentence 11: John moved to the hallway. Based on the movements described, John's last known location is the hallway, not the bathroom.",no,4,21
+6,Sentence 13: John left the apple. Sentence 14: John took the apple there. There is no information about John moving to any location in these sentences.,unknown,5,21
+6,"Sentence 1: Mary moved to the bathroom. Sentence 2: Daniel took the football there. Based on the movements described, Mary's last known location is the bathroom, not the kitchen.",no,1,22
+6,"Sentence 4: John moved to the bedroom. Sentence 5: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, not the hallway.",no,2,22
+6,"Sentence 7: John took the milk there. Sentence 8: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the kitchen.",no,3,22
+6,"Sentence 10: Sandra moved to the hallway. Sentence 11: Daniel put down the football there. Based on the movements described, Sandra's last known location is the hallway, not the bathroom.",no,4,22
+6,"Sentence 13: John moved to the kitchen. Sentence 14: Sandra moved to the office. Based on the movements described, John's last known location is the kitchen, not the hallway.",no,5,22
+6,"Sentence 1: Daniel moved to the bathroom. Sentence 2: Mary moved to the bedroom. Based on the movements described, Daniel's last known location is the bathroom, not the office.",no,1,23
+6,"Sentence 4: Mary moved to the bathroom. Sentence 5: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, not the bedroom.",no,2,23
+6,Sentence 7: Mary took the apple there. Sentence 8: John moved to the office. There is no information about Daniel moving to any location in these sentences.,unknown,3,23
+6,Sentence 10: Mary moved to the garden. Sentence 11: Sandra moved to the office. There is no information about Daniel moving to any location in these sentences.,unknown,4,23
+6,"Sentence 13: Sandra moved to the bedroom. Sentence 14: John moved to the hallway. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,5,23
+6,"Sentence 1: Daniel moved to the hallway. Sentence 2: Mary got the football there. Based on the movements described, Daniel's last known location is the hallway, not the office.",no,1,24
+6,Sentence 4: Mary dropped the football. Sentence 5: Mary grabbed the football there. There is no information about Daniel moving to any location in these sentences.,unknown,2,24
+6,"Sentence 7: Sandra moved to the bedroom. Sentence 8: Mary left the football there. Based on the movements described, Sandra's last known location is the bedroom, which matches the queried location.",yes,3,24
+6,Sentence 10: Sandra got the apple there. Sentence 11: Sandra grabbed the milk there. There is no information about Sandra moving to any location in these sentences.,unknown,4,24
+6,"Sentence 13: Mary moved to the bathroom. Sentence 14: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, not the bathroom.",no,5,24
+6,"Sentence 1: John moved to the kitchen. Sentence 2: Sandra moved to the bedroom. Based on the movements described, John's last known location is the kitchen, not the office.",no,1,25
+6,Sentence 4: Sandra moved to the kitchen. Sentence 5: Daniel moved to the office. There is no information about John moving to any location in these sentences.,unknown,2,25
+6,Sentence 7: John picked up the football there. Sentence 8: John discarded the football. There is no information about Daniel moving to any location in these sentences.,unknown,3,25
+6,Sentence 10: Sandra got the football there. Sentence 11: Sandra dropped the football. There is no information about Daniel moving to any location in these sentences.,unknown,4,25
+6,"Sentence 13: Mary grabbed the apple there. Sentence 14: John got the football there. Sentence 15: John moved to the hallway. Sentence 16: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,5,25
+6,"Sentence 1: Sandra moved to the kitchen. Sentence 2: Daniel got the milk there. Based on the movements described, Sandra's last known location is the kitchen, not the garden.",no,1,26
+6,Sentence 4: John moved to the bedroom. Sentence 5: John moved to the hallway. There is no information about Sandra moving to any location in these sentences.,unknown,2,26
+6,"Sentence 7: Mary moved to the bedroom. Sentence 8: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, not the hallway.",no,3,26
+6,Sentence 10: Sandra moved to the garden. Sentence 11: Daniel put down the milk. There is no information about John moving to any location in these sentences.,unknown,4,26
+6,Sentence 13: Sandra took the milk there. Sentence 14: John took the apple there. There is no information about Mary moving to any location in these sentences.,unknown,5,26
+6,"Sentence 1: Sandra moved to the bedroom. Sentence 2: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, not the garden.",no,1,27
+6,"Sentence 4: Daniel moved to the bathroom. Sentence 5: Mary moved to the kitchen. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,2,27
+6,"Sentence 7: Mary picked up the milk there. Sentence 8: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, not the bedroom.",no,3,27
+6,"Sentence 10: John moved to the garden. Sentence 11: Mary discarded the milk. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,4,27
+6,Sentence 13: Sandra moved to the office. Sentence 14: John picked up the apple there. There is no information about John moving to any location in these sentences.,unknown,5,27
+6,"Sentence 1: John moved to the hallway. Sentence 2: Sandra picked up the football there. Based on the movements described, John's last known location is the hallway, not the office.",no,1,28
+6,Sentence 4: Mary moved to the kitchen. Sentence 5: Daniel grabbed the apple there. There is no information about John moving to any location in these sentences.,unknown,2,28
+6,Sentence 7: Sandra left the football. Sentence 8: Sandra grabbed the football there. There is no information about Mary moving to any location in these sentences.,unknown,3,28
+6,"Sentence 10: John moved to the bedroom. Sentence 11: Daniel discarded the apple there. Based on the movements described, John's last known location is the bedroom, not the hallway.",no,4,28
+6,"Sentence 13: Daniel grabbed the apple there. Sentence 14: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, not the kitchen.",no,5,28
+6,"Sentence 1: Mary grabbed the apple there. Sentence 2: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, not the kitchen.",no,1,29
+6,Sentence 4: Daniel grabbed the milk there. Sentence 5: Daniel discarded the milk. There is no information about Daniel moving to any location in these sentences.,unknown,2,29
+6,Sentence 7: Mary dropped the apple there. Sentence 8: John moved to the hallway. There is no information about Daniel moving to any location in these sentences.,unknown,3,29
+6,"Sentence 10: John picked up the apple there. Sentence 11: John moved to the office. Based on the movements described, John's last known location is the office, not the bathroom.",no,4,29
+6,Sentence 13: Sandra moved to the office. Sentence 14: John left the apple. There is no information about John moving to any location in these sentences.,unknown,5,29
+6,"Sentence 1: John moved to the bathroom. Sentence 2: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,1,30
+6,Sentence 4: Mary moved to the office. Sentence 5: Daniel moved to the bedroom. There is no information about John moving to any location in these sentences.,unknown,2,30
+6,"Sentence 7: Mary moved to the garden. Sentence 8: Mary moved to the hallway. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,3,30
+6,Sentence 10: Sandra moved to the office. Sentence 11: John moved to the hallway. There is no information about Mary moving to any location in these sentences.,unknown,4,30
+6,"Sentence 13: Sandra grabbed the football there. Sentence 14: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, not the kitchen.",no,5,30
+6,"Sentence 1: Sandra moved to the bathroom. Sentence 2: Daniel moved to the office. Based on the movements described, Sandra's last known location is the bathroom, which matches the queried location.",yes,1,31
+6,"Sentence 4: Sandra moved to the office. Sentence 5: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,2,31
+6,Sentence 7: Mary grabbed the milk there. Sentence 8: Mary grabbed the football there. There is no information about Sandra moving to any location in these sentences.,unknown,3,31
+6,"Sentence 10: Daniel moved to the hallway. Sentence 11: Mary put down the milk. Based on the movements described, Daniel's last known location is the hallway, which matches the queried location.",yes,4,31
+6,"Sentence 13: Daniel moved to the bathroom. Sentence 14: John moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, not the garden.",no,5,31
+6,"Sentence 1: John moved to the kitchen. Sentence 2: John moved to the hallway. Based on the movements described, John's last known location is the hallway, not the bedroom.",no,1,32
+6,Sentence 4: Daniel moved to the garden. Sentence 5: Sandra moved to the hallway. There is no information about John moving to any location in these sentences.,unknown,2,32
+6,Sentence 7: Mary moved to the garden. Sentence 8: John moved to the office. There is no information about Sandra moving to any location in these sentences.,unknown,3,32
+6,Sentence 10: Daniel moved to the bedroom. Sentence 11: Sandra moved to the kitchen. There is no information about Mary moving to any location in these sentences.,unknown,4,32
+6,"Sentence 13: Sandra moved to the hallway. Sentence 14: Mary moved to the kitchen. Based on the movements described, Sandra's last known location is the hallway, not the kitchen.",no,5,32
+6,"Sentence 1: Daniel moved to the kitchen. Sentence 2: Daniel moved to the office. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,1,33
+6,"Sentence 4: Mary moved to the bedroom. Sentence 5: Daniel moved to the kitchen. Based on the movements described, Mary's last known location is the bedroom, which matches the queried location.",yes,2,33
+6,Sentence 7: John moved to the office. Sentence 8: Daniel got the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,3,33
+6,Sentence 10: Daniel discarded the milk. Sentence 11: Sandra grabbed the football there. There is no information about John moving to any location in these sentences.,unknown,4,33
+6,"Sentence 13: John moved to the bedroom. Sentence 14: Sandra dropped the football. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,5,33
+6,"Sentence 1: Sandra moved to the garden. Sentence 2: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, not the bathroom.",no,1,34
+6,Sentence 4: Sandra moved to the bedroom. Sentence 5: Mary grabbed the apple there. There is no information about Mary moving to any location in these sentences.,unknown,2,34
+6,"Sentence 7: Mary put down the apple. Sentence 8: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, not the hallway.",no,3,34
+6,"Sentence 10: Sandra moved to the kitchen. Sentence 11: Daniel moved to the hallway. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,4,34
+6,Sentence 13: Mary moved to the garden. Sentence 14: Mary moved to the bedroom. There is no information about Daniel moving to any location in these sentences.,unknown,5,34
+6,"Sentence 1: John got the apple there. Sentence 2: Daniel took the football there. Sentence 3: Daniel put down the football. Sentence 4: John moved to the hallway. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,1,35
+6,"Sentence 6: Sandra moved to the garden. Sentence 7: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, not the kitchen.",no,2,35
+6,"Sentence 9: Mary moved to the bathroom. Sentence 10: John moved to the office. Based on the movements described, John's last known location is the office, not the kitchen.",no,3,35
+6,Sentence 12: Mary moved to the kitchen. Sentence 13: John left the apple. There is no information about John moving to any location in these sentences.,unknown,4,35
+6,"Sentence 15: Daniel moved to the bedroom. Sentence 16: Sandra moved to the office. Based on the movements described, Daniel's last known location is the bedroom, not the office.",no,5,35
+6,"Sentence 1: Sandra moved to the bedroom. Sentence 2: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,1,36
+6,Sentence 4: Mary moved to the bedroom. Sentence 5: John moved to the kitchen. There is no information about Sandra moving to any location in these sentences.,unknown,2,36
+6,"Sentence 7: John moved to the office. Sentence 8: Sandra moved to the bathroom. Based on the movements described, John's last known location is the office, not the kitchen.",no,3,36
+6,Sentence 10: Mary moved to the bathroom. Sentence 11: Mary moved to the office. There is no information about Sandra moving to any location in these sentences.,unknown,4,36
+6,"Sentence 13: Daniel moved to the bedroom. Sentence 14: Sandra moved to the office. Based on the movements described, Daniel's last known location is the bedroom, not the kitchen.",no,5,36
+6,"Sentence 1: John grabbed the apple there. Sentence 2: Daniel moved to the bedroom. Based on the movements described, Daniel's last known location is the bedroom, which matches the queried location.",yes,1,37
+6,"Sentence 4: John moved to the bedroom. Sentence 5: Daniel got the football there. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,2,37
+6,"Sentence 7: John moved to the office. Sentence 8: John put down the apple. Based on the movements described, John's last known location is the office, which matches the queried location.",yes,3,37
+6,Sentence 10: Daniel left the football. Sentence 11: John picked up the apple there. There is no information about John moving to any location in these sentences.,unknown,4,37
+6,"Sentence 13: Daniel picked up the football there. Sentence 14: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, not the garden.",no,5,37
+6,"Sentence 1: Daniel moved to the garden. Sentence 2: Mary moved to the bedroom. Based on the movements described, Daniel's last known location is the garden, which matches the queried location.",yes,1,38
+6,"Sentence 4: John moved to the garden. Sentence 5: Mary moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, which matches the queried location.",yes,2,38
+6,"Sentence 7: John moved to the bedroom. Sentence 8: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, which matches the queried location.",yes,3,38
+6,"Sentence 10: Mary moved to the hallway. Sentence 11: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,4,38
+6,"Sentence 13: Mary grabbed the apple there. Sentence 14: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, not the garden.",no,5,38
+6,"Sentence 1: Sandra moved to the garden. Sentence 2: Mary got the apple there. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,1,39
+6,"Sentence 4: Sandra moved to the bedroom. Sentence 5: Mary moved to the hallway. Based on the movements described, Sandra's last known location is the bedroom, not the garden.",no,2,39
+6,Sentence 7: John moved to the hallway. Sentence 8: Mary moved to the garden. There is no information about Sandra moving to any location in these sentences.,unknown,3,39
+6,"Sentence 10: Mary moved to the office. Sentence 11: Sandra moved to the hallway. Based on the movements described, Mary's last known location is the office, which matches the queried location.",yes,4,39
+6,Sentence 13: Mary picked up the milk there. Sentence 14: Mary put down the milk. There is no information about Mary moving to any location in these sentences.,unknown,5,39
+6,"Sentence 1: John moved to the kitchen. Sentence 2: Daniel got the milk there. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,1,40
+6,"Sentence 4: Daniel moved to the office. Sentence 5: Daniel left the milk there. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,2,40
+6,Sentence 7: Daniel got the milk there. Sentence 8: Daniel left the milk. There is no information about Daniel moving to any location in these sentences.,unknown,3,40
+6,"Sentence 10: Mary moved to the hallway. Sentence 11: Sandra moved to the bathroom. Based on the movements described, Mary's last known location is the hallway, not the kitchen.",no,4,40
+6,"Sentence 13: John moved to the office. Sentence 14: Daniel grabbed the milk there. Based on the movements described, John's last known location is the office, which matches the queried location.",yes,5,40
+6,"Sentence 1: Mary grabbed the milk there. Sentence 2: Sandra took the football there. Sentence 3: Daniel grabbed the apple there. Sentence 4: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,1,41
+6,Sentence 6: Mary discarded the milk. Sentence 7: Mary picked up the milk there. There is no information about John moving to any location in these sentences.,unknown,2,41
+6,Sentence 9: Sandra put down the football there. Sentence 10: Mary put down the milk. There is no information about John moving to any location in these sentences.,unknown,3,41
+6,"Sentence 12: Sandra moved to the office. Sentence 13: Mary moved to the bedroom. Based on the movements described, Sandra's last known location is the office, not the bedroom.",no,4,41
+6,"Sentence 15: John moved to the kitchen. Sentence 16: John moved to the hallway. Based on the movements described, John's last known location is the hallway, not the garden.",no,5,41
+6,"Sentence 1: Sandra moved to the garden. Sentence 2: Mary got the milk there. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,1,42
+6,"Sentence 4: Sandra moved to the office. Sentence 5: John moved to the office. Based on the movements described, Sandra's last known location is the office, which matches the queried location.",yes,2,42
+6,"Sentence 7: Sandra moved to the kitchen. Sentence 8: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, not the office.",no,3,42
+6,"Sentence 10: Daniel moved to the bedroom. Sentence 11: Mary dropped the milk. Based on the movements described, Daniel's last known location is the bedroom, which matches the queried location.",yes,4,42
+6,Sentence 13: John took the football there. Sentence 14: Daniel got the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,5,42
+6,"Sentence 1: Daniel moved to the office. Sentence 2: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,1,43
+6,Sentence 4: Mary grabbed the apple there. Sentence 5: Daniel grabbed the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,2,43
+6,"Sentence 7: Daniel moved to the garden. Sentence 8: John moved to the office. Based on the movements described, John's last known location is the office, not the bathroom.",no,3,43
+6,"Sentence 10: John moved to the hallway. Sentence 11: Mary put down the apple. Based on the movements described, John's last known location is the hallway, not the garden.",no,4,43
+6,Sentence 13: Daniel moved to the office. Sentence 14: Sandra moved to the bathroom. There is no information about John moving to any location in these sentences.,unknown,5,43
+6,"Sentence 1: Daniel moved to the bedroom. Sentence 2: John moved to the garden. Based on the movements described, Daniel's last known location is the bedroom, not the bathroom.",no,1,44
+6,"Sentence 4: Mary moved to the hallway. Sentence 5: Mary picked up the football there. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,2,44
+6,"Sentence 7: Mary dropped the football. Sentence 8: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the kitchen.",no,3,44
+6,"Sentence 10: Mary moved to the kitchen. Sentence 11: Mary got the apple there. Based on the movements described, Mary's last known location is the kitchen, not the office.",no,4,44
+6,Sentence 13: Mary dropped the apple there. Sentence 14: Daniel moved to the office. There is no information about Mary moving to any location in these sentences.,unknown,5,44
+6,"Sentence 1: Mary moved to the kitchen. Sentence 2: Sandra moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, which matches the queried location.",yes,1,45
+6,Sentence 4: Daniel moved to the hallway. Sentence 5: Daniel got the football there. There is no information about Mary moving to any location in these sentences.,unknown,2,45
+6,"Sentence 7: John moved to the bedroom. Sentence 8: Daniel moved to the bedroom. Based on the movements described, Daniel's last known location is the bedroom, not the hallway.",no,3,45
+6,"Sentence 10: Sandra took the apple there. Sentence 11: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, which matches the queried location.",yes,4,45
+6,Sentence 13: Sandra put down the apple. Sentence 14: Mary moved to the bedroom. There is no information about Daniel moving to any location in these sentences.,unknown,5,45
+6,"Sentence 1: Mary picked up the milk there. Sentence 2: John moved to the garden. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,1,46
+6,Sentence 4: Mary put down the milk. Sentence 5: Sandra grabbed the football there. There is no information about John moving to any location in these sentences.,unknown,2,46
+6,"Sentence 7: John moved to the bathroom. Sentence 8: John grabbed the apple there. Based on the movements described, John's last known location is the bathroom, not the bedroom.",no,3,46
+6,Sentence 10: Sandra discarded the football. Sentence 11: Mary moved to the bedroom. There is no information about John moving to any location in these sentences.,unknown,4,46
+6,Sentence 13: Sandra grabbed the football there. Sentence 14: Sandra moved to the kitchen. There is no information about Mary moving to any location in these sentences.,unknown,5,46
+6,"Sentence 1: Daniel moved to the hallway. Sentence 2: Sandra picked up the apple there. Based on the movements described, Daniel's last known location is the hallway, not the office.",no,1,47
+6,"Sentence 4: Daniel moved to the garden. Sentence 5: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, which matches the queried location.",yes,2,47
+6,"Sentence 7: Mary moved to the hallway. Sentence 8: Sandra moved to the office. Based on the movements described, Sandra's last known location is the office, not the bathroom.",no,3,47
+6,Sentence 10: Daniel picked up the football there. Sentence 11: Daniel put down the football. There is no information about Daniel moving to any location in these sentences.,unknown,4,47
+6,"Sentence 13: Sandra left the apple. Sentence 14: Sandra moved to the hallway. Based on the movements described, Sandra's last known location is the hallway, which matches the queried location.",yes,5,47
+6,"Sentence 1: Sandra moved to the kitchen. Sentence 2: John grabbed the football there. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,1,48
+6,"Sentence 4: John moved to the office. Sentence 5: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, not the kitchen.",no,2,48
+6,"Sentence 7: John moved to the kitchen. Sentence 8: Mary moved to the bathroom. Based on the movements described, John's last known location is the kitchen, not the bathroom.",no,3,48
+6,Sentence 10: John discarded the football. Sentence 11: Mary moved to the bedroom. There is no information about Sandra moving to any location in these sentences.,unknown,4,48
+6,Sentence 13: Mary got the apple there. Sentence 14: Daniel moved to the bathroom. There is no information about Mary moving to any location in these sentences.,unknown,5,48
+6,"Sentence 1: Sandra moved to the bathroom. Sentence 2: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, not the hallway.",no,1,49
+6,"Sentence 4: Sandra moved to the garden. Sentence 5: Sandra got the apple there. Based on the movements described, Sandra's last known location is the garden, not the hallway.",no,2,49
+6,"Sentence 7: Daniel moved to the hallway. Sentence 8: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,3,49
+6,"Sentence 10: John moved to the garden. Sentence 11: Daniel moved to the office. Based on the movements described, Daniel's last known location is the office, not the bathroom.",no,4,49
+6,Sentence 13: Sandra moved to the garden. Sentence 14: Sandra discarded the apple. There is no information about Daniel moving to any location in these sentences.,unknown,5,49
+6,"Sentence 1: Daniel grabbed the apple there. Sentence 2: John moved to the hallway. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,1,50
+6,"Sentence 4: John moved to the kitchen. Sentence 5: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, which matches the queried location.",yes,2,50
+6,"Sentence 7: John took the football there. Sentence 8: Sandra moved to the office. Based on the movements described, Sandra's last known location is the office, which matches the queried location.",yes,3,50
+6,"Sentence 10: Sandra moved to the hallway. Sentence 11: John left the football. Based on the movements described, Sandra's last known location is the hallway, not the garden.",no,4,50
+6,"Sentence 13: Sandra moved to the bedroom. Sentence 14: Daniel discarded the apple. Based on the movements described, Sandra's last known location is the bedroom, which matches the queried location.",yes,5,50
+6,"Sentence 1: Mary got the apple there. Sentence 2: John moved to the office. Based on the movements described, John's last known location is the office, which matches the queried location.",yes,1,51
+6,Sentence 4: Mary moved to the garden. Sentence 5: Mary discarded the apple. There is no information about John moving to any location in these sentences.,unknown,2,51
+6,"Sentence 7: Mary took the apple there. Sentence 8: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, not the bathroom.",no,3,51
+6,"Sentence 10: Mary moved to the hallway. Sentence 11: John grabbed the football there. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,4,51
+6,Sentence 13: John put down the football there. Sentence 14: Mary left the apple. There is no information about Mary moving to any location in these sentences.,unknown,5,51
+6,"Sentence 1: Sandra moved to the bathroom. Sentence 2: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, which matches the queried location.",yes,1,52
+6,"Sentence 4: Sandra moved to the office. Sentence 5: Mary moved to the bathroom. Based on the movements described, Sandra's last known location is the office, which matches the queried location.",yes,2,52
+6,Sentence 7: Mary picked up the apple there. Sentence 8: Daniel grabbed the football there. There is no information about Mary moving to any location in these sentences.,unknown,3,52
+6,"Sentence 10: Mary moved to the office. Sentence 11: Daniel put down the football. Based on the movements described, Mary's last known location is the office, not the garden.",no,4,52
+6,"Sentence 13: John grabbed the football there. Sentence 14: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,5,52
+6,"Sentence 1: Sandra moved to the bathroom. Sentence 2: John got the football there. Based on the movements described, Sandra's last known location is the bathroom, not the garden.",no,1,53
+6,Sentence 4: Daniel moved to the bathroom. Sentence 5: Daniel moved to the hallway. There is no information about Sandra moving to any location in these sentences.,unknown,2,53
+6,Sentence 7: Sandra moved to the hallway. Sentence 8: John dropped the football. There is no information about Daniel moving to any location in these sentences.,unknown,3,53
+6,"Sentence 10: Daniel grabbed the milk there. Sentence 11: Sandra moved to the office. Based on the movements described, Sandra's last known location is the office, not the bedroom.",no,4,53
+6,"Sentence 13: Daniel put down the milk there. Sentence 14: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, not the bedroom.",no,5,53
+6,"Sentence 1: Sandra moved to the kitchen. Sentence 2: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,1,54
+6,Sentence 4: Mary moved to the office. Sentence 5: Sandra moved to the garden. There is no information about John moving to any location in these sentences.,unknown,2,54
+6,"Sentence 7: John moved to the office. Sentence 8: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, not the kitchen.",no,3,54
+6,Sentence 10: John moved to the bedroom. Sentence 11: Mary moved to the bedroom. There is no information about Sandra moving to any location in these sentences.,unknown,4,54
+6,"Sentence 13: John moved to the hallway. Sentence 14: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the hallway.",no,5,54
+6,"Sentence 1: Mary moved to the garden. Sentence 2: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,1,55
+6,"Sentence 4: Mary moved to the hallway. Sentence 5: Mary moved to the office. Based on the movements described, Mary's last known location is the office, not the hallway.",no,2,55
+6,Sentence 7: Mary took the football there. Sentence 8: John moved to the bedroom. There is no information about Mary moving to any location in these sentences.,unknown,3,55
+6,"Sentence 10: Mary moved to the hallway. Sentence 11: Sandra moved to the hallway. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,4,55
+6,Sentence 13: Daniel took the apple there. Sentence 14: Mary moved to the bedroom. There is no information about Sandra moving to any location in these sentences.,unknown,5,55
+6,"Sentence 1: John got the football there. Sentence 2: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,1,56
+6,"Sentence 4: Daniel took the apple there. Sentence 5: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, which matches the queried location.",yes,2,56
+6,Sentence 7: Daniel left the apple there. Sentence 8: Daniel moved to the bedroom. There is no information about Sandra moving to any location in these sentences.,unknown,3,56
+6,"Sentence 10: Sandra moved to the garden. Sentence 11: Daniel moved to the garden. Based on the movements described, Sandra's last known location is the garden, not the bathroom.",no,4,56
+6,Sentence 13: John put down the football. Sentence 14: Daniel moved to the bathroom. There is no information about Sandra moving to any location in these sentences.,unknown,5,56
+6,"Sentence 1: Sandra moved to the garden. Sentence 2: Sandra moved to the bedroom. Based on the movements described, Sandra's last known location is the bedroom, which matches the queried location.",yes,1,57
+6,Sentence 4: John moved to the kitchen. Sentence 5: John moved to the bedroom. There is no information about Sandra moving to any location in these sentences.,unknown,2,57
+6,Sentence 7: Daniel picked up the apple there. Sentence 8: Mary moved to the bathroom. There is no information about John moving to any location in these sentences.,unknown,3,57
+6,Sentence 10: Daniel dropped the apple. Sentence 11: Daniel moved to the hallway. There is no information about John moving to any location in these sentences.,unknown,4,57
+6,"Sentence 13: John moved to the kitchen. Sentence 14: John moved to the office. Based on the movements described, John's last known location is the office, which matches the queried location.",yes,5,57
+6,"Sentence 1: Daniel moved to the office. Sentence 2: Sandra moved to the hallway. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,1,58
+6,Sentence 4: Mary moved to the kitchen. Sentence 5: John moved to the hallway. There is no information about Daniel moving to any location in these sentences.,unknown,2,58
+6,Sentence 7: John got the football there. Sentence 8: John discarded the football. There is no information about Mary moving to any location in these sentences.,unknown,3,58
+6,Sentence 10: Mary moved to the garden. Sentence 11: John took the football there. There is no information about John moving to any location in these sentences.,unknown,4,58
+6,Sentence 13: John moved to the office. Sentence 14: Sandra moved to the kitchen. There is no information about Mary moving to any location in these sentences.,unknown,5,58
+6,"Sentence 1: Daniel moved to the bathroom. Sentence 2: Daniel grabbed the football there. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,1,59
+6,"Sentence 4: Daniel grabbed the milk there. Sentence 5: Sandra moved to the hallway. Based on the movements described, Sandra's last known location is the hallway, not the office.",no,2,59
+6,Sentence 7: Sandra picked up the apple there. Sentence 8: Sandra left the apple. There is no information about Sandra moving to any location in these sentences.,unknown,3,59
+6,"Sentence 10: Daniel moved to the kitchen. Sentence 11: Mary moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, not the office.",no,4,59
+6,Sentence 13: Daniel dropped the milk. Sentence 14: Daniel left the football. There is no information about Mary moving to any location in these sentences.,unknown,5,59
+6,"Sentence 1: Sandra moved to the bedroom. Sentence 2: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, not the office.",no,1,60
+6,Sentence 4: John moved to the bedroom. Sentence 5: Mary moved to the bathroom. There is no information about Sandra moving to any location in these sentences.,unknown,2,60
+6,"Sentence 7: Daniel got the milk there. Sentence 8: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, not the bathroom.",no,3,60
+6,"Sentence 10: Sandra moved to the bedroom. Sentence 11: John moved to the kitchen. Based on the movements described, Sandra's last known location is the bedroom, not the garden.",no,4,60
+6,Sentence 13: John moved to the bedroom. Sentence 14: Mary picked up the football there. There is no information about Sandra moving to any location in these sentences.,unknown,5,60
+6,"Sentence 1: John moved to the bedroom. Sentence 2: Mary picked up the apple there. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,1,61
+6,Sentence 4: Sandra moved to the bedroom. Sentence 5: Sandra moved to the hallway. There is no information about John moving to any location in these sentences.,unknown,2,61
+6,"Sentence 7: Mary dropped the apple there. Sentence 8: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,3,61
+6,"Sentence 10: John moved to the bathroom. Sentence 11: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, which matches the queried location.",yes,4,61
+6,"Sentence 13: Sandra moved to the bathroom. Sentence 14: Mary picked up the apple there. Based on the movements described, Sandra's last known location is the bathroom, not the kitchen.",no,5,61
+6,"Sentence 1: Daniel took the milk there. Sentence 2: Daniel dropped the milk. Sentence 3: Mary moved to the hallway. Sentence 4: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,1,62
+6,"Sentence 6: John moved to the office. Sentence 7: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, not the bedroom.",no,2,62
+6,"Sentence 9: Mary moved to the office. Sentence 10: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,3,62
+6,"Sentence 12: Daniel took the apple there. Sentence 13: Daniel moved to the office. Based on the movements described, Daniel's last known location is the office, not the garden.",no,4,62
+6,Sentence 15: Mary moved to the bathroom. Sentence 16: Daniel got the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,5,62
+6,"Sentence 1: Mary moved to the bathroom. Sentence 2: Sandra moved to the hallway. Based on the movements described, Sandra's last known location is the hallway, which matches the queried location.",yes,1,63
+6,"Sentence 4: Mary moved to the hallway. Sentence 5: Mary moved to the office. Based on the movements described, Mary's last known location is the office, not the hallway.",no,2,63
+6,"Sentence 7: Daniel took the football there. Sentence 8: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,3,63
+6,Sentence 10: John moved to the hallway. Sentence 11: John moved to the bedroom. There is no information about Mary moving to any location in these sentences.,unknown,4,63
+6,"Sentence 13: John moved to the hallway. Sentence 14: Daniel left the football. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,5,63
+6,"Sentence 1: Sandra moved to the garden. Sentence 2: John picked up the milk there. Based on the movements described, Sandra's last known location is the garden, not the hallway.",no,1,64
+6,Sentence 4: John put down the milk there. Sentence 5: Mary moved to the hallway. There is no information about Sandra moving to any location in these sentences.,unknown,2,64
+6,Sentence 7: Daniel moved to the bedroom. Sentence 8: Sandra picked up the football there. There is no information about Mary moving to any location in these sentences.,unknown,3,64
+6,Sentence 10: John got the milk there. Sentence 11: John moved to the hallway. There is no information about Daniel moving to any location in these sentences.,unknown,4,64
+6,"Sentence 13: Sandra moved to the bathroom. Sentence 14: John moved to the bedroom. Based on the movements described, Sandra's last known location is the bathroom, which matches the queried location.",yes,5,64
+6,"Sentence 1: John moved to the kitchen. Sentence 2: Sandra moved to the hallway. Based on the movements described, Sandra's last known location is the hallway, which matches the queried location.",yes,1,65
+6,"Sentence 4: John moved to the bedroom. Sentence 5: Sandra moved to the bedroom. Based on the movements described, Sandra's last known location is the bedroom, not the hallway.",no,2,65
+6,"Sentence 7: Mary moved to the office. Sentence 8: Sandra moved to the hallway. Based on the movements described, Mary's last known location is the office, not the bedroom.",no,3,65
+6,Sentence 10: Mary grabbed the football there. Sentence 11: Daniel moved to the bedroom. There is no information about Sandra moving to any location in these sentences.,unknown,4,65
+6,Sentence 13: John moved to the bathroom. Sentence 14: John moved to the hallway. There is no information about Sandra moving to any location in these sentences.,unknown,5,65
+6,"Sentence 1: Daniel moved to the bathroom. Sentence 2: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, not the office.",no,1,66
+6,"Sentence 4: John got the apple there. Sentence 5: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the hallway.",no,2,66
+6,"Sentence 7: John moved to the office. Sentence 8: Daniel moved to the office. Based on the movements described, John's last known location is the office, not the bathroom.",no,3,66
+6,"Sentence 10: Mary moved to the bathroom. Sentence 11: John discarded the apple. Based on the movements described, Mary's last known location is the bathroom, not the kitchen.",no,4,66
+6,"Sentence 13: Mary moved to the kitchen. Sentence 14: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, not the bathroom.",no,5,66
+6,"Sentence 1: John moved to the kitchen. Sentence 2: John moved to the garden. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,1,67
+6,"Sentence 4: Sandra moved to the office. Sentence 5: Mary took the milk there. Based on the movements described, Sandra's last known location is the office, not the hallway.",no,2,67
+6,Sentence 7: Mary discarded the milk there. Sentence 8: Mary moved to the office. There is no information about Sandra moving to any location in these sentences.,unknown,3,67
+6,Sentence 10: Daniel moved to the garden. Sentence 11: Daniel took the football there. There is no information about Mary moving to any location in these sentences.,unknown,4,67
+6,"Sentence 13: Daniel put down the football there. Sentence 14: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, which matches the queried location.",yes,5,67
+6,"Sentence 1: John moved to the kitchen. Sentence 2: Daniel moved to the bedroom. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,1,68
+6,"Sentence 4: John moved to the hallway. Sentence 5: Mary moved to the garden. Based on the movements described, John's last known location is the hallway, not the bedroom.",no,2,68
+6,"Sentence 7: Daniel moved to the kitchen. Sentence 8: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, not the kitchen.",no,3,68
+6,Sentence 10: Sandra moved to the garden. Sentence 11: John moved to the garden. There is no information about Daniel moving to any location in these sentences.,unknown,4,68
+6,Sentence 13: Mary moved to the office. Sentence 14: John moved to the kitchen. There is no information about Sandra moving to any location in these sentences.,unknown,5,68
+6,"Sentence 1: Sandra moved to the office. Sentence 2: Mary moved to the bedroom. Based on the movements described, Sandra's last known location is the office, not the hallway.",no,1,69
+6,Sentence 4: Daniel moved to the bathroom. Sentence 5: John moved to the hallway. There is no information about Mary moving to any location in these sentences.,unknown,2,69
+6,Sentence 7: Daniel moved to the garden. Sentence 8: Sandra moved to the bathroom. There is no information about Mary moving to any location in these sentences.,unknown,3,69
+6,"Sentence 10: Daniel moved to the office. Sentence 11: Mary picked up the apple there. Based on the movements described, Daniel's last known location is the office, not the kitchen.",no,4,69
+6,"Sentence 13: John took the milk there. Sentence 14: John moved to the garden. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,5,69
+6,"Sentence 1: Mary grabbed the milk there. Sentence 2: John moved to the garden. Based on the movements described, John's last known location is the garden, not the bedroom.",no,1,70
+6,Sentence 4: Sandra took the apple there. Sentence 5: Sandra moved to the hallway. There is no information about John moving to any location in these sentences.,unknown,2,70
+6,"Sentence 7: Daniel moved to the hallway. Sentence 8: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the garden.",no,3,70
+6,Sentence 10: Mary picked up the football there. Sentence 11: Mary moved to the garden. There is no information about Daniel moving to any location in these sentences.,unknown,4,70
+6,"Sentence 13: John moved to the garden. Sentence 14: Mary moved to the bedroom. Based on the movements described, John's last known location is the garden, not the hallway.",no,5,70
+6,"Sentence 1: John moved to the bedroom. Sentence 2: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,1,71
+6,"Sentence 4: Daniel moved to the bathroom. Sentence 5: John picked up the apple there. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,2,71
+6,"Sentence 7: Sandra took the football there. Sentence 8: John moved to the garden. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,3,71
+6,Sentence 10: John dropped the apple. Sentence 11: Sandra discarded the football. There is no information about John moving to any location in these sentences.,unknown,4,71
+6,"Sentence 13: John moved to the bedroom. Sentence 14: John moved to the hallway. Based on the movements described, John's last known location is the hallway, not the bedroom.",no,5,71
+6,"Sentence 1: Daniel took the apple there. Sentence 2: Mary moved to the office. Based on the movements described, Mary's last known location is the office, not the kitchen.",no,1,72
+6,"Sentence 4: Sandra picked up the football there. Sentence 5: Sandra moved to the bedroom. Based on the movements described, Sandra's last known location is the bedroom, which matches the queried location.",yes,2,72
+6,"Sentence 7: Sandra moved to the garden. Sentence 8: Sandra discarded the football there. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,3,72
+6,"Sentence 10: Sandra moved to the office. Sentence 11: John grabbed the football there. Based on the movements described, Sandra's last known location is the office, not the bedroom.",no,4,72
+6,"Sentence 13: Daniel moved to the office. Sentence 14: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, which matches the queried location.",yes,5,72
+6,"Sentence 1: Daniel grabbed the apple there. Sentence 2: Mary moved to the office. Based on the movements described, Mary's last known location is the office, which matches the queried location.",yes,1,73
+6,Sentence 4: Daniel dropped the apple. Sentence 5: John moved to the office. There is no information about Mary moving to any location in these sentences.,unknown,2,73
+6,Sentence 7: Daniel moved to the bathroom. Sentence 8: Mary moved to the garden. There is no information about John moving to any location in these sentences.,unknown,3,73
+6,"Sentence 10: Daniel moved to the office. Sentence 11: Sandra moved to the bathroom. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,4,73
+6,Sentence 13: Sandra moved to the hallway. Sentence 14: Sandra moved to the office. There is no information about Mary moving to any location in these sentences.,unknown,5,73
+6,"Sentence 1: Mary moved to the bedroom. Sentence 2: Sandra grabbed the milk there. Based on the movements described, Mary's last known location is the bedroom, not the bathroom.",no,1,74
+6,"Sentence 4: Sandra moved to the bedroom. Sentence 5: Sandra dropped the milk. Based on the movements described, Sandra's last known location is the bedroom, not the hallway.",no,2,74
+6,"Sentence 7: Daniel moved to the office. Sentence 8: John moved to the kitchen. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,3,74
+6,Sentence 10: Daniel moved to the kitchen. Sentence 11: Mary moved to the bathroom. There is no information about John moving to any location in these sentences.,unknown,4,74
+6,Sentence 13: Sandra picked up the milk there. Sentence 14: Sandra left the milk. There is no information about Mary moving to any location in these sentences.,unknown,5,74
+6,"Sentence 1: Daniel picked up the apple there. Sentence 2: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, not the bedroom.",no,1,75
+6,Sentence 4: Mary moved to the hallway. Sentence 5: Daniel dropped the apple. There is no information about Daniel moving to any location in these sentences.,unknown,2,75
+6,Sentence 7: Mary picked up the milk there. Sentence 8: Daniel grabbed the apple there. There is no information about Daniel moving to any location in these sentences.,unknown,3,75
+6,"Sentence 10: Daniel dropped the apple. Sentence 11: Daniel took the apple there. Sentence 12: Daniel moved to the bathroom. Sentence 13: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, not the hallway.",no,4,75
+6,"Sentence 15: Daniel moved to the hallway. Sentence 16: Mary discarded the milk. Based on the movements described, Daniel's last known location is the hallway, not the garden.",no,5,75
+6,"Sentence 1: Mary moved to the hallway. Sentence 2: Daniel got the apple there. Based on the movements described, Mary's last known location is the hallway, not the bathroom.",no,1,76
+6,"Sentence 4: Daniel moved to the bathroom. Sentence 5: Mary moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, which matches the queried location.",yes,2,76
+6,Sentence 7: Daniel moved to the hallway. Sentence 8: Daniel dropped the apple. There is no information about Mary moving to any location in these sentences.,unknown,3,76
+6,Sentence 10: John moved to the garden. Sentence 11: Daniel moved to the garden. There is no information about Mary moving to any location in these sentences.,unknown,4,76
+6,Sentence 13: Daniel moved to the bedroom. Sentence 14: Daniel took the football there. There is no information about John moving to any location in these sentences.,unknown,5,76
+6,"Sentence 1: Sandra moved to the garden. Sentence 2: Sandra got the milk there. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,1,77
+6,"Sentence 4: Sandra moved to the bedroom. Sentence 5: Mary moved to the garden. Based on the movements described, Sandra's last known location is the bedroom, which matches the queried location.",yes,2,77
+6,"Sentence 7: John moved to the office. Sentence 8: Daniel moved to the office. Based on the movements described, John's last known location is the office, not the bedroom.",no,3,77
+6,"Sentence 10: Daniel moved to the hallway. Sentence 11: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,4,77
+6,Sentence 13: Daniel took the football there. Sentence 14: Sandra put down the milk. There is no information about Daniel moving to any location in these sentences.,unknown,5,77
+6,"Sentence 1: Sandra picked up the apple there. Sentence 2: John took the football there. Sentence 3: Sandra put down the apple. Sentence 4: John dropped the football. Sentence 5: Mary got the milk there. Sentence 6: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, not the bedroom.",no,1,78
+6,"Sentence 8: John moved to the hallway. Sentence 9: Mary discarded the milk there. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,2,78
+6,"Sentence 11: Mary picked up the milk there. Sentence 12: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, not the bathroom.",no,3,78
+6,Sentence 14: Sandra got the apple there. Sentence 15: Sandra discarded the apple there. There is no information about Daniel moving to any location in these sentences.,unknown,4,78
+6,"Sentence 17: Sandra moved to the kitchen. Sentence 18: Sandra got the football there. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,5,78
+6,"Sentence 1: Daniel moved to the office. Sentence 2: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, not the bathroom.",no,1,79
+6,"Sentence 4: John took the milk there. Sentence 5: Mary moved to the hallway. Based on the movements described, Mary's last known location is the hallway, not the garden.",no,2,79
+6,"Sentence 7: John moved to the garden. Sentence 8: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, not the office.",no,3,79
+6,"Sentence 10: Daniel moved to the hallway. Sentence 11: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, not the office.",no,4,79
+6,"Sentence 13: Mary moved to the office. Sentence 14: John moved to the office. Based on the movements described, John's last known location is the office, not the kitchen.",no,5,79
+6,"Sentence 1: John moved to the bathroom. Sentence 2: Daniel picked up the football there. Based on the movements described, John's last known location is the bathroom, not the kitchen.",no,1,80
+6,"Sentence 4: Sandra moved to the hallway. Sentence 5: Mary moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, not the hallway.",no,2,80
+6,Sentence 7: Daniel moved to the hallway. Sentence 8: Daniel put down the football. There is no information about Sandra moving to any location in these sentences.,unknown,3,80
+6,"Sentence 10: Sandra moved to the office. Sentence 11: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, which matches the queried location.",yes,4,80
+6,Sentence 13: Daniel grabbed the football there. Sentence 14: Daniel left the football. There is no information about Sandra moving to any location in these sentences.,unknown,5,80
+6,"Sentence 1: Mary picked up the apple there. Sentence 2: Mary moved to the kitchen. Based on the movements described, Mary's last known location is the kitchen, which matches the queried location.",yes,1,81
+6,"Sentence 4: Sandra moved to the office. Sentence 5: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, which matches the queried location.",yes,2,81
+6,"Sentence 7: Mary moved to the hallway. Sentence 8: Mary discarded the apple. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,3,81
+6,Sentence 10: Mary took the apple there. Sentence 11: Mary left the apple. There is no information about Mary moving to any location in these sentences.,unknown,4,81
+6,"Sentence 13: Mary moved to the kitchen. Sentence 14: Mary moved to the hallway. Based on the movements described, Mary's last known location is the hallway, not the bathroom.",no,5,81
+6,"Sentence 1: John moved to the office. Sentence 2: John moved to the garden. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,1,82
+6,Sentence 4: Daniel moved to the office. Sentence 5: Daniel grabbed the football there. There is no information about John moving to any location in these sentences.,unknown,2,82
+6,"Sentence 7: Sandra grabbed the milk there. Sentence 8: Mary moved to the hallway. Based on the movements described, Mary's last known location is the hallway, which matches the queried location.",yes,3,82
+6,"Sentence 10: Daniel dropped the football. Sentence 11: Mary moved to the garden. Based on the movements described, Mary's last known location is the garden, not the bedroom.",no,4,82
+6,Sentence 13: Daniel grabbed the football there. Sentence 14: Sandra put down the milk there. There is no information about Mary moving to any location in these sentences.,unknown,5,82
+6,"Sentence 1: Daniel picked up the football there. Sentence 2: Daniel left the football. Sentence 3: Mary got the apple there. Sentence 4: Daniel moved to the office. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,1,83
+6,"Sentence 6: Mary moved to the kitchen. Sentence 7: Sandra moved to the bathroom. Based on the movements described, Mary's last known location is the kitchen, which matches the queried location.",yes,2,83
+6,Sentence 9: Mary left the apple. Sentence 10: Sandra got the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,3,83
+6,"Sentence 12: John moved to the kitchen. Sentence 13: Sandra moved to the hallway. Based on the movements described, Sandra's last known location is the hallway, not the garden.",no,4,83
+6,Sentence 15: Mary moved to the garden. Sentence 16: Daniel moved to the kitchen. There is no information about John moving to any location in these sentences.,unknown,5,83
+6,"Sentence 1: Mary moved to the bedroom. Sentence 2: Daniel picked up the milk there. Based on the movements described, Mary's last known location is the bedroom, not the garden.",no,1,84
+6,"Sentence 4: John moved to the hallway. Sentence 5: Mary moved to the bathroom. Based on the movements described, John's last known location is the hallway, not the bedroom.",no,2,84
+6,"Sentence 7: Daniel put down the milk. Sentence 8: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, which matches the queried location.",yes,3,84
+6,Sentence 10: John moved to the office. Sentence 11: Sandra moved to the bedroom. There is no information about Mary moving to any location in these sentences.,unknown,4,84
+6,"Sentence 13: Sandra moved to the garden. Sentence 14: Daniel moved to the office. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,5,84
+6,"Sentence 1: John moved to the hallway. Sentence 2: John moved to the garden. Based on the movements described, John's last known location is the garden, which matches the queried location.",yes,1,85
+6,"Sentence 4: John moved to the kitchen. Sentence 5: Daniel grabbed the apple there. Based on the movements described, John's last known location is the kitchen, not the bedroom.",no,2,85
+6,"Sentence 7: John moved to the bathroom. Sentence 8: Daniel put down the apple there. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,3,85
+6,"Sentence 10: John moved to the office. Sentence 11: Daniel moved to the bedroom. Based on the movements described, John's last known location is the office, not the hallway.",no,4,85
+6,"Sentence 13: John moved to the hallway. Sentence 14: John took the football there. Based on the movements described, John's last known location is the hallway, which matches the queried location.",yes,5,85
+6,"Sentence 1: Mary moved to the office. Sentence 2: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, not the bedroom.",no,1,86
+6,"Sentence 4: Mary moved to the bedroom. Sentence 5: Sandra moved to the garden. Based on the movements described, Mary's last known location is the bedroom, not the office.",no,2,86
+6,"Sentence 7: Sandra took the football there. Sentence 8: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, not the office.",no,3,86
+6,Sentence 10: Mary moved to the bedroom. Sentence 11: John moved to the hallway. There is no information about Sandra moving to any location in these sentences.,unknown,4,86
+6,Sentence 13: Sandra put down the football there. Sentence 14: Sandra picked up the football there. There is no information about John moving to any location in these sentences.,unknown,5,86
+6,"Sentence 1: Mary moved to the kitchen. Sentence 2: Daniel moved to the hallway. Based on the movements described, Daniel's last known location is the hallway, not the bedroom.",no,1,87
+6,Sentence 4: Mary moved to the bathroom. Sentence 5: Sandra picked up the milk there. There is no information about Daniel moving to any location in these sentences.,unknown,2,87
+6,"Sentence 7: Sandra put down the milk. Sentence 8: Daniel moved to the office. Based on the movements described, Daniel's last known location is the office, which matches the queried location.",yes,3,87
+6,"Sentence 10: Mary moved to the office. Sentence 11: Sandra moved to the garden. Based on the movements described, Sandra's last known location is the garden, which matches the queried location.",yes,4,87
+6,Sentence 13: John moved to the kitchen. Sentence 14: Sandra got the football there. There is no information about Daniel moving to any location in these sentences.,unknown,5,87
+6,"Sentence 1: Mary moved to the office. Sentence 2: Sandra took the apple there. Based on the movements described, Mary's last known location is the office, which matches the queried location.",yes,1,88
+6,Sentence 4: John moved to the hallway. Sentence 5: Sandra left the apple. There is no information about Mary moving to any location in these sentences.,unknown,2,88
+6,"Sentence 7: Daniel moved to the garden. Sentence 8: Mary got the apple there. Based on the movements described, Daniel's last known location is the garden, which matches the queried location.",yes,3,88
+6,"Sentence 10: Sandra moved to the bedroom. Sentence 11: Mary moved to the garden. Based on the movements described, Sandra's last known location is the bedroom, which matches the queried location.",yes,4,88
+6,"Sentence 13: Mary left the apple. Sentence 14: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,5,88
+6,"Sentence 1: John moved to the office. Sentence 2: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,1,89
+6,"Sentence 4: John moved to the hallway. Sentence 5: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, not the office.",no,2,89
+6,Sentence 7: Mary moved to the hallway. Sentence 8: John picked up the football there. There is no information about Daniel moving to any location in these sentences.,unknown,3,89
+6,"Sentence 10: Daniel moved to the bedroom. Sentence 11: John moved to the kitchen. Based on the movements described, Daniel's last known location is the bedroom, not the office.",no,4,89
+6,"Sentence 13: Daniel moved to the kitchen. Sentence 14: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, which matches the queried location.",yes,5,89
+6,"Sentence 1: Mary moved to the hallway. Sentence 2: Mary picked up the football there. Based on the movements described, Mary's last known location is the hallway, not the bathroom.",no,1,90
+6,"Sentence 4: Daniel moved to the bedroom. Sentence 5: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, not the garden.",no,2,90
+6,Sentence 7: Mary left the football. Sentence 8: John moved to the bedroom. There is no information about Daniel moving to any location in these sentences.,unknown,3,90
+6,Sentence 10: John picked up the milk there. Sentence 11: Sandra moved to the hallway. There is no information about John moving to any location in these sentences.,unknown,4,90
+6,Sentence 13: Daniel moved to the hallway. Sentence 14: Daniel got the football there. There is no information about John moving to any location in these sentences.,unknown,5,90
+6,"Sentence 1: Sandra moved to the hallway. Sentence 2: Sandra grabbed the apple there. Based on the movements described, Sandra's last known location is the hallway, which matches the queried location.",yes,1,91
+6,"Sentence 4: Sandra moved to the bathroom. Sentence 5: Mary moved to the bedroom. Based on the movements described, Sandra's last known location is the bathroom, not the office.",no,2,91
+6,Sentence 7: Sandra moved to the office. Sentence 8: Sandra dropped the apple there. There is no information about Mary moving to any location in these sentences.,unknown,3,91
+6,"Sentence 10: Sandra moved to the garden. Sentence 11: Sandra took the milk there. Based on the movements described, Sandra's last known location is the garden, not the office.",no,4,91
+6,Sentence 13: Sandra dropped the milk. Sentence 14: Daniel moved to the office. There is no information about Sandra moving to any location in these sentences.,unknown,5,91
+6,"Sentence 1: John moved to the kitchen. Sentence 2: Sandra moved to the hallway. Based on the movements described, John's last known location is the kitchen, not the bedroom.",no,1,92
+6,"Sentence 4: Mary moved to the kitchen. Sentence 5: Sandra moved to the bedroom. Based on the movements described, Sandra's last known location is the bedroom, which matches the queried location.",yes,2,92
+6,"Sentence 7: John moved to the office. Sentence 8: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, not the garden.",no,3,92
+6,Sentence 10: Sandra moved to the office. Sentence 11: Sandra moved to the bedroom. There is no information about John moving to any location in these sentences.,unknown,4,92
+6,"Sentence 13: Mary moved to the office. Sentence 14: Daniel moved to the office. Based on the movements described, Mary's last known location is the office, which matches the queried location.",yes,5,92
+6,"Sentence 1: John moved to the garden. Sentence 2: Sandra moved to the office. Based on the movements described, John's last known location is the garden, not the kitchen.",no,1,93
+6,Sentence 4: John moved to the bathroom. Sentence 5: Daniel moved to the bathroom. There is no information about Sandra moving to any location in these sentences.,unknown,2,93
+6,Sentence 7: Mary moved to the hallway. Sentence 8: Sandra moved to the garden. There is no information about Daniel moving to any location in these sentences.,unknown,3,93
+6,"Sentence 10: Mary moved to the garden. Sentence 11: Sandra moved to the bedroom. Based on the movements described, Sandra's last known location is the bedroom, not the hallway.",no,4,93
+6,"Sentence 13: Sandra moved to the kitchen. Sentence 14: Daniel moved to the hallway. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,5,93
+6,"Sentence 1: Sandra moved to the office. Sentence 2: Sandra grabbed the football there. Based on the movements described, Sandra's last known location is the office, which matches the queried location.",yes,1,94
+6,Sentence 4: Sandra picked up the apple there. Sentence 5: John got the milk there. There is no information about Sandra moving to any location in these sentences.,unknown,2,94
+6,"Sentence 7: John dropped the milk. Sentence 8: Sandra discarded the apple. Sentence 9: Mary moved to the garden. Sentence 10: Sandra moved to the bathroom. Based on the movements described, Sandra's last known location is the bathroom, which matches the queried location.",yes,3,94
+6,Sentence 12: Daniel moved to the bathroom. Sentence 13: John picked up the milk there. There is no information about Sandra moving to any location in these sentences.,unknown,4,94
+6,"Sentence 15: Daniel moved to the hallway. Sentence 16: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,5,94
+6,"Sentence 1: Daniel moved to the bathroom. Sentence 2: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, not the bathroom.",no,1,95
+6,"Sentence 4: Daniel moved to the office. Sentence 5: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, not the bedroom.",no,2,95
+6,"Sentence 7: John moved to the bathroom. Sentence 8: Daniel took the milk there. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,3,95
+6,"Sentence 10: Mary moved to the kitchen. Sentence 11: Mary moved to the bathroom. Based on the movements described, Mary's last known location is the bathroom, which matches the queried location.",yes,4,95
+6,"Sentence 13: Mary moved to the garden. Sentence 14: Daniel dropped the milk. Based on the movements described, Mary's last known location is the garden, which matches the queried location.",yes,5,95
+6,"Sentence 1: Sandra moved to the office. Sentence 2: Daniel moved to the garden. Based on the movements described, Sandra's last known location is the office, which matches the queried location.",yes,1,96
+6,Sentence 4: Sandra moved to the bathroom. Sentence 5: Sandra moved to the kitchen. There is no information about Daniel moving to any location in these sentences.,unknown,2,96
+6,"Sentence 7: Daniel moved to the office. Sentence 8: Daniel grabbed the football there. Based on the movements described, Daniel's last known location is the office, not the bathroom.",no,3,96
+6,"Sentence 10: Mary moved to the office. Sentence 11: Daniel moved to the bathroom. Based on the movements described, Daniel's last known location is the bathroom, not the office.",no,4,96
+6,"Sentence 13: Daniel put down the football there. Sentence 14: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, not the hallway.",no,5,96
+6,"Sentence 1: Sandra moved to the bedroom. Sentence 2: John moved to the bedroom. Based on the movements described, John's last known location is the bedroom, which matches the queried location.",yes,1,97
+6,Sentence 4: Sandra took the football there. Sentence 5: Daniel moved to the garden. There is no information about Sandra moving to any location in these sentences.,unknown,2,97
+6,Sentence 7: Sandra moved to the hallway. Sentence 8: Sandra moved to the garden. There is no information about John moving to any location in these sentences.,unknown,3,97
+6,Sentence 10: Sandra discarded the football. Sentence 11: Daniel picked up the apple there. There is no information about Daniel moving to any location in these sentences.,unknown,4,97
+6,"Sentence 13: John moved to the garden. Sentence 14: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, not the garden.",no,5,97
+6,"Sentence 1: Sandra grabbed the milk there. Sentence 2: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, which matches the queried location.",yes,1,98
+6,"Sentence 4: Daniel picked up the football there. Sentence 5: Mary moved to the office. Based on the movements described, Mary's last known location is the office, which matches the queried location.",yes,2,98
+6,"Sentence 7: John moved to the bedroom. Sentence 8: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, which matches the queried location.",yes,3,98
+6,Sentence 10: Sandra moved to the office. Sentence 11: Mary moved to the bedroom. There is no information about John moving to any location in these sentences.,unknown,4,98
+6,Sentence 13: John moved to the hallway. Sentence 14: Sandra left the milk. There is no information about Daniel moving to any location in these sentences.,unknown,5,98
+6,"Sentence 1: John moved to the bathroom. Sentence 2: John moved to the kitchen. Based on the movements described, John's last known location is the kitchen, which matches the queried location.",yes,1,99
+6,"Sentence 4: John grabbed the apple there. Sentence 5: John moved to the hallway. Based on the movements described, John's last known location is the hallway, not the office.",no,2,99
+6,"Sentence 7: Mary moved to the hallway. Sentence 8: John moved to the bathroom. Based on the movements described, John's last known location is the bathroom, which matches the queried location.",yes,3,99
+6,"Sentence 10: Daniel moved to the office. Sentence 11: Mary moved to the office. Based on the movements described, Mary's last known location is the office, which matches the queried location.",yes,4,99
+6,Sentence 13: Sandra moved to the kitchen. Sentence 14: Sandra moved to the bedroom. There is no information about Daniel moving to any location in these sentences.,unknown,5,99
+6,"Sentence 1: Sandra moved to the bedroom. Sentence 2: Daniel moved to the kitchen. Based on the movements described, Daniel's last known location is the kitchen, not the bathroom.",no,1,100
+6,"Sentence 4: Daniel took the football there. Sentence 5: Sandra moved to the kitchen. Based on the movements described, Sandra's last known location is the kitchen, which matches the queried location.",yes,2,100
+6,"Sentence 7: Daniel left the football there. Sentence 8: Daniel moved to the garden. Based on the movements described, Daniel's last known location is the garden, which matches the queried location.",yes,3,100
+6,"Sentence 10: Mary moved to the garden. Sentence 11: Daniel picked up the apple there. Based on the movements described, Mary's last known location is the garden, which matches the queried location.",yes,4,100
+6,"Sentence 13: Sandra moved to the bedroom. Sentence 14: Mary moved to the bedroom. Based on the movements described, Mary's last known location is the bedroom, not the office.",no,5,100

@@ -1,0 +1,751 @@
+task_id,silver_reasoning,answer,part_id,sample_id
+11,Tracking John: John to hallway → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,1,1
+11,Tracking John: John to office → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,2,1
+11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,1
+11,Current context (Mary to hallway → Mary to bathroom) does not mention Sandra. From earlier in this story: Part 3: Sandra travelled to the bedroom.. The last recorded location for Sandra is the hallway.,hallway,4,1
+11,Current context (John to office → John to bathroom) does not mention Mary. From earlier in this story: Part 4: Mary travelled to the hallway.. The last recorded location for Mary is the bathroom.,bathroom,5,1
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,1,2
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,2,2
+11,Tracking Mary: Mary to bathroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,3,2
+11,Tracking Daniel: Daniel to hallway → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,4,2
+11,Tracking Mary: Mary to bathroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,5,2
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,1,3
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,3
+11,Tracking John: John to garden → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,3,3
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,4,3
+11,Current context (John to kitchen → John to bathroom) does not mention Daniel. From earlier in this story: Part 4: Daniel journeyed to the garden.. The last recorded location for Daniel is the bathroom.,bathroom,5,3
+11,Tracking Sandra: Sandra to office → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,1,4
+11,Current context (Daniel to hallway → Daniel to kitchen) does not mention Sandra. From earlier in this story: Part 1: Sandra moved to the office.. The last recorded location for Sandra is the kitchen.,kitchen,2,4
+11,Tracking Sandra: Sandra to hallway → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,3,4
+11,Tracking Daniel: Daniel to garden → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,4,4
+11,Current context (Sandra to bathroom → Sandra to hallway) does not mention Daniel. From earlier in this story: Part 2: Daniel went to the hallway.; Part 4: Daniel moved to the garden.. The last recorded location for Daniel is the bedroom.,bedroom,5,4
+11,Tracking Sandra: Sandra to hallway → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,1,5
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,2,5
+11,Tracking Daniel: Daniel to bathroom → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,3,5
+11,Tracking Daniel: Daniel to office → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,4,5
+11,Tracking Mary: Mary to office → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,5,5
+11,Tracking John: John to kitchen → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,1,6
+11,Current context (Mary to bathroom → Mary to bedroom) does not mention John. From earlier in this story: Part 1: John journeyed to the kitchen.. The last recorded location for John is the bedroom.,bedroom,2,6
+11,Tracking John: John to office → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,3,6
+11,Current context (Sandra to bathroom → Sandra to hallway) does not mention John. From earlier in this story: Part 1: John journeyed to the kitchen.; Part 3: John went to the office.. The last recorded location for John is the bedroom.,bedroom,4,6
+11,Current context (Daniel to kitchen → Daniel to hallway) does not mention Sandra. From earlier in this story: Part 4: Sandra went to the bathroom.. The last recorded location for Sandra is the hallway.,hallway,5,6
+11,Tracking Mary: Mary to kitchen → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,1,7
+11,Tracking Mary: Mary to bedroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,2,7
+11,Current context (Sandra to bedroom → Sandra to bathroom) does not mention Mary. From earlier in this story: Part 1: Mary moved to the kitchen.; Part 2: Mary moved to the bedroom.. The last recorded location for Mary is the hallway.,hallway,3,7
+11,Tracking Sandra: Sandra to hallway → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,4,7
+11,Current context (Daniel to hallway → Daniel to kitchen) does not mention Sandra. From earlier in this story: Part 3: Sandra moved to the bedroom.; Part 4: Sandra went back to the hallway.. The last recorded location for Sandra is the office.,office,5,7
+11,Tracking Mary: Mary to hallway → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,8
+11,Current context (Daniel to bedroom → Daniel to kitchen) does not mention Mary. From earlier in this story: Part 1: Mary travelled to the hallway.. The last recorded location for Mary is the kitchen.,kitchen,2,8
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,3,8
+11,Tracking Mary: Mary to hallway → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,4,8
+11,Current context (Mary to office → Mary to bathroom) does not mention Daniel. From earlier in this story: Part 2: Daniel went back to the bedroom.; Part 3: Daniel went back to the office.. The last recorded location for Daniel is the hallway.,hallway,5,8
+11,Tracking Sandra: Sandra to garden → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,1,9
+11,Current context (Mary to hallway → Mary to bathroom) does not mention Sandra. From earlier in this story: Part 1: Sandra moved to the garden.. The last recorded location for Sandra is the office.,office,2,9
+11,Tracking Sandra: Sandra to bedroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,3,9
+11,Tracking Sandra: Sandra to bathroom → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,4,9
+11,Current context (John to office → John to bedroom) does not mention Sandra. From earlier in this story: Part 3: Sandra went back to the bedroom.; Part 4: Sandra moved to the bathroom.. The last recorded location for Sandra is the bedroom.,bedroom,5,9
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,1,10
+11,Tracking John: John to kitchen → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,2,10
+11,Current context (Mary to kitchen → Mary to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra moved to the garden.. The last recorded location for Sandra is the bedroom.,bedroom,3,10
+11,Current context (Daniel to bedroom → Daniel to office) does not mention Mary. From earlier in this story: Part 3: Mary travelled to the kitchen.. The last recorded location for Mary is the bedroom.,bedroom,4,10
+11,Current context (Daniel to hallway → Daniel to bathroom) does not mention Mary. From earlier in this story: Part 3: Mary travelled to the kitchen.. The last recorded location for Mary is the bedroom.,bedroom,5,10
+11,Tracking John: John to bathroom → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,1,11
+11,Tracking Sandra: Sandra to kitchen → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,2,11
+11,Current context (Daniel to kitchen → Daniel to hallway) does not mention John. From earlier in this story: Part 1: John travelled to the bathroom.. The last recorded location for John is the office.,office,3,11
+11,Tracking Sandra: Sandra to hallway → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,4,11
+11,Tracking John: John to hallway → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,5,11
+11,Tracking John: John to kitchen → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,1,12
+11,Tracking John: John to bathroom → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,2,12
+11,Tracking John: John to garden → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,3,12
+11,Tracking Mary: Mary to garden → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,4,12
+11,Current context (Mary to office → Mary to garden) does not mention John. From earlier in this story: Part 2: John travelled to the bathroom.; Part 3: John travelled to the garden.. The last recorded location for John is the hallway.,hallway,5,12
+11,Tracking Mary: Mary to garden → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,13
+11,Tracking Sandra: Sandra to hallway → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,2,13
+11,Tracking Sandra: Sandra to office → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,13
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,4,13
+11,Current context (Sandra to kitchen → Sandra to office) does not mention Daniel. From earlier in this story: Part 4: Daniel went to the office.. The last recorded location for Daniel is the kitchen.,kitchen,5,13
+11,Tracking Daniel: Daniel to bedroom → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,1,14
+11,Tracking John: John to bathroom → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,2,14
+11,Current context (Mary to office → Mary to bathroom) does not mention John. From earlier in this story: Part 2: John went back to the bathroom.. The last recorded location for John is the garden.,garden,3,14
+11,Tracking Daniel: Daniel to bedroom → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,4,14
+11,Current context (Sandra to office → Sandra to hallway) does not mention Mary. From earlier in this story: Part 3: Mary moved to the office.. The last recorded location for Mary is the bathroom.,bathroom,5,14
+11,Tracking Mary: Mary to bedroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,15
+11,Tracking Daniel: Daniel to bedroom → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,2,15
+11,Current context (Sandra to garden → Sandra to office) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the bedroom.. The last recorded location for Mary is the office.,office,3,15
+11,Tracking Daniel: Daniel to bathroom → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,4,15
+11,Tracking Sandra: Sandra to garden → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,5,15
+11,Tracking Daniel: Daniel to hallway → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,16
+11,Current context (Sandra to bathroom → Sandra to office) does not mention Daniel. From earlier in this story: Part 1: Daniel journeyed to the hallway.. The last recorded location for Daniel is the bathroom.,bathroom,2,16
+11,Current context (John to kitchen → John to garden) does not mention Sandra. From earlier in this story: Part 2: Sandra journeyed to the bathroom.. The last recorded location for Sandra is the office.,office,3,16
+11,Current context (Mary to garden → Mary to kitchen) does not mention John. From earlier in this story: Part 3: John travelled to the kitchen.. The last recorded location for John is the garden.,garden,4,16
+11,Tracking John: John to office → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,5,16
+11,Tracking Daniel: Daniel to garden → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,1,17
+11,Current context (Sandra to kitchen → Sandra to office) does not mention Daniel. From earlier in this story: Part 1: Daniel journeyed to the garden.. The last recorded location for Daniel is the kitchen.,kitchen,2,17
+11,Tracking John: John to office → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,3,17
+11,Current context (Daniel to office → Daniel to hallway) does not mention John. From earlier in this story: Part 3: John moved to the office.. The last recorded location for John is the bedroom.,bedroom,4,17
+11,Current context (Sandra to hallway → Sandra to bathroom) does not mention Daniel. From earlier in this story: Part 1: Daniel journeyed to the garden.; Part 4: Daniel journeyed to the office.. The last recorded location for Daniel is the hallway.,hallway,5,17
+11,Tracking Sandra: Sandra to bathroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,1,18
+11,Tracking Sandra: Sandra to bedroom → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,2,18
+11,Tracking John: John to bathroom → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,3,18
+11,Tracking Sandra: Sandra to office → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,4,18
+11,Tracking Sandra: Sandra to kitchen → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,5,18
+11,Tracking John: John to kitchen → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,1,19
+11,Tracking Sandra: Sandra to kitchen → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,2,19
+11,Tracking John: John to kitchen → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,3,19
+11,Current context (Daniel to bedroom → Daniel to office) does not mention Sandra. From earlier in this story: Part 2: Sandra went back to the kitchen.. The last recorded location for Sandra is the bathroom.,bathroom,4,19
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,5,19
+11,Tracking Sandra: Sandra to hallway → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,20
+11,Current context (Mary to kitchen → Mary to bathroom) does not mention Sandra. From earlier in this story: Part 1: Sandra moved to the hallway.. The last recorded location for Sandra is the bathroom.,bathroom,2,20
+11,Tracking Mary: Mary to hallway → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,3,20
+11,Tracking Sandra: Sandra to hallway → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,4,20
+11,Current context (John to kitchen → John to bathroom) does not mention Sandra. From earlier in this story: Part 1: Sandra moved to the hallway.; Part 4: Sandra moved to the hallway.. The last recorded location for Sandra is the office.,office,5,20
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,1,21
+11,Current context (John to kitchen → John to bedroom) does not mention Mary. From earlier in this story: Part 1: Mary travelled to the kitchen.. The last recorded location for Mary is the garden.,garden,2,21
+11,Tracking John: John to kitchen → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,3,21
+11,Current context (Daniel to hallway → Daniel to bedroom) does not mention John. From earlier in this story: Part 2: John journeyed to the kitchen.; Part 3: John journeyed to the kitchen.. The last recorded location for John is the office.,office,4,21
+11,Current context (Mary to kitchen → Mary to garden) does not mention John. From earlier in this story: Part 2: John journeyed to the kitchen.; Part 3: John journeyed to the kitchen.. The last recorded location for John is the office.,office,5,21
+11,Tracking Daniel: Daniel to office → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,1,22
+11,Current context (John to kitchen → John to garden) does not mention Daniel. From earlier in this story: Part 1: Daniel went to the office.. The last recorded location for Daniel is the garden.,garden,2,22
+11,Tracking John: John to bathroom → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,3,22
+11,Tracking Mary: Mary to office → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,4,22
+11,Tracking John: John to kitchen → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,5,22
+11,Tracking Daniel: Daniel to garden → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,23
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,2,23
+11,Current context (Sandra to bedroom → Sandra to hallway) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the garden.; Part 2: Daniel moved to the office.. The last recorded location for Daniel is the hallway.,hallway,3,23
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,4,23
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,5,23
+11,Tracking Mary: Mary to kitchen → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,24
+11,Tracking Daniel: Daniel to hallway → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,2,24
+11,Tracking Sandra: Sandra to bedroom → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,3,24
+11,Current context (John to hallway → John to garden) does not mention Daniel. From earlier in this story: Part 2: Daniel went back to the hallway.. The last recorded location for Daniel is the office.,office,4,24
+11,Current context (Mary to kitchen → Mary to garden) does not mention Sandra. From earlier in this story: Part 3: Sandra went to the bedroom.. The last recorded location for Sandra is the bathroom.,bathroom,5,24
+11,Tracking Daniel: Daniel to kitchen → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,1,25
+11,Tracking John: John to garden → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,2,25
+11,Tracking Mary: Mary to kitchen → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,3,25
+11,Tracking Mary: Mary to garden → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,4,25
+11,Current context (John to bedroom → John to office) does not mention Mary. From earlier in this story: Part 3: Mary went to the kitchen.; Part 4: Mary went back to the garden.. The last recorded location for Mary is the kitchen.,kitchen,5,25
+11,Tracking John: John to kitchen → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,1,26
+11,Current context (Sandra to office → Sandra to kitchen) does not mention John. From earlier in this story: Part 1: John went to the kitchen.. The last recorded location for John is the bedroom.,bedroom,2,26
+11,Current context (Daniel to kitchen → Daniel to bathroom) does not mention John. From earlier in this story: Part 1: John went to the kitchen.. The last recorded location for John is the bedroom.,bedroom,3,26
+11,Tracking Sandra: Sandra to hallway → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,4,26
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,5,26
+11,Tracking Daniel: Daniel to garden → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,1,27
+11,Tracking Daniel: Daniel to garden → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,2,27
+11,Current context (John to kitchen → John to hallway) does not mention Daniel. From earlier in this story: Part 1: Daniel travelled to the garden.; Part 2: Daniel went to the garden.. The last recorded location for Daniel is the hallway.,hallway,3,27
+11,Tracking John: John to garden → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,4,27
+11,Tracking John: John to kitchen → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,5,27
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,1,28
+11,Current context (John to garden → John to bathroom) does not mention Mary. From earlier in this story: Part 1: Mary went back to the kitchen.. The last recorded location for Mary is the garden.,garden,2,28
+11,Tracking Daniel: Daniel to garden → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,3,28
+11,Current context (Mary to kitchen → Mary to hallway) does not mention Daniel. From earlier in this story: Part 3: Daniel went to the garden.. The last recorded location for Daniel is the office.,office,4,28
+11,Current context (John to office → John to hallway) does not mention Mary. From earlier in this story: Part 1: Mary went back to the kitchen.; Part 4: Mary travelled to the kitchen.. The last recorded location for Mary is the hallway.,hallway,5,28
+11,Tracking John: John to office → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,29
+11,Tracking Mary: Mary to office → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,2,29
+11,Tracking John: John to hallway → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,3,29
+11,Current context (Daniel to hallway → Daniel to bathroom) does not mention John. From earlier in this story: Part 1: John journeyed to the office.; Part 3: John went to the hallway.. The last recorded location for John is the garden.,garden,4,29
+11,Current context (Sandra to bathroom → Sandra to garden) does not mention Daniel. From earlier in this story: Part 4: Daniel moved to the hallway.. The last recorded location for Daniel is the bathroom.,bathroom,5,29
+11,Tracking Daniel: Daniel to office → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,1,30
+11,Current context (Mary to hallway → Mary to office) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the office.. The last recorded location for Daniel is the garden.,garden,2,30
+11,Current context (Sandra to hallway → Sandra to bedroom) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the office.. The last recorded location for Daniel is the garden.,garden,3,30
+11,Tracking Mary: Mary to bedroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,4,30
+11,Current context (Sandra to hallway → Sandra to kitchen) does not mention Mary. From earlier in this story: Part 2: Mary went to the hallway.; Part 4: Mary went to the bedroom.. The last recorded location for Mary is the office.,office,5,30
+11,Tracking Mary: Mary to bathroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,31
+11,Tracking Mary: Mary to kitchen → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,2,31
+11,Tracking Sandra: Sandra to office → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,3,31
+11,Tracking Sandra: Sandra to office → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,4,31
+11,Tracking Daniel: Daniel to garden → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,5,31
+11,Tracking Sandra: Sandra to bedroom → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,32
+11,Tracking Sandra: Sandra to bedroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,2,32
+11,Tracking John: John to bedroom → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,3,32
+11,Current context (Daniel to hallway → Daniel to office) does not mention John. From earlier in this story: Part 3: John went to the bedroom.. The last recorded location for John is the office.,office,4,32
+11,Current context (Mary to hallway → Mary to bathroom) does not mention Daniel. From earlier in this story: Part 4: Daniel journeyed to the hallway.. The last recorded location for Daniel is the office.,office,5,32
+11,Tracking John: John to bathroom → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,1,33
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,2,33
+11,Tracking Sandra: Sandra to hallway → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,3,33
+11,Current context (John to bathroom → John to kitchen) does not mention Sandra. From earlier in this story: Part 3: Sandra went back to the hallway.. The last recorded location for Sandra is the garden.,garden,4,33
+11,Current context (Daniel to garden → Daniel to kitchen) does not mention Sandra. From earlier in this story: Part 3: Sandra went back to the hallway.. The last recorded location for Sandra is the garden.,garden,5,33
+11,Tracking John: John to garden → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,1,34
+11,Tracking Sandra: Sandra to office → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,2,34
+11,Current context (Daniel to office → Daniel to garden) does not mention Sandra. From earlier in this story: Part 2: Sandra went to the office.. The last recorded location for Sandra is the bedroom.,bedroom,3,34
+11,Tracking John: John to garden → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,4,34
+11,Current context (Mary to bedroom → Mary to bathroom) does not mention John. From earlier in this story: Part 1: John journeyed to the garden.; Part 4: John went back to the garden.. The last recorded location for John is the office.,office,5,34
+11,Tracking Mary: Mary to kitchen → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,1,35
+11,Current context (Daniel to bedroom → Daniel to bathroom) does not mention Mary. From earlier in this story: Part 1: Mary went back to the kitchen.. The last recorded location for Mary is the hallway.,hallway,2,35
+11,Tracking Mary: Mary to office → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,3,35
+11,Tracking Daniel: Daniel to garden → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,4,35
+11,Tracking Sandra: Sandra to bathroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,5,35
+11,Tracking Mary: Mary to hallway → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,36
+11,Current context (Daniel to office → Daniel to garden) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the hallway.. The last recorded location for Mary is the kitchen.,kitchen,2,36
+11,Tracking Sandra: Sandra to kitchen → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,3,36
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,4,36
+11,Tracking Mary: Mary to office → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,5,36
+11,Tracking Daniel: Daniel to kitchen → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,1,37
+11,Current context (Mary to garden → Mary to bedroom) does not mention Daniel. From earlier in this story: Part 1: Daniel went back to the kitchen.. The last recorded location for Daniel is the office.,office,2,37
+11,Tracking Mary: Mary to hallway → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,3,37
+11,Tracking John: John to garden → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,4,37
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,5,37
+11,Tracking Sandra: Sandra to hallway → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,38
+11,Tracking Daniel: Daniel to hallway → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,2,38
+11,Current context (Sandra to bedroom → Sandra to hallway) does not mention Daniel. From earlier in this story: Part 2: Daniel went to the hallway.. The last recorded location for Daniel is the office.,office,3,38
+11,Current context (Mary to hallway → Mary to kitchen) does not mention Sandra. From earlier in this story: Part 1: Sandra journeyed to the hallway.; Part 3: Sandra travelled to the bedroom.. The last recorded location for Sandra is the hallway.,hallway,4,38
+11,Current context (John to bathroom → John to hallway) does not mention Sandra. From earlier in this story: Part 1: Sandra journeyed to the hallway.; Part 3: Sandra travelled to the bedroom.. The last recorded location for Sandra is the hallway.,hallway,5,38
+11,Tracking Sandra: Sandra to garden → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,39
+11,Tracking Sandra: Sandra to hallway → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,2,39
+11,Tracking Sandra: Sandra to bedroom → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,3,39
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,4,39
+11,Current context (Daniel to kitchen → Daniel to garden) does not mention Sandra. From earlier in this story: Part 3: Sandra went back to the bedroom.; Part 4: Sandra went back to the kitchen.. The last recorded location for Sandra is the hallway.,hallway,5,39
+11,Tracking Mary: Mary to garden → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,1,40
+11,Current context (John to bedroom → John to office) does not mention Mary. From earlier in this story: Part 1: Mary went to the garden.. The last recorded location for Mary is the bedroom.,bedroom,2,40
+11,Tracking John: John to bathroom → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,3,40
+11,Tracking John: John to bathroom → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,4,40
+11,Current context (Sandra to office → Sandra to hallway) does not mention John. From earlier in this story: Part 3: John went to the bathroom.; Part 4: John went to the bathroom.. The last recorded location for John is the office.,office,5,40
+11,Tracking Mary: Mary to bathroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,41
+11,Tracking Mary: Mary to garden → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,2,41
+11,Current context (Daniel to garden → Daniel to hallway) does not mention Mary. From earlier in this story: Part 1: Mary went back to the bathroom.; Part 2: Mary went back to the garden.. The last recorded location for Mary is the office.,office,3,41
+11,Current context (Sandra to bedroom → Sandra to office) does not mention Daniel. From earlier in this story: Part 3: Daniel travelled to the garden.. The last recorded location for Daniel is the hallway.,hallway,4,41
+11,Tracking Sandra: Sandra to hallway → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,5,41
+11,Tracking Sandra: Sandra to bathroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,1,42
+11,Tracking Mary: Mary to office → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,2,42
+11,Current context (Sandra to bathroom → Sandra to bedroom) does not mention Mary. From earlier in this story: Part 2: Mary moved to the office.. The last recorded location for Mary is the kitchen.,kitchen,3,42
+11,Current context (Daniel to garden → Daniel to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra journeyed to the bathroom.; Part 3: Sandra journeyed to the bathroom.. The last recorded location for Sandra is the bedroom.,bedroom,4,42
+11,Current context (Mary to office → Mary to bathroom) does not mention Daniel. From earlier in this story: Part 4: Daniel journeyed to the garden.. The last recorded location for Daniel is the bedroom.,bedroom,5,42
+11,Tracking Mary: Mary to kitchen → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,1,43
+11,Tracking Daniel: Daniel to hallway → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,2,43
+11,Tracking John: John to bathroom → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,3,43
+11,Tracking Daniel: Daniel to hallway → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,4,43
+11,Current context (Mary to bathroom → Mary to hallway) does not mention Daniel. From earlier in this story: Part 2: Daniel went to the hallway.; Part 4: Daniel moved to the hallway.. The last recorded location for Daniel is the kitchen.,kitchen,5,43
+11,Tracking Mary: Mary to bedroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,44
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,2,44
+11,Tracking John: John to hallway → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,3,44
+11,Current context (Daniel to hallway → Daniel to garden) does not mention Sandra. From earlier in this story: Part 2: Sandra went to the garden.. The last recorded location for Sandra is the bedroom.,bedroom,4,44
+11,Tracking Sandra: Sandra to office → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,5,44
+11,Tracking Daniel: Daniel to hallway → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,45
+11,Tracking Mary: Mary to hallway → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,2,45
+11,Tracking John: John to hallway → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,3,45
+11,Current context (Daniel to bedroom → Daniel to bathroom) does not mention Mary. From earlier in this story: Part 2: Mary travelled to the hallway.. The last recorded location for Mary is the office.,office,4,45
+11,Current context (Sandra to garden → Sandra to bathroom) does not mention John. From earlier in this story: Part 3: John went back to the hallway.. The last recorded location for John is the bedroom.,bedroom,5,45
+11,Tracking John: John to bathroom → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,1,46
+11,Tracking Sandra: Sandra to bedroom → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,2,46
+11,Tracking Sandra: Sandra to hallway → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,3,46
+11,Tracking Sandra: Sandra to hallway → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,4,46
+11,Tracking Sandra: Sandra to kitchen → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,5,46
+11,Tracking Mary: Mary to garden → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,47
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,2,47
+11,Tracking Sandra: Sandra to bathroom → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,3,47
+11,Tracking John: John to bedroom → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,4,47
+11,Current context (Sandra to bedroom → Sandra to hallway) does not mention John. From earlier in this story: Part 4: John went to the bedroom.. The last recorded location for John is the hallway.,hallway,5,47
+11,Tracking Mary: Mary to garden → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,1,48
+11,Tracking Sandra: Sandra to bathroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,2,48
+11,Tracking Daniel: Daniel to office → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,3,48
+11,Current context (Mary to garden → Mary to bathroom) does not mention Daniel. From earlier in this story: Part 3: Daniel travelled to the office.. The last recorded location for Daniel is the bathroom.,bathroom,4,48
+11,Current context (Daniel to kitchen → Daniel to bedroom) does not mention Mary. From earlier in this story: Part 1: Mary went to the garden.; Part 4: Mary moved to the garden.. The last recorded location for Mary is the bathroom.,bathroom,5,48
+11,Tracking John: John to garden → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,1,49
+11,Tracking Daniel: Daniel to bedroom → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,2,49
+11,Tracking Mary: Mary to office → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,3,49
+11,Current context (John to office → John to bathroom) does not mention Mary. From earlier in this story: Part 3: Mary went to the office.. The last recorded location for Mary is the bathroom.,bathroom,4,49
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,5,49
+11,Tracking Mary: Mary to kitchen → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,1,50
+11,Tracking Sandra: Sandra to office → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,50
+11,Current context (John to bedroom → John to office) does not mention Mary. From earlier in this story: Part 1: Mary moved to the kitchen.. The last recorded location for Mary is the bathroom.,bathroom,3,50
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,4,50
+11,Current context (Sandra to office → Sandra to garden) does not mention John. From earlier in this story: Part 3: John went to the bedroom.; Part 4: John journeyed to the hallway.. The last recorded location for John is the kitchen.,kitchen,5,50
+11,Tracking Mary: Mary to bedroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,1,51
+11,Tracking Mary: Mary to bathroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,2,51
+11,Current context (John to hallway → John to bedroom) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the bedroom.; Part 2: Mary went to the bathroom.. The last recorded location for Mary is the hallway.,hallway,3,51
+11,Current context (John to hallway → John to bathroom) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the bedroom.; Part 2: Mary went to the bathroom.. The last recorded location for Mary is the hallway.,hallway,4,51
+11,Tracking John: John to office → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,5,51
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,52
+11,Current context (John to kitchen → John to garden) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the garden.. The last recorded location for Daniel is the bathroom.,bathroom,2,52
+11,Tracking Sandra: Sandra to bathroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,52
+11,Current context (Mary to bathroom → Mary to hallway) does not mention John. From earlier in this story: Part 2: John moved to the kitchen.. The last recorded location for John is the garden.,garden,4,52
+11,Current context (Daniel to garden → Daniel to office) does not mention Mary. From earlier in this story: Part 4: Mary went to the bathroom.. The last recorded location for Mary is the hallway.,hallway,5,52
+11,Tracking Mary: Mary to kitchen → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,1,53
+11,Current context (Daniel to kitchen → Daniel to bathroom) does not mention Mary. From earlier in this story: Part 1: Mary went to the kitchen.. The last recorded location for Mary is the hallway.,hallway,2,53
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,53
+11,Tracking John: John to garden → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,4,53
+11,Current context (Mary to kitchen → Mary to bathroom) does not mention John. From earlier in this story: Part 4: John journeyed to the garden.. The last recorded location for John is the kitchen.,kitchen,5,53
+11,Tracking Sandra: Sandra to garden → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,54
+11,Current context (John to bathroom → John to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the garden.. The last recorded location for Sandra is the bathroom.,bathroom,2,54
+11,Current context (John to office → John to bathroom) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the garden.. The last recorded location for Sandra is the bathroom.,bathroom,3,54
+11,Current context (Sandra to office → Sandra to hallway) does not mention John. From earlier in this story: Part 2: John moved to the bathroom.; Part 3: John journeyed to the office.. The last recorded location for John is the bathroom.,bathroom,4,54
+11,Tracking Mary: Mary to bedroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,5,54
+11,Tracking John: John to hallway → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,55
+11,Tracking Mary: Mary to bathroom → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,2,55
+11,Tracking Mary: Mary to office → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,3,55
+11,Tracking Mary: Mary to bedroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,4,55
+11,Current context (Sandra to garden → Sandra to office) does not mention Mary. From earlier in this story: Part 3: Mary went back to the office.; Part 4: Mary went back to the bedroom.. The last recorded location for Mary is the kitchen.,kitchen,5,55
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,1,56
+11,Tracking John: John to office → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,2,56
+11,Current context (Mary to office → Mary to garden) does not mention John. From earlier in this story: Part 1: John moved to the hallway.; Part 2: John went to the office.. The last recorded location for John is the garden.,garden,3,56
+11,Current context (Sandra to bathroom → Sandra to kitchen) does not mention Mary. From earlier in this story: Part 3: Mary travelled to the office.. The last recorded location for Mary is the garden.,garden,4,56
+11,Current context (John to hallway → John to bedroom) does not mention Sandra. From earlier in this story: Part 4: Sandra travelled to the bathroom.. The last recorded location for Sandra is the kitchen.,kitchen,5,56
+11,Tracking Sandra: Sandra to bathroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,1,57
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,2,57
+11,Tracking Sandra: Sandra to kitchen → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,3,57
+11,Tracking John: John to bathroom → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,4,57
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,5,57
+11,Tracking Sandra: Sandra to office → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,1,58
+11,Tracking John: John to kitchen → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,2,58
+11,Tracking Sandra: Sandra to bathroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,3,58
+11,Tracking John: John to bathroom → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,4,58
+11,Current context (Mary to kitchen → Mary to garden) does not mention John. From earlier in this story: Part 2: John moved to the kitchen.; Part 4: John went to the bathroom.. The last recorded location for John is the bedroom.,bedroom,5,58
+11,Tracking Daniel: Daniel to bedroom → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,1,59
+11,Tracking Mary: Mary to bathroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,2,59
+11,Tracking Daniel: Daniel to garden → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,3,59
+11,Tracking Daniel: Daniel to garden → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,4,59
+11,Tracking Daniel: Daniel to bathroom → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,5,59
+11,Tracking Sandra: Sandra to office → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,60
+11,Tracking Sandra: Sandra to garden → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,2,60
+11,Current context (John to kitchen → John to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the office.; Part 2: Sandra went to the garden.. The last recorded location for Sandra is the kitchen.,kitchen,3,60
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,4,60
+11,Tracking Daniel: Daniel to hallway → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,5,60
+11,Tracking Sandra: Sandra to office → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,61
+11,Current context (Mary to garden → Mary to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the office.. The last recorded location for Sandra is the bathroom.,bathroom,2,61
+11,Tracking Daniel: Daniel to bedroom → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,3,61
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,4,61
+11,Tracking Mary: Mary to office → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,5,61
+11,Tracking John: John to office → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,1,62
+11,Tracking Sandra: Sandra to bedroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,2,62
+11,Tracking Sandra: Sandra to kitchen → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,3,62
+11,Current context (Mary to hallway → Mary to garden) does not mention Sandra. From earlier in this story: Part 2: Sandra travelled to the bedroom.; Part 3: Sandra travelled to the kitchen.. The last recorded location for Sandra is the garden.,garden,4,62
+11,Tracking Mary: Mary to bathroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,5,62
+11,Tracking Sandra: Sandra to kitchen → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,1,63
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,2,63
+11,Tracking Sandra: Sandra to kitchen → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,3,63
+11,Current context (John to kitchen → John to hallway) does not mention Sandra. From earlier in this story: Part 1: Sandra journeyed to the kitchen.; Part 3: Sandra journeyed to the kitchen.. The last recorded location for Sandra is the garden.,garden,4,63
+11,Tracking Sandra: Sandra to bathroom → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,5,63
+11,Tracking Daniel: Daniel to bathroom → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,1,64
+11,Tracking Daniel: Daniel to bedroom → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,2,64
+11,Tracking John: John to kitchen → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,3,64
+11,Current context (Mary to garden → Mary to hallway) does not mention John. From earlier in this story: Part 3: John journeyed to the kitchen.. The last recorded location for John is the garden.,garden,4,64
+11,Tracking John: John to kitchen → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,5,64
+11,Tracking Sandra: Sandra to kitchen → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,1,65
+11,Tracking Sandra: Sandra to kitchen → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,2,65
+11,Tracking John: John to hallway → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,3,65
+11,Current context (Daniel to bedroom → Daniel to garden) does not mention John. From earlier in this story: Part 3: John journeyed to the hallway.. The last recorded location for John is the office.,office,4,65
+11,Tracking Daniel: Daniel to bedroom → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,5,65
+11,Tracking Daniel: Daniel to kitchen → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,1,66
+11,Tracking Daniel: Daniel to bedroom → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,2,66
+11,Current context (Mary to kitchen → Mary to bathroom) does not mention Daniel. From earlier in this story: Part 1: Daniel went back to the kitchen.; Part 2: Daniel moved to the bedroom.. The last recorded location for Daniel is the hallway.,hallway,3,66
+11,Current context (Daniel to garden → Daniel to bathroom) does not mention Mary. From earlier in this story: Part 3: Mary travelled to the kitchen.. The last recorded location for Mary is the bathroom.,bathroom,4,66
+11,Tracking Sandra: Sandra to bedroom → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,5,66
+11,Tracking Daniel: Daniel to hallway → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,1,67
+11,Tracking Daniel: Daniel to hallway → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,2,67
+11,Tracking Sandra: Sandra to office → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,3,67
+11,Tracking Sandra: Sandra to garden → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,4,67
+11,Tracking Mary: Mary to garden → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,5,67
+11,Tracking Daniel: Daniel to kitchen → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,1,68
+11,Current context (Mary to garden → Mary to hallway) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the kitchen.. The last recorded location for Daniel is the hallway.,hallway,2,68
+11,Current context (Mary to bedroom → Mary to garden) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the kitchen.. The last recorded location for Daniel is the hallway.,hallway,3,68
+11,Current context (Sandra to hallway → Sandra to kitchen) does not mention Mary. From earlier in this story: Part 2: Mary journeyed to the garden.; Part 3: Mary journeyed to the bedroom.. The last recorded location for Mary is the garden.,garden,4,68
+11,Tracking Mary: Mary to office → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,5,68
+11,Tracking Daniel: Daniel to office → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,69
+11,Tracking John: John to bathroom → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,2,69
+11,Tracking Sandra: Sandra to bathroom → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,3,69
+11,Tracking Mary: Mary to bathroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,4,69
+11,Tracking Daniel: Daniel to office → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,5,69
+11,Tracking Sandra: Sandra to hallway → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,1,70
+11,Current context (Daniel to bathroom → Daniel to kitchen) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the hallway.. The last recorded location for Sandra is the kitchen.,kitchen,2,70
+11,Current context (John to hallway → John to garden) does not mention Daniel. From earlier in this story: Part 2: Daniel went back to the bathroom.. The last recorded location for Daniel is the kitchen.,kitchen,3,70
+11,Tracking Sandra: Sandra to hallway → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,4,70
+11,Tracking Sandra: Sandra to hallway → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,5,70
+11,Tracking Sandra: Sandra to office → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,71
+11,Current context (Mary to bathroom → Mary to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra went to the office.. The last recorded location for Sandra is the bathroom.,bathroom,2,71
+11,Current context (John to hallway → John to garden) does not mention Mary. From earlier in this story: Part 2: Mary went to the bathroom.. The last recorded location for Mary is the bedroom.,bedroom,3,71
+11,Tracking Mary: Mary to office → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,4,71
+11,Current context (Daniel to hallway → Daniel to kitchen) does not mention Mary. From earlier in this story: Part 2: Mary went to the bathroom.; Part 4: Mary journeyed to the office.. The last recorded location for Mary is the hallway.,hallway,5,71
+11,Tracking Mary: Mary to office → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,1,72
+11,Tracking Mary: Mary to hallway → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,2,72
+11,Current context (John to office → John to garden) does not mention Mary. From earlier in this story: Part 1: Mary went back to the office.; Part 2: Mary went back to the hallway.. The last recorded location for Mary is the garden.,garden,3,72
+11,Tracking John: John to kitchen → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,4,72
+11,Current context (Sandra to hallway → Sandra to bedroom) does not mention John. From earlier in this story: Part 3: John went back to the office.; Part 4: John journeyed to the kitchen.. The last recorded location for John is the office.,office,5,72
+11,Tracking Sandra: Sandra to bathroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,1,73
+11,Tracking Sandra: Sandra to kitchen → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,2,73
+11,Current context (Mary to bathroom → Mary to garden) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the bathroom.; Part 2: Sandra travelled to the kitchen.. The last recorded location for Sandra is the garden.,garden,3,73
+11,Current context (Daniel to kitchen → Daniel to hallway) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the bathroom.; Part 2: Sandra travelled to the kitchen.. The last recorded location for Sandra is the garden.,garden,4,73
+11,Tracking Mary: Mary to bedroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,5,73
+11,Tracking Mary: Mary to kitchen → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,74
+11,Current context (Daniel to bathroom → Daniel to garden) does not mention Mary. From earlier in this story: Part 1: Mary went back to the kitchen.. The last recorded location for Mary is the office.,office,2,74
+11,Tracking Mary: Mary to garden → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,3,74
+11,Tracking Daniel: Daniel to kitchen → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,4,74
+11,Tracking John: John to office → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,5,74
+11,Tracking Daniel: Daniel to bathroom → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,1,75
+11,Current context (Mary to bedroom → Mary to kitchen) does not mention Daniel. From earlier in this story: Part 1: Daniel went to the bathroom.. The last recorded location for Daniel is the kitchen.,kitchen,2,75
+11,Current context (Mary to garden → Mary to office) does not mention Daniel. From earlier in this story: Part 1: Daniel went to the bathroom.. The last recorded location for Daniel is the kitchen.,kitchen,3,75
+11,Tracking John: John to office → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,4,75
+11,Current context (Mary to bedroom → Mary to bathroom) does not mention John. From earlier in this story: Part 4: John moved to the office.. The last recorded location for John is the kitchen.,kitchen,5,75
+11,Tracking Mary: Mary to garden → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,1,76
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,2,76
+11,Current context (Sandra to hallway → Sandra to office) does not mention Mary. From earlier in this story: Part 1: Mary travelled to the garden.; Part 2: Mary travelled to the kitchen.. The last recorded location for Mary is the garden.,garden,3,76
+11,Tracking Sandra: Sandra to kitchen → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,4,76
+11,Tracking Sandra: Sandra to hallway → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,5,76
+11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,1,77
+11,Tracking Daniel: Daniel to hallway → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,2,77
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,3,77
+11,Current context (Sandra to garden → Sandra to bedroom) does not mention Daniel. From earlier in this story: Part 2: Daniel travelled to the hallway.; Part 3: Daniel went to the office.. The last recorded location for Daniel is the hallway.,hallway,4,77
+11,Tracking Daniel: Daniel to bedroom → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,5,77
+11,Tracking Mary: Mary to kitchen → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,78
+11,Tracking Sandra: Sandra to bathroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,78
+11,Current context (Sandra to bathroom → Sandra to garden) does not mention Mary. From earlier in this story: Part 1: Mary went back to the kitchen.. The last recorded location for Mary is the office.,office,3,78
+11,Tracking Mary: Mary to hallway → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,4,78
+11,Current context (Mary to bathroom → Mary to hallway) does not mention Sandra. From earlier in this story: Part 2: Sandra journeyed to the bathroom.; Part 3: Sandra moved to the bathroom.. The last recorded location for Sandra is the garden.,garden,5,78
+11,Tracking Mary: Mary to kitchen → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,1,79
+11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,79
+11,Current context (Sandra to office → Sandra to bedroom) does not mention Mary. From earlier in this story: Part 1: Mary went back to the kitchen.. The last recorded location for Mary is the bathroom.,bathroom,3,79
+11,Current context (John to office → John to hallway) does not mention Sandra. From earlier in this story: Part 2: Sandra went back to the bedroom.; Part 3: Sandra moved to the office.. The last recorded location for Sandra is the bedroom.,bedroom,4,79
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,5,79
+11,Tracking Sandra: Sandra to office → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,1,80
+11,Current context (Daniel to office → Daniel to garden) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the office.. The last recorded location for Sandra is the garden.,garden,2,80
+11,Tracking John: John to hallway → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,3,80
+11,Current context (Mary to office → Mary to garden) does not mention John. From earlier in this story: Part 3: John moved to the hallway.. The last recorded location for John is the bathroom.,bathroom,4,80
+11,Tracking Mary: Mary to bathroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,5,80
+11,Tracking Sandra: Sandra to bathroom → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,1,81
+11,Tracking Sandra: Sandra to office → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,2,81
+11,Tracking Sandra: Sandra to kitchen → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,3,81
+11,Current context (Mary to kitchen → Mary to hallway) does not mention Sandra. From earlier in this story: Part 2: Sandra travelled to the office.; Part 3: Sandra travelled to the kitchen.. The last recorded location for Sandra is the bathroom.,bathroom,4,81
+11,Tracking Mary: Mary to kitchen → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,5,81
+11,Tracking John: John to bathroom → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,1,82
+11,Tracking Mary: Mary to hallway → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,2,82
+11,Tracking Mary: Mary to kitchen → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,3,82
+11,Tracking John: John to garden → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,4,82
+11,Current context (Daniel to bathroom → Daniel to bedroom) does not mention John. From earlier in this story: Part 1: John went back to the bathroom.; Part 4: John went back to the garden.. The last recorded location for John is the kitchen.,kitchen,5,82
+11,Tracking Mary: Mary to office → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,1,83
+11,Current context (John to hallway → John to bedroom) does not mention Mary. From earlier in this story: Part 1: Mary went to the office.. The last recorded location for Mary is the bedroom.,bedroom,2,83
+11,Tracking John: John to garden → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,3,83
+11,Tracking Sandra: Sandra to bathroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,4,83
+11,Current context (Mary to office → Mary to kitchen) does not mention Sandra. From earlier in this story: Part 4: Sandra journeyed to the bathroom.. The last recorded location for Sandra is the hallway.,hallway,5,83
+11,Tracking Sandra: Sandra to hallway → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,1,84
+11,Current context (Mary to bathroom → Mary to garden) does not mention Sandra. From earlier in this story: Part 1: Sandra moved to the hallway.. The last recorded location for Sandra is the bedroom.,bedroom,2,84
+11,Tracking Mary: Mary to hallway → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,3,84
+11,Current context (John to office → John to bedroom) does not mention Mary. From earlier in this story: Part 2: Mary journeyed to the bathroom.; Part 3: Mary travelled to the hallway.. The last recorded location for Mary is the kitchen.,kitchen,4,84
+11,Current context (Sandra to garden → Sandra to hallway) does not mention Mary. From earlier in this story: Part 2: Mary journeyed to the bathroom.; Part 3: Mary travelled to the hallway.. The last recorded location for Mary is the kitchen.,kitchen,5,84
+11,Tracking Mary: Mary to office → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,85
+11,Tracking John: John to kitchen → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,2,85
+11,Current context (Daniel to hallway → Daniel to kitchen) does not mention John. From earlier in this story: Part 2: John journeyed to the kitchen.. The last recorded location for John is the bedroom.,bedroom,3,85
+11,Tracking Sandra: Sandra to office → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,4,85
+11,Current context (Mary to office → Mary to bathroom) does not mention Sandra. From earlier in this story: Part 4: Sandra went back to the office.. The last recorded location for Sandra is the garden.,garden,5,85
+11,Tracking John: John to bathroom → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,1,86
+11,Current context (Mary to hallway → Mary to bathroom) does not mention John. From earlier in this story: Part 1: John went back to the bathroom.. The last recorded location for John is the office.,office,2,86
+11,Tracking Daniel: Daniel to bathroom → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,3,86
+11,Current context (Sandra to garden → Sandra to kitchen) does not mention Daniel. From earlier in this story: Part 3: Daniel went back to the bathroom.. The last recorded location for Daniel is the kitchen.,kitchen,4,86
+11,Current context (Mary to kitchen → Mary to hallway) does not mention Sandra. From earlier in this story: Part 4: Sandra went back to the garden.. The last recorded location for Sandra is the kitchen.,kitchen,5,86
+11,Tracking Mary: Mary to bedroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,1,87
+11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,87
+11,Tracking Sandra: Sandra to office → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,87
+11,Current context (Daniel to bathroom → Daniel to bedroom) does not mention Sandra. From earlier in this story: Part 2: Sandra journeyed to the bedroom.; Part 3: Sandra went back to the office.. The last recorded location for Sandra is the hallway.,hallway,4,87
+11,Tracking Daniel: Daniel to kitchen → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,5,87
+11,Tracking Daniel: Daniel to bedroom → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,88
+11,Tracking Daniel: Daniel to bedroom → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,2,88
+11,Tracking Daniel: Daniel to garden → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,3,88
+11,Tracking John: John to garden → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,4,88
+11,Tracking John: John to office → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,5,88
+11,Tracking Daniel: Daniel to bathroom → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,89
+11,Tracking Daniel: Daniel to kitchen → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,2,89
+11,Tracking Daniel: Daniel to bathroom → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,3,89
+11,Current context (John to kitchen → John to hallway) does not mention Daniel. From earlier in this story: Part 2: Daniel journeyed to the kitchen.; Part 3: Daniel went to the bathroom.. The last recorded location for Daniel is the office.,office,4,89
+11,Current context (Daniel to garden → Daniel to bathroom) does not mention John. From earlier in this story: Part 4: John travelled to the kitchen.. The last recorded location for John is the hallway.,hallway,5,89
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,90
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,90
+11,Current context (John to bedroom → John to garden) does not mention Sandra. From earlier in this story: Part 2: Sandra went back to the kitchen.. The last recorded location for Sandra is the hallway.,hallway,3,90
+11,Current context (Mary to office → Mary to garden) does not mention John. From earlier in this story: Part 3: John travelled to the bedroom.. The last recorded location for John is the garden.,garden,4,90
+11,Current context (Sandra to kitchen → Sandra to bathroom) does not mention Mary. From earlier in this story: Part 4: Mary went to the office.. The last recorded location for Mary is the garden.,garden,5,90
+11,Tracking John: John to kitchen → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,1,91
+11,Tracking Mary: Mary to bedroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,2,91
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,3,91
+11,Tracking Mary: Mary to kitchen → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,4,91
+11,Current context (Sandra to hallway → Sandra to bathroom) does not mention Mary. From earlier in this story: Part 2: Mary moved to the bedroom.; Part 4: Mary travelled to the kitchen.. The last recorded location for Mary is the office.,office,5,91
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,92
+11,Tracking John: John to kitchen → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,2,92
+11,Current context (Sandra to hallway → Sandra to garden) does not mention John. From earlier in this story: Part 2: John went to the kitchen.. The last recorded location for John is the garden.,garden,3,92
+11,Tracking John: John to bathroom → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,4,92
+11,Current context (Mary to office → Mary to bedroom) does not mention Sandra. From earlier in this story: Part 3: Sandra travelled to the hallway.. The last recorded location for Sandra is the garden.,garden,5,92
+11,Tracking Sandra: Sandra to bathroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,1,93
+11,Tracking John: John to office → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,2,93
+11,Tracking John: John to bathroom → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,3,93
+11,Current context (Daniel to hallway → Daniel to bathroom) does not mention John. From earlier in this story: Part 2: John went back to the office.; Part 3: John went to the bathroom.. The last recorded location for John is the bedroom.,bedroom,4,93
+11,Tracking Daniel: Daniel to office → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,5,93
+11,Tracking Mary: Mary to hallway → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,94
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,2,94
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,3,94
+11,Current context (Mary to garden → Mary to kitchen) does not mention John. From earlier in this story: Part 3: John went to the hallway.. The last recorded location for John is the kitchen.,kitchen,4,94
+11,Tracking Mary: Mary to bedroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,5,94
+11,Tracking John: John to garden → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,95
+11,Tracking Mary: Mary to hallway → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,2,95
+11,Current context (John to bedroom → John to bathroom) does not mention Mary. From earlier in this story: Part 2: Mary journeyed to the hallway.. The last recorded location for Mary is the bathroom.,bathroom,3,95
+11,Tracking Daniel: Daniel to garden → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,4,95
+11,Tracking John: John to garden → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,5,95
+11,Tracking Mary: Mary to kitchen → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,1,96
+11,Tracking John: John to hallway → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,2,96
+11,Current context (Daniel to hallway → Daniel to office) does not mention Mary. From earlier in this story: Part 1: Mary went back to the kitchen.. The last recorded location for Mary is the bathroom.,bathroom,3,96
+11,Tracking Daniel: Daniel to bedroom → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,4,96
+11,Tracking Daniel: Daniel to hallway → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,5,96
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,1,97
+11,Tracking Sandra: Sandra to kitchen → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,2,97
+11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,97
+11,Current context (John to kitchen → John to bathroom) does not mention Sandra. From earlier in this story: Part 2: Sandra went back to the kitchen.; Part 3: Sandra went to the bedroom.. The last recorded location for Sandra is the hallway.,hallway,4,97
+11,Current context (John to kitchen → John to bedroom) does not mention Sandra. From earlier in this story: Part 2: Sandra went back to the kitchen.; Part 3: Sandra went to the bedroom.. The last recorded location for Sandra is the hallway.,hallway,5,97
+11,Tracking Daniel: Daniel to bedroom → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,1,98
+11,Current context (Mary to hallway → Mary to bathroom) does not mention Daniel. From earlier in this story: Part 1: Daniel journeyed to the bedroom.. The last recorded location for Daniel is the hallway.,hallway,2,98
+11,Tracking John: John to garden → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,3,98
+11,Current context (Sandra to bathroom → Sandra to kitchen) does not mention Mary. From earlier in this story: Part 2: Mary journeyed to the hallway.. The last recorded location for Mary is the bathroom.,bathroom,4,98
+11,Current context (Mary to bedroom → Mary to bathroom) does not mention Sandra. From earlier in this story: Part 4: Sandra went to the bathroom.. The last recorded location for Sandra is the kitchen.,kitchen,5,98
+11,Tracking Mary: Mary to office → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,1,99
+11,Tracking Daniel: Daniel to office → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,2,99
+11,Tracking Sandra: Sandra to bathroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,99
+11,Tracking Mary: Mary to bathroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,4,99
+11,Tracking Mary: Mary to hallway → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,5,99
+11,Tracking Daniel: Daniel to bathroom → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,100
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,2,100
+11,Tracking John: John to bedroom → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,3,100
+11,Tracking Sandra: Sandra to hallway → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,4,100
+11,Tracking Mary: Mary to bathroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,5,100
+11,Tracking Daniel: Daniel to bedroom → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,101
+11,Tracking John: John to office → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,2,101
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,3,101
+11,Tracking Sandra: Sandra to bathroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,4,101
+11,Current context (John to office → John to bathroom) does not mention Sandra. From earlier in this story: Part 4: Sandra went to the bathroom.. The last recorded location for Sandra is the garden.,garden,5,101
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,102
+11,Current context (Mary to hallway → Mary to office) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the kitchen.. The last recorded location for Daniel is the bedroom.,bedroom,2,102
+11,Tracking Mary: Mary to kitchen → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,3,102
+11,Current context (Daniel to garden → Daniel to bedroom) does not mention Mary. From earlier in this story: Part 2: Mary went back to the hallway.; Part 3: Mary journeyed to the kitchen.. The last recorded location for Mary is the bedroom.,bedroom,4,102
+11,Tracking Sandra: Sandra to kitchen → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,5,102
+11,Tracking Sandra: Sandra to bedroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,1,103
+11,Current context (John to office → John to garden) does not mention Sandra. From earlier in this story: Part 1: Sandra journeyed to the bedroom.. The last recorded location for Sandra is the office.,office,2,103
+11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,103
+11,Tracking John: John to hallway → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,4,103
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,5,103
+11,Tracking John: John to bathroom → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,1,104
+11,Tracking Sandra: Sandra to office → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,2,104
+11,Tracking Mary: Mary to hallway → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,3,104
+11,Tracking Daniel: Daniel to hallway → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,4,104
+11,Current context (John to bedroom → John to bathroom) does not mention Mary. From earlier in this story: Part 3: Mary went to the hallway.. The last recorded location for Mary is the garden.,garden,5,104
+11,Tracking Daniel: Daniel to hallway → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,105
+11,Current context (Sandra to bathroom → Sandra to bedroom) does not mention Daniel. From earlier in this story: Part 1: Daniel journeyed to the hallway.. The last recorded location for Daniel is the bedroom.,bedroom,2,105
+11,Tracking Daniel: Daniel to office → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,3,105
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,4,105
+11,Current context (Daniel to office → Daniel to kitchen) does not mention John. From earlier in this story: Part 4: John travelled to the hallway.. The last recorded location for John is the kitchen.,kitchen,5,105
+11,Tracking John: John to office → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,106
+11,Current context (Mary to bedroom → Mary to kitchen) does not mention John. From earlier in this story: Part 1: John journeyed to the office.. The last recorded location for John is the bathroom.,bathroom,2,106
+11,Current context (John to bedroom → John to garden) does not mention Mary. From earlier in this story: Part 2: Mary journeyed to the bedroom.. The last recorded location for Mary is the kitchen.,kitchen,3,106
+11,Current context (John to bathroom → John to office) does not mention Mary. From earlier in this story: Part 2: Mary journeyed to the bedroom.. The last recorded location for Mary is the kitchen.,kitchen,4,106
+11,Current context (Sandra to office → Sandra to kitchen) does not mention John. From earlier in this story: Part 3: John travelled to the bedroom.; Part 4: John journeyed to the bathroom.. The last recorded location for John is the office.,office,5,106
+11,Tracking John: John to garden → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,1,107
+11,Tracking Sandra: Sandra to hallway → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,2,107
+11,Tracking Daniel: Daniel to garden → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,3,107
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,4,107
+11,Current context (John to kitchen → John to office) does not mention Sandra. From earlier in this story: Part 2: Sandra went to the hallway.; Part 4: Sandra moved to the garden.. The last recorded location for Sandra is the bedroom.,bedroom,5,107
+11,Tracking John: John to bathroom → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,1,108
+11,Tracking Mary: Mary to garden → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,2,108
+11,Tracking Sandra: Sandra to bathroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,3,108
+11,Tracking John: John to kitchen → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,4,108
+11,Tracking Sandra: Sandra to garden → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,5,108
+11,Tracking John: John to office → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,109
+11,Tracking John: John to bedroom → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,2,109
+11,Current context (Sandra to hallway → Sandra to kitchen) does not mention John. From earlier in this story: Part 1: John moved to the office.; Part 2: John journeyed to the bedroom.. The last recorded location for John is the hallway.,hallway,3,109
+11,Tracking Sandra: Sandra to bathroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,4,109
+11,Current context (Mary to kitchen → Mary to bathroom) does not mention Sandra. From earlier in this story: Part 3: Sandra journeyed to the hallway.; Part 4: Sandra travelled to the bathroom.. The last recorded location for Sandra is the office.,office,5,109
+11,Tracking John: John to kitchen → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,1,110
+11,Tracking Mary: Mary to office → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,2,110
+11,Current context (Sandra to bedroom → Sandra to bathroom) does not mention John. From earlier in this story: Part 1: John journeyed to the kitchen.. The last recorded location for John is the garden.,garden,3,110
+11,Tracking Mary: Mary to office → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,4,110
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,5,110
+11,Tracking Sandra: Sandra to hallway → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,111
+11,Current context (John to kitchen → John to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra travelled to the hallway.. The last recorded location for Sandra is the bathroom.,bathroom,2,111
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,3,111
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,4,111
+11,Tracking John: John to office → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,5,111
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,1,112
+11,Tracking Sandra: Sandra to office → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,2,112
+11,Current context (Sandra to bathroom → Sandra to garden) does not mention Mary. From earlier in this story: Part 1: Mary moved to the kitchen.. The last recorded location for Mary is the garden.,garden,3,112
+11,Tracking Mary: Mary to hallway → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,4,112
+11,Tracking Daniel: Daniel to bathroom → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,5,112
+11,Tracking John: John to office → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,1,113
+11,Current context (Mary to bathroom → Mary to hallway) does not mention John. From earlier in this story: Part 1: John went back to the office.. The last recorded location for John is the hallway.,hallway,2,113
+11,Current context (Daniel to bedroom → Daniel to hallway) does not mention John. From earlier in this story: Part 1: John went back to the office.. The last recorded location for John is the hallway.,hallway,3,113
+11,Tracking Daniel: Daniel to office → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,4,113
+11,Tracking Mary: Mary to bedroom → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,5,113
+11,Tracking Sandra: Sandra to office → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,114
+11,Current context (John to bedroom → John to garden) does not mention Sandra. From earlier in this story: Part 1: Sandra journeyed to the office.. The last recorded location for Sandra is the bathroom.,bathroom,2,114
+11,Tracking Mary: Mary to bathroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,3,114
+11,Current context (Sandra to hallway → Sandra to office) does not mention John. From earlier in this story: Part 2: John moved to the bedroom.. The last recorded location for John is the garden.,garden,4,114
+11,Tracking John: John to kitchen → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,5,114
+11,Tracking Sandra: Sandra to bedroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,1,115
+11,Tracking John: John to bathroom → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,2,115
+11,Current context (Sandra to office → Sandra to hallway) does not mention John. From earlier in this story: Part 2: John went back to the bathroom.. The last recorded location for John is the hallway.,hallway,3,115
+11,Current context (Mary to bathroom → Mary to garden) does not mention John. From earlier in this story: Part 2: John went back to the bathroom.. The last recorded location for John is the hallway.,hallway,4,115
+11,Tracking Mary: Mary to bathroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,5,115
+11,Tracking Sandra: Sandra to garden → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,1,116
+11,Tracking Mary: Mary to garden → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,2,116
+11,Tracking Sandra: Sandra to bathroom → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,3,116
+11,Current context (Daniel to kitchen → Daniel to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra went back to the garden.; Part 3: Sandra travelled to the bathroom.. The last recorded location for Sandra is the garden.,garden,4,116
+11,Current context (Sandra to bedroom → Sandra to bathroom) does not mention Daniel. From earlier in this story: Part 4: Daniel travelled to the kitchen.. The last recorded location for Daniel is the bedroom.,bedroom,5,116
+11,Tracking Daniel: Daniel to kitchen → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,1,117
+11,Current context (Mary to garden → Mary to kitchen) does not mention Daniel. From earlier in this story: Part 1: Daniel went to the kitchen.. The last recorded location for Daniel is the office.,office,2,117
+11,Tracking Sandra: Sandra to hallway → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,3,117
+11,Tracking Sandra: Sandra to garden → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,4,117
+11,Tracking Sandra: Sandra to kitchen → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,5,117
+11,Tracking Mary: Mary to bedroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,1,118
+11,Tracking Daniel: Daniel to bathroom → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,2,118
+11,Current context (Mary to office → Mary to kitchen) does not mention Daniel. From earlier in this story: Part 2: Daniel moved to the bathroom.. The last recorded location for Daniel is the kitchen.,kitchen,3,118
+11,Current context (Daniel to bedroom → Daniel to kitchen) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the bedroom.; Part 3: Mary went back to the office.. The last recorded location for Mary is the kitchen.,kitchen,4,118
+11,Tracking Mary: Mary to bathroom → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,5,118
+11,Tracking Daniel: Daniel to office → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,119
+11,Tracking Daniel: Daniel to office → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,2,119
+11,Tracking Mary: Mary to bathroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,3,119
+11,Current context (Daniel to kitchen → Daniel to bathroom) does not mention Mary. From earlier in this story: Part 3: Mary travelled to the bathroom.. The last recorded location for Mary is the garden.,garden,4,119
+11,Tracking Mary: Mary to bedroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,5,119
+11,Tracking John: John to bedroom → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,120
+11,Tracking Mary: Mary to garden → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,2,120
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,3,120
+11,Current context (Sandra to office → Sandra to kitchen) does not mention Mary. From earlier in this story: Part 2: Mary moved to the garden.. The last recorded location for Mary is the bedroom.,bedroom,4,120
+11,Current context (Daniel to bedroom → Daniel to bathroom) does not mention John. From earlier in this story: Part 1: John went to the bedroom.; Part 3: John went to the hallway.. The last recorded location for John is the kitchen.,kitchen,5,120
+11,Tracking Mary: Mary to garden → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,1,121
+11,Tracking John: John to hallway → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,2,121
+11,Current context (Daniel to bedroom → Daniel to garden) does not mention John. From earlier in this story: Part 2: John journeyed to the hallway.. The last recorded location for John is the garden.,garden,3,121
+11,Current context (John to bathroom → John to kitchen) does not mention Daniel. From earlier in this story: Part 3: Daniel went back to the bedroom.. The last recorded location for Daniel is the garden.,garden,4,121
+11,Tracking Sandra: Sandra to hallway → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,5,121
+11,Tracking Mary: Mary to bathroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,122
+11,Tracking John: John to garden → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,2,122
+11,Current context (Sandra to hallway → Sandra to garden) does not mention Mary. From earlier in this story: Part 1: Mary went to the bathroom.. The last recorded location for Mary is the kitchen.,kitchen,3,122
+11,Tracking Sandra: Sandra to kitchen → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,4,122
+11,Tracking Mary: Mary to bathroom → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,5,122
+11,Tracking John: John to garden → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,123
+11,Tracking John: John to kitchen → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,2,123
+11,Tracking John: John to hallway → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,3,123
+11,Current context (Sandra to bathroom → Sandra to bedroom) does not mention John. From earlier in this story: Part 2: John went to the kitchen.; Part 3: John went to the hallway.. The last recorded location for John is the kitchen.,kitchen,4,123
+11,Current context (Daniel to garden → Daniel to office) does not mention Sandra. From earlier in this story: Part 4: Sandra moved to the bathroom.. The last recorded location for Sandra is the bedroom.,bedroom,5,123
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,124
+11,Current context (Mary to kitchen → Mary to office) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the kitchen.. The last recorded location for Daniel is the bedroom.,bedroom,2,124
+11,Current context (Mary to hallway → Mary to office) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the kitchen.. The last recorded location for Daniel is the bedroom.,bedroom,3,124
+11,Current context (Daniel to office → Daniel to garden) does not mention Mary. From earlier in this story: Part 2: Mary travelled to the kitchen.; Part 3: Mary travelled to the hallway.. The last recorded location for Mary is the office.,office,4,124
+11,Current context (John to garden → John to bathroom) does not mention Daniel. From earlier in this story: Part 1: Daniel moved to the kitchen.; Part 4: Daniel went back to the office.. The last recorded location for Daniel is the garden.,garden,5,124
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,1,125
+11,Tracking Mary: Mary to kitchen → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,2,125
+11,Current context (Daniel to kitchen → Daniel to bedroom) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the kitchen.; Part 2: Mary went back to the kitchen.. The last recorded location for Mary is the office.,office,3,125
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,4,125
+11,Tracking John: John to garden → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,5,125
+11,Tracking Daniel: Daniel to bedroom → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,1,126
+11,Tracking Sandra: Sandra to office → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,2,126
+11,Tracking Sandra: Sandra to office → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,3,126
+11,Current context (John to bathroom → John to kitchen) does not mention Sandra. From earlier in this story: Part 2: Sandra went back to the office.; Part 3: Sandra journeyed to the office.. The last recorded location for Sandra is the bedroom.,bedroom,4,126
+11,Tracking Mary: Mary to bathroom → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,5,126
+11,Tracking Sandra: Sandra to garden → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,1,127
+11,Tracking Sandra: Sandra to garden → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,2,127
+11,Current context (John to garden → John to bedroom) does not mention Sandra. From earlier in this story: Part 1: Sandra travelled to the garden.; Part 2: Sandra went back to the garden.. The last recorded location for Sandra is the kitchen.,kitchen,3,127
+11,Current context (Mary to garden → Mary to hallway) does not mention John. From earlier in this story: Part 3: John went to the garden.. The last recorded location for John is the bedroom.,bedroom,4,127
+11,Current context (Sandra to hallway → Sandra to bathroom) does not mention Mary. From earlier in this story: Part 4: Mary moved to the garden.. The last recorded location for Mary is the hallway.,hallway,5,127
+11,Tracking Sandra: Sandra to hallway → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,1,128
+11,Tracking Daniel: Daniel to bathroom → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,2,128
+11,Tracking Daniel: Daniel to garden → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,3,128
+11,Current context (Sandra to bathroom → Sandra to hallway) does not mention Daniel. From earlier in this story: Part 2: Daniel journeyed to the bathroom.; Part 3: Daniel went back to the garden.. The last recorded location for Daniel is the hallway.,hallway,4,128
+11,Current context (John to garden → John to bathroom) does not mention Daniel. From earlier in this story: Part 2: Daniel journeyed to the bathroom.; Part 3: Daniel went back to the garden.. The last recorded location for Daniel is the hallway.,hallway,5,128
+11,Tracking Mary: Mary to office → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,1,129
+11,Tracking Daniel: Daniel to kitchen → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,2,129
+11,Tracking Daniel: Daniel to bathroom → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,3,129
+11,Current context (Sandra to bathroom → Sandra to office) does not mention Daniel. From earlier in this story: Part 2: Daniel travelled to the kitchen.; Part 3: Daniel moved to the bathroom.. The last recorded location for Daniel is the office.,office,4,129
+11,Tracking John: John to hallway → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,5,129
+11,Tracking Daniel: Daniel to bedroom → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,1,130
+11,Current context (John to bedroom → John to hallway) does not mention Daniel. From earlier in this story: Part 1: Daniel went to the bedroom.. The last recorded location for Daniel is the hallway.,hallway,2,130
+11,Current context (Mary to bedroom → Mary to kitchen) does not mention Daniel. From earlier in this story: Part 1: Daniel went to the bedroom.. The last recorded location for Daniel is the hallway.,hallway,3,130
+11,Tracking Mary: Mary to bedroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,4,130
+11,Tracking Daniel: Daniel to bedroom → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,5,130
+11,Tracking Mary: Mary to bathroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,1,131
+11,Current context (Daniel to hallway → Daniel to bathroom) does not mention Mary. From earlier in this story: Part 1: Mary moved to the bathroom.. The last recorded location for Mary is the hallway.,hallway,2,131
+11,Tracking John: John to kitchen → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,3,131
+11,Tracking John: John to bathroom → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,4,131
+11,Tracking John: John to bedroom → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,5,131
+11,Tracking Daniel: Daniel to garden → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,132
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,2,132
+11,Tracking John: John to kitchen → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,3,132
+11,Current context (Sandra to bathroom → Sandra to office) does not mention Daniel. From earlier in this story: Part 1: Daniel went back to the garden.; Part 2: Daniel travelled to the garden.. The last recorded location for Daniel is the bathroom.,bathroom,4,132
+11,Tracking Sandra: Sandra to bedroom → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,5,132
+11,Tracking Mary: Mary to garden → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,1,133
+11,Tracking Sandra: Sandra to bedroom → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,133
+11,Current context (Sandra to kitchen → Sandra to hallway) does not mention Mary. From earlier in this story: Part 1: Mary went to the garden.. The last recorded location for Mary is the hallway.,hallway,3,133
+11,Tracking Sandra: Sandra to bedroom → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,4,133
+11,Tracking Mary: Mary to bedroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,5,133
+11,Tracking Daniel: Daniel to office → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,1,134
+11,Tracking Daniel: Daniel to office → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,2,134
+11,Tracking John: John to bathroom → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,3,134
+11,Tracking Daniel: Daniel to garden → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,4,134
+11,Tracking John: John to hallway → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,5,134
+11,Tracking Mary: Mary to garden → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,135
+11,Tracking Mary: Mary to bathroom → Mary to hallway. The last sentence involving Mary says they moved to the hallway. Therefore Mary is in the hallway.,hallway,2,135
+11,Current context (Sandra to bedroom → Sandra to office) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the garden.; Part 2: Mary journeyed to the bathroom.. The last recorded location for Mary is the hallway.,hallway,3,135
+11,Current context (John to bedroom → John to kitchen) does not mention Mary. From earlier in this story: Part 1: Mary journeyed to the garden.; Part 2: Mary journeyed to the bathroom.. The last recorded location for Mary is the hallway.,hallway,4,135
+11,Current context (Sandra to hallway → Sandra to bedroom) does not mention John. From earlier in this story: Part 4: John went to the bedroom.. The last recorded location for John is the kitchen.,kitchen,5,135
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,1,136
+11,Tracking Sandra: Sandra to bedroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,2,136
+11,Current context (John to hallway → John to garden) does not mention Sandra. From earlier in this story: Part 1: Sandra travelled to the kitchen.; Part 2: Sandra went to the bedroom.. The last recorded location for Sandra is the office.,office,3,136
+11,Current context (Mary to hallway → Mary to bathroom) does not mention John. From earlier in this story: Part 3: John went back to the hallway.. The last recorded location for John is the garden.,garden,4,136
+11,Current context (John to hallway → John to office) does not mention Mary. From earlier in this story: Part 4: Mary journeyed to the hallway.. The last recorded location for Mary is the bathroom.,bathroom,5,136
+11,Tracking Daniel: Daniel to kitchen → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,137
+11,Tracking Sandra: Sandra to bathroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,2,137
+11,Tracking Daniel: Daniel to office → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,3,137
+11,Current context (Daniel to office → Daniel to kitchen) does not mention Sandra. From earlier in this story: Part 2: Sandra travelled to the bathroom.. The last recorded location for Sandra is the office.,office,4,137
+11,Current context (Sandra to bathroom → Sandra to office) does not mention Daniel. From earlier in this story: Part 3: Daniel went back to the office.; Part 4: Daniel moved to the office.. The last recorded location for Daniel is the kitchen.,kitchen,5,137
+11,Tracking Mary: Mary to hallway → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,1,138
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,2,138
+11,Current context (John to bedroom → John to garden) does not mention Sandra. From earlier in this story: Part 2: Sandra went to the kitchen.. The last recorded location for Sandra is the hallway.,hallway,3,138
+11,Tracking John: John to kitchen → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,4,138
+11,Current context (Sandra to bedroom → Sandra to office) does not mention John. From earlier in this story: Part 3: John went back to the bedroom.; Part 4: John moved to the kitchen.. The last recorded location for John is the garden.,garden,5,138
+11,Tracking John: John to bedroom → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,1,139
+11,Tracking Mary: Mary to kitchen → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,2,139
+11,Tracking Sandra: Sandra to office → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,3,139
+11,Current context (Daniel to office → Daniel to bedroom) does not mention Mary. From earlier in this story: Part 2: Mary travelled to the kitchen.. The last recorded location for Mary is the garden.,garden,4,139
+11,Current context (Mary to kitchen → Mary to bedroom) does not mention Daniel. From earlier in this story: Part 4: Daniel went back to the office.. The last recorded location for Daniel is the bedroom.,bedroom,5,139
+11,Tracking Mary: Mary to bathroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,140
+11,Tracking Mary: Mary to hallway → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,2,140
+11,Tracking Mary: Mary to hallway → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,3,140
+11,Current context (Sandra to hallway → Sandra to garden) does not mention Mary. From earlier in this story: Part 2: Mary went to the hallway.; Part 3: Mary travelled to the hallway.. The last recorded location for Mary is the garden.,garden,4,140
+11,Tracking Sandra: Sandra to office → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,5,140
+11,Tracking Daniel: Daniel to garden → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,141
+11,Tracking John: John to kitchen → John to garden. The last sentence involving John says they moved to the garden. Therefore John is in the garden.,garden,2,141
+11,Current context (Daniel to hallway → Daniel to office) does not mention John. From earlier in this story: Part 2: John went to the kitchen.. The last recorded location for John is the garden.,garden,3,141
+11,Tracking Daniel: Daniel to bathroom → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,4,141
+11,Current context (Mary to hallway → Mary to bathroom) does not mention Daniel. From earlier in this story: Part 3: Daniel went back to the hallway.; Part 4: Daniel went to the bathroom.. The last recorded location for Daniel is the bedroom.,bedroom,5,141
+11,Tracking Sandra: Sandra to kitchen → Sandra to hallway. The last sentence involving Sandra says they moved to the hallway. Therefore Sandra is in the hallway.,hallway,1,142
+11,Tracking Mary: Mary to garden → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,2,142
+11,Tracking Mary: Mary to garden → Mary to bedroom. The last sentence involving Mary says they moved to the bedroom. Therefore Mary is in the bedroom.,bedroom,3,142
+11,Current context (Daniel to office → Daniel to garden) does not mention Mary. From earlier in this story: Part 2: Mary moved to the garden.; Part 3: Mary went to the garden.. The last recorded location for Mary is the bedroom.,bedroom,4,142
+11,Tracking Sandra: Sandra to garden → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,5,142
+11,Tracking Daniel: Daniel to kitchen → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,1,143
+11,Tracking Sandra: Sandra to bathroom → Sandra to bedroom. The last sentence involving Sandra says they moved to the bedroom. Therefore Sandra is in the bedroom.,bedroom,2,143
+11,Tracking Mary: Mary to bathroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,3,143
+11,Tracking Daniel: Daniel to hallway → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,4,143
+11,Tracking Daniel: Daniel to garden → Daniel to bathroom. The last sentence involving Daniel says they moved to the bathroom. Therefore Daniel is in the bathroom.,bathroom,5,143
+11,Tracking Daniel: Daniel to office → Daniel to bedroom. The last sentence involving Daniel says they moved to the bedroom. Therefore Daniel is in the bedroom.,bedroom,1,144
+11,Tracking Daniel: Daniel to office → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,2,144
+11,Tracking Daniel: Daniel to kitchen → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,3,144
+11,Tracking Daniel: Daniel to bathroom → Daniel to kitchen. The last sentence involving Daniel says they moved to the kitchen. Therefore Daniel is in the kitchen.,kitchen,4,144
+11,Current context (Sandra to kitchen → Sandra to office) does not mention Daniel. From earlier in this story: Part 3: Daniel went back to the kitchen.; Part 4: Daniel moved to the bathroom.. The last recorded location for Daniel is the kitchen.,kitchen,5,144
+11,Tracking Sandra: Sandra to garden → Sandra to kitchen. The last sentence involving Sandra says they moved to the kitchen. Therefore Sandra is in the kitchen.,kitchen,1,145
+11,Tracking Mary: Mary to office → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,2,145
+11,Current context (Mary to hallway → Mary to garden) does not mention Sandra. From earlier in this story: Part 1: Sandra moved to the garden.. The last recorded location for Sandra is the kitchen.,kitchen,3,145
+11,Current context (John to bedroom → John to garden) does not mention Mary. From earlier in this story: Part 2: Mary went back to the office.; Part 3: Mary journeyed to the hallway.. The last recorded location for Mary is the garden.,garden,4,145
+11,Current context (Sandra to office → Sandra to hallway) does not mention Mary. From earlier in this story: Part 2: Mary went back to the office.; Part 3: Mary journeyed to the hallway.. The last recorded location for Mary is the garden.,garden,5,145
+11,Tracking Sandra: Sandra to bedroom → Sandra to office. The last sentence involving Sandra says they moved to the office. Therefore Sandra is in the office.,office,1,146
+11,Tracking John: John to bathroom → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,2,146
+11,Tracking Mary: Mary to kitchen → Mary to office. The last sentence involving Mary says they moved to the office. Therefore Mary is in the office.,office,3,146
+11,Current context (Sandra to hallway → Sandra to office) does not mention Mary. From earlier in this story: Part 3: Mary moved to the kitchen.. The last recorded location for Mary is the office.,office,4,146
+11,Tracking Mary: Mary to bathroom → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,5,146
+11,Tracking Daniel: Daniel to kitchen → Daniel to office. The last sentence involving Daniel says they moved to the office. Therefore Daniel is in the office.,office,1,147
+11,Tracking John: John to bathroom → John to office. The last sentence involving John says they moved to the office. Therefore John is in the office.,office,2,147
+11,Tracking John: John to garden → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,3,147
+11,Tracking Mary: Mary to bathroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,4,147
+11,Current context (Daniel to garden → Daniel to office) does not mention John. From earlier in this story: Part 2: John went back to the bathroom.; Part 3: John journeyed to the garden.. The last recorded location for John is the hallway.,hallway,5,147
+11,Tracking Sandra: Sandra to hallway → Sandra to garden. The last sentence involving Sandra says they moved to the garden. Therefore Sandra is in the garden.,garden,1,148
+11,Tracking Sandra: Sandra to office → Sandra to bathroom. The last sentence involving Sandra says they moved to the bathroom. Therefore Sandra is in the bathroom.,bathroom,2,148
+11,Tracking Daniel: Daniel to hallway → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,3,148
+11,Tracking John: John to office → John to bathroom. The last sentence involving John says they moved to the bathroom. Therefore John is in the bathroom.,bathroom,4,148
+11,Current context (Sandra to kitchen → Sandra to bathroom) does not mention Daniel. From earlier in this story: Part 3: Daniel moved to the hallway.. The last recorded location for Daniel is the garden.,garden,5,148
+11,Tracking Mary: Mary to garden → Mary to kitchen. The last sentence involving Mary says they moved to the kitchen. Therefore Mary is in the kitchen.,kitchen,1,149
+11,Tracking John: John to garden → John to bedroom. The last sentence involving John says they moved to the bedroom. Therefore John is in the bedroom.,bedroom,2,149
+11,Tracking Mary: Mary to garden → Mary to bathroom. The last sentence involving Mary says they moved to the bathroom. Therefore Mary is in the bathroom.,bathroom,3,149
+11,Tracking John: John to office → John to hallway. The last sentence involving John says they moved to the hallway. Therefore John is in the hallway.,hallway,4,149
+11,Tracking John: John to garden → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,5,149
+11,Tracking John: John to office → John to kitchen. The last sentence involving John says they moved to the kitchen. Therefore John is in the kitchen.,kitchen,1,150
+11,Tracking Daniel: Daniel to hallway → Daniel to garden. The last sentence involving Daniel says they moved to the garden. Therefore Daniel is in the garden.,garden,2,150
+11,Tracking Daniel: Daniel to kitchen → Daniel to hallway. The last sentence involving Daniel says they moved to the hallway. Therefore Daniel is in the hallway.,hallway,3,150
+11,Current context (Mary to garden → Mary to office) does not mention Daniel. From earlier in this story: Part 2: Daniel journeyed to the hallway.; Part 3: Daniel went to the kitchen.. The last recorded location for Daniel is the hallway.,hallway,4,150
+11,Tracking Mary: Mary to bathroom → Mary to garden. The last sentence involving Mary says they moved to the garden. Therefore Mary is in the garden.,garden,5,150
