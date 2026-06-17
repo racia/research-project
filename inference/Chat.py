@@ -410,7 +410,7 @@ class Chat:
         """
         self.supp_sent_spans = []
         all_task_spans = self.get_sentence_spans(span_type="task")
-        for inx, span in enumerate(all_task_spans, 1):
+        for inx, span in enumerate(all_task_spans, 1): # Excludes system prompt?
             if inx in self.part.supporting_sent_inx:
                 self.supp_sent_spans.append(span)
         if len(self.supp_sent_spans) != len(self.part.supporting_sent_inx):
@@ -426,6 +426,8 @@ class Chat:
         max_length: int = 8000,
         identify_target: bool = True,
         to_continue: bool = False,
+        sys_prompt: bool = True,
+        include_generation_tokens: bool = True,
     ) -> torch.Tensor:
         """
         Converts the chat into 'ids' or 'tokens' using the tokenizer.
@@ -434,6 +436,8 @@ class Chat:
         :param max_length: the maximum length of the input
         :param identify_target: whether to identify the supporting sentence spans
         :param to_continue: whether the last message has to be continued (no generation token will be added)
+        :param sys_prompt: whether to include the system prompt in the output
+        :param include_generation_tokens: whether to include generation tokens for the assistant/user messages
         :return: list of ids or tokens as a tensor
         """
         if datatype not in ("ids", "tokens"):
@@ -443,13 +447,16 @@ class Chat:
 
         chat_tokens, chat_ids = [], []
         conversation_length = len(chat_ids)
-        # including the system prompt
         for i, message in enumerate(self.messages):
-            message_ids, message_tokens = get_generation_token_ids(
-                self.tokenizer, message["role"], start=i == 0
+            if include_generation_tokens:
+
+                message_ids, message_tokens = get_generation_token_ids(
+                    self.tokenizer, message["role"], start=i == 0
             )
+            else:
+                message_ids, message_tokens = [], []
             message_ids.extend(flatten(message[datatype]))
-            message_tokens.extend(flatten(message["tokens"]))
+            message_tokens.extend(flatten(message["tokens"]) if (message["role"]==Source.system and sys_prompt) or message["role"] == Source.user else "")
             conversation_length += len(message_ids)
             if conversation_length > max_length:
                 warnings.warn(
@@ -460,7 +467,6 @@ class Chat:
             chat_ids.extend(message_ids)
             chat_tokens.extend(message_tokens)
 
-            print(f"DEBUG: chat_ids as str: {self.tokenizer.decode(chat_ids)}")
         if not to_continue:
             gen_ids, _ = get_generation_token_ids(self.tokenizer, "assistant")
             chat_ids.extend(gen_ids)
@@ -468,4 +474,4 @@ class Chat:
         if identify_target:
             self.identify_supp_sent_spans()
 
-        return torch.as_tensor([chat_ids])
+        return torch.as_tensor([chat_ids]) if datatype == "ids" else chat_tokens

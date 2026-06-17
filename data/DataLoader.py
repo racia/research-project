@@ -264,6 +264,7 @@ class DataLoader:
         tasks: list[int] = None,
         flat: bool = False,
         lookup: bool = False,
+        load_silver_reasoning: bool = True,
     ) -> (
         list[SamplePart]
         | dict[tuple, SamplePart]
@@ -285,13 +286,14 @@ class DataLoader:
         raw_data = self.load_raw_task_data(
             path=Path(path), split=split, tasks=self.tasks
         )
-        silver_reasoning = SilverReasoning(self)
-        reasoning = silver_reasoning.get(task_id=self.tasks, split=split)
+        if load_silver_reasoning:
+            silver_reasoning = SilverReasoning(self)
+            reasoning = silver_reasoning.get(task_id=self.tasks, split=split)
         processed_data: list[SamplePart] = processor.process_data(
             raw_data,
             self.samples_per_task,
             multi_system=multi_system,
-            silver_reasoning=reasoning,
+            silver_reasoning=reasoning if load_silver_reasoning else {},
         )
         if self.number_of_tasks == 0:
             self.number_of_tasks = len(self.tasks)
@@ -411,6 +413,7 @@ class DataLoader:
             tasks=tasks,
             multi_system=multi_system,
             lookup=True,
+            load_silver_reasoning=False,
         )
         print(f"Number of raw parts loaded: {len(raw_parts)}")
         if row.get(f"model_output_before", None):
@@ -481,13 +484,14 @@ class DataLoader:
                 )
                 raw_part.results[-1].ids, raw_part.results[-1].tokens = ids, tokens
 
-            for attr, desired_value in self.filtering_conditions.items():
-                part_value = getattr(raw_part, attr)
-                if part_value != desired_value:
-                    print(
-                        "Filtering out part with identifier %s due to condition on attribute '%s': %s != %s"
-                    )
-                    continue
+            if self.filtering_conditions:
+                for attr, desired_value in self.filtering_conditions.items():
+                    part_value = getattr(raw_part, attr)
+                    if part_value != desired_value:
+                        print(
+                            "Filtering out part with identifier %s due to condition on attribute '%s': %s != %s"
+                        )
+                        continue
 
             parts.append(raw_part)
 

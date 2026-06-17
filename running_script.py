@@ -98,6 +98,7 @@ def run_setting(cfg: DictConfig) -> None:
                 split=split,
                 tasks=cfg.data.task_ids,
                 multi_system=multi_system,
+                load_silver_reasoning=False
             )
 
     saver = DataSaver(
@@ -117,12 +118,14 @@ def run_setting(cfg: DictConfig) -> None:
             **cfg.model,
             wrapper=cfg.data.wrapper,
             role=None,
+            aggregate_attn=cfg.model.interpretability.aggregate
         )
     elif hasattr(cfg, "student"):
         model = Model(
             **cfg.student,
             wrapper=cfg.data.wrapper,
             role="student",
+            aggregate_attn=cfg.student.interpretability.aggregate
         )
     else:
         raise ValueError("No base model is provided in the config.")
@@ -182,7 +185,7 @@ def run_setting(cfg: DictConfig) -> None:
             saver=saver,
         )
     elif cfg.setting.name.lower() in sd:
-        teacher = Model(**cfg.teacher, role="teacher")
+        teacher = Model(**cfg.teacher, role="teacher", aggregate_attn=cfg.student.interpretability.aggregate)
         eval_prompt = Prompt(
             prompt_path=cfg.eval_prompt.paths[0],
             history=cfg.eval_prompt.get("history", None),

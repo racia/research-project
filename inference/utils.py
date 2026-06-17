@@ -195,7 +195,7 @@ def flatten(lst: list[list] | list) -> list:
     if not lst:
         return []
     if all(isinstance(i, list) for i in lst):
-        return [item for sublist in lst for item in sublist]
+        return [item for sublist in lst for item in flatten(sublist)]
     elif not any(isinstance(obj, list) for obj in lst):
         return lst
     raise TypeError(

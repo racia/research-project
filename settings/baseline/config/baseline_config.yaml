@@ -11,7 +11,7 @@ model:
   mode: "eval"
   interpretability:
     use: True
-    aggregate: True
+    aggregate: False
 
 setting:
   name: "Baseline"
@@ -28,7 +28,7 @@ data:
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: ~
+  task_ids: [1,5,19,20]
   # to get all samples use ~ (will be converted to None)
   start_from_sample: 0
   # to set a specific number of samples use an int
@@ -40,13 +40,8 @@ data:
     question: False
   wrapper:
     # if to wrap the part prompt with the task description
-    context: |
-      *TASK*
-      Here are the context sentences:
-      {context}
-    question: |
-      Now, answer the following question:
-      {question}
+    context: ""
+    question: ""
     reasoning: ""
     answer: ""
 
@@ -54,7 +49,7 @@ init_prompt:
   paths:
     - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
   examples:
-    add: True
+    add: False
     enumerated: True
     handpicked: True
     not_mentioned: True
@@ -66,7 +61,7 @@ init_prompt:
 
 logging:
   # if to print the results to a log file, otherwise will print to console
-  print_to_file: True
+  print_to_file: False
 
 results:
   headers:
@@ -100,4 +95,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/workspace/students/reasoning/research-project/results_verbose/baseline/${now:%d-%m-%Y}/"
