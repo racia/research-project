@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import warnings
 from pathlib import Path
@@ -179,6 +180,11 @@ def run(
         mapped_results = {}
         for r in result:
             assert type(r) is dict, f"Expected dict, got {type(r)}\nResult content: {r}"
+            if r.get("sample_id") > samples_per_task:
+                warnings.warn(
+                    f"Skipping sample_id out of bound in result {i}:\n{json.dumps(r, indent=4)}"
+                )
+                continue
             id_ = (r.get("task_id"), r.get("sample_id"), r.get("part_id"))
             all_ids.add(id_)
             mapped_results[id_] = r
@@ -254,22 +260,24 @@ if __name__ == "__main__":
     #     "/workspace/students/reasoning/results/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
     # ]
     # save_path = "/workspace/students/reasoning/results/baseline/test/da/average_run"
-    # results_paths = [
-    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv",
-    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v2/all_tasks_joined/joined_reasoning_results.csv",
-    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v3/all_tasks_joined/joined_reasoning_results.csv",
-    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v4/all_tasks_joined/joined_reasoning_results.csv",
-    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v5/all_tasks_joined/joined_reasoning_results.csv",
-    # ]
-    # save_path = "/workspace/students/reasoning/results/baseline/test/reasoning/average_run"
     results_paths = [
-        "/workspace/students/reasoning/results/skyline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
-        "/workspace/students/reasoning/results/skyline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
-        "/workspace/students/reasoning/results/skyline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
-        "/workspace/students/reasoning/results/skyline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
-        "/workspace/students/reasoning/results/skyline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v2/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v3/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v4/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v5/all_tasks_joined/joined_reasoning_results.csv",
     ]
-    save_path = "/workspace/students/reasoning/results/skyline/test/da/average_run"
+    save_path = (
+        "/workspace/students/reasoning/results/baseline/test/reasoning/average_run"
+    )
+    # results_paths = [
+    #     "/workspace/students/reasoning/results/skyline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
+    # ]
+    # save_path = "/workspace/students/reasoning/results/skyline/test/da/average_run"
     samples_per_task = 100
     output_path = run(
         results_paths=results_paths,
