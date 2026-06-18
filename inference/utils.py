@@ -310,19 +310,19 @@ def print_metrics_table(
                 if len(evaluator.attn_on_target) > 1
                 else evaluator.attn_on_target.get_mean()
             )
-        if evaluator.bleu:
+        if hasattr(evaluator, "bleu") and getattr(evaluator, "bleu"):
             metric_values["BLEU score"][version] = (
                 f"{evaluator.bleu.get_mean()} ± {evaluator.bleu.get_std()}"
                 if len(evaluator.bleu) > 1
                 else evaluator.bleu.get_mean()
             )
-        if evaluator.rouge:
+        if hasattr(evaluator, "rouge") and getattr(evaluator, "rouge"):
             metric_values["ROUGE score"][version] = (
                 f"{evaluator.rouge.get_mean()} ± {evaluator.rouge.get_std()}"
                 if len(evaluator.rouge) > 1
                 else evaluator.rouge.get_mean()
             )
-        if evaluator.meteor:
+        if hasattr(evaluator, "meteor") and getattr(evaluator, "meteor"):
             metric_values["METEOR score"][version] = (
                 f"{evaluator.meteor.get_mean()} ± {evaluator.meteor.get_std()}"
                 if len(evaluator.meteor) > 1

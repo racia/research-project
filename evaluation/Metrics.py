@@ -78,6 +78,9 @@ class Metric:
 
         :param metric: the metric values
         """
+        if metric is None:
+            warnings.warn("Skipping adding metric value 'None'")
+            return
         type_ = type(metric)
         if type_ is Metric or issubclass(type_, Metric):
             self.all.append(metric.get_mean())

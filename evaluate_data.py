@@ -86,19 +86,6 @@ def remove_unnecessary_columns(
             del headers["general"][headers["general"].index("silver_reasoning")]
 
 
-def extract_split(path) -> str:
-    """
-    Extract the split from the data path. If the split is not found, return "split".
-
-    :param path: the path to the data
-    :return: the split
-    """
-    for split in ["valid", "test", "train"]:
-        if split in path:
-            return split
-    return "split"
-
-
 def structure_result(headers_results: list[str], row: dict, version) -> dict[str, list]:
     """
     Structure the result into a dictionary.
@@ -300,9 +287,20 @@ def run(
     else:
         multi_system = True
 
+    saving_path_base = (
+        Path(save_path)
+        / f"silver_{reasoning_source or 'default'}"
+        / f"max_tokens_{max_tokens}"
+    )
+    saving_path = saving_path_base / "eval"
+    counter = 1
+    while saving_path.exists():
+        saving_path = saving_path_base / f"eval_{counter}"
+        counter += 1
+
     # maybe loaded_baseline_results is not needed for evaluation
     saver = DataSaver(
-        save_to=str(Path(save_path) / "eval" / f"silver_{reasoning_source or 'default'}" / f"max_tokens_{max_tokens}"),
+        save_to=str(saving_path),
         loaded_baseline_results=True if multi_system else False,
     )
 
@@ -315,23 +313,18 @@ def run(
     )
 
     # loaded results in parts with original data, tokens-ids, and interpretability results
-    results_data, multi_system = loader.load_results(
+    results_data, _ = loader.load_results(
         results_path=results_path,
         data_path="../tasks_1-20_v1-2/en-valid/",
         split=extract_split(results_path),
         as_parts=True,
         multi_system=multi_system,
     )
+    print(f"\nLoaded results data for {len(results_data)} tasks.")
+    print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
 
     results_file_name = f"{Path(results_path).stem}_upd.csv"
     plotter = Plotter(results_path=saver.run_path, color_map="tab20")
-    if filtering_conditions:
-        conditions_add = [f"{a}={v}" for a, v in filtering_conditions.items()]
-    else:
-        conditions_add = []
-
-    print(f"\nLoaded results data for {len(results_data)} tasks.")
-    print(f"Loaded {loader.number_of_parts} sample parts created from raw data.")
 
     distractor_stats: dict[str, DistractorAttentionStats] = defaultdict(
         DistractorAttentionStats
@@ -342,14 +335,22 @@ def run(
 
     processor = DataProcessor()
 
+    if filtering_conditions:
+        conditions_add = [f"{a}={v}" for a, v in filtering_conditions.items()]
+    else:
+        conditions_add = []
+
     data_split = extract_split(results_path)
-    sample, task, split = None, None, Split(name=data_split, multi_system=multi_system)
+    sample, task = None, None
+    split = Split(name=data_split, multi_system=multi_system)
     for task_id, samples in results_data.items():
         assert type(task_id) is int
+        print("Processing task:", task_id)
         task = Task(task_id, multi_system=multi_system)
 
         for sample_id, parts in list(samples.items())[:samples_per_task]:
             assert type(sample_id) is int
+            print("Processing sample:", sample_id)
             sample = Sample(
                 task_id=task_id,
                 sample_id=sample_id,
@@ -358,6 +359,7 @@ def run(
 
             # Used to store the correct answers for each sample for later evaluation
             for part in parts:
+                print("Processing part:", part)
                 for version, result in zip(part.versions, part.results):
                     # TODO: add reasoning judgment to part results for it to be saved in the results table
                     if create_heatmaps and not result.interpretability.empty():
@@ -471,7 +473,7 @@ def run(
                 y_data=evaluator.parts_attn_on_target.all,
                 x_label="Seen Context Lengths",
                 y_label="Attention on Target Tokens",
-                file_name=f"attn_on_target.pdf",
+                file_name=f"attn_on_target.png",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
@@ -485,7 +487,7 @@ def run(
                 y_data=evaluator.attn_on_target.all,
                 x_label="Accuracy",
                 y_label="Attention on Target Tokens",
-                file_name=f"acc-attn_on_target.pdf",
+                file_name=f"acc-attn_on_target.png",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 level="task",
@@ -508,7 +510,7 @@ def run(
                         y_data=y_vals,
                         x_label="Accuracy",
                         y_label=extra_metric.replace("_", " ").title(),
-                        file_name=f"acc-{extra_metric}.pdf",
+                        file_name=f"acc-{extra_metric}.png",
                         plot_name_add=[f"Task-{task_id}", *conditions_add],
                         path_add=Path(version, f"Task-{task_id}"),
                         level="task",
@@ -529,7 +531,7 @@ def run(
                 y_label="Attention On Target",
                 displ_percentage=False,
                 version=version,
-                file_name=f"attn-target_distances.pdf",
+                file_name=f"attn-target_distances.png",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
@@ -547,7 +549,7 @@ def run(
                 y_label="Attention On Target",
                 displ_percentage=False,
                 version=version,
-                file_name=f"attn-ans_correct.pdf",
+                file_name=f"attn-ans_correct.png",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
@@ -565,7 +567,7 @@ def run(
                 y_label="Attention On Target",
                 displ_percentage=False,
                 version=version,
-                file_name=f"attn-ans_in_self.pdf",
+                file_name=f"attn-ans_in_self.png",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
@@ -583,7 +585,7 @@ def run(
                 y_label="Attention On Target",
                 displ_percentage=False,
                 version=version,
-                file_name=f"attn-seen_context_lengths.pdf",
+                file_name=f"attn-seen_context_lengths.png",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
@@ -600,7 +602,7 @@ def run(
                 x_label="Seen Context Lengths",
                 y_label="Parts Answer In[Correct]",
                 displ_percentage=True,
-                file_name=f"parts_answer_correct.pdf",
+                file_name=f"parts_answer_correct.png",
                 plot_name_add=[f"Task-{task_id}", *conditions_add],
                 path_add=Path(version, f"Task-{task_id}"),
                 experiment=experiment,
@@ -610,7 +612,7 @@ def run(
                 data=corr_matrix,
                 level=evaluator.level,
                 version=version,
-                file_name=f"corr_matrix_task_{task_id}.pdf",
+                file_name=f"corr_matrix_task_{task_id}.png",
                 path_add=Path(version, f"Task-{task_id}"),
                 id=task_id,
             )
@@ -743,6 +745,8 @@ def run(
             "Plotting histograms of model token lengths for each version and per task...",
             end="\n\n",
         )
+        # todo: load y tokens directly from files?
+        # todo: also collect iterations and group by them, not only by tasks
         token_lengths = {version: {} for version in split.versions}
         for i, version in enumerate(split.versions):
             for task in split.tasks:
@@ -750,9 +754,11 @@ def run(
                     identifier = (part.task_id, part.sample_id, part.part_id)
                     if not part.results[i].interpretability:
                         continue
-                    model_tokens = flatten(
-                        part.results[i].interpretability.y_tokens
-                    )
+                    model_tokens = flatten(part.results[i].interpretability.y_tokens)
+                    if len(model_tokens) == 0:
+                        warnings.warn(
+                            f"Empty model tokens for task {part.task_id} sample {part.sample_id} part {part.part_id} version '{version}'. Check that the part has interpretability data with y_tokens."
+                        )
                     token_lengths[version][identifier] = len(model_tokens)
 
             if token_lengths[version]:
@@ -786,7 +792,7 @@ def run(
             level=evaluator.level,
             version=version,
             split_name=split.name,
-            file_name=f"corr_matrix_split_{split.name}.pdf",
+            file_name=f"corr_matrix_split_{split.name}.png",
             path_add=Path(version),
         )
 
@@ -796,7 +802,7 @@ def run(
             y_data=evaluator.attn_on_target.all,
             x_label="Accuracy",
             y_label="Attention on Target Tokens",
-            file_name=f"acc-attn_on_target_{split.name}.pdf",
+            file_name=f"acc-attn_on_target_{split.name}.png",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             experiment=experiment,
             num_samples=samples_per_task * len(split.tasks),
@@ -818,7 +824,7 @@ def run(
                     y_data=y_vals,
                     x_label="Accuracy",
                     y_label=extra_metric.replace("_", " ").title(),
-                    file_name=f"acc-{extra_metric}_{split.name}.pdf",
+                    file_name=f"acc-{extra_metric}_{split.name}.png",
                     plot_name_add=[f"Split-{split.name}", *conditions_add],
                     experiment=experiment,
                     num_samples=samples_per_task * len(split.tasks),
@@ -842,7 +848,7 @@ def run(
             experiment=experiment,
             num_samples=samples_per_task * len(split.tasks),
             level="split",
-            file_name=f"attn-seen_context_lengths_{split.name}.pdf",
+            file_name=f"attn-seen_context_lengths_{split.name}.png",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
         )
@@ -861,7 +867,7 @@ def run(
             version=version,
             experiment=experiment,
             num_samples=samples_per_task * len(split.tasks),
-            file_name=f"attn-target_distances_{split.name}.pdf",
+            file_name=f"attn-target_distances_{split.name}.png",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
         )
@@ -877,7 +883,7 @@ def run(
             y_label="Parts Answer [In]Correct",
             level="split",
             displ_percentage=True,
-            file_name=f"parts_answer_correct_{split.name}.pdf",
+            file_name=f"parts_answer_correct_{split.name}.png",
             plot_name_add=[f"Split-{split.name}", *conditions_add],
             path_add=Path(version),
             experiment=experiment,
@@ -1310,7 +1316,8 @@ def save_latex_table_line(split, experiment: str, setting: str, saver) -> None:
             _r = _cell(_ev.rouge.get_mean(), _ev.rouge.get_std())
             _m = _cell(_ev.meteor.get_mean(), _ev.meteor.get_std())
             _latex_lines.append(f"% Table 2 | {experiment} | {setting} | {_ver}")
-            _latex_lines.append(f"& {_b} & {_r} & {_m} \\\\")
+            # _latex_lines.append(f"& {_b} & {_r} & {_m} \\\\")
+            _latex_lines.append(f"& & & \\\\")
         _latex_lines.append("")
     (saver.run_path / "latex_table_line.txt").write_text(
         "\n".join(_latex_lines), encoding="utf-8"

@@ -286,7 +286,9 @@ class Plotter:
                     f"got: {file_name!r}"
                 )
             plt.savefig(
-                self.results_path / (path_add or "") / file_name, dpi=300, bbox_inches="tight"
+                self.results_path / (path_add or "") / file_name,
+                dpi=300,
+                bbox_inches="tight",
             )
         elif x_label and y_label and path_add:
             label = y_label.lower().replace(" ", "_")
@@ -519,7 +521,7 @@ class Plotter:
         :param path_add: addition to the path where the plot is saved
         :return: None
         """
-        plt.figure(figsize=(12, 8))
+        fig = plt.figure(figsize=(12, 8))
         data = pd.DataFrame(
             {k: {k2: v2[0] for k2, v2 in v.items()} for k, v in data.items()},
             index=data.keys(),
@@ -540,6 +542,7 @@ class Plotter:
 
         png_path = self._resolve_save_target(file_name, path_add)
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def draw_heat(
         self,
@@ -570,7 +573,7 @@ class Plotter:
         scores = interpretability_result.attn_scores
         scores = scores[1:]
 
-        plt.figure(figsize=(12, 8))
+        fig = plt.figure(figsize=(12, 8))
         if len(scores) > 1:
             # to get comparable heatmaps, the max value of all plots should be the same (as much as possible)
             max_score = max(np.max(scores[1:]), 0.25)
@@ -616,8 +619,7 @@ class Plotter:
             / f"attn_map-{task_id}-{sample_id}-{part_id}-{verbosity}.png",
             dpi=300,
         )
-
-        plt.close()
+        plt.close(fig)
 
     def plot_acc_per_task(
         self,
@@ -637,7 +639,7 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :return: None
         """
-        plt.figure(figsize=(10, 5))
+        fig = plt.figure(figsize=(10, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_task)))
         plt.plot(
             range(1, len(acc_per_task) + 1),
@@ -663,6 +665,7 @@ class Plotter:
         txt_rows = [(f"task={i}", float(v)) for i, v in enumerate(acc_per_task.all, 1)]
         self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_acc_and_toxic_cot(
         self,
@@ -671,7 +674,6 @@ class Plotter:
         version: str,
         plot_name_add: list[str] | None = None,
     ):
-        plt.close()
         fig, axes = plt.subplots(1, 2, figsize=(20, 10))
 
         # PLOT ACCURACY
@@ -716,7 +718,7 @@ class Plotter:
         ax.set_xlabel(" ".join(group.title().split("_")))
         ax.set_ylabel("Toxic CoT Rate")
         ax.set_title(
-            f"Percentage of Toxic Chain-of-Though in Correct Direct Answers per {group.title()}"
+            f"Percentage of Toxic Chain-of-Thought in Correct Direct Answers per {group.title()}"
         )
         ax.set_ylim(0, 1.05)
         ax.set_yticks(np.arange(0.0, 1.05, 0.1))
@@ -727,6 +729,7 @@ class Plotter:
             Path("/".join(plot_name_add)) if plot_name_add else None,
         )
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_acc_two_runs_per(
         self,
@@ -740,8 +743,6 @@ class Plotter:
         """
         Compare per-task accuracy between runs with and without reasoning.
         """
-        plt.close()
-
         plot_df = (
             df.groupby(group)
             .agg(
@@ -752,7 +753,7 @@ class Plotter:
             .melt(id_vars=group, var_name="condition", value_name="accuracy")
         )
 
-        plt.figure(figsize=(len(df[group].unique()) * 0.4, 5))
+        fig = plt.figure(figsize=(len(df[group].unique()) * 0.4, 5))
         ax = sns.barplot(
             data=plot_df,
             x=group,
@@ -777,6 +778,7 @@ class Plotter:
             path_add,
         )
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_acc_per_task_and_prompt(
         self,
@@ -797,7 +799,7 @@ class Plotter:
         :param plot_name_add: addition to the plot name
         :return: None
         """
-        plt.figure(figsize=(15, 5))
+        fig = plt.figure(figsize=(15, 5))
         colors = self.cmap(np.linspace(0, 1, len(acc_per_prompt_task)))
 
         num_of_data_arrays = 0
@@ -838,6 +840,8 @@ class Plotter:
         else:
             self._save_plot(y_label, x_label, path_add=path_add)
 
+        plt.close(fig)
+
     def plot_correctness_agreement(
         self,
         df: pd.DataFrame,
@@ -854,8 +858,7 @@ class Plotter:
         :param plot_name_add: optional list of strings to add to the plot name (e.g. for version or group tags)
         :return: None
         """
-        plt.close()
-        plt.figure(figsize=(8, 6), constrained_layout=True)
+        fig = plt.figure(figsize=(8, 6), constrained_layout=True)
 
         correct_attrs = []
         for version in versions:
@@ -877,6 +880,7 @@ class Plotter:
             Path("/".join(plot_name_add)) if plot_name_add else None,
         )
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_attr_agreement(
         self,
@@ -894,8 +898,7 @@ class Plotter:
         :param plot_name_add: optional list of strings to add to the plot name (e.g. for version or group tags)
         :return: None
         """
-        plt.close()
-        plt.figure(figsize=(12, 8), constrained_layout=True)
+        fig = plt.figure(figsize=(12, 8), constrained_layout=True)
         ATTRS = [
             "max_supp_attn",
             "attn_on_target",
@@ -926,6 +929,7 @@ class Plotter:
             Path("/".join(plot_name_add)) if plot_name_add else None,
         )
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_toxic_cot_per(
         self,
@@ -934,13 +938,13 @@ class Plotter:
         version: str,
         plot_name_add: list[str] | None = None,
     ) -> None:
-        plt.close()
         plot_df = (
             df.groupby(group)[f"toxic_cot_{version}"]
             .mean()
             .reset_index(name="toxic_rate")
         )
-        sns.barplot(
+        fig = plt.figure(figsize=(12, 8), constrained_layout=True)
+        ax = sns.barplot(
             data=plot_df,
             x=group,
             y="toxic_rate",
@@ -955,16 +959,19 @@ class Plotter:
         #     height=5,
         #     aspect=1.5,
         # )
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
         plt.xlabel(" ".join(group.title().split("_")))
         plt.ylabel("Toxic CoT Rate")
         plt.title(
-            f"Percentage of Toxic Chain-of-Though in Correct Direct Answers per {group.title()} ({version})"
+            f"Percentage of Toxic Chain-of-Thought in Correct Direct Answers per {group.title()} ({version})"
         )
         png_path = self._resolve_save_target(
             f"toxic_cot_per_{group}.png",
             Path("/".join(plot_name_add)) if plot_name_add else None,
         )
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_acc_with_std(
         self,
@@ -975,7 +982,7 @@ class Plotter:
         plot_name_add: list[str] = None,
         path_add: Path = None,
     ) -> None:
-        plt.figure(figsize=(15, 5))
+        fig = plt.figure(figsize=(15, 5))
         num_of_data_arrays = 0
         max_x_len = 0
 
@@ -1027,6 +1034,7 @@ class Plotter:
             self._save_plot(file_name=png_path)
         else:
             self._save_plot(y_label, x_label, path_add=path_add)
+        plt.close(fig)
 
     def plot_exact_vs_soft_match_per_task(
         self,
@@ -1404,99 +1412,6 @@ class Plotter:
         self._save_plot(file_name=png_path)
         plt.close(fig)
 
-    def plot_exact_vs_soft_match_per_task(
-        self,
-        evaluator,
-        plot_name_add: list[str] = None,
-        path_add: Path = None,
-        show_values: bool = False,
-    ) -> None:
-        """
-        Overlay exact-match and soft-match accuracy for a single evaluator,
-        one line per metric, plotted over tasks.
-
-        Useful to see at a glance which tasks have a large gap between exact
-        and soft match (many partially-correct answers) versus tasks where both
-        lines overlap (answers are either fully correct or fully wrong).
-
-        :param evaluator: a MetricEvaluator with exact_match_accuracy and
-                          soft_match_accuracy attributes
-        :param plot_name_add: extra tags appended to the title
-        :param path_add: sub-folder under results_path
-        :param show_values: when True, annotate each point with its value
-        """
-        em = getattr(evaluator, "exact_match_accuracy", None)
-        sm = getattr(evaluator, "soft_match_accuracy", None)
-        em_std = getattr(evaluator, "exact_match_std", None)
-        sm_std = getattr(evaluator, "soft_match_std", None)
-
-        if em is None and sm is None:
-            print("[plot_exact_vs_soft_match_per_task] No accuracy data available.")
-            return
-
-        fig, ax = plt.subplots(figsize=(10, 5))
-
-        specs = [
-            (em, em_std, self.color_supporting, "Exact match", "o"),
-            (sm, sm_std, self.color_distractor, "Soft match", "s"),
-        ]
-        txt_rows: list[tuple[str, float | None]] = []
-        for metric, std_metric, color, label, marker in specs:
-            if metric is None:
-                continue
-            vals = np.array(metric.all if hasattr(metric, "all") else metric)
-            x = np.arange(1, len(vals) + 1)
-            ax.plot(x, vals, marker=marker, color=color, linewidth=2, label=label)
-            if std_metric is not None:
-                stds = np.array(
-                    std_metric.all if hasattr(std_metric, "all") else std_metric
-                )
-                if len(stds) == len(vals):
-                    ax.fill_between(
-                        x, vals - stds, vals + stds, color=color, alpha=0.15
-                    )
-            for xi, v in zip(x, vals):
-                txt_rows.append((f"task={xi} {label}", float(v)))
-                if show_values:
-                    ax.text(
-                        xi,
-                        v,
-                        f"{v:.2f}",
-                        fontsize=7,
-                        ha="center",
-                        va="bottom",
-                        color="#222222",
-                    )
-
-        ax.set_xlabel("Task", fontsize=11)
-        ax.set_ylabel("Accuracy", fontsize=11)
-        ax.set_ylim(0, 1.05)
-        ax.set_xticks(
-            np.arange(
-                1,
-                max(
-                    len(em.all if em and hasattr(em, "all") else em or []),
-                    len(sm.all if sm and hasattr(sm, "all") else sm or []),
-                )
-                + 1,
-            )
-        )
-        title = "Exact vs Soft Match Accuracy Per Task"
-        if plot_name_add:
-            title += f"  ({', '.join(plot_name_add)})"
-        ax.set_title(title, fontsize=12)
-        ax.legend(fontsize=10, loc="lower right", framealpha=0.9)
-        ax.grid(axis="y", linestyle="--", alpha=0.4)
-        ax.set_axisbelow(True)
-        fig.tight_layout()
-
-        png_path = self._resolve_save_target(
-            "exact_vs_soft_match_per_task.png", path_add
-        )
-        self._write_plot_data_txt(png_path, [("Accuracy per task", txt_rows)])
-        self._save_plot(file_name=png_path)
-        plt.close(fig)
-
     def get_color_or_map(self, c: str):
         """
         Get the color or colormap for a given case.
@@ -1511,75 +1426,53 @@ class Plotter:
 
     def plot_answer_type_per_part(
         self,
-        error_cases_ids: dict[str, str],
+        error_cases_ids: dict[str, list[str]],
         specification: dict[str, str],
-        reasoning_scores: dict[tuple, float] = None,
+        reasoning_scores: dict[tuple, float] | None = None,
     ) -> None:
         """
         Plot a map of answer types (and optionally reasoning scores) per sample
         and part of each task.
-
-        - Default: color encodes combined answer+reasoning type.
-        - If reasoning_scores provided: color encodes only answer, and reasoning score is
-        written as text.
         """
-        # === Setup ===
-        use_reasoning_scores = reasoning_scores is not None
-        if not reasoning_scores:
+        use_reasoning_scores = (
+            reasoning_scores is not None and len(reasoning_scores) > 0
+        )
+        if not use_reasoning_scores:
             warnings.warn(
                 "No reasoning scores provided, plotting answer types without scores. "
                 "To include reasoning scores, "
-                "pass a dict of {(task, sample, part): score} to the 'reasoning_scores' argument."
+                "pass a dict of {(task, sample, part): score} to 'reasoning_scores'."
             )
-            use_reasoning_scores = False
 
-        # Determine which answer categories to use
+        # --- determine answer types and score range ---
         min_score, max_score = 0.0, 1.0
         if use_reasoning_scores:
             answer_types = ["ans_corr", "ans_incorr", "ans_null"]
-            max_score = (
-                max(
-                    [
-                        val
-                        for val in reasoning_scores.values()
-                        if not isinstance(val, str)
-                    ]
-                )
-                if reasoning_scores
-                else 1.0
-            )
-            min_score = (
-                min(
-                    [
-                        val
-                        for val in reasoning_scores.values()
-                        if not isinstance(val, str)
-                    ]
-                )
-                if reasoning_scores
-                else 0.0
-            )
-        else:
-            # exclude simple answer/reasoning types
-            answer_types = [
-                key for key in self.case_color_map.keys() if key.count("_") > 1
+            numeric_scores = [
+                val
+                for val in reasoning_scores.values()
+                if isinstance(val, (int, float))
             ]
+            if numeric_scores:
+                min_score = min(numeric_scores)
+                max_score = max(numeric_scores)
+        else:
+            answer_types = [k for k in self.case_color_map.keys() if k.count("_") > 1]
+
         colors = [self.get_color_or_map(c) for c in answer_types]
 
-        # Parse case IDs
-        ids_cases = {}  # dict[tuple[int, int, int], str]
+        # --- parse case IDs once ---
+        ids_cases: dict[tuple[int, int, int], str] = {}
         for case, indices in error_cases_ids.items():
             for idx in indices:
-                t, s, p = tuple(
-                    map(int, idx.split("\t")[1:])
-                )  # drop the strike-through id and convert to int
-                if use_reasoning_scores:
-                    ids_cases[(t, s, p)] = CASES_TO_SIMPLE_ANS[case]
-                else:
-                    ids_cases[(t, s, p)] = case
+                t, s, p = map(int, idx.split("\t")[1:])
+                ids_cases[(t, s, p)] = (
+                    CASES_TO_SIMPLE_ANS[case] if use_reasoning_scores else case
+                )
 
-        tasks = sorted(set(i[0] for i in ids_cases.keys()))
+        tasks = sorted({t for t, _, _ in ids_cases})
         n_tasks = len(tasks)
+
         if n_tasks % 4 == 0:
             n_cols = min(4, n_tasks)
         elif n_tasks % 3 == 0:
@@ -1590,14 +1483,29 @@ class Plotter:
             n_cols = 1
         n_rows = int(np.ceil(n_tasks / n_cols))
 
-        # === Figure setup ===
-        fig, axes = plt.subplots(n_rows, n_cols, figsize=(12, 8), squeeze=False)
+        # --- compute figure size from data ---
+        # find max samples/parts per task so cells remain roughly square
+        max_samples_per_task = 1
+        max_parts_per_task = 1
+        for task in tasks:
+            samples_t = {s for (t, s, _) in ids_cases if t == task}
+            parts_t = {p for (t, _, p) in ids_cases if t == task}
+            max_samples_per_task = max(max_samples_per_task, len(samples_t))
+            max_parts_per_task = max(max_parts_per_task, len(parts_t))
+
+        height_per_sample = 0.18  # tune for aesthetics
+        width_per_part = 0.25
+
+        fig_width = max(8, n_cols * max_parts_per_task * width_per_part)
+        fig_height = max(4, n_rows * max_samples_per_task * height_per_sample)
+
+        fig, axes = plt.subplots(
+            n_rows, n_cols, figsize=(fig_width, fig_height), squeeze=False
+        )
 
         for i, task in enumerate(tasks):
             ax = axes[i // n_cols][i % n_cols]
 
-            # Collect unique samples and parts
-            # resert order: samples descending, parts ascending
             samples = sorted({s for t, s, _ in ids_cases if t == task}, reverse=True)
             parts = sorted({p for t, _, p in ids_cases if t == task})
 
@@ -1605,18 +1513,15 @@ class Plotter:
                 ax.set_visible(False)
                 continue
 
-            # Build either an integer heatmap or an RGBA image depending on mode
-            rgba_img, heatmap = None, None
             if use_reasoning_scores:
-                rgba_img = np.ones(
-                    (len(samples), len(parts), 4), dtype=float
-                )  # default white
+                rgba_img = np.ones((len(samples), len(parts), 4), dtype=float)
                 mask = np.zeros((len(samples), len(parts)), dtype=bool)
             else:
                 heatmap = np.zeros((len(samples), len(parts)), dtype=int)
                 mask = np.zeros_like(heatmap, dtype=bool)
 
             missing_scores = set()
+
             for s_idx, s in enumerate(samples):
                 for p_idx, p in enumerate(parts):
                     idx = (task, s, p)
@@ -1624,64 +1529,58 @@ class Plotter:
                         mask[s_idx, p_idx] = True
                         if use_reasoning_scores:
                             rgba_img[s_idx, p_idx] = (1, 1, 1, 1)
-                    else:
-                        case = ids_cases[idx]
-                        if use_reasoning_scores and idx in reasoning_scores:
-                            score = reasoning_scores[idx]
-                            try:
-                                assert isinstance(score, (int, float))
-                            except AssertionError:
+                        continue
+
+                    case = ids_cases[idx]
+
+                    if use_reasoning_scores:
+                        if idx not in reasoning_scores:
+                            missing_scores.add(idx)
+                            rgba_img[s_idx, p_idx] = (0, 0, 0, 0)
+                            continue
+
+                        score = reasoning_scores[idx]
+                        if not isinstance(score, (int, float)):
+                            if isinstance(score, set) and len(score) == 1:
+                                score = next(iter(score))
+                            else:
                                 print(
                                     f"Non-numeric reasoning score for index {idx}: {score}"
                                 )
-                                warnings.warn(
-                                    f"Non-numeric reasoning score for index {idx}, cannot color."
-                                )
                                 continue
-                            # Normalize score to [0, 1]
-                            norm_score = (
-                                (score - min_score) / (max_score - min_score)
-                                if max_score > min_score
-                                else 0
-                            )
 
-                            colormap = colors[answer_types.index(case)]
-                            # Resolve colormap object
-                            if isinstance(colormap, str) and colormap.startswith("#"):
-                                rgba = mcolors.to_rgba(colormap)
-                            else:
-                                cmap_obj = (
-                                    colormap
-                                    if hasattr(colormap, "__call__")
-                                    else cm.get_cmap(colormap)
-                                )
-                                # Avoid sampling the absolute minimal value (pure white) for colormaps
-                                # that start from white (e.g. 'Greys'). Reserve pure white for absent values.
-                                cmap_name = getattr(cmap_obj, "name", "").lower()
-                                # min_sample = 0.15 if "grey" in cmap_name else 0.0
-                                min_sample = 0.15
-                                sample = min_sample + norm_score * (1.0 - min_sample)
-                                rgba = cmap_obj(sample)
-                            rgba_img[s_idx, p_idx] = rgba
-                        if use_reasoning_scores and idx not in reasoning_scores:
-                            missing_scores.add(idx)
-                            rgba_img[s_idx, p_idx] = (0, 0, 0, 0)
-                        elif not use_reasoning_scores:
-                            # store integer index for categorical mapping
-                            heatmap[s_idx, p_idx] = answer_types.index(case)
+                        score = round(float(score), 2)
+                        norm_score = (
+                            (score - min_score) / (max_score - min_score)
+                            if max_score > min_score
+                            else 0.0
+                        )
+
+                        colormap = colors[answer_types.index(case)]
+                        if isinstance(colormap, str) and colormap.startswith("#"):
+                            rgba = mcolors.to_rgba(colormap)
+                        else:
+                            cmap_obj = (
+                                colormap
+                                if hasattr(colormap, "__call__")
+                                else cm.get_cmap(colormap)
+                            )
+                            min_sample = 0.15
+                            sample_val = min_sample + norm_score * (1.0 - min_sample)
+                            rgba = cmap_obj(sample_val)
+                        rgba_img[s_idx, p_idx] = rgba
+                    else:
+                        heatmap[s_idx, p_idx] = answer_types.index(case)
 
             if missing_scores:
                 warnings.warn(
-                    f"When plotting for {specification['score']}, reasoning score missing "
-                    f"the following indices in reasoning_scores dict: "
-                    f"{missing_scores}"
+                    f"When plotting for {specification.get('score', '')}, missing "
+                    f"reasoning scores for indices: {missing_scores}"
                 )
 
-            # Display appropriately
             if use_reasoning_scores:
                 ax.imshow(rgba_img, aspect="auto")
             else:
-                # build a list of displayable colors for ListedColormap
                 cmap_colors = []
                 for col in colors:
                     if isinstance(col, str) and col.startswith("#"):
@@ -1691,23 +1590,21 @@ class Plotter:
                     else:
                         cmap_colors.append(col)
                 ax.imshow(heatmap, cmap=ListedColormap(cmap_colors), aspect="auto")
-            # Draw grid and labels
+
             plot_task_map_grid(plt, ax, task, samples, parts, mask)
 
-            # Overlay reasoning scores if provided
             if use_reasoning_scores:
                 for s_idx, s in enumerate(samples):
                     for p_idx, p in enumerate(parts):
                         idx = (task, s, p)
                         if idx in reasoning_scores and not mask[s_idx, p_idx]:
-                            try:
-                                assert isinstance(reasoning_scores[idx], (int, float))
-                            except AssertionError:
-                                print(
-                                    f"Non-numeric reasoning score for index {idx}: {score}"
-                                )
-                                continue
-                            score = round(reasoning_scores[idx], 2)
+                            score = reasoning_scores[idx]
+                            if not isinstance(score, (int, float)):
+                                if isinstance(score, set) and len(score) == 1:
+                                    score = next(iter(score))
+                                else:
+                                    continue
+                            score = round(float(score), 2)
                             ax.text(
                                 p_idx,
                                 s_idx,
@@ -1720,25 +1617,21 @@ class Plotter:
                                 zorder=5,
                             )
 
-        # === Legend ===
+        # --- legend ---
         legend_labels = [CASES_2_LABELS[a].replace(", ", ",\n") for a in answer_types]
-        # Resolve any colormap objects/names to a concrete RGBA color for legend markers
         legend_colors = []
         for col in colors:
             if isinstance(col, str):
                 if col.startswith("#"):
                     legend_colors.append(col)
                 else:
-                    # treat as named color or colormap name
                     try:
                         legend_colors.append(mcolors.to_rgba(col))
                     except Exception:
                         legend_colors.append(cm.get_cmap(col)(0.5))
             elif callable(col):
-                # colormap object or function-like; sample at midpoint
                 legend_colors.append(col(0.5))
             else:
-                # fallback: try to convert to RGBA
                 try:
                     legend_colors.append(mcolors.to_rgba(col))
                 except Exception:
@@ -1756,20 +1649,25 @@ class Plotter:
             )
             for label, lc in zip(legend_labels, legend_colors)
         ]
+
         fig.legend(
             handles, legend_labels, loc="center left", bbox_to_anchor=(1.02, 0.5)
         )
         fig.suptitle(
-            f"Error Cases {' '.join(specification.values())}", fontsize=14, y=0.95
+            "Error Cases " + " ".join(specification.values()),
+            fontsize=14,
+            y=0.95,
         )
         fig.tight_layout(rect=(0, 0, 0.9, 0.9))
 
+        version = specification.get("version", "")
         out_path = (
             self.results_path
-            / specification.pop("version", "")
+            / version
             / f"error_case_map_{'_'.join(specification.values())}.png"
         )
         fig.savefig(out_path, bbox_inches="tight", dpi=300)
+        plt.close(fig)
 
     def plot_case_heatmap(
         self,
@@ -1856,6 +1754,7 @@ class Plotter:
         )
         fig.tight_layout(rect=(0, 0, 1, 0.96))
         self._save_plot(file_name=f"error_case_heatmap_{case_type}.png")
+        plt.close(fig)
 
     def plot_error_histogram(
         self,
@@ -1932,6 +1831,7 @@ class Plotter:
         self._save_plot(
             file_name=f"error_histogram_{normalization}_{setting.title().replace(' ', '_')}.png"
         )
+        plt.close(fig)
 
     def plot_token_length_histogram(
         self,
@@ -1950,11 +1850,10 @@ class Plotter:
         """
         df = token_lengths_to_df(token_lengths, version)
         fig, ax = plt.subplots(figsize=(10, 6))
-
         sns.histplot(
             data=df,
             x="token_length",
-            bins=max_new_tokens // 10,
+            bins=max(10, max_new_tokens // 10),
             ax=ax,
         )
         ax.set_title(f"Model Output Length Distribution ({version})")
@@ -1976,6 +1875,7 @@ class Plotter:
             file_name=f"model_output_token_len_histogram_{version}.png",
             path_add=Path(version),
         )
+        plt.close(fig)
 
     def plot_token_length_histogram_all_versions(
         self,
@@ -2002,17 +1902,16 @@ class Plotter:
             data=df,
             x="token_length",
             hue="version" if df["version"].nunique() > 1 else None,
-            bins=max_new_tokens // 10,
+            bins=max(10, max_new_tokens // 10),
             multiple="layer",
             alpha=0.4,
             ax=ax,
+            legend=True,
         )
 
         ax.set_title("Output Length Distribution")
         ax.set_xlabel("Output length in tokens")
         ax.set_ylabel("Count")
-        if df["version"].nunique() > 1:
-            plt.legend(title="Version")
 
         if max_new_tokens:
             ax.axvline(
@@ -2026,6 +1925,7 @@ class Plotter:
         plt.tight_layout()
         plt.show()
         self._save_plot(file_name=f"model_output_token_len_histogram.png")
+        plt.close(fig)
 
     def plot_token_length_histogram_per_task(
         self,
@@ -2039,6 +1939,7 @@ class Plotter:
             ],
             ignore_index=True,
         )
+        fig = plt.figure(figsize=(10, 6))
         g = sns.displot(
             data=df,
             x="token_length",
@@ -2050,9 +1951,8 @@ class Plotter:
             alpha=0.4,
             height=4,
             aspect=1.3,
+            legend=True,
         )
-        if df["version"].nunique() > 1:
-            plt.legend(title="Version")
 
         g.set_axis_labels("Output length in tokens", "Count")
 
@@ -2074,6 +1974,7 @@ class Plotter:
 
         plt.show()
         self._save_plot(file_name=f"model_output_token_len_histogram_per_task.png")
+        plt.close(fig)
 
     def plot_case_pie(
         self,
@@ -2136,6 +2037,7 @@ class Plotter:
         uniqueness = "_unique" if unique else "_all"
         setting = setting.title().replace(" ", "_")
         self._save_plot(file_name=f"error_case_pie{uniqueness}_{setting}.png")
+        plt.close(fig)
 
     def plot_correlation(
         self,
@@ -2170,9 +2072,9 @@ class Plotter:
         :return: None
         """
         if level == "split":
-            plt.figure(figsize=(15, 5))
+            fig = plt.figure(figsize=(15, 5))
         else:
-            plt.figure(figsize=(10, 5))
+            fig = plt.figure(figsize=(10, 5))
 
         num_of_data_arrays = 0
         max_x_len = 1
@@ -2363,7 +2265,7 @@ class Plotter:
                 f"{label}_per_{x_label.lower()}.png", path_add
             )
         self._save_plot(file_name=png_path)
-        plt.close()
+        plt.close(fig)
 
     def plot_corr_hist(
         self,
@@ -2426,14 +2328,6 @@ class Plotter:
             list(zip(*x_data.values(), *df_data.values())),
             columns=[x_label] + list(df_data.keys()),
         )
-        max_x_len = max(df[x_label])
-        min_x_len = min(df[x_label])
-        if max_x_len > 100:
-            step_size = 5
-        elif max_x_len > 30:
-            step_size = 2
-        else:
-            step_size = 1
 
         label_column = (
             " ".join(df.columns[2].split("_")).title() if len(df.columns) > 2 else None
@@ -2473,6 +2367,7 @@ class Plotter:
                 2
             )  # Ensure numeric values are rounded if needed
         max_x_len = max(df[x_label])
+        min_x_len = min(df[x_label])
         step_size = 4 if max_x_len >= 100 else 2 if max_x_len >= 30 else 1
 
         pivot_ratios = df.pivot_table(
@@ -2522,12 +2417,12 @@ class Plotter:
             [("Plot data", [(str(x_label), None)])],
         )
         self._save_plot(file_name=png_path)
-        plt.close()
+        plt.close(fig)
 
     def plot_corr_boxplot(
         self,
         x_data: dict[str | Prompt, Accuracy | Metric] | list[float] | np.array,
-        y_data: dict[str : list[float] | np.array] = None,
+        y_data: dict[str, list[float] | np.array] = None,
         x_label: str = "X",
         y_label: str = "Y",
         displ_percentage: bool = False,
@@ -2562,9 +2457,9 @@ class Plotter:
         # Currently only used for part-level plots
 
         if level == "split":  # bigger plots for splits
-            plt.figure(figsize=(12, 8))
+            fig = plt.figure(figsize=(12, 8))
         else:
-            plt.figure(figsize=(10, 5))
+            fig = plt.figure(figsize=(10, 5))
         colors = self.cmap(np.linspace(0, 0.2, len(y_data[list(y_data)[-1]])))
 
         df_data = {}
@@ -2693,7 +2588,7 @@ class Plotter:
             [("Plot data", [(str(x_label), None)])],
         )
         self._save_plot(file_name=png_path)
-        plt.close()
+        plt.close(fig)
 
     def plot_distractor_attn_boxplot(
         self,
@@ -3563,7 +3458,8 @@ class Plotter:
                 continue
             by_n[r.n_distractors].append(r)
 
-        ns = sorted(k for k, v in by_n.items() if len(v) >= min_bin_size)
+        # ns = sorted(k for k, v in by_n.items() if len(v) >= min_bin_size)
+        ns = [k for k in range(0, max(by_n.keys()) + 1) if len(by_n[k]) >= min_bin_size]
         if not ns:
             print(
                 f"[plot_distraction_vs_n_distractors] No bins meet "
@@ -3592,6 +3488,8 @@ class Plotter:
         acc, acc_lo, acc_hi = [], [], []
         bin_n = []
         for n in ns:
+            if n not in by_n.keys():
+                continue
             recs = by_n[n]
             dist_vals = [
                 (
@@ -3652,6 +3550,38 @@ class Plotter:
             color=self.color_supporting,
             alpha=0.15,
         )
+        # Vertical line segments in the left y-axis colour to visually link each half of the axis to
+        # its corresponding attention type, since we're using both on the same axis.
+        # This is a bit hacky but avoids the need for a second y-axis and legend entries for it.
+        ax_attn.spines["left"].set_visible(False)
+
+        # Get the x position of the left spine (in data coordinates)
+        x0, x1 = ax_attn.get_xlim()
+        x_pos = x0  # left edge
+
+        # Small offset
+        delta = 0.02 * (x1 - x0)  # 2% of x range
+
+        # Left line: supporting
+        ax_attn.plot(
+            [x_pos - delta, x_pos - delta],
+            ax_attn.get_ylim(),
+            color=self.color_supporting,
+            linewidth=2,
+            zorder=4,
+            clip_on=False,
+        )
+
+        # Right line: distractor
+        ax_attn.plot(
+            [x_pos + delta, x_pos + delta],
+            ax_attn.get_ylim(),
+            color=self.color_distractor,
+            linewidth=2,
+            zorder=4,
+            clip_on=False,
+        )
+
         line_a = ax_acc.plot(
             ns,
             acc,
@@ -3742,7 +3672,7 @@ class Plotter:
         """
         plt.close()
 
-        plt.figure(figsize=(max(7, len(df["task_id"].unique()) * 0.75), 4.5))
+        fig = plt.figure(figsize=(max(7, len(df["task_id"].unique()) * 0.75), 4.5))
 
         df = df.sort_values("task_id")
         ax = sns.barplot(
@@ -3765,6 +3695,7 @@ class Plotter:
             path_add_resolved,
         )
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_toxic_cot_transition_overview(
         self,
@@ -3866,6 +3797,7 @@ class Plotter:
 
         png_path = self._resolve_save_target(file_name, path_add if path_add else None)
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_attr_before_after_two_runs_per_task(
         self,
@@ -3898,7 +3830,7 @@ class Plotter:
             da_after = [vals_da[1][t] for t in tasks]
             reas_after = [vals_reas[1][t] for t in tasks]
 
-        plt.figure(figsize=(14, 5))
+        fig = plt.figure(figsize=(14, 5))
 
         plt.bar(
             x - 1.5 * width,
@@ -3935,6 +3867,7 @@ class Plotter:
         path_add = Path("/".join(plot_name_add)) if plot_name_add else None
         png_path = self._resolve_save_target(fn, path_add)
         self._save_plot(file_name=png_path)
+        plt.close(fig)
 
     def plot_attrs_by_runs_versions_toxicity(
         self,
@@ -4045,6 +3978,7 @@ class Plotter:
             var_name="toxicity",
             value_name="count",
         )
+        fig = plt.figure(figsize=(10, 4))
         g = sns.catplot(
             data=plot_df,
             x="attr",
@@ -4074,6 +4008,7 @@ class Plotter:
                 ax=axes[1],
             )
         self._save_plot(file_name="attrs_by_runs_versions_toxicity.png")
+        plt.close(fig)
 
     def plot_accuracy_vs_distraction_ratio(
         self,

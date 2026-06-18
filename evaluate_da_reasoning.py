@@ -16,9 +16,6 @@ ATTRS = [
     "verbs",
     "pronouns",
     "not_mentioned",
-    "context_sents_hall",
-    "answer_not_mentioned",
-    "empty_attn_scores",
 ]
 
 
@@ -61,9 +58,9 @@ def build_wide_table(df_reas: pd.DataFrame, df_da: pd.DataFrame) -> pd.DataFrame
     # Restore ID columns (they got suffixed)
     for col in ID_COLS:
         df_da[col] = df_da[f"{col}_da"]
-        df_da.drop(columns=f"{col}_da", inplace=True, errors="ignore", axis=1)
+        df_da.drop(columns=f"{col}_da", inplace=True, errors="ignore")
         df_reas[col] = df_reas[f"{col}_reas"]
-        df_reas.drop(columns=f"{col}_reas", inplace=True, errors="ignore", axis=1)
+        df_reas.drop(columns=f"{col}_reas", inplace=True, errors="ignore")
 
     # Inner join: keep only examples that exist in both runs
     merged = pd.merge(df_reas, df_da, on=ID_COLS, how="inner")
@@ -261,12 +258,19 @@ def run(
 ):
     logging.info("Running evaluation of direct answers and reasoning...")
 
-    out_dir = out_dir / "da_reasoning_comparison"
+    out_dir_base = out_dir
+    out_dir = out_dir_base / "da_reasoning_comparison"
+    counter = 1
+    while out_dir.exists():
+        out_dir = out_dir_base / f"da_reasoning_comparison_{counter}"
+        counter += 1
     out_dir.mkdir(parents=True, exist_ok=True)
 
     df_da = load_eval_table(direct_answer_path, label="da")
     df_reas = load_eval_table(reasoning_path, label="reas")
     merged = build_wide_table(df_reas, df_da)
+    print("merged table", merged.shape)
+    print(merged.head())
 
     merged_before = add_toxic_cot_flags(merged, version="before")
     if multi_system:
