@@ -4848,6 +4848,8 @@ class Plotter:
             fontsize=12,
             pad=8,
         )
+        ax.set_xticks(x)
+        ax.set_xticklabels(x)
         ax.legend(fontsize=10, loc="upper right")
         ax.grid(axis="both", linestyle="--", alpha=0.4)
         ax.set_axisbelow(True)
