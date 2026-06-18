@@ -675,7 +675,6 @@ class Plotter:
         plot_name_add: list[str] | None = None,
     ):
         fig, axes = plt.subplots(1, 2, figsize=(20, 10))
-
         # PLOT ACCURACY
         plot_df = (
             df.groupby(group)
@@ -943,7 +942,10 @@ class Plotter:
             .mean()
             .reset_index(name="toxic_rate")
         )
-        fig = plt.figure(figsize=(12, 8), constrained_layout=True)
+        # calculate number of items in 'group'
+        num_group = plot_df.shape[0]
+        bar_width = 0.2
+        fig = plt.figure(figsize=(num_group * bar_width, 8), constrained_layout=True)
         ax = sns.barplot(
             data=plot_df,
             x=group,
@@ -2315,12 +2317,13 @@ class Plotter:
                 df_data.update(v)
             df_data[k] = v
 
+        num_of_items = len(list(df_data.values())[0])
         if level == "split":  # bigger plots for splits
-            fig, ax = plt.subplots(figsize=(15, 8))
             width = 0.6
+            fig, ax = plt.subplots(figsize=(num_of_items*width, 8))
         else:
-            fig, ax = plt.subplots(figsize=(10, 5))
             width = 0.35
+            fig, ax = plt.subplots(figsize=(num_of_items*width, 5))
 
         x_data = {x_label: x_data} if isinstance(x_data, (list, np.ndarray)) else x_data
 
@@ -2455,11 +2458,12 @@ class Plotter:
         """
         # Part-level if x_data is list/array, else sample/task-level if dict
         # Currently only used for part-level plots
-
+        bar_width = 0.2
+        num_bars = len(list(y_data.values())[0])
         if level == "split":  # bigger plots for splits
-            fig = plt.figure(figsize=(12, 8))
+            fig = plt.figure(figsize=(int(bar_width * num_bars), 8))
         else:
-            fig = plt.figure(figsize=(10, 5))
+            fig = plt.figure(figsize=(int(bar_width * num_bars), 5))
         colors = self.cmap(np.linspace(0, 0.2, len(y_data[list(y_data)[-1]])))
 
         df_data = {}
@@ -3681,6 +3685,26 @@ class Plotter:
             y="diff",
             color=self.cmap(0),
         )
+        match file_name:
+            case str(x) if "attn_on_target" in x:
+                ax.set_ylim(-1.8, 0.1)
+            case str(x) if "max_supp_attn" in x:
+                ax.set_ylim(-0.05, 1.5)
+            case str(x) if "not_mentioned" in x:
+                ax.set_ylim(-0.5, 1.0)
+            case str(x) if "there" in x:
+                ax.set_ylim(-0.25, 0.25)
+            case str(x) if "pronouns" in x:
+                ax.set_ylim(-0.1, 0.1)
+            case str(x) if "verbs" in x:
+                ax.set_ylim(-0.1, 0.1)
+            case _:
+                warnings.warn(
+                    "Setting no y-axis limit for plotting feature differences"
+                )
+
+        ax.grid(axis="y", linestyle="--", alpha=0.4)
+        ax.set_axisbelow(True)
 
         ax.axhline(0, color="black", linewidth=0.8)
         ax.set_xlabel("Task")
