@@ -310,19 +310,19 @@ def print_metrics_table(
                 if len(evaluator.attn_on_target) > 1
                 else evaluator.attn_on_target.get_mean()
             )
-        if evaluator.bleu:
+        if hasattr(evaluator, "bleu") and getattr(evaluator, "bleu"):
             metric_values["BLEU score"][version] = (
                 f"{evaluator.bleu.get_mean()} ± {evaluator.bleu.get_std()}"
                 if len(evaluator.bleu) > 1
                 else evaluator.bleu.get_mean()
             )
-        if evaluator.rouge:
+        if hasattr(evaluator, "rouge") and getattr(evaluator, "rouge"):
             metric_values["ROUGE score"][version] = (
                 f"{evaluator.rouge.get_mean()} ± {evaluator.rouge.get_std()}"
                 if len(evaluator.rouge) > 1
                 else evaluator.rouge.get_mean()
             )
-        if evaluator.meteor:
+        if hasattr(evaluator, "meteor") and getattr(evaluator, "meteor"):
             metric_values["METEOR score"][version] = (
                 f"{evaluator.meteor.get_mean()} ± {evaluator.meteor.get_std()}"
                 if len(evaluator.meteor) > 1
@@ -388,7 +388,12 @@ def majority_vote(values: list) -> list[str] | None:
     """
     if not values:
         return None
-    value_counts = Counter(values)
-    highest_freq = value_counts.most_common(1)[0][0]
-    majority_values = [v for v, count in value_counts.items() if count == highest_freq]
+    values_lower = [v.lower() for v in values]
+    value_counts = Counter(values_lower)
+    highest_freq = value_counts.most_common(1)[0][1]
+    majority_values = []
+    for v, count in value_counts.items():
+        if count == highest_freq:
+            value = v.capitalize() if v not in values else v
+            majority_values.append(value)
     return majority_values

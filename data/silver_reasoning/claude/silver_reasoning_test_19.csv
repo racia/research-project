@@ -1,0 +1,1501 @@
+task_id,task,sample_id,part_id,silver_reasoning,answer
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the bathroom.
+2. The bedroom is north of the hallway.
+3. The office is south of the hallway.
+4. The bathroom is north of the bedroom.
+5. The kitchen is east of the bedroom.
+
+Now, answer the following question:
+How do you go from the bathroom to the hallway?",1,1,"From context sentence 4, the bathroom is north of the bedroom. From context sentence 2, the bedroom is north of the hallway. So starting at the bathroom, moving south reaches the bedroom, then moving south again reaches the hallway.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is west of the bathroom.
+2. The office is south of the bedroom.
+3. The garden is north of the bedroom.
+4. The kitchen is east of the bedroom.
+5. The hallway is east of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",2,1,"From context sentence 5, the hallway is east of the kitchen. From context sentence 4, the kitchen is east of the bedroom. So the bedroom, kitchen, and hallway are in a line going east. Starting at the bedroom, moving east reaches the kitchen, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the hallway.
+2. The kitchen is west of the garden.
+3. The garden is north of the bathroom.
+4. The bedroom is east of the bathroom.
+5. The hallway is west of the office.
+
+Now, answer the following question:
+How do you go from the bathroom to the hallway?",3,1,"From context sentence 3, the garden is north of the bathroom. From context sentence 1, the garden is west of the hallway. So from the bathroom, moving north reaches the garden, then moving east reaches the hallway.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is south of the bathroom.
+2. The kitchen is west of the garden.
+3. The kitchen is south of the bedroom.
+4. The office is north of the bedroom.
+5. The bedroom is east of the bathroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?",4,1,"From context sentence 3, the kitchen is south of the bedroom. From context sentence 5, the bedroom is east of the bathroom. So from the kitchen, moving north reaches the bedroom, then moving west reaches the bathroom.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the bathroom.
+2. The hallway is east of the bedroom.
+3. The kitchen is west of the garden.
+4. The office is south of the bedroom.
+5. The office is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?",5,1,"From context sentence 4, the office is south of the bedroom. From context sentence 5, the office is north of the kitchen. So from the bedroom, moving south reaches the office, then moving south again reaches the kitchen.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the bathroom.
+2. The hallway is west of the kitchen.
+3. The garden is south of the hallway.
+4. The office is west of the garden.
+5. The hallway is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the garden to the bathroom?",6,1,"From context sentence 3, the garden is south of the hallway. From context sentence 5, the hallway is south of the bathroom. So from the garden, moving north reaches the hallway, then moving north again reaches the bathroom.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the garden.
+2. The garden is west of the bedroom.
+3. The bathroom is east of the bedroom.
+4. The bedroom is north of the hallway.
+5. The kitchen is north of the garden.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?",7,1,"From context sentence 2, the garden is west of the bedroom, so the bedroom is east of the garden, meaning from the bedroom, moving west reaches the garden. From context sentence 5, the kitchen is north of the garden, so from the garden, moving north reaches the kitchen.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the bedroom.
+2. The garden is north of the office.
+3. The bathroom is east of the kitchen.
+4. The bathroom is west of the garden.
+5. The bathroom is north of the hallway.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?",8,1,"From context sentence 4, the bathroom is west of the garden, so the garden is east of the bathroom, meaning from the garden, moving west reaches the bathroom. From context sentence 1, the bathroom is south of the bedroom, so from the bathroom, moving north reaches the bedroom.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the office.
+2. The bathroom is west of the garden.
+3. The garden is west of the office.
+4. The kitchen is east of the bedroom.
+5. The hallway is north of the office.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?",9,1,"From context sentence 4, the kitchen is east of the bedroom (not directly useful). From context sentence 2, the bathroom is west of the garden (not directly relevant). We need kitchen to garden. From context sentence 1, the kitchen is south of the office. From context sentence 3, the garden is west of the office, so the office is east of the garden, meaning from the garden, moving east reaches the office; therefore from the office, moving west reaches the garden. So from the kitchen, moving north reaches the office, then moving west reaches the garden.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is north of the garden.
+2. The office is east of the garden.
+3. The office is south of the kitchen.
+4. The bedroom is north of the hallway.
+5. The bathroom is west of the garden.
+
+Now, answer the following question:
+How do you go from the hallway to the office?",10,1,"From context sentence 1, the hallway is north of the garden, so the garden is south of the hallway, meaning from the hallway, moving south reaches the garden. From context sentence 2, the office is east of the garden. So from the hallway, moving south reaches the garden, then moving east reaches the office.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the bedroom.
+2. The office is south of the garden.
+3. The bathroom is south of the hallway.
+4. The kitchen is east of the hallway.
+5. The hallway is east of the garden.
+
+Now, answer the following question:
+How do you go from the office to the hallway?",11,1,"From context sentence 2, the office is south of the garden, so the garden is north of the office, meaning from the office, moving north reaches the garden. From context sentence 1, the garden is south of the bedroom (not directly needed). From context sentence 5, the hallway is east of the garden, so from the garden, moving east reaches the hallway. So from the office, moving north reaches the garden, then moving east reaches the hallway.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the bedroom.
+2. The garden is south of the office.
+3. The hallway is south of the kitchen.
+4. The garden is west of the kitchen.
+5. The bathroom is north of the office.
+
+Now, answer the following question:
+How do you go from the kitchen to the office?",12,1,"From context sentence 1, the kitchen is south of the bedroom, so the bedroom is north of the kitchen, meaning from the kitchen, moving north reaches the bedroom. From context sentence 5, the bathroom is north of the office (not directly needed). We need kitchen to office. From context sentence 3, the hallway is south of the kitchen, so from the kitchen, moving south reaches the hallway. From context sentence 2, the garden is south of the office, so the office is north of the garden; and from context sentence 4, the garden is west of the kitchen, so the kitchen is east of the garden, meaning from the garden, moving east reaches the kitchen, so from the kitchen, moving west reaches the garden. So from the kitchen, moving south reaches the hallway... let's reconsider. Actually we need a path from kitchen to office directly. From context sentence 1, kitchen is south of bedroom, so bedroom is north of kitchen. From context sentence 5, bathroom is north of office, so office is south of bathroom. These don't connect directly to kitchen without bedroom or bathroom. Let's check sentence 3: hallway is south of kitchen, so from kitchen, south reaches hallway. We need office relative to hallway: not given directly. Let's reconsider using garden: sentence 4, garden is west of kitchen, so from kitchen, west reaches garden. Sentence 2, garden is south of office, so office is north of garden, meaning from garden, north reaches office. So from the kitchen, moving west reaches the garden, then moving north reaches the office.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the bedroom.
+2. The garden is east of the bathroom.
+3. The office is north of the bathroom.
+4. The bathroom is east of the hallway.
+5. The bathroom is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",13,1,"From context sentence 5, the bathroom is north of the bedroom, so from the bathroom, moving south reaches the bedroom. From context sentence 1, the kitchen is west of the bedroom, so the bedroom is east of the kitchen, meaning from the bedroom, moving west reaches the kitchen. So from the bathroom, moving south reaches the bedroom, then moving west reaches the kitchen.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the bathroom.
+2. The bedroom is east of the bathroom.
+3. The hallway is east of the kitchen.
+4. The office is south of the bathroom.
+5. The bathroom is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?",14,1,"From context sentence 5, the bathroom is south of the kitchen, so from the kitchen, moving south reaches the bathroom. From context sentence 1, the garden is west of the bathroom, so from the bathroom, moving west reaches the garden. So from the kitchen, moving south reaches the bathroom, then moving west reaches the garden.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The office is north of the hallway.
+2. The kitchen is east of the bedroom.
+3. The office is west of the garden.
+4. The bedroom is north of the garden.
+5. The bedroom is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the office?",15,1,"From context sentence 4, the bedroom is north of the garden, so from the bedroom, moving south reaches the garden. From context sentence 3, the office is west of the garden, so the garden is east of the office, meaning from the garden, moving west reaches the office. So from the bedroom, moving south reaches the garden, then moving west reaches the office.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The garden is north of the bathroom.
+2. The hallway is north of the bedroom.
+3. The kitchen is west of the hallway.
+4. The bathroom is west of the office.
+5. The bathroom is east of the hallway.
+
+Now, answer the following question:
+How do you go from the garden to the hallway?",16,1,"From context sentence 1, the garden is north of the bathroom, so from the garden, moving south reaches the bathroom. From context sentence 5, the bathroom is east of the hallway, so from the bathroom, moving west reaches the hallway. So from the garden, moving south reaches the bathroom, then moving west reaches the hallway.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the bedroom.
+2. The kitchen is east of the bathroom.
+3. The garden is north of the hallway.
+4. The bathroom is north of the office.
+5. The office is east of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the bathroom?",17,1,"From context sentence 5, the office is east of the hallway, so from the hallway, moving east reaches the office. From context sentence 4, the bathroom is north of the office, so from the office, moving north reaches the bathroom. So from the hallway, moving east reaches the office, then moving north reaches the bathroom.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the office.
+2. The bedroom is east of the bathroom.
+3. The hallway is north of the bathroom.
+4. The bathroom is east of the office.
+5. The office is south of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",18,1,"From context sentence 4, the bathroom is east of the office, so from the bathroom, moving west reaches the office. From context sentence 1, the kitchen is south of the office, so from the office, moving south reaches the kitchen. So from the bathroom, moving west reaches the office, then moving south reaches the kitchen.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is north of the hallway.
+2. The office is west of the bedroom.
+3. The garden is west of the bathroom.
+4. The kitchen is south of the bedroom.
+5. The kitchen is west of the garden.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?",19,1,"From context sentence 4, the kitchen is south of the bedroom, so from the bedroom, moving south reaches the kitchen. From context sentence 5, the kitchen is west of the garden, so from the kitchen, moving east reaches the garden. So from the bedroom, moving south reaches the kitchen, then moving east reaches the garden.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the garden.
+2. The bedroom is west of the garden.
+3. The kitchen is north of the bathroom.
+4. The office is north of the bedroom.
+5. The hallway is west of the bedroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the bedroom?",20,1,"From context sentence 2, the bedroom is west of the garden, so the garden is east of the bedroom, meaning from the bedroom, moving east reaches the garden. From context sentence 1, the kitchen is east of the garden, so from the garden, moving west reaches the kitchen (reverse). So from the kitchen, moving west reaches the garden, then moving west again reaches the bedroom.",west west
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the garden.
+2. The bathroom is east of the hallway.
+3. The bedroom is north of the hallway.
+4. The garden is south of the hallway.
+5. The office is west of the hallway.
+
+Now, answer the following question:
+How do you go from the office to the garden?",21,1,"From context sentence 5, the office is west of the hallway, so from the office, moving east reaches the hallway. From context sentence 4, the garden is south of the hallway, so from the hallway, moving south reaches the garden. So from the office, moving east reaches the hallway, then moving south reaches the garden.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the bathroom.
+2. The hallway is south of the kitchen.
+3. The garden is west of the kitchen.
+4. The bathroom is east of the office.
+5. The bathroom is west of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",22,1,"From context sentence 4, the bathroom is east of the office (not directly needed). From context sentence 5, the bathroom is west of the garden (not directly needed). We need bathroom to kitchen. From context sentence 2, the hallway is south of the kitchen, so from the kitchen, moving south reaches the hallway, meaning from the hallway, moving north reaches the kitchen. From context sentence 3, the garden is west of the kitchen, so from the kitchen, moving west reaches the garden. We need a connection from bathroom. Sentence 5 says bathroom is west of garden, so from the bathroom, moving east reaches the garden, then from the garden, moving east reaches the kitchen (reverse of sentence 3). So from the bathroom, moving east reaches the garden, then moving east again reaches the kitchen.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The office is east of the kitchen.
+2. The garden is west of the bedroom.
+3. The bathroom is east of the hallway.
+4. The bathroom is south of the kitchen.
+5. The bedroom is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the bathroom?",23,1,"From context sentence 5, the bedroom is north of the kitchen, so from the bedroom, moving south reaches the kitchen. From context sentence 4, the bathroom is south of the kitchen, so from the kitchen, moving south reaches the bathroom. So from the bedroom, moving south reaches the kitchen, then moving south again reaches the bathroom.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the garden.
+2. The office is east of the bathroom.
+3. The kitchen is south of the bedroom.
+4. The hallway is west of the bathroom.
+5. The bedroom is south of the office.
+
+Now, answer the following question:
+How do you go from the bathroom to the bedroom?",24,1,"From context sentence 4, the hallway is west of the bathroom, so from the bathroom, moving west reaches the hallway. We need bathroom to bedroom. From context sentence 5, the bedroom is south of the office, so the office is north of the bedroom. From context sentence 2, the office is east of the bathroom, so from the bathroom, moving east reaches the office, then from the office, moving south reaches the bedroom. So from the bathroom, moving east reaches the office, then moving south reaches the bedroom.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is west of the office.
+2. The bedroom is north of the kitchen.
+3. The bathroom is south of the hallway.
+4. The office is west of the hallway.
+5. The garden is north of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",25,1,"From context sentence 1, the bedroom is west of the office, so from the bedroom, moving east reaches the office. From context sentence 4, the office is west of the hallway, so from the office, moving east reaches the hallway. So from the bedroom, moving east reaches the office, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is north of the office.
+2. The garden is east of the bathroom.
+3. The kitchen is west of the office.
+4. The kitchen is north of the bathroom.
+5. The bedroom is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the bathroom to the office?",26,1,"From context sentence 5, the bedroom is south of the bathroom, so from the bathroom, moving south reaches the bedroom (not needed directly). We need bathroom to office. From context sentence 4, the kitchen is north of the bathroom, so from the bathroom, moving north reaches the kitchen. From context sentence 3, the kitchen is west of the office, so from the kitchen, moving east reaches the office. So from the bathroom, moving north reaches the kitchen, then moving east reaches the office.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The garden is north of the hallway.
+2. The kitchen is south of the bedroom.
+3. The bedroom is east of the bathroom.
+4. The hallway is east of the office.
+5. The office is east of the bedroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",27,1,"From context sentence 3, the bedroom is east of the bathroom (not needed directly). We need bedroom to hallway. From context sentence 5, the office is east of the bedroom, so from the bedroom, moving east reaches the office. From context sentence 4, the hallway is east of the office, so from the office, moving east reaches the hallway. So from the bedroom, moving east reaches the office, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is north of the office.
+2. The kitchen is west of the hallway.
+3. The office is east of the garden.
+4. The office is north of the hallway.
+5. The bathroom is east of the hallway.
+
+Now, answer the following question:
+How do you go from the bathroom to the office?",28,1,"From context sentence 5, the bathroom is east of the hallway, so from the bathroom, moving west reaches the hallway. From context sentence 4, the office is north of the hallway, so from the hallway, moving north reaches the office. So from the bathroom, moving west reaches the hallway, then moving north reaches the office.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is east of the office.
+2. The kitchen is south of the garden.
+3. The bathroom is north of the office.
+4. The bedroom is west of the garden.
+5. The garden is west of the office.
+
+Now, answer the following question:
+How do you go from the bathroom to the garden?",29,1,"From context sentence 3, the bathroom is north of the office, so from the bathroom, moving south reaches the office. From context sentence 5, the garden is west of the office, so the office is east of the garden, meaning from the office, moving west reaches the garden. So from the bathroom, moving south reaches the office, then moving west reaches the garden.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the kitchen.
+2. The garden is north of the bathroom.
+3. The bedroom is east of the bathroom.
+4. The office is west of the bathroom.
+5. The hallway is north of the garden.
+
+Now, answer the following question:
+How do you go from the garden to the office?",30,1,"From context sentence 2, the garden is north of the bathroom, so from the garden, moving south reaches the bathroom. From context sentence 4, the office is west of the bathroom, so from the bathroom, moving west reaches the office. So from the garden, moving south reaches the bathroom, then moving west reaches the office.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The office is east of the bedroom.
+2. The kitchen is east of the office.
+3. The garden is north of the office.
+4. The bathroom is south of the bedroom.
+5. The hallway is south of the office.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?",31,1,"From context sentence 1, the office is east of the bedroom, so from the bedroom, moving east reaches the office. From context sentence 2, the kitchen is east of the office, so from the office, moving east reaches the kitchen. So from the bedroom, moving east reaches the office, then moving east again reaches the kitchen.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the garden.
+2. The bathroom is north of the bedroom.
+3. The hallway is west of the bathroom.
+4. The office is east of the kitchen.
+5. The hallway is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?",32,1,"From context sentence 4, the office is east of the kitchen, so from the kitchen, moving east reaches the office. From context sentence 5, the hallway is south of the kitchen, so from the kitchen, moving south reaches the hallway. We need kitchen to bathroom. From context sentence 2, the bathroom is north of the bedroom (not directly needed). From context sentence 3, the hallway is west of the bathroom, so from the hallway, moving east reaches the bathroom. So from the kitchen, moving south reaches the hallway, then moving east reaches the bathroom.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the bathroom.
+2. The hallway is north of the bedroom.
+3. The office is east of the bedroom.
+4. The kitchen is south of the bathroom.
+5. The garden is south of the bedroom.
+
+Now, answer the following question:
+How do you go from the garden to the bathroom?",33,1,"From context sentence 5, the garden is south of the bedroom, so from the garden, moving north reaches the bedroom (not directly needed). We need garden to bathroom. From context sentence 1, the bedroom is east of the bathroom, so the bathroom is west of the bedroom. From the garden, moving north reaches the bedroom, then from the bedroom, moving west reaches the bathroom.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the kitchen.
+2. The bathroom is north of the kitchen.
+3. The garden is east of the kitchen.
+4. The hallway is west of the kitchen.
+5. The office is south of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",34,1,"From context sentence 1, the bedroom is south of the kitchen, so from the bedroom, moving north reaches the kitchen. From context sentence 4, the hallway is west of the kitchen, so from the kitchen, moving east reaches the hallway (reverse). So from the bedroom, moving north reaches the kitchen, then moving east reaches the hallway.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is east of the office.
+2. The bedroom is north of the hallway.
+3. The garden is east of the kitchen.
+4. The bedroom is west of the kitchen.
+5. The bathroom is east of the hallway.
+
+Now, answer the following question:
+How do you go from the kitchen to the hallway?",35,1,"From context sentence 4, the bedroom is west of the kitchen, so the kitchen is east of the bedroom, meaning from the kitchen, moving west reaches the bedroom. From context sentence 2, the bedroom is north of the hallway, so from the bedroom, moving south reaches the hallway. So from the kitchen, moving west reaches the bedroom, then moving south reaches the hallway.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the bathroom.
+2. The kitchen is north of the bathroom.
+3. The garden is south of the bathroom.
+4. The office is west of the garden.
+5. The hallway is south of the bedroom.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?",36,1,"From context sentence 3, the garden is south of the bathroom, so from the garden, moving north reaches the bathroom (not directly needed). We need garden to bedroom. From context sentence 1, the bedroom is east of the bathroom, so from the bathroom, moving east reaches the bedroom. So from the garden, moving north reaches the bathroom, then moving east reaches the bedroom.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the hallway.
+2. The garden is south of the office.
+3. The bedroom is east of the hallway.
+4. The bathroom is north of the hallway.
+5. The bathroom is east of the office.
+
+Now, answer the following question:
+How do you go from the hallway to the office?",37,1,"From context sentence 1, the kitchen is south of the hallway, so from the hallway, moving south reaches the kitchen (not directly needed). We need hallway to office. From context sentence 4, the bathroom is north of the hallway, so from the hallway, moving north reaches the bathroom. From context sentence 5, the bathroom is east of the office, so the office is west of the bathroom, meaning from the bathroom, moving west reaches the office. So from the hallway, moving north reaches the bathroom, then moving west reaches the office.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is east of the kitchen.
+2. The office is north of the bathroom.
+3. The garden is west of the bedroom.
+4. The bathroom is east of the hallway.
+5. The bedroom is north of the hallway.
+
+Now, answer the following question:
+How do you go from the bathroom to the bedroom?",38,1,"From context sentence 4, the bathroom is east of the hallway, so from the bathroom, moving west reaches the hallway (not directly needed). We need bathroom to bedroom. From context sentence 5, the bedroom is north of the hallway, so from the hallway, moving north reaches the bedroom. So from the bathroom, moving west reaches the hallway, then moving north reaches the bedroom.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the bedroom.
+2. The office is south of the bathroom.
+3. The bedroom is east of the office.
+4. The garden is north of the bathroom.
+5. The office is north of the hallway.
+
+Now, answer the following question:
+How do you go from the bathroom to the bedroom?",39,1,"From context sentence 2, the office is south of the bathroom, so from the bathroom, moving south reaches the office. From context sentence 3, the bedroom is east of the office, so from the office, moving east reaches the bedroom. So from the bathroom, moving south reaches the office, then moving east reaches the bedroom.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the office.
+2. The hallway is south of the bedroom.
+3. The kitchen is north of the bedroom.
+4. The bedroom is east of the office.
+5. The kitchen is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the office to the kitchen?",40,1,"From context sentence 4, the bedroom is east of the office, so from the office, moving east reaches the bedroom. From context sentence 3, the kitchen is north of the bedroom, so from the bedroom, moving north reaches the kitchen. So from the office, moving east reaches the bedroom, then moving north reaches the kitchen.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the office.
+2. The bedroom is south of the bathroom.
+3. The hallway is east of the kitchen.
+4. The hallway is north of the bathroom.
+5. The bathroom is east of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",41,1,"From context sentence 4, the hallway is north of the bathroom, so from the bathroom, moving north reaches the hallway. From context sentence 3, the hallway is east of the kitchen, so from the hallway, moving west reaches the kitchen (reverse). So from the bathroom, moving north reaches the hallway, then moving west reaches the kitchen.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is west of the hallway.
+2. The office is north of the bathroom.
+3. The kitchen is south of the bedroom.
+4. The office is east of the garden.
+5. The bedroom is east of the bathroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the office?",42,1,"From context sentence 5, the bedroom is east of the bathroom, so from the bedroom, moving west reaches the bathroom. From context sentence 2, the office is north of the bathroom, so from the bathroom, moving north reaches the office. So from the bedroom, moving west reaches the bathroom, then moving north reaches the office.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the kitchen.
+2. The bedroom is east of the office.
+3. The hallway is east of the kitchen.
+4. The bedroom is south of the garden.
+5. The kitchen is north of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the bedroom?",43,1,"From context sentence 1, the bathroom is north of the kitchen, so from the kitchen, moving north reaches the bathroom (not directly needed). We need kitchen to bedroom. From context sentence 5, the kitchen is north of the garden, so from the kitchen, moving south reaches the garden. From context sentence 4, the bedroom is south of the garden, so from the garden, moving south reaches the bedroom. So from the kitchen, moving south reaches the garden, then moving south again reaches the bedroom.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the hallway.
+2. The garden is north of the office.
+3. The garden is south of the bedroom.
+4. The kitchen is north of the bedroom.
+5. The bathroom is west of the bedroom.
+
+Now, answer the following question:
+How do you go from the garden to the bathroom?",44,1,"From context sentence 3, the garden is south of the bedroom, so from the garden, moving north reaches the bedroom (not directly needed). We need garden to bathroom. From context sentence 5, the bathroom is west of the bedroom, so the bedroom is east of the bathroom, meaning from the bedroom, moving west reaches the bathroom. So from the garden, moving north reaches the bedroom, then moving west reaches the bathroom.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the office.
+2. The bedroom is north of the office.
+3. The bathroom is south of the garden.
+4. The office is north of the hallway.
+5. The garden is south of the hallway.
+
+Now, answer the following question:
+How do you go from the office to the garden?",45,1,"From context sentence 4, the office is north of the hallway, so from the office, moving south reaches the hallway (not directly needed). We need office to garden. From context sentence 5, the garden is south of the hallway, so from the hallway, moving south reaches the garden. So from the office, moving south reaches the hallway, then moving south again reaches the garden.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the hallway.
+2. The bathroom is east of the bedroom.
+3. The office is east of the hallway.
+4. The bedroom is north of the hallway.
+5. The garden is west of the hallway.
+
+Now, answer the following question:
+How do you go from the office to the bedroom?",46,1,"From context sentence 3, the office is east of the hallway, so from the office, moving west reaches the hallway. From context sentence 4, the bedroom is north of the hallway, so from the hallway, moving north reaches the bedroom. So from the office, moving west reaches the hallway, then moving north reaches the bedroom.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The office is east of the kitchen.
+2. The bedroom is north of the office.
+3. The hallway is south of the garden.
+4. The bathroom is north of the garden.
+5. The office is west of the garden.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?",47,1,"From context sentence 5, the office is west of the garden, so the garden is east of the office, meaning from the garden, moving west reaches the office. From context sentence 2, the bedroom is north of the office, so from the office, moving north reaches the bedroom. So from the garden, moving west reaches the office, then moving north reaches the bedroom.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is south of the garden.
+2. The garden is south of the bathroom.
+3. The bedroom is east of the bathroom.
+4. The kitchen is east of the bedroom.
+5. The office is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?",48,1,"From context sentence 3, the bedroom is east of the bathroom, so the bathroom is west of the bedroom, meaning from the bedroom, moving west reaches the bathroom. From context sentence 2, the garden is south of the bathroom, so the bathroom is north of the garden, meaning from the bathroom, moving south reaches the garden. So from the bedroom, moving west reaches the bathroom, then moving south reaches the garden.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the garden.
+2. The bedroom is north of the garden.
+3. The hallway is north of the bathroom.
+4. The hallway is west of the garden.
+5. The office is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",49,1,"From context sentence 3, the hallway is north of the bathroom, so from the hallway, moving south reaches the bathroom (not directly needed). We need hallway to bedroom. From context sentence 4, the hallway is west of the garden, so from the hallway, moving east reaches the garden. From context sentence 2, the bedroom is north of the garden, so from the garden, moving north reaches the bedroom. So from the hallway, moving east reaches the garden, then moving north reaches the bedroom.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The office is east of the bathroom.
+2. The bedroom is north of the garden.
+3. The hallway is north of the office.
+4. The kitchen is west of the garden.
+5. The hallway is east of the garden.
+
+Now, answer the following question:
+How do you go from the office to the garden?",50,1,"From context sentence 1, the office is east of the bathroom (not directly needed). We need office to garden. From context sentence 3, the hallway is north of the office, so from the office, moving north reaches the hallway. From context sentence 5, the hallway is east of the garden, so the garden is west of the hallway, meaning from the hallway, moving west reaches the garden. So from the office, moving north reaches the hallway, then moving west reaches the garden.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the bedroom.
+2. The bathroom is north of the hallway.
+3. The office is east of the hallway.
+4. The garden is south of the hallway.
+5. The garden is west of the bedroom.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",51,1,"From context sentence 2, the bathroom is north of the hallway, so from the hallway, moving north reaches the bathroom (not directly needed). We need hallway to bedroom. From context sentence 5, the garden is west of the bedroom, so the bedroom is east of the garden, meaning from the garden, moving east reaches the bedroom. From context sentence 4, the garden is south of the hallway, so from the hallway, moving south reaches the garden. So from the hallway, moving south reaches the garden, then moving east reaches the bedroom.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the bathroom.
+2. The office is east of the bathroom.
+3. The bedroom is west of the bathroom.
+4. The kitchen is east of the office.
+5. The hallway is east of the garden.
+
+Now, answer the following question:
+How do you go from the garden to the office?",52,1,"From context sentence 1, the garden is south of the bathroom, so from the garden, moving north reaches the bathroom (not directly needed). We need garden to office. From context sentence 5, the hallway is east of the garden, so from the garden, moving east reaches the hallway (not directly needed). From context sentence 2, the office is east of the bathroom, so from the bathroom, moving east reaches the office. From the garden, moving north reaches the bathroom, then moving east reaches the office.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is south of the garden.
+2. The garden is south of the bedroom.
+3. The office is west of the bedroom.
+4. The bathroom is north of the bedroom.
+5. The kitchen is east of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",53,1,"From context sentence 2, the garden is south of the bedroom, so from the bedroom, moving south reaches the garden. From context sentence 1, the hallway is south of the garden, so from the garden, moving south reaches the hallway. So from the bedroom, moving south reaches the garden, then moving south again reaches the hallway.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the kitchen.
+2. The kitchen is north of the office.
+3. The bathroom is north of the hallway.
+4. The kitchen is west of the bathroom.
+5. The bedroom is north of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the garden?",54,1,"From context sentence 4, the kitchen is west of the bathroom, so the bathroom is east of the kitchen, meaning from the bathroom, moving west reaches the kitchen. From context sentence 1, the garden is west of the kitchen, so from the kitchen, moving west reaches the garden. So from the bathroom, moving west reaches the kitchen, then moving west again reaches the garden.",west west
+19,"*TASK*
+Here are the context sentences:
+1. The office is north of the hallway.
+2. The kitchen is south of the bedroom.
+3. The bedroom is south of the bathroom.
+4. The garden is north of the office.
+5. The bathroom is east of the office.
+
+Now, answer the following question:
+How do you go from the bedroom to the office?",55,1,"From context sentence 3, the bedroom is south of the bathroom, so from the bedroom, moving north reaches the bathroom (not directly needed). We need bedroom to office. From context sentence 1, the office is north of the hallway (not directly needed). From context sentence 5, the bathroom is east of the office, so the office is west of the bathroom, meaning from the bathroom, moving west reaches the office. So from the bedroom, moving north reaches the bathroom, then moving west reaches the office.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is south of the office.
+2. The garden is north of the bedroom.
+3. The kitchen is north of the garden.
+4. The hallway is east of the garden.
+5. The bathroom is east of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",56,1,"From context sentence 4, the hallway is east of the garden, so from the hallway, moving west reaches the garden (not directly needed). We need hallway to bedroom. From context sentence 2, the garden is north of the bedroom, so from the garden, moving south reaches the bedroom. So from the hallway, moving west reaches the garden, then moving south reaches the bedroom.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the bedroom.
+2. The hallway is north of the bathroom.
+3. The hallway is west of the kitchen.
+4. The kitchen is south of the bedroom.
+5. The office is west of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",57,1,"From context sentence 2, the hallway is north of the bathroom, so from the hallway, moving south reaches the bathroom (not directly needed). We need hallway to bedroom. From context sentence 3, the hallway is west of the kitchen, so from the hallway, moving east reaches the kitchen. From context sentence 4, the kitchen is south of the bedroom, so from the kitchen, moving north reaches the bedroom. So from the hallway, moving east reaches the kitchen, then moving north reaches the bedroom.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the garden.
+2. The kitchen is north of the garden.
+3. The hallway is west of the kitchen.
+4. The bathroom is west of the hallway.
+5. The hallway is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the hallway to the garden?",58,1,"From context sentence 5, the hallway is north of the bedroom (not directly needed). We need hallway to garden. From context sentence 3, the hallway is west of the kitchen, so from the hallway, moving east reaches the kitchen. From context sentence 2, the kitchen is north of the garden, so from the kitchen, moving south reaches the garden. So from the hallway, moving east reaches the kitchen, then moving south reaches the garden.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The office is north of the garden.
+2. The bedroom is south of the garden.
+3. The kitchen is west of the hallway.
+4. The bathroom is east of the garden.
+5. The hallway is west of the garden.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",59,1,"From context sentence 5, the hallway is west of the garden, so from the hallway, moving east reaches the garden (not directly needed). We need hallway to bedroom. From context sentence 2, the bedroom is south of the garden, so from the garden, moving south reaches the bedroom. So from the hallway, moving east reaches the garden, then moving south reaches the bedroom.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the hallway.
+2. The bathroom is east of the bedroom.
+3. The bathroom is west of the kitchen.
+4. The garden is south of the kitchen.
+5. The garden is west of the office.
+
+Now, answer the following question:
+How do you go from the garden to the bathroom?",60,1,"From context sentence 4, the garden is south of the kitchen, so from the garden, moving north reaches the kitchen (not directly needed). We need garden to bathroom. From context sentence 3, the bathroom is west of the kitchen, so from the kitchen, moving west reaches the bathroom. So from the garden, moving north reaches the kitchen, then moving west reaches the bathroom.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the garden.
+2. The bathroom is west of the bedroom.
+3. The hallway is north of the kitchen.
+4. The bedroom is north of the hallway.
+5. The office is east of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the bathroom?",61,1,"From context sentence 3, the hallway is north of the kitchen, so from the hallway, moving south reaches the kitchen (not directly needed). We need hallway to bathroom. From context sentence 4, the bedroom is north of the hallway, so from the hallway, moving north reaches the bedroom. From context sentence 2, the bathroom is west of the bedroom, so the bedroom is east of the bathroom, meaning from the bedroom, moving west reaches the bathroom. So from the hallway, moving north reaches the bedroom, then moving west reaches the bathroom.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The office is east of the hallway.
+2. The kitchen is east of the office.
+3. The office is south of the bedroom.
+4. The garden is south of the hallway.
+5. The office is north of the bathroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",62,1,"From context sentence 3, the office is south of the bedroom, so from the bedroom, moving south reaches the office. From context sentence 1, the office is east of the hallway, so the hallway is west of the office, meaning from the office, moving west reaches the hallway. So from the bedroom, moving south reaches the office, then moving west reaches the hallway.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the hallway.
+2. The kitchen is south of the garden.
+3. The kitchen is north of the hallway.
+4. The bathroom is west of the hallway.
+5. The bedroom is east of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the garden?",63,1,"From context sentence 3, the kitchen is north of the hallway, so from the hallway, moving north reaches the kitchen (not directly needed). We need hallway to garden. From context sentence 2, the kitchen is south of the garden, so the garden is north of the kitchen, meaning from the kitchen, moving north reaches the garden. So from the hallway, moving north reaches the kitchen, then moving north again reaches the garden.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the bedroom.
+2. The garden is west of the bedroom.
+3. The kitchen is east of the hallway.
+4. The bedroom is north of the hallway.
+5. The office is south of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the garden?",64,1,"From context sentence 4, the bedroom is north of the hallway, so from the hallway, moving north reaches the bedroom (not directly needed). We need hallway to garden. From context sentence 2, the garden is west of the bedroom, so the bedroom is east of the garden, meaning from the bedroom, moving west reaches the garden. So from the hallway, moving north reaches the bedroom, then moving west reaches the garden.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is north of the office.
+2. The garden is north of the hallway.
+3. The bedroom is east of the office.
+4. The office is east of the bathroom.
+5. The garden is south of the office.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?",65,1,"From context sentence 5, the garden is south of the office, so from the garden, moving north reaches the office (not directly needed). We need garden to bedroom. From context sentence 4, the office is east of the bathroom (not directly needed). From context sentence 3, the bedroom is east of the office, so from the office, moving east reaches the bedroom. So from the garden, moving north reaches the office, then moving east reaches the bedroom.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the garden.
+2. The bedroom is east of the garden.
+3. The bedroom is north of the bathroom.
+4. The kitchen is east of the bedroom.
+5. The hallway is south of the office.
+
+Now, answer the following question:
+How do you go from the bedroom to the office?",66,1,"From context sentence 2, the bedroom is east of the garden, so the garden is west of the bedroom, meaning from the bedroom, moving west reaches the garden. From context sentence 1, the office is south of the garden, so from the garden, moving south reaches the office. So from the bedroom, moving west reaches the garden, then moving south reaches the office.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the hallway.
+2. The office is north of the bedroom.
+3. The bathroom is west of the hallway.
+4. The garden is south of the bathroom.
+5. The hallway is south of the bedroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the bathroom?",67,1,"From context sentence 5, the hallway is south of the bedroom, so from the bedroom, moving south reaches the hallway (not directly needed). We need bedroom to bathroom. From context sentence 3, the bathroom is west of the hallway, so from the hallway, moving west reaches the bathroom. So from the bedroom, moving south reaches the hallway, then moving west reaches the bathroom.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The garden is north of the bedroom.
+2. The hallway is east of the garden.
+3. The office is south of the bathroom.
+4. The kitchen is east of the bedroom.
+5. The bedroom is east of the office.
+
+Now, answer the following question:
+How do you go from the garden to the office?",68,1,"From context sentence 2, the hallway is east of the garden, so from the garden, moving east reaches the hallway (not directly needed). We need garden to office. From context sentence 1, the garden is north of the bedroom, so from the garden, moving south reaches the bedroom. From context sentence 5, the bedroom is east of the office, so the office is west of the bedroom, meaning from the bedroom, moving west reaches the office. So from the garden, moving south reaches the bedroom, then moving west reaches the office.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the bedroom.
+2. The bathroom is east of the hallway.
+3. The office is south of the kitchen.
+4. The garden is west of the kitchen.
+5. The bathroom is west of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",69,1,"From context sentence 5, the bathroom is west of the garden, so the garden is east of the bathroom, meaning from the bathroom, moving east reaches the garden. From context sentence 4, the garden is west of the kitchen, so from the garden, moving east reaches the kitchen. So from the bathroom, moving east reaches the garden, then moving east again reaches the kitchen.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is north of the bathroom.
+2. The garden is north of the hallway.
+3. The office is east of the garden.
+4. The kitchen is south of the hallway.
+5. The garden is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the hallway to the bathroom?",70,1,"From context sentence 2, the garden is north of the hallway, so from the hallway, moving north reaches the garden. From context sentence 5, the garden is south of the bathroom, so from the garden, moving north reaches the bathroom. So from the hallway, moving north reaches the garden, then moving north again reaches the bathroom.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the hallway.
+2. The bedroom is south of the kitchen.
+3. The bathroom is south of the bedroom.
+4. The hallway is east of the office.
+5. The hallway is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",71,1,"From context sentence 2, the bedroom is south of the kitchen, so from the bedroom, moving north reaches the kitchen (not directly needed). We need bedroom to hallway. From context sentence 3, the bathroom is south of the bedroom, so from the bedroom, moving south reaches the bathroom. From context sentence 5, the hallway is south of the bathroom, so from the bathroom, moving south reaches the hallway. So from the bedroom, moving south reaches the bathroom, then moving south again reaches the hallway.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is north of the office.
+2. The garden is west of the office.
+3. The garden is east of the bedroom.
+4. The kitchen is south of the office.
+5. The bathroom is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the garden to the kitchen?",72,1,"From context sentence 3, the garden is east of the bedroom (not directly needed). We need garden to kitchen. From context sentence 2, the garden is west of the office, so from the garden, moving east reaches the office. From context sentence 4, the kitchen is south of the office, so from the office, moving south reaches the kitchen. So from the garden, moving east reaches the office, then moving south reaches the kitchen.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is west of the kitchen.
+2. The hallway is north of the bedroom.
+3. The garden is west of the bathroom.
+4. The garden is east of the hallway.
+5. The hallway is east of the office.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?",73,1,"From context sentence 4, the garden is east of the hallway, so from the garden, moving west reaches the hallway (not directly needed). We need garden to bedroom. From context sentence 2, the hallway is north of the bedroom, so from the hallway, moving south reaches the bedroom. So from the garden, moving west reaches the hallway, then moving south reaches the bedroom.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the bathroom.
+2. The kitchen is west of the hallway.
+3. The bathroom is south of the hallway.
+4. The office is east of the bathroom.
+5. The hallway is west of the garden.
+
+Now, answer the following question:
+How do you go from the office to the hallway?",74,1,"From context sentence 4, the office is east of the bathroom, so from the office, moving west reaches the bathroom. From context sentence 3, the bathroom is south of the hallway, so from the bathroom, moving north reaches the hallway. So from the office, moving west reaches the bathroom, then moving north reaches the hallway.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The office is east of the bathroom.
+2. The garden is south of the bathroom.
+3. The bedroom is north of the bathroom.
+4. The hallway is west of the bathroom.
+5. The kitchen is west of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the office?",75,1,"From context sentence 4, the hallway is west of the bathroom, so from the hallway, moving east reaches the bathroom (not directly needed). We need hallway to office. From context sentence 1, the office is east of the bathroom, so from the bathroom, moving east reaches the office. So from the hallway, moving east reaches the bathroom, then moving east again reaches the office.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is west of the bedroom.
+2. The kitchen is east of the hallway.
+3. The office is north of the bedroom.
+4. The hallway is east of the garden.
+5. The bedroom is west of the garden.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",76,1,"From context sentence 5, the bedroom is west of the garden, so from the bedroom, moving east reaches the garden (not directly needed). We need bedroom to hallway. From context sentence 4, the hallway is east of the garden, so from the garden, moving east reaches the hallway. So from the bedroom, moving east reaches the garden, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the bathroom.
+2. The bedroom is west of the bathroom.
+3. The bedroom is south of the office.
+4. The bathroom is west of the hallway.
+5. The hallway is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",77,1,"From context sentence 4, the bathroom is west of the hallway, so the hallway is east of the bathroom, meaning from the hallway, moving west reaches the bathroom. From context sentence 2, the bedroom is west of the bathroom, so from the bathroom, moving west reaches the bedroom. So from the hallway, moving west reaches the bathroom, then moving west again reaches the bedroom.",west west
+19,"*TASK*
+Here are the context sentences:
+1. The office is north of the bathroom.
+2. The bathroom is east of the garden.
+3. The hallway is south of the garden.
+4. The bedroom is east of the bathroom.
+5. The kitchen is north of the garden.
+
+Now, answer the following question:
+How do you go from the office to the garden?",78,1,"From context sentence 1, the office is north of the bathroom, so from the office, moving south reaches the bathroom. From context sentence 2, the bathroom is east of the garden, so the garden is west of the bathroom, meaning from the bathroom, moving west reaches the garden. So from the office, moving south reaches the bathroom, then moving west reaches the garden.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is north of the bathroom.
+2. The bathroom is west of the garden.
+3. The office is south of the garden.
+4. The bedroom is south of the kitchen.
+5. The kitchen is east of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?",79,1,"From context sentence 5, the kitchen is east of the garden, so from the kitchen, moving west reaches the garden (not directly needed). We need kitchen to bathroom. From context sentence 2, the bathroom is west of the garden, so the garden is east of the bathroom, meaning from the garden, moving west reaches the bathroom. So from the kitchen, moving west reaches the garden, then moving west again reaches the bathroom.",west west
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is west of the office.
+2. The office is west of the hallway.
+3. The kitchen is east of the hallway.
+4. The kitchen is south of the garden.
+5. The bedroom is south of the office.
+
+Now, answer the following question:
+How do you go from the kitchen to the office?",80,1,"From context sentence 3, the kitchen is east of the hallway, so from the kitchen, moving west reaches the hallway. From context sentence 2, the office is west of the hallway, so from the hallway, moving west reaches the office. So from the kitchen, moving west reaches the hallway, then moving west again reaches the office.",west west
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the office.
+2. The garden is south of the kitchen.
+3. The bedroom is west of the garden.
+4. The bedroom is east of the hallway.
+5. The bedroom is south of the office.
+
+Now, answer the following question:
+How do you go from the office to the garden?",81,1,"From context sentence 5, the bedroom is south of the office, so from the office, moving south reaches the bedroom (not directly needed). We need office to garden. From context sentence 4, the bedroom is east of the hallway (not directly needed). From context sentence 3, the bedroom is west of the garden, so the garden is east of the bedroom, meaning from the bedroom, moving east reaches the garden. So from the office, moving south reaches the bedroom, then moving east reaches the garden.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the bedroom.
+2. The bedroom is south of the hallway.
+3. The garden is north of the office.
+4. The hallway is west of the office.
+5. The bedroom is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the office to the bedroom?",82,1,"From context sentence 4, the hallway is west of the office, so the office is east of the hallway, meaning from the office, moving west reaches the hallway. From context sentence 2, the bedroom is south of the hallway, so from the hallway, moving south reaches the bedroom. So from the office, moving west reaches the hallway, then moving south reaches the bedroom.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the kitchen.
+2. The hallway is east of the bathroom.
+3. The hallway is north of the office.
+4. The bedroom is north of the hallway.
+5. The bathroom is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the hallway to the kitchen?",83,1,"From context sentence 2, the hallway is east of the bathroom, so from the hallway, moving west reaches the bathroom (not directly needed). We need hallway to kitchen. From context sentence 5, the bathroom is north of the kitchen, so from the bathroom, moving south reaches the kitchen. So from the hallway, moving west reaches the bathroom, then moving south reaches the kitchen.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is north of the office.
+2. The bathroom is south of the garden.
+3. The bedroom is south of the office.
+4. The office is east of the kitchen.
+5. The garden is south of the bedroom.
+
+Now, answer the following question:
+How do you go from the garden to the office?",84,1,"From context sentence 5, the garden is south of the bedroom, so from the garden, moving north reaches the bedroom (not directly needed). We need garden to office. From context sentence 3, the bedroom is south of the office, so the office is north of the bedroom, meaning from the bedroom, moving north reaches the office. So from the garden, moving north reaches the bedroom, then moving north again reaches the office.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the hallway.
+2. The kitchen is east of the bathroom.
+3. The office is west of the bathroom.
+4. The bedroom is west of the hallway.
+5. The bathroom is north of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the office?",85,1,"From context sentence 5, the bathroom is north of the hallway, so from the hallway, moving north reaches the bathroom. From context sentence 3, the office is west of the bathroom, so the bathroom is east of the office, meaning from the bathroom, moving west reaches the office. So from the hallway, moving north reaches the bathroom, then moving west reaches the office.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the garden.
+2. The bedroom is east of the office.
+3. The hallway is east of the bathroom.
+4. The garden is south of the bathroom.
+5. The office is east of the garden.
+
+Now, answer the following question:
+How do you go from the office to the bathroom?",86,1,"From context sentence 5, the office is east of the garden, so from the office, moving west reaches the garden (not directly needed). We need office to bathroom. From context sentence 4, the garden is south of the bathroom, so the bathroom is north of the garden, meaning from the garden, moving north reaches the bathroom. So from the office, moving west reaches the garden, then moving north reaches the bathroom.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is north of the garden.
+2. The bathroom is south of the office.
+3. The office is west of the bedroom.
+4. The garden is north of the hallway.
+5. The hallway is west of the office.
+
+Now, answer the following question:
+How do you go from the garden to the office?",87,1,"From context sentence 4, the garden is north of the hallway, so from the garden, moving south reaches the hallway (not directly needed). We need garden to office. From context sentence 5, the hallway is west of the office, so from the hallway, moving east reaches the office. So from the garden, moving south reaches the hallway, then moving east reaches the office.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The garden is south of the kitchen.
+2. The bathroom is north of the kitchen.
+3. The office is east of the bathroom.
+4. The hallway is west of the kitchen.
+5. The bedroom is east of the kitchen.
+
+Now, answer the following question:
+How do you go from the garden to the bathroom?",88,1,"From context sentence 1, the garden is south of the kitchen, so from the garden, moving north reaches the kitchen (not directly needed). We need garden to bathroom. From context sentence 2, the bathroom is north of the kitchen, so the kitchen is south of the bathroom, meaning from the kitchen, moving north reaches the bathroom. So from the garden, moving north reaches the kitchen, then moving north again reaches the bathroom.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The garden is east of the kitchen.
+2. The kitchen is north of the hallway.
+3. The bedroom is north of the office.
+4. The bathroom is south of the office.
+5. The kitchen is east of the office.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",89,1,"From context sentence 4, the bathroom is south of the office, so from the bathroom, moving north reaches the office (not directly needed). We need bathroom to kitchen. From context sentence 5, the kitchen is east of the office, so from the office, moving east reaches the kitchen. So from the bathroom, moving north reaches the office, then moving east reaches the kitchen.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is north of the office.
+2. The hallway is east of the bedroom.
+3. The garden is north of the hallway.
+4. The bathroom is west of the bedroom.
+5. The hallway is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?",90,1,"From context sentence 4, the bathroom is west of the bedroom, so the bedroom is east of the bathroom, meaning from the bedroom, moving west reaches the bathroom (not directly needed). We need bedroom to kitchen. From context sentence 2, the hallway is east of the bedroom, so from the bedroom, moving east reaches the hallway. From context sentence 5, the hallway is north of the kitchen, so from the hallway, moving south reaches the kitchen. So from the bedroom, moving east reaches the hallway, then moving south reaches the kitchen.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is east of the bathroom.
+2. The office is west of the bathroom.
+3. The bedroom is north of the office.
+4. The hallway is north of the kitchen.
+5. The garden is south of the bathroom.
+
+Now, answer the following question:
+How do you go from the office to the hallway?",91,1,"From context sentence 2, the office is west of the bathroom, so from the office, moving east reaches the bathroom (not directly needed). We need office to hallway. From context sentence 1, the hallway is east of the bathroom, so from the bathroom, moving east reaches the hallway. So from the office, moving east reaches the bathroom, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the bathroom.
+2. The hallway is south of the office.
+3. The garden is east of the office.
+4. The kitchen is west of the office.
+5. The bedroom is west of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the office?",92,1,"From context sentence 5, the bedroom is west of the kitchen, so from the bedroom, moving east reaches the kitchen (not directly needed). We need bedroom to office. From context sentence 4, the kitchen is west of the office, so from the kitchen, moving east reaches the office. So from the bedroom, moving east reaches the kitchen, then moving east again reaches the office.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is south of the bathroom.
+2. The office is east of the garden.
+3. The kitchen is west of the bedroom.
+4. The office is south of the hallway.
+5. The bedroom is south of the office.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",93,1,"From context sentence 5, the bedroom is south of the office, so from the bedroom, moving north reaches the office. From context sentence 4, the office is south of the hallway, so from the office, moving north reaches the hallway. So from the bedroom, moving north reaches the office, then moving north again reaches the hallway.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is east of the garden.
+2. The bathroom is north of the kitchen.
+3. The bedroom is east of the kitchen.
+4. The office is west of the garden.
+5. The kitchen is north of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the garden?",94,1,"From context sentence 2, the bathroom is north of the kitchen, so from the bathroom, moving south reaches the kitchen (not directly needed). We need bathroom to garden. From context sentence 5, the kitchen is north of the garden, so from the kitchen, moving south reaches the garden. So from the bathroom, moving south reaches the kitchen, then moving south again reaches the garden.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the bathroom.
+2. The kitchen is north of the garden.
+3. The hallway is east of the bedroom.
+4. The hallway is south of the garden.
+5. The garden is west of the office.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?",95,1,"From context sentence 3, the hallway is east of the bedroom, so from the bedroom, moving east reaches the hallway (not directly needed). We need bedroom to garden. From context sentence 4, the hallway is south of the garden, so the garden is north of the hallway, meaning from the hallway, moving north reaches the garden. So from the bedroom, moving east reaches the hallway, then moving north reaches the garden.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the kitchen.
+2. The bedroom is north of the hallway.
+3. The hallway is east of the kitchen.
+4. The bathroom is north of the kitchen.
+5. The office is south of the hallway.
+
+Now, answer the following question:
+How do you go from the garden to the hallway?",96,1,"From context sentence 1, the garden is west of the kitchen, so from the garden, moving east reaches the kitchen (not directly needed). We need garden to hallway. From context sentence 3, the hallway is east of the kitchen, so from the kitchen, moving east reaches the hallway. So from the garden, moving east reaches the kitchen, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is west of the bedroom.
+2. The office is east of the bedroom.
+3. The kitchen is east of the hallway.
+4. The garden is north of the kitchen.
+5. The bedroom is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?",97,1,"From context sentence 3, the kitchen is east of the hallway, so from the kitchen, moving west reaches the hallway (not directly needed). We need kitchen to bathroom. From context sentence 5, the bedroom is south of the kitchen, so from the kitchen, moving south reaches the bedroom. From context sentence 1, the bathroom is west of the bedroom, so from the bedroom, moving west reaches the bathroom. So from the kitchen, moving south reaches the bedroom, then moving west reaches the bathroom.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the bedroom.
+2. The bedroom is west of the office.
+3. The hallway is north of the office.
+4. The kitchen is south of the garden.
+5. The kitchen is west of the bedroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the office?",98,1,"From context sentence 5, the kitchen is west of the bedroom, so from the kitchen, moving east reaches the bedroom. From context sentence 2, the bedroom is west of the office, so from the bedroom, moving east reaches the office. So from the kitchen, moving east reaches the bedroom, then moving east again reaches the office.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The office is west of the hallway.
+2. The office is north of the kitchen.
+3. The bathroom is east of the bedroom.
+4. The bathroom is north of the garden.
+5. The kitchen is north of the bathroom.
+
+Now, answer the following question:
+How do you go from the bathroom to the office?",99,1,"From context sentence 5, the kitchen is north of the bathroom, so from the bathroom, moving north reaches the kitchen (not directly needed). We need bathroom to office. From context sentence 4, the bathroom is north of the garden (not directly needed). From context sentence 3, the bathroom is east of the bedroom (not directly needed). From context sentence 2, the office is north of the kitchen, so from the kitchen, moving north reaches the office. So from the bathroom, moving north reaches the kitchen, then moving north again reaches the office.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the garden.
+2. The kitchen is north of the garden.
+3. The hallway is south of the office.
+4. The bedroom is south of the bathroom.
+5. The bedroom is west of the office.
+
+Now, answer the following question:
+How do you go from the office to the garden?",100,1,"From context sentence 5, the bedroom is west of the office, so the office is east of the bedroom, meaning from the office, moving west reaches the bedroom. From context sentence 1, the bedroom is east of the garden, so from the bedroom, moving west reaches the garden. So from the office, moving west reaches the bedroom, then moving west again reaches the garden.",west west
+19,"*TASK*
+Here are the context sentences:
+1. The garden is north of the hallway.
+2. The kitchen is west of the garden.
+3. The bathroom is east of the bedroom.
+4. The hallway is west of the bedroom.
+5. The office is south of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?",101,1,"From context sentence 4, the hallway is west of the bedroom, so the bedroom is east of the hallway, meaning from the bedroom, moving west reaches the hallway. From context sentence 1, the garden is north of the hallway, so from the hallway, moving north reaches the garden. So from the bedroom, moving west reaches the hallway, then moving north reaches the garden.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the hallway.
+2. The bedroom is north of the hallway.
+3. The kitchen is north of the garden.
+4. The hallway is east of the kitchen.
+5. The garden is east of the bathroom.
+
+Now, answer the following question:
+How do you go from the hallway to the garden?",102,1,"From context sentence 4, the hallway is east of the kitchen, so from the hallway, moving west reaches the kitchen. From context sentence 5, the garden is east of the bathroom (not directly needed). From context sentence 3, the kitchen is north of the garden, so from the kitchen, moving south reaches the garden. So from the hallway, moving west reaches the kitchen, then moving south reaches the garden.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the bedroom.
+2. The garden is north of the bedroom.
+3. The kitchen is north of the bathroom.
+4. The bathroom is west of the hallway.
+5. The office is west of the bedroom.
+
+Now, answer the following question:
+How do you go from the office to the bathroom?",103,1,"From context sentence 5, the office is west of the bedroom, so from the office, moving east reaches the bedroom. From context sentence 1, the bathroom is east of the bedroom, so from the bedroom, moving east reaches the bathroom. So from the office, moving east reaches the bedroom, then moving east again reaches the bathroom.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the bathroom.
+2. The bathroom is south of the garden.
+3. The hallway is south of the kitchen.
+4. The office is north of the kitchen.
+5. The bathroom is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?",104,1,"From context sentence 1, the kitchen is west of the bathroom, so from the kitchen, moving east reaches the bathroom (not directly needed). We need kitchen to garden. From context sentence 2, the bathroom is south of the garden, so the garden is north of the bathroom, meaning from the bathroom, moving north reaches the garden. So from the kitchen, moving east reaches the bathroom, then moving north reaches the garden.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the kitchen.
+2. The bathroom is east of the hallway.
+3. The hallway is east of the garden.
+4. The office is west of the kitchen.
+5. The hallway is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",105,1,"From context sentence 1, the bedroom is south of the kitchen, so from the bedroom, moving north reaches the kitchen (not directly needed). We need bedroom to hallway. From context sentence 5, the hallway is north of the kitchen, so the kitchen is south of the hallway, meaning from the kitchen, moving north reaches the hallway. So from the bedroom, moving north reaches the kitchen, then moving north again reaches the hallway.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the hallway.
+2. The garden is north of the bathroom.
+3. The garden is south of the office.
+4. The kitchen is south of the bedroom.
+5. The bedroom is east of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?",106,1,"From context sentence 1, the kitchen is east of the hallway, so from the kitchen, moving west reaches the hallway (not directly needed). We need kitchen to garden. From context sentence 4, the kitchen is south of the bedroom, so from the kitchen, moving north reaches the bedroom. From context sentence 5, the bedroom is east of the garden, so the garden is west of the bedroom, meaning from the bedroom, moving west reaches the garden. So from the kitchen, moving north reaches the bedroom, then moving west reaches the garden.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the office.
+2. The hallway is north of the kitchen.
+3. The bedroom is west of the office.
+4. The office is south of the kitchen.
+5. The garden is east of the hallway.
+
+Now, answer the following question:
+How do you go from the office to the hallway?",107,1,"From context sentence 1, the bathroom is south of the office, so from the office, moving south reaches the bathroom (not directly needed). We need office to hallway. From context sentence 4, the office is south of the kitchen, so from the office, moving north reaches the kitchen. From context sentence 2, the hallway is north of the kitchen, so from the kitchen, moving north reaches the hallway. So from the office, moving north reaches the kitchen, then moving north again reaches the hallway.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is east of the bathroom.
+2. The office is west of the bathroom.
+3. The bedroom is south of the garden.
+4. The bedroom is north of the bathroom.
+5. The garden is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the bathroom to the garden?",108,1,"From context sentence 1, the hallway is east of the bathroom, so from the bathroom, moving east reaches the hallway (not directly needed). We need bathroom to garden. From context sentence 4, the bedroom is north of the bathroom, so from the bathroom, moving north reaches the bedroom. From context sentence 3, the bedroom is south of the garden, so the garden is north of the bedroom, meaning from the bedroom, moving north reaches the garden. So from the bathroom, moving north reaches the bedroom, then moving north again reaches the garden.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the bathroom.
+2. The bedroom is west of the office.
+3. The hallway is north of the bathroom.
+4. The garden is west of the hallway.
+5. The hallway is west of the bedroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the bathroom?",109,1,"From context sentence 2, the bedroom is west of the office, so from the bedroom, moving east reaches the office (not directly needed). We need bedroom to bathroom. From context sentence 5, the hallway is west of the bedroom, so from the bedroom, moving west reaches the hallway. From context sentence 3, the hallway is north of the bathroom, so from the hallway, moving south reaches the bathroom. So from the bedroom, moving west reaches the hallway, then moving south reaches the bathroom.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the kitchen.
+2. The bedroom is west of the bathroom.
+3. The hallway is east of the garden.
+4. The kitchen is south of the office.
+5. The bathroom is west of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?",110,1,"From context sentence 4, the kitchen is south of the office, so from the kitchen, moving north reaches the office (not directly needed). We need kitchen to garden. From context sentence 1, the bathroom is south of the kitchen, so from the kitchen, moving south reaches the bathroom. From context sentence 5, the bathroom is west of the garden, so the garden is east of the bathroom, meaning from the bathroom, moving east reaches the garden. So from the kitchen, moving south reaches the bathroom, then moving east reaches the garden.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the hallway.
+2. The garden is south of the bathroom.
+3. The office is north of the bathroom.
+4. The garden is west of the hallway.
+5. The kitchen is south of the hallway.
+
+Now, answer the following question:
+How do you go from the hallway to the bathroom?",111,1,"From context sentence 4, the garden is west of the hallway, so from the hallway, moving west reaches the garden (not directly needed). We need hallway to bathroom. From context sentence 2, the garden is south of the bathroom, so the bathroom is north of the garden, meaning from the garden, moving north reaches the bathroom. So from the hallway, moving west reaches the garden, then moving north reaches the bathroom.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is north of the kitchen.
+2. The hallway is east of the garden.
+3. The kitchen is west of the office.
+4. The bathroom is west of the bedroom.
+5. The hallway is west of the bathroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?",112,1,"From context sentence 3, the kitchen is west of the office (not directly needed). We need kitchen to bathroom. From context sentence 1, the hallway is north of the kitchen, so from the kitchen, moving north reaches the hallway. From context sentence 5, the hallway is west of the bathroom, so from the hallway, moving east reaches the bathroom. So from the kitchen, moving north reaches the hallway, then moving east reaches the bathroom.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is west of the bedroom.
+2. The kitchen is north of the bedroom.
+3. The hallway is east of the office.
+4. The office is south of the bedroom.
+5. The garden is east of the bedroom.
+
+Now, answer the following question:
+How do you go from the bathroom to the office?",113,1,"From context sentence 1, the bathroom is west of the bedroom, so from the bathroom, moving east reaches the bedroom (not directly needed). We need bathroom to office. From context sentence 4, the office is south of the bedroom, so the bedroom is north of the office, meaning from the bedroom, moving south reaches the office. So from the bathroom, moving east reaches the bedroom, then moving south reaches the office.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the office.
+2. The garden is west of the office.
+3. The bedroom is east of the office.
+4. The kitchen is north of the office.
+5. The bedroom is west of the hallway.
+
+Now, answer the following question:
+How do you go from the office to the hallway?",114,1,"From context sentence 1, the bathroom is south of the office, so from the bathroom, moving north reaches the office (not directly needed). We need office to hallway. From context sentence 3, the bedroom is east of the office, so from the office, moving east reaches the bedroom. From context sentence 5, the bedroom is west of the hallway, so from the bedroom, moving east reaches the hallway. So from the office, moving east reaches the bedroom, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the garden.
+2. The garden is north of the bedroom.
+3. The bedroom is west of the hallway.
+4. The bedroom is east of the kitchen.
+5. The office is north of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?",115,1,"From context sentence 4, the bedroom is east of the kitchen, so the kitchen is west of the bedroom, meaning from the kitchen, moving east reaches the bedroom. From context sentence 2, the garden is north of the bedroom, so from the bedroom, moving north reaches the garden. So from the kitchen, moving east reaches the bedroom, then moving north reaches the garden.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the office.
+2. The hallway is north of the kitchen.
+3. The bedroom is north of the office.
+4. The garden is west of the office.
+5. The office is west of the hallway.
+
+Now, answer the following question:
+How do you go from the garden to the hallway?",116,1,"From context sentence 4, the garden is west of the office, so from the garden, moving east reaches the office (not directly needed). We need garden to hallway. From context sentence 1, the bathroom is south of the office, so from the office, moving south reaches the bathroom (not directly needed). From context sentence 5, the office is west of the hallway, so from the office, moving east reaches the hallway. So from the garden, moving east reaches the office, then moving east again reaches the hallway.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the bedroom.
+2. The office is north of the bathroom.
+3. The hallway is west of the office.
+4. The bedroom is north of the office.
+5. The garden is east of the office.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",117,1,"From context sentence 3, the hallway is west of the office, so from the hallway, moving east reaches the office (not directly needed). We need hallway to bedroom. From context sentence 4, the bedroom is north of the office, so the office is south of the bedroom, meaning from the office, moving north reaches the bedroom. So from the hallway, moving east reaches the office, then moving north reaches the bedroom.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the hallway.
+2. The hallway is north of the garden.
+3. The kitchen is south of the bedroom.
+4. The office is west of the bedroom.
+5. The bedroom is west of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?",118,1,"From context sentence 5, the bedroom is west of the hallway, so from the bedroom, moving east reaches the hallway (not directly needed). We need bedroom to garden. From context sentence 1, the bathroom is east of the hallway, so from the hallway, moving east reaches the bathroom (not directly needed). From context sentence 2, the hallway is north of the garden, so from the hallway, moving south reaches the garden. So from the bedroom, moving east reaches the hallway, then moving south reaches the garden.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is south of the office.
+2. The garden is west of the kitchen.
+3. The bathroom is east of the kitchen.
+4. The bedroom is west of the hallway.
+5. The kitchen is north of the hallway.
+
+Now, answer the following question:
+How do you go from the office to the hallway?",119,1,"From context sentence 5, the kitchen is north of the hallway, so from the kitchen, moving south reaches the hallway (not directly needed). We need office to hallway. From context sentence 1, the kitchen is south of the office, so the office is north of the kitchen, meaning from the office, moving south reaches the kitchen. So from the office, moving south reaches the kitchen, then moving south again reaches the hallway.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the hallway.
+2. The office is north of the garden.
+3. The kitchen is east of the bedroom.
+4. The kitchen is north of the hallway.
+5. The bathroom is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the office to the kitchen?",120,1,"From context sentence 2, the office is north of the garden (not directly needed). We need office to kitchen. From context sentence 4, the kitchen is north of the hallway, so the hallway is south of the kitchen, meaning from the kitchen, moving south reaches the hallway. From context sentence 1, the office is south of the hallway, so the hallway is north of the office, meaning from the office, moving north reaches the hallway. So from the office, moving north reaches the hallway, then moving north again reaches the kitchen.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the hallway.
+2. The bathroom is north of the hallway.
+3. The bedroom is south of the kitchen.
+4. The garden is east of the hallway.
+5. The bedroom is west of the bathroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the hallway?",121,1,"From context sentence 5, the bedroom is west of the bathroom, so from the bedroom, moving east reaches the bathroom (not directly needed). We need bedroom to hallway. From context sentence 3, the bedroom is south of the kitchen (not directly needed). From context sentence 2, the bathroom is north of the hallway, so from the bathroom, moving south reaches the hallway. So from the bedroom, moving east reaches the bathroom, then moving south reaches the hallway.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the kitchen.
+2. The office is east of the bedroom.
+3. The bathroom is north of the hallway.
+4. The bedroom is south of the hallway.
+5. The kitchen is south of the bedroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the hallway?",122,1,"From context sentence 5, the kitchen is south of the bedroom, so from the kitchen, moving north reaches the bedroom (not directly needed). We need kitchen to hallway. From context sentence 4, the bedroom is south of the hallway, so the hallway is north of the bedroom, meaning from the bedroom, moving north reaches the hallway. So from the kitchen, moving north reaches the bedroom, then moving north again reaches the hallway.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the hallway.
+2. The kitchen is east of the bathroom.
+3. The office is east of the kitchen.
+4. The garden is north of the office.
+5. The bedroom is south of the office.
+
+Now, answer the following question:
+How do you go from the bathroom to the office?",123,1,"From context sentence 1, the bathroom is east of the hallway, so from the bathroom, moving east reaches... wait, the bathroom is east of the hallway means from the hallway, moving east reaches the bathroom (not directly needed). We need bathroom to office. From context sentence 2, the kitchen is east of the bathroom, so from the bathroom, moving east reaches the kitchen. From context sentence 3, the office is east of the kitchen, so from the kitchen, moving east reaches the office. So from the bathroom, moving east reaches the kitchen, then moving east again reaches the office.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the hallway.
+2. The office is east of the hallway.
+3. The kitchen is north of the office.
+4. The garden is west of the hallway.
+5. The bedroom is south of the office.
+
+Now, answer the following question:
+How do you go from the bathroom to the office?",124,1,"From context sentence 1, the bathroom is north of the hallway, so from the bathroom, moving south reaches the hallway (not directly needed). We need bathroom to office. From context sentence 2, the office is east of the hallway, so from the hallway, moving east reaches the office. So from the bathroom, moving south reaches the hallway, then moving east reaches the office.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is east of the bathroom.
+2. The garden is south of the bathroom.
+3. The hallway is north of the bathroom.
+4. The office is south of the bedroom.
+5. The hallway is west of the bedroom.
+
+Now, answer the following question:
+How do you go from the bedroom to the bathroom?",125,1,"From context sentence 5, the hallway is west of the bedroom, so the bedroom is east of the hallway, meaning from the bedroom, moving west reaches the hallway. From context sentence 3, the hallway is north of the bathroom, so from the hallway, moving south reaches the bathroom. So from the bedroom, moving west reaches the hallway, then moving south reaches the bathroom.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the office.
+2. The kitchen is south of the garden.
+3. The bedroom is south of the office.
+4. The hallway is east of the garden.
+5. The garden is east of the office.
+
+Now, answer the following question:
+How do you go from the kitchen to the office?",126,1,"From context sentence 2, the kitchen is south of the garden, so from the kitchen, moving north reaches the garden (not directly needed). We need kitchen to office. From context sentence 5, the garden is east of the office, so the office is west of the garden, meaning from the garden, moving west reaches the office. So from the kitchen, moving north reaches the garden, then moving west reaches the office.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The garden is north of the hallway.
+2. The bathroom is east of the kitchen.
+3. The garden is south of the kitchen.
+4. The office is west of the garden.
+5. The bedroom is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the bathroom to the garden?",127,1,"From context sentence 2, the bathroom is east of the kitchen, so from the bathroom, moving west reaches the kitchen (not directly needed). We need bathroom to garden. From context sentence 3, the garden is south of the kitchen, so the kitchen is north of the garden, meaning from the kitchen, moving south reaches the garden. So from the bathroom, moving west reaches the kitchen, then moving south reaches the garden.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is west of the bedroom.
+2. The hallway is north of the bedroom.
+3. The office is east of the hallway.
+4. The kitchen is north of the garden.
+5. The garden is north of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?",128,1,"From context sentence 2, the hallway is north of the bedroom, so from the bedroom, moving north reaches the hallway (not directly needed). We need bedroom to garden. From context sentence 5, the garden is north of the hallway, so from the hallway, moving north reaches the garden. So from the bedroom, moving north reaches the hallway, then moving north again reaches the garden.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the kitchen.
+2. The office is north of the bedroom.
+3. The hallway is west of the garden.
+4. The bathroom is west of the bedroom.
+5. The bedroom is north of the garden.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?",129,1,"From context sentence 5, the bedroom is north of the garden, so from the bedroom, moving south reaches the garden (not directly needed). We need bedroom to kitchen. From context sentence 1, the garden is west of the kitchen, so from the garden, moving east reaches the kitchen. So from the bedroom, moving south reaches the garden, then moving east reaches the kitchen.",south east
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is north of the bathroom.
+2. The bedroom is south of the hallway.
+3. The bedroom is east of the garden.
+4. The office is west of the bathroom.
+5. The hallway is east of the bathroom.
+
+Now, answer the following question:
+How do you go from the bathroom to the bedroom?",130,1,"From context sentence 4, the office is west of the bathroom, so from the bathroom, moving west reaches the office (not directly needed). We need bathroom to bedroom. From context sentence 5, the hallway is east of the bathroom, so from the bathroom, moving east reaches the hallway. From context sentence 2, the bedroom is south of the hallway, so from the hallway, moving south reaches the bedroom. So from the bathroom, moving east reaches the hallway, then moving south reaches the bedroom.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is west of the garden.
+2. The office is east of the hallway.
+3. The kitchen is south of the garden.
+4. The garden is south of the hallway.
+5. The bedroom is north of the hallway.
+
+Now, answer the following question:
+How do you go from the bedroom to the garden?",131,1,"From context sentence 5, the bedroom is north of the hallway, so from the bedroom, moving south reaches the hallway (not directly needed). We need bedroom to garden. From context sentence 4, the garden is south of the hallway, so from the hallway, moving south reaches the garden. So from the bedroom, moving south reaches the hallway, then moving south again reaches the garden.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the bathroom.
+2. The kitchen is west of the hallway.
+3. The kitchen is north of the bedroom.
+4. The bedroom is north of the bathroom.
+5. The bathroom is east of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",132,1,"From context sentence 5, the bathroom is east of the garden, so from the bathroom, moving west reaches the garden (not directly needed). We need bathroom to kitchen. From context sentence 4, the bedroom is north of the bathroom, so from the bathroom, moving north reaches the bedroom. From context sentence 3, the kitchen is north of the bedroom, so from the bedroom, moving north reaches the kitchen. So from the bathroom, moving north reaches the bedroom, then moving north again reaches the kitchen.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is west of the kitchen.
+2. The kitchen is south of the bathroom.
+3. The garden is west of the bathroom.
+4. The garden is north of the office.
+5. The bedroom is north of the garden.
+
+Now, answer the following question:
+How do you go from the garden to the kitchen?",133,1,"From context sentence 3, the garden is west of the bathroom, so from the garden, moving east reaches the bathroom (not directly needed). We need garden to kitchen. From context sentence 2, the kitchen is south of the bathroom, so the bathroom is north of the kitchen, meaning from the bathroom, moving south reaches the kitchen. So from the garden, moving east reaches the bathroom, then moving south reaches the kitchen.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is west of the hallway.
+2. The kitchen is east of the hallway.
+3. The garden is south of the bathroom.
+4. The office is east of the bathroom.
+5. The office is north of the hallway.
+
+Now, answer the following question:
+How do you go from the bathroom to the hallway?",134,1,"From context sentence 4, the office is east of the bathroom, so from the bathroom, moving east reaches the office (not directly needed). We need bathroom to hallway. From context sentence 3, the garden is south of the bathroom (not directly needed). From context sentence 5, the office is north of the hallway, so from the office, moving south reaches the hallway. So from the bathroom, moving east reaches the office, then moving south reaches the hallway.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the bedroom.
+2. The bedroom is west of the office.
+3. The hallway is north of the office.
+4. The garden is west of the hallway.
+5. The office is north of the bathroom.
+
+Now, answer the following question:
+How do you go from the hallway to the bedroom?",135,1,"From context sentence 3, the hallway is north of the office, so from the hallway, moving south reaches the office (not directly needed). We need hallway to bedroom. From context sentence 2, the bedroom is west of the office, so the office is east of the bedroom, meaning from the office, moving west reaches the bedroom. So from the hallway, moving south reaches the office, then moving west reaches the bedroom.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The hallway is east of the garden.
+2. The office is south of the bedroom.
+3. The garden is south of the kitchen.
+4. The garden is east of the bathroom.
+5. The garden is north of the bedroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the bedroom?",136,1,"From context sentence 3, the garden is south of the kitchen, so from the kitchen, moving south reaches the garden (not directly needed). We need kitchen to bedroom. From context sentence 5, the garden is north of the bedroom, so from the garden, moving south reaches the bedroom. So from the kitchen, moving south reaches the garden, then moving south again reaches the bedroom.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the hallway.
+2. The garden is south of the bedroom.
+3. The office is east of the kitchen.
+4. The bathroom is west of the kitchen.
+5. The bedroom is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the bathroom?",137,1,"From context sentence 5, the bedroom is south of the kitchen, so from the bedroom, moving north reaches the kitchen (not directly needed). We need bedroom to bathroom. From context sentence 4, the bathroom is west of the kitchen, so the kitchen is east of the bathroom, meaning from the kitchen, moving west reaches the bathroom. So from the bedroom, moving north reaches the kitchen, then moving west reaches the bathroom.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The office is west of the hallway.
+2. The garden is west of the bathroom.
+3. The kitchen is south of the garden.
+4. The hallway is north of the bedroom.
+5. The hallway is south of the kitchen.
+
+Now, answer the following question:
+How do you go from the hallway to the garden?",138,1,"From context sentence 5, the hallway is south of the kitchen, so from the hallway, moving north reaches the kitchen (not directly needed). We need hallway to garden. From context sentence 4, the hallway is north of the bedroom (not directly needed). From context sentence 2, the garden is west of the bathroom (not directly needed). From context sentence 3, the kitchen is south of the garden, so the garden is north of the kitchen, meaning from the kitchen, moving north reaches the garden. So from the hallway, moving north reaches the kitchen, then moving north again reaches the garden.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the garden.
+2. The bedroom is south of the garden.
+3. The hallway is west of the office.
+4. The hallway is east of the garden.
+5. The kitchen is west of the garden.
+
+Now, answer the following question:
+How do you go from the hallway to the kitchen?",139,1,"From context sentence 4, the hallway is east of the garden, so from the hallway, moving west reaches the garden (not directly needed). We need hallway to kitchen. From context sentence 5, the kitchen is west of the garden, so from the garden, moving west reaches the kitchen. So from the hallway, moving west reaches the garden, then moving west again reaches the kitchen.",west west
+19,"*TASK*
+Here are the context sentences:
+1. The office is north of the garden.
+2. The bathroom is west of the garden.
+3. The kitchen is north of the bedroom.
+4. The garden is west of the kitchen.
+5. The hallway is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the hallway to the garden?",140,1,"From context sentence 5, the hallway is north of the kitchen, so from the hallway, moving south reaches the kitchen (not directly needed). We need hallway to garden. From context sentence 4, the garden is west of the kitchen, so the kitchen is east of the garden, meaning from the kitchen, moving west reaches the garden. So from the hallway, moving south reaches the kitchen, then moving west reaches the garden.",south west
+19,"*TASK*
+Here are the context sentences:
+1. The office is west of the garden.
+2. The kitchen is east of the bedroom.
+3. The kitchen is south of the garden.
+4. The hallway is north of the bathroom.
+5. The bathroom is north of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?",141,1,"From context sentence 2, the kitchen is east of the bedroom (not directly needed). We need kitchen to bathroom. From context sentence 3, the kitchen is south of the garden, so from the kitchen, moving north reaches the garden. From context sentence 5, the bathroom is north of the garden, so from the garden, moving north reaches the bathroom. So from the kitchen, moving north reaches the garden, then moving north again reaches the bathroom.",north north
+19,"*TASK*
+Here are the context sentences:
+1. The garden is west of the kitchen.
+2. The hallway is east of the office.
+3. The bedroom is north of the kitchen.
+4. The bathroom is north of the office.
+5. The kitchen is north of the bathroom.
+
+Now, answer the following question:
+How do you go from the kitchen to the office?",142,1,"From context sentence 5, the kitchen is north of the bathroom, so from the kitchen, moving south reaches the bathroom (not directly needed). We need kitchen to office. From context sentence 4, the bathroom is north of the office, so from the bathroom, moving south reaches the office. So from the kitchen, moving south reaches the bathroom, then moving south again reaches the office.",south south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is south of the garden.
+2. The kitchen is south of the hallway.
+3. The bathroom is west of the office.
+4. The bedroom is west of the kitchen.
+5. The kitchen is west of the garden.
+
+Now, answer the following question:
+How do you go from the kitchen to the bathroom?",143,1,"From context sentence 5, the kitchen is west of the garden, so from the kitchen, moving east reaches the garden (not directly needed). We need kitchen to bathroom. From context sentence 1, the bathroom is south of the garden, so the garden is north of the bathroom, meaning from the garden, moving south reaches the bathroom. So from the kitchen, moving east reaches the garden, then moving south reaches the bathroom.",east south
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is south of the bathroom.
+2. The kitchen is west of the hallway.
+3. The garden is south of the office.
+4. The garden is west of the bathroom.
+5. The kitchen is south of the garden.
+
+Now, answer the following question:
+How do you go from the bathroom to the kitchen?",144,1,"From context sentence 1, the bedroom is south of the bathroom, so from the bathroom, moving south reaches the bedroom (not directly needed). We need bathroom to kitchen. From context sentence 4, the garden is west of the bathroom, so from the bathroom, moving west reaches the garden. From context sentence 5, the kitchen is south of the garden, so from the garden, moving south reaches the kitchen. So from the bathroom, moving west reaches the garden, then moving south reaches the kitchen.",west south
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is north of the garden.
+2. The kitchen is east of the bathroom.
+3. The office is west of the bedroom.
+4. The hallway is north of the bathroom.
+5. The bathroom is east of the bedroom.
+
+Now, answer the following question:
+How do you go from the garden to the bedroom?",145,1,"From context sentence 1, the bathroom is north of the garden, so from the garden, moving north reaches the bathroom (not directly needed). We need garden to bedroom. From context sentence 5, the bathroom is east of the bedroom, so the bedroom is west of the bathroom, meaning from the bathroom, moving west reaches the bedroom. So from the garden, moving north reaches the bathroom, then moving west reaches the bedroom.",north west
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is north of the garden.
+2. The office is west of the kitchen.
+3. The hallway is west of the garden.
+4. The bathroom is west of the office.
+5. The garden is north of the office.
+
+Now, answer the following question:
+How do you go from the kitchen to the garden?",146,1,"From context sentence 2, the office is west of the kitchen, so from the kitchen, moving west reaches the office (not directly needed). We need kitchen to garden. From context sentence 5, the garden is north of the office, so from the office, moving north reaches the garden. So from the kitchen, moving west reaches the office, then moving north reaches the garden.",west north
+19,"*TASK*
+Here are the context sentences:
+1. The office is south of the hallway.
+2. The kitchen is east of the garden.
+3. The bathroom is north of the hallway.
+4. The bedroom is north of the kitchen.
+5. The hallway is west of the garden.
+
+Now, answer the following question:
+How do you go from the hallway to the kitchen?",147,1,"From context sentence 5, the hallway is west of the garden, so from the hallway, moving east reaches the garden (not directly needed). We need hallway to kitchen. From context sentence 2, the kitchen is east of the garden, so from the garden, moving east reaches the kitchen. So from the hallway, moving east reaches the garden, then moving east again reaches the kitchen.",east east
+19,"*TASK*
+Here are the context sentences:
+1. The bathroom is east of the kitchen.
+2. The bedroom is east of the office.
+3. The hallway is north of the bedroom.
+4. The garden is north of the hallway.
+5. The hallway is west of the kitchen.
+
+Now, answer the following question:
+How do you go from the bedroom to the kitchen?",148,1,"From context sentence 3, the hallway is north of the bedroom, so from the bedroom, moving north reaches the hallway (not directly needed). We need bedroom to kitchen. From context sentence 2, the bedroom is east of the office (not directly needed). From context sentence 5, the hallway is west of the kitchen, so from the hallway, moving east reaches the kitchen. So from the bedroom, moving north reaches the hallway, then moving east reaches the kitchen.",north east
+19,"*TASK*
+Here are the context sentences:
+1. The bedroom is east of the kitchen.
+2. The bathroom is east of the hallway.
+3. The bathroom is west of the kitchen.
+4. The garden is west of the office.
+5. The office is north of the kitchen.
+
+Now, answer the following question:
+How do you go from the bathroom to the office?",149,1,"From context sentence 2, the bathroom is east of the hallway, so from the bathroom, moving west reaches the hallway (not directly needed). We need bathroom to office. From context sentence 3, the bathroom is west of the kitchen, so from the bathroom, moving east reaches the kitchen. From context sentence 5, the office is north of the kitchen, so from the kitchen, moving north reaches the office. So from the bathroom, moving east reaches the kitchen, then moving north reaches the office.",east north
+19,"*TASK*
+Here are the context sentences:
+1. The kitchen is west of the bathroom.
+2. The bathroom is north of the hallway.
+3. The office is east of the bathroom.
+4. The garden is north of the bathroom.
+5. The hallway is east of the bedroom.
+
+Now, answer the following question:
+How do you go from the hallway to the office?",150,1,"From context sentence 2, the bathroom is north of the hallway, so from the bathroom, moving south reaches the hallway (not directly needed). We need hallway to office. From context sentence 5, the hallway is east of the bedroom (not directly needed). From context sentence 1, the kitchen is west of the bathroom, so from the bathroom, moving west reaches the kitchen (not directly needed). From context sentence 3, the office is east of the bathroom, so from the bathroom, moving east reaches the office (not directly needed). We need hallway to office directly. From context sentence 2, the bathroom is north of the hallway, so from the hallway, moving north reaches the bathroom. From context sentence 3, the office is east of the bathroom, so from the bathroom, moving east reaches the office. So from the hallway, moving north reaches the bathroom, then moving east reaches the office.",north east

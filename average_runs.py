@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import warnings
 from pathlib import Path
@@ -17,7 +18,7 @@ from typing import Iterable
 from data.DataLoader import DataLoader
 from data.DataSaver import DataSaver
 from evaluation.utils import extract_split
-from inference.utils import majority_vote
+from inference.utils import majority_vote, flatten
 from settings.utils import clean
 
 PREFIX = Path.cwd()
@@ -79,14 +80,27 @@ def aggregate(rows: list[dict]) -> dict:
     ]
     data_attrs = ["golden_answer", "task", "answer_lies_in_self"]
 
-    assert all(
-        set(r.keys()) == set(rows[0].keys()) for r in rows
-    ), "All rows must have the same keys for aggregation."
+    extra_keys = flatten([set(r.keys()) - set(rows[0].keys()) for r in rows])
+    if any(len(v) for v in extra_keys):
+        extra_keys_print = "\n- ".join([str(v) for v in extra_keys if len(v) > 0])
+        warnings.warn(
+            "All rows must have the same keys for aggregation. Found extra keys in some rows:\n"
+            f"{extra_keys_print}"
+        )
+    missing_keys = flatten([set(rows[0].keys()) - set(r.keys()) for r in rows])
+    if any(len(v) for v in missing_keys):
+        missing_keys_print = "\n- ".join([str(v) for v in missing_keys if len(v) > 0])
+        warnings.warn(
+            "All rows must have the same keys for aggregation. Found missing keys in some rows:\n"
+            f"{missing_keys_print}"
+        )
 
     averaged_row = {}
     for attr in rows[0].keys():
         values = [r.get(attr, "") for r in rows]
         if attr in irrelevant_columns:
+            continue
+        if attr in extra_keys + missing_keys:
             continue
         if attr in [*data_attrs, *id_columns]:
             # Store the first value for these columns, as they should be the same across duplicates
@@ -100,11 +114,15 @@ def aggregate(rows: list[dict]) -> dict:
             averaged_row[f"{attr}_entropy"] = entropy_from_values(answers)
             averaged_row["number_of_answer_options"] = len(set(answers))
             answer = majority_vote(answers)
+            print(f"Answer {answer!r} is chosen out of {answers!r}")
             if type(answer) is list and len(answer) > 1:
                 averaged_row["split_vote"] = True
                 averaged_row[attr] = "\n".join(answer)
             else:
+                averaged_row["split_vote"] = False
                 averaged_row[attr] = answer[0] if answer else ""
+        elif "model_output" in attr or "model_reasoning" in attr:
+            averaged_row[attr] = "\n\n".join([v for v in values if v])
         else:
             warnings.warn(
                 f"Unexpected non-numeric attribute in aggregation: '{attr}' with value:\n'{rows[0][attr]}'"
@@ -162,17 +180,29 @@ def run(
         mapped_results = {}
         for r in result:
             assert type(r) is dict, f"Expected dict, got {type(r)}\nResult content: {r}"
+            if r.get("sample_id") > samples_per_task:
+                warnings.warn(
+                    f"Skipping sample_id out of bound in result {i}:\n{json.dumps(r, indent=4)}"
+                )
+                continue
             id_ = (r.get("task_id"), r.get("sample_id"), r.get("part_id"))
             all_ids.add(id_)
             mapped_results[id_] = r
         duplicated_results[i] = mapped_results
 
     for id_ in sorted(list(all_ids)):
-        rows = [result[id_] for result in duplicated_results]
+        rows = []
+        for i, result in enumerate(duplicated_results):
+            if id_ not in result:
+                raise ValueError(
+                    f"Result with id {id_} not found in path {results_paths[i]}, "
+                    f"possibly missing these ids in results"
+                )
+            rows.append(result[id_])
         aggregated = aggregate(rows)
         saver.save_output(
             data=[aggregated],
-            headers=aggregated.keys(),
+            headers=list(aggregated.keys()),
             file_name=output_path,
         )
 
@@ -194,26 +224,64 @@ def parse_args() -> argparse.Namespace:
 if __name__ == "__main__":
     # This script doesn't calculate metrics!
     # It should therefore be run after the initial evaluation of the duplicating runs to record them correctly.
-    # python average_runs.py --results_paths run1.csv run2.csv run3.csv run4.csv --save_path /your/output/dir --samples_per_task 1
-    args = parse_args()
-    output_path = run(
-        results_paths=args.results_paths,
-        save_path=args.save_path,
-        samples_per_task=args.samples_per_task,
-    )
+    # python3 average_runs.py --results_paths run1.csv run2.csv run3.csv run4.csv --save_path /your/output/dir --samples_per_task 1
+    # args = parse_args()
+    # output_path = run(
+    #     results_paths=args.results_paths,
+    #     save_path=args.save_path,
+    #     samples_per_task=args.samples_per_task,
+    # )
     # TODO: Uncomment for testing
     # results_paths = [
-    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
-    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
-    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
-    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
-    #     "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
     # ]
-    # save_path = "outputs/test-average/" #"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/baseline/test/da/test-average/"
-    # samples_per_task = 3
-    # output_path = run(
-    #     results_paths=results_paths,
-    #     save_path=save_path,
-    #     samples_per_task=samples_per_task,
+    # save_path = (
+    #     "/workspace/students/reasoning/results/basic-baseline/test/da/average_run"
     # )
+    # results_paths = [
+    #     "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v2/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v3/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v4/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v5/all_tasks_joined/joined_reasoning_results.csv",
+    # ]
+    # save_path = (
+    #     "/workspace/students/reasoning/results/basic-baseline/test/reasoning/average_run"
+    # )
+    # results_paths = [
+    #     "/workspace/students/reasoning/results/baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
+    # ]
+    # save_path = "/workspace/students/reasoning/results/baseline/test/da/average_run"
+    results_paths = [
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v2/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v3/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v4/all_tasks_joined/joined_reasoning_results.csv",
+        "/workspace/students/reasoning/results/baseline/test/reasoning/v5/all_tasks_joined/joined_reasoning_results.csv",
+    ]
+    save_path = (
+        "/workspace/students/reasoning/results/baseline/test/reasoning/average_run"
+    )
+    # results_paths = [
+    #     "/workspace/students/reasoning/results/skyline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v3/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v4/all_tasks_joined/joined_direct_answer_results.csv",
+    #     "/workspace/students/reasoning/results/skyline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
+    # ]
+    # save_path = "/workspace/students/reasoning/results/skyline/test/da/average_run"
+    samples_per_task = 100
+    output_path = run(
+        results_paths=results_paths,
+        save_path=save_path,
+        samples_per_task=samples_per_task,
+    )
     print(f"Saved aggregated results to: {output_path}")

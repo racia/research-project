@@ -109,12 +109,13 @@ class DataLoader:
 
     def __init__(
         self,
-        samples_per_task: int = None,
+        samples_per_task: int | None = None,
         prefix: str | Path = "",
-        wrapper: Wrapper = None,
-        to_enumerate: Enumerate = None,
-        filtering_conditions: dict = None,
+        wrapper: Wrapper | None = None,
+        to_enumerate: Enumerate | None = None,
+        filtering_conditions: dict | None = None,
         reasoning_source: str | None = "llama",
+        saving_path: Path | None = None,
     ):
         """
         Initialize the DataLoader.
@@ -163,12 +164,14 @@ class DataLoader:
 
         # When a specific source is requested, use the matching sub-directory
         # so Claude- and Llama-generated files can coexist without name conflicts.
+        self.silver_reasoning_path: Path | None = (
+            self.prefix / "data" / "silver_reasoning"
+        )
         if reasoning_source:
             self.silver_reasoning_path: Path = (
-                self.prefix / "data/silver_reasoning" / reasoning_source
+                self.silver_reasoning_path / reasoning_source
             )
-        else:
-            self.silver_reasoning_path: Path = self.prefix / "data/silver_reasoning/"
+        self.saving_path = saving_path
 
         # Llama is always available as the fallback source.
         self.llama_reasoning_path: Path = self.prefix / "data/silver_reasoning/llama/"
@@ -426,18 +429,11 @@ class DataLoader:
             lookup=True,
         )
         print(f"Number of raw parts loaded: {len(raw_parts)}")
-        if row.get(f"model_output_before", None):
+        multi_system = None
+        if row.get(f"model_answer_before", None):
             multi_system = False
-        elif row.get(f"model_output_after", None):
+        if row.get(f"model_answer_after", None):
             multi_system = True
-        elif row.get("model_output_before"):
-            # Only _before column is present: single-system run (baseline/skyline).
-            multi_system = False
-        else:
-            print("row keys:", row.keys())
-            raise ValueError(
-                "Neither 'model_output_before' nor 'model_output_after' is found in the results data."
-            )
 
         versions = ["before", "after"] if multi_system else ["before"]
         for row in data:
@@ -506,7 +502,7 @@ class DataLoader:
 
         version_id = 1 if multi_system else 0
         if all(part.results[version_id].interpretability.empty() for part in parts):
-            raise Exception(
+            warnings.warn(
                 "No interpretability found in this run for version %d." % version_id
             )
 
@@ -647,7 +643,7 @@ class DataLoader:
         return silver_reasoning_data
 
     def write_reasoning_source_report(
-        self, output_path: str | Path = "reasoning_sources.txt"
+        self, output_path: str = "reasoning_sources.txt"
     ) -> None:
         """
         Write a human-readable report of which silver-reasoning source was used
@@ -659,7 +655,7 @@ class DataLoader:
         :param output_path: path to the output text file (default:
                             ``reasoning_sources.txt`` in the current directory).
         """
-        output_path = Path(output_path)
+        output_path = (self.saving_path or Path()) / output_path
         lines = [
             "Silver Reasoning Source Report",
             "=" * 40,

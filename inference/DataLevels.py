@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from statistics import mean
 
 import numpy as np
+import pyarrow
 from prettytable import HRuleStyle, PrettyTable
 
 from evaluation.Evaluator import AnswerEvaluator, MetricEvaluator
@@ -664,9 +665,9 @@ class Sample:
         for evaluator, result in zip(self.evaluators, part.results):
             evaluator.golden_answers.append(part.golden_answer)
             try:
-                assert "<|eot_id|>" not in result.model_answer.lower(), (
-                    f"Model answer contains 'eot': {result.model_answer}"
-                )
+                assert (
+                    "<|eot_id|>" not in result.model_answer.lower()
+                ), f"Model answer contains 'eot': {result.model_answer}"
             except AssertionError as e:
                 warnings.warn(str(e))
             evaluator.pred_answers.append(result.model_answer)
@@ -741,7 +742,9 @@ class Sample:
         table.hrules = HRuleStyle.ALL
         table.padding_width = 2  # Adds more space inside each cell
 
-        print(f"Model's predictions for the task {self.task_id}, sample {self.sample_id}:\n")
+        print(
+            f"Model's predictions for the task {self.task_id}, sample {self.sample_id}:\n"
+        )
         print(table)
 
     def set_results(self) -> None:
@@ -781,7 +784,7 @@ class Sample:
             # How far the target is from the question
             if part.context_line_nums:
                 last_context_line = part.context_line_nums[-1]
-                target_sent_dist =  round(
+                target_sent_dist = round(
                     last_context_line - mean(part.supporting_sent_inx), 2
                 )
                 self.target_sent_dist.add(target_sent_dist)
@@ -793,9 +796,16 @@ class Sample:
             evaluator.calculate_accuracies()
             evaluator.calculate_attention()
             if self.run_with_reasoning:
-                evaluator.calculate_bleu()
-                evaluator.calculate_rouge()
-                evaluator.calculate_meteor()
+                e = True
+                while e:
+                    try:
+                        evaluator.calculate_bleu()
+                        evaluator.calculate_rouge()
+                        evaluator.calculate_meteor()
+                        e = False
+
+                    except pyarrow.lib.ArrowInvalid as e:
+                        warnings.warn("ArrowInvalid Error, trying again...")
 
 
 class Task:
@@ -886,29 +896,36 @@ class Task:
         # dict.fromkeys(self.features[i].get().keys(), [])
         self.parts_features = {version: defaultdict(list) for version in self.versions}
         for sample in self.samples:
-            self.seen_context_lengths.add(sample.seen_context_lengths.all)
             self.sample_lengths.add(sample.sample_length)
-            self.parts_target_distances.add(sample.target_sent_dist.all)
-            for part in sample.parts:
+            for j, part in enumerate(sample.parts):
+                attns_on_target = []
+                for i, evaluator in enumerate(self.evaluators):
+                    attn_on_target = part.results[i].interpretability.attn_on_target
+                    identifier = (self.task_id, part.sample_id, part.part_id)
+                    evaluator.ids_with_attn_on_target[identifier] = {attn_on_target}
+                    attns_on_target.append(attn_on_target)
+                if any(is_nan(attn) for attn in attns_on_target):
+                    warnings.warn(
+                        "Skipping data-oriented metrics when attn_on_target is NaN"
+                    )
+                    continue
                 self.parts_answer_in_self.add(part.answer_lies_in_self)
-            for i, evaluator in enumerate(self.evaluators):
-                sample_id_attn = {
-                    (self.task_id, part.sample_id, part.part_id): part.results[
-                        i
-                    ].interpretability.attn_on_target
-                    for part in sample.parts
-                }
-                evaluator.ids_with_attn_on_target.update(sample_id_attn)
+                self.seen_context_lengths.add(sample.seen_context_lengths.all[j])
+                self.parts_target_distances.add(sample.target_sent_dist.all[j])
 
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             for part in self.parts:
+                attn_on_target = part.results[i].interpretability.attn_on_target
+                if is_nan(attn_on_target):
+                    warnings.warn(
+                        f"Skip adding metrics for part {part.task_id}-{part.sample_id}-{part.part_id}, because attention on target is NaN."
+                    )
+                    continue
                 evaluator.parts_answer_correct.add(part.results[i].answer_correct)
                 evaluator.parts_max_supp_attn.add(
                     part.results[i].interpretability.max_supp_attn
                 )
-                evaluator.parts_attn_on_target.add(
-                    part.results[i].interpretability.attn_on_target
-                )
+                evaluator.parts_attn_on_target.add(attn_on_target)
                 for k, v in part.results[i].features.get().items():
                     self.parts_features[version][k].append(v)
 
@@ -927,7 +944,9 @@ class Task:
                     )
                 )
             except AssertionError:
-                print("Length mismatch in task metrics calculation:")
+                print(
+                    f"Length mismatch in task metrics calculation version {version!r}:"
+                )
                 print(f"parts_answer_correct: {len(evaluator.parts_answer_correct)}")
                 print(f"parts_max_supp_attn: {len(evaluator.parts_max_supp_attn)}")
                 print(f"parts_attn_on_target: {len(evaluator.parts_attn_on_target)}")

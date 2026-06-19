@@ -49,6 +49,7 @@ data:
       {question}
     reasoning: ""
     answer: ""
+  reasoning_source: "llama"
 
 init_prompt:
   # name of the prompt files serves as a basis for logging and result files
