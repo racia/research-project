@@ -1,0 +1,978 @@
+task_id,sample_id,part_id,silver_reasoning,answer
+20,1,1,"when someone is thirsty, they need to drink. the kitchen is where drinks are typically found. therefore, jason will go to the kitchen.",Kitchen
+20,1,2,"when someone is bored, they typically seek entertainment or activity. a garden is a place where one can go to get fresh air and engage in outdoor activities to relieve boredom.",Garden
+20,1,3,"from part 1, jason was thirsty. a thirsty person goes to the kitchen to get a drink.",Thirsty
+20,1,4,"from part 2, antoine was bored. a bored person goes to the garden for entertainment or activity.",Bored
+20,1,5,"when someone is hungry, they go to the kitchen to find food.",Kitchen
+20,1,6,"antoine went to the garden because he was bored. in the garden, he grabbed the football to entertain himself.",Bored
+20,1,7,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,1,8,"jason went to the kitchen because he was thirsty. in the kitchen, he took the milk to satisfy his thirst.",Thirsty
+20,1,9,"sumit went to the kitchen because he was hungry. in the kitchen, he took the apple to satisfy his hunger.",Hungry
+20,1,10,"when someone is thirsty, they go to the kitchen to get a drink.",Kitchen
+20,1,11,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,2,1,a thirsty person goes to the kitchen to find a drink.,Kitchen
+20,2,2,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,2,3,yann was thirsty and went to the kitchen. he took the milk to satisfy his thirst.,Thirsty
+20,2,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,2,5,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,2,6,antoine was bored and went to the garden to entertain himself.,Bored
+20,2,7,a hungry person goes to the kitchen to get food.,Kitchen
+20,2,8,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,2,9,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,2,10,jason went to the kitchen because he was hungry. he grabbed the apple to eat and satisfy his hunger.,Hungry
+20,2,11,antoine went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,3,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,3,2,a hungry person goes to the kitchen to get food.,Kitchen
+20,3,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,3,4,a tired person goes to the bedroom to rest.,Bedroom
+20,3,5,"yann was tired, so he went to the bedroom to rest.",Tired
+20,3,6,"jason was bored, so he went to the garden to find entertainment.",Bored
+20,3,7,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,3,8,antoine went to the kitchen because he was thirsty. he took the milk to quench his thirst.,Thirsty
+20,3,9,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,3,10,sumit went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,3,11,yann went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,3,12,jason went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,4,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,4,2,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,4,3,yann went to the kitchen because he was thirsty. he took the milk to satisfy his thirst.,Thirsty
+20,4,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,4,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,4,6,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,4,7,"sumit was bored, so he went to the garden to find entertainment.",Bored
+20,4,8,sumit went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,4,9,jason went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,4,10,a tired person goes to the bedroom to rest.,Bedroom
+20,4,11,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,4,12,antoine went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,5,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,5,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,5,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,5,4,"sumit was bored, so he went to the garden to find entertainment.",Bored
+20,5,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,5,6,sumit went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,5,7,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,5,8,"yann was bored, so he went to the garden for entertainment.",Bored
+20,5,9,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,5,10,antoine went to the kitchen because he was hungry. he took the apple to eat and satisfy his hunger.,Hungry
+20,6,1,a tired person goes to the bedroom to rest.,Bedroom
+20,6,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,6,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,6,4,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,6,5,"jason was tired, so he went to the bedroom to rest.",Tired
+20,6,6,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,6,7,a hungry person goes to the kitchen to find food.,Kitchen
+20,6,8,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,6,9,jason went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,6,10,antoine went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,6,11,yann went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,7,1,a tired person goes to the bedroom to rest.,Bedroom
+20,7,2,"jason was tired, so he went to the bedroom to rest.",Tired
+20,7,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,7,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,7,5,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,7,6,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,7,7,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,7,8,jason went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,7,9,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,7,10,yann went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,7,11,sumit went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,8,1,a tired person goes to the bedroom to rest.,Bedroom
+20,8,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,8,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,8,4,"antoine was bored, so he went to the garden to find entertainment.",Bored
+20,8,5,antoine went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,8,6,a hungry person goes to the kitchen to find food.,Kitchen
+20,8,7,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,8,8,"yann was tired, so he went to the bedroom to rest.",Tired
+20,8,9,sumit went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,8,10,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,8,11,"jason was bored, so he went to the garden to find entertainment.",Bored
+20,9,1,a tired person goes to the bedroom to rest.,Bedroom
+20,9,2,"jason was tired, so he went to the bedroom to rest.",Tired
+20,9,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,9,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,9,5,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,9,6,"yann was bored, so he went to the garden for entertainment.",Bored
+20,9,7,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,9,8,sumit went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,9,9,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,9,10,jason went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,9,11,yann went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,10,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,10,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,10,3,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,10,4,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,10,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,10,6,jason went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,10,7,antoine went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,10,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,10,9,"yann was bored, so he went to the garden for entertainment.",Bored
+20,10,10,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,10,11,sumit went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,11,1,a tired person goes to the bedroom to rest.,Bedroom
+20,11,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,11,3,a tired person goes to the bedroom to rest.,Bedroom
+20,11,4,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,11,5,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,11,6,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,11,7,antoine went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,11,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,11,9,"jason was bored, so he went to the garden for entertainment.",Bored
+20,11,10,jason went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,11,11,yann went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,12,1,a tired person goes to the bedroom to rest.,Bedroom
+20,12,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,12,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,12,4,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,12,5,jason went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,12,6,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,12,7,antoine went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,12,8,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,12,9,sumit went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,12,10,a hungry person goes to the kitchen to find food.,Kitchen
+20,12,11,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,13,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,13,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,13,3,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,13,4,jason went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,13,5,"sumit was bored, so he went to the garden to find entertainment.",Bored
+20,13,6,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,13,7,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,13,8,sumit went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,13,9,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,13,10,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,14,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,14,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,14,3,"jason was bored, so he went to the garden for entertainment.",Bored
+20,14,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,14,5,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,14,6,a hungry person goes to the kitchen to find food.,Kitchen
+20,14,7,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,14,8,yann went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,14,9,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,14,10,jason went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,15,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,15,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,15,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,15,4,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,15,5,"yann was bored, so he went to the garden for entertainment.",Bored
+20,15,6,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,15,7,a hungry person goes to the kitchen to find food.,Kitchen
+20,15,8,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,15,9,sumit went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,15,10,yann went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,15,11,jason went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,16,1,a tired person goes to the bedroom to rest.,Bedroom
+20,16,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,16,3,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,16,4,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,16,5,sumit went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,16,6,a tired person goes to the bedroom to rest.,Bedroom
+20,16,7,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,16,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,16,9,"yann was bored, so he went to the garden for entertainment.",Bored
+20,16,10,jason went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,16,11,yann went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,17,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,17,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,17,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,17,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,17,5,"yann was bored, so he went to the garden for entertainment.",Bored
+20,17,6,yann went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,17,7,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,17,8,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,17,9,antoine went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,17,10,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,17,11,jason went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,18,1,a tired person goes to the bedroom to rest.,Bedroom
+20,18,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,18,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,18,4,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,18,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,18,6,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,18,7,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,18,8,jason went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,18,9,yann went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,18,10,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,18,11,antoine went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,19,1,a tired person goes to the bedroom to rest.,Bedroom
+20,19,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,19,3,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,19,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,19,5,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,19,6,jason went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,19,7,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,19,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,19,9,"yann was bored, so he went to the garden for entertainment.",Bored
+20,19,10,yann went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,19,11,antoine went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,20,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,20,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,20,3,a tired person goes to the bedroom to rest.,Bedroom
+20,20,4,a tired person goes to the bedroom to rest.,Bedroom
+20,20,5,"jason was bored, so he went to the garden for entertainment.",Bored
+20,20,6,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,20,7,"yann was tired, so he went to the bedroom to rest.",Tired
+20,20,8,yann went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,20,9,sumit went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,20,10,jason went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,20,11,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,21,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,21,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,21,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,21,4,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,21,5,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,21,6,sumit went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,21,7,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,21,8,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,21,9,jason went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,21,10,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,22,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,22,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,22,3,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,22,4,jason went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,22,5,a tired person goes to the bedroom to rest.,Bedroom
+20,22,6,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,22,7,"yann was bored, so he went to the garden for entertainment.",Bored
+20,22,8,yann went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,22,9,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,22,10,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,22,11,antoine went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,23,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,23,2,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,23,3,antoine went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,23,4,a tired person goes to the bedroom to rest.,Bedroom
+20,23,5,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,23,6,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,23,7,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,23,8,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,23,9,yann went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,23,10,sumit went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,23,11,"jason was tired, so he went to the bedroom to rest.",Tired
+20,23,12,jason went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,24,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,24,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,24,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,24,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,24,5,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,24,6,"jason was bored, so he went to the garden for entertainment.",Bored
+20,24,7,yann went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,24,8,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,24,9,antoine went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,24,10,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,24,11,sumit went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,25,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,25,2,a tired person goes to the bedroom to rest.,Bedroom
+20,25,3,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,25,4,antoine went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,25,5,a tired person goes to the bedroom to rest.,Bedroom
+20,25,6,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,25,7,jason went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,25,8,"yann was tired, so he went to the bedroom to rest.",Tired
+20,25,9,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,25,10,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,25,11,sumit went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,26,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,26,2,a tired person goes to the bedroom to rest.,Bedroom
+20,26,3,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,26,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,26,5,antoine went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,26,6,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,26,7,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,26,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,26,9,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,26,10,yann went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,26,11,sumit went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,27,1,a tired person goes to the bedroom to rest.,Bedroom
+20,27,2,a tired person goes to the bedroom to rest.,Bedroom
+20,27,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,27,4,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,27,5,"yann was tired, so he went to the bedroom to rest.",Tired
+20,27,6,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,27,7,sumit went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,27,8,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,27,9,"jason was tired, so he went to the bedroom to rest.",Tired
+20,27,10,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,27,11,antoine went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,28,1,a tired person goes to the bedroom to rest.,Bedroom
+20,28,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,28,3,a tired person goes to the bedroom to rest.,Bedroom
+20,28,4,"yann was tired, so he went to the bedroom to rest.",Tired
+20,28,5,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,28,6,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,28,7,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,28,8,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,28,9,antoine went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,28,10,"jason was tired, so he went to the bedroom to rest.",Tired
+20,29,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,29,2,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,29,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,29,4,"jason was bored, so he went to the garden for entertainment.",Bored
+20,29,5,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,29,6,a tired person goes to the bedroom to rest.,Bedroom
+20,29,7,jason went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,29,8,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,29,9,antoine went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,29,10,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,29,11,yann went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,30,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,30,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,30,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,30,4,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,30,5,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,30,6,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,30,7,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,30,8,sumit went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,30,9,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,30,10,yann went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,31,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,31,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,31,3,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,31,4,antoine went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,31,5,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,31,6,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,31,7,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,31,8,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,31,9,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,31,10,jason went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,32,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,32,2,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,32,3,a tired person goes to the bedroom to rest.,Bedroom
+20,32,4,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,32,5,sumit went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,32,6,yann went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,32,7,a tired person goes to the bedroom to rest.,Bedroom
+20,32,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,32,9,"jason was tired, so he went to the bedroom to rest.",Tired
+20,32,10,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,32,11,antoine went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,33,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,33,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,33,3,a tired person goes to the bedroom to rest.,Bedroom
+20,33,4,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,33,5,"yann was tired, so he went to the bedroom to rest.",Tired
+20,33,6,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,33,7,"jason was bored, so he went to the garden for entertainment.",Bored
+20,33,8,jason went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,33,9,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,33,10,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,33,11,sumit went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,34,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,34,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,34,3,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,34,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,34,5,antoine went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,34,6,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,34,7,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,34,8,yann went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,34,9,"jason was bored, so he went to the garden for entertainment.",Bored
+20,34,10,jason went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,34,11,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,35,1,a tired person goes to the bedroom to rest.,Bedroom
+20,35,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,35,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,35,4,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,35,5,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,35,6,sumit went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,35,7,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,35,8,antoine went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,35,9,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,35,10,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,35,11,jason went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,36,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,36,2,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,36,3,a tired person goes to the bedroom to rest.,Bedroom
+20,36,4,sumit went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,36,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,36,6,a hungry person goes to the kitchen to find food.,Kitchen
+20,36,7,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,36,8,"yann was tired, so he went to the bedroom to rest.",Tired
+20,36,9,antoine went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,36,10,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,36,11,yann went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,37,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,37,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,37,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,37,4,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,37,5,"jason was bored, so he went to the garden for entertainment.",Bored
+20,37,6,antoine went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,37,7,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,37,8,yann went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,37,9,a hungry person goes to the kitchen to find food.,Kitchen
+20,37,10,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,38,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,38,2,a tired person goes to the bedroom to rest.,Bedroom
+20,38,3,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,38,4,sumit went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,38,5,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,38,6,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,38,7,a hungry person goes to the kitchen to find food.,Kitchen
+20,38,8,"jason was bored, so he went to the garden for entertainment.",Bored
+20,38,9,jason went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,38,10,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,38,11,yann went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,39,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,39,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,39,3,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,39,4,yann went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,39,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,39,6,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,39,7,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,39,8,jason went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,39,9,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,39,10,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,39,11,sumit went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,40,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,40,2,a tired person goes to the bedroom to rest.,Bedroom
+20,40,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,40,4,a tired person goes to the bedroom to rest.,Bedroom
+20,40,5,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,40,6,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,40,7,"yann was bored, so he went to the garden for entertainment.",Bored
+20,40,8,sumit went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,40,9,yann went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,40,10,"jason was tired, so he went to the bedroom to rest.",Tired
+20,40,11,antoine went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,41,1,a tired person goes to the bedroom to rest.,Bedroom
+20,41,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,41,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,41,4,"jason was tired, so he went to the bedroom to rest.",Tired
+20,41,5,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,41,6,yann went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,41,7,jason went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,41,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,41,9,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,41,10,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,41,11,sumit went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,42,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,42,2,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,42,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,42,4,yann went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,42,5,a tired person goes to the bedroom to rest.,Bedroom
+20,42,6,a tired person goes to the bedroom to rest.,Bedroom
+20,42,7,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,42,8,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,42,9,antoine went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,42,10,"jason was tired, so he went to the bedroom to rest.",Tired
+20,43,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,43,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,43,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,43,4,"yann was bored, so he went to the garden for entertainment.",Bored
+20,43,5,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,43,6,yann went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,43,7,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,43,8,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,43,9,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,43,10,jason went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,44,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,44,2,a tired person goes to the bedroom to rest.,Bedroom
+20,44,3,a tired person goes to the bedroom to rest.,Bedroom
+20,44,4,"jason was tired, so he went to the bedroom to rest.",Tired
+20,44,5,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,44,6,"yann was tired, so he went to the bedroom to rest.",Tired
+20,44,7,jason went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,44,8,a tired person goes to the bedroom to rest.,Bedroom
+20,44,9,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,44,10,antoine went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,45,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,45,2,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,45,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,45,4,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,45,5,sumit went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,45,6,a hungry person goes to the kitchen to find food.,Kitchen
+20,45,7,a hungry person goes to the kitchen to find food.,Kitchen
+20,45,8,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,45,9,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,45,10,jason went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,46,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,46,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,46,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,46,4,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,46,5,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,46,6,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,46,7,sumit went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,46,8,a hungry person goes to the kitchen to find food.,Kitchen
+20,46,9,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,46,10,antoine went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,47,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,47,2,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,47,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,47,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,47,5,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,47,6,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,47,7,yann went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,47,8,antoine went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,47,9,sumit went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,47,10,a tired person goes to the bedroom to rest.,Bedroom
+20,47,11,"jason was tired, so he went to the bedroom to rest.",Tired
+20,47,12,jason went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,48,1,a tired person goes to the bedroom to rest.,Bedroom
+20,48,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,48,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,48,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,48,5,"yann was bored, so he went to the garden for entertainment.",Bored
+20,48,6,"jason was bored, so he went to the garden for entertainment.",Bored
+20,48,7,jason went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,48,8,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,48,9,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,48,10,antoine went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,49,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,49,2,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,49,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,49,4,a tired person goes to the bedroom to rest.,Bedroom
+20,49,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,49,6,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,49,7,"yann was tired, so he went to the bedroom to rest.",Tired
+20,49,8,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,49,9,sumit went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,49,10,antoine went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,49,11,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,50,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,50,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,50,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,50,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,50,5,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,50,6,antoine went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,50,7,"yann was bored, so he went to the garden for entertainment.",Bored
+20,50,8,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,50,9,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,50,10,sumit went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,51,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,51,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,51,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,51,4,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,51,5,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,51,6,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,51,7,jason went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,51,8,sumit went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,51,9,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,51,10,"yann was bored, so he went to the garden for entertainment.",Bored
+20,52,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,52,2,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,52,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,52,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,52,5,"yann was bored, so he went to the garden for entertainment.",Bored
+20,52,6,antoine went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,52,7,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,52,8,yann went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,52,9,"jason was bored, so he went to the garden for entertainment.",Bored
+20,52,10,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,52,11,sumit went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,53,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,53,2,"yann was bored, so he went to the garden for entertainment.",Bored
+20,53,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,53,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,53,5,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,53,6,sumit went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,53,7,a tired person goes to the bedroom to rest.,Bedroom
+20,53,8,"jason was tired, so he went to the bedroom to rest.",Tired
+20,53,9,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,53,10,jason went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,53,11,antoine went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,54,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,54,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,54,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,54,4,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,54,5,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,54,6,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,54,7,sumit went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,54,8,a tired person goes to the bedroom to rest.,Bedroom
+20,54,9,"jason was tired, so he went to the bedroom to rest.",Tired
+20,54,10,jason went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,54,11,antoine went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,55,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,55,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,55,3,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,55,4,sumit went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,55,5,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,55,6,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,55,7,antoine went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,55,8,a tired person goes to the bedroom to rest.,Bedroom
+20,55,9,"yann was tired, so he went to the bedroom to rest.",Tired
+20,55,10,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,55,11,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,56,1,a tired person goes to the bedroom to rest.,Bedroom
+20,56,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,56,3,"yann was tired, so he went to the bedroom to rest.",Tired
+20,56,4,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,56,5,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,56,6,yann went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,56,7,jason went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,56,8,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,56,9,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,56,10,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,56,11,sumit went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,57,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,57,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,57,3,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,57,4,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,57,5,antoine went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,57,6,sumit went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,57,7,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,57,8,"yann was bored, so he went to the garden for entertainment.",Bored
+20,57,9,yann went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,57,10,a tired person goes to the bedroom to rest.,Bedroom
+20,57,11,"jason was tired, so he went to the bedroom to rest.",Tired
+20,57,12,jason went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,58,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,58,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,58,3,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,58,4,antoine went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,58,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,58,6,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,58,7,a tired person goes to the bedroom to rest.,Bedroom
+20,58,8,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,58,9,"jason was tired, so he went to the bedroom to rest.",Tired
+20,58,10,jason went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,59,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,59,2,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,59,3,a tired person goes to the bedroom to rest.,Bedroom
+20,59,4,sumit went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,59,5,a tired person goes to the bedroom to rest.,Bedroom
+20,59,6,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,59,7,"yann was tired, so he went to the bedroom to rest.",Tired
+20,59,8,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,59,9,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,59,10,"jason was bored, so he went to the garden for entertainment.",Bored
+20,60,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,60,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,60,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,60,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,60,5,"yann was bored, so he went to the garden for entertainment.",Bored
+20,60,6,yann went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,60,7,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,60,8,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,60,9,jason went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,60,10,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,61,1,a tired person goes to the bedroom to rest.,Bedroom
+20,61,2,"yann was tired, so he went to the bedroom to rest.",Tired
+20,61,3,a tired person goes to the bedroom to rest.,Bedroom
+20,61,4,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,61,5,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,61,6,sumit went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,61,7,a tired person goes to the bedroom to rest.,Bedroom
+20,61,8,"jason was tired, so he went to the bedroom to rest.",Tired
+20,61,9,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,61,10,antoine went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,62,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,62,2,a tired person goes to the bedroom to rest.,Bedroom
+20,62,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,62,4,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,62,5,yann went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,62,6,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,62,7,antoine went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,62,8,a hungry person goes to the kitchen to find food.,Kitchen
+20,62,9,"jason was bored, so he went to the garden for entertainment.",Bored
+20,62,10,jason went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,62,11,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,62,12,sumit went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,63,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,63,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,63,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,63,4,a tired person goes to the bedroom to rest.,Bedroom
+20,63,5,"yann was bored, so he went to the garden for entertainment.",Bored
+20,63,6,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,63,7,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,63,8,antoine went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,63,9,yann went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,63,10,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,63,11,sumit went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,64,1,a tired person goes to the bedroom to rest.,Bedroom
+20,64,2,"jason was tired, so he went to the bedroom to rest.",Tired
+20,64,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,64,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,64,5,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,64,6,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,64,7,jason went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,64,8,antoine went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,64,9,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,64,10,sumit went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,64,11,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,65,1,a tired person goes to the bedroom to rest.,Bedroom
+20,65,2,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,65,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,65,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,65,5,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,65,6,sumit went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,65,7,antoine went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,65,8,a hungry person goes to the kitchen to find food.,Kitchen
+20,65,9,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,65,10,"yann was bored, so he went to the garden for entertainment.",Bored
+20,65,11,yann went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,66,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,66,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,66,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,66,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,66,5,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,66,6,antoine went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,66,7,"yann was bored, so he went to the garden for entertainment.",Bored
+20,66,8,yann went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,66,9,"jason was bored, so he went to the garden for entertainment.",Bored
+20,66,10,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,66,11,sumit went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,67,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,67,2,a tired person goes to the bedroom to rest.,Bedroom
+20,67,3,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,67,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,67,5,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,67,6,antoine went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,67,7,a tired person goes to the bedroom to rest.,Bedroom
+20,67,8,"yann was bored, so he went to the garden for entertainment.",Bored
+20,67,9,jason went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,67,10,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,67,11,yann went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,68,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,68,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,68,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,68,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,68,5,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,68,6,"yann was bored, so he went to the garden for entertainment.",Bored
+20,68,7,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,68,8,antoine went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,68,9,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,68,10,jason went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,69,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,69,2,a tired person goes to the bedroom to rest.,Bedroom
+20,69,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,69,4,a tired person goes to the bedroom to rest.,Bedroom
+20,69,5,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,69,6,"jason was bored, so he went to the garden for entertainment.",Bored
+20,69,7,"yann was tired, so he went to the bedroom to rest.",Tired
+20,69,8,antoine went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,69,9,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,69,10,sumit went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,69,11,jason went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,70,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,70,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,70,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,70,4,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,70,5,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,70,6,a hungry person goes to the kitchen to find food.,Kitchen
+20,70,7,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,70,8,jason went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,70,9,"yann was bored, so he went to the garden for entertainment.",Bored
+20,70,10,yann went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,71,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,71,2,a tired person goes to the bedroom to rest.,Bedroom
+20,71,3,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,71,4,"yann was tired, so he went to the bedroom to rest.",Tired
+20,71,5,jason went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,71,6,a tired person goes to the bedroom to rest.,Bedroom
+20,71,7,yann went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,71,8,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,71,9,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,71,10,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,72,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,72,2,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,72,3,sumit went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,72,4,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,72,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,72,6,a tired person goes to the bedroom to rest.,Bedroom
+20,72,7,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,72,8,jason went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,72,9,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,72,10,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,72,11,antoine went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,72,12,yann went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,73,1,a tired person goes to the bedroom to rest.,Bedroom
+20,73,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,73,3,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,73,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,73,5,a tired person goes to the bedroom to rest.,Bedroom
+20,73,6,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,73,7,sumit went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,73,8,"yann was tired, so he went to the bedroom to rest.",Tired
+20,73,9,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,73,10,"jason was bored, so he went to the garden for entertainment.",Bored
+20,74,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,74,2,"jason was bored, so he went to the garden for entertainment.",Bored
+20,74,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,74,4,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,74,5,"yann was bored, so he went to the garden for entertainment.",Bored
+20,74,6,jason went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,74,7,a tired person goes to the bedroom to rest.,Bedroom
+20,74,8,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,74,9,sumit went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,74,10,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,74,11,antoine went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,75,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,75,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,75,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,75,4,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,75,5,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,75,6,sumit went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,75,7,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,75,8,antoine went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,75,9,a hungry person goes to the kitchen to find food.,Kitchen
+20,75,10,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,75,11,yann went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,76,1,a tired person goes to the bedroom to rest.,Bedroom
+20,76,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,76,3,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,76,4,a tired person goes to the bedroom to rest.,Bedroom
+20,76,5,"jason was tired, so he went to the bedroom to rest.",Tired
+20,76,6,antoine went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,76,7,"yann was tired, so he went to the bedroom to rest.",Tired
+20,76,8,jason went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,76,9,a tired person goes to the bedroom to rest.,Bedroom
+20,76,10,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,77,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,77,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,77,3,a tired person goes to the bedroom to rest.,Bedroom
+20,77,4,"jason was tired, so he went to the bedroom to rest.",Tired
+20,77,5,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,77,6,a tired person goes to the bedroom to rest.,Bedroom
+20,77,7,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,77,8,jason went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,77,9,antoine went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,77,10,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,77,11,yann went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,78,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,78,2,a tired person goes to the bedroom to rest.,Bedroom
+20,78,3,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,78,4,a tired person goes to the bedroom to rest.,Bedroom
+20,78,5,"yann was tired, so he went to the bedroom to rest.",Tired
+20,78,6,antoine went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,78,7,a hungry person goes to the kitchen to find food.,Kitchen
+20,78,8,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,78,9,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,78,10,sumit went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,79,1,a tired person goes to the bedroom to rest.,Bedroom
+20,79,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,79,3,a tired person goes to the bedroom to rest.,Bedroom
+20,79,4,"jason was bored, so he went to the garden for entertainment.",Bored
+20,79,5,a hungry person goes to the kitchen to find food.,Kitchen
+20,79,6,"yann was tired, so he went to the bedroom to rest.",Tired
+20,79,7,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,79,8,antoine went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,79,9,jason went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,79,10,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,79,11,sumit went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,80,1,a tired person goes to the bedroom to rest.,Bedroom
+20,80,2,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,80,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,80,4,a tired person goes to the bedroom to rest.,Bedroom
+20,80,5,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,80,6,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,80,7,"yann was bored, so he went to the garden for entertainment.",Bored
+20,80,8,antoine went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,80,9,yann went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,80,10,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,80,11,jason went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,81,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,81,2,a hungry person goes to the kitchen to find food.,Kitchen
+20,81,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,81,4,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,81,5,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,81,6,a tired person goes to the bedroom to rest.,Bedroom
+20,81,7,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,81,8,sumit went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,81,9,"yann was tired, so he went to the bedroom to rest.",Tired
+20,81,10,antoine went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,81,11,yann went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,82,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,82,2,a tired person goes to the bedroom to rest.,Bedroom
+20,82,3,a tired person goes to the bedroom to rest.,Bedroom
+20,82,4,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,82,5,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,82,6,antoine went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,82,7,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,82,8,"yann was tired, so he went to the bedroom to rest.",Tired
+20,82,9,yann went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
+20,82,10,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,82,11,jason went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,83,1,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,83,2,a tired person goes to the bedroom to rest.,Bedroom
+20,83,3,"yann was bored, so he went to the garden for entertainment.",Bored
+20,83,4,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,83,5,yann went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,83,6,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,83,7,antoine went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,83,8,a tired person goes to the bedroom to rest.,Bedroom
+20,83,9,"jason was tired, so he went to the bedroom to rest.",Tired
+20,83,10,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,83,11,sumit went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,84,1,a tired person goes to the bedroom to rest.,Bedroom
+20,84,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,84,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,84,4,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,84,5,a tired person goes to the bedroom to rest.,Bedroom
+20,84,6,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,84,7,sumit went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,84,8,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,84,9,jason went to the kitchen because he was hungry. he got the apple to eat.,Hungry
+20,84,10,antoine went to the garden because he was bored. he took the football to entertain himself.,Bored
+20,84,11,"yann was tired, so he went to the bedroom to rest.",Tired
+20,85,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,85,2,"sumit was hungry, so he went to the kitchen to get food.",Hungry
+20,85,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,85,4,"yann was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,85,5,yann went to the kitchen because he was thirsty. he grabbed the milk to drink.,Thirsty
+20,85,6,sumit went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,85,7,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,85,8,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,85,9,"jason was bored, so he went to the garden for entertainment.",Bored
+20,85,10,jason went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,85,11,"antoine was bored, so he went to the garden for entertainment.",Bored
+20,86,1,a tired person goes to the bedroom to rest.,Bedroom
+20,86,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,86,3,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,86,4,sumit went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,86,5,a tired person goes to the bedroom to rest.,Bedroom
+20,86,6,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,86,7,a hungry person goes to the kitchen to find food.,Kitchen
+20,86,8,"jason was bored, so he went to the garden for entertainment.",Bored
+20,86,9,jason went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,86,10,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,86,11,yann went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,87,1,a tired person goes to the bedroom to rest.,Bedroom
+20,87,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,87,3,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,87,4,a hungry person goes to the kitchen to find food.,Kitchen
+20,87,5,"sumit was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,87,6,"yann was bored, so he went to the garden for entertainment.",Bored
+20,87,7,yann went to the garden because he was bored. he grabbed the football to entertain himself.,Bored
+20,87,8,sumit went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,87,9,"jason was tired, so he went to the bedroom to rest.",Tired
+20,87,10,"antoine was hungry, so he went to the kitchen to get food.",Hungry
+20,87,11,jason went to the bedroom because he was tired. he picked up the pajamas to prepare for sleep.,Tired
+20,87,12,antoine went to the kitchen because he was hungry. he picked up the apple to eat.,Hungry
+20,88,1,a tired person goes to the bedroom to rest.,Bedroom
+20,88,2,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,88,3,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,88,4,"yann was tired, so he went to the bedroom to rest.",Tired
+20,88,5,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,88,6,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,88,7,antoine went to the kitchen because he was thirsty. he took the milk to drink.,Thirsty
+20,88,8,a tired person goes to the bedroom to rest.,Bedroom
+20,88,9,yann went to the bedroom because he was tired. he took the pajamas to prepare for sleep.,Tired
+20,88,10,"jason was tired, so he went to the bedroom to rest.",Tired
+20,88,11,sumit went to the garden because he was bored. he got the football to entertain himself.,Bored
+20,89,1,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,89,2,"a bored person seeks entertainment, typically going to the garden.",Garden
+20,89,3,a hungry person goes to the kitchen to find food.,Kitchen
+20,89,4,"sumit was bored, so he went to the garden for entertainment.",Bored
+20,89,5,sumit went to the garden because he was bored. he picked up the football to entertain himself.,Bored
+20,89,6,"jason was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,89,7,"yann was hungry, so he went to the kitchen to get food.",Hungry
+20,89,8,yann went to the kitchen because he was hungry. he grabbed the apple to eat.,Hungry
+20,89,9,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,89,10,jason went to the kitchen because he was thirsty. he picked up the milk to drink.,Thirsty
+20,89,11,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,90,1,a hungry person goes to the kitchen to find food.,Kitchen
+20,90,2,a tired person goes to the bedroom to rest.,Bedroom
+20,90,3,"jason was hungry, so he went to the kitchen to get food.",Hungry
+20,90,4,a tired person goes to the bedroom to rest.,Bedroom
+20,90,5,a thirsty person goes to the kitchen to get a drink.,Kitchen
+20,90,6,"antoine was thirsty, so he went to the kitchen to get a drink.",Thirsty
+20,90,7,antoine went to the kitchen because he was thirsty. he got the milk to drink.,Thirsty
+20,90,8,jason went to the kitchen because he was hungry. he took the apple to eat.,Hungry
+20,90,9,"sumit was tired, so he went to the bedroom to rest.",Tired
+20,90,10,"yann was tired, so he went to the bedroom to rest.",Tired
+20,90,11,yann went to the bedroom because he was tired. he grabbed the pajamas to prepare for sleep.,Tired
+20,91,1,a tired person goes to the bedroom to rest.,Bedroom
+20,91,2,a tired person goes to the bedroom to rest.,Bedroom
+20,91,3,jason was tired,Tired
+20,91,4,"antoine was tired, so he went to the bedroom to rest.",Tired
+20,91,5,jason went to the bedroom because he was tired. he got the pajamas to prepare for sleep.,Tired
