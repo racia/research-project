@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from matplotlib import cm
+from matplotlib import colormaps
 from matplotlib.colors import ListedColormap
 from matplotlib.lines import Line2D
 from matplotlib.ticker import MultipleLocator, PercentFormatter
@@ -227,7 +227,7 @@ class Plotter:
         if isinstance(value, str) and value.startswith("#"):
             return value
         try:
-            cmap = cm.get_cmap(value)
+            cmap = colormaps.get_cmap(value)
             return mcolors.to_hex(cmap(sample))
         except (ValueError, TypeError):
             return "#888888"
@@ -1423,7 +1423,7 @@ class Plotter:
         if color.startswith("#"):
             return color
         else:
-            cmap = cm.get_cmap(color)
+            cmap = colormaps.get_cmap(color)
             return cmap
 
     def plot_answer_type_per_part(
@@ -1475,7 +1475,11 @@ class Plotter:
         tasks = sorted({t for t, _, _ in ids_cases})
         n_tasks = len(tasks)
 
-        if n_tasks % 4 == 0:
+        if n_tasks % 10 == 0:
+            n_cols = min(10, n_tasks)
+        elif n_tasks % 5 == 0:
+            n_cols = min(5, n_tasks)
+        elif n_tasks % 4 == 0:
             n_cols = min(4, n_tasks)
         elif n_tasks % 3 == 0:
             n_cols = min(3, n_tasks)
@@ -1551,7 +1555,7 @@ class Plotter:
                                 )
                                 continue
 
-                        score = round(float(score), 2)
+                        score = round(float(score), 2) if score else None
                         norm_score = (
                             (score - min_score) / (max_score - min_score)
                             if max_score > min_score
@@ -1565,7 +1569,7 @@ class Plotter:
                             cmap_obj = (
                                 colormap
                                 if hasattr(colormap, "__call__")
-                                else cm.get_cmap(colormap)
+                                else colormaps.get_cmap(colormap)
                             )
                             min_sample = 0.15
                             sample_val = min_sample + norm_score * (1.0 - min_sample)
@@ -1606,7 +1610,7 @@ class Plotter:
                                     score = next(iter(score))
                                 else:
                                     continue
-                            score = round(float(score), 2)
+                            score = round(float(score), 2) if score else None
                             ax.text(
                                 p_idx,
                                 s_idx,
@@ -1630,7 +1634,7 @@ class Plotter:
                     try:
                         legend_colors.append(mcolors.to_rgba(col))
                     except Exception:
-                        legend_colors.append(cm.get_cmap(col)(0.5))
+                        legend_colors.append(colormaps.get_cmap(col)(0.5))
             elif callable(col):
                 legend_colors.append(col(0.5))
             else:
@@ -1697,7 +1701,18 @@ class Plotter:
             else sorted(set(i[0] for i in ids))
         )
         n_tasks = len(tasks)
-        n_cols = min(4, n_tasks)
+        if n_tasks % 10 == 0:
+            n_cols = min(10, n_tasks)
+        elif n_tasks % 5 == 0:
+            n_cols = min(5, n_tasks)
+        elif n_tasks % 4 == 0:
+            n_cols = min(4, n_tasks)
+        elif n_tasks % 3 == 0:
+            n_cols = min(3, n_tasks)
+        elif n_tasks % 2 == 0:
+            n_cols = min(2, n_tasks)
+        else:
+            n_cols = 1
         n_rows = int(np.ceil(n_tasks / n_cols))
 
         # Calculate max samples/parts per task
