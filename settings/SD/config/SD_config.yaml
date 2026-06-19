@@ -52,6 +52,7 @@ data:
       {question}
     reasoning: ""
     answer: ""
+  reasoning_source: "llama"
 
 init_prompt:
   paths:
