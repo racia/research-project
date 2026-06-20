@@ -144,6 +144,7 @@ class Model:
         from_chat: bool = False,
         to_continue: bool = False,
         filter_eot: bool = True,
+        add_model_output: bool = True,
     ) -> tuple[str, InterpretabilityResult]:
         """
         Calls the model with memory optimizations and optionally with Interpretability (depends on config).
@@ -155,6 +156,7 @@ class Model:
         :param from_chat: Whether the message is from the chat or not; when True, data is ignored
         :param to_continue: Whether the model should continue the last message or not
         :param filter_eot: Whether to filter the <|eot_id|> token from the end of the output or not
+        :param add_model_output: Whether to add the decoded model output as the last message to the chat
         :return: The decoded model output
         """
         if not self.chat:
@@ -230,7 +232,7 @@ class Model:
                     self.chat.adjust_message(
                         decoded_output, encoded_output, full_output=False
                     )
-                else:
+                elif add_model_output:
                     self.chat.add_message(
                         part=decoded_output, source=Source.assistant, ids=encoded_output
                     )

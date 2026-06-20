@@ -4,6 +4,7 @@ import copy
 import warnings
 from typing import Union
 
+import numpy as np
 import torch
 from transformers import PreTrainedTokenizerFast
 
@@ -61,6 +62,8 @@ class Chat:
         self.messages = [self.system_message]
 
         self.supp_sent_spans = []
+        self.model_output_spans = []
+
         self.part = None
 
     def __repr__(self) -> str:
@@ -275,7 +278,7 @@ class Chat:
                     self.offset += len(flatten(i))
             else:
                 # it is certainly an assistant output
-                ids = ids.tolist() if not isinstance(ids, list) else ids
+                ids = ids.tolist() if not isinstance(ids, list) else ids # Why not flattened?
                 # not flat because they count as "one sentence"
                 if type(ids[0]) is int:
                     ids = [ids]
@@ -286,8 +289,10 @@ class Chat:
                 elif type(tokens[0]) is str:
                     tokens = [tokens]
                 type_ = "ans" if source == Source.assistant else "task"
-                upd_span = update_span((0, len(ids)), self.offset)
+                upd_span = update_span((0, len(flatten(ids))), self.offset)
                 spans_with_types[upd_span] = type_
+                self.model_output_spans.append(upd_span) if type_ == "ans" else None
+                # print(f"Updated model output spans: {self.model_output_spans}")
                 self.offset += len(flatten(ids))
 
         part_dict = part_dict or {
@@ -392,13 +397,18 @@ class Chat:
             )
         spans = []
         spans_dict = {}
+        gen_ids_offset = 4
         for message in self.messages[:-1] if remove_last else self.messages:
             for span, type_ in message["spans_with_types"].items():
+                span_ = np.array(span) + gen_ids_offset
+                span = tuple(span_.tolist())
+                # print(f"Updated span: {span}")
                 if span_type:
                     if type_ == span_type or type_is_task(span_type, type_):
                         spans.append(span)
                 else:
                     spans_dict[span] = type_
+            gen_ids_offset+=4
 
         if span_type:
             return spans
@@ -426,8 +436,9 @@ class Chat:
         max_length: int = 8000,
         identify_target: bool = True,
         to_continue: bool = False,
-        sys_prompt: bool = True,
+        include_sys_prompt: bool = True,
         include_generation_tokens: bool = True,
+        include_last: bool = True,
     ) -> torch.Tensor:
         """
         Converts the chat into 'ids' or 'tokens' using the tokenizer.
@@ -436,8 +447,10 @@ class Chat:
         :param max_length: the maximum length of the input
         :param identify_target: whether to identify the supporting sentence spans
         :param to_continue: whether the last message has to be continued (no generation token will be added)
-        :param sys_prompt: whether to include the system prompt in the output
+        :param include_sys_prompt: whether to include the initial system prompt message
         :param include_generation_tokens: whether to include generation tokens for the assistant/user messages
+        :param include_last: whether to include the last message for model output
+        
         :return: list of ids or tokens as a tensor
         """
         if datatype not in ("ids", "tokens"):
@@ -447,7 +460,7 @@ class Chat:
 
         chat_tokens, chat_ids = [], []
         conversation_length = len(chat_ids)
-        for i, message in enumerate(self.messages):
+        for i, message in enumerate(self.messages if include_last else self.messages[:-1]):
             if include_generation_tokens:
 
                 message_ids, message_tokens = get_generation_token_ids(
@@ -455,8 +468,11 @@ class Chat:
             )
             else:
                 message_ids, message_tokens = [], []
+            if i == 0 and not include_sys_prompt:
+                # print("Skipping sys prompt..")
+                continue
             message_ids.extend(flatten(message[datatype]))
-            message_tokens.extend(flatten(message["tokens"]) if (message["role"]==Source.system and sys_prompt) or message["role"] == Source.user else "")
+            message_tokens.extend(flatten(message["tokens"]))
             conversation_length += len(message_ids)
             if conversation_length > max_length:
                 warnings.warn(

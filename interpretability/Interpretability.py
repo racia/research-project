@@ -48,17 +48,17 @@ class Interpretability:
         assert attn_scores.ndim == 2
         ids_to_remove = []
 
-        for task_idx, _ in enumerate(attn_scores): # Iterate over the token indices in the current task span
-            print(f"Task idx: {task_idx}, {chat_tokens[task_idx], len(chat_tokens)}, {attn_scores.shape[1]}")
-            token = chat_tokens[task_idx]
-            token_str = self.tokenizer.convert_tokens_to_string([token])
-            print(f"Token_str: {token_str}")
-            print(f"String conv. token: {token_str}")
-
-            for token_ in nlp(token_str.strip().lower()):
-                if token_.lemma_ not in self.scenery_words:
-                    print(f"Stop word: {token_.lemma_}")
-                    ids_to_remove.append(task_idx)
+        for task_idx, _ in enumerate(attn_scores[0, :]): # Iterate over the token indices in the current task span
+            try:
+                token = chat_tokens[task_idx]
+                token_str = self.tokenizer.convert_tokens_to_string([token])
+                # print(f"Token str: {token_str}")
+                for token_ in nlp(token_str.strip().lower()):
+                    if token_.lemma_ not in self.scenery_words:
+                        # print(f"Stop word: {token_.lemma_}")
+                        ids_to_remove.append(task_idx)
+            except IndexError as e:
+                print(f"Index of attn_scores ({attn_scores.shape[1]}) exceeds those of chat tokens ({len(chat_tokens)})")
         return ids_to_remove
 
     @staticmethod
@@ -94,7 +94,7 @@ class Interpretability:
         # Takes mean over the attention heads: dimensions, model_output, current task
         # (w/o model output, as it is in y-axis)
         attn_tensor = attn_tensor[
-            :, -model_output_len:-1, sys_prompt_len:-model_output_len # TODO: Check if sys_prompt_len needs -1 (for zero-indexing) 
+            :, -model_output_len:, sys_prompt_len:-model_output_len # TODO: Check that eot token not included in model output
         ].mean(dim=0)
         # Normalize the attention scores by the sum of all token attention scores
         attn_tensor = attn_tensor / attn_tensor.sum(dim=-1, keepdim=True)
@@ -136,7 +136,7 @@ class Interpretability:
         return attn_scores
 
     def filter_attn_indices(
-        self, attention_scores: np.ndarray, chat_ids: np.ndarray, task_spans: list = None
+        self, attention_scores: np.ndarray, chat_tokens: list, task_spans: list = None, filter_task_spans: bool = True
     ) -> list:
         """
         Provide indices for scenery words of context and question in each row of the output attention scores.
@@ -145,14 +145,21 @@ class Interpretability:
         :param attention_scores: The attention scores of the current chat for task
         :param chat_tokens: current sample part tokens
         :param task_spans: the sentence spans of the current chat for all types of chunks
+        :param filter_task_spans: whether or not to filter only for task span tokens (excluding model answer tokens)
         :return: according attention_indices
         """
         stop_words_indices = self.get_stop_word_idxs(
             attention_scores, chat_tokens
         )
-        attention_indices = filter(
-            lambda x: x not in stop_words_indices, range(attention_scores.shape[1])
-        )
+
+        if filter_task_spans:
+            attention_indices = filter(
+                lambda x: x not in stop_words_indices and x in task_spans, range(attention_scores.shape[1])
+            )
+        else: 
+            attention_indices = filter(
+                lambda x: x not in stop_words_indices, range(attention_scores.shape[1]) # TODO: Check appearance in task_tokens
+            )
         return list(attention_indices)
 
     def process_attention(
@@ -180,12 +187,13 @@ class Interpretability:
         supp_sent_idx = [
             i for i, span in enumerate(sent_spans) if span in chat.supp_sent_spans
         ]
+        model_output_len = len(flatten(chat.messages[-1]["ids"]))
         # TODO: test verbose attention
         if self.aggregate_attn:
             # only aggregated sentences, no verbose tokens
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
-                model_output_len=len(flatten(chat.messages[-1]["ids"])),
+                model_output_len=model_output_len,
                 sent_spans=sent_spans,
             )
             x_tokens = [
@@ -195,40 +203,76 @@ class Interpretability:
             max_supp_attn_ratio = get_max_attn_ratio(attn_scores, supp_sent_idx)
             attn_on_target = get_attn_on_target(attn_scores, supp_sent_idx)
         else:
-            sys_prompt_len = len(flatten(chat.messages[0]["ids"]))
-            print(f"Sys prompt len: {sys_prompt_len}, offset len: {chat.offset}")
-            chat_ids = chat_ids[0][sys_prompt_len + 1 : -1].detach().cpu().numpy()
+            sys_prompt_len = len(flatten(chat.messages[0]["ids"])) + 4
+            chat_ids = chat_ids[0][sys_prompt_len:-model_output_len].detach().cpu().numpy()
             attn_scores = self.get_attention_scores(
                 output_tensor=output_tensor,
-                model_output_len=len(flatten(chat.messages[-1]["ids"])),
-                sys_prompt_len=sys_prompt_len,
+                model_output_len=model_output_len,
+                sys_prompt_len=sys_prompt_len
             )
-            task_spans = {spans: type_ for spans, type_ in spans_with_types.items() if type_ in ["cont", "ques"]}
-            # Filter attention scores
-            x_tokens = chat.convert_into_datatype(
-                datatype="tokens", identify_target=False, sys_prompt=True, include_generation_tokens=False
-            )
-            attention_indices = self.filter_attn_indices(attn_scores, x_tokens)
-            print(f"All tokens: {x_tokens[:2]}, {len(x_tokens)}")
-            supp_sent_ranges = [    # Get the length of the supporting spans
-                list(range(*span))
-                for span in sent_spans
+            task_spans = {spans: type_ for spans, type_ in spans_with_types.items() if type_ in ["cont", "ques", "task"]}
+            task_spans_l = list(task_spans.keys())
+            try:
+                assert sys_prompt_len + len(chat_ids) - 4 == task_spans_l[-1][1]+1 # W/o generation tokens equals last task spans token's index + 1 
+            except AssertionError:
+                print(f"Unexcepted length of sys prompt: {sys_prompt_len}, chat_ids: {len(chat_ids)} and task tokens: {task_spans_l[-5:]}")
+            # print(f"DEBUG: Task spans dict: {task_spans.items()}")
+            x_tokens_ = [self.tokenizer.convert_ids_to_tokens([ids])[0] for ids in chat_ids]
+            x_tokens = [self.tokenizer.convert_tokens_to_string([tok]) for tok in x_tokens_] 
+            
+            try:
+                # Assert that the x tokens are same length as the task tokens with final model output 
+                assert len(x_tokens) == attn_scores.shape[1]
+            except AssertionError:
+                print(f"Length mismatch between task x_tokens ({len(x_tokens)}) and att_scores ({attn_scores.shape[1]}) (model output: {model_output_len})")
+                
+            supp_sent_ranges = [    # Get the length of the supporting spans by conforming for sys_prompt_len
+                list(range(*np.array(span)-sys_prompt_len))
+                for i, span in enumerate(sent_spans, 1)
                 if span in chat.supp_sent_spans
             ]
             flat_supp_sent_ranges = flatten(supp_sent_ranges)
-            # print(f"Supp sent tok range: {flat_supp_sent_ranges}")
+            # For optional only task spans tokens filtering 
+            task_spans_ranges = [
+                list(range(*np.array(span)-sys_prompt_len))
+                for span in task_spans_l
+            ]
+            flat_task_spans_ranges = flatten(task_spans_ranges)
+            # In case of model ans spans in x tokens, indices for marking 
+            model_ans_spans = chat.get_sentence_spans(span_type="ans", remove_last=True)
+            output_span_ranges = [
+                list(range(*np.array(span)-sys_prompt_len)) 
+                for span, type_ in spans_with_types.items()
+                if type_ == "ans"
+            ] 
+            # print(model_ans_spans, output_span_ranges)
+            flat_outp_span_ranges = flatten(output_span_ranges)
+            # print(f"Flat outp span ranges ", flat_outp_span_ranges)
+            
+            # Filter attention scores
+            attention_indices = self.filter_attn_indices(attn_scores, x_tokens, task_spans=flat_task_spans_ranges, filter_task_spans=True) # TODO: Possibly try with model ans
+            print(f"Supp sent tok range tokens: {np.array(x_tokens)[flat_supp_sent_ranges]}")
+            print(f"Model ans range tokens: {np.array(x_tokens)[flat_outp_span_ranges]}")
+            
             x_tokens_str_map = {idx: self.tokenizer.convert_tokens_to_string([token]) for idx, token in enumerate(x_tokens)}
             x_tokens = [
                 f"* {tok} *" if i in flat_supp_sent_ranges else tok
                 for i, tok in enumerate(x_tokens_str_map.values())
-                if i in attention_indices
+                # if i in attention_indices
             ]
-            # print(f"Filtered tokens: {x_tokens}")
+            # Additionally mark model answer tokens (if included in x tokens)
+            x_tokens = [
+                f"_ {tok} _" if i in flat_outp_span_ranges else tok 
+                for i, tok in enumerate(x_tokens)
+                if i in attention_indices 
+            ]
+            # print(f"Filtered x tokens ", x_tokens)
             # Compute attention metrics before filtering for correct indexing
             max_supp_attn_ratio = get_max_attn_ratio(attn_scores, flat_supp_sent_ranges) 
             attn_on_target = get_attn_on_target(attn_scores, flat_supp_sent_ranges)
+            # print(f"DEBUG: Attn scores shape - before filter: {attn_scores.shape}")
             attn_scores = attn_scores[:, attention_indices] # Filter attention scores to only include those corresponding to the remaining tokens
-
+            # print(f"DEBUG: Attn scores shape - after filter: {attn_scores.shape}")
 
         if not chat.messages[-1]["tokens"][0]:
             raise ValueError(
@@ -237,7 +281,7 @@ class Interpretability:
 
         y_tokens = [
             self.tokenizer.convert_tokens_to_string([token])
-            for token in chat.messages[-1]["tokens"][0][:-1]
+            for token in chat.messages[-1]["tokens"][0] # Decoded model output should now exlude <|eot_id|> token
         ]
 
         result = InterpretabilityResult(

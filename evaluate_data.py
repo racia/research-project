@@ -360,7 +360,7 @@ def run(
                     if create_heatmaps and not result.interpretability.empty():
                         plotter.draw_heat(
                             result.interpretability,
-                            x_label="Sentence Indices",
+                            x_label="Sentence Indices" if result.interpretability.type_ == "aggr" else "Task Tokens",
                             task_id=part.task_id,
                             sample_id=part.sample_id,
                             part_id=part.part_id,

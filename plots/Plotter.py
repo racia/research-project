@@ -565,6 +565,7 @@ class Plotter:
         y_labels = interpretability_result.y_tokens
         y_labels = y_labels[1:]
         scores = interpretability_result.attn_scores
+        print(f"DEBUG: Attn scores shape: {scores.shape}")
         scores = scores[1:]
 
         plt.figure(figsize=(12, 8))
