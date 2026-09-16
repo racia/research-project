@@ -5,13 +5,14 @@
 
 #SBATCH --ntasks=1                   # Total number of tasks
 #SBATCH --cpus-per-task=2 #4            # Number of CPU cores per task
-#SBATCH --mem=16GB                    # Total memory requested
+#SBATCH --mem=48GB                    # Total memory requested
 #SBATCH --partition=students
+#SBATCH --nodelist=gpu08
 # SBATCH --time=01:29:00              # Job time limit (30 minutes)
 # Output and error logs
 #SBATCH --output="eval_bbase_da_%j.log"
 
-#SBATCH --mail-user=""              # TODO: Add your email address
+#SBATCH --mail-user="ivakhnenko@cl.uni-heidelberg.de"              # TODO: Add your email address
 #SBATCH --mail-type=ALL  # Send email when the job ends or fails
 
 ### JOB STEPS START HERE ###
@@ -29,7 +30,7 @@ cd ~/research-project || exit 1
 source ~/.bashrc 2>/dev/null
 
 # Activate the conda environment
-ENV_NAME="research-project-4"
+ENV_NAME="research-project-3"
 conda activate $ENV_NAME
 #ENV_NAME=".env"
 #echo "Activating the project environment: $ENV_NAME"
@@ -41,7 +42,7 @@ conda activate $ENV_NAME
 #fi
 
 # Toggle args here
-VERBOSE=false #true
+VERBOSE=true #true
 HEATMAPS=false #true
 # Set to "claude" or "llama" to select a silver-reasoning corpus;
 # leave empty to use the default flat directory (legacy behaviour).
@@ -49,42 +50,52 @@ REASONING_SOURCE=""  # "claude" | "llama" | ""
 SETTING="basic-baseline" #"baseline"
 EXPERIMENT="direct_answer" #"reasoning"
 SAMPLES_PER_TASK=100 #100
+VERSIONS=( "v1" "v2" "v3" "v4" "v5" )
+MAX_TOKENS=( 15 15 15 15 15 )
+# v1: tasks 1-20 - 15 tokens
+# v2: tasks 1-20 - 15 tokens
+# v3: tasks 1-20 - 15 tokens
+# v4: tasks 1-20 - 15 tokens
+# v5: tasks 1-20 - 15 tokens
 
 # v1 is already evaluated, but the heatmaps have a bug
-for version in "v2" "v3" "v4" "v5";
-    do
-      echo "Evaluating Baseline Direct Answer results for version ${version}..."
-      RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/da/${version}/all_tasks_joined/joined_direct_answer_results.csv"
-      #RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv"
-      SAVE_PATH="/workspace/students/reasoning/results/analysis/basic-baseline/da/${version}/"
-      #SAVE_PATH="results/baseline/da"
-      # TODO: turn dict into a mapping of setting to filtering conditions
-      #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
-
-      ARGS=(
-        --results_path "$RES_PATH"
-        --save_path "$SAVE_PATH"
-        --setting "$SETTING"
-        --experiment "$EXPERIMENT"
-        --samples_per_task "$SAMPLES_PER_TASK"
-      )
-
-      [ "$VERBOSE" = true ] && ARGS+=(--verbose)
-      [ "$HEATMAPS" = true ] && ARGS+=(--create_heatmaps)
-      [ -n "$REASONING_SOURCE" ] && ARGS+=(--reasoning_source "$REASONING_SOURCE")
-
-      SCRIPT="evaluate_data.py"
-      echo "Running script ${SCRIPT} with the following arguments: ${ARGS[*]}"
-      srun python3 "$SCRIPT" "${ARGS[@]}"
-
-      # Verify if the script executed successfully
-      if [ $? -eq 0 ]; then
-          echo "Python script '$SCRIPT' executed successfully."
-      else
-          echo "Error: Python script '$SCRIPT' failed."
-          exit 1
-      fi
-    done
+#for ((i=0; i<${#VERSIONS[@]}; i++));
+#    do
+#      version="${VERSIONS[i]}"
+#      tokens="${MAX_TOKENS[i]}"
+#      echo "Evaluating Baseline Direct Answer results for version ${version}..."
+#      RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/da/${version}/all_tasks_joined/joined_direct_answer_results.csv"
+#      #RES_PATH="/pfs/work9/workspace/scratch/hd_mr338-research-results-2/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv"
+#      SAVE_PATH="/workspace/students/reasoning/results/analysis/basic-baseline/da/${version}/"
+#      #SAVE_PATH="results/baseline/da"
+#      # TODO: turn dict into a mapping of setting to filtering conditions
+#      #FILTERING_CONDITIONS='{"baseline": {"model": "gpt-3.5-turbo", "reasoning_type": "none"}, "chain_of_thought": {"model": "gpt-3.5-turbo", "reasoning_type": "chain_of_thought"}, "scratchpad": {"model": "gpt-3.5-turbo", "reasoning_type": "scratchpad"}}'
+#
+#      ARGS=(
+#        --results_path "$RES_PATH"
+#        --save_path "$SAVE_PATH"
+#        --setting "$SETTING"
+#        --experiment "$EXPERIMENT"
+#        --samples_per_task "$SAMPLES_PER_TASK"
+#        --max_tokens "$tokens"
+#      )
+#
+#      [ "$VERBOSE" = true ] && ARGS+=(--verbose)
+#      [ "$HEATMAPS" = true ] && ARGS+=(--create_heatmaps)
+#      [ -n "$REASONING_SOURCE" ] && ARGS+=(--reasoning_source "$REASONING_SOURCE")
+#
+#      SCRIPT="evaluate_data.py"
+#      echo "Running script ${SCRIPT} with the following arguments: ${ARGS[*]}"
+#      srun python3 "$SCRIPT" "${ARGS[@]}"
+#
+#      # Verify if the script executed successfully
+#      if [ $? -eq 0 ]; then
+#          echo "Python script '$SCRIPT' executed successfully."
+#      else
+#          echo "Error: Python script '$SCRIPT' failed."
+#          exit 1
+#      fi
+#    done
 
 echo "Evaluating Baseline Direct Answer results averaged across versions..."
 RES_PATH="/workspace/students/reasoning/results/basic-baseline/test/da/average_run/joined_direct_answer_results_averaged.csv"
@@ -98,6 +109,7 @@ ARGS=(
   --setting "$SETTING"
   --experiment "$EXPERIMENT"
   --samples_per_task "$SAMPLES_PER_TASK"
+  --max_tokens 15
 )
 
 [ "$VERBOSE" = true ] && ARGS+=(--verbose)
