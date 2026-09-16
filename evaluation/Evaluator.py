@@ -281,7 +281,7 @@ class MetricEvaluator(Evaluator):
 
     def calculate_correlation(
         self,
-        **kwargs: Union[list[float | int | bool], str],
+        **kwargs: dict[str, Union[list[float | int | bool], str]],
     ) -> dict:
         """
         Calculate the correlation score between each arg metric1 scores list with each kwarg metric2 scores list on task level.
@@ -290,6 +290,21 @@ class MetricEvaluator(Evaluator):
         """
         for key, value in kwargs.items():
             kwargs[key] = getattr(self, value).all if isinstance(value, str) else value
+            assert type(kwargs[key]) is list, f"{key} is not a list but {type(value)}"
+
+        # normalise lists (drop indices of all lists when any of them has None there)
+        length = len(list(kwargs.values())[0])
+        i = 0
+        while i < length:
+            none_present = False
+            for values in kwargs.values():
+                if values[i] is None:
+                    none_present = True
+                    break
+            if not none_present:
+                continue
+            for values in kwargs.values():
+                values.pop(i)
 
         corr_matrix = defaultdict(dict)
         for base_name, base_values in kwargs.items():
@@ -448,6 +463,10 @@ class AnswerEvaluator(MetricEvaluator):
                     f"Got silver: '{silver}', pred: '{pred}'."
                 )
                 continue
+            print("BLEU")
+            print("    Silver:", silver)
+            print("      Pred:", pred)
+            print()
             bleu_score = self.bleu.bleu.compute(references=[silver], predictions=[pred])
             # Example of return
             # {'bleu': 0.07169190876271075,
@@ -479,6 +498,10 @@ class AnswerEvaluator(MetricEvaluator):
                     f"Got silver: '{silver}', pred: '{pred}'."
                 )
                 continue
+            print("ROUGE")
+            print("    Silver:", silver)
+            print("      Pred:", pred)
+            print()
             rouge_score = self.rouge.rouge.compute(
                 references=[silver], predictions=[pred]
             )
@@ -509,6 +532,10 @@ class AnswerEvaluator(MetricEvaluator):
                     f"Got silver: '{silver}', pred: '{pred}'."
                 )
                 continue
+            print("METEOR")
+            print("    Silver:", silver)
+            print("      Pred:", pred)
+            print()
             meteor_score = self.meteor.meteor.compute(
                 references=[silver], predictions=[pred]
             )

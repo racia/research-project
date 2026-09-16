@@ -192,7 +192,7 @@ class DataLoader:
                     f"Filtering conditions contain attributes that are not present in the SamplePart class: {absent_attributes}"
                 )
 
-        self.filtering_conditions = filtering_conditions
+        self.filtering_conditions = filtering_conditions or dict()
 
         self.missing_attn_scores = set()
 

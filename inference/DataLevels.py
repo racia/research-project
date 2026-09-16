@@ -900,34 +900,31 @@ class Task:
             for j, part in enumerate(sample.parts):
                 attns_on_target = []
                 for i, evaluator in enumerate(self.evaluators):
-                    attn_on_target = part.results[i].interpretability.attn_on_target
+                    attn_on_target = (
+                        part.results[i].interpretability.attn_on_target or None
+                    )
                     identifier = (self.task_id, part.sample_id, part.part_id)
                     evaluator.ids_with_attn_on_target[identifier] = {attn_on_target}
                     attns_on_target.append(attn_on_target)
-                if any(is_nan(attn) for attn in attns_on_target):
-                    warnings.warn(
-                        "Skipping data-oriented metrics when attn_on_target is NaN"
-                    )
-                    continue
                 self.parts_answer_in_self.add(part.answer_lies_in_self)
                 self.seen_context_lengths.add(sample.seen_context_lengths.all[j])
                 self.parts_target_distances.add(sample.target_sent_dist.all[j])
 
         for i, (version, evaluator) in enumerate(zip(self.versions, self.evaluators)):
             for part in self.parts:
-                attn_on_target = part.results[i].interpretability.attn_on_target
+                attn_on_target = part.results[i].interpretability.attn_on_target or None
                 if is_nan(attn_on_target):
                     warnings.warn(
                         f"Skip adding metrics for part {part.task_id}-{part.sample_id}-{part.part_id}, because attention on target is NaN."
                     )
                     continue
-                evaluator.parts_answer_correct.add(part.results[i].answer_correct)
+                evaluator.parts_answer_correct.add(part.results[i].answer_correct or None)
                 evaluator.parts_max_supp_attn.add(
-                    part.results[i].interpretability.max_supp_attn
+                    part.results[i].interpretability.max_supp_attn or None
                 )
                 evaluator.parts_attn_on_target.add(attn_on_target)
                 for k, v in part.results[i].features.get().items():
-                    self.parts_features[version][k].append(v)
+                    self.parts_features[version][k].append(v or None)
 
             try:
                 assert (
