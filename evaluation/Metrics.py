@@ -18,7 +18,7 @@ class Metric:
         """
         self.name: str = name
         self.var: str = var
-        self.all: list[float] = values if values else []
+        self.all: list[float | None] = values if values else []
 
         self.mean: float = None
         self.std: float = None
@@ -63,11 +63,7 @@ class Metric:
         :param value: the string value
         :return: the mapped float value
         """
-        mapping = {
-            "fully": 1.0,
-            "partially": 0.5,
-            "none": 0.0
-        }
+        mapping = {"fully": 1.0, "partially": 0.5, "none": 0.0}
         return mapping.get(value.lower(), 0.0)
 
     def add(
@@ -78,6 +74,10 @@ class Metric:
 
         :param metric: the metric values
         """
+        if metric is None:
+            warnings.warn("Adding metric value 'None'")
+            self.all.append(metric)
+            return
         type_ = type(metric)
         if type_ is Metric or issubclass(type_, Metric):
             self.all.append(metric.get_mean())
@@ -116,7 +116,8 @@ class Metric:
         if len(self.all) == 0:
             self.mean = 0.0
         else:
-            self.mean = round(statistics.mean(self.all), 2)
+            clean_all = [a for a in self.all if a is not None]
+            self.mean = round(statistics.mean(clean_all), 2)
         return self.mean
 
     def get_std(self) -> float:
@@ -126,7 +127,8 @@ class Metric:
         if len(self.all) < 2:
             self.std = 0.0
         else:
-            self.std = round(statistics.stdev(self.all), 2)
+            clean_all = [a for a in self.all if a is not None]
+            self.std = round(statistics.stdev(clean_all), 2)
         return self.std
 
 

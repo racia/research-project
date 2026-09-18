@@ -10,6 +10,10 @@ from evaluation.Metrics import Accuracy, Metric
 from evaluation.Scenery import SentenceScenery
 from inference.DataLevels import Features, SamplePart
 
+PREFIX = Path.cwd()
+while PREFIX.name != "research-project":
+    PREFIX = PREFIX.parent
+
 
 def load_scenery(
     word_types: tuple[str, ...] = (
@@ -32,7 +36,7 @@ def load_scenery(
     :return: set of scenery words for filtering attention scores
     """
     scenery_words = set()
-    for entry in os.scandir("data/scenery_words"):
+    for entry in os.scandir(f"{PREFIX}/data/scenery_words"):
         word_type = entry.name.strip(".txt")
         if word_type in word_types:
             with open(entry.path, "r", encoding="UTF-8") as f:
@@ -282,7 +286,7 @@ def structure_parts(
             "Parts should be a list, not a dict. They might be already structured."
         )
 
-    if level_id not in ["task_id", "sample_id", "part_id"]:
+    if level_id and level_id not in ["task_id", "sample_id", "part_id"]:
         raise ValueError(
             f"Invalid id_ value: {level_id}. Expected 'task_id' or 'sample_id'."
         )

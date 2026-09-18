@@ -74,10 +74,18 @@ def run_setting(cfg: DictConfig) -> None:
             f"Please choose one of the following: Baseline, Skyline, Feedback, SD or SpeculativeDecoding"
         )
 
+    saver = DataSaver(
+        save_to=HydraConfig.get().run.dir,
+        loaded_baseline_results=bool(cfg.data.baseline_results),
+    )
+    print(f"Results will be saved to: {saver.results_path}")
+
     loader = DataLoader(
         samples_per_task=cfg.data.samples_per_task,
         to_enumerate=cfg.data.to_enumerate,
         wrapper=cfg.data.wrapper,
+        reasoning_source=cfg.data.reasoning_source,
+        saving_path=saver.results_path,
     )
 
     data_splits = [split for split, to_use in cfg.data.splits.items() if to_use]
@@ -100,11 +108,6 @@ def run_setting(cfg: DictConfig) -> None:
                 multi_system=multi_system,
             )
 
-    saver = DataSaver(
-        save_to=HydraConfig.get().run.dir,
-        loaded_baseline_results=bool(cfg.data.baseline_results),
-    )
-    print(f"Results will be saved to: {saver.results_path}")
     plotter = Plotter(results_path=saver.results_path)
 
     run_splits = defaultdict(dict)

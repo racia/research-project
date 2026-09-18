@@ -314,6 +314,7 @@ def process_path(
 
 def run(
     source_paths: list[str],
+    source_path_prefix: str,
     target_directory: str,
     level: str = "task",
     keyword: str = "results",
@@ -324,6 +325,8 @@ def run(
     Run the data join.
 
     :param source_paths: list of paths to the result files to move
+    :param source_path_prefix: the prefix of the source paths, cluster-specific path to the results directory,
+                               to avoid hardcoding it in the settings files
     :param target_directory: path to save the all_samples data
     :param level: level of the data to join, either 'task' or 'sample'
     :param keyword: type_ to search for in the paths
@@ -333,6 +336,9 @@ def run(
     :return: None
     """
     print("You are running the data joining script.", end="\n\n")
+
+    source_paths = [Path(source_path_prefix, path) for path in source_paths]
+    print("Source paths:", *source_paths, sep="\n")
 
     if level not in ["task", "sample"]:
         raise ValueError(
@@ -465,7 +471,8 @@ if __name__ == "__main__":
     # from settings.baseline.sources_basic_da import *
     # from settings.baseline.sources_basic_reasoning import *
 
-    # from settings.skyline.sources_da import *
+    from settings.skyline.sources_da import *
+
     # from settings.skyline.sources_reasoning import *
 
     # from settings.feedback.sources_reasoning import *
@@ -474,15 +481,18 @@ if __name__ == "__main__":
     # TODO: NB! The difference in paths the script should detect must be on the same level in the file tree!
     paths = []
 
-    result = f"/pfs/work9/workspace/scratch/hd_mr338-research-results-2/SD/test/reasoning/v1/all_tasks_joined"
+    result = (
+        f"/workspace/students/reasoning/results/skyline/test/da/v1/all_tasks_joined"
+    )
     run(
-        source_paths=paths,
+        source_paths=skyline_da_v1,
+        source_path_prefix="/workspace/students/reasoning/results",
         target_directory=result,
         level="task",  # 'task' or 'sample'
         # might not work if too general! try "_results"
-        keyword=f"reasoning_results",  # example: "t_20" for a specific task,
+        keyword=f"direct_answer_results",  # example: "t_20" for a specific task,
         # "reasoning_results", "direct_answer_results", for generally saved results
-        task="reasoning",  # 'reasoning' or 'direct_answer' (direct answer)
+        task="direct_answer",  # 'reasoning' or 'direct_answer' (direct answer)
         # difference="all_tasks_joined_old",
         # 'difference' only necessary when extracting a subset of results from a single source path
     )

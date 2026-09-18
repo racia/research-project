@@ -1,6 +1,6 @@
 teacher:
   name: "meta-llama/Meta-Llama-3-70B-Instruct"
-  max_new_tokens: 12
+  max_new_tokens: 300
   temperature: 0.1
   to_continue: False
   mode: "eval"
@@ -10,7 +10,7 @@ teacher:
 
 student:
   name: "meta-llama/Meta-Llama-3-8B-Instruct"
-  max_new_tokens: 200
+  max_new_tokens: 300
   temperature: 0.1
   to_continue: False
   mode: "eval"
@@ -33,6 +33,8 @@ data:
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
   task_ids: ~
+  for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
+  start_from_sample: 0
   samples_per_task: 100
   # if to add line numbers to the sentences in the prompt
   # Order: context, question

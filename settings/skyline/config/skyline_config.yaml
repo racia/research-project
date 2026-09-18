@@ -29,10 +29,11 @@ data:
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
   task_ids: ~
-  # to get all samples use ~ (will be converted to None)
-  start_from_sample: 0
   # to set a specific number of samples use an int
   samples_per_task: 5
+  # to get all samples use ~ (will be converted to None)
+  start_from_sample: 0
+  for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
   to_enumerate:
@@ -49,6 +50,7 @@ data:
       {question}
     reasoning: ""
     answer: ""
+  reasoning_source: "llama"
 
 init_prompt:
   # name of the prompt files serves as a basis for logging and result files

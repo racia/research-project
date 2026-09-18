@@ -77,7 +77,7 @@ else
 fi
 
 echo "Installing torch libraries..."
-pip3.12 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128 || {
+pip3.12 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 || {
     echo "[ERROR] Failed to install a torch library." >&2
     exit 1
 }
@@ -96,6 +96,7 @@ pip3.12 install cupy-cuda12x || {
     echo "[ERROR] Failed to install CuPy for CUDA 12.x." >&2
     exit 1
 }
+pip3 install click
 echo "Downloading spaCy language model (en_core_web_sm)..."
 python3.12 -m spacy download en_core_web_sm || {
     echo "[ERROR] Failed to download spaCy model 'en_core_web_sm'." >&2
