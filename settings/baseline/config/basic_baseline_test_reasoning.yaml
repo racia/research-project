@@ -1,0 +1,35 @@
+defaults:
+  # running this script will pull the prompt in this file over the prompt in baseline_config file
+  - baseline_config
+  - _self_
+
+model:
+  max_new_tokens: 300
+
+setting:
+  name: "Baseline"
+
+data:
+  path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
+  task_ids: ~
+  start_from_sample: 0
+  for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
+  samples_per_task: 100
+  splits:
+    train: False
+    valid: False
+    test: True
+
+init_prompt:
+  paths:
+    - "${oc.env:HOME}/research-project/inference/prompts/basic_baseline_prompt_reasoning.txt"
+
+logging:
+  # if to print the results to a log file, otherwise will print to console
+  print_to_file: True
+
+hydra:
+  run:
+    # the run directory with logs, plots, and csv results will be created here
+    # use more folders if needed for distinguishing between different experiments
+    dir: "/workspace/students/reasoning/results/basic-baseline/test/reasoning/${now:%d-%m-%Y}/${now:%H-%M-%S}"

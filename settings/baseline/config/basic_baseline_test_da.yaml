@@ -3,10 +3,18 @@ defaults:
   - baseline_config
   - _self_
 
+model:
+  max_new_tokens: 15
+
+setting:
+  name: "Baseline"
+
 data:
   path: "${oc.env:HOME}/tasks_1-20_v1-2/en-valid/"
-  task_ids: [ 1, 2, 3, 4, 5 ]
-  samples_per_task: 2
+  task_ids: ~
+  start_from_sample: 0
+  for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
+  samples_per_task: 100
   splits:
     train: False
     valid: False
@@ -14,7 +22,7 @@ data:
 
 init_prompt:
   paths:
-    - "${oc.env:HOME}/research-project/inference/prompts/init_prompt_reasoning.txt"
+    - "${oc.env:HOME}/research-project/inference/prompts/basic_baseline_prompt_da.txt"
 
 logging:
   # if to print the results to a log file, otherwise will print to console
@@ -24,4 +32,4 @@ hydra:
   run:
     # the run directory with logs, plots, and csv results will be created here
     # use more folders if needed for distinguishing between different experiments
-    dir: "/pfs/work9/workspace/scratch/hd_mr338-research-results-2/outputs/test-baseline-run/${now:%d-%m-%Y}/${now:%H-%M-%S}"
+    dir: "/workspace/students/reasoning/results/basic-baseline/test/da/${now:%d-%m-%Y}/${now:%H-%M-%S}"
