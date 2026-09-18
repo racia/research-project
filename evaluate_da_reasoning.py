@@ -468,17 +468,3 @@ if __name__ == "__main__":
         multi_system=args.multi_system,
         out_dir=args.out_dir,
     )
-
-    # logging.basicConfig(level=logging.INFO)
-    # run(
-    #     reasoning_path=Path(
-    #         "/workspace/students/reasoning/results/basic-baseline/test/reasoning/v1/all_tasks_joined/eval"
-    #     ),
-    #     direct_answer_path=Path(
-    #         "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/eval"
-    #     ),
-    #     multi_system=False,
-    #     out_dir=Path(
-    #         "/workspace/students/reasoning/results/basic-baseline/test/toxic_eval_test"
-    #     ),
-    # )

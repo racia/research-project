@@ -225,12 +225,12 @@ if __name__ == "__main__":
     # This script doesn't calculate metrics!
     # It should therefore be run after the initial evaluation of the duplicating runs to record them correctly.
     # python3 average_runs.py --results_paths run1.csv run2.csv run3.csv run4.csv --save_path /your/output/dir --samples_per_task 1
-    # args = parse_args()
-    # output_path = run(
-    #     results_paths=args.results_paths,
-    #     save_path=args.save_path,
-    #     samples_per_task=args.samples_per_task,
-    # )
+    args = parse_args()
+    output_path = run(
+        results_paths=args.results_paths,
+        save_path=args.save_path,
+        samples_per_task=args.samples_per_task,
+    )
     # TODO: Uncomment for testing
     # results_paths = [
     #     "/workspace/students/reasoning/results/basic-baseline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
@@ -260,16 +260,16 @@ if __name__ == "__main__":
     #     "/workspace/students/reasoning/results/baseline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
     # ]
     # save_path = "/workspace/students/reasoning/results/baseline/test/da/average_run"
-    results_paths = [
-        "/workspace/students/reasoning/results/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv",
-        "/workspace/students/reasoning/results/baseline/test/reasoning/v2/all_tasks_joined/joined_reasoning_results.csv",
-        "/workspace/students/reasoning/results/baseline/test/reasoning/v3/all_tasks_joined/joined_reasoning_results.csv",
-        "/workspace/students/reasoning/results/baseline/test/reasoning/v4/all_tasks_joined/joined_reasoning_results.csv",
-        "/workspace/students/reasoning/results/baseline/test/reasoning/v5/all_tasks_joined/joined_reasoning_results.csv",
-    ]
-    save_path = (
-        "/workspace/students/reasoning/results/baseline/test/reasoning/average_run"
-    )
+    # results_paths = [
+    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v1/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v2/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v3/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v4/all_tasks_joined/joined_reasoning_results.csv",
+    #     "/workspace/students/reasoning/results/baseline/test/reasoning/v5/all_tasks_joined/joined_reasoning_results.csv",
+    # ]
+    # save_path = (
+    #     "/workspace/students/reasoning/results/baseline/test/reasoning/average_run"
+    # )
     # results_paths = [
     #     "/workspace/students/reasoning/results/skyline/test/da/v1/all_tasks_joined/joined_direct_answer_results.csv",
     #     "/workspace/students/reasoning/results/skyline/test/da/v2/all_tasks_joined/joined_direct_answer_results.csv",
@@ -278,10 +278,10 @@ if __name__ == "__main__":
     #     "/workspace/students/reasoning/results/skyline/test/da/v5/all_tasks_joined/joined_direct_answer_results.csv",
     # ]
     # save_path = "/workspace/students/reasoning/results/skyline/test/da/average_run"
-    samples_per_task = 100
-    output_path = run(
-        results_paths=results_paths,
-        save_path=save_path,
-        samples_per_task=samples_per_task,
-    )
+    # samples_per_task = 100
+    # output_path = run(
+    #     results_paths=results_paths,
+    #     save_path=save_path,
+    #     samples_per_task=samples_per_task,
+    # )
     print(f"Saved aggregated results to: {output_path}")
