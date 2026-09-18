@@ -31,8 +31,9 @@ data:
   # to get all tasks use ~ (will be converted to None)
   # to get specific tasks use:
   # task_ids: [1, 2, ...]
-  task_ids: [ 6 ]
+  task_ids: ~
   start_from_sample: 0
+  for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
   samples_per_task: 100
   # if to add line numbers to the sentences in the prompt
   # Order: context, question

@@ -33,6 +33,7 @@ data:
   # task_ids: [1, 2, ...]
   task_ids: ~
   start_from_sample: 0
+  for_all_tasks: false # whether to start from a specific sample for all tasks (will start from 0 otherwise)
   samples_per_task: 5
   # if to add line numbers to the sentences in the prompt
   # Order: context, question
